@@ -1,0 +1,200 @@
+import os
+import logging
+import json
+import shutil
+from faultseeker.utils.solidityParser.loc_parser import get_loc_info
+        
+
+
+LOGGGING_FILE_PATH = './logs/get_source_code.log'
+os.makedirs(os.path.dirname(LOGGGING_FILE_PATH), exist_ok=True)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',filename=LOGGGING_FILE_PATH, filemode='w')
+
+
+CONTRACT_SOURCES ={
+    'eth': 'https://etherscan.io/contractsverified',
+    'bsc': 'https://bscscan.com/contractsverified',
+    'poly': 'https://polygonscan.com/contractsverified',
+    'fantom': 'https://ftmscan.com/contractsverified',
+    'arbi': 'https://arbiscan.io/contractsverified',
+    'avax': 'https://snowtrace.io/contractsverified',
+    'opt': 'https://optimistic.etherscan.io/contractsverified',
+    'base': 'https://basescan.org/contractsverified'
+}
+    
+class ContractDownloader:
+
+    def __init__(self, chain:str, address:list, output_dir:str='./temp2', cache_dir:str='./data/cache/contracts'):
+        self.chain = chain.lower()
+        self.address = address
+        self.output_dir = output_dir
+        self.cache_dir = cache_dir
+        # os.makedirs(self.output_dir, exist_ok=True)
+        os.makedirs(self.cache_dir, exist_ok=True)
+
+    @staticmethod
+    def get_source_code(chain, address, output_dir):
+        """Download contract source code via block explorer API (replaces getCode CLI)."""
+        os.makedirs(output_dir, exist_ok=True)
+        api_urls = {
+            'eth': 'https://api.etherscan.io/api',
+            'bsc': 'https://api.bscscan.com/api',
+            'poly': 'https://api.polygonscan.com/api',
+            'polygon': 'https://api.polygonscan.com/api',
+            'arbitrum': 'https://api.arbiscan.io/api',
+            'avalanche': 'https://api.snowtrace.io/api',
+            'fantom': 'https://api.ftmscan.com/api',
+            'optimism': 'https://api-optimistic.etherscan.io/api',
+            'base': 'https://api.basescan.org/api',
+        }
+        chain_key = chain.lower()
+        api_url = api_urls.get(chain_key, api_urls.get('eth'))
+        try:
+            import urllib.request
+            import urllib.parse
+            import json as _json
+            params = urllib.parse.urlencode({
+                'module': 'contract',
+                'action': 'getsourcecode',
+                'address': address,
+                'apikey': 'YourApiKeyToken'  # free tier works without key for source
+            })
+            url = f'{api_url}?{params}'
+            with urllib.request.urlopen(url, timeout=30) as resp:
+                data = _json.loads(resp.read().decode('utf-8', errors='ignore'))
+            
+            if data.get('status') != '1' or not data.get('result'):
+                logging.warning(f'No source for {address}[{chain}]: {data.get("message")}')
+                return
+            
+            result = data['result'][0]
+            source_code = result.get('SourceCode', '')
+            contract_name = result.get('ContractName', 'Contract') or 'Contract'
+            
+            if not source_code:
+                return
+            
+            # Handle multi-file source (JSON format wrapped in {{ }})
+            if source_code.startswith('{{'):
+                try:
+                    inner = _json.loads(source_code[1:-1])
+                    sources = inner.get('sources', {})
+                    for path, content in sources.items():
+                        safe_name = os.path.basename(path.replace('/', '_'))
+                        impl_dir = os.path.join(output_dir, 'Implementation')
+                        os.makedirs(impl_dir, exist_ok=True)
+                        with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
+                            f.write(content.get('content', ''))
+                    return
+                except Exception:
+                    pass
+            
+            # Single file source
+            impl_dir = os.path.join(output_dir, 'Implementation')
+            os.makedirs(impl_dir, exist_ok=True)
+            out_file = os.path.join(impl_dir, f'{contract_name}.sol')
+            with open(out_file, 'w', encoding='utf-8') as f:
+                f.write(source_code)
+            logging.info(f'Downloaded {address}[{chain}] -> {out_file}')
+        except Exception as e:
+            logging.warning(f'Failed to download source for {address}[{chain}]: {e}')
+
+
+    @staticmethod
+    def process_log(chain, address, output_root):
+        f = open(LOGGGING_FILE_PATH, 'r')
+        lines = f.readlines()
+        f.close()
+        output = []
+        temp_output = ""
+
+        # split the log file based on projects
+        for line in lines:
+            if "==========================================" in line:
+                if temp_output != "":
+                    output.append(temp_output)
+                temp_output = ""
+            else:
+                temp_output += line
+        
+        # find projects with implementations
+        implementations = {}
+        for content in output:
+            if f'{address}[{chain}]' in content:
+                if 'Implementation/' in content:
+                    content_lines = content.split('\n')
+                    project_name = content_lines[0].split(' - ')[-1]
+                    for line in content_lines:
+                        path = line.split(' ')[-1].strip()
+                        if 'Implementation/' in line:
+                            if project_name not in implementations:
+                                implementations[project_name] = [path]
+                            else:
+                                implementations[project_name].append(path)
+            
+        
+        # save implementation to respective project dir
+        for project_name in implementations:
+            # temp = project_name.split('[')
+            # address_temp = temp[0].strip()
+            # chain_temp = temp[1].replace(']','').strip()
+            project_dir = os.path.join(output_root, 'Implementation')
+            os.makedirs(project_dir, exist_ok=True)
+            for path in implementations[project_name]:
+                # copy the file to project dir
+                try:
+                    shutil.copy(path, project_dir)
+                except Exception:
+                    # traceback.print_exc()
+                    pass
+             
+    @staticmethod
+    def parse_contract(output_dir):
+        output = {}
+        for root,_, files in os.walk(output_dir):
+            for file in files:
+                if file.endswith('.sol'):
+                    content = open(os.path.join(root, file), 'r', encoding='utf-8').read()
+                    lines = content.split('\n')
+                    result = get_loc_info(content)
+                    for contract in result:
+                        for function in result[contract]['functions']:
+                            loc = result[contract]['functions'][function]
+                            function_content = '\n'.join(lines[loc['start_line']-1:loc['end_line']])
+                            info = {
+                                'path':os.path.join(root,file).replace(output_dir,'.'),
+                                'start_line':loc['start_line'],
+                                'end_line':loc['end_line'],
+                                'content':function_content
+                            }
+                            if function not in output:
+                                output[function] = []
+                            output[function].append(info)
+        return output
+    
+    def run(self):
+        output = {}
+        for address in self.address:
+            path = os.path.join(self.cache_dir, f'{address.lower()}_{self.chain}.json')
+            if os.path.exists(path):
+                with open(path, 'r', encoding='utf-8') as f:
+                    output[address.lower()] = json.load(f)
+            else:
+                self.get_source_code(self.chain, address, self.output_dir)
+                # self.process_log(self.chain, address, self.output_dir)
+                data = self.parse_contract(self.output_dir)
+                if data:
+                    with open(os.path.join(self.cache_dir, f'{address.lower()}_{self.chain}.json'), 'w') as f:
+                        json.dump(data, f, indent=4)
+                if os.path.exists(self.output_dir):
+                    try:
+                        shutil.rmtree(self.output_dir)
+                    except Exception:
+                        continue
+                if os.path.exists('./Implementation'):
+                    shutil.rmtree('./Implementation')
+                output[address.lower()] = data
+        return output
+
+if __name__ == '__main__':
+    ContractDownloader('bsc','0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c').run()

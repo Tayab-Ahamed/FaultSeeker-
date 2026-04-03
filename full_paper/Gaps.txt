@@ -1,0 +1,32 @@
+the 7 research gaps
+
+1️⃣ Cloud Dependency
+The base FaultSeeker system depends heavily on cloud LLM APIs (e.g., GPT‑4o), making it expensive and limiting offline or secure deployments.
+
+2️⃣ Lack of Human‑in‑the‑Loop Interaction
+The original framework performs fully automated analysis, without allowing analysts to guide or refine the investigation process.
+
+3️⃣ Limited Explainability
+Although suspicious functions are ranked, the reasoning behind predictions is not always clearly interpretable for security analysts.
+
+4️⃣ No Confidence Scoring Mechanism
+The system outputs suspicious functions but does not provide a quantitative confidence score indicating how reliable the prediction is.
+
+5️⃣ Single‑Chain Focus
+Most evaluations focus on specific blockchain networks, limiting scalability across multiple EVM‑compatible chains such as BSC, Polygon, etc.
+
+6️⃣ High Infrastructure Requirements
+Running full analysis with cloud LLMs and transaction replay environments can require significant computational resources and cost.
+
+7️⃣ Limited Dataset Diversity
+Existing evaluation datasets are limited (e.g., ~115 exploit transactions), which may restrict generalization to new attack patterns.
+
+
+✅ In your project, you address these gaps using:
+Hybrid LLM routing (Local + Cloud)
+Confidence scoring engine
+Human‑in‑the‑loop guidance
+Multi‑chain compatibility
+Cost‑efficient local inference
+Structured JSON validation
+Improved experimental evaluation
