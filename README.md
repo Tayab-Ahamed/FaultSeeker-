@@ -325,14 +325,6 @@ If you use FaultSeeker++ in your research, please cite:
 }
 ```
 
----
-
-## 🤝 Contributing
-
-See [AGENTS.md](AGENTS.md) for architecture notes and development commands.
-
----
-
 <div align="center">
 
 Built with ❤️ for the blockchain security research community
