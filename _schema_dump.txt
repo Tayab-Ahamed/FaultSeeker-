@@ -1,0 +1,43 @@
+['txn_hash', 'chain', 'functioncall_count', 'address_count', 'max_depth', 'gas_cost', 'class', 'vuln_type', 'analysis', 'swc_registry_classification', 'dasp_classification', 'uncategorized']
+
+txn_hash                       object
+chain                          object
+functioncall_count              int64
+address_count                   int64
+max_depth                       int64
+gas_cost                        int64
+class                          object
+vuln_type                      object
+analysis                       object
+swc_registry_classification    object
+dasp_classification            object
+uncategorized                  object
+dtype: object
+
+{'txn_hash': {0: '0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba', 1: '0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565', 2: '0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba', 3: '0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a', 4: '0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b'}, 'chain': {0: 'bsc', 1: 'bsc', 2: 'bsc', 3: 'bsc', 4: 'eth'}, 'functioncall_count': {0: 2, 1: 2, 2: 2, 3: 1, 4: 12}, 'address_count': {0: 2, 1: 1, 2: 2, 3: 1, 4: 3}, 'max_depth': {0: 2, 1: 2, 2: 2, 3: 1, 4: 4}, 'gas_cost': {0: 30576, 1: 46839, 2: 47405, 3: 47761, 4: 58349}, 'class': {0: 'Moderate', 1: 'Moderate', 2: 'Moderate', 3: 'Moderate', 4: 'Moderate'}, 'vuln_type': {0: 'Improper Access Control Of Close-Source Contract', 1: 'Compoundv2 Inflation Attack', 2: 'Improper Access Control Of Close-Source Contract', 3: 'Business Logic Flaw', 4: 'Arbitrary External Call'}, 'analysis': {0: '["https://twitter.com/numencyber/status/1661213691893944320"]', 1: '["https://twitter.com/AnciliaInc/status/1741353303542501455"]', 2: '["https://twitter.com/numencyber/status/1661213691893944320"]', 3: '["https://app.blocksec.com/explorer/tx/bsc/0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a"]', 4: '["https://twitter.com/MevRefund/status/1622793836291407873", "https://twitter.com/peckshield/status/1622801412727148544"]'}, 'swc_registry_classification': {0: nan, 1: nan, 2: nan, 3: nan, 4: 'SWC-112(Delegatecall to Untrusted Callee)'}, 'dasp_classification': {0: 'Access Control', 1: 'Arithmetic Issues', 2: 'Access Control', 3: 'Unknown Unknowns', 4: nan}, 'uncategorized': {0: nan, 1: nan, 2: nan, 3: nan, 4: nan}}
+
+Shape: (246, 12)
+
+Value counts:
+max_depth
+4     50
+5     48
+3     33
+6     28
+7     16
+8     11
+9     10
+2      8
+10     7
+14     6
+12     6
+15     5
+11     5
+17     3
+13     3
+16     2
+1      1
+83     1
+19     1
+27     1
+23     1

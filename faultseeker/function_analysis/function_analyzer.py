@@ -15,6 +15,7 @@ from faultseeker.prompts.function_analysis import (
 from faultseeker.prompts.local_model_prompts import get_worker_prompts, get_vuln_prompts
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
+from faultseeker.forensics.result import extract_reentrancy_analysis, compute_priority_breakdown
 from typing import Optional
 
 
@@ -820,6 +821,10 @@ class FunctionAnalyzer:
 
         # Finalize vulnerable functions with confidence scores preserved
         finalized_functions = self._finalize_potentially_vulnerable_functions()
+        priority = compute_priority_breakdown(
+            self.signals_raw,
+            exploitability_score=self.rule_confidence,
+        )
 
         # Build result — include signal layer outputs for downstream / eval
         result = {
@@ -830,6 +835,9 @@ class FunctionAnalyzer:
             'transaction_understanding': self.understanding_result,
             'functions_to_be_inspected': self.functions_to_be_inspected,
             # ── Signal layer (from Stage 1) ───────────────────────────────
+            'reentrancy':     extract_reentrancy_analysis(self.signals_raw),
+            'priority':       priority,
+            'priority_score': priority['total'],
             'rule_verdict':    self.rule_verdict,
             'rule_confidence': self.rule_confidence,
             'vuln_type_hint':  self.vuln_type_hint,

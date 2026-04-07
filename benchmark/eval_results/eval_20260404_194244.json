@@ -1,0 +1,75 @@
+{
+  "metrics": {
+    "total": 3,
+    "exploit_detected": 0,
+    "uncertain": 3,
+    "false_benign": 0,
+    "rule_coverage": 0.0,
+    "type_total": 0,
+    "type_correct": 0,
+    "type_accuracy": 0,
+    "avg_latency_secs": 29.3,
+    "confusion_matrix": {
+      "Improper Access Control Of Close-Source Contract": {
+        "[UNCERTAIN]": 2
+      },
+      "Compoundv2 Inflation Attack": {
+        "[UNCERTAIN]": 1
+      }
+    },
+    "by_difficulty": {
+      "Moderate": {
+        "total": 3,
+        "rule_classified": 0,
+        "type_correct": 0
+      }
+    },
+    "by_vuln_type": {
+      "Improper Access Control Of Close-Source Contract": {
+        "total": 2,
+        "rule_classified": 0,
+        "type_correct": 0
+      },
+      "Compoundv2 Inflation Attack": {
+        "total": 1,
+        "rule_classified": 0,
+        "type_correct": 0
+      }
+    }
+  },
+  "results": [
+    {
+      "txn_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+      "chain": "bsc",
+      "vuln_type": "Improper Access Control Of Close-Source Contract",
+      "difficulty": "Moderate",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.45,
+      "rule": "ambiguous",
+      "predicted_type": "Unknown",
+      "elapsed_secs": 29.6
+    },
+    {
+      "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+      "chain": "bsc",
+      "vuln_type": "Compoundv2 Inflation Attack",
+      "difficulty": "Moderate",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.4,
+      "rule": "no_signals_llm_required",
+      "predicted_type": "Unknown",
+      "elapsed_secs": 21.1
+    },
+    {
+      "txn_hash": "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba",
+      "chain": "bsc",
+      "vuln_type": "Improper Access Control Of Close-Source Contract",
+      "difficulty": "Moderate",
+      "verdict": "UNCERTAIN",
+      "confidence": 0.4,
+      "rule": "no_signals_llm_required",
+      "predicted_type": "Unknown",
+      "elapsed_secs": 37.2
+    }
+  ]
+}

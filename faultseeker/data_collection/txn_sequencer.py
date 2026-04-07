@@ -16,6 +16,27 @@ class TransactionSequencer:
         if root_node:
             self.visualizer.build_graph_from_tree(root_node)
         return root_node.to_dict() if root_node else None
+
+    @staticmethod
+    def _canonical_to_legacy_trace(node: dict) -> dict:
+        """Convert canonical RPC trace nodes into the legacy parser-like schema."""
+        if not node:
+            return {}
+
+        return {
+            'type': 'call',
+            'gas': node.get('gas'),
+            'address': node.get('callee'),
+            'function': node.get('function_selector'),
+            'params': node.get('input', '0x')[10:] if node.get('input') else '',
+            'call_type': (node.get('call_type') or '').lower() or None,
+            'value': node.get('value'),
+            'contract_type': None,
+            'children': [
+                TransactionSequencer._canonical_to_legacy_trace(child)
+                for child in node.get('children', [])
+            ],
+        }
     
     def generate_text_representation(self, root_node):
         return self.generator.generate(root_node)
@@ -50,13 +71,19 @@ class TransactionSequencer:
         Returns:
             Dictionary containing transaction sequence analysis results
         """
-        # Get trace from replayer (uses cache internally)
+        # Prefer the structured trace path for canonical call/state metadata.
+        structured_trace = self.replayer.get_structured_trace(txn_hash, chain)
+
+        # Get cast-style trace text from replayer (uses cache internally)
         trace_text = self.replayer.run(txn_hash, chain)
-        if not trace_text:
+        if not trace_text and not structured_trace:
             return {}
 
         # Analyze trace
-        root_node = self.analyze_trace(trace_text)
+        root_node = self.analyze_trace(trace_text) if trace_text else None
+        if not root_node and structured_trace and structured_trace.get('trace'):
+            root_node = self._canonical_to_legacy_trace(structured_trace['trace'])
+            self.visualizer.build_graph_from_tree(TraceNode.from_dict(root_node))
         if not root_node:
             return {}
 
@@ -66,11 +93,13 @@ class TransactionSequencer:
             "transaction_hash": txn_hash,
             "chain": chain,
             "trace": root_node,
+            "canonical_trace": structured_trace.get('trace') if structured_trace else None,
+            "storage_events": structured_trace.get('storage_events', []) if structured_trace else [],
+            "trace_state_diff": structured_trace.get('state_diff', {}) if structured_trace else {},
             "address_relation": address_relation,
             "address_calls": self.parser.address_call_memo,
             "created_address": self.parser.created_address,
         }
 
         return result
-
 

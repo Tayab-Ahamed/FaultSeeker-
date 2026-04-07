@@ -8,6 +8,10 @@ from faultseeker.core.config import FaultSeekerConfig
 from faultseeker.core.confidence_scorer import ConfidenceScorer, generate_evidence_card
 from faultseeker.core.human_interface import HumanInterface
 from faultseeker.core.llm_router import HybridLLMRouter
+from faultseeker.forensics.result import (
+    extract_reentrancy_analysis,
+    compute_priority_breakdown,
+)
 
 
 class FaultSeekerPipeline:
@@ -226,6 +230,11 @@ class FaultSeekerPipeline:
                     card['analyst_notes'] = analyst_notes_global
 
         # Build clean final output with only essential results
+        reentrancy = extract_reentrancy_analysis(getattr(forensics_result, 'signals', {}))
+        priority = compute_priority_breakdown(
+            getattr(forensics_result, 'signals', {}),
+            exploitability_score=getattr(forensics_result, 'rule_confidence', 0.0),
+        )
         result = {
             'transaction_hash': forensics_result.transaction_hash,
             'chain': forensics_result.chain,
@@ -238,6 +247,9 @@ class FaultSeekerPipeline:
             # Gap 3+4: Confidence scores and evidence cards
             'scored_functions': scored_functions,
             'evidence_cards': evidence_cards,
+            'reentrancy': reentrancy,
+            'priority': priority,
+            'priority_score': priority['total'],
 
             # Gap 2: Analyst feedback log
             'analyst_feedback': hitl.get_feedback_log(),

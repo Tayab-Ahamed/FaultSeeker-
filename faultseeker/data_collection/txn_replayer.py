@@ -11,10 +11,12 @@ from faultseeker.utils.rpc_provider import get_rpc, get_all_rpcs, retry_with_bac
 
 class TransactionReplayer:
 
-    def __init__(self, cache_path='./data/cache/replay'):
+    def __init__(self, cache_path='./data/cache/replay', structured_cache_path='./data/cache/replay_structured'):
         """Initialize TransactionReplayer with cache directory."""
         self.cache_path = cache_path
+        self.structured_cache_path = structured_cache_path
         os.makedirs(cache_path, exist_ok=True)
+        os.makedirs(structured_cache_path, exist_ok=True)
 
     @staticmethod
     def _resolve_rpc(chain: str) -> str:
@@ -59,8 +61,8 @@ class TransactionReplayer:
         def _fmt_canonical(node, depth=0):
             """Format a canonical (already normalized) trace node."""
             indent = '  ' * depth
-            to  = node.get('to', '?')
-            sig = node.get('input', '0x')[:10]
+            to  = node.get('callee') or node.get('to', '?')
+            sig = node.get('function_selector') or node.get('input', '0x')[:10]
             typ = node.get('call_type', 'CALL')
             lines = [f'{indent}{to}::{sig} [{typ}]']
             for child in node.get('children', []):
@@ -89,12 +91,137 @@ class TransactionReplayer:
                     # Build proper nested tree from flat traceAddress list
                     root = build_parity_tree(trace_list)
                     if root:
-                        return '\n'.join(_fmt_canonical(root))
+                        return '\n'.join(_fmt_canonical(normalize_trace_node(root)))
         except Exception as e:
             print(f'      trace_replayTransaction failed across all providers: {e}')
 
         print('      No supported trace method available on any provider.')
         return None
+
+    def get_structured_cache(self, txn_hash: str) -> dict | None:
+        """Check if a structured trace exists in cache."""
+        cache_file = os.path.join(self.structured_cache_path, txn_hash.lower() + '.json')
+        if not os.path.exists(cache_file):
+            return None
+        try:
+            with open(cache_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return None
+
+    def cache_structured_trace(self, txn_hash: str, structured_trace: dict) -> None:
+        """Persist structured trace/state metadata to disk."""
+        cache_file = os.path.join(self.structured_cache_path, txn_hash.lower() + '.json')
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump(structured_trace, f, indent=2)
+
+    @staticmethod
+    def _rpc_structured_trace(txn_hash: str, chain: str) -> dict | None:
+        """
+        Fetch a canonical call graph plus best-effort SSTORE events.
+
+        Canonical node schema:
+          {
+            call_id, depth, caller, callee, function_selector, input,
+            value, gas, call_type, success, return_data, children
+          }
+        """
+        from faultseeker.utils.rpc_provider import (
+            build_parity_tree,
+            extract_storage_writes_from_struct_logs,
+            normalize_trace_node,
+        )
+
+        canonical_trace = None
+        state_diff = {}
+        storage_events = []
+
+        try:
+            trace_result = rpc_call(
+                chain,
+                'debug_traceTransaction',
+                [txn_hash, {'tracer': 'callTracer', 'timeout': '60s'}],
+                timeout=60,
+            )
+            if trace_result:
+                canonical_trace = normalize_trace_node(trace_result)
+        except Exception as e:
+            print(f'      structured debug_traceTransaction failed: {e}')
+
+        if canonical_trace is None:
+            try:
+                replay_result = rpc_call(
+                    chain,
+                    'trace_replayTransaction',
+                    [txn_hash, ['trace', 'stateDiff']],
+                    timeout=60,
+                )
+                if replay_result:
+                    trace_list = replay_result.get('trace', []) if isinstance(replay_result, dict) else []
+                    if trace_list:
+                        root = build_parity_tree(trace_list)
+                        if root:
+                            canonical_trace = normalize_trace_node(root)
+                    if isinstance(replay_result, dict):
+                        state_diff = replay_result.get('stateDiff', {}) or {}
+            except Exception as e:
+                print(f'      structured trace_replayTransaction failed: {e}')
+
+        if canonical_trace is None:
+            return None
+
+        try:
+            opcode_trace = rpc_call(
+                chain,
+                'debug_traceTransaction',
+                [txn_hash, {
+                    'disableMemory': True,
+                    'disableStack': False,
+                    'disableStorage': False,
+                    'timeout': '60s',
+                }],
+                timeout=60,
+            )
+            if isinstance(opcode_trace, dict):
+                storage_events = extract_storage_writes_from_struct_logs(
+                    opcode_trace.get('structLogs', []) or [],
+                    canonical_trace,
+                )
+        except Exception as e:
+            print(f'      structured opcode trace failed: {e}')
+
+        if not state_diff:
+            try:
+                replay_result = rpc_call(
+                    chain,
+                    'trace_replayTransaction',
+                    [txn_hash, ['trace', 'stateDiff']],
+                    timeout=60,
+                )
+                if isinstance(replay_result, dict):
+                    state_diff = replay_result.get('stateDiff', {}) or {}
+            except Exception as e:
+                print(f'      structured stateDiff replay failed: {e}')
+
+        return {
+            'schema_version': 1,
+            'transaction_hash': txn_hash,
+            'chain': chain,
+            'trace': canonical_trace,
+            'storage_events': storage_events,
+            'state_diff': state_diff,
+        }
+
+    def get_structured_trace(self, txn_hash: str, chain: str) -> dict | None:
+        """Fetch canonical trace/state data with cache."""
+        structured = self.get_structured_cache(txn_hash)
+        if structured:
+            return structured
+
+        structured = self._rpc_structured_trace(txn_hash, chain)
+        if structured:
+            self.cache_structured_trace(txn_hash, structured)
+        return structured
 
     @staticmethod
     def _record_trace_failure(txn_hash: str, reason: str):

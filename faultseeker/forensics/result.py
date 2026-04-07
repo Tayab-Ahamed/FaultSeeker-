@@ -9,6 +9,137 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Any, Optional
 
 
+DEFAULT_REENTRANCY_SIGNALS = {
+    'same_function_reentry': False,
+    'cross_function_reentry': False,
+    'reentry_before_return': False,
+    'slot_rewrite': False,
+    'write_after_call': False,
+    'state_slot_reentry': False,
+}
+
+DEFAULT_REENTRANCY_CONTEXT = {
+    'fallback_mode': False,
+    'storage_trace_available': False,
+}
+
+
+def extract_reentrancy_analysis(signals: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Normalize reentrancy outputs from either the new grouped schema or older flat fields.
+    """
+    raw = signals if isinstance(signals, dict) else {}
+    grouped = raw.get('reentrancy', {})
+    if not isinstance(grouped, dict):
+        grouped = {}
+
+    normalized_signals = dict(DEFAULT_REENTRANCY_SIGNALS)
+    normalized_signals.update(raw.get('reentrancy_signals', {}))
+    normalized_signals.update(grouped.get('signals', {}))
+
+    normalized_context = dict(DEFAULT_REENTRANCY_CONTEXT)
+    normalized_context.update(raw.get('reentrancy_context', {}))
+    normalized_context.update(grouped.get('context', {}))
+
+    score = grouped.get('score', raw.get('reentrancy_score', 0.0))
+    threshold = raw.get('reentrancy_detection_threshold', 0.45)
+    detected = grouped.get('detected')
+    if detected is None:
+        detected = raw.get('reentrancy_detected')
+    if detected is None:
+        detected = float(score or 0.0) >= float(threshold or 0.45)
+
+    tier = grouped.get('tier', raw.get('reentrancy_confidence_tier', 'NOT_REENTRANCY'))
+
+    return {
+        'score': float(score or 0.0),
+        'detected': bool(detected),
+        'tier': str(tier or 'NOT_REENTRANCY'),
+        'signals': normalized_signals,
+        'context': normalized_context,
+    }
+
+
+def reentrancy_tier_weight(tier: str) -> float:
+    """Weighted eval credit for reentrancy tiers."""
+    weights = {
+        'CONFIRMED_REENTRANCY': 1.0,
+        'HIGH_RISK_REENTRANCY': 0.8,
+        'POSSIBLE_REENTRANCY': 0.5,
+    }
+    return weights.get(str(tier or '').upper(), 0.0)
+
+
+def reentrancy_source(reentrancy: Optional[Dict[str, Any]]) -> str:
+    """Classify the current reentrancy evidence source for reports / datasets."""
+    data = reentrancy if isinstance(reentrancy, dict) else {}
+    context = data.get('context', {}) if isinstance(data.get('context', {}), dict) else {}
+    if context.get('fallback_mode', False):
+        return 'fallback'
+    return 'storage'
+
+
+def compute_priority_breakdown(
+    signals: Optional[Dict[str, Any]],
+    exploitability_score: float = 0.0,
+) -> Dict[str, float | str]:
+    """
+    Transaction-level ranking breakdown for downstream ranking, reporting, and dataset export.
+    """
+    raw = signals if isinstance(signals, dict) else {}
+    reentrancy = extract_reentrancy_analysis(raw)
+    fallback_discount = 0.85 if reentrancy.get('context', {}).get('fallback_mode', False) else 1.0
+
+    reentrancy_component = float(reentrancy['score']) * 0.8 * fallback_discount
+    flashloan_component = 0.6 if raw.get('flash_loan_detected', False) else 0.0
+
+    price_weight = (
+        float(raw.get('price_delta_ratio', 0.0)) * 50.0 +
+        float(raw.get('price_read_write_sequences', 0) or 0) * 3.0
+    )
+    price_manipulation_component = 0.0
+    if price_weight >= 3.0 or raw.get('price_manipulation_detected', False):
+        price_manipulation_component = min(price_weight / 20.0, 0.6)
+
+    liquidity_drain_component = 0.0
+    if raw.get('profit_extraction_eth', 0.0):
+        liquidity_drain_component += min(float(raw.get('profit_extraction_eth', 0.0)) / 10.0, 0.25)
+    if raw.get('large_transfer_to_eoa', False):
+        liquidity_drain_component += 0.15
+    liquidity_drain_component = min(liquidity_drain_component, 0.4)
+
+    exploitability_component = float(exploitability_score or 0.0)
+    components = [
+        exploitability_component,
+        reentrancy_component,
+        flashloan_component,
+        price_manipulation_component,
+        liquidity_drain_component,
+    ]
+    remaining_probability = 1.0
+    for component in components:
+        clamped_component = max(0.0, min(1.0, float(component)))
+        remaining_probability *= (1.0 - clamped_component)
+    total = round(1.0 - remaining_probability, 4)
+    return {
+        'total': total,
+        'exploitability': round(exploitability_component, 4),
+        'reentrancy': round(reentrancy_component, 4),
+        'flashloan': round(flashloan_component, 4),
+        'price_manipulation': round(price_manipulation_component, 4),
+        'liquidity_drain': round(liquidity_drain_component, 4),
+        'reentrancy_source': reentrancy_source(reentrancy),
+    }
+
+
+def compute_priority_score(
+    signals: Optional[Dict[str, Any]],
+    exploitability_score: float = 0.0,
+) -> float:
+    """Backward-compatible total priority score."""
+    return float(compute_priority_breakdown(signals, exploitability_score=exploitability_score)['total'])
+
+
 @dataclass
 class ForensicsResult:
 
@@ -103,6 +234,11 @@ class ForensicsResult:
         Returns:
             Dictionary representation organized by category
         """
+        reentrancy = extract_reentrancy_analysis(self.signals)
+        priority = compute_priority_breakdown(
+            self.signals,
+            exploitability_score=self.rule_confidence,
+        )
         result = {
             # ===== Transaction Identification =====
             'transaction': {
@@ -129,6 +265,9 @@ class ForensicsResult:
                 'rule_confidence': self.rule_confidence,
                 'matched_rule': self.matched_rule,
                 'vuln_type_hint': self.vuln_type_hint,
+                'reentrancy': reentrancy,
+                'priority': priority,
+                'priority_score': priority['total'],
                 'signals': self.signals,
             },
 
@@ -229,6 +368,7 @@ class ForensicsResult:
         """
         # Extract from nested structure
         txn = data.get('transaction', {})
+        classification = data.get('classification', {})
         attack = data.get('attack_analysis', {})
         func = data.get('function_analysis', {})
         addr = data.get('address_classification', {})
@@ -260,7 +400,14 @@ class ForensicsResult:
             trace=internal.get('trace', {}),
             flatten_trace=internal.get('flatten_trace', []),
             function_call_loc_memo=internal.get('function_call_loc_memo', {}),
-            function_calls_to_expand_loc=internal.get('function_calls_to_expand_loc', {})
+            function_calls_to_expand_loc=internal.get('function_calls_to_expand_loc', {}),
+
+            # Classification / signals
+            rule_verdict=classification.get('rule_verdict', 'UNKNOWN'),
+            rule_confidence=classification.get('rule_confidence', 0.0),
+            matched_rule=classification.get('matched_rule', ''),
+            vuln_type_hint=classification.get('vuln_type_hint', ''),
+            signals=classification.get('signals', {}),
         )
 
     @classmethod
