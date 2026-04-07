@@ -296,9 +296,12 @@ def get_function_calls_to_expand():
 
 
 def is_function_hash(function_name):
+    if not isinstance(function_name, str):
+        return False
     if function_name.startswith('0x'):
         function_name = function_name[2:]
-    function_hash_pattern = r'[0-9a-f]{8}'
+    # Allow optional parentheses/arguments after the 8 hex chars
+    function_hash_pattern = r'^[0-9a-fA-F]{8}(?:$|\()'
     if re.match(function_hash_pattern, function_name):
         return True
     return False

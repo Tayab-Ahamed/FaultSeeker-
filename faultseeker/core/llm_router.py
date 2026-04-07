@@ -296,23 +296,22 @@ def build_routed_agent(
     If a router is provided, it selects the model; otherwise uses the
     given model_name directly.
 
-    Args:
-        model_name: Default model name
-        router: Optional HybridLLMRouter for intelligent routing
-        agent_role: Role of the agent (for tier mapping)
-        system_prompt: System prompt for the agent
-
-    Returns:
-        An agent instance (GPTAgent or OllmaAgent)
+    Uses build_provider_agent() to correctly route:
+      gpt-*, o1-*, o3-*, o4-*  → GPTAgent  (OpenAI)
+      gemini-*                  → UniversalAgent (Google)
+      grok-*                   → UniversalAgent (xAI)
+      qwen-*                   → UniversalAgent (Alibaba)
+      <anything else>           → OllmaAgent (local Ollama)
     """
+    from faultseeker.utils.agent import build_provider_agent
+
     if router:
         selected_model = router.select_model(agent_role=agent_role)
     else:
         selected_model = model_name
 
-    # Use existing agent classes
-    cloud_prefixes = ('gpt-', 'o1-', 'o3-', 'o4-', 'claude-', 'gemini-')
-    if any(selected_model.startswith(p) for p in cloud_prefixes):
-        return GPTAgent(selected_model, system_prompt)
-    else:
-        return OllmaAgent(selected_model, system_prompt)
+    # Guard: never pass an empty model string
+    if not selected_model or not selected_model.strip():
+        selected_model = router.local_model if router else 'phi3:mini'
+
+    return build_provider_agent(system_prompt, selected_model)

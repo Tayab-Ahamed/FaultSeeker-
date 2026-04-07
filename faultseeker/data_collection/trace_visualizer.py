@@ -1,8 +1,11 @@
 import re
 import networkx as nx
+import matplotlib
+matplotlib.use('Agg')   # Non-interactive backend — prevents Tkinter thread crash
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from faultseeker.data_collection.trace_parser import TraceNode
+
 
 
 class TraceGraphGenerator:

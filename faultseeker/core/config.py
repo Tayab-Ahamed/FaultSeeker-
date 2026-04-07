@@ -8,6 +8,8 @@ class FaultSeekerConfig:
     # Model configurations
     forensics_model: str = 'gpt-4o-mini'
     function_analysis_model: str = 'gpt-4o-mini'
+    # The actual cloud API model for the router's Tier 3 tasks (may differ from function_analysis_model)
+    cloud_model: str = ''
 
     # Directory configurations
     cache_dir: str = './data/cache'

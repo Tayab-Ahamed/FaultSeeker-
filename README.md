@@ -4,7 +4,7 @@
 
 # 🔍 FaultSeeker++
 
-### *AI-Powered Blockchain Transaction Fault Localization*
+### _AI-Powered Blockchain Transaction Fault Localization_
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
@@ -25,15 +25,15 @@
 
 > The original [FaultSeeker](https://github.com/) baseline was limited to Ethereum, required cloud-only LLMs, and had a small benchmark. FaultSeeker++ addresses **7 research gaps** with production-grade enhancements.
 
-| Gap | Enhancement | Impact |
-|-----|-------------|--------|
-| ☁️ **Cloud Dependency** | Hybrid LLM routing (local ↔ cloud) | Up to 70% API cost reduction |
-| 👤 **Black-box Analysis** | Human-in-the-Loop analyst checkpoints | Expert-guided investigation |
-| 🔍 **No Explainability** | Structured evidence cards per finding | Auditable, reproducible results |
-| 📊 **No Confidence Scoring** | Per-function confidence scores (0–1) | Ranked vulnerability output |
-| 🔗 **Single Chain** | Archive-capable RPC for 8 EVM chains | Full DeFi ecosystem coverage |
+| Gap                             | Enhancement                              | Impact                             |
+| ------------------------------- | ---------------------------------------- | ---------------------------------- |
+| ☁️ **Cloud Dependency**         | Hybrid LLM routing (local ↔ cloud)       | Up to 70% API cost reduction       |
+| 👤 **Black-box Analysis**       | Human-in-the-Loop analyst checkpoints    | Expert-guided investigation        |
+| 🔍 **No Explainability**        | Structured evidence cards per finding    | Auditable, reproducible results    |
+| 📊 **No Confidence Scoring**    | Per-function confidence scores (0–1)     | Ranked vulnerability output        |
+| 🔗 **Single Chain**             | Archive-capable RPC for 8 EVM chains     | Full DeFi ecosystem coverage       |
 | 📈 **No Cross-Chain Analytics** | Cross-chain forensic benchmarking runner | Comparative analysis across chains |
-| 📁 **Small Dataset** | 246 verified exploits, 2021–2026 | 2× baseline benchmark size |
+| 📁 **Small Dataset**            | 246 verified exploits, 2021–2026         | 2× baseline benchmark size         |
 
 ---
 
@@ -81,14 +81,14 @@ python -m faultseeker -txn_hash 0x... -chain bsc --explain
 
 FaultSeeker++ supports **5 cloud providers** out of the box — just set the corresponding key in `.env`:
 
-| Provider | Models | Env Variable | Cost |
-|----------|--------|-------------|------|
-| 🟢 **Ollama** (Local) | phi3:mini, qwen2, tinyllama, llama3:8b | *(none)* | **Free** |
-| 🔴 **Alibaba Qwen** | qwen-turbo, qwen-plus, qwen-max | `DASHSCOPE_API_KEY` | ~$0.02/1M tokens |
-| 🔵 **Google Gemini** | gemini-2.0-flash, gemini-1.5-pro | `GOOGLE_API_KEY` | Free tier available |
-| ⚫ **xAI Grok** | grok-3-mini, grok-3 | `XAI_API_KEY` | ~$0.30/1M tokens |
-| 🟡 **OpenAI** | gpt-4o-mini, gpt-4.1 | `OPENAI_API_KEY` | ~$0.15/1M tokens |
-| 🟠 **Anthropic** | claude-3-haiku | `ANTHROPIC_API_KEY` | ~$0.25/1M tokens |
+| Provider              | Models                                 | Env Variable        | Cost                |
+| --------------------- | -------------------------------------- | ------------------- | ------------------- |
+| 🟢 **Ollama** (Local) | phi3:mini, qwen2, tinyllama, llama3:8b | _(none)_            | **Free**            |
+| 🔴 **Alibaba Qwen**   | qwen-turbo, qwen-plus, qwen-max        | `DASHSCOPE_API_KEY` | ~$0.02/1M tokens    |
+| 🔵 **Google Gemini**  | gemini-2.0-flash, gemini-1.5-pro       | `GOOGLE_API_KEY`    | Free tier available |
+| ⚫ **xAI Grok**       | grok-3-mini, grok-3                    | `XAI_API_KEY`       | ~$0.30/1M tokens    |
+| 🟡 **OpenAI**         | gpt-4o-mini, gpt-4.1                   | `OPENAI_API_KEY`    | ~$0.15/1M tokens    |
+| 🟠 **Anthropic**      | claude-3-haiku                         | `ANTHROPIC_API_KEY` | ~$0.25/1M tokens    |
 
 **Hybrid routing** automatically uses local models for simple tasks (classification, filtering) and cloud models only for complex reasoning — reducing API costs by up to 70%.
 
@@ -163,31 +163,31 @@ Sources            : DeFiHackLabs · BlockSec · PeckShield · SlowMist · Certi
 
 ### Chain Distribution
 
-| Chain | Entries | % | Notable Exploits |
-|-------|---------|---|-----------------|
-| **Ethereum** | 142 | 57.7% | Penpie ($27M), UwuLend ($19M), BalancerV2 ($120M), GMX ($41M) |
-| **BSC** | 33 | 13.4% | FourMeme ($183K), Pancake logic flaws, Bankroll ($234K) |
-| **Arbitrum** | 16 | 6.5% | Radiant Capital ($4.5M), DeltaPrime, GMX V1 |
-| **Base** | 16 | 6.5% | CompoundFork flash loan, oracle manipulation |
-| **Optimism** | 15 | 6.1% | ResupplyFi ($9.6M), access control failures |
-| **Polygon** | 11 | 4.5% | 0VIX oracle attack ($2M), GAMEE access control |
-| **Avalanche** | 8 | 3.3% | Platypus Finance ($8.5M), DeltaPrime ($12.9K) |
-| **zkSync** | 5 | 2.0% | EraLend read-only reentrancy ($3.4M), Venus ($717K) |
+| Chain         | Entries | %     | Notable Exploits                                              |
+| ------------- | ------- | ----- | ------------------------------------------------------------- |
+| **Ethereum**  | 142     | 57.7% | Penpie ($27M), UwuLend ($19M), BalancerV2 ($120M), GMX ($41M) |
+| **BSC**       | 33      | 13.4% | FourMeme ($183K), Pancake logic flaws, Bankroll ($234K)       |
+| **Arbitrum**  | 16      | 6.5%  | Radiant Capital ($4.5M), DeltaPrime, GMX V1                   |
+| **Base**      | 16      | 6.5%  | CompoundFork flash loan, oracle manipulation                  |
+| **Optimism**  | 15      | 6.1%  | ResupplyFi ($9.6M), access control failures                   |
+| **Polygon**   | 11      | 4.5%  | 0VIX oracle attack ($2M), GAMEE access control                |
+| **Avalanche** | 8       | 3.3%  | Platypus Finance ($8.5M), DeltaPrime ($12.9K)                 |
+| **zkSync**    | 5       | 2.0%  | EraLend read-only reentrancy ($3.4M), Venus ($717K)           |
 
 ### Vulnerability Distribution
 
-| Rank | Type | Count |
-|------|------|-------|
-| 1 | Price Manipulation / Oracle | 25 |
-| 2 | Business Logic Flaw | 19 |
-| 3 | Logic Flaw | 16 |
-| 4 | Access Control | 16 |
-| 5 | Reentrancy | 14 |
-| 6 | Flash Loan Attack | 11 |
-| 7 | Lack of Access Control | 9 |
-| 8 | Arbitrary External Call | 8 |
-| 9 | Precision Loss | 6 |
-| 10 | Incorrect Input Validation | 5 |
+| Rank | Type                        | Count |
+| ---- | --------------------------- | ----- |
+| 1    | Price Manipulation / Oracle | 25    |
+| 2    | Business Logic Flaw         | 19    |
+| 3    | Logic Flaw                  | 16    |
+| 4    | Access Control              | 16    |
+| 5    | Reentrancy                  | 14    |
+| 6    | Flash Loan Attack           | 11    |
+| 7    | Lack of Access Control      | 9     |
+| 8    | Arbitrary External Call     | 8     |
+| 9    | Precision Loss              | 6     |
+| 10   | Incorrect Input Validation  | 5     |
 
 ### Validate the Dataset
 
@@ -228,6 +228,7 @@ python generate_charts.py
 ```
 
 All results auto-save to `reports/` as:
+
 - `eval_results_*.json` — per-transaction breakdown
 - `eval_results_*.csv` — spreadsheet format
 - `eval_summary_*.txt` — **LaTeX table** ready to paste into the paper
@@ -284,7 +285,7 @@ Gap 7: Small dataset           → 246 exploits, 2021–2026, 8 chains
 ```
 
 **Implementation Paper:** `paper/FaultSeeker_Plus_Plus_Implementation.tex`
-*(Fill result tables after running `run_benchmark_eval.py` on your hardware)*
+_(Fill result tables after running `run_benchmark_eval.py` on your hardware)_
 
 ---
 

@@ -12,6 +12,7 @@ from faultseeker.prompts.function_analysis import (
     VulnerabilityAnalysisPrompts,
     LocalTaskPrompts,
 )
+from faultseeker.prompts.local_model_prompts import get_worker_prompts, get_vuln_prompts
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
 from typing import Optional
@@ -25,11 +26,17 @@ class FunctionAnalyzer:
         self.txn_analyzer_model = model
         self.router = router
 
-        # Initialize all prompt classes
+        # Prompt selection: always use the LOCAL model name to pick prompt complexity.
+        # In hybrid mode, `model` might be 'gemini-2.0-flash' (Stage 2) but agents
+        # still run phi3:mini for Tier 1/2 — we must load simplified prompts for those.
+        prompt_model = model
+        if router and hasattr(router, 'local_model') and router.local_model:
+            prompt_model = router.local_model  # e.g. 'phi3:mini'
+
         self.session_prompts = OrchestrationSessionPrompts()
         self.task_prompts = TaskCoordinatorPrompts()
-        self.function_prompts = WorkerPrompts()
-        self.vulnerability_prompts = VulnerabilityAnalysisPrompts()
+        self.function_prompts = get_worker_prompts(prompt_model)      # local-aware
+        self.vulnerability_prompts = get_vuln_prompts(prompt_model)   # local-aware
         self.local_task_prompts = LocalTaskPrompts()
 
         # Initialize agents — use routed agent builder when router is provided
@@ -270,6 +277,7 @@ class FunctionAnalyzer:
             self.current_task = self.generation_agent.query('The task is not in standard JSON format. Please reformat the task into a standard JSON format.')
             count += 1
         logging.info(f"Selected task: {self.current_task}")
+        return self.current_task   # ← callers use this to detect timeouts (empty = timed out)
 
             
     def _update_task_tree(self):
@@ -382,10 +390,31 @@ class FunctionAnalyzer:
         logging.info(f"Current understanding: {self.understanding_result}")
         logging.info(f"Task tree: {self.task_tree}")
 
+        # Cloud models need fewer iterations than local; 3 passes is plenty.
+        is_cloud = any(self.txn_analyzer_model.startswith(p)
+                       for p in ('gpt-', 'gemini-', 'grok-', 'qwen-', 'claude-', 'o1-', 'o3-', 'o4-'))
+        max_iterations = 3 if is_cloud else 8
+        MAX_FUNCTION_SECS = 480   # 8-min hard wall-clock cap per function
+
+        import time as _time
+        fn_start = _time.time()
         i = 0
+        consecutive_timeouts = 0
         while True:
             i += 1
-            self._select_task()
+            elapsed = int(_time.time() - fn_start)
+            print(f"         ℹ️  Iteration {i}/{max_iterations}  ({elapsed}s elapsed)", flush=True)
+            if _time.time() - fn_start > MAX_FUNCTION_SECS:
+                print(f"   ⏰ Function analysis exceeded {MAX_FUNCTION_SECS}s wall-clock limit — moving on.")
+                break
+            task = self._select_task()
+            if not task or not str(task).strip():
+                consecutive_timeouts += 1
+                if consecutive_timeouts >= 2:
+                    print("   ⚠️  Model timed out repeatedly — skipping this function.")
+                    break
+                continue
+            consecutive_timeouts = 0
             try:
                 self._perform_task()
                 self._update_current_understanding()
@@ -393,16 +422,16 @@ class FunctionAnalyzer:
                 self._update_potentially_vulnerable_function()
                 if self._temp_check():
                     break
-                if i%3 == 0:
+                if i % 2 == 0:
                     check_prompt = self.function_prompts.check_analysis_adequacy
                     check_prompt += "Current understanding:" + self.understanding_result
                     result = self.organization_agent.query(check_prompt, format='str')
-                    if 'yes' in result.lower():
+                    if result and 'yes' in str(result).lower():
                         break
             except Exception:
                 if self.potentially_vulnerable_functions:
                     break
-            if i > 30:
+            if i >= max_iterations:
                 break
         
     def _retrieve_source_code(self, address, function_name):
@@ -666,8 +695,28 @@ class FunctionAnalyzer:
         logging.info(f"Current understanding: {self.understanding_result}")
         logging.info(f"Task tree: {self.task_tree}")
 
-        for i in range(5):
-            self._select_task()
+        import time as _time
+        is_cloud = any(self.txn_analyzer_model.startswith(p)
+                       for p in ('gpt-', 'gemini-', 'grok-', 'qwen-', 'claude-', 'o1-', 'o3-', 'o4-'))
+        txn_iters = 2 if is_cloud else 3
+        fn_start = _time.time()
+        MAX_FUNCTION_SECS = 480
+
+        consecutive_timeouts = 0
+        for i in range(txn_iters):
+            elapsed = int(_time.time() - fn_start)
+            print(f"         ℹ️  Sub-iteration {i+1}/{txn_iters}  ({elapsed}s elapsed)", flush=True)
+            if _time.time() - fn_start > MAX_FUNCTION_SECS:
+                print(f"   ⏰ Sub-analysis exceeded wall-clock limit — moving on.")
+                break
+            task = self._select_task()
+            if not task or not str(task).strip():
+                consecutive_timeouts += 1
+                if consecutive_timeouts >= 2:
+                    print("   ⚠️  Model timed out repeatedly — skipping this function.")
+                    break
+                continue
+            consecutive_timeouts = 0
             try:
                 self._perform_task()
                 self._update_current_understanding()
@@ -677,7 +726,7 @@ class FunctionAnalyzer:
                     check_prompt = self.function_prompts.check_analysis_adequacy_alt
                     check_prompt += "Current understanding:" + self.understanding_result
                     result = self.organization_agent.query(check_prompt, format='str')
-                    if 'yes' in result.lower():
+                    if result and 'yes' in str(result).lower():
                         break
             except Exception:
                 if self.potentially_vulnerable_functions:
@@ -705,6 +754,20 @@ class FunctionAnalyzer:
         self.analysis_result = forensics_result
         self.txn_seq = txn_seq
         self.txn_info = txn_info
+
+        # ── Inject pre-computed signals as LLM context ──────────────────
+        self.rule_verdict    = getattr(forensics_result, 'rule_verdict', 'UNKNOWN')
+        self.rule_confidence = getattr(forensics_result, 'rule_confidence', 0.0)
+        self.vuln_type_hint  = getattr(forensics_result, 'vuln_type_hint', '')
+        self.signals_raw     = getattr(forensics_result, 'signals', {})
+        # Seed the cheatsheet so the LLM prompt includes confirmed signals
+        if self.rule_verdict == 'EXPLOIT' and self.vuln_type_hint:
+            self.cheatsheet.append({
+                'type': self.vuln_type_hint,
+                'confidence': self.rule_confidence,
+                'source': 'rule_classifier',
+                'signals': self.signals_raw,
+            })
 
         # Store ranking results
         self.repeated_patterns = ranking_result.repeated_patterns
@@ -758,14 +821,19 @@ class FunctionAnalyzer:
         # Finalize vulnerable functions with confidence scores preserved
         finalized_functions = self._finalize_potentially_vulnerable_functions()
 
-        # Build result
+        # Build result — include signal layer outputs for downstream / eval
         result = {
             'duration': time.time() - start_time,
-            "ranked_result": self.ranked_result,
+            'ranked_result': self.ranked_result,
             'potentially_vulnerable_functions': self.potentially_vulnerable_functions,
             'finalized_vulnerable_functions': finalized_functions,
-            "transaction_understanding": self.understanding_result,
+            'transaction_understanding': self.understanding_result,
             'functions_to_be_inspected': self.functions_to_be_inspected,
+            # ── Signal layer (from Stage 1) ───────────────────────────────
+            'rule_verdict':    self.rule_verdict,
+            'rule_confidence': self.rule_confidence,
+            'vuln_type_hint':  self.vuln_type_hint,
+            'signals':         self.signals_raw,
         }
 
         return result

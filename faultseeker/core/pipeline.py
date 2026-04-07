@@ -70,9 +70,13 @@ class FaultSeekerPipeline:
 
         # Gap 1+6: Build router if auto_route is enabled
         if getattr(self.config, 'auto_route', False):
+            # Use the dedicated cloud_model if set; fall back to function_analysis_model
+            router_cloud = (getattr(self.config, 'cloud_model', '') or
+                            self.config.function_analysis_model or
+                            self.config.forensics_model)
             self.router = HybridLLMRouter(
                 local_model=getattr(self.config, 'local_model', 'llama3:8b'),
-                cloud_model=self.config.forensics_model,
+                cloud_model=router_cloud,
                 confidence_gate=getattr(self.config, 'confidence_gate', 0.6),
                 track_cost=getattr(self.config, 'track_cost', False),
                 routing_strategy=getattr(self.config, 'routing_strategy', 'hybrid'),

@@ -44,6 +44,13 @@ class ForensicsResult:
         'others': []
     })
 
+    # ── Signal layer (Stage 1.5) ───────────────────────────────────────
+    rule_verdict: str = 'UNKNOWN'            # EXPLOIT | BENIGN | UNCERTAIN
+    rule_confidence: float = 0.0             # 0.0 – 1.0
+    matched_rule: str = ''                   # e.g. 'flash_loan_profit'
+    vuln_type_hint: str = ''                 # e.g. 'Flash Loan Attack'
+    signals: Dict[str, Any] = field(default_factory=dict)   # raw signal dict
+
     # Metadata
     duration: Optional[float] = None
     timestamp: Optional[str] = None
@@ -114,6 +121,15 @@ class ForensicsResult:
                 'created_contract_calls': len(self.address_calls_with_created_contract),
                 'potential_attackers': len(self.potential_attacker),
                 'potential_victims': len(self.potential_victim)
+            },
+
+            # ===== Classification (Signal Layer) =====
+            'classification': {
+                'rule_verdict': self.rule_verdict,
+                'rule_confidence': self.rule_confidence,
+                'matched_rule': self.matched_rule,
+                'vuln_type_hint': self.vuln_type_hint,
+                'signals': self.signals,
             },
 
             # ===== Attack Analysis =====

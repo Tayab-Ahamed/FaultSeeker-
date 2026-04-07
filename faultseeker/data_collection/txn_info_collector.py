@@ -208,6 +208,28 @@ class TransactionInfoCollector:
                 with open(os.path.join(f'{self.cache_path}_revised', file), 'w') as f:
                     json.dump(data, f, indent=2)
     
+    def get_transaction_link(self, chain: str):
+        """Build the block explorer URL for the given chain."""
+        chain_upper = chain.upper()
+        explorer_map = {
+            'ETH':       'https://etherscan.io/tx/',
+            'ETHEREUM':  'https://etherscan.io/tx/',
+            'BSC':       'https://bscscan.com/tx/',
+            'BNB':       'https://bscscan.com/tx/',
+            'POLYGON':   'https://polygonscan.com/tx/',
+            'POLY':      'https://polygonscan.com/tx/',
+            'ARBITRUM':  'https://arbiscan.io/tx/',
+            'ARB':       'https://arbiscan.io/tx/',
+            'OPTIMISM':  'https://optimistic.etherscan.io/tx/',
+            'OP':        'https://optimistic.etherscan.io/tx/',
+            'BASE':      'https://basescan.org/tx/',
+            'AVALANCHE': 'https://snowtrace.io/tx/',
+            'AVAX':      'https://snowtrace.io/tx/',
+            'ZKSYNC':    'https://explorer.zksync.io/tx/',
+        }
+        base_url = explorer_map.get(chain_upper, 'https://etherscan.io/tx/')
+        self.txn_link = base_url + self.txn_hash
+
     def run(self, txn_hash: str, chain: str) -> dict:
         """
         Collect transaction information for given transaction hash and chain.

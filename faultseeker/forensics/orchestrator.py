@@ -6,6 +6,8 @@ from faultseeker.data_collection.txn_info_collector import TransactionInfoCollec
 from faultseeker.forensics.trace_analyzer import TraceAnalyzer
 from faultseeker.forensics.address_classifier import AddressClassifier
 from faultseeker.forensics.result import ForensicsResult
+from faultseeker.forensics.signal_extractor import SignalExtractor
+from faultseeker.forensics import rule_classifier
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
 from typing import Optional
@@ -135,6 +137,21 @@ class ForensicsOrchestrator:
             print("      ✗ Failed to analyze execution trace!")
             return None, None, None
 
+        # ── Pre-LLM signal extraction + rule classification ───────────────
+        print("      → Extracting deterministic signals...")
+        self.signals = SignalExtractor(
+            txn_seq=self.txn_seq,
+            tx_analysis=self.tx_analysis,
+            txn_hash=txn_hash,
+            chain=chain,
+        ).run()
+        rule_verdict, rule_conf, matched_rule, vuln_type_hint = rule_classifier.classify(self.signals)
+        print(f"      → Rule verdict: {rule_classifier.describe(rule_verdict, rule_conf, matched_rule, vuln_type_hint)}")
+        self.rule_verdict = rule_verdict
+        self.rule_confidence = rule_conf
+        self.matched_rule = matched_rule
+        self.vuln_type_hint = vuln_type_hint
+
         if not self.txn_info.get('transaction_hash'):
             return None, None, None
 
@@ -169,7 +186,13 @@ class ForensicsOrchestrator:
             balance_change=self.token_filter_result.get('balance_change', {}),
             address_memo=self.token_filter_result.get('address_memo', {}),
             functions_to_be_inspected=self.functions_to_be_inspected,
-            duration=time.time() - start
+            duration=time.time() - start,
+            # ── Signal layer outputs ──────────────────────────────────────
+            rule_verdict=self.rule_verdict,
+            rule_confidence=self.rule_confidence,
+            matched_rule=self.matched_rule,
+            vuln_type_hint=self.vuln_type_hint,
+            signals=self.signals.raw,
         )
         
         if result and self.cache_dir:

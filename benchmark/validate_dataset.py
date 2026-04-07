@@ -2,10 +2,11 @@
 Dataset Validation Script — FaultSeeker++ Benchmark
 Checks: row count, duplicate TXs, chain distribution, vuln type breakdown
 """
+import os
 import csv
 from collections import Counter
 
-CSV_PATH = "benchmark_classification_fixed.csv"
+CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "benchmark_classification_fixed.csv")
 
 hashes = []
 chains = []

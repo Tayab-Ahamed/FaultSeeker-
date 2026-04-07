@@ -3,15 +3,20 @@ import logging
 import json
 import shutil
 from faultseeker.utils.solidityParser.loc_parser import get_loc_info
-        
+from faultseeker.utils.explorer_provider import explorer_call, print_explorer_stats
+from dotenv import load_dotenv
+load_dotenv(override=True)
 
 
 LOGGGING_FILE_PATH = './logs/get_source_code.log'
 os.makedirs(os.path.dirname(LOGGGING_FILE_PATH), exist_ok=True)
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',filename=LOGGGING_FILE_PATH, filemode='w')
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    filename=LOGGGING_FILE_PATH, filemode='w'
+)
 
-
-CONTRACT_SOURCES ={
+CONTRACT_SOURCES = {
     'eth': 'https://etherscan.io/contractsverified',
     'bsc': 'https://bscscan.com/contractsverified',
     'poly': 'https://polygonscan.com/contractsverified',
@@ -19,88 +24,142 @@ CONTRACT_SOURCES ={
     'arbi': 'https://arbiscan.io/contractsverified',
     'avax': 'https://snowtrace.io/contractsverified',
     'opt': 'https://optimistic.etherscan.io/contractsverified',
-    'base': 'https://basescan.org/contractsverified'
+    'base': 'https://basescan.org/contractsverified',
+    'zksync': 'https://explorer.zksync.io/contractsverified',
+    'linea': 'https://lineascan.build/contractsverified',
+    'scroll': 'https://scrollscan.com/contractsverified',
+    'gnosis': 'https://gnosisscan.io/contractsverified',
+    'celo': 'https://celoscan.io/contractsverified',
+    'cronos': 'https://cronoscan.com/contractsverified',
+    'moonbeam': 'https://moonscan.io/contractsverified',
 }
-    
+
+
 class ContractDownloader:
 
-    def __init__(self, chain:str, address:list, output_dir:str='./temp2', cache_dir:str='./data/cache/contracts'):
+    def __init__(self, chain: str, address: list,
+                 output_dir: str = './temp2',
+                 cache_dir: str = './data/cache/contracts'):
         self.chain = chain.lower()
         self.address = address
         self.output_dir = output_dir
         self.cache_dir = cache_dir
-        # os.makedirs(self.output_dir, exist_ok=True)
         os.makedirs(self.cache_dir, exist_ok=True)
 
     @staticmethod
     def get_source_code(chain, address, output_dir):
-        """Download contract source code via block explorer API (replaces getCode CLI)."""
+        """Download contract source code via block explorer API (adaptive failover)."""
         os.makedirs(output_dir, exist_ok=True)
-        api_urls = {
-            'eth': 'https://api.etherscan.io/api',
-            'bsc': 'https://api.bscscan.com/api',
-            'poly': 'https://api.polygonscan.com/api',
-            'polygon': 'https://api.polygonscan.com/api',
-            'arbitrum': 'https://api.arbiscan.io/api',
-            'avalanche': 'https://api.snowtrace.io/api',
-            'fantom': 'https://api.ftmscan.com/api',
-            'optimism': 'https://api-optimistic.etherscan.io/api',
-            'base': 'https://api.basescan.org/api',
-        }
-        chain_key = chain.lower()
-        api_url = api_urls.get(chain_key, api_urls.get('eth'))
-        try:
-            import urllib.request
-            import urllib.parse
-            import json as _json
-            params = urllib.parse.urlencode({
-                'module': 'contract',
-                'action': 'getsourcecode',
-                'address': address,
-                'apikey': 'YourApiKeyToken'  # free tier works without key for source
-            })
-            url = f'{api_url}?{params}'
-            with urllib.request.urlopen(url, timeout=30) as resp:
-                data = _json.loads(resp.read().decode('utf-8', errors='ignore'))
-            
-            if data.get('status') != '1' or not data.get('result'):
-                logging.warning(f'No source for {address}[{chain}]: {data.get("message")}')
-                return
-            
-            result = data['result'][0]
-            source_code = result.get('SourceCode', '')
-            contract_name = result.get('ContractName', 'Contract') or 'Contract'
-            
-            if not source_code:
-                return
-            
-            # Handle multi-file source (JSON format wrapped in {{ }})
-            if source_code.startswith('{{'):
-                try:
-                    inner = _json.loads(source_code[1:-1])
-                    sources = inner.get('sources', {})
-                    for path, content in sources.items():
-                        safe_name = os.path.basename(path.replace('/', '_'))
-                        impl_dir = os.path.join(output_dir, 'Implementation')
-                        os.makedirs(impl_dir, exist_ok=True)
-                        with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
-                            f.write(content.get('content', ''))
-                    return
-                except Exception:
-                    pass
-            
-            # Single file source
-            impl_dir = os.path.join(output_dir, 'Implementation')
-            os.makedirs(impl_dir, exist_ok=True)
-            out_file = os.path.join(impl_dir, f'{contract_name}.sol')
-            with open(out_file, 'w', encoding='utf-8') as f:
-                f.write(source_code)
-            logging.info(f'Downloaded {address}[{chain}] -> {out_file}')
-        except Exception as e:
-            logging.warning(f'Failed to download source for {address}[{chain}]: {e}')
+        data = explorer_call(chain, {
+            'module': 'contract',
+            'action': 'getsourcecode',
+            'address': address,
+        })
+        if not data or data.get('status') != '1' or not data.get('result'):
+            logging.warning(f'No source for {address}[{chain}]: {data.get("message") if data else "all endpoints failed"}')
+            return
 
+        result = data['result'][0]
+        source_code   = result.get('SourceCode', '')
+        contract_name = result.get('ContractName', 'Contract') or 'Contract'
+
+        if not source_code:
+            return
+
+        # Handle multi-file source (JSON format wrapped in {{ }})
+        if source_code.startswith('{{'):
+            try:
+                inner = json.loads(source_code[1:-1])
+                sources = inner.get('sources', {})
+                for path, content in sources.items():
+                    safe_name = os.path.basename(path.replace('/', '_'))
+                    impl_dir  = os.path.join(output_dir, 'Implementation')
+                    os.makedirs(impl_dir, exist_ok=True)
+                    with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
+                        f.write(content.get('content', ''))
+                return
+            except Exception:
+                pass
+
+        # Single file source
+        impl_dir = os.path.join(output_dir, 'Implementation')
+        os.makedirs(impl_dir, exist_ok=True)
+        out_file = os.path.join(impl_dir, f'{contract_name}.sol')
+        with open(out_file, 'w', encoding='utf-8') as f:
+            f.write(source_code)
+        logging.info(f'Downloaded {address}[{chain}] -> {out_file}')
 
     @staticmethod
+    def get_abi(chain: str, address: str) -> list | None:
+        """Fetch ABI for a verified contract. Returns parsed list or None."""
+        data = explorer_call(chain, {
+            'module': 'contract',
+            'action': 'getabi',
+            'address': address,
+        })
+        if not data or data.get('status') != '1':
+            return None
+        try:
+            return json.loads(data['result'])
+        except Exception:
+            return None
+
+    @staticmethod
+    def get_internal_txns(chain: str, txn_hash: str) -> list:
+        """Fetch internal transactions for a hash (lightweight trace proxy)."""
+        data = explorer_call(chain, {
+            'module': 'account',
+            'action': 'txlistinternal',
+            'txhash': txn_hash,
+            'sort':   'asc',
+        })
+        if not data or data.get('status') != '1':
+            return []
+        return data.get('result', [])
+
+        if not data or data.get('status') != '1' or not data.get('result'):
+            logging.warning(f'No source for {address}[{chain}]: {data.get("message") if data else "request failed"}')
+            return
+
+        result = data['result'][0]
+        source_code = result.get('SourceCode', '')
+        contract_name = result.get('ContractName', 'Contract') or 'Contract'
+
+        if not source_code:
+            return
+
+        # Handle multi-file source (JSON format wrapped in {{ }})
+        if source_code.startswith('{{'):
+            try:
+                inner = json.loads(source_code[1:-1])
+                sources = inner.get('sources', {})
+                for path, content in sources.items():
+                    safe_name = os.path.basename(path.replace('/', '_'))
+                    impl_dir = os.path.join(output_dir, 'Implementation')
+                    os.makedirs(impl_dir, exist_ok=True)
+                    with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
+                        f.write(content.get('content', ''))
+                return
+            except Exception:
+                pass
+
+        # Single file source
+        impl_dir = os.path.join(output_dir, 'Implementation')
+        os.makedirs(impl_dir, exist_ok=True)
+        out_file = os.path.join(impl_dir, f'{contract_name}.sol')
+        with open(out_file, 'w', encoding='utf-8') as f:
+            f.write(source_code)
+        logging.info(f'Downloaded {address}[{chain}] -> {out_file}')
+
+    @staticmethod
+    def get_abi(chain: str, address: str) -> list | None:
+        """
+        Fetch the ABI for a verified contract from the block explorer.
+        Returns a parsed list (JSON), or None if unavailable.
+        """
+
+
+
     def process_log(chain, address, output_root):
         f = open(LOGGGING_FILE_PATH, 'r')
         lines = f.readlines()

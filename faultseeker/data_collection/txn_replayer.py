@@ -1,34 +1,12 @@
 import os
 import re
+import json
 import subprocess
+from faultseeker.utils.rpc_provider import get_rpc, get_all_rpcs, retry_with_backoff, rpc_call, probe_trace_support
 
 
-# Map short chain names to ARCHIVE-capable RPC URLs
-# (cast run requires debug_traceTransaction — standard nodes do NOT support this)
-CHAIN_RPC_MAP = {
-    'eth':       'https://rpc.ankr.com/eth',
-    'ethereum':  'https://rpc.ankr.com/eth',
-    # BSC: QuikNode archive (primary) with Alchemy as fallback
-    'bsc':       'https://restless-thrilling-darkness.bsc.quiknode.pro/5b30b0da70126411f777c3c8d9730d1998fc7922/',
-    'bnb':       'https://restless-thrilling-darkness.bsc.quiknode.pro/5b30b0da70126411f777c3c8d9730d1998fc7922/',
-    'polygon':   'https://rpc.ankr.com/polygon',
-    'poly':      'https://rpc.ankr.com/polygon',
-    'arbitrum':  'https://rpc.ankr.com/arbitrum',
-    'arb':       'https://rpc.ankr.com/arbitrum',
-    'optimism':  'https://rpc.ankr.com/optimism',
-    'op':        'https://rpc.ankr.com/optimism',
-    'avalanche': 'https://rpc.ankr.com/avalanche',
-    'avax':      'https://rpc.ankr.com/avalanche',
-    'base':      'https://rpc.ankr.com/base',
-    'fantom':    'https://rpc.ankr.com/fantom',
-    'ftm':       'https://rpc.ankr.com/fantom',
-}
-
-# Fallback RPCs tried if the primary fails
-CHAIN_RPC_FALLBACK = {
-    'bsc': 'https://bnb-mainnet.g.alchemy.com/v2/Jw4UMI_aOIJ_qL7-pJSjV',
-    'bnb': 'https://bnb-mainnet.g.alchemy.com/v2/Jw4UMI_aOIJ_qL7-pJSjV',
-}
+# Chain RPC maps now live in faultseeker/utils/rpc_provider.py
+# txn_replayer delegates all RPC resolution there.
 
 
 class TransactionReplayer:
@@ -40,10 +18,10 @@ class TransactionReplayer:
 
     @staticmethod
     def _resolve_rpc(chain: str) -> str:
-        """Resolve chain short name to RPC URL. Passthrough if already a URL."""
+        """Resolve chain short name to best available RPC URL."""
         if chain.startswith('http'):
             return chain
-        return CHAIN_RPC_MAP.get(chain.lower(), chain)
+        return get_rpc(chain)
 
     @staticmethod
     def _run_cast(txn_hash, rpc_url):
@@ -61,27 +39,116 @@ class TransactionReplayer:
                     print(f"      ✗ cast stderr: {err}")
                 return None
             return clean
+        except FileNotFoundError:
+            # cast (Foundry) not installed — caller will use RPC fallback
+            raise
         except Exception:
             import traceback
             traceback.print_exc()
             return None
 
     @staticmethod
+    def _rpc_trace_fallback(txn_hash: str, chain: str) -> str | None:
+        """
+        Fetch a call trace via JSON-RPC. Uses rpc_call() which internally
+        cycles ALL scored providers with per-call failover.
+        Tries debug_traceTransaction first, then trace_replayTransaction.
+        """
+        from faultseeker.utils.rpc_provider import normalize_trace_node, build_parity_tree
+
+        def _fmt_canonical(node, depth=0):
+            """Format a canonical (already normalized) trace node."""
+            indent = '  ' * depth
+            to  = node.get('to', '?')
+            sig = node.get('input', '0x')[:10]
+            typ = node.get('call_type', 'CALL')
+            lines = [f'{indent}{to}::{sig} [{typ}]']
+            for child in node.get('children', []):
+                lines.extend(_fmt_canonical(child, depth + 1))
+            return lines
+
+        # Method 1: debug_traceTransaction (best — gives full call tree)
+        print(f'      Trying debug_traceTransaction (all providers)...')
+        try:
+            result = rpc_call(chain, 'debug_traceTransaction',
+                              [txn_hash, {'tracer': 'callTracer'}], timeout=60)
+            if result:
+                norm = normalize_trace_node(result)
+                return '\n'.join(_fmt_canonical(norm))
+        except Exception as e:
+            print(f'      debug_traceTransaction failed across all providers: {e}')
+
+        # Method 2: trace_replayTransaction (Erigon/Parity flat list format)
+        print(f'      Trying trace_replayTransaction (all providers)...')
+        try:
+            result = rpc_call(chain, 'trace_replayTransaction',
+                              [txn_hash, ['trace']], timeout=60)
+            if result:
+                trace_list = result.get('trace', []) if isinstance(result, dict) else []
+                if trace_list:
+                    # Build proper nested tree from flat traceAddress list
+                    root = build_parity_tree(trace_list)
+                    if root:
+                        return '\n'.join(_fmt_canonical(root))
+        except Exception as e:
+            print(f'      trace_replayTransaction failed across all providers: {e}')
+
+        print('      No supported trace method available on any provider.')
+        return None
+
+    @staticmethod
+    def _record_trace_failure(txn_hash: str, reason: str):
+        """Persist trace failures to disk so eval harness can report them cleanly."""
+        path = os.path.join('data', 'cache', 'trace_failures.json')
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        try:
+            failures = json.load(open(path)) if os.path.exists(path) else {}
+        except Exception:
+            failures = {}
+        failures[txn_hash.lower()] = reason
+        with open(path, 'w') as f:
+            json.dump(failures, f, indent=2)
+
+    @staticmethod
     def transaction_replay(txn_hash, chain):
-        """Execute transaction replay using cast command, with fallback RPC."""
+        """Execute transaction replay. Tries cast CLI first, then scored RPC failover."""
         primary_rpc = TransactionReplayer._resolve_rpc(chain)
-        result = TransactionReplayer._run_cast(txn_hash, primary_rpc)
-        if result:
-            return result
 
-        # Try fallback RPC if primary failed
-        chain_key = chain.lower() if not chain.startswith('http') else None
-        if chain_key and chain_key in CHAIN_RPC_FALLBACK:
-            fallback_rpc = CHAIN_RPC_FALLBACK[chain_key]
-            print(f"      ↻ Primary RPC failed, trying fallback: {fallback_rpc}")
-            result = TransactionReplayer._run_cast(txn_hash, fallback_rpc)
+        # Try cast first (fastest when Foundry is installed)
+        cast_missing = False
+        try:
+            result = TransactionReplayer._run_cast(txn_hash, primary_rpc)
+            if result:
+                return result
+        except FileNotFoundError:
+            cast_missing = True
+            print('      cast (Foundry) not installed -- using RPC trace fallback')
 
-        return result
+        # Probe trace capability ONCE before committing to 60s timeout cycles
+        trace_rpc = probe_trace_support(chain)
+        if not trace_rpc:
+            msg = f'No provider on {chain} supports debug_traceTransaction'
+            print(f'      [TRACE FAIL] {txn_hash[:16]}... -- {msg}')
+            TransactionReplayer._record_trace_failure(txn_hash, msg)
+            return None
+
+        if cast_missing:
+            return TransactionReplayer._rpc_trace_fallback(txn_hash, chain)
+        else:
+            # cast exists but primary RPC failed -- try other RPCs with cast
+            for rpc_url in get_all_rpcs(chain)[1:]:
+                print(f'      Trying cast with: {rpc_url[:45]}')
+                try:
+                    result = TransactionReplayer._run_cast(txn_hash, rpc_url)
+                    if result:
+                        return result
+                except FileNotFoundError:
+                    break
+            # If cast still got nothing, fall back to RPC
+            return TransactionReplayer._rpc_trace_fallback(txn_hash, chain)
+
+        return None
+
 
     def get_replay_cache(self, txn_hash):
         """Check if replay result exists in cache."""

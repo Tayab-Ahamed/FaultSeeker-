@@ -4,7 +4,9 @@ import argparse
 from datetime import datetime
 from faultseeker.core.config import FaultSeekerConfig
 from faultseeker.core.pipeline import FaultSeekerPipeline
-from faultseeker.core.auto_model_selector import auto_select_models, print_model_selection
+from faultseeker.core.auto_model_selector import (
+    auto_select_models, print_model_selection, interactive_model_selection
+)
 
 
 def banner():
@@ -34,24 +36,44 @@ def main(txn_link: str = None,
     else:
         raise ValueError("Either txn_link or both txn_hash and chain must be provided.")
 
-    # Auto-detect models if not explicitly provided
+    # ── Auto-detect models when not explicitly provided ────────────────
+    auto_route = False
+    local_model_name = None
+    cloud_model_name = None
+
     if not forensics_model or not function_analysis_model:
-        model_config = auto_select_models()
+        # Show interactive menu: lists all detected local + cloud options
+        model_config = interactive_model_selection()
         print_model_selection(model_config)
-        forensics_model         = forensics_model         or model_config['local_model'] or model_config['cloud_model']
-        function_analysis_model = function_analysis_model or model_config['cloud_model']
+
+        local_model_name  = model_config.get('local_model')
+        actual_cloud      = model_config.get('actual_cloud_model')  # real cloud API model
+
+        if model_config.get('use_hybrid') and actual_cloud:
+            # Hybrid: Stage 1 (data collection) → local, Stage 2 (analysis) → cloud
+            forensics_model         = forensics_model         or local_model_name
+            function_analysis_model = function_analysis_model or actual_cloud
+            cloud_model_name        = actual_cloud
+            auto_route = True
+            print(f"   🔀 Hybrid mode: Stage 1 → {forensics_model} (local), Stage 2 → {function_analysis_model} (cloud)")
+        else:
+            # Single model for everything (either only local or only cloud)
+            single = model_config['cloud_model']
+            forensics_model         = forensics_model         or single
+            function_analysis_model = function_analysis_model or single
 
     # Display configuration
     print("\n⚙️  Configuration:")
     print(f"   • Forensics Model: {forensics_model}")
     print(f"   • Function Analysis Model: {function_analysis_model}")
+    if auto_route:
+        print(f"   • Routing: Hybrid (local Tier 1/2, cloud Tier 3)")
 
 
     # Set output path and cache root
     os.makedirs(output_dir, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     output_path = os.path.join(output_dir, f"analysis_{timestamp}.json")
-    
 
     print(f"   • Cache Directory: {cache_dir}")
     print(f"   • Output Directory: {output_dir}")
@@ -62,7 +84,11 @@ def main(txn_link: str = None,
         config=FaultSeekerConfig(
             forensics_model=forensics_model,
             function_analysis_model=function_analysis_model,
-            cache_dir=cache_dir
+            cloud_model=cloud_model_name or '',   # actual cloud API model for Tier 3
+            cache_dir=cache_dir,
+            auto_route=auto_route,
+            local_model=local_model_name or forensics_model,
+            routing_strategy='hybrid',
         )
     )
     print("   ✓ Pipeline initialized successfully")
@@ -78,6 +104,16 @@ def main(txn_link: str = None,
     with open(output_path, 'w') as f:
         json.dump(result, f, indent=2)
     print(f"   ✓ Results saved to: {output_path}")
+
+    # Print RPC provider scoreboard (observability)
+    try:
+        from faultseeker.utils.rpc_provider import print_provider_stats
+        from faultseeker.utils.explorer_provider import print_explorer_stats
+        print_provider_stats(chain)
+        print_explorer_stats(chain)
+    except Exception:
+        pass
+
 
     # Display evidence cards if --explain is set (Gap 3: Explainability)
     if explain and result.get('evidence_cards'):
@@ -155,13 +191,13 @@ def main_cli():
     # Model arguments
     parser.add_argument(
         "-forensics_model",
-        default="llama3:8b",
-        help="Model for Stage 1 forensics analysis (default: llama3:8b)"
+        default=None,
+        help="Model for Stage 1 forensics analysis (default: auto-detect)"
     )
     parser.add_argument(
         "-function_analysis_model",
-        default="llama3:8b",
-        help="Model for Stage 2 function analysis (default: llama3:8b)"
+        default=None,
+        help="Model for Stage 2 function analysis (default: auto-detect)"
     )
 
     # Output arguments

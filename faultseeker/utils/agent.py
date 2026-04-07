@@ -3,10 +3,18 @@ import json
 import re
 from typing import Dict, List, Any, Union, Optional
 import traceback
+import threading
 from ollama import chat
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+
+# ── Local model tuning constants ──────────────────────────────────────────────
+LOCAL_MODEL_TIMEOUT_SECS = 300     # Hard timeout per Ollama call (increased for CPU/low-RAM hardware)
+LOCAL_MODEL_NUM_CTX      = 4096    # Explicit context window for Ollama
+LOCAL_MODEL_MAX_PROMPT   = 6000    # Truncate prompts longer than this (chars)
+LOCAL_MODEL_MAX_TURNS    = 2       # History turns to keep for local models
+LOCAL_MODEL_JSON_RETRIES = 5       # More retries since small models are flaky
 
 
 # ── Provider registry ──────────────────────────────────────────────────
@@ -151,7 +159,7 @@ class AbstractAgent(abc.ABC):
         retries = 0
         while isinstance(parsed, str) and retries < max_retries:
             retries += 1
-            result_raw = self._send_message(JSON_RETRY_PROMPT, temperature)
+            result_raw = self._send_message(JSON_RETRY_PROMPT, 0.0)  # Force temp=0 on retries
             parsed = self._extract_json(result_raw)
 
         return parsed
@@ -163,8 +171,7 @@ class AbstractAgent(abc.ABC):
         # Use retry-enabled query for JSON formats
         try:
             return self._query_with_json_retry(user_message, temperature)
-        except Exception:
-            traceback.print_exc()
+        except Exception as e:
             raw = self._send_message(user_message, temperature)
             return self._process_response(raw, format)
 
@@ -173,20 +180,67 @@ class OllmaAgent(AbstractAgent):
     def __init__(self, task, model_name: str = "deepseek-r1:14b"):
         super().__init__(task, model_name)
 
-    def _send_message(self, user_message: str, temperature=0.3) -> str:
+    def _truncate_history(self, history, max_turns=LOCAL_MODEL_MAX_TURNS):
+        """Keep only the system prompt + last max_turns pairs to stay within context."""
+        system_prompt = history[0]
+        message_pairs = history[1:]
+        truncated = message_pairs[-(max_turns * 2):]
+        return [system_prompt] + truncated
+
+    def _send_message(self, user_message: str, temperature=0.0) -> str:
+        # Cap prompt length so local model context window isn't blown out
+        if len(user_message) > LOCAL_MODEL_MAX_PROMPT:
+            user_message = user_message[:LOCAL_MODEL_MAX_PROMPT] + "\n[TRUNCATED FOR LOCAL MODEL]"
+
         self.memory.append({"role": "user", "content": user_message})
+        result_container = [None]
+        error_container  = [None]
+
+        def _call():
+            try:
+                response = chat(
+                    model=self.model,
+                    messages=self._truncate_history(self.memory),
+                    options={
+                        'temperature': temperature,
+                        'num_ctx': LOCAL_MODEL_NUM_CTX,
+                    }
+                )
+                result_container[0] = response['message']['content']
+            except Exception as e:
+                error_container[0] = e
+
+        t = threading.Thread(target=_call, daemon=True)
+        t.start()
+        t.join(timeout=LOCAL_MODEL_TIMEOUT_SECS)
+
+        if t.is_alive():
+            print(f"\n   ⚠️  Local model '{self.model}' timed out after {LOCAL_MODEL_TIMEOUT_SECS}s. Returning empty.")
+            self.memory.append({"role": "assistant", "content": ""})
+            return ""
+
+        if error_container[0]:
+            err = error_container[0]
+            print(f"   ⚠️  Local model '{self.model}' error: {type(err).__name__}: {err}")
+            self.memory.append({"role": "assistant", "content": ""})
+            return ""
+
+        assistant_response = result_container[0] or ""
+        self.memory.append({"role": "assistant", "content": assistant_response})
+        return assistant_response
+
+    def query(self, user_message: str, temperature=0.0, format='json') -> Any:
+        """Override with local-model tuned settings: lower temp, more retries."""
+        if format == 'str':
+            return self._send_message(user_message, temperature)
         try:
-            response = chat(
-                model=self.model,
-                messages=self.memory,
-                options={'temperature': temperature}
+            return self._query_with_json_retry(
+                user_message, temperature=0.0,
+                max_retries=LOCAL_MODEL_JSON_RETRIES
             )
-            assistant_response = response['message']['content']
-            self.memory.append({"role": "assistant", "content": assistant_response})
-            return assistant_response
-        except Exception:
-            traceback.print_exc()
-            return "An error occurred."
+        except Exception as e:
+            raw = self._send_message(user_message, 0.0)
+            return self._process_response(raw, format)
 
 
 class GPTAgent(AbstractAgent):
@@ -221,8 +275,7 @@ class GPTAgent(AbstractAgent):
             reply = chat_completion.choices[0].message.content
             self.memory.append({"role": "assistant", "content": reply})
             return reply
-        except Exception:
-            traceback.print_exc()
+        except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})
             return "An error occurred."
 
@@ -280,8 +333,7 @@ class UniversalAgent(AbstractAgent):
             reply = chat_completion.choices[0].message.content
             self.memory.append({"role": "assistant", "content": reply})
             return reply
-        except Exception:
-            traceback.print_exc()
+        except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})
             return "An error occurred."
 
