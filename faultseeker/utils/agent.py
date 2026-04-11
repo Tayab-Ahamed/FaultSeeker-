@@ -1,5 +1,6 @@
 import abc
 import json
+import logging
 import re
 from typing import Dict, List, Any, Union, Optional
 import traceback
@@ -8,6 +9,8 @@ from ollama import chat
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+
+logger = logging.getLogger(__name__)
 
 # ── Local model tuning constants ──────────────────────────────────────────────
 LOCAL_MODEL_TIMEOUT_SECS = 300     # Hard timeout per Ollama call (increased for CPU/low-RAM hardware)
@@ -123,19 +126,22 @@ class AbstractAgent(abc.ABC):
             except Exception:
                 pass
 
-        # Strategy 5 — eval last resort
-        try:
-            return eval(cleaned)
-        except Exception:
-            pass
-
-        return text  # give back raw string if all fail
+        # Strategy 5 — all structural parsing failed; do NOT eval() LLM output
+        # (eval on untrusted text is a critical security vulnerability)
+        logger.warning("_extract_json: all JSON strategies failed; returning raw text for retry")
+        raise ValueError("Invalid JSON from LLM — cannot parse response")
 
     def _process_json_response(self, response: str) -> Dict[str, Any]:
-        return self._extract_json(response)
+        try:
+            return self._extract_json(response)
+        except ValueError:
+            return {}
 
     def _process_dict_response(self, response: str) -> Dict[str, Any]:
-        result = self._extract_json(response)
+        try:
+            result = self._extract_json(response)
+        except ValueError:
+            return [response]
         if isinstance(result, (dict, list)):
             return result
         return [response]
@@ -150,19 +156,20 @@ class AbstractAgent(abc.ABC):
     def _query_with_json_retry(self, user_message: str, temperature: float, max_retries: int = 3) -> Any:
         """
         Query the LLM and retry up to max_retries times if the output
-        is not valid JSON. On each retry injecting a correction prompt.
+        is not valid JSON. On each retry, inject a correction prompt.
         """
         result_raw = self._send_message(user_message, temperature)
-        parsed = self._extract_json(result_raw)
-
-        # If parsed is still a raw string (not dict/list), retry
         retries = 0
-        while isinstance(parsed, str) and retries < max_retries:
-            retries += 1
-            result_raw = self._send_message(JSON_RETRY_PROMPT, 0.0)  # Force temp=0 on retries
-            parsed = self._extract_json(result_raw)
-
-        return parsed
+        while retries <= max_retries:
+            try:
+                return self._extract_json(result_raw)
+            except ValueError:
+                retries += 1
+                if retries > max_retries:
+                    logger.warning("JSON parsing failed after %d retries; returning empty dict", max_retries)
+                    return {}
+                logger.debug("JSON retry %d/%d", retries, max_retries)
+                result_raw = self._send_message(JSON_RETRY_PROMPT, 0.0)  # Force temp=0 on retries
 
     def query(self, user_message: str, temperature=0, format='json') -> Any:
         if format == 'str':
@@ -172,8 +179,8 @@ class AbstractAgent(abc.ABC):
         try:
             return self._query_with_json_retry(user_message, temperature)
         except Exception as e:
-            raw = self._send_message(user_message, temperature)
-            return self._process_response(raw, format)
+            logger.error("query() failed completely: %s", e)
+            return {}
 
 
 class OllmaAgent(AbstractAgent):
@@ -190,6 +197,10 @@ class OllmaAgent(AbstractAgent):
     def _send_message(self, user_message: str, temperature=0.0) -> str:
         # Cap prompt length so local model context window isn't blown out
         if len(user_message) > LOCAL_MODEL_MAX_PROMPT:
+            logger.warning(
+                "Prompt truncated: original length %d chars exceeds LOCAL_MODEL_MAX_PROMPT=%d",
+                len(user_message), LOCAL_MODEL_MAX_PROMPT,
+            )
             user_message = user_message[:LOCAL_MODEL_MAX_PROMPT] + "\n[TRUNCATED FOR LOCAL MODEL]"
 
         self.memory.append({"role": "user", "content": user_message})
@@ -347,9 +358,19 @@ def build_provider_agent(task: str, model_name: str) -> AbstractAgent:
       grok-*                   → UniversalAgent (xAI)
       qwen-*                   → UniversalAgent (Alibaba DashScope)
       gemini-*                 → UniversalAgent (Google)
-      claude-*                 → UniversalAgent (Anthropic-compat)
+      claude-*                 → NOT SUPPORTED (Anthropic SDK required)
       <anything else>          → OllmaAgent (local Ollama)
     """
+    # Claude requires the Anthropic SDK, which is not integrated here.
+    # Routing through OpenAI-compatible UniversalAgent silently fails
+    # (different auth headers, different request schema). Fail fast instead.
+    if model_name.startswith('claude-'):
+        raise NotImplementedError(
+            f"Claude model '{model_name}' is not supported. "
+            "Install the 'anthropic' package and implement an AnthropicAgent, "
+            "or choose a supported model (gpt-*, gemini-*, grok-*, qwen-*, or a local Ollama model)."
+        )
+
     cloud_prefixes = tuple(PROVIDER_CONFIG.keys())
     if not any(model_name.startswith(p) for p in cloud_prefixes):
         return OllmaAgent(task, model_name)

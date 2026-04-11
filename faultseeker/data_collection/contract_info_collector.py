@@ -3,13 +3,37 @@ import re
 import json
 import pandas
 import subprocess
+import urllib.request
 import pytz
 from tqdm import tqdm
 from dateutil import parser
 import time
+from urllib.parse import urlparse
 
 class ContractInfoCollector:
-    
+
+    # Mirrors TransactionInfoCollector._CHAIN_RPC_MAP — used as fallback when
+    # the block explorer is WAF-protected (e.g. Avalanche's snowtrace.io).
+    _CHAIN_RPC_MAP = {
+        'ETH':       'https://eth.llamarpc.com',
+        'ETHEREUM':  'https://eth.llamarpc.com',
+        'POLYGON':   'https://polygon-bor-rpc.publicnode.com',
+        'POLY':      'https://polygon-bor-rpc.publicnode.com',
+        'FANTOM':    'https://rpc.fantom.network',
+        'FTM':       'https://rpc.fantom.network',
+        'ZKSYNC':    'https://mainnet.era.zksync.io',
+        'AVALANCHE': 'https://avalanche-c-chain-rpc.publicnode.com',
+        'AVAX':      'https://avalanche-c-chain-rpc.publicnode.com',
+        'BSC':       'https://bsc-dataseed.binance.org',
+        'BNB':       'https://bsc-dataseed.binance.org',
+        'ARBITRUM':  'https://arb1.arbitrum.io/rpc',
+        'ARB':       'https://arb1.arbitrum.io/rpc',
+        'OPTIMISM':  'https://mainnet.optimism.io',
+        'OP':        'https://mainnet.optimism.io',
+        'BASE':      'https://mainnet.base.org',
+        'GNOSIS':    'https://rpc.gnosischain.com',
+    }
+
     def __init__(self, cache_path='./data/cache/contract_info'):
         self.cache_path = cache_path
         os.makedirs(cache_path, exist_ok=True)
@@ -17,9 +41,11 @@ class ContractInfoCollector:
     @staticmethod
     def _fetch_website_content(url):
         try:
-            result = subprocess.run(['curl', '-s', url], 
+            result = subprocess.run(['curl', '-s', '-A',
+                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', url], 
                                 capture_output=True, 
-                                text=True, 
+                                encoding='utf-8', 
+                                errors='ignore',
                                 check=True)
             return result.stdout
         except subprocess.CalledProcessError:
@@ -43,26 +69,35 @@ class ContractInfoCollector:
             })
         return converted_datetimes[0]
     
-   
-    def _get_contract_address_link(self,address, chain):
-        if 'eth' in self.txn_link:
-            self.contract_link = 'https://etherscan.io/address/{}'.format(address)
-        elif 'bsc' in self.txn_link:
-            self.contract_link = 'https://bscscan.com/address/{}'.format(address)
-        elif 'polygon' in self.txn_link:
-            self.contract_link = 'https://polygonscan.com/address/{}'.format(address)
-        elif 'optimism' in self.txn_link:
-            self.contract_link = 'https://optimistic.etherscan.com/address/{}'.format(address)
-        elif 'arbitrum' in self.txn_link:
-            self.contract_link = 'https://arbiscan.io/address/{}'.format(address)
-        elif 'avalanche' in self.txn_link:
-            self.contract_link = 'https://snowtrace.io/address/{}'.format(address)
-        elif 'fantom' in self.txn_link:
-            self.contract_link = 'https://ftmscan.com/address/{}'.format(address)
-        elif 'gnosis' in self.txn_link:
-            self.contract_link = 'https://gnosisscan.io/address/{}'.format(address)
-        elif 'base' in self.txn_link:
-            self.contract_link = 'https://basescan.org/address/{}'.format(address)
+    # Maps netloc keyword (most-specific first) → base explorer URL
+    _EXPLORER_ADDRESS_MAP = [
+        ('optimistic.etherscan',  'https://optimistic.etherscan.io/address/'),
+        ('bscscan',               'https://bscscan.com/address/'),
+        ('polygonscan',           'https://polygonscan.com/address/'),
+        ('arbiscan',              'https://arbiscan.io/address/'),
+        ('snowtrace',             'https://snowtrace.io/address/'),
+        ('basescan',              'https://basescan.org/address/'),
+        ('ftmscan',               'https://ftmscan.com/address/'),
+        ('gnosisscan',            'https://gnosisscan.io/address/'),
+        ('etherscan',             'https://etherscan.io/address/'),
+    ]
+
+    def _get_contract_address_link(self, address: str, chain: str):
+        """Build a block-explorer address URL from the active txn_link.
+
+        Uses urlparse to extract the netloc so that a keyword like 'eth'
+        cannot accidentally fire against a path or query-string segment.
+        """
+        txn_link = getattr(self, 'txn_link', '') or ''
+        netloc = urlparse(txn_link).netloc.lower()
+
+        for keyword, base_url in self._EXPLORER_ADDRESS_MAP:
+            if keyword in netloc:
+                self.contract_link = base_url + address
+                return
+
+        # Fallback: default to Ethereum mainnet
+        self.contract_link = f'https://etherscan.io/address/{address}'
             
     def _is_contract(self, content):
         if 'Contract Creator' in content:
@@ -86,6 +121,37 @@ class ContractInfoCollector:
         with open(cache_file, 'w') as f:
             json.dump(data, f, indent=2)
     
+    @staticmethod
+    def _is_contract_via_rpc(rpc_url: str, address: str) -> dict:
+        """Determine if `address` is a contract via eth_getCode on an RPC node.
+
+        A contract has bytecode (len > 2, i.e. not just '0x').
+        Returns a result dict compatible with the HTML-scrape output.
+        """
+        try:
+            payload = json.dumps({
+                'jsonrpc': '2.0', 'method': 'eth_getCode',
+                'params': [address, 'latest'], 'id': 1
+            }).encode()
+            req = urllib.request.Request(
+                rpc_url, data=payload,
+                headers={'Content-Type': 'application/json',
+                         'User-Agent': 'FaultSeeker/1.0'},
+                method='POST'
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode())
+                code = data.get('result', '0x')
+                is_contract = len(code) > 2  # '0x' = EOA, longer = smart contract
+                return {
+                    'contract_address': address,
+                    'creator': None,
+                    'is_contract': is_contract,
+                    '_source': 'rpc_fallback',
+                }
+        except Exception:
+            return {}
+
     def run(self, address, chain):
         self._get_contract_address_link(address, chain)
         if self.contract_link:
@@ -103,6 +169,14 @@ class ContractInfoCollector:
                     return result
                 else:
                     return {'is_contract': False}
+
+        # Fallback: use RPC to check bytecode when HTML scraping fails.
+        rpc_url = self._CHAIN_RPC_MAP.get((chain or '').upper())
+        if rpc_url:
+            rpc_result = self._is_contract_via_rpc(rpc_url, address)
+            if rpc_result:
+                return rpc_result
+
         return {}
 
                              

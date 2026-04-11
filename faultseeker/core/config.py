@@ -1,5 +1,20 @@
+import logging
 import os
 from dataclasses import dataclass
+
+logger = logging.getLogger(__name__)
+
+# Maps model prefix → required env var name
+_MODEL_KEY_MAP = {
+    'gpt-':     'OPENAI_API_KEY',
+    'o1-':      'OPENAI_API_KEY',
+    'o3-':      'OPENAI_API_KEY',
+    'o4-':      'OPENAI_API_KEY',
+    'grok-':    'XAI_API_KEY',
+    'qwen-':    'DASHSCOPE_API_KEY',
+    'gemini-':  'GOOGLE_API_KEY',
+    'claude-':  'ANTHROPIC_API_KEY',
+}
 
 
 @dataclass
@@ -52,7 +67,29 @@ class FaultSeekerConfig:
         return path
 
 
+    def validate_api_keys(self):
+        """Raise RuntimeError early if a required API key is missing."""
+        from dotenv import load_dotenv
+        load_dotenv()
+
+        models_to_check = [self.forensics_model, self.function_analysis_model]
+        if self.cloud_model:
+            models_to_check.append(self.cloud_model)
+        if self.auto_route and self.local_model:
+            # local_model is Ollama — no API key needed
+            pass
+
+        for model in models_to_check:
+            for prefix, env_var in _MODEL_KEY_MAP.items():
+                if model.startswith(prefix):
+                    if not os.getenv(env_var):
+                        raise RuntimeError(
+                            f"Missing API key for model '{model}': "
+                            f"set the '{env_var}' environment variable in your .env file."
+                        )
+                    break  # matched prefix, no need to check others
+
     def __post_init__(self):
-        """Ensure all directories exist after initialization."""
-        import os
+        """Ensure all directories exist and API keys are valid after initialization."""
         os.makedirs(self.cache_dir, exist_ok=True)
+        self.validate_api_keys()

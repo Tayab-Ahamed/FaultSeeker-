@@ -3,6 +3,8 @@ import re
 import json
 import pandas
 import subprocess
+import urllib.request
+import urllib.error
 import pytz
 from tqdm import tqdm
 from dateutil import parser
@@ -10,6 +12,28 @@ import time
 import networkx as nx
 
 class TransactionInfoCollector:
+
+    # Public RPC endpoints used as a fallback when the block-explorer HTML
+    # is blocked by a WAF / Cloudflare challenge.
+    _CHAIN_RPC_MAP = {
+        'ETH':       'https://eth.llamarpc.com',
+        'ETHEREUM':  'https://eth.llamarpc.com',
+        'POLYGON':   'https://polygon-bor-rpc.publicnode.com',
+        'POLY':      'https://polygon-bor-rpc.publicnode.com',
+        'FANTOM':    'https://rpc.fantom.network',
+        'FTM':       'https://rpc.fantom.network',
+        'ZKSYNC':    'https://mainnet.era.zksync.io',
+        'AVALANCHE': 'https://avalanche-c-chain-rpc.publicnode.com',
+        'AVAX':      'https://avalanche-c-chain-rpc.publicnode.com',
+        'BSC':       'https://bsc-dataseed.binance.org',
+        'BNB':       'https://bsc-dataseed.binance.org',
+        'ARBITRUM':  'https://arb1.arbitrum.io/rpc',
+        'ARB':       'https://arb1.arbitrum.io/rpc',
+        'OPTIMISM':  'https://mainnet.optimism.io',
+        'OP':        'https://mainnet.optimism.io',
+        'BASE':      'https://mainnet.base.org',
+        'GNOSIS':    'https://rpc.gnosischain.com',
+    }
 
     def __init__(self):
         pass
@@ -230,49 +254,125 @@ class TransactionInfoCollector:
         base_url = explorer_map.get(chain_upper, 'https://etherscan.io/tx/')
         self.txn_link = base_url + self.txn_hash
 
+    @staticmethod
+    def _fetch_via_rpc(rpc_url: str, txn_hash: str) -> dict:
+        """Fetch transaction data directly from a JSON-RPC node.
+
+        Used as a fallback when the block-explorer HTML is behind a WAF
+        (e.g. Cloudflare) and the standard scraper returns no addresses.
+
+        Returns a partial result dict with the same keys as the HTML parser,
+        or an empty dict on failure.
+        """
+        def _rpc(url, method, params):
+            payload = json.dumps({
+                'jsonrpc': '2.0', 'method': method,
+                'params': params, 'id': 1
+            }).encode()
+            req = urllib.request.Request(
+                url, data=payload,
+                headers={'Content-Type': 'application/json',
+                         'User-Agent': 'FaultSeeker/1.0'},
+                method='POST'
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    return json.loads(resp.read().decode())
+            except Exception:
+                return {}
+
+        tx_resp = _rpc(rpc_url, 'eth_getTransactionByHash', [txn_hash])
+        tx = tx_resp.get('result') or {}
+        if not tx:
+            return {}
+
+        receipt_resp = _rpc(rpc_url, 'eth_getTransactionReceipt', [txn_hash])
+        receipt = receipt_resp.get('result') or {}
+
+        # Decode status: 0x1 = success, 0x0 = reverted
+        raw_status = receipt.get('status', '0x1')
+        status = 'Success' if raw_status == '0x1' else 'Reverted'
+        if status == 'Reverted':
+            return {}
+
+        from_addr = (tx.get('from') or '').lower()
+        to_addr   = (tx.get('to')   or '').lower()
+
+        block_hex = tx.get('blockNumber', '0x0')
+        block_num = int(block_hex, 16) if block_hex else -1
+
+        return {
+            'status': status,
+            'gas_consumption': None,
+            'block_number': {'block_number': block_num, 'confirmations': -1},
+            'address_info': {
+                'from_address': from_addr,
+                'to_address': [to_addr] if to_addr else [],
+            },
+            'transaction_hash': txn_hash,
+            'transaction_date': '',
+            'token_transfer': {},
+            '_source': 'rpc_fallback',
+        }
+
     def run(self, txn_hash: str, chain: str) -> dict:
         """
         Collect transaction information for given transaction hash and chain.
 
+        Primary path: parse the block-explorer HTML page.
+        Fallback path: if HTML scraping yields no addresses (e.g. Cloudflare WAF
+        blocks the request), query the chain RPC directly via JSON-RPC.
+
         Args:
             txn_hash: Transaction hash
-            chain: Chain identifier (eth, bsc, poly, etc.)
+            chain: Chain identifier (eth, bsc, polygon, etc.)
 
         Returns:
             Dictionary containing transaction information
         """
-        # Build transaction link and fetch content
         self.txn_hash = txn_hash
         self.get_transaction_link(chain)
+
+        # ── Primary: HTML scraping ────────────────────────────────────────────
         content = self._fetch_website_content(self.txn_link)
 
-        if not content:
-            return {}
+        if content:
+            status_info = self._get_transaction_status(content)
+            if status_info.lower() in ['failed', 'reverted']:
+                return {}
 
-        # Parse transaction info
-        status_info = self._get_transaction_status(content)
-        # Only reject if explicitly marked as failed; 'unknown' means the HTML
-        # format changed but the page loaded (treat as potentially valid).
-        if status_info.lower() in ['failed', 'reverted']:
-            return {}
+            block_info   = self._get_transaction_block(content)
+            tx_date      = self._find_and_convert_datetimes(content)
+            address_info = self._find_address_info(content)
+            token_transfer = self._get_token_transferred(content)
+            gas          = self._get_transaction_gas(content)
 
-        block_info = self._get_transaction_block(content)
-        tx_date = self._find_and_convert_datetimes(content)
-        address_info = self._find_address_info(content)
-        token_transfer = self._get_token_transferred(content)
-        gas = self._get_transaction_gas(content)
+            html_result = {
+                'status':           status_info,
+                'gas_consumption':  gas,
+                'block_number':     block_info,
+                'address_info':     address_info,
+                'transaction_hash': txn_hash,
+                'transaction_date': tx_date,
+                'token_transfer':   token_transfer,
+                '_source':          'html_scrape',
+            }
 
-        output = {
-            "status": status_info,
-            "gas_consumption": gas,
-            "block_number": block_info,
-            "address_info": address_info,
-            "transaction_hash": txn_hash,
-            "transaction_date": tx_date,
-            "token_transfer": token_transfer
-        }
+            # If addresses were successfully extracted, we are done.
+            has_from = bool(address_info.get('from_address'))
+            has_to   = bool(address_info.get('to_address'))
+            if has_from or has_to:
+                return html_result
 
-        return output
+        # ── Fallback: direct JSON-RPC ─────────────────────────────────────────
+        rpc_url = self._CHAIN_RPC_MAP.get(chain.upper())
+        if rpc_url:
+            rpc_result = self._fetch_via_rpc(rpc_url, txn_hash)
+            if rpc_result:
+                return rpc_result
+
+        # If we got this far, return whatever the HTML gave us (may be partial).
+        return html_result if content else {}
       
                        
 if __name__ == "__main__":

@@ -1,67 +1,53 @@
 # FaultSeeker++
 
 <p align="center">
-  <img src="diagram1.png" alt="FaultSeeker++ banner" width="900">
+  <img src="diagram1.png" alt="FaultSeeker++ Architecture" width="900">
 </p>
 
 <p align="center">
-  <strong>AI-assisted blockchain transaction forensics and vulnerability localization</strong>
-</p>
-
-<p align="center">
-  Analyze exploit transactions, reconstruct execution traces, extract deterministic security signals,
-  rank suspicious functions, and generate benchmark-ready forensic outputs.
+  <strong>AI-Powered Blockchain Transaction Forensics & Vulnerability Localization</strong>
 </p>
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-2ea043?style=flat-square">
   <img alt="Dataset" src="https://img.shields.io/badge/dataset-246%20exploits-cb2431?style=flat-square">
-  <img alt="Coverage" src="https://img.shields.io/badge/benchmark%20coverage-8%20EVM%20chains-6f42c1?style=flat-square">
+  <img alt="Chains" src="https://img.shields.io/badge/chains-10%20EVM%20networks-6f42c1?style=flat-square">
+  <img alt="Tests" src="https://img.shields.io/badge/tests-111%20passing-brightgreen?style=flat-square">
   <img alt="Status" src="https://img.shields.io/badge/status-research%20prototype-0969da?style=flat-square">
 </p>
 
-## Overview
+---
 
-FaultSeeker++ is a research-oriented framework for smart contract exploit analysis.
-It combines transaction replay, trace inspection, fund-flow analysis, deterministic signal extraction,
-rule-based classification, and LLM-assisted function investigation in one pipeline.
+FaultSeeker++ replays exploit transactions, reconstructs execution traces, extracts deterministic security signals, ranks suspicious functions, and generates benchmark-ready forensic outputs — all in one pipeline.
 
-The project is designed for two workflows:
+Built for security researchers, auditors, and academics working on smart contract vulnerability analysis.
 
-1. Single-transaction forensics for understanding a specific exploit.
-2. Benchmark and evaluation runs for measuring signal quality, ranking behavior, and cross-chain coverage.
+## What Makes This Different
 
-## Why FaultSeeker++
+Most exploit analysis tools stop at detection. FaultSeeker++ goes further:
 
-FaultSeeker++ is built to close practical gaps in earlier fault-localization tooling:
+- **Dual-path data collection** — HTML scraping with automatic JSON-RPC fallback when block explorers are WAF-protected. No chain gets left behind.
+- **Hybrid model routing** — simple tasks stay on local models, heavy reasoning escalates to cloud providers. You control API spend.
+- **Human-in-the-loop checkpoints** — the analyst stays in the loop at critical decision points instead of blindly trusting model output.
+- **Structured evidence** — every finding comes with signal breakdowns, confidence scores, and priority rankings. Not just a boolean "vulnerable."
+- **10-chain coverage** — Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. All validated and tested.
+- **Reproducible benchmarks** — 246 real exploit transactions with ground truth labels, evaluation harnesses, and CSV export.
 
-- Hybrid local/cloud model routing to reduce unnecessary API spend.
-- Human-in-the-loop checkpoints for analyst-guided review.
-- Structured explainability through evidence cards and signal breakdowns.
-- Confidence scoring and priority ranking for function triage.
-- Multi-chain benchmark coverage across real exploit transactions.
-- Dataset and evaluation export paths for reproducible experiments.
+## Pipeline Output
 
-## What It Produces
+FaultSeeker++ emits structured forensic data at the transaction level:
 
-At the transaction level, FaultSeeker++ now emits structured forensic outputs instead of only raw heuristics.
-That includes calibrated reentrancy analysis, explainable signals, and bounded ranking components.
-
-```python
+```json
 {
     "reentrancy": {
         "score": 0.675,
-        "detected": True,
+        "detected": true,
         "tier": "POSSIBLE_REENTRANCY",
         "signals": {
-            "cross_function_reentry": True,
-            "reentry_before_return": True,
-            "state_slot_reentry": False
-        },
-        "context": {
-            "fallback_mode": True,
-            "storage_trace_available": False
+            "cross_function_reentry": true,
+            "reentry_before_return": true,
+            "state_slot_reentry": false
         }
     },
     "priority": {
@@ -76,49 +62,61 @@ That includes calibrated reentrancy analysis, explainable signals, and bounded r
 }
 ```
 
-This makes the system useful not just for detection, but also for:
-
-- analyst-facing triage
-- benchmark scoring
-- dataset generation
-- ranking experiments
-- downstream model training
-
-## Core Capabilities
-
-- Transaction replay and trace recovery with Foundry and trace-capable RPC providers.
-- Deterministic signal extraction before any LLM reasoning.
-- State-first reentrancy detection with fallback logic for public RPC environments.
-- Proxy-safe delegatecall handling and cross-function reentrancy support.
-- Function ranking and multi-agent function analysis.
-- Evidence-card generation and confidence scoring.
-- Benchmark evaluation, CSV export, and publication chart generation.
+Useful for analyst triage, benchmark scoring, dataset generation, ranking experiments, and downstream model training.
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    A[Transaction hash + chain] --> B[Replay and trace collection]
-    B --> C[Trace analysis and fund-flow analysis]
-    C --> D[Deterministic signal extraction]
-    D --> E[Rule-based classification]
-    E --> F[Priority scoring and explanation]
-    F --> G[Function ranking]
-    G --> H[LLM-assisted function investigation]
-    H --> I[Evidence cards and final outputs]
-    F --> J[Benchmark rows and evaluation reports]
+```
+  ┌─────────────────────────────────────────────────────────────┐
+  │                    Transaction Hash + Chain                  │
+  └──────────────────────────┬──────────────────────────────────┘
+                             │
+  ┌──────────────────────────▼──────────────────────────────────┐
+  │           DATA COLLECTION                                    │
+  │   Replay · Trace parsing · Chain metadata · Contract source  │
+  │   HTML scraper → RPC fallback (dual-path)                    │
+  └──────────────────────────┬──────────────────────────────────┘
+                             │
+  ┌──────────────────────────▼──────────────────────────────────┐
+  │           FORENSICS ENGINE                                   │
+  │   Signal extraction · Classification · Reentrancy analysis   │
+  │   Storage-backed slot mutation · Proxy-safe delegatecall     │
+  └──────────────────────────┬──────────────────────────────────┘
+                             │
+  ┌──────────────────────────▼──────────────────────────────────┐
+  │           FUNCTION ANALYSIS                                  │
+  │   Priority scoring · Function ranking · LLM investigation    │
+  │   Evidence cards · Confidence scoring                        │
+  └──────────────────────────┬──────────────────────────────────┘
+                             │
+             ┌───────────────┴───────────────┐
+             │                               │
+  ┌──────────▼──────────┐    ┌───────────────▼───────────────┐
+  │   Forensic Report   │    │   Benchmark CSV + Charts      │
+  │   Evidence Cards     │    │   Evaluation Reports          │
+  └─────────────────────┘    └───────────────────────────────┘
 ```
 
-High-level pipeline layers:
+## Supported Networks
 
-- Data collection: transaction replay, trace parsing, chain metadata, contract download.
-- Forensics: trace analysis, address classification, deterministic signals, rule classification.
-- Function analysis: suspicious-function ranking, task decomposition, LLM investigation.
-- Evaluation: benchmark harnesses, CSV export, charts, cross-chain reports.
+| Chain | Explorer | Data Source | Status |
+|-------|----------|-------------|--------|
+| Ethereum | etherscan.io | HTML + RPC | ✅ |
+| BSC | bscscan.com | HTML | ✅ |
+| Polygon | polygonscan.com | HTML + RPC | ✅ |
+| Arbitrum | arbiscan.io | HTML | ✅ |
+| Optimism | optimistic.etherscan.io | HTML | ✅ |
+| Avalanche | snowtrace.io | RPC fallback | ✅ |
+| Base | basescan.org | HTML | ✅ |
+| Fantom | ftmscan.com | RPC fallback | ✅ |
+| Gnosis | gnosisscan.io | RPC fallback | ✅ |
+| zkSync Era | explorer.zksync.io | RPC fallback | ✅ |
+
+The dual-path architecture ensures every chain works reliably. When a block explorer blocks automated requests (Cloudflare WAF), the system falls back to direct JSON-RPC calls using `eth_getTransactionByHash`, `eth_getTransactionReceipt`, and `eth_getCode`.
 
 ## Repository Layout
 
-```text
+```
 faultseeker/
   core/                 pipeline orchestration, routing, confidence scoring
   data_collection/      replay, trace parsing, transaction metadata, contract download
@@ -128,112 +126,77 @@ faultseeker/
   utils/                RPC, explorer, parser, and agent utilities
 
 benchmark/              benchmark CSV, validation, signal evaluation harness
-tests/                  regression and integration tests
+tests/                  111 regression and integration tests
 paper/                  implementation paper skeleton
 reports/                generated evaluation outputs
 data/output/            single-run analysis artifacts
 ```
 
-## Requirements
+## Getting Started
 
-- Python 3.10 or newer
-- `pip`
-- Foundry `cast` available on `PATH` for the most reliable replay path
-- At least one configured cloud LLM key for full analysis flows
+### Requirements
+
+- Python 3.10+
+- Foundry `cast` on PATH (for the most reliable replay path)
+- At least one cloud LLM API key for full analysis flows
 - Trace-capable archive RPC access for production-quality replay
 
-Install dependencies:
+### Install
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Configuration
-
-Copy the template and fill in only what you actually need:
+### Configure
 
 ```bash
 cp .env.example .env
 ```
 
-Recommended minimum setup:
-
-- one cloud LLM key
-- one trace-capable RPC for the target chain
-- explorer API keys if you want verified source download
-
-Common environment variables:
+Fill in what you need. Minimum: one LLM key + one trace-capable RPC for the target chain.
 
 ```env
-# LLM providers
+# LLM providers (at least one required)
 OPENAI_API_KEY=
 GOOGLE_API_KEY=
-DASHSCOPE_API_KEY=
-XAI_API_KEY=
 ANTHROPIC_API_KEY=
 
-# Explorer APIs
+# Explorer APIs (optional, for verified source download)
 ETHERSCAN_API_KEY=
 BSCSCAN_API_KEY=
-ARBISCAN_API_KEY=
-OPTIMISM_API_KEY=
-BASESCAN_API_KEY=
-POLYGONSCAN_API_KEY=
-SNOWTRACE_API_KEY=
-ZKSYNC_API_KEY=
 
 # Trace-capable RPCs
-TENDERLY_ACCESS_KEY=
 ETH_RPC_URL=
 BSC_RPC_URL=
-ARBITRUM_RPC_URL=
-OPTIMISM_RPC_URL=
-BASE_RPC_URL=
-POLYGON_RPC_URL=
-AVALANCHE_RPC_URL=
-ZKSYNC_RPC_URL=
 ```
 
-Important RPC note:
+> `debug_traceTransaction` is not available on most free RPC endpoints. For Ethereum, Tenderly provides the most reliable trace access. Foundry replay works when RPC trace methods are restricted.
 
-- `debug_traceTransaction` is not available on many free public RPC endpoints.
-- For Ethereum, Tenderly is the easiest path for reliable trace access.
-- Ankr-based RPCs are used throughout the project templates.
-- Foundry replay remains useful when RPC trace methods are restricted.
-
-## Quick Start
-
-Analyze a single transaction:
+### Analyze a Transaction
 
 ```bash
+# Basic analysis
 python -m faultseeker -txn_hash 0xYOUR_TX_HASH -chain eth
-```
 
-Show explainability output:
-
-```bash
+# With explainability output
 python -m faultseeker -txn_hash 0xYOUR_TX_HASH -chain eth --explain
-```
 
-Use a transaction explorer link instead of hash + chain:
-
-```bash
+# Using a block explorer link directly
 python -m faultseeker -txn_link https://etherscan.io/tx/0xYOUR_TX_HASH
 ```
 
-Windows helper:
+## Benchmark & Evaluation
 
-```powershell
-.\run_faultseeker_auto.bat
+### Dataset
+
+246 real exploit transactions across 10 EVM chains (2021–2026), with 80+ vulnerability labels sourced from postmortems, incident writeups, and exploit repositories.
+
+```bash
+# Validate the benchmark dataset
+python benchmark/validate_dataset.py
 ```
 
-## Benchmark and Evaluation
-
-There are two distinct evaluation paths in the repository.
-
-### 1. End-to-End Benchmark Runner
-
-This is the high-level benchmark script used for sampled or full evaluation runs:
+### End-to-End Evaluation
 
 ```bash
 python run_benchmark_eval.py --limit 5
@@ -241,124 +204,66 @@ python run_benchmark_eval.py --chains eth arbitrum base --limit 10
 python run_benchmark_eval.py --full
 ```
 
-Outputs are written to `reports/eval/`:
+Results land in `reports/eval/` as JSON, CSV, and summary text files.
 
-- `eval_results_*.json`
-- `eval_results_*.csv`
-- `eval_summary_*.txt`
-
-### 2. Signal-Focused Evaluation Harness
-
-This runner is useful when you want to inspect deterministic signal quality directly:
+### Signal-Focused Evaluation
 
 ```bash
 python benchmark/run_eval.py --chain eth --limit 20 --save
 python benchmark/run_eval.py --signals-only --limit 50
 ```
 
-Outputs are written to `benchmark/eval_results/`.
+## Reentrancy Engine
 
-## Benchmark Dataset
+The reentrancy detector goes beyond simple repeated-address checks:
 
-The benchmark dataset is centered on real exploit transactions and currently covers eight benchmark chains:
+- **Storage-backed detection** — tracks SSTORE operations per contract, flags write-after-external-call patterns
+- **Fallback mode** — structural analysis when storage traces are unavailable (public RPCs)
+- **Proxy-safe** — normalizes delegatecall chains before analysis
+- **Cross-function support** — detects reentry across different function selectors
+- **Tiered output** — `CONFIRMED`, `POSSIBLE_REENTRANCY`, `WEAK_SIGNAL`, `NONE` with explainable signals
 
-- Ethereum
-- BSC
-- Arbitrum
-- Optimism
-- Base
-- Polygon
-- Avalanche
-- zkSync
+## Model Providers
 
-Headline dataset stats from the repository:
+Hybrid routing: simple tasks stay local, heavy reasoning escalates to cloud.
 
-- 246 exploit transactions
-- 2021 to 2026 coverage
-- 80+ vulnerability labels and variants
-- sources spanning postmortems, incident writeups, and exploit repositories
+| Provider | Use Case |
+|----------|----------|
+| Ollama (local) | Quick classification, low-stakes analysis |
+| OpenAI | Deep function investigation, complex reasoning |
+| Google Gemini | Alternative cloud path |
+| Anthropic | Function analysis, code review |
+| Alibaba Qwen (DashScope) | Alternative cloud path |
+| xAI Grok | Alternative cloud path |
 
-Validate the benchmark CSV:
-
-```bash
-python benchmark/validate_dataset.py
-```
-
-## Reentrancy Forensics
-
-One of the stronger parts of the current pipeline is the reentrancy engine.
-It no longer relies only on repeated addresses or repeated selectors.
-
-Implemented behavior includes:
-
-- storage-backed slot mutation detection
-- write-after-external-call checks
-- fallback structural detection when storage traces are unavailable
-- proxy-safe delegatecall normalization
-- cross-function reentrancy support
-- fallback/source-aware scoring and ranking
-- explainable `signals`, `context`, `tier`, and `priority` outputs
-
-This makes the reentrancy path useful in both:
-
-- rich tracing environments with opcode or storage data
-- restricted public-RPC environments where only call structure is available
-
-## Charts and Reports
-
-Generate publication-oriented charts:
+## Development
 
 ```bash
-python generate_charts.py
+# Full test suite (111 tests)
+python -m pytest tests -q
+
+# Specific test modules
+python -m pytest tests/test_reentrancy_state_signals.py -q
+python -m pytest tests/test_agent_security.py -q
+python -m pytest tests/test_pipeline_parse.py -q
+
+# Multi-chain data collection validation
+python test_chains.py
 ```
 
-Cross-chain comparative analysis:
+## Cross-Chain Analysis
 
 ```bash
 python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitrum
 ```
 
-## Supported Model Providers
-
-The repository is designed around a hybrid routing model.
-Simple tasks can stay local while heavier reasoning can escalate to a cloud model.
-
-Configured providers include:
-
-- Ollama
-- OpenAI
-- Google Gemini
-- Alibaba Qwen via DashScope
-- xAI Grok
-- Anthropic
-
-## Practical Notes
-
-- This is a research prototype, not a turnkey production monitoring service.
-- Trace quality depends heavily on RPC capability.
-- Free public nodes are often not sufficient for deep replay.
-- Some scripts are benchmark-oriented and some are analysis-oriented; use the right one for your workflow.
-- The benchmark chain set and the general utility layer are related but not identical in every module, so treat the benchmark scripts as the source of truth for evaluation coverage.
-
-## Development
-
-Run the regression suite:
+## Charts
 
 ```bash
-python -m pytest tests -q
-```
-
-Targeted examples:
-
-```bash
-python -m pytest tests/test_reentrancy_state_signals.py -q
-python -m pytest tests/test_reentrancy_eval_integration.py -q
-python -m pytest tests/test_pipeline_parse.py -q
+python generate_charts.py
 ```
 
 ## Citation
-
-If you use FaultSeeker++ in research, cite the accompanying implementation work once authorship and venue details are finalized:
 
 ```bibtex
 @article{faultseekerpp2026,
@@ -371,4 +276,4 @@ If you use FaultSeeker++ in research, cite the accompanying implementation work 
 
 ## License
 
-This project is released under the MIT License. See [LICENSE](LICENSE).
+Released under the [MIT License](LICENSE).
