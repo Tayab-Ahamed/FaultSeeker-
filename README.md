@@ -300,22 +300,6 @@ python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitru
 # Generate evaluation charts
 python generate_charts.py
 ```
-
----
-
-## 📖 Citation
-
-If you use FaultSeeker++ in your research, please cite:
-
-```bibtex
-@article{faultseekerpp2026,
-  title   = {FaultSeeker++: Enhancing AI-Powered Blockchain Transaction Fault Localization},
-  author  = {[Authors]},
-  journal = {[Venue]},
-  year    = {2026}
-}
-```
-
 ---
 
 ## 📄 License
