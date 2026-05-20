@@ -7,6 +7,8 @@ from faultseeker.forensics.trace_analyzer import TraceAnalyzer
 from faultseeker.forensics.address_classifier import AddressClassifier
 from faultseeker.forensics.result import ForensicsResult
 from faultseeker.forensics.signal_extractor import SignalExtractor
+from faultseeker.forensics.adaptive_controller import AdaptiveFailureAwareController
+from faultseeker.forensics.interaction_graph import TransactionInteractionGraph
 from faultseeker.forensics import rule_classifier
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
@@ -26,6 +28,7 @@ class ForensicsOrchestrator:
 
         self.txn_sequencer = TransactionSequencer()
         self.txn_info_collector = TransactionInfoCollector()
+        self.adaptive_controller = AdaptiveFailureAwareController()
         self.address_classifier = AddressClassifier(model, router=router)
         self.agent = build_routed_agent('', router=self.router, agent_role='AddressClassifier', system_prompt='') if router else build_agent('', model)
         
@@ -145,6 +148,15 @@ class ForensicsOrchestrator:
             txn_hash=txn_hash,
             chain=chain,
         ).run()
+        self.graph_reasoning = TransactionInteractionGraph.from_analysis(
+            self.txn_seq,
+            self.tx_analysis,
+            self.txn_info,
+        ).metrics()
+        self.signals.raw['graph_reasoning'] = self.graph_reasoning
+        self.signals.raw['trace_entropy'] = self._trace_entropy(self.tx_analysis.get('flatten_trace', []))
+        self.signals.raw['call_depth_max'] = self.graph_reasoning.get('node_count', 0)
+        self.signals.raw['token_flow_anomaly'] = self.graph_reasoning.get('anomaly_score', 0.0)
         rule_verdict, rule_conf, matched_rule, vuln_type_hint = rule_classifier.classify(self.signals)
         print(f"      → Rule verdict: {rule_classifier.describe(rule_verdict, rule_conf, matched_rule, vuln_type_hint)}")
         self.rule_verdict = rule_verdict
@@ -167,6 +179,16 @@ class ForensicsOrchestrator:
         self.check_function_name_with_hash()
         self.check_call_with_created_contract()
         self.get_other_functions_to_be_inspected()
+        self.adaptive_fallback = self.adaptive_controller.apply(
+            self.functions_to_be_inspected,
+            self.tx_analysis,
+            self.token_filter_result,
+        )
+        if self.adaptive_fallback.get('activated'):
+            print(
+                "      -> Adaptive fallback added "
+                f"{self.adaptive_fallback.get('functions_added', 0)} inspection candidates"
+            )
 
         # Create ForensicsResult
         result = ForensicsResult(
@@ -186,6 +208,7 @@ class ForensicsOrchestrator:
             balance_change=self.token_filter_result.get('balance_change', {}),
             address_memo=self.token_filter_result.get('address_memo', {}),
             functions_to_be_inspected=self.functions_to_be_inspected,
+            adaptive_fallback=self.adaptive_fallback,
             duration=time.time() - start,
             # ── Signal layer outputs ──────────────────────────────────────
             rule_verdict=self.rule_verdict,
@@ -200,3 +223,25 @@ class ForensicsOrchestrator:
 
         # Return forensics result along with data needed for Stage 2
         return result, self.txn_seq, self.txn_info
+
+    @staticmethod
+    def _trace_entropy(flatten_trace):
+        if not flatten_trace:
+            return 0.0
+        from collections import Counter
+        import math
+
+        labels = [
+            str(item.get('function') or item.get('call_type') or item.get('type') or 'unknown')
+            for item in flatten_trace
+            if isinstance(item, dict)
+        ]
+        if not labels:
+            return 0.0
+        total = len(labels)
+        entropy = 0.0
+        for count in Counter(labels).values():
+            probability = count / total
+            entropy -= probability * math.log2(probability)
+        max_entropy = math.log2(total) if total > 1 else 1.0
+        return round(entropy / max_entropy, 6) if max_entropy else 0.0

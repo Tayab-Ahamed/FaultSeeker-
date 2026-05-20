@@ -46,7 +46,6 @@ from faultseeker.forensics.result import (
 CSV_PATH    = os.path.join(_HERE, 'benchmark_classification_fixed.csv')
 CACHE_DIR   = os.path.join(_ROOT, 'data', 'cache', 'forensics')
 RESULTS_DIR = os.path.join(_HERE, 'eval_results')
-os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Vuln type normalisation - map ground-truth labels → canonical bucket
 _CANON = {
@@ -671,6 +670,7 @@ def main():
     _print_report(metrics)
 
     if args.save and results:
+        os.makedirs(RESULTS_DIR, exist_ok=True)
         ts = time.strftime('%Y%m%d_%H%M%S')
         dataset_rows = [build_dataset_row(result) for result in results]
 

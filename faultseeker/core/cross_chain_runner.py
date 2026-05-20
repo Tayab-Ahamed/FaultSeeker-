@@ -188,18 +188,35 @@ class CrossChainAnalyzer:
         """Extract a representative confidence score from a pipeline result."""
         if not result:
             return 0.0
-        pvf = result.get("function_analysis", {}).get("potentially_vulnerable_functions", {})
-        if not pvf:
-            return 0.0
+
         scores = []
-        for v in pvf.values():
+        for item in result.get("scored_functions", []) or []:
+            if not isinstance(item, dict):
+                continue
+            confidence = item.get("confidence", {})
+            if isinstance(confidence, dict) and confidence.get("overall") is not None:
+                scores.append(float(confidence["overall"]))
+            elif item.get("confidence_score") is not None:
+                scores.append(float(item["confidence_score"]))
+        if scores:
+            return round(sum(scores) / len(scores), 3)
+
+        pvf = result.get("potentially_vulnerable_functions")
+        if pvf is None:
+            pvf = result.get("function_analysis", {}).get("potentially_vulnerable_functions", {})
+        if not pvf:
+            return float(result.get("priority_score", 0.0) or 0.0)
+
+        scores = []
+        values = pvf.values() if isinstance(pvf, dict) else pvf
+        for v in values:
             if isinstance(v, dict):
                 cs = v.get("confidence_score", [])
                 if isinstance(cs, list):
                     scores.extend([float(x) for x in cs if x])
                 elif cs:
                     scores.append(float(cs))
-        return round(sum(scores) / len(scores), 3) if scores else 0.0
+        return round(sum(scores) / len(scores), 3) if scores else float(result.get("priority_score", 0.0) or 0.0)
 
     def run(self, csv_path: str, chains: Optional[List[str]] = None,
             limit: Optional[int] = None) -> Dict:

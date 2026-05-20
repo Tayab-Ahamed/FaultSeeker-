@@ -181,6 +181,7 @@ class ForensicsResult:
     matched_rule: str = ''                   # e.g. 'flash_loan_profit'
     vuln_type_hint: str = ''                 # e.g. 'Flash Loan Attack'
     signals: Dict[str, Any] = field(default_factory=dict)   # raw signal dict
+    adaptive_fallback: Dict[str, Any] = field(default_factory=dict)
 
     # Metadata
     duration: Optional[float] = None
@@ -283,7 +284,8 @@ class ForensicsResult:
             'function_analysis': {
                 'functions_to_inspect': self.functions_to_be_inspected,
                 'repeated_patterns': self.repeated_patterns,
-                'calls_with_created_contracts': self.address_calls_with_created_contract
+                'calls_with_created_contracts': self.address_calls_with_created_contract,
+                'adaptive_fallback': self.adaptive_fallback
             },
 
             # ===== Address Classification =====
@@ -408,6 +410,7 @@ class ForensicsResult:
             matched_rule=classification.get('matched_rule', ''),
             vuln_type_hint=classification.get('vuln_type_hint', ''),
             signals=classification.get('signals', {}),
+            adaptive_fallback=func.get('adaptive_fallback', {}),
         )
 
     @classmethod

@@ -1,150 +1,151 @@
-# Benchmark Classification — FaultSeeker++
+# FaultSeeker++ Benchmark
 
-## Overview
+This directory contains the verified exploit benchmark, public-source importers, staged external data, and validation scripts used for research evaluation.
 
-This benchmark dataset supports the **FaultSeeker++** research framework for AI-powered blockchain transaction fault localization. It has been expanded from the original FaultSeeker baseline to cover **8 EVM-compatible chains** with transactions spanning **2023–2026**.
+## Verified Dataset
 
-| Metric | Original | **Expanded (v2)** |
-|--------|----------|-------------------|
-| Total Transactions | 115 | **~246** |
-| Chains Covered | 2 (ETH, BSC) | **8 (ETH, BSC, Arbitrum, Optimism, Base, Polygon, Avalanche, zkSync)** |
-| Year Range | 2021–2023 | **2021–2026** |
-| Unique Vuln Types | 65 | **80+** |
+| Metric | Current value |
+|---|---:|
+| Verified exploit rows | 246 |
+| Unique transactions | 246 |
+| Covered EVM chains | 8 |
+| Target exploit rows for TDSC-grade claims | 1000+ |
+| Minimum benign false-positive rows | 5000 staged and validated |
+| Preferred benign false-positive rows | 10000 |
 
----
+The verified benchmark lives in:
 
-## Chain Distribution
-
-| Chain | Entries | Notable Anchors |
-|-------|---------|-----------------|
-| **Ethereum (ETH)** | ~135 | Penpie reentrancy ($27M), UwuLend oracle ($19M), Radiant precision ($4.5M), ResupplyFi inflation ($9.6M), SIR.trading storage collision ($355K), BalancerV2 precision ($120M), GMX reentrancy ($41M) |
-| **BSC** | ~25 | FourMeme logic flaw ($183K), MARA price manip, Bankroll ($234K) |
-| **Arbitrum** | ~15 | GMX V1 reentrancy ($41M, `0x03182...`), Radiant Capital rounding (`0x1ce7e...`), DeltaPrime input validation |
-| **Optimism** | ~15 | ResupplyFi bypass, multiple flash loan + access control cases |
-| **Base** | ~15 | CompoundFork flash loan (`0x6ab5b...`), oracle + reentrancy cases |
-| **Polygon** | ~11 | 0VIX oracle flash loan ($2M, `0x10f2c...`), GAMEE access control |
-| **Avalanche** | ~8 | Platypus Finance logic flaw ($8.5M, `0x1266a...`), DeltaPrime ($12.9K) |
-| **zkSync** | ~5 | EraLend read-only reentrancy ($3.4M), zkSync airdrop access control ($5M), Venus donation attack ($717K) |
-
----
-
-## Year Coverage
-
-| Year | Entries | Source |
-|------|---------|--------|
-| 2021–2022 | ~45 | Original FaultSeeker baseline |
-| 2023 | ~70 | Original baseline + DeFiHackLabs 2023 |
-| 2024 | ~81 | DeFiHackLabs 2024 README (ETH, BSC, Arbitrum, Base, Avalanche) |
-| 2025–2026 | ~50 | DeFiHackLabs 2025 README + PeckShield/BlockSec/SlowMist verified |
-
----
-
-## Classification Frameworks
-
-### 1. SWC Registry (Smart Contract Weakness Classification)
-- **Version**: SWC-100 through SWC-136
-- **Reference**: https://swcregistry.io/
-
-### 2. DASP Top 10 (Decentralized Application Security Project)
-- **Version**: 2018
-- **Reference**: https://dasp.co/
-
----
-
-## Classification Statistics (v2 Expanded)
-
-```
-Total Transactions Analyzed : ~246
-Unique Vulnerability Types  : 80+
-Chains Covered              : 8
-Frameworks Used             : 2 (SWC Registry, DASP Top 10)
+```text
+benchmark/benchmark_classification_fixed.csv
+benchmark/ground_truth/
 ```
 
-### Top Vulnerability Types
+Do not merge staged imports into the verified benchmark unless each row has a verified transaction hash, chain, label, source URL, and validation status.
 
-| Rank | Vulnerability Type | Count (approx.) |
-|------|--------------------|-----------------|
-| 1 | Price Manipulation / Oracle | ~48 |
-| 2 | Access Control | ~38 |
-| 3 | Business Logic Flaw | ~35 |
-| 4 | Reentrancy | ~28 |
-| 5 | Flash Loan Attack | ~26 |
-| 6 | Arithmetic Issues (precision, overflow) | ~24 |
-| 7 | Rug Pull | ~15 |
-| 8 | Logic Flaw | ~14 |
-| 9 | Incorrect Input Validation | ~10 |
-| 10 | Donation / Inflation Attack | ~6 |
-
-### SWC Registry Coverage (v2)
-
-```
-Total SWC Categories        : 36
-Categories with Entries     : 14
-Coverage Rate               : 38.9%
-```
-
-Top SWC Categories:
-1. **SWC-105** (Unprotected Ether Withdrawal): ~38 entries
-2. **SWC-107** (Reentrancy): ~28 entries
-3. **SWC-123** (Requirement Violation / Logic): ~35 entries
-4. **SWC-101** (Integer Overflow/Underflow): ~24 entries
-5. **SWC-114** (Transaction Order Dependence): ~4 entries
-6. **SWC-124** (Write to Arbitrary Storage): ~4 entries
-
-### DASP Top 10 Coverage (v2)
-
-```
-Total DASP Categories       : 10
-Categories with Entries     : 7
-Coverage Rate               : 70.0%
-```
-
-Top DASP Categories:
-1. **Unknown Unknowns** (Logic Issues): ~35 entries
-2. **Access Control**: ~38 entries
-3. **Arithmetic Issues**: ~24 entries
-4. **Reentrancy**: ~28 entries
-5. **Front-Running**: ~4 entries
-
----
-
-## Complexity Distribution
-
-| Complexity Class | Description | Approx. Count |
-|-----------------|-------------|---------------|
-| Simple | ≤5 functions, ≤3 suspicious | ~45 |
-| Moderate | 6–30 functions, 3–6 suspicious | ~110 |
-| Complex | 31–100 functions, 6–10 suspicious | ~72 |
-| Exceptionally Complex | 100+ functions, 10+ suspicious | ~19 |
-
----
-
-## Key Sources
-
-| Source | URL |
-|--------|-----|
-| DeFiHackLabs 2024 | https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/past/2024/README.md |
-| DeFiHackLabs 2025 | https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/past/2025/README.md |
-| BlockSec Phalcon | https://phalcon.blocksec.com/explorer/security-incidents |
-| PeckShield | https://x.com/peckshield |
-| SlowMist | https://x.com/SlowMist_Team |
-| CertiK | https://x.com/CertiKAlert |
-| TenArmor | https://x.com/TenArmorAlert |
-| Rekt News | https://rekt.news |
-
----
-
-## Validation
-
-Run the validation script to verify dataset integrity:
+## Validate The Verified Benchmark
 
 ```bash
-cd benchmark
-python validate_dataset.py
+python benchmark/validate_dataset.py
 ```
 
-Expected output: **~246 entries, 0 duplicates, 8 chains**.
+Expected current result:
 
----
+```text
+246 entries
+0 duplicate hashes
+8 chains
+```
 
-*Last updated: April 2026 — FaultSeeker++ v2 Dataset Expansion (Gap 7)*
+## Public Exploit Expansion
+
+### DeFiHackLabs
+
+```bash
+python benchmark/import_public_incidents.py --output benchmark/imported/defihacklabs_incidents.full.csv
+
+python benchmark/validate_imported_incidents.py --imported benchmark/imported/defihacklabs_incidents.full.csv --output benchmark/imported/defihacklabs_validation_manifest.full.csv --summary-output benchmark/imported/defihacklabs_validation_summary.full.json
+
+python benchmark/build_candidate_exploit_expansion.py --manifest benchmark/imported/defihacklabs_validation_manifest.full.csv --output benchmark/imported/defihacklabs_candidate_expansion.csv --summary-output benchmark/imported/defihacklabs_candidate_expansion_summary.json
+```
+
+Current staged status:
+
+- 241 imported DeFiHackLabs incident rows.
+- 215 rows include transaction hashes.
+- 62 overlap existing verified benchmark rows.
+- 153 incident rows need manual/RPC review.
+- 293 one-row-per-transaction candidates are staged.
+- Best-case verified rows after all current candidates are reviewed and accepted: 539.
+- Remaining rows needed after that best case: 461.
+
+### DeFiLlama Hacks
+
+```bash
+python benchmark/import_defillama_hacks.py --output benchmark/imported/defillama_hacks.full.csv
+```
+
+This source is incident-level metadata. Most rows do not expose canonical transaction hashes, so they are useful for triage and longitudinal metadata, not direct benchmark merge.
+
+### Rug-Pull Contract Incidents
+
+```bash
+python benchmark/import_rugpull_contracts.py --output benchmark/imported/rugpull_contract_incidents.csv --summary-output benchmark/imported/rugpull_contract_incidents_summary.json
+```
+
+This source provides contract-level rug-pull incidents. Rows must be resolved to exploit transaction hashes before they can become transaction-level benchmark rows.
+
+Current staged status:
+
+- 2,360 contract incident rows.
+- 2,290 Ethereum rows and 70 BSC rows.
+- 0 transaction hashes; all rows remain transaction-hash unresolved.
+
+## Benign False-Positive Dataset
+
+The Hugging Face Ethereum activity importer stages non-scam-address transaction candidates:
+
+```bash
+python benchmark/import_hf_ethereum_activity.py --target-rows 5000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
+
+python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_validation.json
+```
+
+Notes:
+
+- Current staged rows: 5,000.
+- Duplicate transaction hashes: 0.
+- Required fields: complete.
+- The labels are address-level scam/non-scam labels, not exploit transaction labels.
+- The output is appropriate for false-positive stress testing after spot checks.
+- The importer needs `zstandard>=0.22.0` to decompress the upstream label file.
+- Hugging Face Dataset Viewer may rate-limit large pulls; rerun if HTTP 429 occurs.
+
+## Readiness Report
+
+```bash
+python benchmark/research_readiness_report.py --output benchmark/research_readiness_report.json
+```
+
+The report summarizes:
+
+- Verified exploit coverage.
+- Remaining exploit and benign row gaps.
+- Public import validation state.
+- Candidate expansion queue size.
+- Incident-level sources that still need transaction hash resolution.
+- Research artifact availability.
+
+## Evaluation
+
+```bash
+python benchmark/run_eval.py --chain eth --limit 5
+python benchmark/run_eval.py --chain eth --limit 20 --save
+python benchmark/run_eval.py --signals-only --limit 50
+```
+
+Saved evaluation outputs are generated under `benchmark/eval_results/` only when `--save` is used.
+
+## Files
+
+| File or folder | Purpose |
+|---|---|
+| `benchmark_classification_fixed.csv` | Verified transaction-level exploit benchmark |
+| `benchmark_classification.csv` | Original/raw CSV retained for provenance |
+| `ground_truth/` | Per-transaction ground-truth JSON files |
+| `imported/` | Staged external public-source data and summaries |
+| `dataset_sources.json` | Registered public exploit and benign data sources |
+| `run_eval.py` | Evaluation runner |
+| `validate_dataset.py` | Verified benchmark integrity check |
+| `validate_imported_incidents.py` | Public exploit import validation manifest |
+| `build_candidate_exploit_expansion.py` | One-row-per-transaction candidate expansion queue |
+| `validate_benign_dataset.py` | Benign dataset schema/duplicate/size validator |
+| `research_readiness_report.py` | TDSC readiness summary |
+| `fix_csv.py` | One-time historical CSV repair script, kept for provenance |
+
+## Cleanup-Safe Generated Files
+
+These can be deleted and regenerated:
+
+- `benchmark/research_readiness_report.local.json`
+- `benchmark/eval_results/`
+- Python `__pycache__/` folders

@@ -117,47 +117,6 @@ class ContractDownloader:
             return []
         return data.get('result', [])
 
-        if not data or data.get('status') != '1' or not data.get('result'):
-            logging.warning(f'No source for {address}[{chain}]: {data.get("message") if data else "request failed"}')
-            return
-
-        result = data['result'][0]
-        source_code = result.get('SourceCode', '')
-        contract_name = result.get('ContractName', 'Contract') or 'Contract'
-
-        if not source_code:
-            return
-
-        # Handle multi-file source (JSON format wrapped in {{ }})
-        if source_code.startswith('{{'):
-            try:
-                inner = json.loads(source_code[1:-1])
-                sources = inner.get('sources', {})
-                for path, content in sources.items():
-                    safe_name = os.path.basename(path.replace('/', '_'))
-                    impl_dir = os.path.join(output_dir, 'Implementation')
-                    os.makedirs(impl_dir, exist_ok=True)
-                    with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
-                        f.write(content.get('content', ''))
-                return
-            except Exception:
-                pass
-
-        # Single file source
-        impl_dir = os.path.join(output_dir, 'Implementation')
-        os.makedirs(impl_dir, exist_ok=True)
-        out_file = os.path.join(impl_dir, f'{contract_name}.sol')
-        with open(out_file, 'w', encoding='utf-8') as f:
-            f.write(source_code)
-        logging.info(f'Downloaded {address}[{chain}] -> {out_file}')
-
-    @staticmethod
-    def get_abi(chain: str, address: str) -> list | None:
-        """
-        Fetch the ABI for a verified contract from the block explorer.
-        Returns a parsed list (JSON), or None if unavailable.
-        """
-
 
 
     def process_log(chain, address, output_root):

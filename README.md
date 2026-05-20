@@ -10,7 +10,8 @@
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 [![Chains](https://img.shields.io/badge/Chains-10%20EVM-f97316?style=flat-square&logo=ethereum&logoColor=white)](#-supported-networks)
 [![Dataset](https://img.shields.io/badge/Dataset-246%20Exploits-dc2626?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
-[![Tests](https://img.shields.io/badge/Tests-111%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
+[![Benign](https://img.shields.io/badge/Benign-5000%20Validated-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
+[![Tests](https://img.shields.io/badge/Tests-119%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
 [![Status](https://img.shields.io/badge/Status-Research%20Active-6366f1?style=flat-square)](.)
 
 <br/>
@@ -21,7 +22,7 @@
 
 ---
 
-[**Quick Start**](#-getting-started) · [**Architecture**](#-architecture) · [**Networks**](#-supported-networks) · [**Benchmark**](#-benchmark--evaluation) · [**Citation**](#-citation)
+[**Quick Start**](#-getting-started) · [**Architecture**](#-architecture) · [**Networks**](#-supported-networks) · [**Benchmark**](#-benchmark--evaluation) · [**Research**](#-research-readiness) · [**Citation**](#-citation)
 
 </div>
 
@@ -29,16 +30,17 @@
 
 ## Why FaultSeeker++?
 
-Most exploit analysis tools stop at detection. FaultSeeker++ goes further — from raw transaction hash to a fully structured, ranked, and explainable forensic report.
+Most exploit analysis tools stop at detection. FaultSeeker++ goes further — from raw transaction hash to a structured, ranked, and explainable forensic report.
 
 | Capability | What it means |
 |---|---|
-| 🔀 **Dual-path data collection** | HTML scraping with automatic JSON-RPC fallback when block explorers are WAF-protected. No chain gets left behind. |
-| 🧠 **Hybrid model routing** | Simple tasks stay on local models; heavy reasoning escalates to cloud providers. You control API spend. |
-| 🧑‍💻 **Human-in-the-loop checkpoints** | The analyst stays in the loop at critical decision points — no blind trust in model output. |
-| 📊 **Structured evidence** | Every finding includes signal breakdowns, confidence scores, and priority rankings — not just a boolean "vulnerable." |
-| 🌐 **10-chain coverage** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. All validated. |
-| 🧪 **Reproducible benchmarks** | 246 real exploit transactions with ground-truth labels, evaluation harnesses, and CSV export. |
+| 🔀 **Dual-path data collection** | Explorer scraping with JSON-RPC fallback when block explorers are WAF-protected or incomplete. |
+| 🧠 **Hybrid model routing** | Simple tasks stay on local models; heavier reasoning can escalate to cloud providers. |
+| 🧑‍💻 **Human-in-the-loop checkpoints** | The analyst stays in the loop at critical decision points instead of blindly trusting model output. |
+| 📊 **Structured evidence** | Findings include signal breakdowns, confidence scores, graph context, and priority rankings. |
+| 🌐 **10-chain coverage** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. |
+| 🧪 **Reproducible benchmarks** | 246 verified exploit transactions, 5,000 validated benign candidates, staged public imports, and validation scripts. |
+| 🔬 **Research tooling** | Adaptive fallback, graph reasoning, confidence calibration, adversarial helpers, and statistical evaluation utilities. |
 
 ---
 
@@ -61,8 +63,8 @@ flowchart TD
     subgraph C [" 🔬 FORENSICS ENGINE "]
         C1[Signal Extraction — Zero LLM]
         C2[Vulnerability Classification]
-        C3[Reentrancy Analysis]
-        C4[Storage Slot Mutation Tracking]
+        C3[Adaptive Failure-Aware Controller]
+        C4[Transaction Interaction Graph]
         C5[Proxy-safe Delegatecall Resolution]
     end
 
@@ -73,7 +75,7 @@ flowchart TD
         D2[Function Ranking]
         D3[Multi-Agent LLM Investigation]
         D4[Evidence Card Generation]
-        D5[Confidence Scoring]
+        D5[Confidence Calibration]
     end
 
     D --> E
@@ -129,17 +131,17 @@ FaultSeeker++ emits **structured forensic data** at the transaction level, ready
 | Chain | Explorer | Data Source | Status |
 |---|---|---|:---:|
 | **Ethereum** | etherscan.io | HTML + RPC | ✅ |
-| **BSC** | bscscan.com | HTML | ✅ |
+| **BSC** | bscscan.com | HTML + RPC | ✅ |
 | **Polygon** | polygonscan.com | HTML + RPC | ✅ |
-| **Arbitrum** | arbiscan.io | HTML | ✅ |
-| **Optimism** | optimistic.etherscan.io | HTML | ✅ |
+| **Arbitrum** | arbiscan.io | HTML + RPC | ✅ |
+| **Optimism** | optimistic.etherscan.io | HTML + RPC | ✅ |
 | **Avalanche** | snowtrace.io | RPC fallback | ✅ |
-| **Base** | basescan.org | HTML | ✅ |
+| **Base** | basescan.org | HTML + RPC | ✅ |
 | **Fantom** | ftmscan.com | RPC fallback | ✅ |
 | **Gnosis** | gnosisscan.io | RPC fallback | ✅ |
 | **zkSync Era** | explorer.zksync.io | RPC fallback | ✅ |
 
-> The dual-path architecture ensures every chain works reliably. When a block explorer blocks automated requests (Cloudflare WAF), the system falls back to direct JSON-RPC calls — `eth_getTransactionByHash`, `eth_getTransactionReceipt`, and `eth_getCode`.
+> When a block explorer blocks automated requests or omits needed data, the system falls back to direct JSON-RPC calls such as `eth_getTransactionByHash`, `eth_getTransactionReceipt`, and `eth_getCode`.
 
 ---
 
@@ -158,6 +160,12 @@ FaultSeeker++ emits **structured forensic data** at the transaction level, ready
 pip install -r requirements.txt
 ```
 
+Optional for the Hugging Face benign activity importer:
+
+```bash
+pip install "zstandard>=0.22.0"
+```
+
 ### Configure
 
 ```bash
@@ -173,17 +181,17 @@ GOOGLE_API_KEY=AIza...
 ANTHROPIC_API_KEY=sk-ant-...
 XAI_API_KEY=xai-...
 
-# ── Explorer APIs (optional, for verified source download) ───────
+# ── Explorer APIs (optional, for verified source download) ──────
 ETHERSCAN_API_KEY=
 BSCSCAN_API_KEY=
 
-# ── Trace-capable RPCs (Tenderly free tier recommended for ETH) ──
+# ── Trace-capable RPCs ──────────────────────────────────────────
+ETH_RPC_URL=https://...
+BSC_RPC_URL=https://...
 TENDERLY_ACCESS_KEY=YOUR_TENDERLY_ACCESS_KEY_HERE
-ETH_RPC_URL=https://rpc.ankr.com/eth/YOUR_ANKR_KEY
-BSC_RPC_URL=https://rpc.ankr.com/bsc/YOUR_ANKR_KEY
 ```
 
-> **Note:** `debug_traceTransaction` is not available on most free RPC endpoints. For Ethereum, [Tenderly](https://tenderly.co) provides the most reliable trace access. Foundry replay works when RPC trace methods are restricted.
+> **Note:** `debug_traceTransaction` is not available on most free RPC endpoints. For Ethereum, Tenderly or another trace-capable archive provider is usually the most reliable path.
 
 ---
 
@@ -200,34 +208,64 @@ python -m faultseeker -txn_hash 0xYOUR_TX_HASH -chain eth --explain
 python -m faultseeker -txn_link https://etherscan.io/tx/0xYOUR_TX_HASH
 ```
 
+Cross-chain batch analysis:
+
+```bash
+python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitrum
+```
+
 ---
 
 ## 🧪 Benchmark & Evaluation
 
 ### Dataset
 
-**246 real exploit transactions** across 10 EVM chains (2021–2026), with **80+ vulnerability labels** sourced from postmortems, incident writeups, and exploit repositories.
+**246 verified exploit transactions** across 8 currently represented EVM chains, with **80+ vulnerability labels** sourced from postmortems, incident writeups, and exploit repositories.
+
+Additional staged data:
+
+- **293** DeFiHackLabs transaction candidates for manual/RPC adjudication.
+- **5,000** Hugging Face Ethereum non-scam-address benign transaction candidates, schema-validated with zero duplicate hashes.
+- **2,360** rug-pull contract incident rows staged as transaction-hash-unresolved incident metadata.
 
 ```bash
-# Validate the benchmark dataset
+# Validate the verified exploit benchmark
 python benchmark/validate_dataset.py
+
+# Validate the staged benign false-positive dataset
+python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv
 ```
 
 ### End-to-End Evaluation
 
 ```bash
-python run_benchmark_eval.py --limit 5
-python run_benchmark_eval.py --chains eth arbitrum base --limit 10
-python run_benchmark_eval.py --full
-```
-
-Results land in `reports/eval/` as JSON, CSV, and summary text files.
-
-### Signal-Focused Evaluation
-
-```bash
+python benchmark/run_eval.py --chain eth --limit 5
 python benchmark/run_eval.py --chain eth --limit 20 --save
 python benchmark/run_eval.py --signals-only --limit 50
+```
+
+Saved evaluation outputs are generated under `benchmark/eval_results/` only when `--save` is used.
+
+### Public Dataset Imports
+
+```bash
+# Full DeFiHackLabs incident import
+python benchmark/import_public_incidents.py --output benchmark/imported/defihacklabs_incidents.full.csv
+
+# Validate imported incidents against the verified benchmark
+python benchmark/validate_imported_incidents.py --imported benchmark/imported/defihacklabs_incidents.full.csv --output benchmark/imported/defihacklabs_validation_manifest.full.csv --summary-output benchmark/imported/defihacklabs_validation_summary.full.json
+
+# Build one row per candidate transaction hash
+python benchmark/build_candidate_exploit_expansion.py --manifest benchmark/imported/defihacklabs_validation_manifest.full.csv
+
+# Import DeFiLlama incident metadata
+python benchmark/import_defillama_hacks.py --output benchmark/imported/defillama_hacks.full.csv
+
+# Import rug-pull contract incidents
+python benchmark/import_rugpull_contracts.py --output benchmark/imported/rugpull_contract_incidents.csv --summary-output benchmark/imported/rugpull_contract_incidents_summary.json
+
+# Import 5,000 benign Ethereum transaction candidates
+python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 5000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
 ```
 
 ---
@@ -238,17 +276,17 @@ The reentrancy detector goes beyond simple repeated-address checks:
 
 | Feature | Description |
 |---|---|
-| 🗄️ **Storage-backed detection** | Tracks `SSTORE` operations per contract; flags write-after-external-call patterns |
-| 🔄 **Fallback mode** | Structural analysis when storage traces are unavailable (public RPCs) |
-| 🔒 **Proxy-safe** | Normalizes delegatecall chains before analysis |
-| 🔀 **Cross-function support** | Detects reentry across different function selectors |
-| 📊 **Tiered output** | `CONFIRMED` · `POSSIBLE_REENTRANCY` · `WEAK_SIGNAL` · `NONE` — with explainable signals |
+| 🗄️ **Storage-backed detection** | Tracks `SSTORE` operations per contract and flags write-after-external-call patterns. |
+| 🔄 **Fallback mode** | Structural analysis when storage traces are unavailable on public RPCs. |
+| 🔒 **Proxy-safe** | Normalizes delegatecall chains before analysis. |
+| 🔀 **Cross-function support** | Detects reentry across different function selectors. |
+| 📊 **Tiered output** | `CONFIRMED` · `POSSIBLE_REENTRANCY` · `WEAK_SIGNAL` · `NONE`, with explainable signals. |
 
 ---
 
 ## 🤖 Model Providers
 
-Hybrid routing keeps costs low: simple classification stays local, deep reasoning escalates to cloud.
+Hybrid routing keeps costs low: simple classification stays local, deeper reasoning can escalate to cloud.
 
 | Provider | Tier | Use Case |
 |---|---|---|
@@ -261,22 +299,51 @@ Hybrid routing keeps costs low: simple classification stays local, deep reasonin
 
 ---
 
+## 🔬 Research Readiness
+
+Implemented research upgrades:
+
+- Adaptive failure-aware forensics controller.
+- Transaction interaction graph construction and graph-derived forensic metrics.
+- Learned confidence calibration utilities with ECE/Brier support.
+- Statistical validation helpers for bootstrap confidence intervals and paired tests.
+- Adversarial robustness helpers.
+- Chain semantic profiles.
+- Temporal multi-transaction correlation helpers.
+- Mempool monitoring scaffold.
+- Remediation suggestion scaffold.
+- Reproducible public-source import and validation scripts.
+
+Research paper asset:
+
+- `paper/blockchain_exploit_forensics_survey_ieee.tex` — self-contained IEEE double-column survey paper with embedded TikZ figure and embedded references.
+
+Current empirical status:
+
+- Verified exploit rows: **246 / 1000**.
+- Best current DeFiHackLabs candidate path: **246 verified + 293 staged candidates = 539 possible rows** after manual/RPC validation.
+- Remaining exploit rows after current candidates: **461**.
+- Benign minimum target: **5,000 / 5,000** staged and schema-validated.
+- Still required for final paper claims: baseline runs, final ablations, confidence intervals, adversarial degradation tables, and human explainability study.
+
+---
+
 ## 🗂 Repository Layout
 
-```
+```text
 faultseeker/
 ├── core/               # Pipeline orchestration, routing, confidence scoring
 ├── data_collection/    # Replay, trace parsing, transaction metadata, contract download
-├── forensics/          # Signal extraction, classification, forensic result schemas
+├── forensics/          # Signal extraction, adaptive controller, interaction graph, result schemas
 ├── function_analysis/  # Function ranking and multi-agent investigation
 ├── prompts/            # Model prompts and task templates
+├── research/           # Calibration, statistics, adversarial, temporal, mempool, remediation helpers
 └── utils/              # RPC, explorer, parser, and agent utilities
 
-benchmark/              # Benchmark CSV, validation, signal evaluation harness
-tests/                  # 111 regression and integration tests
-paper/                  # Implementation paper skeleton
-reports/                # Generated evaluation outputs
-data/output/            # Single-run analysis artifacts
+benchmark/              # Benchmark CSV, validation, staged public imports, and evaluation harness
+docs/research/          # Baseline, ablation, error taxonomy, benign acquisition, reproducibility docs
+paper/                  # Self-contained IEEE survey paper
+tests/                  # 119 regression and integration tests
 ```
 
 ---
@@ -284,22 +351,54 @@ data/output/            # Single-run analysis artifacts
 ## 🛠 Development
 
 ```bash
-# Full test suite (111 tests)
-python -m pytest tests -q
+# Full test suite
+python -m pytest tests -q -p no:cacheprovider
 
 # Specific test modules
-python -m pytest tests/test_reentrancy_state_signals.py -q
-python -m pytest tests/test_pipeline_parse.py -q
+python -m pytest tests/test_research_tooling_robustness.py -q
+python -m pytest tests/test_public_incident_import.py -q
+python -m pytest tests/test_adaptive_controller.py -q
 
-# Multi-chain data collection validation
-python test_chains.py
-
-# Cross-chain batch analysis
-python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitrum
+# Dataset validation
+python benchmark/validate_dataset.py
+python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv
 
 # Generate evaluation charts
 python generate_charts.py
 ```
+
+---
+
+## 📚 Documentation
+
+- [Threat model](THREAT_MODEL.md)
+- [Evaluation protocol](EVALUATION_PROTOCOL.md)
+- [TDSC roadmap](TDSC_ROADMAP.md)
+- [Benchmark details](benchmark/README.md)
+- [Research docs](docs/research/)
+
+---
+
+## 📌 Citation
+
+If you use FaultSeeker++ or the benchmark tooling in academic work, cite the repository and the accompanying survey draft:
+
+```bibtex
+@misc{faultseekerpp2026,
+  title        = {FaultSeeker++: Blockchain Transaction Forensics and Vulnerability Localization},
+  author       = {FaultSeeker++ Contributors},
+  year         = {2026},
+  howpublished = {\url{https://github.com/Tayab-Ahamed/FaultSeeker-.git}},
+  note         = {Research framework, benchmark tooling, and IEEE survey draft}
+}
+```
+
+Survey paper draft:
+
+```text
+paper/blockchain_exploit_forensics_survey_ieee.tex
+```
+
 ---
 
 ## 📄 License

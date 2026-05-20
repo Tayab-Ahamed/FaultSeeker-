@@ -10,7 +10,7 @@ setup(
     description="An AI-powered tool for automated fault localization in malicious blockchain transactions.",
     packages=find_packages(include=["faultseeker", "faultseeker.*"]),
     install_requires=dependencies,
-    python_requires=">=3.8",
+    python_requires=">=3.10",
     entry_points={
         "console_scripts": [
             "faultseeker=faultseeker.main:main_cli",
