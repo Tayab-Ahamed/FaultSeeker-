@@ -243,6 +243,9 @@ python benchmark/build_research_exploit_pool.py --output benchmark/research_expl
 
 # Import 10,000 benign Ethereum transaction candidates
 python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 10000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
+
+# Generate baseline, ablation, and adversarial robustness tables
+python benchmark/run_research_experiments.py
 ```
 
 ---
@@ -302,7 +305,8 @@ Current empirical status:
 - Exploit research pool: **1,059 / 1,000**, target met.
 - Source-backed candidate rows still requiring RPC/manual promotion: **828**.
 - Benign minimum target: **10,000 / 10,000** staged and schema-validated.
-- Still required for final paper claims: baseline runs, final ablations, confidence intervals, adversarial degradation tables, and human explainability study.
+- Reproducible local research tables: `reports/research_results/`.
+- Still required for final journal claims: external Slither/Mythril/TxSpector/GPTScan runs on a trace-capable environment and a human explainability study.
 
 ---
 
@@ -340,6 +344,7 @@ python -m pytest tests/test_adaptive_controller.py -q
 # Dataset validation
 python benchmark/validate_dataset.py
 python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv
+python benchmark/run_research_experiments.py
 
 # Generate evaluation charts
 python generate_charts.py
