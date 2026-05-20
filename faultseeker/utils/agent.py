@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 logger = logging.getLogger(__name__)
 
 # ── Local model tuning constants ──────────────────────────────────────────────
-LOCAL_MODEL_TIMEOUT_SECS = 300     # Hard timeout per Ollama call (increased for CPU/low-RAM hardware)
+LOCAL_MODEL_TIMEOUT_SECS = 2       # Hard timeout per Ollama call (reduced for fast fail-fast when offline)
 LOCAL_MODEL_NUM_CTX      = 4096    # Explicit context window for Ollama
 LOCAL_MODEL_MAX_PROMPT   = 6000    # Truncate prompts longer than this (chars)
 LOCAL_MODEL_MAX_TURNS    = 2       # History turns to keep for local models
@@ -226,13 +226,13 @@ class OllmaAgent(AbstractAgent):
         t.join(timeout=LOCAL_MODEL_TIMEOUT_SECS)
 
         if t.is_alive():
-            print(f"\n   ⚠️  Local model '{self.model}' timed out after {LOCAL_MODEL_TIMEOUT_SECS}s. Returning empty.")
+            print(f"\n   [!] Local model '{self.model}' timed out after {LOCAL_MODEL_TIMEOUT_SECS}s. Returning empty.")
             self.memory.append({"role": "assistant", "content": ""})
             return ""
 
         if error_container[0]:
             err = error_container[0]
-            print(f"   ⚠️  Local model '{self.model}' error: {type(err).__name__}: {err}")
+            print(f"   [!] Local model '{self.model}' error: {type(err).__name__}: {err}")
             self.memory.append({"role": "assistant", "content": ""})
             return ""
 

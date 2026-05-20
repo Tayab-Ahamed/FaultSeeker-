@@ -118,30 +118,30 @@ class ForensicsOrchestrator:
         start = time.time()
 
         # Collect transaction data using refactored methods
-        print("      → Collecting transaction sequence...")
+        print("      [+] Collecting transaction sequence...")
         self.txn_seq = self.txn_sequencer.run(txn_hash, chain)
 
-        print("      → Collecting transaction info...")
+        print("      [+] Collecting transaction info...")
         self.txn_info = self.txn_info_collector.run(txn_hash, chain)
 
         if not self.txn_seq:
-            print("      ✗ Failed to collect transaction sequence trace! Is RPC node online/archive?")
+            print("      [Error] Failed to collect transaction sequence trace! Is RPC node online/archive?")
             return None, None, None
             
         if not self.txn_info:
-            print("      ✗ Failed to collect transaction block info! Missing or invalid hash.")
+            print("      [Error] Failed to collect transaction block info! Missing or invalid hash.")
             return None, None, None
 
         # Analyze execution trace
-        print("      → Analyzing execution trace...")
+        print("      [+] Analyzing execution trace...")
         self.tx_analysis = TraceAnalyzer(self.txn_seq, self.txn_info, self.model).run()
 
         if not self.tx_analysis:
-            print("      ✗ Failed to analyze execution trace!")
+            print("      [Error] Failed to analyze execution trace!")
             return None, None, None
 
         # ── Pre-LLM signal extraction + rule classification ───────────────
-        print("      → Extracting deterministic signals...")
+        print("      [+] Extracting deterministic signals...")
         self.signals = SignalExtractor(
             txn_seq=self.txn_seq,
             tx_analysis=self.tx_analysis,
@@ -158,7 +158,7 @@ class ForensicsOrchestrator:
         self.signals.raw['call_depth_max'] = self.graph_reasoning.get('node_count', 0)
         self.signals.raw['token_flow_anomaly'] = self.graph_reasoning.get('anomaly_score', 0.0)
         rule_verdict, rule_conf, matched_rule, vuln_type_hint = rule_classifier.classify(self.signals)
-        print(f"      → Rule verdict: {rule_classifier.describe(rule_verdict, rule_conf, matched_rule, vuln_type_hint)}")
+        print(f"      [+] Rule verdict: {rule_classifier.describe(rule_verdict, rule_conf, matched_rule, vuln_type_hint)}")
         self.rule_verdict = rule_verdict
         self.rule_confidence = rule_conf
         self.matched_rule = matched_rule
@@ -170,11 +170,11 @@ class ForensicsOrchestrator:
         self.trace = [self.tx_analysis['trace']]
 
         # Classify addresses
-        print("      → Classifying addresses...")
+        print("      [+] Classifying addresses...")
         self.token_filter_result = self.address_classifier.run(txn_hash, chain)
 
         # Identify vulnerable functions
-        print("      → Identifying vulnerable functions...")
+        print("      [+] Identifying vulnerable functions...")
         self.check_flashloan_fallback_execution()
         self.check_function_name_with_hash()
         self.check_call_with_created_contract()
@@ -186,7 +186,7 @@ class ForensicsOrchestrator:
         )
         if self.adaptive_fallback.get('activated'):
             print(
-                "      -> Adaptive fallback added "
+                "      [+] Adaptive fallback added "
                 f"{self.adaptive_fallback.get('functions_added', 0)} inspection candidates"
             )
 

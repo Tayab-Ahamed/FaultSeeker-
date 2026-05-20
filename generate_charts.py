@@ -23,7 +23,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 # ── Load data ──────────────────────────────────────────────────────────
 chains, vulns, complexities, losses = [], [], [], []
 
-with open(CSV_PATH, encoding="utf-8") as f:
+with open(CSV_PATH, encoding="utf-8-sig") as f:
     for row in csv.DictReader(f):
         if not row.get("txn_hash","").strip():
             continue
@@ -188,18 +188,40 @@ print(f"Saved: {p4}")
 # Chart 5 — Loss USD Distribution (Log scale histogram)
 # ══════════════════════════════════════════════════════════════════════
 nonzero_losses = [l for l in losses if l > 0]
+is_gas = False
+if not nonzero_losses:
+    # Fallback to gas_cost if loss_usd is missing or zero
+    gas_costs = []
+    with open(CSV_PATH, encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            try:
+                gas_costs.append(float(row.get("gas_cost", "0")))
+            except:
+                pass
+    nonzero_losses = [g for g in gas_costs if g > 0]
+    is_gas = True
+
 fig, ax = plt.subplots(figsize=(10, 5))
 ax.hist(nonzero_losses, bins=40, color="#627EEA", edgecolor="#0f1117",
         linewidth=0.5, log=True, alpha=0.9)
 ax.set_xscale("log")
-ax.set_xlabel("Loss (USD) — Log Scale")
+
+if is_gas:
+    ax.set_xlabel("Gas Cost — Log Scale")
+    ax.set_title("Distribution of Execution Gas Costs Across Exploits")
+else:
+    ax.set_xlabel("Loss (USD) — Log Scale")
+    ax.set_title("Distribution of Financial Losses Across Exploits")
+
 ax.set_ylabel("Number of Transactions (Log)")
-ax.set_title("Distribution of Financial Losses Across Exploits")
 ax.grid(axis="both", alpha=0.4)
 # Add percentile lines
 for pct, label, col in [(50,"Median","#F3BA2F"),(90,"P90","#F44336")]:
     val = np.percentile(nonzero_losses, pct)
-    ax.axvline(val, color=col, linestyle="--", linewidth=1.5, label=f"{label}: ${val:,.0f}")
+    if is_gas:
+        ax.axvline(val, color=col, linestyle="--", linewidth=1.5, label=f"{label}: {val:,.0f} gas")
+    else:
+        ax.axvline(val, color=col, linestyle="--", linewidth=1.5, label=f"{label}: ${val:,.0f}")
 ax.legend(framealpha=0.3)
 plt.tight_layout()
 p5 = OUT_DIR / "chart5_loss_distribution.png"
@@ -210,7 +232,7 @@ print(f"Saved: {p5}")
 # ══════════════════════════════════════════════════════════════════════
 # Summary
 # ══════════════════════════════════════════════════════════════════════
-print(f"\n✅ All 5 charts saved to: {OUT_DIR.resolve()}")
+print(f"\n[OK] All 5 charts saved to: {OUT_DIR.resolve()}")
 print(f"   chart1_chain_distribution.png")
 print(f"   chart2_vuln_types.png")
 print(f"   chart3_complexity_donut.png")

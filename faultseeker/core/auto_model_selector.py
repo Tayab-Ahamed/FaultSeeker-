@@ -108,36 +108,36 @@ def interactive_model_selection() -> dict:
                      for env, mdl, lbl in CLOUD_PREFERENCE
                      if _has_cloud_key(env)]
 
-    print("\n" + "─" * 56)
-    print("  🔍 FaultSeeker++ — Model Selection")
-    print("─" * 56)
+    print("\n" + "-" * 56)
+    print("  FaultSeeker++ - Model Selection")
+    print("-" * 56)
 
-    # ── Show local models ──────────────────────────────────────────
+    # -- Show local models ------------------------------------------
     if local_models:
-        print("\n  📦 Local Ollama models installed:")
+        print("\n  [Local] Local Ollama models installed:")
         for i, m in enumerate(local_models, 1):
             print(f"     [{i}] {m}")
     else:
-        print("\n  ⚠️  No local Ollama models found.")
+        print("\n  [Warning] No local Ollama models found.")
         print("      Run:  ollama pull phi3:mini")
 
-    # ── Show cloud models ──────────────────────────────────────────
+    # -- Show cloud models ------------------------------------------
     if cloud_options:
-        print("\n  ☁️  Cloud APIs available:")
+        print("\n  [Cloud] Cloud APIs available:")
         for env, mdl, lbl in cloud_options:
-            print(f"     • {lbl}")
+            print(f"     - {lbl}")
     else:
-        print("\n  ⚠️  No cloud API keys found in .env")
+        print("\n  [Warning] No cloud API keys found in .env")
         print("      Add GOOGLE_API_KEY=<key> to .env for free cloud access.")
 
     # ── Build menu ─────────────────────────────────────────────────
-    print("\n  ─────────────────────────────────────────────────────")
+    print("\n  -----------------------------------------------------")
     options = []   # list of (display_label, result_dict)
 
     # Option: local-only (one entry per installed model)
     for m in local_models:
         options.append((
-            f"Local only  →  {m}",
+            f"Local only  ->  {m}",
             {
                 'cloud_model':        m,
                 'actual_cloud_model': None,
@@ -150,7 +150,7 @@ def interactive_model_selection() -> dict:
     # Option: cloud-only (one entry per available cloud)
     for env, mdl, lbl in cloud_options:
         options.append((
-            f"Cloud only  →  {lbl}",
+            f"Cloud only  ->  {lbl}",
             {
                 'cloud_model':        mdl,
                 'actual_cloud_model': mdl,
@@ -160,14 +160,14 @@ def interactive_model_selection() -> dict:
             }
         ))
 
-    # Option: hybrid (each local × each cloud)
+    # Option: hybrid (each local x each cloud)
     for m in local_models:
         for env, mdl, lbl in cloud_options:
             options.append((
-                f"Hybrid      →  {m}  +  {lbl}",
+                f"Hybrid      ->  {m}  +  {lbl}",
                 {
-                    'cloud_model':        m,       # Stage 1 (simple) → local
-                    'actual_cloud_model': mdl,     # Stage 2 Tier 3   → cloud
+                    'cloud_model':        m,       # Stage 1 (simple) -> local
+                    'actual_cloud_model': mdl,     # Stage 2 Tier 3   -> cloud
                     'local_model':        m,
                     'use_hybrid':         True,
                     'cloud_label':        lbl,
@@ -184,7 +184,7 @@ def interactive_model_selection() -> dict:
     print("  Select mode:")
     for i, (label, _) in enumerate(options, 1):
         print(f"     [{i}] {label}")
-    print("─" * 56)
+    print("-" * 56)
 
     # ── Read choice ────────────────────────────────────────────────
     while True:
@@ -193,15 +193,15 @@ def interactive_model_selection() -> dict:
             idx = int(raw) - 1
             if 0 <= idx < len(options):
                 label, cfg = options[idx]
-                print(f"\n  ✅ Selected: {label}\n")
-                logger.info(f"User selected: {label} → {cfg}")
+                print(f"\n  [OK] Selected: {label}\n")
+                logger.info(f"User selected: {label} -> {cfg}")
                 return cfg
             else:
-                print(f"  ⚠  Please enter a number between 1 and {len(options)}.")
+                print(f"  [!] Please enter a number between 1 and {len(options)}.")
         except (ValueError, EOFError):
             # Non-interactive environment (CI/pipe) → auto-pick best option
             best = options[0][1]
-            print(f"\n  ℹ  Non-interactive mode — auto-selecting: {options[0][0]}\n")
+            print(f"\n  [Info] Non-interactive mode -- auto-selecting: {options[0][0]}\n")
             return best
 
 
@@ -240,10 +240,10 @@ def auto_select_models(prefer_local: bool = True) -> dict:
 
 def print_model_selection(config: dict):
     """Print a user-friendly summary of the selected models."""
-    print("🤖 Model Configuration:")
+    print("[Model Configuration]:")
     if config['use_hybrid']:
-        print(f"   Stage 1  → {config['local_model']} (local Ollama)")
-        print(f"   Stage 2  → {config['actual_cloud_model']} ({config['cloud_label']})")
+        print(f"   Stage 1  -> {config['local_model']} (local Ollama)")
+        print(f"   Stage 2  -> {config['actual_cloud_model']} ({config['cloud_label']})")
         print("   Mode     : Hybrid")
     else:
         print(f"   Model    : {config['cloud_model']} ({config['cloud_label']})")

@@ -86,7 +86,7 @@ class FaultSeekerPipeline:
                 routing_strategy=getattr(self.config, 'routing_strategy', 'hybrid'),
             )
 
-        print("   → Initializing forensics orchestrator...")
+        print("   [+] Initializing forensics orchestrator...")
         from faultseeker.forensics.orchestrator import ForensicsOrchestrator
         from faultseeker.function_analysis.function_ranker import FunctionRanker
         from faultseeker.function_analysis.function_analyzer import FunctionAnalyzer
@@ -98,10 +98,10 @@ class FaultSeekerPipeline:
             router=self.router,
         )
 
-        print("   → Initializing function ranker...")
+        print("   [+] Initializing function ranker...")
         self.function_ranker = FunctionRanker()
 
-        print("   → Initializing function analyzer...")
+        print("   [+] Initializing function analyzer...")
         # Initialize Stage 2b: Function Analysis (pass router for intelligent routing)
         self.function_analyzer = FunctionAnalyzer(
             model=self.config.function_analysis_model,
@@ -142,8 +142,8 @@ class FaultSeekerPipeline:
         # Ensure agents are initialized
         self._initialize_agents()
 
-        print("\n🔬 [Stage 1] Transaction-Level Forensics")
-        print("   → Fetching transaction data from blockchain...")
+        print("\n[Stage 1] Transaction-Level Forensics")
+        print("   [+] Fetching transaction data from blockchain...")
 
         # Stage 1: Transaction-Level Forensics
         forensics_result, txn_seq, txn_info = self.forensics_orchestrator.run(txn_hash, chain)
@@ -151,7 +151,7 @@ class FaultSeekerPipeline:
         if not forensics_result:
             raise RuntimeError("Stage 1 (Forensics) failed to produce results")
 
-        print("   ✓ Forensics analysis completed")
+        print("   [OK] Forensics analysis completed")
 
         # Gap 8: Med-B - Trace Visualization (Visualizes trace tree and call types)
         try:
@@ -161,18 +161,18 @@ class FaultSeekerPipeline:
             viz_path = os.path.join(viz_dir, f"{txn_hash}_trace.png")
             self.forensics_orchestrator.txn_sequencer.save_visualization(viz_path)
             plt.close('all')
-            print(f"   ✓ Trace visualization saved to {viz_path}")
+            print(f"   [OK] Trace visualization saved to {viz_path}")
         except Exception as e:
-            print(f"   ! Note: Could not generate trace visualization: {str(e)}")
+            print(f"   [!] Note: Could not generate trace visualization: {str(e)}")
 
         # Gap 2: HITL Checkpoint 1 — Post-Forensics
         hitl = HumanInterface(enabled=getattr(self.config, 'human_in_loop', False))
         hitl_feedback_1 = hitl.checkpoint_post_forensics(forensics_result)
         if hitl_feedback_1.action == 'modify':
-            print("   📝 Analyst modifications recorded")
+            print("   [Analyst] Analyst modifications recorded")
 
-        print("\n🧩 [Stage 2] Task-Driven Function Analysis")
-        print("   → Ranking suspicious functions...")
+        print("\n[Stage 2] Task-Driven Function Analysis")
+        print("   [+] Ranking suspicious functions...")
 
         # Stage 2a: Function Ranking (fast, deterministic)
         tx_analysis = {
@@ -184,8 +184,8 @@ class FaultSeekerPipeline:
         }
         ranking_result = self.function_ranker.rank(forensics_result, tx_analysis)
 
-        print(f"   ✓ Ranking completed - {len(ranking_result.address_list)} addresses to analyze")
-        print("   → Analyzing vulnerable functions...")
+        print(f"   [OK] Ranking completed - {len(ranking_result.address_list)} addresses to analyze")
+        print("   [+] Analyzing vulnerable functions...")
 
         # Stage 2b: In-Depth Function Analysis (LLM-driven, uses ranking output)
         analysis_result = self.function_analyzer.run(forensics_result, txn_seq, txn_info, ranking_result)
@@ -193,14 +193,14 @@ class FaultSeekerPipeline:
         if not analysis_result:
             raise RuntimeError("Stage 2 (Function Analysis) failed to produce results")
 
-        print("   ✓ Function analysis completed")
+        print("   [OK] Function analysis completed")
 
         # Gap 3+4: Confidence scoring and evidence cards
         finalized_functions = analysis_result.get('finalized_vulnerable_functions', [])
         scored_functions = []
         evidence_cards = []
         if finalized_functions:
-            print("\n📊 [Stage 3] Confidence Scoring")
+            print("\n[Stage 3] Confidence Scoring")
             scorer = ConfidenceScorer()
             forensics_data = {
                 'repeated_patterns': forensics_result.repeated_patterns if hasattr(forensics_result, 'repeated_patterns') else [],
@@ -212,7 +212,7 @@ class FaultSeekerPipeline:
             for sf in scored_functions:
                 card = generate_evidence_card(sf, sf.get('confidence', {}))
                 evidence_cards.append(card)
-            print(f"   ✓ Scored {len(scored_functions)} functions")
+            print(f"   [OK] Scored {len(scored_functions)} functions")
 
         # Gap 2: HITL Checkpoint 2 — Vulnerability Review (after scoring)
         hitl_feedback_2 = hitl.checkpoint_vulnerability_review(scored_functions)

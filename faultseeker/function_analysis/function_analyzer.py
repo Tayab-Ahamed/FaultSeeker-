@@ -404,15 +404,15 @@ class FunctionAnalyzer:
         while True:
             i += 1
             elapsed = int(_time.time() - fn_start)
-            print(f"         ℹ️  Iteration {i}/{max_iterations}  ({elapsed}s elapsed)", flush=True)
+            print(f"         [Info] Iteration {i}/{max_iterations}  ({elapsed}s elapsed)", flush=True)
             if _time.time() - fn_start > MAX_FUNCTION_SECS:
-                print(f"   ⏰ Function analysis exceeded {MAX_FUNCTION_SECS}s wall-clock limit — moving on.")
+                print(f"   [Time] Function analysis exceeded {MAX_FUNCTION_SECS}s wall-clock limit -- moving on.")
                 break
             task = self._select_task()
             if not task or not str(task).strip():
                 consecutive_timeouts += 1
                 if consecutive_timeouts >= 2:
-                    print("   ⚠️  Model timed out repeatedly — skipping this function.")
+                    print("   [!] Model timed out repeatedly -- skipping this function.")
                     break
                 continue
             consecutive_timeouts = 0
@@ -706,15 +706,15 @@ class FunctionAnalyzer:
         consecutive_timeouts = 0
         for i in range(txn_iters):
             elapsed = int(_time.time() - fn_start)
-            print(f"         ℹ️  Sub-iteration {i+1}/{txn_iters}  ({elapsed}s elapsed)", flush=True)
+            print(f"         [Info] Sub-iteration {i+1}/{txn_iters}  ({elapsed}s elapsed)", flush=True)
             if _time.time() - fn_start > MAX_FUNCTION_SECS:
-                print(f"   ⏰ Sub-analysis exceeded wall-clock limit — moving on.")
+                print(f"   [Time] Sub-analysis exceeded wall-clock limit -- moving on.")
                 break
             task = self._select_task()
             if not task or not str(task).strip():
                 consecutive_timeouts += 1
                 if consecutive_timeouts >= 2:
-                    print("   ⚠️  Model timed out repeatedly — skipping this function.")
+                    print("   [!] Model timed out repeatedly -- skipping this function.")
                     break
                 continue
             consecutive_timeouts = 0
@@ -810,10 +810,10 @@ class FunctionAnalyzer:
         self.trace = [forensics_result.trace]
         self.address_relation = nx.node_link_graph(self.txn_seq['address_relation'], directed=True, edges='edges')
 
-        print("      → Downloading contract source code...")
+        print("      [+] Downloading contract source code...")
         self.contract_info = ContractDownloader(self.analysis_result.chain, self.address_list).run()
 
-        print("      → Reviewing function calls...")
+        print("      [+] Reviewing function calls...")
         self._review_function_calls()
 
         self._process_potentially_vulnerable_functions()
