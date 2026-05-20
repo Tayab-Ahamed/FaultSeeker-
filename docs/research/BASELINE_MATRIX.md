@@ -23,3 +23,19 @@ Required significance tests:
 - Bootstrap confidence intervals for F1 and latency.
 - Wilcoxon signed-rank for paired runtime/cost comparisons.
 - Paired t-test only as a secondary check when metric differences are approximately normal.
+
+## External result normalization
+
+Create the result sheet:
+
+```bash
+python benchmark/ingest_external_baselines.py --make-template
+```
+
+Fill one row per `(system, transaction)` with the tool prediction, score, runtime, token cost, and GPU memory. Then score it:
+
+```bash
+python benchmark/ingest_external_baselines.py --input reports/external_baselines/external_baseline_template.csv
+```
+
+The ingester writes `reports/external_baselines/external_baseline_summary.csv`. Empty template predictions are rejected so paper tables cannot silently mix missing results with completed runs.

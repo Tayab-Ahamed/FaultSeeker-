@@ -246,6 +246,15 @@ python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 1
 
 # Generate baseline, ablation, and adversarial robustness tables
 python benchmark/run_research_experiments.py
+
+# Create the external-baseline sheet for Slither/Mythril/TxSpector/GPTScan outputs
+python benchmark/ingest_external_baselines.py --make-template
+
+# Score filled external-baseline outputs
+python benchmark/ingest_external_baselines.py --input reports/external_baselines/external_baseline_template.csv
+
+# Analyze filled human explainability study responses
+python benchmark/analyze_explainability_study.py --input docs/research/human_study_response_template.csv
 ```
 
 ---
@@ -306,7 +315,9 @@ Current empirical status:
 - Source-backed candidate rows still requiring RPC/manual promotion: **828**.
 - Benign minimum target: **10,000 / 10,000** staged and schema-validated.
 - Reproducible local research tables: `reports/research_results/`.
-- Still required for final journal claims: external Slither/Mythril/TxSpector/GPTScan runs on a trace-capable environment and a human explainability study.
+- External baseline ingestion workflow: `benchmark/ingest_external_baselines.py`.
+- Human explainability study protocol and analyzer: `docs/research/HUMAN_EXPLAINABILITY_STUDY.md` and `benchmark/analyze_explainability_study.py`.
+- Still required for final journal claims: fill the external baseline sheet with actual tool outputs and replace the example human-study responses with collected participant data.
 
 ---
 
@@ -345,6 +356,8 @@ python -m pytest tests/test_adaptive_controller.py -q
 python benchmark/validate_dataset.py
 python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv
 python benchmark/run_research_experiments.py
+python benchmark/ingest_external_baselines.py --make-template
+python benchmark/analyze_explainability_study.py --input docs/research/human_study_response_template.csv
 
 # Generate evaluation charts
 python generate_charts.py
@@ -358,6 +371,7 @@ python generate_charts.py
 - [Evaluation protocol](EVALUATION_PROTOCOL.md)
 - [TDSC roadmap](TDSC_ROADMAP.md)
 - [Benchmark details](benchmark/README.md)
+- [Human explainability study](docs/research/HUMAN_EXPLAINABILITY_STUDY.md)
 - [Research docs](docs/research/)
 - [Novel algorithm: FAEGL](docs/research/NOVEL_ALGORITHM.md)
 
