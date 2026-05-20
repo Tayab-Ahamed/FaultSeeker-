@@ -1,6 +1,8 @@
 from copy import deepcopy
 from typing import Any, Dict, Iterable, List
 
+from faultseeker.research.failure_aware_localization import FailureAwareExploitGraphLocalizer
+
 
 class AdaptiveFailureAwareController:
     """
@@ -13,6 +15,9 @@ class AdaptiveFailureAwareController:
 
     DEFAULT_MAX_CANDIDATES = 25
 
+    def __init__(self, localizer: FailureAwareExploitGraphLocalizer | None = None):
+        self.localizer = localizer or FailureAwareExploitGraphLocalizer()
+
     def apply(
         self,
         functions_to_inspect: Dict[str, List[Dict[str, Any]]],
@@ -20,6 +25,7 @@ class AdaptiveFailureAwareController:
         token_filter_result: Dict[str, Any],
     ) -> Dict[str, Any]:
         before_count = self._count(functions_to_inspect)
+        algorithm_decision = self.localizer.decide(functions_to_inspect, tx_analysis, token_filter_result).to_dict()
         decision = {
             "activated": False,
             "trigger": "",
@@ -27,11 +33,12 @@ class AdaptiveFailureAwareController:
             "before_count": before_count,
             "after_count": before_count,
             "functions_added": 0,
+            "algorithm_decision": algorithm_decision,
         }
         if before_count > 0:
             return decision
 
-        candidates = self._graph_expansion_candidates(tx_analysis, token_filter_result)
+        candidates = self._graph_expansion_candidates(tx_analysis, token_filter_result, algorithm_decision)
         functions_to_inspect.setdefault("others", [])
         functions_to_inspect["others"].extend(candidates)
 
@@ -40,13 +47,7 @@ class AdaptiveFailureAwareController:
             {
                 "activated": after_count > before_count,
                 "trigger": "functions_to_inspect_count == 0",
-                "modes": [
-                    "graph_expansion",
-                    "aggressive_call_depth_inspection",
-                    "proxy_unwrapping",
-                    "state_delta_reasoning_ready",
-                    "entropy_trace_analysis_ready",
-                ],
+                "modes": algorithm_decision.get("selected_modes") or ["graph_expansion"],
                 "after_count": after_count,
                 "functions_added": after_count - before_count,
             }
@@ -57,6 +58,7 @@ class AdaptiveFailureAwareController:
         self,
         tx_analysis: Dict[str, Any],
         token_filter_result: Dict[str, Any],
+        algorithm_decision: Dict[str, Any],
     ) -> List[Dict[str, Any]]:
         address_scores = self._address_scores(token_filter_result)
         nodes = list(self._iter_trace_nodes(tx_analysis.get("trace", {})))
@@ -82,14 +84,12 @@ class AdaptiveFailureAwareController:
             seen.add(key)
             candidates.append(candidate)
 
-        candidates.sort(
-            key=lambda item: (
-                item.get("_adaptive_priority", 0),
-                item.get("depth", 0),
-            ),
-            reverse=True,
+        ranked = self.localizer.rank_candidates(
+            candidates,
+            algorithm_decision.get("features", {}),
+            address_scores,
         )
-        return candidates[: self.DEFAULT_MAX_CANDIDATES]
+        return ranked[: self.DEFAULT_MAX_CANDIDATES]
 
     @staticmethod
     def _count(functions_to_inspect: Dict[str, List[Dict[str, Any]]]) -> int:

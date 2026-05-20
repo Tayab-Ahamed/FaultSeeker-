@@ -50,8 +50,12 @@ def test_adaptive_controller_expands_empty_function_set_from_trace_graph():
     assert decision["activated"] is True
     assert decision["trigger"] == "functions_to_inspect_count == 0"
     assert "graph_expansion" in decision["modes"]
+    assert decision["algorithm_decision"]["algorithm"] == "FAEGL"
+    assert decision["algorithm_decision"]["failure_severity"] > 0
     assert decision["functions_added"] == 2
     assert functions["others"][0]["proxy_unwrapped"] is True
+    assert functions["others"][0]["_adaptive_algorithm"] == "FAEGL-v1.0"
+    assert functions["others"][0]["_faegl_score"] >= functions["others"][1]["_faegl_score"]
     assert all(item.get("_adaptive_fallback") is True for item in functions["others"])
 
 

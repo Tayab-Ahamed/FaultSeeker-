@@ -1,6 +1,7 @@
 from faultseeker.forensics.interaction_graph import TransactionInteractionGraph
 from faultseeker.research.adversarial import AdversarialRobustnessEvaluator
 from faultseeker.research.calibration import LogisticConfidenceCalibrator
+from faultseeker.research.failure_aware_localization import FailureAwareExploitGraphLocalizer
 from faultseeker.research.statistics import (
     bootstrap_ci,
     mcnemar_test,
@@ -55,6 +56,63 @@ def test_transaction_interaction_graph_extracts_motifs_and_metrics():
     assert metrics["storage_slot_edges"] == 1
     assert "proxy_delegatecall" in metrics["motifs"]
     assert metrics["anomaly_score"] > 0
+
+
+def test_failure_aware_exploit_graph_localizer_selects_modes_and_ranks_candidates():
+    localizer = FailureAwareExploitGraphLocalizer()
+    tx_analysis = {
+        "trace": {
+            "type": "call",
+            "call_type": "call",
+            "address": "0xVictim",
+            "function": "withdraw",
+            "children": [
+                {
+                    "type": "delegatecall",
+                    "call_type": "delegatecall",
+                    "address": "0xProxy",
+                    "function": "fallback",
+                    "depth": 1,
+                    "children": [
+                        {
+                            "type": "call",
+                            "call_type": "call",
+                            "address": "0xToken",
+                            "function": "transfer",
+                            "depth": 2,
+                            "children": [],
+                        }
+                    ],
+                }
+            ],
+        },
+        "storage_events": [{"address": "0xVictim", "slot": "0x01", "depth": 1}],
+        "token_transfer": {"edges": [{"source": "0xVictim", "target": "0xAttacker"}]},
+    }
+    graph_metrics = {"anomaly_score": 0.7, "cycle_count": 1}
+
+    decision = localizer.decide(
+        {"others": []},
+        tx_analysis,
+        {"address_to_be_inspected": {"0xproxy": {}}},
+        graph_metrics,
+    )
+    ranked = localizer.rank_candidates(
+        [
+            {"address": "0xVictim", "call_type": "call", "depth": 0},
+            {"address": "0xProxy", "call_type": "delegatecall", "depth": 1},
+        ],
+        decision.features,
+        {"0xproxy": 2},
+    )
+
+    assert decision.activated is True
+    assert decision.algorithm == "FAEGL"
+    assert "graph_expansion" in decision.selected_modes
+    assert "proxy_unwrapping" in decision.selected_modes
+    assert decision.features["state_delta"] > 0
+    assert ranked[0]["address"] == "0xProxy"
+    assert ranked[0]["_faegl_score"] > ranked[1]["_faegl_score"]
 
 
 def test_adversarial_evaluator_generates_attack_variants_and_degradation_report():

@@ -28,6 +28,7 @@
 ## Ablations
 
 - Full system.
+- Without FAEGL failure-aware localization.
 - Without adaptive fallback.
 - Without graph/TIG features.
 - Without learned calibration.
@@ -37,7 +38,7 @@
 ## Reproducibility
 
 - Run `python benchmark/prepare_research_dataset.py` to generate the expansion manifest.
-- Run `python benchmark/import_hf_ethereum_activity.py --target-rows 5000` to stage the current benign candidate set.
+- Run `python benchmark/import_hf_ethereum_activity.py --target-rows 10000` to stage the current benign candidate set.
 - Run `python benchmark/import_rugpull_contracts.py` to stage contract-level rug-pull incident metadata.
 - Run `python benchmark/run_eval.py --signals-only --limit 50` for a cached signal smoke test.
 - Run `python -m pytest tests -q -p no:cacheprovider` for deterministic local regression.

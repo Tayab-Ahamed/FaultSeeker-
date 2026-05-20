@@ -40,12 +40,12 @@ Each benign row must include:
 
 Minimum target: 5000 benign rows. Preferred target: 10000 benign rows.
 
-Current status: 5000 staged rows, 0 duplicate transaction hashes, all required fields present. The preferred 10000-row target remains open.
+Current status: 10000 staged rows, 0 duplicate transaction hashes, all required fields present. The preferred 10000-row target is met.
 
 ## Current Import Command
 
 ```bash
-python benchmark/import_hf_ethereum_activity.py --target-rows 5000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
+python benchmark/import_hf_ethereum_activity.py --target-rows 10000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
 python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_validation.json
 ```
 

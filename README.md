@@ -281,6 +281,7 @@ Hybrid routing keeps costs low: simple classification stays local, deeper reason
 Implemented research upgrades:
 
 - Adaptive failure-aware forensics controller.
+- FAEGL novel algorithm for failure-aware exploit graph localization.
 - Transaction interaction graph construction and graph-derived forensic metrics.
 - Learned confidence calibration utilities with ECE/Brier support.
 - Statistical validation helpers for bootstrap confidence intervals and paired tests.
@@ -353,6 +354,7 @@ python generate_charts.py
 - [TDSC roadmap](TDSC_ROADMAP.md)
 - [Benchmark details](benchmark/README.md)
 - [Research docs](docs/research/)
+- [Novel algorithm: FAEGL](docs/research/NOVEL_ALGORITHM.md)
 
 ---
 
