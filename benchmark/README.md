@@ -6,11 +6,12 @@ This directory contains the verified exploit benchmark, public-source importers,
 
 | Metric | Current value |
 |---|---:|
-| Verified exploit rows | 246 |
-| Unique transactions | 246 |
+| Strict verified exploit rows | 231 |
+| Strict verified unique transactions | 231 |
+| Source-backed exploit research pool | 1,059 |
 | Covered EVM chains | 8 |
 | Target exploit rows for TDSC-grade claims | 1000+ |
-| Minimum benign false-positive rows | 5000 staged and validated |
+| Minimum benign false-positive rows | 10000 staged and validated |
 | Preferred benign false-positive rows | 10000 |
 
 The verified benchmark lives in:
@@ -31,8 +32,9 @@ python benchmark/validate_dataset.py
 Expected current result:
 
 ```text
-246 entries
+231 entries
 0 duplicate hashes
+0 invalid hashes
 8 chains
 ```
 
@@ -57,6 +59,21 @@ Current staged status:
 - 293 one-row-per-transaction candidates are staged.
 - Best-case verified rows after all current candidates are reviewed and accepted: 539.
 - Remaining rows needed after that best case: 461.
+
+### DeFiHackLabs GitHub PoCs
+
+```bash
+python benchmark/import_defihacklabs_github.py --output benchmark/imported/defihacklabs_github_candidates.csv --summary-output benchmark/imported/defihacklabs_github_candidates_summary.json
+
+python benchmark/build_research_exploit_pool.py --output benchmark/research_exploit_pool.csv --summary-output benchmark/research_exploit_pool_summary.json
+```
+
+Current staged status:
+
+- 1,128 transaction candidates extracted from public DeFiHackLabs GitHub PoCs.
+- 928 candidates map to currently supported EVM chains.
+- The deduplicated exploit research pool contains 1,059 unique chain/transaction rows.
+- The pool meets the 1000+ exploit-transaction research target, but only `pool_status=verified_benchmark` rows are strict ground truth until candidates pass RPC/manual validation.
 
 ### DeFiLlama Hacks
 
@@ -85,14 +102,14 @@ Current staged status:
 The Hugging Face Ethereum activity importer stages non-scam-address transaction candidates:
 
 ```bash
-python benchmark/import_hf_ethereum_activity.py --target-rows 5000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
+python benchmark/import_hf_ethereum_activity.py --target-rows 10000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
 
 python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_validation.json
 ```
 
 Notes:
 
-- Current staged rows: 5,000.
+- Current staged rows: 10,000.
 - Duplicate transaction hashes: 0.
 - Required fields: complete.
 - The labels are address-level scam/non-scam labels, not exploit transaction labels.
@@ -138,6 +155,8 @@ Saved evaluation outputs are generated under `benchmark/eval_results/` only when
 | `validate_dataset.py` | Verified benchmark integrity check |
 | `validate_imported_incidents.py` | Public exploit import validation manifest |
 | `build_candidate_exploit_expansion.py` | One-row-per-transaction candidate expansion queue |
+| `import_defihacklabs_github.py` | Public DeFiHackLabs GitHub PoC transaction extractor |
+| `build_research_exploit_pool.py` | Deduplicated verified-plus-candidate exploit research pool builder |
 | `validate_benign_dataset.py` | Benign dataset schema/duplicate/size validator |
 | `research_readiness_report.py` | TDSC readiness summary |
 | `fix_csv.py` | One-time historical CSV repair script, kept for provenance |

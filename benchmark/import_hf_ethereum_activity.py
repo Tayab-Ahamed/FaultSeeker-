@@ -44,7 +44,7 @@ FIELDNAMES = [
 
 
 def import_benign_activity(
-    target_rows: int = 5000,
+    target_rows: int = 10000,
     max_pages: int = MAX_PAGES,
     page_size: int = ROW_PAGE_SIZE,
     source: str = "auto",
@@ -317,7 +317,7 @@ def write_json(path: str, payload: dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Import labeled non-scam Ethereum activity from Hugging Face.")
-    parser.add_argument("--target-rows", type=int, default=5000)
+    parser.add_argument("--target-rows", type=int, default=10000)
     parser.add_argument("--max-pages", type=int, default=MAX_PAGES)
     parser.add_argument("--max-parquet-files", type=int, default=MAX_PARQUET_FILES)
     parser.add_argument("--source", choices=["auto", "rows", "parquet"], default="auto")

@@ -4,21 +4,26 @@ Checks: row count, duplicate TXs, chain distribution, vuln type breakdown
 """
 import csv
 import os
+import re
 from collections import Counter
 
 
 CSV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "benchmark_classification_fixed.csv")
+TX_HASH_RE = re.compile(r"^0x[a-fA-F0-9]{64}$")
 
 hashes = []
+invalid_hashes = []
 chains = []
 vuln_types = []
 difficulty = []
 
-with open(CSV_PATH, encoding="utf-8") as f:
+with open(CSV_PATH, encoding="utf-8-sig") as f:
     reader = csv.DictReader(f)
-    for row in reader:
+    for line_no, row in enumerate(reader, start=2):
         txn = row["txn_hash"].strip()
         if txn:
+            if not TX_HASH_RE.fullmatch(txn):
+                invalid_hashes.append((line_no, txn))
             hashes.append(txn)
             chains.append(row["chain"].strip().lower())
             vuln_types.append(row["vuln_type"].strip())
@@ -32,8 +37,13 @@ print("  FaultSeeker++ Dataset Validation Report")
 print(f"{'=' * 50}")
 print(f"\n  Total entries   : {total}")
 print(f"  Duplicate hashes: {len(dupes)}")
+print(f"  Invalid hashes  : {len(invalid_hashes)}")
 if dupes:
     print(f"   -> Dupes: {dupes}")
+if invalid_hashes:
+    print("   -> Invalid examples:")
+    for line_no, txn in invalid_hashes[:10]:
+        print(f"      line {line_no}: {txn}")
 
 print("\n  Chain breakdown:")
 for chain, count in sorted(Counter(chains).items(), key=lambda x: -x[1]):
@@ -50,5 +60,9 @@ for vuln, count in Counter(vuln_types).most_common(10):
     print(f"    {vuln:<45}  {count}")
 
 print(f"\n{'=' * 50}")
-print(f"  Target: 160+ entries  |  Status: {'PASSED' if total >= 160 else 'FAILED'}")
+passed = total >= 160 and not dupes and not invalid_hashes
+print(f"  Target: 160+ strict entries  |  Status: {'PASSED' if passed else 'FAILED'}")
 print(f"{'=' * 50}\n")
+
+if not passed:
+    raise SystemExit(1)

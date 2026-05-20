@@ -17,6 +17,8 @@ HF_BENIGN_IMPORT_CSV = os.path.join(ROOT, "benchmark", "imported", "hf_ethereum_
 HF_BENIGN_SUMMARY_JSON = os.path.join(ROOT, "benchmark", "imported", "hf_ethereum_benign_transactions_summary.json")
 FULL_IMPORT_SUMMARY_JSON = os.path.join(ROOT, "benchmark", "imported", "defihacklabs_validation_summary.full.json")
 CANDIDATE_EXPANSION_SUMMARY_JSON = os.path.join(ROOT, "benchmark", "imported", "defihacklabs_candidate_expansion_summary.json")
+GITHUB_CANDIDATE_SUMMARY_JSON = os.path.join(ROOT, "benchmark", "imported", "defihacklabs_github_candidates_summary.json")
+RESEARCH_EXPLOIT_POOL_SUMMARY_JSON = os.path.join(ROOT, "benchmark", "research_exploit_pool_summary.json")
 RESEARCH_DOCS = [
     os.path.join(ROOT, "docs", "research", "BASELINE_MATRIX.md"),
     os.path.join(ROOT, "docs", "research", "ABLATION_PROTOCOL.md"),
@@ -33,6 +35,7 @@ def build_report(exploit_csv: str = EXPLOIT_CSV, sources_json: str = SOURCES_JSO
     chains = Counter(row.get("chain", "").strip().lower() for row in rows)
     vuln_types = Counter(row.get("vuln_type", "").strip() for row in rows)
     candidate_summary = _candidate_expansion_summary()
+    research_pool_summary = _research_exploit_pool_summary()
     benign_summary = _benign_dataset_summary()
     validated_plus_candidates = len(rows) + int(candidate_summary.get("candidate_rows", 0) or 0)
     return {
@@ -43,7 +46,7 @@ def build_report(exploit_csv: str = EXPLOIT_CSV, sources_json: str = SOURCES_JSO
         "top_vulnerability_types": dict(vuln_types.most_common(15)),
         "tdsc_targets": {
             "exploit_rows": 1000,
-            "benign_rows_min": 5000,
+            "benign_rows_min": 10000,
             "benign_rows_preferred": 10000,
             "baseline_families": ["static", "dynamic_trace", "llm_only"],
             "required_statistics": ["bootstrap_ci", "paired_t_test", "wilcoxon_signed_rank", "mcnemar"],
@@ -52,7 +55,10 @@ def build_report(exploit_csv: str = EXPLOIT_CSV, sources_json: str = SOURCES_JSO
             "additional_verified_exploit_rows_needed": max(0, 1000 - len(rows)),
             "best_case_verified_rows_after_current_candidates": validated_plus_candidates,
             "additional_verified_rows_needed_after_current_candidates": max(0, 1000 - validated_plus_candidates),
-            "benign_rows_needed_min": max(0, 5000 - int(benign_summary.get("rows", 0) or 0)),
+            "research_pool_rows": int(research_pool_summary.get("rows", 0) or 0),
+            "research_pool_target_met": bool(research_pool_summary.get("target_met", False)),
+            "additional_research_pool_rows_needed": max(0, 1000 - int(research_pool_summary.get("rows", 0) or 0)),
+            "benign_rows_needed_min": max(0, 10000 - int(benign_summary.get("rows", 0) or 0)),
             "run_baselines": True,
             "produce_final_ablation_tables": True,
             "conduct_human_explainability_study": True,
@@ -65,6 +71,8 @@ def build_report(exploit_csv: str = EXPLOIT_CSV, sources_json: str = SOURCES_JSO
         "benign_dataset": benign_summary,
         "public_import_validation": _public_import_validation_summary(),
         "candidate_expansion": candidate_summary,
+        "github_candidate_expansion": _github_candidate_summary(),
+        "research_exploit_pool": research_pool_summary,
         "research_artifacts": _research_artifact_summary(),
         "registered_public_sources": sources,
     }
@@ -119,7 +127,7 @@ def _benign_dataset_summary(summary_path: str = HF_BENIGN_SUMMARY_JSON, csv_path
             "path": csv_path,
             "exists": False,
             "rows": 0,
-            "target_rows": 5000,
+            "target_rows": 10000,
             "target_met": False,
         }
     rows = _load_csv(csv_path)
@@ -127,8 +135,8 @@ def _benign_dataset_summary(summary_path: str = HF_BENIGN_SUMMARY_JSON, csv_path
         "path": csv_path,
         "exists": True,
         "rows": len(rows),
-        "target_rows": 5000,
-        "target_met": len(rows) >= 5000,
+        "target_rows": 10000,
+        "target_met": len(rows) >= 10000,
     }
 
 
@@ -137,6 +145,14 @@ def _public_import_validation_summary(path: str = FULL_IMPORT_SUMMARY_JSON) -> d
 
 
 def _candidate_expansion_summary(path: str = CANDIDATE_EXPANSION_SUMMARY_JSON) -> dict:
+    return _load_optional_json_summary(path)
+
+
+def _github_candidate_summary(path: str = GITHUB_CANDIDATE_SUMMARY_JSON) -> dict:
+    return _load_optional_json_summary(path)
+
+
+def _research_exploit_pool_summary(path: str = RESEARCH_EXPLOIT_POOL_SUMMARY_JSON) -> dict:
     return _load_optional_json_summary(path)
 
 

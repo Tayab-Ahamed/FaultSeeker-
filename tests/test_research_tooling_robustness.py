@@ -49,7 +49,7 @@ def test_large_benign_dataset_validation_meets_minimum_and_detects_duplicates(tm
     summary = validate_benign_dataset(str(path))
 
     assert summary["rows"] == 5001
-    assert summary["meets_minimum_size"] is True
+    assert summary["meets_minimum_size"] is False
     assert summary["meets_preferred_size"] is False
     assert summary["duplicate_hashes"] == 1
     assert summary["chain_counts"] == {"eth": 2501, "arbitrum": 2500}

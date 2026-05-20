@@ -3,6 +3,7 @@ from benchmark.import_defillama_hacks import normalize_hack
 from benchmark.import_hf_ethereum_activity import build_summary, normalize_benign_row
 from benchmark.research_readiness_report import _is_truthy, build_report
 from benchmark.import_rugpull_contracts import normalize_row as normalize_rugpull_row
+from benchmark.build_research_exploit_pool import build_pool
 from benchmark.build_candidate_exploit_expansion import build_candidate_rows
 from benchmark.validate_imported_incidents import classify_imported_row, split_hashes, summarize_manifest
 
@@ -125,10 +126,12 @@ def test_hf_benign_summary_marks_target_status():
 def test_research_readiness_report_uses_current_benchmark():
     report = build_report()
 
-    assert report["current_verified_exploit_rows"] >= 246
+    assert report["current_verified_exploit_rows"] >= 231
     assert report["tdsc_targets"]["exploit_rows"] == 1000
+    assert report["tdsc_targets"]["benign_rows_min"] == 10000
     assert "best_case_verified_rows_after_current_candidates" in report["remaining_empirical_work"]
     assert "additional_verified_rows_needed_after_current_candidates" in report["remaining_empirical_work"]
+    assert "research_pool_target_met" in report["remaining_empirical_work"]
     assert "registered_public_sources" in report
     assert report["research_artifacts"]["docs/research/BASELINE_MATRIX.md"] is True
     assert report["research_artifacts"]["docs/research/BENIGN_DATA_ACQUISITION.md"] is True
@@ -137,6 +140,8 @@ def test_research_readiness_report_uses_current_benchmark():
     assert "benign_dataset" in report
     assert "public_import_validation" in report
     assert "candidate_expansion" in report
+    assert "github_candidate_expansion" in report
+    assert "research_exploit_pool" in report
 
 
 def test_validate_imported_incident_marks_known_hash_as_existing():
@@ -199,6 +204,41 @@ def test_split_hashes_rejects_invalid_hashes():
     value = f"{valid}|0x123|0x{'g' * 64}|not-a-hash"
 
     assert split_hashes(value) == [valid]
+
+
+def test_research_exploit_pool_dedupes_candidates_against_verified(tmp_path):
+    verified = tmp_path / "verified.csv"
+    candidate = tmp_path / "candidate.csv"
+    tx_hash = "0x" + "a" * 64
+    new_hash = "0x" + "b" * 64
+    verified.write_text(
+        "\n".join(
+            [
+                "txn_hash,chain,functioncall_count,address_count,max_depth,gas_cost,class,vuln_type,analysis,swc_registry_classification,dasp_classification,uncategorized",
+                f"{tx_hash},eth,1,1,1,1,Simple,Reentrancy,[],SWC-107,Reentrancy,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    candidate.write_text(
+        "\n".join(
+            [
+                "candidate_tx_hash,candidate_chain,source_chain,supported_chain,incident_id,title,vulnerability_type,source,validation_status,merge_status,merge_blocker",
+                f"{tx_hash},eth,eth,True,dupe,Dupe,Reentrancy,test,candidate,staged,",
+                f"{new_hash},bsc,bsc,True,new,New,Access Control,test,candidate,staged,",
+                "0x123,bsc,bsc,True,bad,Bad,Unknown,test,candidate,staged,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    rows, summary = build_pool(str(verified), [str(candidate)])
+
+    assert summary["rows"] == 2
+    assert summary["verified_rows"] == 1
+    assert summary["source_backed_candidate_rows"] == 1
+    assert summary["skipped_candidate_rows"] == {"duplicate": 1, "invalid_hash": 1}
+    assert {row["txn_hash"] for row in rows} == {tx_hash, new_hash}
 
 
 def test_build_candidate_rows_marks_unsupported_chain_blocker(tmp_path):

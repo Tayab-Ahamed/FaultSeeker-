@@ -36,7 +36,7 @@ def build_manifest(exploit_csv: str, sources_path: str) -> dict:
     summary = summarize_rows(rows)
     targets = {
         "exploit_rows_target": 1000,
-        "benign_rows_target_min": 5000,
+        "benign_rows_target_min": 10000,
         "benign_rows_target_preferred": 10000,
         "required_categories": [
             "reentrancy",

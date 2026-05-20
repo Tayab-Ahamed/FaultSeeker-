@@ -1,28 +1,28 @@
-<div align="center">
+﻿<div align="center">
 
 <img src="https://img.shields.io/badge/FaultSeeker++-v2.0-blueviolet?style=for-the-badge&logo=ethereum&logoColor=white" alt="FaultSeeker++"/>
 
-# ⚡ FaultSeeker++
+# âš¡ FaultSeeker++
 
 ### AI-Powered Blockchain Transaction Forensics & Vulnerability Localization
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 [![Chains](https://img.shields.io/badge/Chains-10%20EVM-f97316?style=flat-square&logo=ethereum&logoColor=white)](#-supported-networks)
-[![Dataset](https://img.shields.io/badge/Dataset-246%20Exploits-dc2626?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
-[![Benign](https://img.shields.io/badge/Benign-5000%20Validated-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
+[![Dataset](https://img.shields.io/badge/Dataset-1059%20Research%20Pool-dc2626?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
+[![Benign](https://img.shields.io/badge/Benign-10000%20Validated-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
 [![Tests](https://img.shields.io/badge/Tests-119%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
 [![Status](https://img.shields.io/badge/Status-Research%20Active-6366f1?style=flat-square)](.)
 
 <br/>
 
-> **FaultSeeker++** replays exploit transactions, reconstructs execution traces, extracts deterministic security signals, ranks suspicious functions, and generates benchmark-ready forensic outputs — all in a single unified pipeline.
+> **FaultSeeker++** replays exploit transactions, reconstructs execution traces, extracts deterministic security signals, ranks suspicious functions, and generates benchmark-ready forensic outputs â€” all in a single unified pipeline.
 
 *Built for security researchers, auditors, and academics working on smart contract vulnerability analysis.*
 
 ---
 
-[**Quick Start**](#-getting-started) · [**Architecture**](#-architecture) · [**Networks**](#-supported-networks) · [**Benchmark**](#-benchmark--evaluation) · [**Research**](#-research-readiness) · [**Citation**](#-citation)
+[**Quick Start**](#-getting-started) Â· [**Architecture**](#-architecture) Â· [**Networks**](#-supported-networks) Â· [**Benchmark**](#-benchmark--evaluation) Â· [**Research**](#-research-readiness) Â· [**Citation**](#-citation)
 
 </div>
 
@@ -30,40 +30,40 @@
 
 ## Why FaultSeeker++?
 
-Most exploit analysis tools stop at detection. FaultSeeker++ goes further — from raw transaction hash to a structured, ranked, and explainable forensic report.
+Most exploit analysis tools stop at detection. FaultSeeker++ goes further â€” from raw transaction hash to a structured, ranked, and explainable forensic report.
 
 | Capability | What it means |
 |---|---|
-| 🔀 **Dual-path data collection** | Explorer scraping with JSON-RPC fallback when block explorers are WAF-protected or incomplete. |
-| 🧠 **Hybrid model routing** | Simple tasks stay on local models; heavier reasoning can escalate to cloud providers. |
-| 🧑‍💻 **Human-in-the-loop checkpoints** | The analyst stays in the loop at critical decision points instead of blindly trusting model output. |
-| 📊 **Structured evidence** | Findings include signal breakdowns, confidence scores, graph context, and priority rankings. |
-| 🌐 **10-chain coverage** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. |
-| 🧪 **Reproducible benchmarks** | 246 verified exploit transactions, 5,000 validated benign candidates, staged public imports, and validation scripts. |
-| 🔬 **Research tooling** | Adaptive fallback, graph reasoning, confidence calibration, adversarial helpers, and statistical evaluation utilities. |
+| ðŸ”€ **Dual-path data collection** | Explorer scraping with JSON-RPC fallback when block explorers are WAF-protected or incomplete. |
+| ðŸ§  **Hybrid model routing** | Simple tasks stay on local models; heavier reasoning can escalate to cloud providers. |
+| ðŸ§‘â€ðŸ’» **Human-in-the-loop checkpoints** | The analyst stays in the loop at critical decision points instead of blindly trusting model output. |
+| ðŸ“Š **Structured evidence** | Findings include signal breakdowns, confidence scores, graph context, and priority rankings. |
+| ðŸŒ **10-chain coverage** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. |
+| ðŸ§ª **Reproducible benchmarks** | 231 strict verified exploit transactions, a 1,059-row exploit research pool, 10,000 validated benign candidates, staged public imports, and validation scripts. |
+| ðŸ”¬ **Research tooling** | Adaptive fallback, graph reasoning, confidence calibration, adversarial helpers, and statistical evaluation utilities. |
 
 ---
 
-## 🏗 Architecture
+## ðŸ— Architecture
 
 ```mermaid
 flowchart TB
-    A["🔗 Transaction Hash<br/>+ Chain"]
-    B["📡 Data Collection<br/>Replay · Trace · Metadata · Source"]
-    C["🛟 Provider Resilience<br/>Explorer → JSON-RPC"]
-    D["🔬 Forensics Engine<br/>Signals · Classification · Proxy-safe Resolution"]
-    E["🧭 Adaptive Controller<br/>Fallback Modes · State Deltas"]
-    F["🕸 Interaction Graph<br/>Contracts · EOAs · Tokens · Storage"]
-    G["⚙️ Function Analysis<br/>Priority · Ranking · LLM Investigation"]
-    H["📋 Forensic Report<br/>Evidence Cards · Ranked Findings"]
-    I["📈 Benchmark Output<br/>CSV · JSON · Evaluation Tables"]
+    A["ðŸ”— Transaction Hash<br/>+ Chain"]
+    B["ðŸ“¡ Data Collection<br/>Replay Â· Trace Â· Metadata Â· Source"]
+    C["ðŸ›Ÿ Provider Resilience<br/>Explorer â†’ JSON-RPC"]
+    D["ðŸ”¬ Forensics Engine<br/>Signals Â· Classification Â· Proxy-safe Resolution"]
+    E["ðŸ§­ Adaptive Controller<br/>Fallback Modes Â· State Deltas"]
+    F["ðŸ•¸ Interaction Graph<br/>Contracts Â· EOAs Â· Tokens Â· Storage"]
+    G["âš™ï¸ Function Analysis<br/>Priority Â· Ranking Â· LLM Investigation"]
+    H["ðŸ“‹ Forensic Report<br/>Evidence Cards Â· Ranked Findings"]
+    I["ðŸ“ˆ Benchmark Output<br/>CSV Â· JSON Â· Evaluation Tables"]
 
     A --> B --> C --> D --> E --> F --> G --> H --> I
 ```
 
 ---
 
-## 📦 Pipeline Output
+## ðŸ“¦ Pipeline Output
 
 FaultSeeker++ emits **structured forensic data** at the transaction level, ready for analyst triage, benchmark scoring, dataset generation, and downstream model training.
 
@@ -93,26 +93,26 @@ FaultSeeker++ emits **structured forensic data** at the transaction level, ready
 
 ---
 
-## 🌐 Supported Networks
+## ðŸŒ Supported Networks
 
 | Chain | Explorer | Data Source | Status |
 |---|---|---|:---:|
-| **Ethereum** | etherscan.io | HTML + RPC | ✅ |
-| **BSC** | bscscan.com | HTML + RPC | ✅ |
-| **Polygon** | polygonscan.com | HTML + RPC | ✅ |
-| **Arbitrum** | arbiscan.io | HTML + RPC | ✅ |
-| **Optimism** | optimistic.etherscan.io | HTML + RPC | ✅ |
-| **Avalanche** | snowtrace.io | RPC fallback | ✅ |
-| **Base** | basescan.org | HTML + RPC | ✅ |
-| **Fantom** | ftmscan.com | RPC fallback | ✅ |
-| **Gnosis** | gnosisscan.io | RPC fallback | ✅ |
-| **zkSync Era** | explorer.zksync.io | RPC fallback | ✅ |
+| **Ethereum** | etherscan.io | HTML + RPC | âœ… |
+| **BSC** | bscscan.com | HTML + RPC | âœ… |
+| **Polygon** | polygonscan.com | HTML + RPC | âœ… |
+| **Arbitrum** | arbiscan.io | HTML + RPC | âœ… |
+| **Optimism** | optimistic.etherscan.io | HTML + RPC | âœ… |
+| **Avalanche** | snowtrace.io | RPC fallback | âœ… |
+| **Base** | basescan.org | HTML + RPC | âœ… |
+| **Fantom** | ftmscan.com | RPC fallback | âœ… |
+| **Gnosis** | gnosisscan.io | RPC fallback | âœ… |
+| **zkSync Era** | explorer.zksync.io | RPC fallback | âœ… |
 
 > When a block explorer blocks automated requests or omits needed data, the system falls back to direct JSON-RPC calls such as `eth_getTransactionByHash`, `eth_getTransactionReceipt`, and `eth_getCode`.
 
 ---
 
-## 🚀 Getting Started
+## ðŸš€ Getting Started
 
 ### Requirements
 
@@ -142,17 +142,17 @@ cp .env.example .env
 Fill in what you need. **Minimum:** one LLM key + one trace-capable RPC for the target chain.
 
 ```bash
-# ── LLM providers (at least one required) ───────────────────────
+# â”€â”€ LLM providers (at least one required) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 OPENAI_API_KEY=sk-...
 GOOGLE_API_KEY=AIza...
 ANTHROPIC_API_KEY=sk-ant-...
 XAI_API_KEY=xai-...
 
-# ── Explorer APIs (optional, for verified source download) ──────
+# â”€â”€ Explorer APIs (optional, for verified source download) â”€â”€â”€â”€â”€â”€
 ETHERSCAN_API_KEY=
 BSCSCAN_API_KEY=
 
-# ── Trace-capable RPCs ──────────────────────────────────────────
+# â”€â”€ Trace-capable RPCs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 ETH_RPC_URL=https://...
 BSC_RPC_URL=https://...
 TENDERLY_ACCESS_KEY=YOUR_TENDERLY_ACCESS_KEY_HERE
@@ -162,7 +162,7 @@ TENDERLY_ACCESS_KEY=YOUR_TENDERLY_ACCESS_KEY_HERE
 
 ---
 
-## 🔍 Analyze a Transaction
+## ðŸ” Analyze a Transaction
 
 ```bash
 # Basic analysis
@@ -183,16 +183,20 @@ python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitru
 
 ---
 
-## 🧪 Benchmark & Evaluation
+## ðŸ§ª Benchmark & Evaluation
 
 ### Dataset
 
-**246 verified exploit transactions** across 8 currently represented EVM chains, with **80+ vulnerability labels** sourced from postmortems, incident writeups, and exploit repositories.
+**231 strict verified exploit transactions** across 8 currently represented EVM chains, with **80+ vulnerability labels** sourced from postmortems, incident writeups, and exploit repositories.
+
+For TDSC-scale experimentation, FaultSeeker++ now also ships a deduplicated **1,059-row exploit research pool** built from the strict verified benchmark plus source-backed DeFiHackLabs candidates. Candidate rows remain separate from strict ground truth until RPC/manual validation is complete.
 
 Additional staged data:
 
-- **293** DeFiHackLabs transaction candidates for manual/RPC adjudication.
-- **5,000** Hugging Face Ethereum non-scam-address benign transaction candidates, schema-validated with zero duplicate hashes.
+- **293** DeFiHackLabs Hugging Face transaction candidates for manual/RPC adjudication.
+- **1,128** DeFiHackLabs GitHub PoC transaction candidates, with **928** on supported chains.
+- **1,059** deduplicated exploit research-pool rows.
+- **10,000** Hugging Face Ethereum non-scam-address benign transaction candidates, schema-validated with zero duplicate hashes.
 - **2,360** rug-pull contract incident rows staged as transaction-hash-unresolved incident metadata.
 
 ```bash
@@ -231,27 +235,33 @@ python benchmark/import_defillama_hacks.py --output benchmark/imported/defillama
 # Import rug-pull contract incidents
 python benchmark/import_rugpull_contracts.py --output benchmark/imported/rugpull_contract_incidents.csv --summary-output benchmark/imported/rugpull_contract_incidents_summary.json
 
-# Import 5,000 benign Ethereum transaction candidates
-python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 5000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
+# Import DeFiHackLabs GitHub PoC transaction candidates
+python benchmark/import_defihacklabs_github.py --output benchmark/imported/defihacklabs_github_candidates.csv --summary-output benchmark/imported/defihacklabs_github_candidates_summary.json
+
+# Build the deduplicated 1000+ exploit research pool
+python benchmark/build_research_exploit_pool.py --output benchmark/research_exploit_pool.csv --summary-output benchmark/research_exploit_pool_summary.json
+
+# Import 10,000 benign Ethereum transaction candidates
+python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 10000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
 ```
 
 ---
 
-## 🛡️ Reentrancy Engine
+## ðŸ›¡ï¸ Reentrancy Engine
 
 The reentrancy detector goes beyond simple repeated-address checks:
 
 | Feature | Description |
 |---|---|
-| 🗄️ **Storage-backed detection** | Tracks `SSTORE` operations per contract and flags write-after-external-call patterns. |
-| 🔄 **Fallback mode** | Structural analysis when storage traces are unavailable on public RPCs. |
-| 🔒 **Proxy-safe** | Normalizes delegatecall chains before analysis. |
-| 🔀 **Cross-function support** | Detects reentry across different function selectors. |
-| 📊 **Tiered output** | `CONFIRMED` · `POSSIBLE_REENTRANCY` · `WEAK_SIGNAL` · `NONE`, with explainable signals. |
+| ðŸ—„ï¸ **Storage-backed detection** | Tracks `SSTORE` operations per contract and flags write-after-external-call patterns. |
+| ðŸ”„ **Fallback mode** | Structural analysis when storage traces are unavailable on public RPCs. |
+| ðŸ”’ **Proxy-safe** | Normalizes delegatecall chains before analysis. |
+| ðŸ”€ **Cross-function support** | Detects reentry across different function selectors. |
+| ðŸ“Š **Tiered output** | `CONFIRMED` Â· `POSSIBLE_REENTRANCY` Â· `WEAK_SIGNAL` Â· `NONE`, with explainable signals. |
 
 ---
 
-## 🤖 Model Providers
+## ðŸ¤– Model Providers
 
 Hybrid routing keeps costs low: simple classification stays local, deeper reasoning can escalate to cloud.
 
@@ -266,7 +276,7 @@ Hybrid routing keeps costs low: simple classification stays local, deeper reason
 
 ---
 
-## 🔬 Research Readiness
+## ðŸ”¬ Research Readiness
 
 Implemented research upgrades:
 
@@ -283,29 +293,29 @@ Implemented research upgrades:
 
 Research paper asset:
 
-- `paper/blockchain_exploit_forensics_survey_ieee.tex` — self-contained IEEE double-column survey paper with embedded TikZ figure and embedded references.
+- `paper/blockchain_exploit_forensics_survey_ieee.tex` â€” self-contained IEEE double-column survey paper with embedded TikZ figure and embedded references.
 
 Current empirical status:
 
-- Verified exploit rows: **246 / 1000**.
-- Best current DeFiHackLabs candidate path: **246 verified + 293 staged candidates = 539 possible rows** after manual/RPC validation.
-- Remaining exploit rows after current candidates: **461**.
-- Benign minimum target: **5,000 / 5,000** staged and schema-validated.
+- Strict verified exploit rows: **231**.
+- Exploit research pool: **1,059 / 1,000**, target met.
+- Source-backed candidate rows still requiring RPC/manual promotion: **828**.
+- Benign minimum target: **10,000 / 10,000** staged and schema-validated.
 - Still required for final paper claims: baseline runs, final ablations, confidence intervals, adversarial degradation tables, and human explainability study.
 
 ---
 
-## 🗂 Repository Layout
+## ðŸ—‚ Repository Layout
 
 ```text
 faultseeker/
-├── core/               # Pipeline orchestration, routing, confidence scoring
-├── data_collection/    # Replay, trace parsing, transaction metadata, contract download
-├── forensics/          # Signal extraction, adaptive controller, interaction graph, result schemas
-├── function_analysis/  # Function ranking and multi-agent investigation
-├── prompts/            # Model prompts and task templates
-├── research/           # Calibration, statistics, adversarial, temporal, mempool, remediation helpers
-└── utils/              # RPC, explorer, parser, and agent utilities
+â”œâ”€â”€ core/               # Pipeline orchestration, routing, confidence scoring
+â”œâ”€â”€ data_collection/    # Replay, trace parsing, transaction metadata, contract download
+â”œâ”€â”€ forensics/          # Signal extraction, adaptive controller, interaction graph, result schemas
+â”œâ”€â”€ function_analysis/  # Function ranking and multi-agent investigation
+â”œâ”€â”€ prompts/            # Model prompts and task templates
+â”œâ”€â”€ research/           # Calibration, statistics, adversarial, temporal, mempool, remediation helpers
+â””â”€â”€ utils/              # RPC, explorer, parser, and agent utilities
 
 benchmark/              # Benchmark CSV, validation, staged public imports, and evaluation harness
 docs/research/          # Baseline, ablation, error taxonomy, benign acquisition, reproducibility docs
@@ -315,7 +325,7 @@ tests/                  # 119 regression and integration tests
 
 ---
 
-## 🛠 Development
+## ðŸ›  Development
 
 ```bash
 # Full test suite
@@ -336,7 +346,7 @@ python generate_charts.py
 
 ---
 
-## 📚 Documentation
+## ðŸ“š Documentation
 
 - [Threat model](THREAT_MODEL.md)
 - [Evaluation protocol](EVALUATION_PROTOCOL.md)
@@ -346,7 +356,7 @@ python generate_charts.py
 
 ---
 
-## 📌 Citation
+## ðŸ“Œ Citation
 
 If you use FaultSeeker++ or the benchmark tooling in academic work, cite the repository and the accompanying survey draft:
 
@@ -368,7 +378,7 @@ paper/blockchain_exploit_forensics_survey_ieee.tex
 
 ---
 
-## 📄 License
+## ðŸ“„ License
 
 Released under the **[MIT License](LICENSE)**.
 
@@ -378,6 +388,7 @@ Released under the **[MIT License](LICENSE)**.
 
 **Built with precision for the blockchain security community.**
 
-*FaultSeeker++ — From transaction hash to forensic truth.*
+*FaultSeeker++ â€” From transaction hash to forensic truth.*
 
 </div>
+

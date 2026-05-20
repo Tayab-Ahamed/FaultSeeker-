@@ -6,7 +6,7 @@ from collections import Counter
 
 
 REQUIRED_FIELDS = ["txn_hash", "chain", "benign_category", "source", "validation_status"]
-TARGET_MIN_ROWS = 5000
+TARGET_MIN_ROWS = 10000
 TARGET_PREFERRED_ROWS = 10000
 
 
