@@ -48,50 +48,15 @@ Most exploit analysis tools stop at detection. FaultSeeker++ goes further — fr
 
 ```mermaid
 flowchart TD
-    A([🔗 Transaction Hash + Chain]) --> B
-
-    subgraph B [" 📡 DATA COLLECTION "]
-        B1[Transaction Replay]
-        B2[Trace Parsing]
-        B3[Chain Metadata]
-        B4[Contract Source Download]
-        B5[HTML Scraper → JSON-RPC Fallback]
-    end
-
-    B --> C
-
-    subgraph C [" 🔬 FORENSICS ENGINE "]
-        C1[Signal Extraction — Zero LLM]
-        C2[Vulnerability Classification]
-        C3[Adaptive Failure-Aware Controller]
-        C4[Transaction Interaction Graph]
-        C5[Proxy-safe Delegatecall Resolution]
-    end
-
-    C --> D
-
-    subgraph D [" ⚙️ FUNCTION ANALYSIS "]
-        D1[Priority Scoring]
-        D2[Function Ranking]
-        D3[Multi-Agent LLM Investigation]
-        D4[Evidence Card Generation]
-        D5[Confidence Calibration]
-    end
-
-    D --> E
-    D --> F
-
-    subgraph E [" 📋 FORENSIC REPORT "]
-        E1[Evidence Cards]
-        E2[Signal Breakdown]
-        E3[Ranked Findings]
-    end
-
-    subgraph F [" 📈 BENCHMARK OUTPUT "]
-        F1[CSV Export]
-        F2[Evaluation Charts]
-        F3[JSON Reports]
-    end
+    A([🔗 Transaction Hash + Chain])
+    A --> B[📡 Data Collection<br/>Replay · Trace Parsing · Metadata · Source Download]
+    B --> C[🛟 Provider Resilience<br/>Explorer Scraping → JSON-RPC Fallback]
+    C --> D[🔬 Forensics Engine<br/>Signals · Classification · Proxy-safe Resolution]
+    D --> E[🧭 Adaptive Failure Controller<br/>Fallback Modes · Graph Expansion · State Delta Reasoning]
+    E --> F[🕸 Transaction Interaction Graph<br/>Contracts · EOAs · Tokens · Storage Slots]
+    F --> G[⚙️ Function Analysis<br/>Priority Scoring · Ranking · LLM Investigation]
+    G --> H[📋 Forensic Report<br/>Evidence Cards · Signal Breakdown · Ranked Findings]
+    H --> I[📈 Benchmark Output<br/>CSV · JSON · Evaluation Tables]
 ```
 
 ---
