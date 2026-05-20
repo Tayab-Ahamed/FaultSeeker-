@@ -46,18 +46,9 @@ Most exploit analysis tools stop at detection. FaultSeeker++ goes further — fr
 
 ## 🏗 Architecture
 
-```mermaid
-flowchart TD
-    A([🔗 Transaction Hash + Chain])
-    A --> B[📡 Data Collection<br/>Replay · Trace Parsing · Metadata · Source Download]
-    B --> C[🛟 Provider Resilience<br/>Explorer Scraping → JSON-RPC Fallback]
-    C --> D[🔬 Forensics Engine<br/>Signals · Classification · Proxy-safe Resolution]
-    D --> E[🧭 Adaptive Failure Controller<br/>Fallback Modes · Graph Expansion · State Delta Reasoning]
-    E --> F[🕸 Transaction Interaction Graph<br/>Contracts · EOAs · Tokens · Storage Slots]
-    F --> G[⚙️ Function Analysis<br/>Priority Scoring · Ranking · LLM Investigation]
-    G --> H[📋 Forensic Report<br/>Evidence Cards · Signal Breakdown · Ranked Findings]
-    H --> I[📈 Benchmark Output<br/>CSV · JSON · Evaluation Tables]
-```
+<p align="center">
+  <img src="docs/assets/architecture-vertical.svg" alt="FaultSeeker++ vertical architecture" width="760"/>
+</p>
 
 ---
 

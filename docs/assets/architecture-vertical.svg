@@ -1,0 +1,70 @@
+<svg width="760" height="1120" viewBox="0 0 760 1120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">FaultSeeker++ vertical architecture</title>
+  <desc id="desc">A vertical pipeline from transaction input through data collection, forensics, graph reasoning, function analysis, reporting, and benchmark output.</desc>
+  <defs>
+    <linearGradient id="header" x1="80" y1="20" x2="680" y2="90" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="760" height="1120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto">
+      <path d="M2 2L12 7L2 12V2Z" fill="#475569"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, Helvetica, sans-serif; fill: white; }
+      .subtitle { font: 500 14px Arial, Helvetica, sans-serif; fill: #E0E7FF; }
+      .box-title { font: 700 18px Arial, Helvetica, sans-serif; fill: #0F172A; }
+      .box-text { font: 500 13px Arial, Helvetica, sans-serif; fill: #334155; }
+      .pill { font: 700 12px Arial, Helvetica, sans-serif; fill: #334155; }
+      .small { font: 500 12px Arial, Helvetica, sans-serif; fill: #64748B; }
+    </style>
+  </defs>
+
+  <rect x="24" y="18" width="712" height="1084" rx="28" fill="#F8FAFC"/>
+  <rect x="48" y="36" width="664" height="76" rx="18" fill="url(#header)"/>
+  <text x="380" y="68" text-anchor="middle" class="title">FaultSeeker++ Architecture</text>
+  <text x="380" y="94" text-anchor="middle" class="subtitle">Transaction forensics to explainable benchmark output</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="152" width="520" height="82" rx="16" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.5"/>
+    <text x="380" y="184" text-anchor="middle" class="box-title">1. Transaction Input</text>
+    <text x="380" y="211" text-anchor="middle" class="box-text">Transaction hash + chain profile</text>
+
+    <line x1="380" y1="242" x2="380" y2="286" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="296" width="520" height="104" rx="16" fill="#ECFEFF" stroke="#0891B2" stroke-width="1.5"/>
+    <text x="380" y="328" text-anchor="middle" class="box-title">2. Data Collection</text>
+    <text x="380" y="356" text-anchor="middle" class="box-text">Replay, trace parsing, chain metadata, contract source</text>
+    <text x="380" y="378" text-anchor="middle" class="small">Explorer scraping with JSON-RPC fallback</text>
+
+    <line x1="380" y1="408" x2="380" y2="452" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="462" width="520" height="104" rx="16" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+    <text x="380" y="494" text-anchor="middle" class="box-title">3. Forensics Engine</text>
+    <text x="380" y="522" text-anchor="middle" class="box-text">Deterministic signals, classification, proxy-safe resolution</text>
+    <text x="380" y="544" text-anchor="middle" class="small">Reentrancy, flash loan, oracle, liquidity, state-delta signals</text>
+
+    <line x1="380" y1="574" x2="380" y2="618" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="628" width="520" height="104" rx="16" fill="#FFF7ED" stroke="#F97316" stroke-width="1.5"/>
+    <text x="380" y="660" text-anchor="middle" class="box-title">4. Adaptive Failure Controller</text>
+    <text x="380" y="688" text-anchor="middle" class="box-text">Fallback modes for weak or incomplete evidence</text>
+    <text x="380" y="710" text-anchor="middle" class="small">Graph expansion, proxy unwrapping, call-depth inspection</text>
+
+    <line x1="380" y1="740" x2="380" y2="784" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="794" width="520" height="104" rx="16" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.5"/>
+    <text x="380" y="826" text-anchor="middle" class="box-title">5. Transaction Interaction Graph</text>
+    <text x="380" y="854" text-anchor="middle" class="box-text">Contracts, EOAs, tokens, storage slots</text>
+    <text x="380" y="876" text-anchor="middle" class="small">Calls, transfers, delegatecalls, approvals, exploit motifs</text>
+
+    <line x1="380" y1="906" x2="380" y2="950" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+    <rect x="120" y="960" width="520" height="104" rx="16" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+    <text x="380" y="992" text-anchor="middle" class="box-title">6. Function Analysis + Report</text>
+    <text x="380" y="1020" text-anchor="middle" class="box-text">Priority scoring, function ranking, LLM investigation</text>
+    <text x="380" y="1042" text-anchor="middle" class="small">Evidence cards, calibrated confidence, CSV/JSON benchmark output</text>
+  </g>
+</svg>
