@@ -16,6 +16,8 @@ from faultseeker.prompts.local_model_prompts import get_worker_prompts, get_vuln
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
 from faultseeker.forensics.result import extract_reentrancy_analysis, compute_priority_breakdown
+from faultseeker.research.cost_tracker import CostTracker
+from contextlib import nullcontext
 from typing import Optional
 
 
@@ -23,9 +25,11 @@ class FunctionAnalyzer:
 
     def __init__(self,
                  model='gpt-4o-mini',
-                 router: Optional[HybridLLMRouter] = None):
+                 router: Optional[HybridLLMRouter] = None,
+                 cost_tracker: Optional[CostTracker] = None):
         self.txn_analyzer_model = model
         self.router = router
+        self.cost_tracker = cost_tracker
 
         # Prompt selection: always use the LOCAL model name to pick prompt complexity.
         # In hybrid mode, `model` might be 'gemini-2.0-flash' (Stage 2) but agents
@@ -57,6 +61,12 @@ class FunctionAnalyzer:
         self.children_call_memo_single = {}
         self.children_call_memo = {}
         self.repeated_patterns = []
+
+    def _stage(self, name):
+        """Time a pipeline stage when a CostTracker is attached, else no-op."""
+        if self.cost_tracker is None:
+            return nullcontext()
+        return self.cost_tracker.stage(name)
 
     def _get_function_call_depth(self, function_call):
         temp = function_call.rsplit('_',1)
@@ -813,11 +823,12 @@ class FunctionAnalyzer:
         print("      [+] Downloading contract source code...")
         self.contract_info = ContractDownloader(self.analysis_result.chain, self.address_list).run()
 
-        print("      [+] Reviewing function calls...")
-        self._review_function_calls()
+        with self._stage('stage2_llm_analysis'):
+            print("      [+] Reviewing function calls...")
+            self._review_function_calls()
 
-        self._process_potentially_vulnerable_functions()
-        self._rank_potentially_vulnerable_functions()
+            self._process_potentially_vulnerable_functions()
+            self._rank_potentially_vulnerable_functions()
 
         # Finalize vulnerable functions with confidence scores preserved
         finalized_functions = self._finalize_potentially_vulnerable_functions()

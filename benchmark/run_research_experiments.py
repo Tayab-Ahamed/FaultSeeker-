@@ -1,3 +1,22 @@
+"""DEPRECATED / NOT A MEASUREMENT -- see reports/SYNTHETIC_DO_NOT_CITE/README.md.
+
+This harness derives every score from the ground-truth `label` column, so its
+output restates the labels instead of evaluating FaultSeeker++. It is retained
+only as a synthetic sensitivity check. Use benchmark/run_honest_experiments.py
+for any number that will be published.
+"""
+
+import sys as _sys
+
+_LEAKAGE_BANNER = (
+    "\n" + "=" * 74 + "\n"
+    "WARNING: this harness reads ground-truth labels inside its scoring\n"
+    "functions. Its output is SYNTHETIC and must not be cited.\n"
+    "Use: python benchmark/run_honest_experiments.py\n"
+    + "=" * 74 + "\n"
+)
+print(_LEAKAGE_BANNER, file=_sys.stderr)
+
 import argparse
 import csv
 import json

@@ -2,6 +2,7 @@ import abc
 import json
 import logging
 import re
+import time
 from typing import Dict, List, Any, Union, Optional
 import traceback
 import threading
@@ -76,6 +77,29 @@ class AbstractAgent(abc.ABC):
     # to be implemented in the child class
     def _send_message(self, user_message: str, temperature=0) -> str:
         pass
+
+    def _record_router_query(
+        self,
+        prompt_len: int,
+        resp_len: int,
+        duration_ms: float,
+        input_tokens: Optional[int] = None,
+        output_tokens: Optional[int] = None,
+    ):
+        router = getattr(self, 'router', None)
+        if router and hasattr(router, 'record_query'):
+            agent_role = getattr(self, 'agent_role', '')
+            tier = router.get_tier(agent_role=agent_role) if hasattr(router, 'get_tier') else 2
+            router.record_query(
+                model=self.model,
+                tier=tier,
+                prompt_length=prompt_len,
+                response_length=resp_len,
+                duration_ms=duration_ms,
+                agent_role=agent_role,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+            )
 
     # ── Robust JSON parser (Fix 1) ─────────────────────────────────────
     def _extract_json(self, text: str):
@@ -196,6 +220,7 @@ class OllmaAgent(AbstractAgent):
 
     def _send_message(self, user_message: str, temperature=0.0) -> str:
         # Cap prompt length so local model context window isn't blown out
+        start_time = time.time()
         if len(user_message) > LOCAL_MODEL_MAX_PROMPT:
             logger.warning(
                 "Prompt truncated: original length %d chars exceeds LOCAL_MODEL_MAX_PROMPT=%d",
@@ -206,6 +231,7 @@ class OllmaAgent(AbstractAgent):
         self.memory.append({"role": "user", "content": user_message})
         result_container = [None]
         error_container  = [None]
+        raw_response_container = [None]
 
         def _call():
             try:
@@ -217,6 +243,7 @@ class OllmaAgent(AbstractAgent):
                         'num_ctx': LOCAL_MODEL_NUM_CTX,
                     }
                 )
+                raw_response_container[0] = response
                 result_container[0] = response['message']['content']
             except Exception as e:
                 error_container[0] = e
@@ -225,19 +252,29 @@ class OllmaAgent(AbstractAgent):
         t.start()
         t.join(timeout=LOCAL_MODEL_TIMEOUT_SECS)
 
+        dur_ms = (time.time() - start_time) * 1000.0
+
         if t.is_alive():
             print(f"\n   [!] Local model '{self.model}' timed out after {LOCAL_MODEL_TIMEOUT_SECS}s. Returning empty.")
             self.memory.append({"role": "assistant", "content": ""})
+            self._record_router_query(len(user_message), 0, dur_ms)
             return ""
 
         if error_container[0]:
             err = error_container[0]
             print(f"   [!] Local model '{self.model}' error: {type(err).__name__}: {err}")
             self.memory.append({"role": "assistant", "content": ""})
+            self._record_router_query(len(user_message), 0, dur_ms)
             return ""
 
         assistant_response = result_container[0] or ""
         self.memory.append({"role": "assistant", "content": assistant_response})
+
+        raw_resp = raw_response_container[0]
+        inp_tok = raw_resp.get('prompt_eval_count') if isinstance(raw_resp, dict) else None
+        out_tok = raw_resp.get('eval_count') if isinstance(raw_resp, dict) else None
+        self._record_router_query(len(user_message), len(assistant_response), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
+
         return assistant_response
 
     def query(self, user_message: str, temperature=0.0, format='json') -> Any:
@@ -270,6 +307,7 @@ class GPTAgent(AbstractAgent):
 
     def _send_message(self, user_message, temperature=0):
         client = OpenAI(api_key=self.openai_api_key)
+        start_time = time.time()
         try:
             user_message = user_message[:10000]
             self.memory.append({"role": "user", "content": user_message})
@@ -283,8 +321,15 @@ class GPTAgent(AbstractAgent):
             ):
                 kwargs['response_format'] = {"type": "json_object"}
             chat_completion = client.chat.completions.create(**kwargs)
-            reply = chat_completion.choices[0].message.content
+            reply = chat_completion.choices[0].message.content or ""
             self.memory.append({"role": "assistant", "content": reply})
+
+            dur_ms = (time.time() - start_time) * 1000.0
+            usage = getattr(chat_completion, 'usage', None)
+            inp_tok = getattr(usage, 'prompt_tokens', None) if usage else None
+            out_tok = getattr(usage, 'completion_tokens', None) if usage else None
+            self._record_router_query(len(user_message), len(reply), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
+
             return reply
         except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})
@@ -329,6 +374,7 @@ class UniversalAgent(AbstractAgent):
 
     def _send_message(self, user_message: str, temperature: float = 0) -> str:
         client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+        start_time = time.time()
         try:
             user_message = user_message[:10000]
             self.memory.append({"role": "user", "content": user_message})
@@ -341,8 +387,15 @@ class UniversalAgent(AbstractAgent):
             if self.model in JSON_MODE_MODELS:
                 kwargs['response_format'] = {"type": "json_object"}
             chat_completion = client.chat.completions.create(**kwargs)
-            reply = chat_completion.choices[0].message.content
+            reply = chat_completion.choices[0].message.content or ""
             self.memory.append({"role": "assistant", "content": reply})
+
+            dur_ms = (time.time() - start_time) * 1000.0
+            usage = getattr(chat_completion, 'usage', None)
+            inp_tok = getattr(usage, 'prompt_tokens', None) if usage else None
+            out_tok = getattr(usage, 'completion_tokens', None) if usage else None
+            self._record_router_query(len(user_message), len(reply), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
+
             return reply
         except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})

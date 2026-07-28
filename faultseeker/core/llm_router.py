@@ -117,6 +117,8 @@ class HybridLLMRouter:
         confidence_gate: float = 0.6,
         track_cost: bool = True,
         routing_strategy: str = 'hybrid',  # 'local-first', 'cloud-first', 'hybrid', 'cloud-only'
+        ablation: Any = None,
+        cost_tracker: Any = None,
     ):
         self.logger = logging.getLogger(__name__)
         self.local_model = local_model
@@ -124,6 +126,10 @@ class HybridLLMRouter:
         self.confidence_gate = confidence_gate
         self.track_cost = track_cost
         self.routing_strategy = routing_strategy
+
+        from faultseeker.research.ablation import AblationConfig
+        self.ablation = ablation or AblationConfig.full_system()
+        self.cost_tracker = cost_tracker
 
         # Cost tracking
         self.cost_summary = CostSummary()
@@ -145,6 +151,12 @@ class HybridLLMRouter:
         Returns:
             Model name string suitable for build_agent()
         """
+        # Ablation: disabling LLM routing means every query goes to the cloud
+        # model, which is what "no routing" actually is. The tier heuristic is
+        # bypassed entirely rather than having its score adjusted.
+        if not self.ablation.enabled('llm_routing'):
+            return self.cloud_model
+
         if self.routing_strategy == 'cloud-only':
             return self.cloud_model
 
@@ -184,6 +196,9 @@ class HybridLLMRouter:
         response_length: int = 0,
         duration_ms: float = 0,
         fallback_used: bool = False,
+        agent_role: str = '',
+        input_tokens: Optional[int] = None,
+        output_tokens: Optional[int] = None,
     ):
         """Record a query for cost tracking."""
         if not self.track_cost:
@@ -191,9 +206,11 @@ class HybridLLMRouter:
 
         is_local = self._is_local_model(model)
 
-        # Estimate tokens (~4 chars per token)
-        input_tokens = prompt_length // 4
-        output_tokens = response_length // 4
+        # Use actual token counts if provided, otherwise estimate (~4 chars per token)
+        if input_tokens is None:
+            input_tokens = prompt_length // 4
+        if output_tokens is None:
+            output_tokens = response_length // 4
 
         # Calculate cost
         cost = 0.0
@@ -222,6 +239,18 @@ class HybridLLMRouter:
             self.cost_summary.cloud_queries += 1
         if fallback_used:
             self.cost_summary.fallback_count += 1
+
+        # Bridge into the research CostTracker so paper section 6.7 numbers come
+        # from real calls instead of hardcoded constants.
+        if self.cost_tracker is not None:
+            self.cost_tracker.record_llm_call(
+                stage=agent_role or 'llm_query',
+                tier='local' if is_local else 'cloud',
+                model=model,
+                prompt_tokens=input_tokens,
+                completion_tokens=output_tokens,
+                latency_secs=duration_ms / 1000.0,
+            )
 
         # Estimate what cloud-only would cost
         if model in COST_RATES:
@@ -314,4 +343,8 @@ def build_routed_agent(
     if not selected_model or not selected_model.strip():
         selected_model = router.local_model if router else 'phi3:mini'
 
-    return build_provider_agent(system_prompt, selected_model)
+    agent = build_provider_agent(system_prompt, selected_model)
+    if router:
+        setattr(agent, 'router', router)
+        setattr(agent, 'agent_role', agent_role)
+    return agent

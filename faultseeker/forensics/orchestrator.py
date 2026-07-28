@@ -12,6 +12,9 @@ from faultseeker.forensics.interaction_graph import TransactionInteractionGraph
 from faultseeker.forensics import rule_classifier
 from faultseeker.utils.utils import build_agent
 from faultseeker.core.llm_router import HybridLLMRouter, build_routed_agent
+from faultseeker.research.ablation import AblationConfig
+from faultseeker.research.cost_tracker import CostTracker
+from contextlib import nullcontext
 from typing import Optional
 
 
@@ -20,15 +23,27 @@ class ForensicsOrchestrator:
     def __init__(self,
                  model='gpt-4o-mini',
                  cache_dir='./data/cache/forensics',
-                 router: Optional[HybridLLMRouter] = None):
+                 router: Optional[HybridLLMRouter] = None,
+                 ablation: Optional[AblationConfig] = None,
+                 cost_tracker: Optional[CostTracker] = None):
         os.makedirs(cache_dir, exist_ok=True)
         self.cache_dir = cache_dir
         self.model = model
         self.router = router
+        self.ablation = ablation or AblationConfig.full_system()
+        self.cost_tracker = cost_tracker
+
+        # Propagate to the router so --disable-llm-routing and cost accounting
+        # apply to the real query path, not just to this object.
+        if self.router is not None:
+            if ablation is not None:
+                self.router.ablation = self.ablation
+            if cost_tracker is not None:
+                self.router.cost_tracker = cost_tracker
 
         self.txn_sequencer = TransactionSequencer()
         self.txn_info_collector = TransactionInfoCollector()
-        self.adaptive_controller = AdaptiveFailureAwareController()
+        self.adaptive_controller = AdaptiveFailureAwareController(ablation=self.ablation)
         self.address_classifier = AddressClassifier(model, router=router)
         self.agent = build_routed_agent('', router=self.router, agent_role='AddressClassifier', system_prompt='') if router else build_agent('', model)
         
@@ -45,6 +60,35 @@ class ForensicsOrchestrator:
         }
 
     
+    def _calibrated_confidence(self, features):
+        """Optional calibrated exploit probability (paper section 5.3).
+
+        Runs only when calibration is enabled AND a trained calibrator exists at
+        FAULTSEEKER_CALIBRATOR_PATH. Returns None otherwise, so an untrained
+        deployment reports no probability rather than a fabricated one.
+        """
+        if not self.ablation.enabled('calibration'):
+            return None
+        path = os.environ.get('FAULTSEEKER_CALIBRATOR_PATH', '')
+        if not path or not os.path.exists(path):
+            return None
+        if getattr(self, '_calibrator', None) is None:
+            try:
+                from faultseeker.research.calibration import LogisticConfidenceCalibrator
+                self._calibrator = LogisticConfidenceCalibrator.load(path)
+            except Exception as exc:
+                print(f'      [!] Calibrator load failed ({exc}); skipping calibration')
+                self._calibrator = False
+        if not self._calibrator or not getattr(self._calibrator, 'trained', False):
+            return None
+        return self._calibrator.predict_proba(features)
+
+    def _stage(self, name):
+        """Time a pipeline stage when a CostTracker is attached, else no-op."""
+        if self.cost_tracker is None:
+            return nullcontext()
+        return self.cost_tracker.stage(name)
+
     def _get_function_calls_by_loc(self, loc):
         current_cut = self.trace
         for loc_idx in loc:
@@ -142,21 +186,44 @@ class ForensicsOrchestrator:
 
         # ── Pre-LLM signal extraction + rule classification ───────────────
         print("      [+] Extracting deterministic signals...")
-        self.signals = SignalExtractor(
-            txn_seq=self.txn_seq,
-            tx_analysis=self.tx_analysis,
-            txn_hash=txn_hash,
-            chain=chain,
-        ).run()
-        self.graph_reasoning = TransactionInteractionGraph.from_analysis(
-            self.txn_seq,
-            self.tx_analysis,
-            self.txn_info,
-        ).metrics()
+        with self._stage('stage1_signal_extraction'):
+            self.signals = SignalExtractor(
+                txn_seq=self.txn_seq,
+                tx_analysis=self.tx_analysis,
+                txn_hash=txn_hash,
+                chain=chain,
+            ).run()
+
+        # Ablation: when the transaction interaction graph is disabled, no graph
+        # features are produced at all (rather than a score being adjusted).
+        if self.ablation.enabled('tig'):
+            with self._stage('stage1_interaction_graph'):
+                self.graph_reasoning = TransactionInteractionGraph.from_analysis(
+                    self.txn_seq,
+                    self.tx_analysis,
+                    self.txn_info,
+                ).metrics()
+        else:
+            self.graph_reasoning = {'ablated': True, 'component': 'tig'}
         self.signals.raw['graph_reasoning'] = self.graph_reasoning
         self.signals.raw['trace_entropy'] = self._trace_entropy(self.tx_analysis.get('flatten_trace', []))
         self.signals.raw['call_depth_max'] = self.graph_reasoning.get('node_count', 0)
         self.signals.raw['token_flow_anomaly'] = self.graph_reasoning.get('anomaly_score', 0.0)
+
+        # Calibration (paper section 5.3) is now on the real scoring path.
+        calibrated = self._calibrated_confidence({
+            'pattern_match': self.signals.raw.get('pattern_match', 0.0),
+            'code_evidence': self.signals.raw.get('code_evidence', 0.0),
+            'txn_consistency': self.signals.raw.get('txn_consistency', 0.0),
+            'llm_confidence': self.signals.raw.get('llm_confidence', 0.0),
+            'trace_entropy': self.signals.raw.get('trace_entropy', 0.0),
+            'call_depth': self.signals.raw.get('call_depth_max', 0),
+            'token_flow_anomaly': self.signals.raw.get('token_flow_anomaly', 0.0),
+            'state_delta': self.graph_reasoning.get('state_delta_score', 0.0),
+        })
+        self.signals.raw['calibrated_confidence'] = calibrated
+        self.signals.raw['ablation'] = self.ablation.to_dict()
+
         rule_verdict, rule_conf, matched_rule, vuln_type_hint = rule_classifier.classify(self.signals)
         print(f"      [+] Rule verdict: {rule_classifier.describe(rule_verdict, rule_conf, matched_rule, vuln_type_hint)}")
         self.rule_verdict = rule_verdict

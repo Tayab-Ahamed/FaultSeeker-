@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <img src="https://img.shields.io/badge/FaultSeeker++-v2.0-blueviolet?style=for-the-badge&logo=ethereum&logoColor=white" alt="FaultSeeker++"/>
 
@@ -11,7 +11,7 @@
 [![Chains](https://img.shields.io/badge/Chains-10%20EVM-f97316?style=flat-square&logo=ethereum&logoColor=white)](#-supported-networks)
 [![Dataset](https://img.shields.io/badge/Dataset-1059%20Research%20Pool-dc2626?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
 [![Benign](https://img.shields.io/badge/Benign-10000%20Validated-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
-[![Tests](https://img.shields.io/badge/Tests-121%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
+[![Tests](https://img.shields.io/badge/Tests-193%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
 [![Status](https://img.shields.io/badge/Status-Research%20Active-6366f1?style=flat-square)](.)
 
 <br/>
@@ -244,8 +244,11 @@ python benchmark/build_research_exploit_pool.py --output benchmark/research_expl
 # Import 10,000 benign Ethereum transaction candidates
 python benchmark/import_hf_ethereum_activity.py --source parquet --target-rows 10000 --output benchmark/imported/hf_ethereum_benign_transactions.csv --summary-output benchmark/imported/hf_ethereum_benign_transactions_summary.json
 
-# Generate baseline, ablation, and adversarial robustness tables
-python benchmark/run_research_experiments.py
+# Generate baseline, ablation, and adversarial robustness tables (leakage-free)
+python benchmark/collect_benign_traces.py --limit 1000
+python benchmark/run_honest_experiments.py
+python benchmark/run_adversarial_eval.py
+python benchmark/build_honest_latex_tables.py
 
 # Create the external-baseline sheet for Slither/Mythril/TxSpector/GPTScan outputs
 python benchmark/ingest_external_baselines.py --make-template

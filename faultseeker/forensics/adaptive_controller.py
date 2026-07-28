@@ -1,6 +1,7 @@
 from copy import deepcopy
 from typing import Any, Dict, Iterable, List
 
+from faultseeker.research.ablation import AblationConfig
 from faultseeker.research.failure_aware_localization import FailureAwareExploitGraphLocalizer
 
 
@@ -15,8 +16,13 @@ class AdaptiveFailureAwareController:
 
     DEFAULT_MAX_CANDIDATES = 25
 
-    def __init__(self, localizer: FailureAwareExploitGraphLocalizer | None = None):
+    def __init__(
+        self,
+        localizer: FailureAwareExploitGraphLocalizer | None = None,
+        ablation: AblationConfig | None = None,
+    ):
         self.localizer = localizer or FailureAwareExploitGraphLocalizer()
+        self.ablation = ablation or AblationConfig.full_system()
 
     def apply(
         self,
@@ -25,6 +31,20 @@ class AdaptiveFailureAwareController:
         token_filter_result: Dict[str, Any],
     ) -> Dict[str, Any]:
         before_count = self._count(functions_to_inspect)
+
+        # Ablation: when FAEGL is disabled the controller is a no-op, so the
+        # empty-candidate-set recovery genuinely does not happen.
+        if not self.ablation.enabled("faegl"):
+            return {
+                "activated": False,
+                "trigger": "",
+                "modes": [],
+                "before_count": before_count,
+                "after_count": before_count,
+                "functions_added": 0,
+                "algorithm_decision": {"ablated": True, "component": "faegl"},
+            }
+
         algorithm_decision = self.localizer.decide(functions_to_inspect, tx_analysis, token_filter_result).to_dict()
         decision = {
             "activated": False,

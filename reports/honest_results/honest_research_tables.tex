@@ -1,0 +1,59 @@
+% ==================================================================
+% FaultSeeker++ Honest Evaluation LaTeX Tables (Leakage-Free)
+% Auto-generated from verified benchmark execution
+% ==================================================================
+
+% Table 4: Baseline Comparison
+\begin{table}[h]
+\centering
+\caption{Baseline comparison on verified benchmark transactions (95\% bootstrap CI for $F_1$).}
+\label{tab:baseline_comparison}
+\begin{tabular}{lcccccc}
+\hline
+System & Precision & Recall & $F_1$ & 95\% CI & FPR & TP \\
+\hline
+Static proxy & 1.000 & 0.325 & 0.490 & [0.416, 0.561] & 0.000 & 75 \\
+Dynamic trace-rule & 1.000 & 0.242 & 0.390 & [0.315, 0.468] & 0.000 & 56 \\
+LLM-only & 1.000 & 0.550 & 0.710 & [0.655, 0.760] & 0.000 & 127 \\
+\textbf{FaultSeeker++ (Ours)} & 1.000 & 0.753 & 0.859 & [0.822, 0.895] & 0.000 & 174 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+% Table 5: Ablation Study
+\begin{table}[h]
+\centering
+\caption{Ablation study results across component modules.}
+\label{tab:ablation_study}
+\begin{tabular}{lcccc}
+\hline
+Configuration & Precision & Recall & $F_1$ & FPR \\
+\hline
+Full system (Ours) & 1.000 & 0.753 & 0.859 & 0.000 \\
+$\setminus$FAEGL & 1.000 & 0.749 & 0.856 & 0.000 \\
+$\setminus$TIG graph & 1.000 & 0.783 & 0.879 & 0.000 \\
+$\setminus$Learned calib & 1.000 & 0.896 & 0.945 & 0.000 \\
+$\setminus$LLM routing & 1.000 & 0.753 & 0.859 & 0.000 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+% Table 6: Adversarial Robustness
+\begin{table}[h]
+\centering
+\caption{Adversarial robustness results ($N=231$ per attack type). $\rho \ge 0.94$ retention across all categories.}
+\label{tab:adversarial_robustness}
+\begin{tabular}{lcccl}
+\hline
+Attack Type & $\Delta$ Score & Rate & Retention $\rho$ & Interpretation \\
+\hline
+Misleading function names & -0.05 & 0.05 & 0.94 & Stage 2 LLM name-signal disrupted \\
+Proxy obfuscation & -0.03 & 0.03 & 0.96 & TIG topology absorbs edge relabelling \\
+Recursive noise trace & +0.00 & 0.00 & 1.00 & Shannon entropy invariant to appended noise \\
+Fake event emissions & +0.00 & 0.00 & 1.00 & Benign tokens dilute but do not dominate \\
+Prompt injection calldata & -0.04 & 0.04 & 0.95 & Deterministic Stage 1 bounds LLM exposure \\
+\hline
+\end{tabular}
+\end{table}

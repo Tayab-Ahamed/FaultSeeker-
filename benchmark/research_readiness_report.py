@@ -79,8 +79,11 @@ def build_report(exploit_csv: str = EXPLOIT_CSV, sources_json: str = SOURCES_JSO
 
 
 def _load_csv(path: str) -> list[dict]:
-    with open(path, encoding="utf-8", newline="") as f:
-        return list(csv.DictReader(f))
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return [
+            {str(k or "").strip().lstrip("\ufeff").strip(chr(34)): v for k, v in row.items()}
+            for row in csv.DictReader(f)
+        ]
 
 
 def _staged_import_summary(path: str | None = None) -> dict:
