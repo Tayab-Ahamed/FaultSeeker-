@@ -11,282 +11,31 @@
     "exploit": {
       "rows": 231,
       "rows_with_trace_features": 231,
-      "coverage": 1.0
+      "coverage": 1.0,
+      "distinct_feature_vectors": 230,
+      "functioncall_count_variance": 4042183.233598,
+      "address_count_variance": 298.581923,
+      "max_depth_variance": 40.316636,
+      "gas_cost_variance": 84991293964903.03
     },
     "benign": {
       "rows": 1000,
       "rows_with_trace_features": 1000,
-      "coverage": 1.0
+      "coverage": 1.0,
+      "distinct_feature_vectors": 1,
+      "functioncall_count_variance": 0.0,
+      "address_count_variance": 0.0,
+      "max_depth_variance": 0.0,
+      "gas_cost_variance": 0.0
     },
     "coverage_gap": 0.0,
-    "comparable": true
+    "comparable": false,
+    "is_degenerate": true,
+    "blocker": "DEGENERATE_CLASS: benign class has only 1 distinct feature vectors (minimum 10 required); benign class has zero variance for feature 'functioncall_count' (all values = 1.0); benign class has zero variance for feature 'address_count' (all values = 2.0); benign class has zero variance for feature 'max_depth' (all values = 0.0); benign class has zero variance for feature 'gas_cost' (all values = 21000.0)"
   },
   "threshold": 0.5,
   "bootstrap_resamples": 1000,
-  "status": "OK",
-  "publishable": true,
-  "evaluated_rows": 1231,
-  "leakage_audit": {
-    "Static proxy": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": true,
-      "positive_score_range": [
-        0.013867,
-        1.0
-      ],
-      "negative_score_range": [
-        0.0086,
-        0.0086
-      ],
-      "warning": "Score distributions are perfectly disjoint across classes. Verify the scorer is not deriving values from labels or from a feature that is only populated for one class."
-    },
-    "Dynamic trace-rule": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": true,
-      "positive_score_range": [
-        0.032833,
-        1.0
-      ],
-      "negative_score_range": [
-        0.0175,
-        0.0175
-      ],
-      "warning": "Score distributions are perfectly disjoint across classes. Verify the scorer is not deriving values from labels or from a feature that is only populated for one class."
-    },
-    "LLM-only": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": false,
-      "positive_score_range": [
-        0.0,
-        1.0
-      ],
-      "negative_score_range": [
-        0.0,
-        0.0
-      ]
-    },
-    "FaultSeeker++ (Ours)": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": false,
-      "positive_score_range": [
-        0.216463,
-        0.995504
-      ],
-      "negative_score_range": [
-        0.268902,
-        0.268902
-      ]
-    },
-    "-FAEGL": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": false,
-      "positive_score_range": [
-        0.0,
-        0.995504
-      ],
-      "negative_score_range": [
-        0.0,
-        0.0
-      ]
-    },
-    "-TIG graph": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": false,
-      "positive_score_range": [
-        0.21232,
-        0.99593
-      ],
-      "negative_score_range": [
-        0.280295,
-        0.280295
-      ]
-    },
-    "-Learned calib": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": true,
-      "positive_score_range": [
-        0.256,
-        1.0
-      ],
-      "negative_score_range": [
-        0.236,
-        0.236
-      ],
-      "warning": "Score distributions are perfectly disjoint across classes. Verify the scorer is not deriving values from labels or from a feature that is only populated for one class."
-    },
-    "-LLM routing": {
-      "leaked": false,
-      "leak_message": "",
-      "scored_rows": 1231,
-      "perfectly_separable": false,
-      "positive_score_range": [
-        0.216463,
-        0.995504
-      ],
-      "negative_score_range": [
-        0.268902,
-        0.268902
-      ]
-    }
-  },
-  "systems": [
-    {
-      "tp": 75,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 156,
-      "precision": 1.0,
-      "recall": 0.3247,
-      "f1": 0.4902,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.8733,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "Static proxy",
-      "f1_ci_low": 0.4158,
-      "f1_ci_high": 0.5607,
-      "brier": 0.087884,
-      "ece": 0.103776
-    },
-    {
-      "tp": 56,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 175,
-      "precision": 1.0,
-      "recall": 0.2424,
-      "f1": 0.3902,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.8578,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "Dynamic trace-rule",
-      "f1_ci_low": 0.3148,
-      "f1_ci_high": 0.4675,
-      "brier": 0.09622,
-      "ece": 0.110265
-    },
-    {
-      "tp": 127,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 104,
-      "precision": 1.0,
-      "recall": 0.5498,
-      "f1": 0.7095,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9155,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "LLM-only",
-      "f1_ci_low": 0.6551,
-      "f1_ci_high": 0.7603,
-      "brier": 0.042801,
-      "ece": 0.076826
-    },
-    {
-      "tp": 174,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 57,
-      "precision": 1.0,
-      "recall": 0.7532,
-      "f1": 0.8593,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9537,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "FaultSeeker++ (Ours)",
-      "f1_ci_low": 0.8223,
-      "f1_ci_high": 0.895,
-      "brier": 0.08229,
-      "ece": 0.24579
-    },
-    {
-      "tp": 173,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 58,
-      "precision": 1.0,
-      "recall": 0.7489,
-      "f1": 0.8564,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9529,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "-FAEGL",
-      "f1_ci_low": 0.8204,
-      "f1_ci_high": 0.8922,
-      "brier": 0.026016,
-      "ece": 0.046853
-    },
-    {
-      "tp": 181,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 50,
-      "precision": 1.0,
-      "recall": 0.7835,
-      "f1": 0.8786,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9594,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "-TIG graph",
-      "f1_ci_low": 0.8438,
-      "f1_ci_high": 0.9111,
-      "brier": 0.085557,
-      "ece": 0.250996
-    },
-    {
-      "tp": 207,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 24,
-      "precision": 1.0,
-      "recall": 0.8961,
-      "f1": 0.9452,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9805,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "-Learned calib",
-      "f1_ci_low": 0.9206,
-      "f1_ci_high": 0.9666,
-      "brier": 0.061619,
-      "ece": 0.229371
-    },
-    {
-      "tp": 174,
-      "fp": 0,
-      "tn": 1000,
-      "fn": 57,
-      "precision": 1.0,
-      "recall": 0.7532,
-      "f1": 0.8593,
-      "false_positive_rate": 0.0,
-      "accuracy": 0.9537,
-      "threshold": 0.5,
-      "n": 1231,
-      "system": "-LLM routing",
-      "f1_ci_low": 0.8223,
-      "f1_ci_high": 0.895,
-      "brier": 0.08229,
-      "ece": 0.24579
-    }
-  ]
+  "status": "BLOCKED_INSUFFICIENT_TRACE_COVERAGE",
+  "publishable": false,
+  "next_step": "Run: python benchmark/collect_benign_traces.py --limit 1000 --rpc-url $ETH_RPC_URL"
 }

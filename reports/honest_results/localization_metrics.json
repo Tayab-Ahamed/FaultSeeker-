@@ -1,0 +1,1968 @@
+{
+  "corpus": {
+    "ground_truth_dir": "benchmark\\ground_truth",
+    "predictions_dir": "data\\output",
+    "ground_truth_files_with_targets": 115,
+    "function_level_targets": 161,
+    "line_level_targets": 134,
+    "transactions_with_valid_predictions": 114
+  },
+  "predictions_provenance": {
+    "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T13:45:14.808826+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300",
+      "trace_status": "ok"
+    },
+    "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T13:45:28.590191+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+      "trace_status": "ok"
+    },
+    "0x04e16a79ff928db2fa88619cdd045cdfc7979a61d836c9c9e585b3d6f6d8bc31": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T13:52:21.018907+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x04e16a79ff928db2fa88619cdd045cdfc7979a61d836c9c9e585b3d6f6d8bc31",
+      "trace_status": "ok"
+    },
+    "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T13:53:26.917672+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04",
+      "trace_status": "ok"
+    },
+    "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:06:57.318737+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+      "trace_status": "ok"
+    },
+    "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:07:30.915409+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308",
+      "trace_status": "ok"
+    },
+    "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:07:56.054733+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b",
+      "trace_status": "ok"
+    },
+    "0x0b062361e16a2ea0942cc1b4462b6584208c8c864609ff73aaa640aaa2d92428": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:08:44.150361+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x0b062361e16a2ea0942cc1b4462b6584208c8c864609ff73aaa640aaa2d92428",
+      "trace_status": "ok"
+    },
+    "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:09:07.222851+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4",
+      "trace_status": "ok"
+    },
+    "0x0fc5c0d41e5506fdb9434fab4815a4ff671afc834e47a533b3bed7182ece73b0": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:11:31.319223+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x0fc5c0d41e5506fdb9434fab4815a4ff671afc834e47a533b3bed7182ece73b0",
+      "trace_status": "ok"
+    },
+    "0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:15:19.265496+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab",
+      "trace_status": "ok"
+    },
+    "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:15:36.953819+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b",
+      "trace_status": "ok"
+    },
+    "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:16:29.234148+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc",
+      "trace_status": "ok"
+    },
+    "0x138daa4cbeaa3db42eefcec26e234fc2c89a4aa17d6b1870fc460b2856fd11a6": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:23:59.113422+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x138daa4cbeaa3db42eefcec26e234fc2c89a4aa17d6b1870fc460b2856fd11a6",
+      "trace_status": "ok"
+    },
+    "0x160c5950a01b88953648ba90ec0a29b0c5383e055d35a7835d905c53a3dda01e": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:26:40.351120+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x160c5950a01b88953648ba90ec0a29b0c5383e055d35a7835d905c53a3dda01e",
+      "trace_status": "ok"
+    },
+    "0x19c04bc04ee8117abfdf0c9301787b12b27f3c5c13308b4f66711a8f0ecacc62": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:27:12.274843+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x19c04bc04ee8117abfdf0c9301787b12b27f3c5c13308b4f66711a8f0ecacc62",
+      "trace_status": "ok"
+    },
+    "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:45:47.412191+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+      "trace_status": "ok"
+    },
+    "0x1ea0a2e88efceccb2dd93e6e5cb89e5421666caeefb1e6fc41b68168373da342": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:49:21.856128+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1ea0a2e88efceccb2dd93e6e5cb89e5421666caeefb1e6fc41b68168373da342",
+      "trace_status": "ok"
+    },
+    "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:52:42.724002+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1",
+      "trace_status": "ok"
+    },
+    "0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T14:55:44.274045+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914",
+      "trace_status": "ok"
+    },
+    "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:06:36.024562+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a",
+      "trace_status": "ok"
+    },
+    "0x21d8b164f0cb8beb1ed27d164ed986c3fc26b33655ce18226b05b9cfcf6cd93c": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:06:59.140683+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x21d8b164f0cb8beb1ed27d164ed986c3fc26b33655ce18226b05b9cfcf6cd93c",
+      "trace_status": "ok"
+    },
+    "0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:07:16.853244+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286",
+      "trace_status": "ok"
+    },
+    "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:07:44.304510+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb",
+      "trace_status": "ok"
+    },
+    "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:08:43.812514+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b",
+      "trace_status": "ok"
+    },
+    "0x2606d459a50ca4920722a111745c2eeced1d8a01ff25ee762e22d5d4b1595739": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:08:59.983476+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2606d459a50ca4920722a111745c2eeced1d8a01ff25ee762e22d5d4b1595739",
+      "trace_status": "ok"
+    },
+    "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:13:20.054110+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2",
+      "trace_status": "ok"
+    },
+    "0x2881e839d4d562fad5356183e4f6a9d427ba6f475614ce8ef64dbfe557a4a2cc": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:16:16.244299+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2881e839d4d562fad5356183e4f6a9d427ba6f475614ce8ef64dbfe557a4a2cc",
+      "trace_status": "ok"
+    },
+    "0x2a027c8b915c3737942f512fc5d26fd15752d0332353b3059de771a35a606c2d": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:17:39.915685+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2a027c8b915c3737942f512fc5d26fd15752d0332353b3059de771a35a606c2d",
+      "trace_status": "ok"
+    },
+    "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:18:35.401911+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6",
+      "trace_status": "ok"
+    },
+    "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:22:03.436054+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83",
+      "trace_status": "ok"
+    },
+    "0x2e832f044b4a0a0b8d38166fe4d781ab330b05b9efa9e72a7a0895f1b984084b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:25:41.490500+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x2e832f044b4a0a0b8d38166fe4d781ab330b05b9efa9e72a7a0895f1b984084b",
+      "trace_status": "ok"
+    },
+    "0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:26:08.274882+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa",
+      "trace_status": "ok"
+    },
+    "0x35a73969f582872c25c96c48d8bb31c23eab8a49c19282c67509b96186734e60": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:26:43.896016+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x35a73969f582872c25c96c48d8bb31c23eab8a49c19282c67509b96186734e60",
+      "trace_status": "ok"
+    },
+    "0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9c6ceb921c1": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:28:02.063313+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9c6ceb921c1",
+      "trace_status": "ok"
+    },
+    "0x37acd17a80a5f95728459bfea85cb2e1f64b4c75cf4a4c8dcb61964e26860882": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:35:06.379195+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x37acd17a80a5f95728459bfea85cb2e1f64b4c75cf4a4c8dcb61964e26860882",
+      "trace_status": "ok"
+    },
+    "0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:40:23.810923+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714",
+      "trace_status": "ok"
+    },
+    "0x3c09c6306b67737227edc24c663462d870e7c2bf39e9ab66877a980c900dd5d5": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:41:28.473908+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x3c09c6306b67737227edc24c663462d870e7c2bf39e9ab66877a980c900dd5d5",
+      "trace_status": "ok"
+    },
+    "0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:43:19.327671+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78",
+      "trace_status": "ok"
+    },
+    "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:43:43.118224+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf",
+      "trace_status": "ok"
+    },
+    "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:44:05.140006+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7",
+      "trace_status": "ok"
+    },
+    "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:44:34.734810+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca",
+      "trace_status": "ok"
+    },
+    "0x44aad3b853866468161735496a5d9cc961ce5aa872924c5d78673076b1cd95aa": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:49:29.803318+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x44aad3b853866468161735496a5d9cc961ce5aa872924c5d78673076b1cd95aa",
+      "trace_status": "ok"
+    },
+    "0x46deef0f52e3a983b67abf4714448a41dd7ffd6d32d32da69d62081c68ad7882": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:49:55.069675+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x46deef0f52e3a983b67abf4714448a41dd7ffd6d32d32da69d62081c68ad7882",
+      "trace_status": "ok"
+    },
+    "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:55:46.310074+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3",
+      "trace_status": "ok"
+    },
+    "0x48d22ea24c1ae707b8b17ca2a3ea81a1aee64a075d93e5bff81a7370e2cacea7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:56:31.707292+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x48d22ea24c1ae707b8b17ca2a3ea81a1aee64a075d93e5bff81a7370e2cacea7",
+      "trace_status": "ok"
+    },
+    "0x491cf8b2a5753fdbf3096b42e0a16bc109b957dc112d6537b1ed306e483d0744": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:57:01.395545+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x491cf8b2a5753fdbf3096b42e0a16bc109b957dc112d6537b1ed306e483d0744",
+      "trace_status": "ok"
+    },
+    "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:58:28.670761+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7",
+      "trace_status": "ok"
+    },
+    "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:59:13.762777+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff",
+      "trace_status": "ok"
+    },
+    "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T15:59:53.872619+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389",
+      "trace_status": "ok"
+    },
+    "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:00:14.104056+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba",
+      "trace_status": "ok"
+    },
+    "0x597d11c05563611cb4ad4ed4c57ca53bbe3b7d3fefc37d1ef0724ad58904742b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:01:24.062812+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x597d11c05563611cb4ad4ed4c57ca53bbe3b7d3fefc37d1ef0724ad58904742b",
+      "trace_status": "ok"
+    },
+    "0x6200bf5c43c214caa1177c3676293442059b4f39eb5dbae6cfd4e6ad16305668": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:01:57.933097+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x6200bf5c43c214caa1177c3676293442059b4f39eb5dbae6cfd4e6ad16305668",
+      "trace_status": "ok"
+    },
+    "0x6439d63cc57fb68a32ea8ffd8f02496e8abad67292be94904c0b47a4d14ce90d": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:03:25.824809+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x6439d63cc57fb68a32ea8ffd8f02496e8abad67292be94904c0b47a4d14ce90d",
+      "trace_status": "ok"
+    },
+    "0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:04:39.029000+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7",
+      "trace_status": "ok"
+    },
+    "0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:07:21.510681+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa",
+      "trace_status": "ok"
+    },
+    "0x6fb7f8e9eb09d6ae17dbe82b2b42f46f64fb9c3197438b68ecf03e832d5fc791": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:08:09.809878+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x6fb7f8e9eb09d6ae17dbe82b2b42f46f64fb9c3197438b68ecf03e832d5fc791",
+      "trace_status": "ok"
+    },
+    "0x725f0d65340c859e0f64e72ca8260220c526c3e0ccde530004160809f6177940": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:09:32.317838+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x725f0d65340c859e0f64e72ca8260220c526c3e0ccde530004160809f6177940",
+      "trace_status": "ok"
+    },
+    "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:10:30.390012+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281",
+      "trace_status": "ok"
+    },
+    "0x7c5a909b45014e35ddb89697f6be38d08eff30e7c3d3d553033a6efc3b444fdd": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:18:30.125646+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x7c5a909b45014e35ddb89697f6be38d08eff30e7c3d3d553033a6efc3b444fdd",
+      "trace_status": "ok"
+    },
+    "0x800a5b3178f680feebb81af69bd3dff791b886d4ce31615e601f2bb1f543bb2e": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:19:31.034039+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x800a5b3178f680feebb81af69bd3dff791b886d4ce31615e601f2bb1f543bb2e",
+      "trace_status": "ok"
+    },
+    "0x873f7c77d5489c1990f701e9bb312c103c5ebcdcf0a472db726730814bfd55f3": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:20:19.688240+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x873f7c77d5489c1990f701e9bb312c103c5ebcdcf0a472db726730814bfd55f3",
+      "trace_status": "ok"
+    },
+    "0x8a8145ab28b5d2a2e61d74c02c12350731f479b3175893de2014124f998bff32": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:20:46.579628+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x8a8145ab28b5d2a2e61d74c02c12350731f479b3175893de2014124f998bff32",
+      "trace_status": "ok"
+    },
+    "0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:21:07.987278+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5",
+      "trace_status": "ok"
+    },
+    "0x8e1b0ab098c4cc5f632e00b0842b5f825bbd15ded796d4a59880bb724f6c5372": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:21:49.510708+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x8e1b0ab098c4cc5f632e00b0842b5f825bbd15ded796d4a59880bb724f6c5372",
+      "trace_status": "ok"
+    },
+    "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:22:02.677243+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+      "trace_status": "ok"
+    },
+    "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:22:36.493192+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9",
+      "trace_status": "ok"
+    },
+    "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:24:54.737133+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "trace_status": "ok"
+    },
+    "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:25:25.510762+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e",
+      "trace_status": "ok"
+    },
+    "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:25:59.928930+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01",
+      "trace_status": "ok"
+    },
+    "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:26:18.442234+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+      "trace_status": "ok"
+    },
+    "0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:28:28.215286+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299",
+      "trace_status": "ok"
+    },
+    "0x9f4ef3cc55b016ea6b867807a09f80d1b2e36f6cd6fccfaf0182f46060332c57": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:28:44.208152+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0x9f4ef3cc55b016ea6b867807a09f80d1b2e36f6cd6fccfaf0182f46060332c57",
+      "trace_status": "ok"
+    },
+    "0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:29:34.054493+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7",
+      "trace_status": "ok"
+    },
+    "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:30:50.273442+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "trace_status": "ok"
+    },
+    "0xa992b28ecf2eed778d20d5200946ea341b950be0c3d78b1f2237a4d8d795de95": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:31:16.676147+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xa992b28ecf2eed778d20d5200946ea341b950be0c3d78b1f2237a4d8d795de95",
+      "trace_status": "ok"
+    },
+    "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:31:45.102265+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133",
+      "trace_status": "ok"
+    },
+    "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:35:19.529066+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1",
+      "trace_status": "ok"
+    },
+    "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:37:11.831227+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d",
+      "trace_status": "ok"
+    },
+    "0xaf46a42fe1ed7193b25c523723dc047c7500e50a00ecb7bbb822d665adb3e1f3": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:37:58.136781+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xaf46a42fe1ed7193b25c523723dc047c7500e50a00ecb7bbb822d665adb3e1f3",
+      "trace_status": "ok"
+    },
+    "0xb072f2e88058c147d8ff643694b43a42e36525b7173ce1daf76e6c06170b0e77": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:45:01.996202+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xb072f2e88058c147d8ff643694b43a42e36525b7173ce1daf76e6c06170b0e77",
+      "trace_status": "ok"
+    },
+    "0xb36486f032a450782d5d2fac118ea90a6d3b08cac3409d949c59b43bcd6dbb8f": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:46:35.384819+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xb36486f032a450782d5d2fac118ea90a6d3b08cac3409d949c59b43bcd6dbb8f",
+      "trace_status": "ok"
+    },
+    "0xb61413c495fdad6114a7aa863a00b2e3c28945979a10885b12b30316ea9f072c": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:47:32.740763+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xb61413c495fdad6114a7aa863a00b2e3c28945979a10885b12b30316ea9f072c",
+      "trace_status": "ok"
+    },
+    "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:47:56.441614+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e",
+      "trace_status": "ok"
+    },
+    "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:48:16.414297+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+      "trace_status": "ok"
+    },
+    "0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:48:41.922628+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574",
+      "trace_status": "ok"
+    },
+    "0xc18ec2eb7d41638d9982281e766945d0428aaeda6211b4ccb6626ea7cff31f4a": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:49:43.114581+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xc18ec2eb7d41638d9982281e766945d0428aaeda6211b4ccb6626ea7cff31f4a",
+      "trace_status": "ok"
+    },
+    "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:52:32.596233+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "trace_status": "ok"
+    },
+    "0xc42fc0e22a0f60cc299be80eb0c0ddce83c21c14a3dddd8430628011c3e20d6b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:54:20.847803+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xc42fc0e22a0f60cc299be80eb0c0ddce83c21c14a3dddd8430628011c3e20d6b",
+      "trace_status": "ok"
+    },
+    "0xc9b2cbc1437bbcd8c328b6d7cdbdae33d7d2a9ef07eca18b4922aac0430991e7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:54:50.893907+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xc9b2cbc1437bbcd8c328b6d7cdbdae33d7d2a9ef07eca18b4922aac0430991e7",
+      "trace_status": "ok"
+    },
+    "0xcbe521aea28911fe9983030748028e12541e347b8b6b974d026fa5065c22f0cf": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:55:28.088066+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xcbe521aea28911fe9983030748028e12541e347b8b6b974d026fa5065c22f0cf",
+      "trace_status": "ok"
+    },
+    "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:56:53.457640+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe",
+      "trace_status": "ok"
+    },
+    "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T16:57:25.319953+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db",
+      "trace_status": "ok"
+    },
+    "0xd493c73397952049644c531309df3dd4134bf3db1e64eb6f0b68b016ee0bffde": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:04:06.124012+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd493c73397952049644c531309df3dd4134bf3db1e64eb6f0b68b016ee0bffde",
+      "trace_status": "ok"
+    },
+    "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:04:37.653254+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6",
+      "trace_status": "ok"
+    },
+    "0xd5b4d68432cbbd912130bbb5b93399031ddbb400d8f723c78050574de7533106": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:05:12.288551+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd5b4d68432cbbd912130bbb5b93399031ddbb400d8f723c78050574de7533106",
+      "trace_status": "ok"
+    },
+    "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:05:56.621474+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+      "trace_status": "ok"
+    },
+    "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:06:49.797863+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6",
+      "trace_status": "ok"
+    },
+    "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:07:07.234026+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6",
+      "trace_status": "ok"
+    },
+    "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:07:24.970734+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284",
+      "trace_status": "ok"
+    },
+    "0xdaccbc437cb07427394704fbcc8366589ffccf974ec6524f3483844b043f31d5": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:07:46.277573+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xdaccbc437cb07427394704fbcc8366589ffccf974ec6524f3483844b043f31d5",
+      "trace_status": "ok"
+    },
+    "0xdd0636e2598f4d7b74f364fedb38f334365fd956747a04a6dd597444af0bc1c0": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:08:05.438273+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xdd0636e2598f4d7b74f364fedb38f334365fd956747a04a6dd597444af0bc1c0",
+      "trace_status": "ok"
+    },
+    "0xdf6252854362c3e96fd086d9c3a5397c303d265649aee0b023176bb49cf00d4b": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:09:21.654131+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xdf6252854362c3e96fd086d9c3a5397c303d265649aee0b023176bb49cf00d4b",
+      "trace_status": "ok"
+    },
+    "0xe4db1550e3aa78a05e93bfd8fbe21b6eba5cce50dc06688949ab479ebed18048": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:09:59.491518+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xe4db1550e3aa78a05e93bfd8fbe21b6eba5cce50dc06688949ab479ebed18048",
+      "trace_status": "ok"
+    },
+    "0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:10:20.654854+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f",
+      "trace_status": "ok"
+    },
+    "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:10:47.696159+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0",
+      "trace_status": "ok"
+    },
+    "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:11:44.342917+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098",
+      "trace_status": "ok"
+    },
+    "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:12:06.066713+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+      "trace_status": "ok"
+    },
+    "0xf1818f62c635e5c80ef16b7857da812c74ce330ebed46682b4d173bffe84c666": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:13:23.522372+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xf1818f62c635e5c80ef16b7857da812c74ce330ebed46682b4d173bffe84c666",
+      "trace_status": "ok"
+    },
+    "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:13:56.042763+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+      "trace_status": "ok"
+    },
+    "0xf72f1d10fc6923f87279ce6c0aef46e372c6652a696f280b0465a301a92f2e26": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:15:11.753431+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xf72f1d10fc6923f87279ce6c0aef46e372c6652a696f280b0465a301a92f2e26",
+      "trace_status": "ok"
+    },
+    "0xfc872bf5ca8f04b18b82041ec563e4abf2e31e1fc27d1ea5dee39bc8a79d2d06": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:15:27.288519+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xfc872bf5ca8f04b18b82041ec563e4abf2e31e1fc27d1ea5dee39bc8a79d2d06",
+      "trace_status": "ok"
+    },
+    "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:16:11.012289+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598",
+      "trace_status": "ok"
+    },
+    "0xfeedbf51b4e2338e38171f6e19501327294ab1907ab44cfd2d7e7336c975ace7": {
+      "producer": "ForensicsOrchestrator",
+      "orchestrator_version": "2.0",
+      "model_used": "gpt-4o-mini",
+      "timestamp": "2026-07-30T17:22:53.510963+00:00",
+      "ablation_config": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      },
+      "transaction_hash": "0xfeedbf51b4e2338e38171f6e19501327294ab1907ab44cfd2d7e7336c975ace7",
+      "trace_status": "ok"
+    }
+  },
+  "metrics": {
+    "ground_truth_transactions": 115,
+    "evaluated": 115,
+    "missing_predictions": 0,
+    "excluded_unavailable_traces": 0,
+    "excluded_error_traces": 0,
+    "usable_trace_ratio": 1.0,
+    "match_mode": "line",
+    "mrr": 0.0,
+    "top_1_accuracy": 0.0,
+    "top_1_hits": 0,
+    "top_3_accuracy": 0.0,
+    "top_3_hits": 0,
+    "top_5_accuracy": 0.0,
+    "top_5_hits": 0,
+    "top_10_accuracy": 0.0,
+    "top_10_hits": 0
+  }
+}

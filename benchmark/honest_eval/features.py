@@ -148,15 +148,49 @@ def audit_feature_coverage(rows: Iterable[EvalRow]) -> Dict[str, Any]:
     exploit_cov = summary["exploit"]["coverage"]
     benign_cov = summary["benign"]["coverage"]
     gap = abs(exploit_cov - benign_cov)
+    
+    # Degeneracy check: calculate feature variances and distinct feature vector count per class
+    degenerate_reasons = []
+    for label, name in ((1, "exploit"), (0, "benign")):
+        subset = [r for r in rows if r.label == label and r.has_trace_features]
+        if not subset:
+            degenerate_reasons.append(f"{name} class has zero rows with trace features")
+            continue
+
+        distinct_vectors = set(
+            tuple(float(r.features.get(f) or 0.0) for f in TRACE_FEATURES)
+            for r in subset
+        )
+        summary[name]["distinct_feature_vectors"] = len(distinct_vectors)
+        if len(distinct_vectors) < 10:
+            degenerate_reasons.append(
+                f"{name} class has only {len(distinct_vectors)} distinct feature vectors (minimum 10 required)"
+            )
+
+        for feat in TRACE_FEATURES:
+            vals = [float(r.features.get(feat) or 0.0) for r in subset]
+            mean_val = sum(vals) / len(vals)
+            var_val = sum((v - mean_val) ** 2 for v in vals) / len(vals)
+            summary[name][f"{feat}_variance"] = round(var_val, 6)
+            if var_val == 0.0:
+                degenerate_reasons.append(
+                    f"{name} class has zero variance for feature '{feat}' (all values = {vals[0]})"
+                )
+
+    is_degenerate = bool(degenerate_reasons)
     comparable = bool(
         summary["exploit"]["rows_with_trace_features"] > 0
         and summary["benign"]["rows_with_trace_features"] > 0
         and gap <= 0.10
+        and not is_degenerate
     )
 
     summary["coverage_gap"] = round(gap, 4)
     summary["comparable"] = comparable
-    if not comparable:
+    summary["is_degenerate"] = is_degenerate
+    if is_degenerate:
+        summary["blocker"] = "DEGENERATE_CLASS: " + "; ".join(degenerate_reasons)
+    elif not comparable:
         summary["blocker"] = (
             "Trace-feature coverage is unbalanced across classes "
             f"(exploit={exploit_cov:.2f}, benign={benign_cov:.2f}). A classifier "

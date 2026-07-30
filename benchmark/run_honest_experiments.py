@@ -223,11 +223,17 @@ def main() -> int:
 
     table_rows = []
     leakage_report = {}
+    has_blocked_scorer = False
     for name, scorer in SCORERS.items():
         findings = audit_scorer(scorer, payloads, labels)
         leakage_report[name] = findings
         if findings["leaked"]:
             print(f"[LEAKAGE] {name}: {findings['leak_message']}")
+            has_blocked_scorer = True
+            continue
+        if findings.get("perfectly_separable"):
+            print(f"[FAILED AUDIT - PERFECT SEPARATION] {name}: {findings.get('warning')}")
+            has_blocked_scorer = True
             continue
         scores = [scorer(payload) for payload in payloads]
         metrics = classification_metrics(labels, scores, args.threshold)
@@ -265,6 +271,21 @@ def main() -> int:
             reliability,
             ["bin_lower", "bin_upper", "count", "mean_confidence", "empirical_accuracy"],
         )
+
+    if has_blocked_scorer or not table_rows:
+        status["status"] = "BLOCKED_AUDIT_FAILURE"
+        status["publishable"] = False
+        status["leakage_audit"] = leakage_report
+        status["systems"] = table_rows
+        with open(
+            os.path.join(args.results_dir, "status.json"), "w", encoding="utf-8"
+        ) as handle:
+            json.dump(status, handle, indent=2)
+        print("\n==========================================================================")
+        print("BLOCKED: Audit failed due to leakage or perfectly separable score distributions.")
+        print("==========================================================================")
+        print(f"Wrote {os.path.join(args.results_dir, 'status.json')}")
+        return 2
 
     status["status"] = "OK" if coverage["comparable"] else "EMITTED_BUT_NOT_PUBLISHABLE"
     status["publishable"] = bool(coverage["comparable"])

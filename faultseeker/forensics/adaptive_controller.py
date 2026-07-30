@@ -91,13 +91,14 @@ class AdaptiveFailureAwareController:
                 continue
             if not self._is_inspectable_call(node):
                 continue
-
             candidate = self._candidate_from_node(node, address_scores)
+            depth = candidate.get("depth", 0)
+            depth_key = tuple(depth) if isinstance(depth, list) else depth
             key = (
                 candidate.get("address", "").lower(),
                 candidate.get("function", ""),
                 candidate.get("call_type", ""),
-                candidate.get("depth", 0),
+                depth_key,
             )
             if key in seen:
                 continue
@@ -117,6 +118,8 @@ class AdaptiveFailureAwareController:
 
     @staticmethod
     def _address_scores(token_filter_result: Dict[str, Any]) -> Dict[str, int]:
+        if not isinstance(token_filter_result, dict):
+            return {}
         inspected = token_filter_result.get("address_to_be_inspected", {}) or {}
         return {str(address).lower(): 2 for address in inspected}
 

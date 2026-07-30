@@ -117,12 +117,16 @@ class ForensicsOrchestrator:
                         
                         
     def check_flashloan_fallback_execution(self):
-        for loc in self.token_filter_result['function_calls_to_expand_loc']['flashloan_callback']:
+        if not self.token_filter_result or 'function_calls_to_expand_loc' not in self.token_filter_result:
+            return
+        for loc in self.token_filter_result['function_calls_to_expand_loc'].get('flashloan_callback', []):
             function_calls = self._get_function_calls_by_loc(loc['depth'])
             self._update_function_calls_to_be_inspected(function_calls,'flashloan_callback',loc['function'])
                 
     def check_function_name_with_hash(self):
-        for loc in self.token_filter_result['function_calls_to_expand_loc']['name_in_hash']:
+        if not self.token_filter_result or 'function_calls_to_expand_loc' not in self.token_filter_result:
+            return
+        for loc in self.token_filter_result['function_calls_to_expand_loc'].get('name_in_hash', []):
             function_calls = self._get_function_calls_by_loc(loc['depth'])
             self._update_function_calls_to_be_inspected(function_calls,'function_name_with_hash_children',loc['function'])
             function_call = deepcopy(self._get_function_calls_by_loc(loc['depth'][:-1])[loc['depth'][-1]])
@@ -130,11 +134,15 @@ class ForensicsOrchestrator:
             self.functions_to_be_inspected['function_name_with_hash'].append(function_call)
             
     def check_call_with_created_contract(self):
+        if not self.token_filter_result or 'address_calls_with_created_contract_in_params' not in self.token_filter_result:
+            return
         for loc in self.token_filter_result['address_calls_with_created_contract_in_params']:
             function_calls = self._get_function_calls_by_loc(loc['depth'])
             self._update_function_calls_to_be_inspected(function_calls,'call_with_created_contract',loc['function'])
             
     def get_other_functions_to_be_inspected(self):
+        if not self.token_filter_result or 'address_to_be_inspected' not in self.token_filter_result:
+            return
         if sum([len(v) for v in self.functions_to_be_inspected.values()]) == 0:
             for address in self.token_filter_result['address_to_be_inspected']:
                 for function_call in self.token_filter_result['address_to_be_inspected'][address]['function_calls']:

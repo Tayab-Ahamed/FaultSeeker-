@@ -134,21 +134,35 @@ def rank_of_first_hit(
 def localization_metrics(
     targets: Iterable[LocalizationTarget],
     predictions_by_tx: Dict[str, Sequence[Dict[str, Any]]],
+    provenance_by_tx: Optional[Dict[str, Dict[str, Any]]] = None,
     ks: Sequence[int] = (1, 3, 5, 10),
     match: str = "function",
 ) -> Dict[str, Any]:
-    """Top-k accuracy and MRR over transactions that have predictions."""
+    """Top-k accuracy and MRR over transactions that have valid predictions and trace_status == 'ok'."""
     targets = list(targets)
     evaluated = 0
     missing_predictions = 0
+    excluded_unavailable_traces = 0
+    excluded_error_traces = 0
     reciprocal_total = 0.0
     hits = {k: 0 for k in ks}
 
     for target in targets:
         predictions = predictions_by_tx.get(target.txn_hash)
+        prov = (provenance_by_tx or {}).get(target.txn_hash, {})
+        status = str(prov.get("trace_status") or "ok").strip()
+
         if predictions is None:
             missing_predictions += 1
             continue
+
+        if status != "ok":
+            if status == "TRACE_UNAVAILABLE":
+                excluded_unavailable_traces += 1
+            else:
+                excluded_error_traces += 1
+            continue
+
         evaluated += 1
         rank = rank_of_first_hit(target, predictions, match=match)
         if rank is not None:
@@ -157,10 +171,16 @@ def localization_metrics(
                 if rank <= k:
                     hits[k] += 1
 
+    total_gt = len(targets)
+    usable_trace_ratio = round(evaluated / total_gt, 4) if total_gt else 0.0
+
     result: Dict[str, Any] = {
-        "ground_truth_transactions": len(targets),
+        "ground_truth_transactions": total_gt,
         "evaluated": evaluated,
         "missing_predictions": missing_predictions,
+        "excluded_unavailable_traces": excluded_unavailable_traces,
+        "excluded_error_traces": excluded_error_traces,
+        "usable_trace_ratio": usable_trace_ratio,
         "match_mode": match,
         "mrr": round(reciprocal_total / evaluated, 4) if evaluated else 0.0,
     }
@@ -169,20 +189,31 @@ def localization_metrics(
             round(hits[k] / evaluated, 4) if evaluated else 0.0
         )
         result[f"top_{k}_hits"] = hits[k]
-    if evaluated == 0:
+
+    if total_gt > 0 and usable_trace_ratio < 0.80:
         result["blocker"] = (
-            "No pipeline predictions were supplied, so no localization metric "
-            "can be reported. Run the analyzer over the ground-truth "
-            "transactions and pass the output directory via --predictions-dir."
+            f"INSUFFICIENT_TRACE_COVERAGE: usable trace ratio ({usable_trace_ratio * 100:.1f}%) "
+            f"is below the required 80.0% threshold ({evaluated}/{total_gt} transactions with trace_status='ok'). "
+            f"Excluded: {excluded_unavailable_traces} trace_unavailable, {excluded_error_traces} error, {missing_predictions} missing."
         )
+    elif evaluated == 0:
+        result["blocker"] = (
+            "No valid pipeline predictions with trace_status='ok' were supplied."
+        )
+
     return result
 
 
-def load_predictions(directory: str) -> Dict[str, List[Dict[str, Any]]]:
-    """Load ranked candidates from pipeline output JSON files."""
+def load_predictions(directory: str) -> Tuple[Dict[str, List[Dict[str, Any]]], Dict[str, Dict[str, Any]]]:
+    """Load ranked candidates from pipeline output JSON files with provenance verification.
+    
+    Returns (predictions_by_tx, provenance_by_tx). Only prediction files that contain
+    valid ForensicsOrchestrator provenance are loaded.
+    """
     predictions: Dict[str, List[Dict[str, Any]]] = {}
+    provenance: Dict[str, Dict[str, Any]] = {}
     if not os.path.isdir(directory):
-        return predictions
+        return predictions, provenance
     for filename in sorted(os.listdir(directory)):
         if not filename.endswith(".json"):
             continue
@@ -191,9 +222,20 @@ def load_predictions(directory: str) -> Dict[str, List[Dict[str, Any]]]:
                 data = json.load(handle)
         except (OSError, json.JSONDecodeError):
             continue
+            
+        prov = data.get("predictions_provenance") or data.get("_debug", {}).get("provenance")
+        if not isinstance(prov, dict) or prov.get("producer") != "ForensicsOrchestrator":
+            # Exclude files without valid ForensicsOrchestrator provenance
+            continue
+            
         txn = _norm_addr(
             data.get("transaction_hash") or data.get("txn_hash") or filename[:-5]
         )
+        trace_status = str(
+            data.get("trace_status") or prov.get("trace_status") or "ok"
+        ).strip()
+        prov["trace_status"] = trace_status
+
         ranked = (
             data.get("scored_functions")
             or data.get("ranked_candidates")
@@ -202,4 +244,5 @@ def load_predictions(directory: str) -> Dict[str, List[Dict[str, Any]]]:
         )
         if isinstance(ranked, list):
             predictions[txn] = [item for item in ranked if isinstance(item, dict)]
-    return predictions
+            provenance[txn] = prov
+    return predictions, provenance

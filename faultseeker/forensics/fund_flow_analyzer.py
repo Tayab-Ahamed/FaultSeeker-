@@ -20,7 +20,8 @@ class FundFlowAnalyzer:
     def _get_balance_change(self):
         balance_change = {}
         address_memo = {}
-        for token_transfer in self.txn_info['token_transfer']['edges']:
+        token_transfers = (self.txn_info.get('token_transfer') or {}).get('edges', [])
+        for token_transfer in token_transfers:
             try:
                 source = token_transfer['source']
                 target = token_transfer['target']

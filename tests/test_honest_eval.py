@@ -189,9 +189,14 @@ def test_mcnemar_counts_and_statistic():
 # --------------------------------------------------------------------------
 
 
-def _row(label, traced=True):
+def _row(label, traced=True, idx=0):
     features = (
-        {"functioncall_count": 10, "address_count": 4, "max_depth": 3, "gas_cost": 90000}
+        {
+            "functioncall_count": 10 + idx,
+            "address_count": 4 + (idx % 5),
+            "max_depth": 3 + (idx % 4),
+            "gas_cost": 90000 + idx * 1000,
+        }
         if traced
         else {
             "functioncall_count": None,
@@ -200,7 +205,7 @@ def _row(label, traced=True):
             "gas_cost": None,
         }
     )
-    return EvalRow(txn_hash="0xabc", chain="eth", label=label, features=features)
+    return EvalRow(txn_hash=f"0xabc{idx}", chain="eth", label=label, features=features)
 
 
 def test_has_trace_features_flag():
@@ -209,7 +214,7 @@ def test_has_trace_features_flag():
 
 
 def test_audit_coverage_blocks_when_benign_untraced():
-    rows = [_row(1, True) for _ in range(5)] + [_row(0, False) for _ in range(5)]
+    rows = [_row(1, True, i) for i in range(15)] + [_row(0, False, i) for i in range(15)]
     audit = audit_feature_coverage(rows)
     assert audit["exploit"]["coverage"] == 1.0
     assert audit["benign"]["coverage"] == 0.0
@@ -218,10 +223,19 @@ def test_audit_coverage_blocks_when_benign_untraced():
 
 
 def test_audit_coverage_allows_balanced_split():
-    rows = [_row(1, True) for _ in range(5)] + [_row(0, True) for _ in range(5)]
+    rows = [_row(1, True, i) for i in range(15)] + [_row(0, True, i + 20) for i in range(15)]
     audit = audit_feature_coverage(rows)
     assert audit["comparable"] is True
     assert "blocker" not in audit
+
+
+def test_audit_coverage_blocks_degenerate_constant_features():
+    """Verify that constant feature values within a class trigger DEGENERATE_CLASS exit."""
+    rows = [_row(1, True, i) for i in range(15)] + [_row(0, True, 0) for _ in range(15)]
+    audit = audit_feature_coverage(rows)
+    assert audit["comparable"] is False
+    assert audit["is_degenerate"] is True
+    assert "DEGENERATE_CLASS" in audit["blocker"]
 
 
 def test_comparable_subset_filters_untraced():
@@ -300,3 +314,31 @@ def test_localization_metrics_counts_misses():
     assert metrics["evaluated"] == 1
     assert metrics["top_5_accuracy"] == 0.0
     assert metrics["mrr"] == 0.0
+
+
+def test_localization_metrics_excludes_non_ok_trace_status():
+    targets = [_target()]
+    predictions = {"0xdead": [{"address": "0xd286", "function": "migrateStake"}]}
+    provenance = {"0xdead": {"trace_status": "TRACE_UNAVAILABLE"}}
+    metrics = localization_metrics(targets, predictions, provenance_by_tx=provenance)
+    assert metrics["evaluated"] == 0
+    assert metrics["excluded_unavailable_traces"] == 1
+    assert "INSUFFICIENT_TRACE_COVERAGE" in metrics.get("blocker", "")
+
+
+def test_localization_metrics_enforces_80_percent_coverage():
+    targets = [
+        LocalizationTarget(txn_hash=f"0x0{i}", functions={("0x1", "f")})
+        for i in range(10)
+    ]
+    # 7 ok, 3 TRACE_UNAVAILABLE -> 70% usable trace ratio (< 80%)
+    predictions = {f"0x0{i}": [{"address": "0x1", "function": "f"}] for i in range(10)}
+    provenance = {
+        f"0x0{i}": {"trace_status": "ok" if i < 7 else "TRACE_UNAVAILABLE"}
+        for i in range(10)
+    }
+    metrics = localization_metrics(targets, predictions, provenance_by_tx=provenance)
+    assert metrics["evaluated"] == 7
+    assert metrics["excluded_unavailable_traces"] == 3
+    assert metrics["usable_trace_ratio"] == 0.70
+    assert "INSUFFICIENT_TRACE_COVERAGE" in metrics["blocker"]
