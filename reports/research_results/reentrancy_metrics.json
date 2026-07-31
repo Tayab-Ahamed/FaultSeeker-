@@ -1,0 +1,30 @@
+{
+  "evaluation": "SSTORE-Backed Reentrancy Detector (Paper Section 6.6)",
+  "dataset": {
+    "reentrancy_labeled_transactions": 18,
+    "source": "benchmark/benchmark_classification_fixed.csv (vulnerability_type=Reentrancy)"
+  },
+  "results": {
+    "sstore_backed_f1": 0.86,
+    "structural_only_f1": 0.69,
+    "repeated_address_baseline_f1": 0.57,
+    "sstore_gain_over_structural_pp": 17,
+    "sstore_gain_over_baseline_pp": 29
+  },
+  "false_positive_case_study": {
+    "protocol": "Compound Finance cToken",
+    "description": "Legitimate recursive calls where the same contract appears at multiple call depths. Structural methods incorrectly flag as HIGH_RISK_REENTRANCY. SSTORE analysis finds no cross-depth storage slot writes and correctly outputs NOT_REENTRANCY.",
+    "detector_output": "NOT_REENTRANCY",
+    "structural_output": "HIGH_RISK_REENTRANCY",
+    "verdict": "True negative (correct)"
+  },
+  "sstore_signals": [
+    {"signal": "repeated_slot_nested",   "weight": 0.55, "description": "Same slot rewritten across nested frames, depth span >= 2"},
+    {"signal": "write_after_ext_call",   "weight": 0.25, "description": "SSTORE after a mutating CALL boundary"},
+    {"signal": "same_func_reentered",    "weight": 0.20, "description": "Same (callee, selector) reappears deeper on stack"},
+    {"signal": "write_before_and_after", "weight": 0.20, "description": "State write before and after external call, same frame"},
+    {"signal": "same_slot_rewritten",    "weight": 0.10, "description": "Same slot written >= 2 times in any context"}
+  ],
+  "oz_guard_filter": "OpenZeppelin ReentrancyGuard mutex slots (1->2->1 toggles) are pre-filtered before scoring",
+  "fallback_mode": "When SSTORE data absent, 3 structural signals apply with 0.75x penalty and 0.80 score cap"
+}

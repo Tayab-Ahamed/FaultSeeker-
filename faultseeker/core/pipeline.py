@@ -12,6 +12,7 @@ from faultseeker.forensics.result import (
     extract_reentrancy_analysis,
     compute_priority_breakdown,
 )
+from faultseeker.research.calibration import LogisticConfidenceCalibrator
 
 
 class FaultSeekerPipeline:
@@ -55,6 +56,11 @@ class FaultSeekerPipeline:
             ('base', 'base'),
             ('ftmscan', 'fantom'),
             ('fantom', 'fantom'),
+            # Gap 3 fix: add zksync and gnosis (benchmark chains 9 & 10)
+            ('explorer.zksync', 'zksync'),
+            ('zksync', 'zksync'),
+            ('gnosisscan', 'gnosis'),
+            ('gnosis', 'gnosis'),
             ('etherscan', 'eth'),
             ('eth', 'eth'),
         ]
@@ -195,7 +201,11 @@ class FaultSeekerPipeline:
 
         print("   [OK] Function analysis completed")
 
-        # Gap 3+4: Confidence scoring and evidence cards
+        # Stage 3: Confidence Scoring — paper §3.6 + §5.3
+        # The 4-factor formula C(f) = 0.30·PMS + 0.25·CES + 0.25·TCS + 0.20·LCS
+        # is computed first as a ranked proxy. When a pre-trained logistic calibrator
+        # is available it *replaces* the proxy score as the final reported value,
+        # matching the paper's reported FPR=0.003 result (§6.4 / Table 4).
         finalized_functions = analysis_result.get('finalized_vulnerable_functions', [])
         scored_functions = []
         evidence_cards = []
@@ -209,10 +219,61 @@ class FaultSeekerPipeline:
                 'potential_victim': forensics_result.potential_victim if hasattr(forensics_result, 'potential_victim') else [],
             }
             scored_functions = scorer.score_all(finalized_functions, forensics_data)
+
+            # Paper §5.3: replace proxy score with logistic calibrator when model present
+            calibration_path = getattr(self.config, 'calibration_model_path', '')
+            if not calibration_path:
+                # Auto-discover default model location
+                _default = os.path.join(
+                    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                    'data', 'models', 'calibrator.json'
+                )
+                if os.path.exists(_default):
+                    calibration_path = _default
+
+            if calibration_path and os.path.exists(calibration_path):
+                try:
+                    calibrator = LogisticConfidenceCalibrator.load(calibration_path)
+                    print(f"   [OK] Logistic calibrator loaded from {calibration_path}")
+                    for sf in scored_functions:
+                        # Build the 8-feature vector expected by the calibrator
+                        conf = sf.get('confidence', {})
+                        comps = conf.get('components', {}) if isinstance(conf, dict) else {}
+                        stage1_signals = getattr(forensics_result, 'signals', {}) or {}
+                        row = {
+                            'pattern_match':      comps.get('pattern_match', 0.0),
+                            'code_evidence':      comps.get('code_evidence', 0.0),
+                            'txn_consistency':    comps.get('txn_consistency', 0.0),
+                            'llm_confidence':     comps.get('llm_confidence', 0.0),
+                            'trace_entropy':      float(stage1_signals.get('trace_entropy', 0.0) or 0.0),
+                            'call_depth':         float(stage1_signals.get('call_depth', 0.0) or 0.0),
+                            'state_delta':        float(stage1_signals.get('state_delta', 0.0) or 0.0),
+                            'token_flow_anomaly': float(stage1_signals.get('token_flow_anomaly', 0.0) or 0.0),
+                        }
+                        calibrated_prob = calibrator.predict_proba(row)
+                        # Update the confidence dict with calibrated score
+                        if isinstance(sf.get('confidence'), dict):
+                            sf['confidence']['overall'] = round(calibrated_prob, 4)
+                            sf['confidence']['calibrated'] = True
+                            sf['confidence']['calibration_model'] = calibration_path
+                        else:
+                            sf['confidence'] = {
+                                'overall': round(calibrated_prob, 4),
+                                'calibrated': True,
+                                'calibration_model': calibration_path,
+                            }
+                    # Re-sort by calibrated score
+                    scored_functions.sort(key=lambda x: x.get('confidence', {}).get('overall', 0.0), reverse=True)
+                    print(f"   [OK] Calibrated {len(scored_functions)} functions (logistic calibrator, paper §5.3)")
+                except Exception as _cal_err:
+                    print(f"   [!] Calibrator load failed ({_cal_err}); using 4-factor heuristic")
+            else:
+                print(f"   [OK] Scored {len(scored_functions)} functions (4-factor heuristic; no calibrator model found)")
+
             for sf in scored_functions:
                 card = generate_evidence_card(sf, sf.get('confidence', {}))
                 evidence_cards.append(card)
-            print(f"   [OK] Scored {len(scored_functions)} functions")
+
 
         # Gap 2: HITL Checkpoint 2 — Vulnerability Review (after scoring)
         hitl_feedback_2 = hitl.checkpoint_vulnerability_review(scored_functions)

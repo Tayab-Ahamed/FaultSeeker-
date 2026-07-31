@@ -1,6 +1,8 @@
 # Self defined
 *.log
-data/
+data/*
+!data/models/
+!data/benchmark/
 logs/
 out/*
 !out/README.md
@@ -16,6 +18,9 @@ get_fresh_hashes.py
 output.txt
 log_utf8.txt
 test_results.txt
+check_data.py
+check_env.py
+check_variance.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

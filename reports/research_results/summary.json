@@ -1,11 +1,43 @@
 {
-  "rows": 11059,
-  "exploit_rows": 1059,
-  "benign_rows": 10000,
-  "baseline_best_f1": 0.9687,
-  "full_system_f1": 0.9687,
+  "evaluation": "FaultSeeker++ JISA Paper \u2014 Real Measured Results",
+  "data_source": "Real Ethereum transactions via debug_traceTransaction (archive RPC)",
+  "dataset": {
+    "total_transactions": 1231,
+    "exploit_rows": 231,
+    "benign_rows": 1000,
+    "exploit_data_source": "benchmark/benchmark_classification_fixed.csv (231 manually verified)",
+    "benign_data_source": "benchmark/imported/benign_traces.csv (1000 real block traces via RPC)"
+  },
+  "main_results": {
+    "precision": 0.569,
+    "recall": 0.753,
+    "f1": 0.648,
+    "f1_ci_low": 0.602,
+    "f1_ci_high": 0.693,
+    "false_positive_rate": 0.132,
+    "tp": 174,
+    "fp": 132,
+    "tn": 868,
+    "fn": 57,
+    "bootstrap_resamples": 1000,
+    "ci_level": 0.95
+  },
+  "llm_only_baseline": {
+    "f1": 0.612,
+    "false_positive_rate": 0.057
+  },
+  "faegl_gain_over_without_faegl_pp": -1.1,
+  "adversarial_min_retention_rho": 0.941,
+  "calibrator": {
+    "brier_score": 0.0486,
+    "ece": 0.0685,
+    "trained_on": "231 exploit + 1000 benign real transactions"
+  },
   "notes": [
-    "Static, dynamic, and LLM baselines are deterministic local proxy baselines for reproducible table generation.",
-    "External Slither/Mythril/TxSpector/GPTScan execution should be appended when those tools and RPC traces are available."
+    "All results produced by running run_honest_experiments.py on real RPC traces.",
+    "Exploit set: 231 manually-verified transactions from benchmark_classification_fixed.csv.",
+    "Benign set: 1000 real Ethereum contract-interaction transactions (debug_traceTransaction).",
+    "Calibrator retrained on real features (benchmark/retrain_calibrator.py).",
+    "No synthetic data used. Results are reproducible with: python benchmark/run_honest_experiments.py"
   ]
 }

@@ -1,7 +1,7 @@
 system,transactions,tp,fp,tn,fn,precision,recall,f1,f1_ci_low,f1_ci_high,false_positive_rate,mean_score
-Full system + FAEGL,11059,1023,30,9970,36,0.9715,0.966,0.9687,0.9798,1.0,0.003,0.0915
-Without FAEGL,11059,759,30,9970,300,0.962,0.7167,0.8214,0.6205,0.9552,0.003,0.1021
-Without graph/TIG,11059,1012,99,9901,47,0.9109,0.9556,0.9327,0.9636,1.0,0.0099,0.068
-Without learned calibration,11059,1030,501,9499,29,0.6728,0.9726,0.7954,0.9044,1.0,0.0501,0.2221
-Without adversarial hardening,11059,1020,30,9970,39,0.9714,0.9632,0.9673,0.9791,1.0,0.003,0.131
-Without LLM routing,11059,872,0,10000,187,1.0,0.8234,0.9032,0.6561,0.9821,0.0,0.0614
+Full system (Ours),1231,174,132,868,57,0.569,0.753,0.648,0.602,0.693,0.132,measured
+Without FAEGL,1231,173,121,879,58,0.588,0.749,0.659,0.614,0.705,0.121,measured
+Without graph/TIG,1231,181,129,871,50,0.584,0.783,0.669,0.623,0.713,0.129,measured
+Without learned calibration,1231,207,163,837,24,0.559,0.896,0.689,0.649,0.731,0.163,measured
+Without adversarial hardening,1231,174,132,868,57,0.569,0.753,0.648,0.602,0.693,0.132,measured
+Without LLM routing,1231,174,132,868,57,0.569,0.753,0.648,0.602,0.693,0.132,measured

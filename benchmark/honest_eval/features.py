@@ -100,8 +100,11 @@ def load_benign_rows(
 ) -> List[EvalRow]:
     """Load benign rows, joining collected traces when available.
 
-    ``benign_traces.csv`` is produced by ``benchmark/collect_benign_traces.py``
-    and is absent until the user runs that collector against an archive RPC.
+    Two modes:
+    1. Join mode: HF benign CSV hashes joined with benign_traces.csv (original behaviour).
+    2. Standalone mode: benign_traces.csv rows that have no corresponding HF entry are
+       also included as label=0 EvalRows. This handles traces collected from recent
+       blocks (collect_real_benign_traces.py) whose hashes differ from the HF dataset.
     """
     traces: Dict[str, Dict[str, Optional[float]]] = {}
     for raw in _read_csv(trace_path):
@@ -110,11 +113,14 @@ def load_benign_rows(
         if txn and status == "ok":
             traces[txn] = {name: _to_float(raw.get(name)) for name in TRACE_FEATURES}
 
+    # --- Mode 1: HF-joined rows ---
+    hf_hashes: set = set()
     rows = []
     for raw in _read_csv(path):
         txn = str(raw.get("txn_hash") or "").strip().lower()
         if not txn:
             continue
+        hf_hashes.add(txn)
         if only_traces and traces and txn not in traces:
             continue
         features = traces.get(txn, {name: None for name in TRACE_FEATURES})
@@ -129,7 +135,29 @@ def load_benign_rows(
         )
         if limit is not None and len(rows) >= limit:
             break
+
+    # --- Mode 2: Standalone trace rows (not in HF CSV) ---
+    # When collect_real_benign_traces.py was used, the hashes come from recent blocks
+    # and don't appear in the HF CSV at all. Include them as benign EvalRows.
+    if len(rows) == 0 and traces:
+        for txn, feats in traces.items():
+            if txn in hf_hashes:
+                continue  # already handled above
+            rows.append(
+                EvalRow(
+                    txn_hash=txn,
+                    chain="eth",
+                    label=0,
+                    features=dict(feats),
+                    provenance="benign_traces_standalone",
+                )
+            )
+            if limit is not None and len(rows) >= limit:
+                break
+
     return rows
+
+
 
 
 def audit_feature_coverage(rows: Iterable[EvalRow]) -> Dict[str, Any]:

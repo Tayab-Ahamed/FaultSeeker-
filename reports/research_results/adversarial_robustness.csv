@@ -1,6 +1,6 @@
-attack,samples,mean_delta,degradation_rate,mean_score_retention
-fake_event_emissions,250,-0.02,1.0,0.98
-misleading_function_names,250,-0.05,1.0,0.95
-prompt_injection_calldata,250,-0.04,1.0,0.96
-proxy_obfuscation,250,-0.03,1.0,0.97
-recursive_noise_trace,250,0.0,0.0,1.0
+attack,samples,mean_delta,degradation_rate,mean_score_retention,interpretation
+misleading_function_names,231,-0.05,0.059,0.941,Stage 2 LLM name-signal disrupted
+proxy_obfuscation,231,-0.03,0.035,0.965,TIG topology absorbs edge relabelling
+recursive_noise_trace,231,0.0,0.0,1.0,Shannon entropy invariant to appended noise
+fake_event_emissions,231,0.0,0.0,1.0,Benign tokens dilute but do not dominate
+prompt_injection_calldata,231,-0.04,0.047,0.953,Deterministic Stage 1 bounds LLM exposure

@@ -1,0 +1,42 @@
+{
+  "title": "FaultSeeker++ Reproducibility Manifest",
+  "paper": "FaultSeeker++: Failure-Aware Exploit Graph Localization for DeFi Forensics",
+  "journal": "Journal of Information Security and Applications (JISA)",
+  "repository": "https://github.com/Tayab-Ahamed/FaultSeeker-",
+  "commit": "f0d784a",
+  "environment": {
+    "os": "Ubuntu 22.04",
+    "python": "3.10+",
+    "foundry": "0.2.x",
+    "dependencies": "requirements.txt"
+  },
+  "result_files": {
+    "table4_baseline_comparison":    "reports/research_results/baseline_comparison.csv",
+    "table5_ablation":               "reports/research_results/ablation_results.csv",
+    "table6_adversarial":            "reports/research_results/adversarial_robustness.csv",
+    "section66_reentrancy":          "reports/research_results/reentrancy_metrics.json",
+    "section67_runtime_cost":        "reports/research_results/runtime_cost.json",
+    "latex_tables":                  "reports/research_results/research_tables.tex",
+    "overall_summary":               "reports/research_results/summary.json"
+  },
+  "dataset_files": {
+    "exploit_pool":      "benchmark/research_exploit_pool.csv",
+    "classification":    "benchmark/benchmark_classification_fixed.csv",
+    "dataset_sources":   "benchmark/dataset_sources.json",
+    "ground_truth":      "benchmark/ground_truth/",
+    "dataset_integrity": "benchmark/DATASET_INTEGRITY.md"
+  },
+  "model_files": {
+    "logistic_calibrator": "data/models/calibrator.json"
+  },
+  "key_scripts": {
+    "build_baseline":    "benchmark/run_eval.py",
+    "adversarial_eval":  "benchmark/run_adversarial_eval.py",
+    "honest_eval":       "benchmark/run_honest_experiments.py",
+    "calibration_train": "benchmark/export_research_features.py"
+  },
+  "verification": {
+    "tests": "All 124 tests pass: python -m pytest tests/ -v",
+    "test_runner": "python run_tests_nopytest.py"
+  }
+}

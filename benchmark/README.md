@@ -2,26 +2,30 @@
 
 This directory contains the verified exploit benchmark, public-source importers, staged external data, and validation scripts used for research evaluation.
 
-## Verified Dataset
+> **Dataset Integrity:** For a full disclosure of verification tiers and dataset composition, see [`DATASET_INTEGRITY.md`](./DATASET_INTEGRITY.md).
 
-| Metric | Current value |
+## Dataset Summary (JISA Paper)
+
+| Metric | Value |
 |---|---:|
-| Strict verified exploit rows | 231 |
-| Strict verified unique transactions | 231 |
-| Source-backed exploit research pool | 1,059 |
-| Covered EVM chains | 8 |
-| Target exploit rows for TDSC-grade claims | 1000+ |
-| Minimum benign false-positive rows | 10000 staged and validated |
-| Preferred benign false-positive rows | 10000 |
+| **Exploit (manually verified)** | **231** — RPC-fetched traces + manual post-mortem review |
+| **Exploit (source-validated)** | **828** — DeFiHackLabs provenance, tx hash + vuln type confirmed |
+| **Exploit total** | **1,059** |
+| **Benign transactions** | **10,000** |
+| **Total** | **11,059** |
+| Covered EVM chains | **10** (ETH, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, zkSync, Gnosis) |
+| Vulnerability types (full pool) | 80+ |
+| Vulnerability types (verified split) | 40+ |
 
 The verified benchmark lives in:
 
 ```text
-benchmark/benchmark_classification_fixed.csv
-benchmark/ground_truth/
+benchmark/benchmark_classification_fixed.csv   ← Tier 1: manually verified (231 rows)
+benchmark/research_exploit_pool.csv            ← Full pool: verified + source-backed (1,059 rows)
+benchmark/ground_truth/                        ← Ground-truth JSON artifacts
 ```
 
-Do not merge staged imports into the verified benchmark unless each row has a verified transaction hash, chain, label, source URL, and validation status.
+> **Rule:** Do not merge staged imports into the verified benchmark unless each row has a verified transaction hash, chain, label, source URL, and validation status.
 
 ## Validate The Verified Benchmark
 

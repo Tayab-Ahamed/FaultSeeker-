@@ -45,6 +45,11 @@ class FaultSeekerConfig:
     # Gap 2: Human-in-the-Loop
     human_in_loop: bool = False                 # Enable HITL checkpoints
 
+    # Logistic calibration model (paper §5.3) — path to pre-trained calibrator JSON.
+    # When set, Stage 3 replaces the heuristic 4-factor scorer with the logistic
+    # calibrator, matching the paper's final reported confidence scores.
+    calibration_model_path: str = ''            # e.g. './data/models/calibrator.json'
+
     # ===== Cache Directories (Minimized - Only Heavy Operations) =====
     # Only caching: replay (expensive blockchain replay) and contracts (reusable, rate-limited)
 

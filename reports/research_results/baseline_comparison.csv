@@ -1,5 +1,5 @@
 system,transactions,tp,fp,tn,fn,precision,recall,f1,f1_ci_low,f1_ci_high,false_positive_rate,mean_score
-Static proxy baseline,11059,250,46,9954,809,0.8446,0.2361,0.369,0.2897,0.6252,0.0046,0.0686
-Dynamic trace-rule baseline,11059,514,58,9942,545,0.8986,0.4854,0.6303,0.4804,0.7801,0.0058,0.0927
-LLM-only proxy baseline,11059,965,115,9885,94,0.8935,0.9112,0.9023,0.9484,0.9978,0.0115,0.1306
-FaultSeeker++ FAEGL,11059,1023,30,9970,36,0.9715,0.966,0.9687,0.9798,1.0,0.003,0.0915
+Static proxy,1231,75,6,994,156,0.926,0.325,0.481,0.406,0.552,0.006,measured
+Dynamic trace-rule,1231,56,13,987,175,0.812,0.242,0.373,0.302,0.448,0.013,measured
+LLM-only,1231,127,57,943,104,0.69,0.55,0.612,0.559,0.667,0.057,measured
+FaultSeeker++ (Ours),1231,174,132,868,57,0.569,0.753,0.648,0.602,0.693,0.132,measured
