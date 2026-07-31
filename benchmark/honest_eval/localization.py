@@ -53,9 +53,39 @@ def _fn_selector(sig: str) -> str:
 # Selector <-> name resolution
 # ---------------------------------------------------------------------------
 
-# Global table built lazily from GT function names.
+# Global table built lazily from GT function names + 4byte.directory API cache.
 # Maps lowercase 4-byte selector (e.g. '0xc554f632') -> set of norm_fn strings.
 _SELECTOR_TO_NAMES: Dict[str, Set[str]] = {}
+
+# Path to the pre-fetched 4byte.directory cache (populated by benchmark/fetch_selector_names.py)
+_SELECTOR_CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data", "models", "selector_cache.json",
+)
+
+
+def _load_api_selector_cache() -> None:
+    """Load the 4byte.directory API cache into the global selector lookup table.
+
+    This gives us real, authoritative function names for common DeFi selectors
+    (e.g. 0x70a08231 -> balanceof) without any keccak approximation.
+    Called once at module import time.
+    """
+    if not os.path.exists(_SELECTOR_CACHE_PATH):
+        return
+    try:
+        with open(_SELECTOR_CACHE_PATH, encoding="utf-8") as fh:
+            cache: Dict[str, str] = json.load(fh)
+        for sel, name in cache.items():
+            sel = sel.strip().lower()
+            name = (name or "").strip().lower()
+            if sel and name:
+                _SELECTOR_TO_NAMES.setdefault(sel, set()).add(name)
+    except (OSError, json.JSONDecodeError):
+        pass
+
+
+_load_api_selector_cache()  # populate on import
 
 
 def _register_fn_names(names: Iterable[str]) -> None:
@@ -98,7 +128,8 @@ def _selector_to_name(raw: str) -> Optional[str]:
         return None
     names = _SELECTOR_TO_NAMES.get(low)
     if names:
-        return next(iter(names))
+        # Prefer the shortest name (most likely canonical, e.g. 'transfer' over longer variants)
+        return min(names, key=len)
     return None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
