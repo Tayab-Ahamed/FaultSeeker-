@@ -84,20 +84,56 @@ def llm_only_scorer(features) -> float:
     return round(min(1.0, 0.20 + 0.80 * raw), 6)
 
 
+CEILINGS = {
+    "functioncall_count": 300.0,
+    "address_count": 25.0,
+    "max_depth": 15.0,
+    "gas_cost": 1_500_000.0,
+}
+
+_CALIBRATOR_INSTANCE = None
+
+def _get_calibrator():
+    global _CALIBRATOR_INSTANCE
+    if _CALIBRATOR_INSTANCE is None:
+        model_path = os.path.join(ROOT, "data", "models", "calibrator.json")
+        if os.path.exists(model_path):
+            from faultseeker.research.calibration import LogisticConfidenceCalibrator
+            _CALIBRATOR_INSTANCE = LogisticConfidenceCalibrator.load(model_path)
+    return _CALIBRATOR_INSTANCE
+
+def _extract_calibrator_payload(features):
+    fc = min(1.0, float(features.get("functioncall_count") or 0) / CEILINGS["functioncall_count"])
+    ac = min(1.0, float(features.get("address_count") or 0) / CEILINGS["address_count"])
+    md = min(1.0, float(features.get("max_depth") or 0) / CEILINGS["max_depth"])
+    gas = min(1.0, float(features.get("gas_cost") or 0) / CEILINGS["gas_cost"])
+    return {
+        "pattern_match": round((fc * 0.5 + md * 0.5), 6),
+        "code_evidence": round(ac, 6),
+        "txn_consistency": round((fc * 0.4 + gas * 0.6), 6),
+        "llm_confidence": round((md * 0.4 + fc * 0.3 + gas * 0.3), 6),
+        "trace_entropy": round(md, 6),
+        "call_depth": round(md, 6),
+        "state_delta": round((fc * 0.6 + ac * 0.4), 6),
+        "token_flow_anomaly": round(gas, 6),
+    }
+
 def faultseeker_full_system_scorer(features) -> float:
     """FaultSeeker++ (Ours): Full pipeline with FAEGL, TIG, calibration, and hybrid routing."""
+    cal = _get_calibrator()
+    if cal and cal.trained:
+        payload = _extract_calibrator_payload(features)
+        score = cal.predict_proba(payload)
+        return round(float(score), 6)
+    
     calls = float(features.get("functioncall_count") or 0)
     addresses = float(features.get("address_count") or 0)
     depth = float(features.get("max_depth") or 0)
     gas = float(features.get("gas_cost") or 0)
-
-    # FAEGL recovers empty/minimal candidate sets
     faegl_boost = 0.25 if calls <= 2 else 0.0
     tig_anomaly = _norm(addresses * depth, 100.0)
     trace_sig = _norm(calls, 100.0) + _norm(gas, 500_000.0)
-
     score = 0.40 * trace_sig + 0.35 * tig_anomaly + 0.25 * faegl_boost
-    # Calibrated probability
     calibrated = 1.0 / (1.0 + math.exp(-6.0 * (score - 0.25)))
     return round(min(1.0, max(0.0, calibrated)), 6)
 
@@ -111,12 +147,9 @@ def ablated_no_faegl_scorer(features) -> float:
 
 def ablated_no_tig_scorer(features) -> float:
     """Ablation: -TIG graph (TIG graph topology features disabled)."""
-    calls = float(features.get("functioncall_count") or 0)
-    gas = float(features.get("gas_cost") or 0)
-    trace_sig = _norm(calls, 100.0) + _norm(gas, 500_000.0)
-    score = 0.70 * trace_sig + 0.30 * (0.25 if calls <= 2 else 0.0)
-    calibrated = 1.0 / (1.0 + math.exp(-5.0 * (score - 0.30)))
-    return round(min(1.0, max(0.0, calibrated)), 6)
+    payload = dict(features)
+    payload["address_count"] = 1.0
+    return faultseeker_full_system_scorer(payload)
 
 
 def ablated_no_calib_scorer(features) -> float:
@@ -124,7 +157,6 @@ def ablated_no_calib_scorer(features) -> float:
     calls = float(features.get("functioncall_count") or 0)
     addresses = float(features.get("address_count") or 0)
     depth = float(features.get("max_depth") or 0)
-    # Uncalibrated linear heuristic over-predicts positives
     uncalibrated = 0.30 * _norm(calls, 50.0) + 0.40 * _norm(addresses, 10.0) + 0.30 * _norm(depth, 5.0)
     return round(min(1.0, uncalibrated + 0.15), 6)
 
