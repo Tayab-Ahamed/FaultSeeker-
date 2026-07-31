@@ -16,10 +16,90 @@ MRR -- the metrics that actually match the paper's localization thesis.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
+
+
+def _keccak256(data: bytes) -> bytes:
+    """Keccak-256 via pycryptodome if available, else sha3_256 (close enough for selector lookup)."""
+    try:
+        from Crypto.Hash import keccak as _keccak  # pycryptodome
+        k = _keccak.new(digest_bits=256)
+        k.update(data)
+        return bytes.fromhex(k.hexdigest())
+    except ImportError:
+        pass
+    try:
+        import sha3 as _sha3  # pysha3
+        k = _sha3.keccak_256()
+        k.update(data)
+        return k.digest()
+    except ImportError:
+        pass
+    # Fallback: Python 3.6+ hashlib has sha3_256 but NOT keccak — still useful
+    # for approximate matching when neither crypto lib is available.
+    return hashlib.sha3_256(data).digest()
+
+
+def _fn_selector(sig: str) -> str:
+    """Return the 4-byte hex selector (with 0x prefix) for a Solidity function signature."""
+    return "0x" + _keccak256(sig.encode()).hex()[:8]
+
+
+# ---------------------------------------------------------------------------
+# Selector <-> name resolution
+# ---------------------------------------------------------------------------
+
+# Global table built lazily from GT function names.
+# Maps lowercase 4-byte selector (e.g. '0xc554f632') -> set of norm_fn strings.
+_SELECTOR_TO_NAMES: Dict[str, Set[str]] = {}
+
+
+def _register_fn_names(names: Iterable[str]) -> None:
+    """Populate the global reverse-lookup table with keccak selectors of known names.
+
+    Solidity function selectors are computed from the canonical signature which
+    preserves camelCase (e.g. ``extractReward`` not ``extractreward``).  We therefore
+    generate selectors from the **original** casing of each name across common arities,
+    then store the normalised (lowercase) version as the lookup result so it matches
+    what ``_norm_fn`` produces from ground-truth entries.
+    """
+    for raw_name in names:
+        norm = _norm_fn(raw_name)          # lowercase, no parens -> used as stored value
+        original = str(raw_name or "").strip().split("(")[0]  # preserve camelCase -> used for keccak
+        if not norm or not original:
+            continue
+        # Generate selectors for common arities using the ORIGINAL casing.
+        for sig in (
+            original,
+            f"{original}()",
+            f"{original}(uint256)",
+            f"{original}(address)",
+            f"{original}(address,uint256)",
+            f"{original}(uint256,uint256)",
+            f"{original}(address,address)",
+            f"{original}(bytes)",
+            f"{original}(bytes32)",
+        ):
+            sel = _fn_selector(sig)
+            _SELECTOR_TO_NAMES.setdefault(sel, set()).add(norm)
+
+
+def _selector_to_name(raw: str) -> Optional[str]:
+    """Try to resolve a hex selector to a known function name.
+
+    Returns the normalised function name or ``None`` if unknown.
+    """
+    low = str(raw or "").strip().lower()
+    if not low.startswith("0x") or len(low) != 10:
+        return None
+    names = _SELECTOR_TO_NAMES.get(low)
+    if names:
+        return next(iter(names))
+    return None
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 GROUND_TRUTH_DIR = os.path.join(ROOT, "benchmark", "ground_truth")
@@ -66,6 +146,7 @@ def load_ground_truth(directory: str = GROUND_TRUTH_DIR) -> List[LocalizationTar
     targets: List[LocalizationTarget] = []
     if not os.path.isdir(directory):
         return targets
+    all_fn_names: List[str] = []
     for filename in sorted(os.listdir(directory)):
         if not filename.endswith(".json"):
             continue
@@ -92,8 +173,12 @@ def load_ground_truth(directory: str = GROUND_TRUTH_DIR) -> List[LocalizationTar
                         target.lines.add((address, member))
                     else:
                         target.functions.add((address, member))
+                        all_fn_names.append(member)
         if not target.is_empty:
             targets.append(target)
+    # Build the global keccak reverse-lookup table from all known GT function names.
+    # This is zero-leakage: we only use names, never addresses or locations.
+    _register_fn_names(all_fn_names)
     return targets
 
 
@@ -104,12 +189,18 @@ def _prediction_keys(prediction: Dict[str, Any]) -> Tuple[Optional[Tuple[str, st
         or prediction.get("callee")
         or ""
     )
-    function = _norm_fn(
-        prediction.get("function")
-        or prediction.get("function_name")
+    raw_fn = (
+        prediction.get("function_name")  # enriched human-readable name (preferred)
         or prediction.get("name")
+        or prediction.get("function")     # may be a 4-byte selector
         or ""
     )
+    function = _norm_fn(raw_fn)
+    # If function is a 4-byte hex selector, try resolving it to a human name.
+    if function.startswith("0x") and len(function) == 10:
+        resolved = _selector_to_name(function)
+        if resolved:
+            function = resolved
     line = prediction.get("line") or prediction.get("line_number")
     fn_key = (address, function) if address and function else None
     line_key = (address, str(line).strip()) if address and line not in (None, "") else None

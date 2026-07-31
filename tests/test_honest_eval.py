@@ -342,3 +342,65 @@ def test_localization_metrics_enforces_80_percent_coverage():
     assert metrics["excluded_unavailable_traces"] == 3
     assert metrics["usable_trace_ratio"] == 0.70
     assert "INSUFFICIENT_TRACE_COVERAGE" in metrics["blocker"]
+
+
+# --------------------------------------------------------------------------
+# Selector resolution (the "0xc554f632 vs extractReward" bug)
+# --------------------------------------------------------------------------
+
+from benchmark.honest_eval.localization import (
+    _fn_selector,
+    _register_fn_names,
+    _selector_to_name,
+    _SELECTOR_TO_NAMES,
+    _prediction_keys,
+)
+
+
+def test_fn_selector_known_value():
+    """keccak('extractReward(uint256)')[:4] must equal 0xc554f632."""
+    assert _fn_selector("extractReward(uint256)") == "0xc554f632"
+
+
+def test_register_and_resolve_selector():
+    """After registering 'extractReward', the selector resolves back."""
+    _register_fn_names(["extractReward"])
+    resolved = _selector_to_name("0xc554f632")
+    assert resolved == "extractreward"
+
+
+def test_selector_not_in_table_returns_none():
+    assert _selector_to_name("0xdeadbeef") is None
+
+
+def test_prediction_keys_resolves_hex_selector():
+    """_prediction_keys must return the human name when function is a hex selector."""
+    _register_fn_names(["extractReward"])
+    target = LocalizationTarget(
+        txn_hash="0xabc",
+        functions={("0x6bbef6df8db12667ae88519090984e4f871e5feb", "extractreward")},
+    )
+    pred = {
+        "address": "0x6BBeF6DF8db12667aE88519090984e4F871e5feb",
+        "function": "0xc554f632",  # raw 4-byte selector from pipeline
+    }
+    fn_key, _ = _prediction_keys(pred)
+    assert fn_key is not None
+    assert fn_key in target.functions, (
+        f"Expected {fn_key} in {target.functions} — selector not resolved"
+    )
+
+
+def test_rank_of_first_hit_with_hex_selector():
+    """rank_of_first_hit must find a hit when prediction uses a hex selector."""
+    _register_fn_names(["extractReward"])
+    target = LocalizationTarget(
+        txn_hash="0xabc",
+        functions={("0x6bbef6df8db12667ae88519090984e4f871e5feb", "extractreward")},
+    )
+    predictions = [
+        {"address": "0x1111", "function": "0xdeadbeef"},
+        {"address": "0x6BBeF6DF8db12667aE88519090984e4F871e5feb", "function": "0xc554f632"},
+    ]
+    rank = rank_of_first_hit(target, predictions, match="function")
+    assert rank == 2, f"Expected rank 2, got {rank}"
