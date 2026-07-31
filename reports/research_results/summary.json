@@ -9,24 +9,24 @@
     "benign_data_source": "benchmark/imported/benign_traces.csv (1000 real block traces via RPC)"
   },
   "main_results": {
-    "precision": 0.868,
-    "recall": 0.823,
-    "f1": 0.844,
-    "f1_ci_low": 0.808,
-    "f1_ci_high": 0.879,
-    "false_positive_rate": 0.029,
-    "tp": 190,
-    "fp": 29,
-    "tn": 971,
-    "fn": 41,
+    "precision": 0.88,
+    "recall": 0.667,
+    "f1": 0.759,
+    "f1_ci_low": 0.707,
+    "f1_ci_high": 0.804,
+    "false_positive_rate": 0.021,
+    "tp": 154,
+    "fp": 21,
+    "tn": 979,
+    "fn": 77,
     "bootstrap_resamples": 1000,
     "ci_level": 0.95
   },
   "llm_only_baseline": {
-    "f1": 0.68,
-    "false_positive_rate": 0.163
+    "f1": 0.612,
+    "false_positive_rate": 0.057
   },
-  "faegl_gain_over_without_faegl_pp": 0.2,
+  "faegl_gain_over_without_faegl_pp": 0.3,
   "adversarial_min_retention_rho": 0.941,
   "calibrator": {
     "brier_score": 0.0486,

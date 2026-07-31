@@ -91,16 +91,8 @@ CEILINGS = {
     "gas_cost": 1_500_000.0,
 }
 
-_CALIBRATOR_INSTANCE = None
-
-def _get_calibrator():
-    global _CALIBRATOR_INSTANCE
-    if _CALIBRATOR_INSTANCE is None:
-        model_path = os.path.join(ROOT, "data", "models", "calibrator.json")
-        if os.path.exists(model_path):
-            from faultseeker.research.calibration import LogisticConfidenceCalibrator
-            _CALIBRATOR_INSTANCE = LogisticConfidenceCalibrator.load(model_path)
-    return _CALIBRATOR_INSTANCE
+_FOLD_CALIBRATORS = None
+_FOLD_CALIBRATORS_NO_TIG = None
 
 def _extract_calibrator_payload(features):
     fc = min(1.0, float(features.get("functioncall_count") or 0) / CEILINGS["functioncall_count"])
@@ -118,13 +110,56 @@ def _extract_calibrator_payload(features):
         "token_flow_anomaly": round(gas, 6),
     }
 
+def _fold_of(txn_hash: str, k: int = 5) -> int:
+    import hashlib
+    h = hashlib.sha256(str(txn_hash or "").encode("utf-8")).hexdigest()
+    return int(h, 16) % k
+
+def _ensure_fold_calibrators(payloads, labels, k=5):
+    global _FOLD_CALIBRATORS, _FOLD_CALIBRATORS_NO_TIG
+    if _FOLD_CALIBRATORS is not None:
+        return
+    from faultseeker.research.calibration import LogisticConfidenceCalibrator
+    
+    fold_ids = [_fold_of(p.get("txn_hash", f"row_{i}"), k) for i, p in enumerate(payloads)]
+    
+    _FOLD_CALIBRATORS = []
+    _FOLD_CALIBRATORS_NO_TIG = []
+    
+    for held_out in range(k):
+        train_p = [_extract_calibrator_payload(payloads[i]) for i in range(len(payloads)) if fold_ids[i] != held_out]
+        train_y = [labels[i] for i in range(len(labels)) if fold_ids[i] != held_out]
+        cal = LogisticConfidenceCalibrator()
+        cal.fit(train_p, train_y, epochs=1000, learning_rate=0.05, l2=0.001)
+        _FOLD_CALIBRATORS.append(cal)
+        
+        train_p_no_tig = []
+        for i in range(len(payloads)):
+            if fold_ids[i] != held_out:
+                p_copy = dict(payloads[i])
+                p_copy["address_count"] = 1.0
+                train_p_no_tig.append(_extract_calibrator_payload(p_copy))
+        cal_no_tig = LogisticConfidenceCalibrator()
+        cal_no_tig.fit(train_p_no_tig, train_y, epochs=1000, learning_rate=0.05, l2=0.001)
+        _FOLD_CALIBRATORS_NO_TIG.append(cal_no_tig)
+
+def _predict_oof(payload, no_tig=False):
+    if _FOLD_CALIBRATORS is None:
+        return 0.0
+    f_id = _fold_of(payload.get("txn_hash", ""))
+    cal = _FOLD_CALIBRATORS_NO_TIG[f_id] if no_tig else _FOLD_CALIBRATORS[f_id]
+    if no_tig:
+        p_copy = dict(payload)
+        p_copy["address_count"] = 1.0
+        c_payload = _extract_calibrator_payload(p_copy)
+    else:
+        c_payload = _extract_calibrator_payload(payload)
+    return round(float(cal.predict_proba(c_payload)), 6)
+
 def faultseeker_full_system_scorer(features) -> float:
     """FaultSeeker++ (Ours): Full pipeline with FAEGL, TIG, calibration, and hybrid routing."""
-    cal = _get_calibrator()
-    if cal and cal.trained:
-        payload = _extract_calibrator_payload(features)
-        score = cal.predict_proba(payload)
-        return round(float(score), 6)
+    if _FOLD_CALIBRATORS is not None:
+        return _predict_oof(features, no_tig=False)
     
     calls = float(features.get("functioncall_count") or 0)
     addresses = float(features.get("address_count") or 0)
@@ -147,6 +182,8 @@ def ablated_no_faegl_scorer(features) -> float:
 
 def ablated_no_tig_scorer(features) -> float:
     """Ablation: -TIG graph (TIG graph topology features disabled)."""
+    if _FOLD_CALIBRATORS_NO_TIG is not None:
+        return _predict_oof(features, no_tig=True)
     payload = dict(features)
     payload["address_count"] = 1.0
     return faultseeker_full_system_scorer(payload)
@@ -252,6 +289,9 @@ def main() -> int:
     usable = comparable_subset(all_rows)
     labels = [row.label for row in usable]
     payloads = [feature_dict(row) for row in usable]
+
+    # Initialize 5-fold cross-validation fold-calibrators for out-of-fold scoring
+    _ensure_fold_calibrators(payloads, labels, k=5)
 
     table_rows = []
     leakage_report = {}
