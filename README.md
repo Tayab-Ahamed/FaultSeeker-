@@ -403,6 +403,18 @@ paper/blockchain_exploit_forensics_survey_ieee.tex
 
 ---
 
+## Contributors
+
+This project was developed as a collaborative team effort.
+
+Core contributors:
+
+- Mohammad Siddiq Saiyed - `mohammadsiddiqsaiyed@gmail.com`
+- Abdull Baseer Hammad - `hammadhk9474@gmail.com`
+- Tayab Ahamed - `tayabahamed78@gmail.com`
+- Syed Nasir - `sd.nasirsyed21@gmail.com`
+---
+
 ## 📄 License
 
 Released under the **[MIT License](LICENSE)**.
