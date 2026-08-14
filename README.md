@@ -31,7 +31,7 @@
 
 ## Why FaultSeeker++?
 
-Most exploit analysis tools stop at detection. FaultSeeker++ goes further — from raw transaction hash to a structured, ranked, and explainable forensic report.
+Most exploit analysis tools stop at detection. FaultSeeker++ goes further — from raw transaction hash to a structured, ranked, and explainable forensic report. 
 
 | Capability | What it means |
 |---|---|
@@ -429,4 +429,4 @@ Released under the **[MIT License](LICENSE)**.
 
 </div>
 
-
+This project help us to improve the technical skill 
