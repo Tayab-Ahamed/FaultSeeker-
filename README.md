@@ -410,7 +410,7 @@ This project was developed as a collaborative team effort.
 Core contributors:
 
 - Mohammad Siddiq Saiyed - `mohammadsiddiqsaiyed@gmail.com`
-- Abdull Baseer Hammad - `hammadhk9474@gmail.com`
+- Abdul Baseer Hammad - `hammadhk9474@gmail.com` - https://github.com/NamelessMonsterr/
 - Tayab Ahamed - `tayabahamed78@gmail.com`
 - Syed Nasir - `sd.nasirsyed21@gmail.com`
 ---
@@ -429,4 +429,3 @@ Released under the **[MIT License](LICENSE)**.
 
 </div>
 
-This project help us to improve the technical skill 
