@@ -11,8 +11,11 @@ based on task complexity, using 3-tier classification:
 Also tracks per-query cost for cost optimization reporting.
 """
 
+import json
 import logging
-from dataclasses import dataclass, field
+import math
+import time
+from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, Optional, List
 from faultseeker.utils.agent import OllmaAgent, GPTAgent
 
@@ -26,6 +29,8 @@ COST_RATES = {
     'gpt-4.1-mini':     {'input': 0.40,  'output': 1.60},
     'gpt-4.1-nano':     {'input': 0.10,  'output': 0.40},
     'o3-mini':          {'input': 1.10,  'output': 4.40},
+    # Anthropic native Messages API
+    'claude-3-5-sonnet': {'input': 3.00, 'output': 15.00},
     # xAI Grok
     'grok-3':           {'input': 3.00,  'output': 15.00},
     'grok-3-mini':      {'input': 0.30,  'output': 0.50},
@@ -74,6 +79,9 @@ class CostRecord:
     cost_usd: float = 0.0
     duration_ms: float = 0.0
     fallback_used: bool = False
+    status: str = 'success'
+    usage_source: str = 'estimate'
+    error: str = ''
 
 
 @dataclass
@@ -95,10 +103,13 @@ class CostSummary:
             'local_queries': self.local_queries,
             'cloud_queries': self.cloud_queries,
             'fallback_count': self.fallback_count,
-            'total_cost_usd': round(self.total_cost_usd, 4),
-            'estimated_cloud_only_cost': round(self.estimated_cloud_only_cost, 4),
-            'savings_usd': round(self.savings_usd, 4),
+            'total_cost_usd': self.total_cost_usd,
+            'estimated_cloud_only_cost': self.estimated_cloud_only_cost,
+            'savings_usd': self.savings_usd,
             'savings_percent': round(self.savings_percent, 1),
+            'pricing_units': 'USD per 1,000,000 input or output tokens',
+            'pricing_verified_at': None,
+            'records': [asdict(record) for record in self.records],
         }
 
 
@@ -119,6 +130,7 @@ class HybridLLMRouter:
         routing_strategy: str = 'hybrid',  # 'local-first', 'cloud-first', 'hybrid', 'cloud-only'
         ablation: Any = None,
         cost_tracker: Any = None,
+        spend_guard: Any = None,
     ):
         self.logger = logging.getLogger(__name__)
         self.local_model = local_model
@@ -130,6 +142,7 @@ class HybridLLMRouter:
         from faultseeker.research.ablation import AblationConfig
         self.ablation = ablation or AblationConfig.full_system()
         self.cost_tracker = cost_tracker
+        self.spend_guard = spend_guard
 
         # Cost tracking
         self.cost_summary = CostSummary()
@@ -199,9 +212,14 @@ class HybridLLMRouter:
         agent_role: str = '',
         input_tokens: Optional[int] = None,
         output_tokens: Optional[int] = None,
+        status: str = 'success',
+        usage_source: str = 'estimate',
+        error: str = '',
+        cost_usd_override: Optional[float] = None,
+        force: bool = False,
     ):
         """Record a query for cost tracking."""
-        if not self.track_cost:
+        if not self.track_cost and not force:
             return
 
         is_local = self._is_local_model(model)
@@ -214,9 +232,13 @@ class HybridLLMRouter:
 
         # Calculate cost
         cost = 0.0
-        if not is_local and model in COST_RATES:
+        if not is_local:
+            if model not in COST_RATES:
+                raise ValueError(f'Unknown cloud pricing for {model}; no call may be treated as free')
             rates = COST_RATES[model]
             cost = (input_tokens * rates['input'] + output_tokens * rates['output']) / 1_000_000
+        if cost_usd_override is not None:
+            cost = cost_usd_override
 
         record = CostRecord(
             model=model,
@@ -227,6 +249,9 @@ class HybridLLMRouter:
             cost_usd=cost,
             duration_ms=duration_ms,
             fallback_used=fallback_used,
+            status=status,
+            usage_source=usage_source,
+            error=error,
         )
 
         self.cost_summary.records.append(record)
@@ -243,6 +268,12 @@ class HybridLLMRouter:
         # Bridge into the research CostTracker so paper section 6.7 numbers come
         # from real calls instead of hardcoded constants.
         if self.cost_tracker is not None:
+            if (not is_local and hasattr(self.cost_tracker, 'pricing') and
+                    model not in self.cost_tracker.pricing):
+                self.cost_tracker.pricing[model] = {
+                    'prompt': COST_RATES[model]['input'],
+                    'completion': COST_RATES[model]['output'],
+                }
             self.cost_tracker.record_llm_call(
                 stage=agent_role or 'llm_query',
                 tier='local' if is_local else 'cloud',
@@ -250,6 +281,9 @@ class HybridLLMRouter:
                 prompt_tokens=input_tokens,
                 completion_tokens=output_tokens,
                 latency_secs=duration_ms / 1000.0,
+                status=status,
+                usage_source=usage_source,
+                cost_usd_override=cost_usd_override,
             )
 
         # Estimate what cloud-only would cost
@@ -280,9 +314,9 @@ class HybridLLMRouter:
         print(f"   Queries: {summary['total_queries']} total "
               f"({summary['local_queries']} local, {summary['cloud_queries']} cloud)")
         print(f"   Fallbacks: {summary['fallback_count']}")
-        print(f"   Actual cost:     ${summary['total_cost_usd']:.4f}")
-        print(f"   Cloud-only cost: ${summary['estimated_cloud_only_cost']:.4f}")
-        print(f"   Savings:         ${summary['savings_usd']:.4f} "
+        print(f"   Actual cost:     ${summary['total_cost_usd']:.8f}")
+        print(f"   Cloud-only cost: ${summary['estimated_cloud_only_cost']:.8f}")
+        print(f"   Savings:         ${summary['savings_usd']:.8f} "
               f"({summary['savings_percent']:.0f}%)")
 
     # ─── Private ──────────────────────────────────────────────────────
@@ -312,11 +346,170 @@ class HybridLLMRouter:
         return not any(model.startswith(p) for p in cloud_prefixes)
 
 
+class RoutedAgent:
+    """Drop-in agent that chooses the provider for every query."""
+
+    def __init__(self, system_prompt, router, agent_role, provider_factory):
+        self.system_prompt = system_prompt
+        self.router = router
+        self.agent_role = agent_role
+        self.provider_factory = provider_factory
+        self.providers = {}
+        self.memory = [{"role": "system", "content": system_prompt}]
+        self.model = router.select_model(agent_role=agent_role)
+
+    def reset_memory(self):
+        self.memory = [{"role": "system", "content": self.system_prompt}]
+        self.providers.clear()
+
+    def _provider(self, model):
+        if model not in self.providers:
+            self.providers[model] = self.provider_factory(self.system_prompt, model)
+        return self.providers[model]
+
+    @staticmethod
+    def _confidence(value):
+        if isinstance(value, dict):
+            for key in ('confidence', 'confidence_score'):
+                if key in value:
+                    raw = value[key]
+                    if isinstance(raw, list) and raw:
+                        raw = raw[0]
+                    try:
+                        number = float(raw)
+                        if not math.isfinite(number) or number < 0 or number > 100:
+                            return None
+                        return number / 100 if number > 1 else number
+                    except (TypeError, ValueError):
+                        return None
+            for child in value.values():
+                score = RoutedAgent._confidence(child)
+                if score is not None:
+                    return score
+        return None
+
+    @staticmethod
+    def _valid_evidence(value):
+        if isinstance(value, dict):
+            for key in ('evidence', 'evidences'):
+                if key in value and not value[key]:
+                    return False
+            return all(RoutedAgent._valid_evidence(v) for v in value.values())
+        if isinstance(value, list):
+            return all(RoutedAgent._valid_evidence(v) for v in value)
+        return True
+
+    @staticmethod
+    def _has_evidence(value):
+        if isinstance(value, dict):
+            if any(value.get(key) for key in ('evidence', 'evidences')):
+                return True
+            return any(RoutedAgent._has_evidence(child) for child in value.values())
+        if isinstance(value, list):
+            return any(RoutedAgent._has_evidence(child) for child in value)
+        return False
+
+    def _attempt(self, model, prompt, temperature, output_format, tier, fallback,
+                 enforce_confidence=False):
+        provider = self._provider(model)
+        started = time.perf_counter()
+        raw = ''
+        failure = None
+        reservation = None
+        guard = getattr(self.router, 'spend_guard', None)
+        if not self.router._is_local_model(model):
+            if guard is None:
+                from faultseeker.core.spend_guard import SpendGuard
+                guard = self.router.spend_guard = SpendGuard(pricing=COST_RATES)
+            # UTF-8 byte length is a conservative input token bound; provider
+            # adapters enforce the output cap used by this reservation.
+            history = getattr(provider, 'memory', self.memory)
+            input_bound = 2 * (len(json.dumps(history).encode('utf-8')) +
+                               len(json.dumps(prompt).encode('utf-8'))) + 1024
+            reservation = guard.reserve(model, input_bound, 4096)
+        try:
+            provider.last_usage = None
+            raw = provider._send_message(prompt, temperature)
+            if not isinstance(raw, str) or not raw.strip() or raw == 'An error occurred.':
+                raise ValueError('Provider returned no usable response')
+            if output_format == 'str':
+                result = raw
+            else:
+                try:
+                    result = json.loads(raw)
+                except json.JSONDecodeError:
+                    if not hasattr(provider, '_extract_json'):
+                        raise
+                    result = provider._extract_json(raw)
+                empty_child_selection = self.agent_role == 'children_call_filtering' and result == []
+                if not isinstance(result, (dict, list)) or (not result and not empty_child_selection):
+                    raise ValueError('Invalid response schema')
+            if not self._valid_evidence(result):
+                raise ValueError('Invalid evidence')
+            if enforce_confidence:
+                if not self._has_evidence(result):
+                    raise ValueError('Local response lacks supporting evidence')
+                confidence = self._confidence(result)
+                if confidence is None or confidence < self.router.confidence_gate:
+                    raise ValueError('Local confidence below routing threshold or unavailable')
+        except Exception as exc:
+            failure = exc
+            result = None
+        usage = getattr(provider, 'last_usage', None) or {}
+        input_tokens = usage.get('prompt_tokens')
+        output_tokens = usage.get('completion_tokens')
+        settled_cost = None
+        if reservation is not None:
+            try:
+                settled_cost = guard.settle(reservation, input_tokens, output_tokens,
+                                            failed=failure is not None)
+            except ValueError as usage_error:
+                # An invalid provider usage object cannot erase the reserved
+                # charge or leave this dispatched attempt unrecorded.
+                input_tokens = output_tokens = None
+                failure = failure or usage_error
+                settled_cost = guard.settle(reservation, failed=True)
+        self.router.record_query(
+            model=model, tier=tier, prompt_length=len(prompt), response_length=len(raw),
+            duration_ms=(time.perf_counter() - started) * 1000,
+            fallback_used=fallback, agent_role=self.agent_role,
+            input_tokens=input_tokens, output_tokens=output_tokens,
+            status='failed' if failure else 'success',
+            usage_source=('provider' if input_tokens is not None and output_tokens is not None
+                          else 'reservation' if reservation is not None else 'estimate'),
+            error=str(failure) if failure else '',
+            cost_usd_override=settled_cost,
+            force=True,
+        )
+        if failure:
+            raise failure
+        self.model = model
+        self.memory.append({'role': 'user', 'content': prompt})
+        self.memory.append({'role': 'assistant', 'content': raw})
+        return result
+
+    def query(self, user_message, temperature=0, format='json'):
+        tier = self.router.get_tier(agent_role=self.agent_role, prompt_text=user_message)
+        model = self.router.select_model(agent_role=self.agent_role, prompt_text=user_message)
+        if model != self.router.local_model:
+            return self._attempt(model, user_message, temperature, format, tier, False)
+        try:
+            result = self._attempt(model, user_message, temperature, format, tier, False,
+                                   enforce_confidence=(tier == 2 and
+                                                       self.router.should_fallback_to_cloud(tier)))
+            return result
+        except Exception:
+            if tier != 2:
+                raise
+        return self._attempt(self.router.cloud_model, user_message, temperature, format, tier, True)
+
+
 def build_routed_agent(
     model_name: str,
     router: Optional[HybridLLMRouter] = None,
     agent_role: str = '',
     system_prompt: str = '',
+    provider_factory: Any = None,
 ) -> Any:
     """
     Build an LLM agent with optional routing.
@@ -335,16 +528,12 @@ def build_routed_agent(
     from faultseeker.utils.agent import build_provider_agent
 
     if router:
-        selected_model = router.select_model(agent_role=agent_role)
-    else:
-        selected_model = model_name
+        return RoutedAgent(system_prompt, router, agent_role, provider_factory or build_provider_agent)
+    selected_model = model_name
 
     # Guard: never pass an empty model string
     if not selected_model or not selected_model.strip():
         selected_model = router.local_model if router else 'phi3:mini'
 
     agent = build_provider_agent(system_prompt, selected_model)
-    if router:
-        setattr(agent, 'router', router)
-        setattr(agent, 'agent_role', agent_role)
     return agent

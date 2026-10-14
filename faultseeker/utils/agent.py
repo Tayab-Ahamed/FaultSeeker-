@@ -6,6 +6,7 @@ import time
 from typing import Dict, List, Any, Union, Optional
 import traceback
 import threading
+from urllib import request as urllib_request
 from ollama import chat
 from openai import OpenAI
 import os
@@ -35,8 +36,6 @@ PROVIDER_CONFIG = {
     'qwen-':    ('https://dashscope.aliyuncs.com/compatible-mode/v1',            'DASHSCOPE_API_KEY'),
     # Google Gemini (OpenAI-compatible endpoint)
     'gemini-':  ('https://generativelanguage.googleapis.com/v1beta/openai/',     'GOOGLE_API_KEY'),
-    # Anthropic Claude (NB: not OpenAI-compatible natively — requires anthropic sdk)
-    'claude-':  ('https://api.anthropic.com/v1',                                 'ANTHROPIC_API_KEY'),
 }
 
 # Models that support native JSON response_format
@@ -63,8 +62,10 @@ class AbstractAgent(abc.ABC):
         task: str,
         model_name: str,
     ):
+        self.task = task
         self.model = model_name
         self.memory = []
+        self.last_usage = None
         self._init_resources(task)
 
     def _init_resources(self, task):
@@ -73,6 +74,10 @@ class AbstractAgent(abc.ABC):
             "content": '\n'.join([task])
         }
         self.memory.append(system_message)
+
+    def reset_memory(self):
+        self.memory = []
+        self._init_resources(self.task)
 
     # to be implemented in the child class
     def _send_message(self, user_message: str, temperature=0) -> str:
@@ -182,7 +187,7 @@ class AbstractAgent(abc.ABC):
         Query the LLM and retry up to max_retries times if the output
         is not valid JSON. On each retry, inject a correction prompt.
         """
-        result_raw = self._send_message(user_message, temperature)
+        result_raw = self._dispatch_message(user_message, temperature)
         retries = 0
         while retries <= max_retries:
             try:
@@ -193,16 +198,46 @@ class AbstractAgent(abc.ABC):
                     logger.warning("JSON parsing failed after %d retries; returning empty dict", max_retries)
                     return {}
                 logger.debug("JSON retry %d/%d", retries, max_retries)
-                result_raw = self._send_message(JSON_RETRY_PROMPT, 0.0)  # Force temp=0 on retries
+                result_raw = self._dispatch_message(JSON_RETRY_PROMPT, 0.0)
+
+    def _dispatch_message(self, user_message, temperature=0):
+        """Reserve every direct paid attempt, including JSON correction retries.
+
+        RoutedAgent performs its own reservation and calls the raw transport;
+        direct legacy callers enter here instead, using the same durable ledger.
+        """
+        if not self.model.startswith(('gpt-','o1-','o3-','o4-','claude-','grok-','qwen-','gemini-')):
+            return self._send_message(user_message, temperature)
+        from faultseeker.core.spend_guard import SpendGuard
+        from faultseeker.core.llm_router import COST_RATES
+        guard = getattr(self, 'spend_guard', None) or SpendGuard(pricing=COST_RATES)
+        bound = 2*(len(json.dumps(self.memory).encode())+len(json.dumps(user_message).encode()))+1024
+        reservation = guard.reserve(self.model,bound,4096)
+        self.last_usage = None
+        failed = False
+        try:
+            return self._send_message(user_message,temperature)
+        except Exception:
+            failed = True
+            raise
+        finally:
+            usage = self.last_usage or {}
+            try:
+                guard.settle(reservation,usage.get('prompt_tokens'),usage.get('completion_tokens'),failed=failed)
+            except (ValueError,TypeError):
+                guard.settle(reservation,failed=True)
 
     def query(self, user_message: str, temperature=0, format='json') -> Any:
         if format == 'str':
-            return self._send_message(user_message, temperature)
+            return self._dispatch_message(user_message, temperature)
 
         # Use retry-enabled query for JSON formats
         try:
             return self._query_with_json_retry(user_message, temperature)
         except Exception as e:
+            from faultseeker.core.spend_guard import BudgetApprovalRequired
+            if isinstance(e, BudgetApprovalRequired):
+                raise
             logger.error("query() failed completely: %s", e)
             return {}
 
@@ -219,6 +254,7 @@ class OllmaAgent(AbstractAgent):
         return [system_prompt] + truncated
 
     def _send_message(self, user_message: str, temperature=0.0) -> str:
+        self.last_usage = None
         # Cap prompt length so local model context window isn't blown out
         start_time = time.time()
         if len(user_message) > LOCAL_MODEL_MAX_PROMPT:
@@ -273,6 +309,8 @@ class OllmaAgent(AbstractAgent):
         raw_resp = raw_response_container[0]
         inp_tok = raw_resp.get('prompt_eval_count') if isinstance(raw_resp, dict) else None
         out_tok = raw_resp.get('eval_count') if isinstance(raw_resp, dict) else None
+        if inp_tok is not None and out_tok is not None:
+            self.last_usage = {'prompt_tokens': inp_tok, 'completion_tokens': out_tok}
         self._record_router_query(len(user_message), len(assistant_response), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
 
         return assistant_response
@@ -306,8 +344,11 @@ class GPTAgent(AbstractAgent):
         return [system_prompt] + truncated
 
     def _send_message(self, user_message, temperature=0):
-        client = OpenAI(api_key=self.openai_api_key)
+        if not self.openai_api_key:
+            raise ValueError('Set OPENAI_API_KEY for OpenAI models')
+        client = OpenAI(api_key=self.openai_api_key, max_retries=0, timeout=60)
         start_time = time.time()
+        self.last_usage = None
         try:
             user_message = user_message[:10000]
             self.memory.append({"role": "user", "content": user_message})
@@ -315,6 +356,7 @@ class GPTAgent(AbstractAgent):
                 messages=self._truncate_history(self.memory),
                 model=self.model,
                 temperature=temperature,
+                max_completion_tokens=4096,
             )
             if self.model in JSON_MODE_MODELS or any(
                 self.model.startswith(p) for p in ('gpt-4o', 'gpt-4.1', 'gpt-4-turbo')
@@ -328,12 +370,14 @@ class GPTAgent(AbstractAgent):
             usage = getattr(chat_completion, 'usage', None)
             inp_tok = getattr(usage, 'prompt_tokens', None) if usage else None
             out_tok = getattr(usage, 'completion_tokens', None) if usage else None
+            if inp_tok is not None and out_tok is not None:
+                self.last_usage = {'prompt_tokens': inp_tok, 'completion_tokens': out_tok}
             self._record_router_query(len(user_message), len(reply), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
 
             return reply
         except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})
-            return "An error occurred."
+            raise
 
 
 class UniversalAgent(AbstractAgent):
@@ -346,6 +390,8 @@ class UniversalAgent(AbstractAgent):
     def __init__(self, task: str, model_name: str,
                  base_url: Optional[str] = None,
                  api_key: Optional[str] = None):
+        if model_name.startswith('claude-'):
+            raise ValueError('Use AnthropicAgent for native Claude Messages API')
         load_dotenv()
         # Auto-detect provider from model prefix
         detected_base_url, env_var = self._detect_provider(model_name)
@@ -373,8 +419,9 @@ class UniversalAgent(AbstractAgent):
         return [system_prompt] + truncated
 
     def _send_message(self, user_message: str, temperature: float = 0) -> str:
-        client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+        client = OpenAI(api_key=self.api_key, base_url=self.base_url, max_retries=0, timeout=60)
         start_time = time.time()
+        self.last_usage = None
         try:
             user_message = user_message[:10000]
             self.memory.append({"role": "user", "content": user_message})
@@ -382,6 +429,7 @@ class UniversalAgent(AbstractAgent):
                 messages=self._truncate_history(self.memory),
                 model=self.model,
                 temperature=temperature,
+                max_tokens=4096,
             )
             # Enable JSON mode if model supports it
             if self.model in JSON_MODE_MODELS:
@@ -394,12 +442,56 @@ class UniversalAgent(AbstractAgent):
             usage = getattr(chat_completion, 'usage', None)
             inp_tok = getattr(usage, 'prompt_tokens', None) if usage else None
             out_tok = getattr(usage, 'completion_tokens', None) if usage else None
+            if inp_tok is not None and out_tok is not None:
+                self.last_usage = {'prompt_tokens': inp_tok, 'completion_tokens': out_tok}
             self._record_router_query(len(user_message), len(reply), dur_ms, input_tokens=inp_tok, output_tokens=out_tok)
 
             return reply
         except Exception as e:
             self.memory.append({"role": "assistant", "content": ''})
-            return "An error occurred."
+            raise
+
+
+class AnthropicAgent(AbstractAgent):
+    """Anthropic native Messages API adapter with injectable HTTP transport."""
+
+    def __init__(self, task: str, model_name: str, transport=None):
+        load_dotenv()
+        self.api_key = os.getenv('ANTHROPIC_API_KEY')
+        self.transport = transport or urllib_request.urlopen
+        super().__init__(task, model_name)
+
+    def _send_message(self, user_message: str, temperature=0) -> str:
+        if not self.api_key:
+            raise ValueError('Set ANTHROPIC_API_KEY for Claude models')
+        self.last_usage = None
+        self.memory.append({'role': 'user', 'content': user_message[:10000]})
+        messages = [m for m in self.memory[-5:] if m['role'] != 'system']
+        body = json.dumps({'model': self.model, 'max_tokens': 4096,
+                           'temperature': temperature, 'system': self.memory[0]['content'],
+                           'messages': messages}).encode('utf-8')
+        request = urllib_request.Request(
+            'https://api.anthropic.com/v1/messages', data=body,
+            headers={'x-api-key': self.api_key, 'anthropic-version': '2023-06-01',
+                     'content-type': 'application/json'}, method='POST')
+        started = time.time()
+        try:
+            with self.transport(request, timeout=60) as response:
+                payload = json.load(response)
+        except Exception:
+            self.memory.pop()
+            raise
+        reply = ''.join(block.get('text', '') for block in payload.get('content', [])
+                        if block.get('type') == 'text')
+        usage = payload.get('usage') or {}
+        if 'input_tokens' in usage and 'output_tokens' in usage:
+            self.last_usage = {'prompt_tokens': usage['input_tokens'],
+                               'completion_tokens': usage['output_tokens']}
+        self.memory.append({'role': 'assistant', 'content': reply})
+        self._record_router_query(len(user_message), len(reply), (time.time() - started) * 1000,
+                                  input_tokens=usage.get('input_tokens'),
+                                  output_tokens=usage.get('output_tokens'))
+        return reply
 
 
 def build_provider_agent(task: str, model_name: str) -> AbstractAgent:
@@ -411,18 +503,11 @@ def build_provider_agent(task: str, model_name: str) -> AbstractAgent:
       grok-*                   → UniversalAgent (xAI)
       qwen-*                   → UniversalAgent (Alibaba DashScope)
       gemini-*                 → UniversalAgent (Google)
-      claude-*                 → NOT SUPPORTED (Anthropic SDK required)
+      claude-*                 → AnthropicAgent (native Messages API)
       <anything else>          → OllmaAgent (local Ollama)
     """
-    # Claude requires the Anthropic SDK, which is not integrated here.
-    # Routing through OpenAI-compatible UniversalAgent silently fails
-    # (different auth headers, different request schema). Fail fast instead.
     if model_name.startswith('claude-'):
-        raise NotImplementedError(
-            f"Claude model '{model_name}' is not supported. "
-            "Install the 'anthropic' package and implement an AnthropicAgent, "
-            "or choose a supported model (gpt-*, gemini-*, grok-*, qwen-*, or a local Ollama model)."
-        )
+        return AnthropicAgent(task, model_name)
 
     cloud_prefixes = tuple(PROVIDER_CONFIG.keys())
     if not any(model_name.startswith(p) for p in cloud_prefixes):

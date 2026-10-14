@@ -19,6 +19,7 @@ Usage::
 from __future__ import annotations
 
 import json
+import math
 import time
 from contextlib import contextmanager
 from dataclasses import dataclass, field
@@ -47,6 +48,8 @@ class LlmCall:
     completion_tokens: int
     latency_secs: float = 0.0
     cost_usd: float = 0.0
+    status: str = "success"
+    usage_source: str = "provider"
 
 
 @dataclass
@@ -82,16 +85,22 @@ class CostTracker:
     def price_for(self, model: str, tier: str = "") -> Dict[str, float]:
         if str(tier).lower() in LOCAL_TIERS:
             return self.pricing["local"]
-        return self.pricing.get(str(model).lower(), self.pricing["local"])
+        try:
+            return self.pricing[str(model).lower()]
+        except KeyError as exc:
+            raise ValueError(f"Unknown cloud pricing for {model}") from exc
 
     def cost_of(
         self, model: str, prompt_tokens: int, completion_tokens: int, tier: str = ""
     ) -> float:
         price = self.price_for(model, tier)
+        if any(not isinstance(v, int) or isinstance(v, bool) or v < 0
+               for v in (prompt_tokens, completion_tokens)):
+            raise ValueError("Token counts must be nonnegative integers")
         cost = (prompt_tokens / 1_000_000) * price.get("prompt", 0.0) + (
             completion_tokens / 1_000_000
         ) * price.get("completion", 0.0)
-        return round(cost, 8)
+        return cost
 
     def record_llm_call(
         self,
@@ -101,7 +110,14 @@ class CostTracker:
         prompt_tokens: int,
         completion_tokens: int,
         latency_secs: float = 0.0,
+        status: str = "success",
+        usage_source: str = "provider",
+        cost_usd_override: Optional[float] = None,
     ) -> LlmCall:
+        if cost_usd_override is not None and (
+            not math.isfinite(cost_usd_override) or cost_usd_override < 0
+        ):
+            raise ValueError("Cost must be finite and nonnegative")
         call = LlmCall(
             stage=stage,
             tier=str(tier).lower(),
@@ -109,7 +125,10 @@ class CostTracker:
             prompt_tokens=int(prompt_tokens),
             completion_tokens=int(completion_tokens),
             latency_secs=float(latency_secs),
-            cost_usd=self.cost_of(model, prompt_tokens, completion_tokens, tier),
+            cost_usd=(self.cost_of(model, prompt_tokens, completion_tokens, tier)
+                      if cost_usd_override is None else cost_usd_override),
+            status=status,
+            usage_source=usage_source,
         )
         self.calls.append(call)
         return call
@@ -159,10 +178,10 @@ class CostTracker:
                 call.completion_tokens,
                 tier="cloud",
             )
-        return round(total, 6)
+        return total
 
     def report(self) -> Dict[str, Any]:
-        actual = round(sum(call.cost_usd for call in self.calls), 6)
+        actual = sum(call.cost_usd for call in self.calls)
         counterfactual = self.counterfactual_cost()
         reduction = (
             round(1 - (actual / counterfactual), 4) if counterfactual > 0 else 0.0
@@ -175,6 +194,16 @@ class CostTracker:
             if self.transactions
             else 0.0,
             "llm_calls": len(self.calls),
+            "attempt_statuses": {
+                status: sum(call.status == status for call in self.calls)
+                for status in sorted({call.status for call in self.calls})
+            },
+            "usage_sources": {
+                source: sum(call.usage_source == source for call in self.calls)
+                for source in sorted({call.usage_source for call in self.calls})
+            },
+            "pricing_units": "USD per 1,000,000 input or output tokens",
+            "pricing_verified_at": None,
             "prompt_tokens": sum(c.prompt_tokens for c in self.calls),
             "completion_tokens": sum(c.completion_tokens for c in self.calls),
             "actual_cost_usd": actual,
