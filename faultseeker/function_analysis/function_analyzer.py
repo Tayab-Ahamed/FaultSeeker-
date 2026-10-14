@@ -153,7 +153,8 @@ class FunctionAnalyzer:
         else:
             function_name = function_call[1]
             address = function_call[0]
-        if ('function' in self.function_call_info_summary) and (function_name == self.function_call_info_summary['function']):
+        if (function_name == self.function_call_info_summary.get('function')
+                and address.lower() == self.function_call_info_summary.get('address','').lower()):
             if 'calls' not in self.current_task:
                 param_memo = []
                 for call in self.function_call_info_summary['calls']:
@@ -175,7 +176,8 @@ class FunctionAnalyzer:
     def _retrieve_children_calls(self, function_name, address):
         calls = []
         function_calls = []
-        if ('function' in self.function_call_info_summary) and (function_name == self.function_call_info_summary['function']):
+        if (function_name == self.function_call_info_summary.get('function')
+                and address.lower() == self.function_call_info_summary.get('address','').lower()):
             calls = self.function_call_info_summary['calls']
         else:
             key = f"{function_name}::{address}".lower()
@@ -187,6 +189,17 @@ class FunctionAnalyzer:
                     if call['params'] not in memo:
                         memo.append(call['params'])
                         function_calls.extend(self._retrieve_function_call_by_depth(call['depth'],function_name=function_name,get_children=True))
+        if function_calls:
+            template = getattr(self.function_prompts, 'function_call_children_call_filtering',
+                               WorkerPrompts().function_call_children_call_filtering)
+            prompt = template.format(function_name=function_name,
+                                     children_calls=json.dumps(function_calls))
+            selected = self.children_call_filtering_agent.query(prompt + self._analyst_prompt_context())
+            if (not isinstance(selected, list) or any(type(index) is not int or index < 0
+                    or index >= len(function_calls) for index in selected)
+                    or len(set(selected)) != len(selected)):
+                raise ValueError('Child-call filtering must return unique valid call indices')
+            function_calls = [function_calls[index] for index in selected]
         return function_calls
 
     def _retrieve_additional_info(self, additional_info):
@@ -304,11 +317,19 @@ class FunctionAnalyzer:
     def _update_current_understanding(self, is_init=False):
         if is_init:
             understanding_prompt = self.function_prompts.function_call_organization_function_call.format(function_call_info_summary=json.dumps(self.function_call_info_summary))
+            understanding_prompt += self._analyst_prompt_context()
             self.understanding_result = self.organization_agent.query(understanding_prompt, format='str')
         else:
             understanding_prompt = self.function_prompts.function_call_organization_function_call.format(function_call_info_summary=json.dumps(self.function_call_info_summary))
+            understanding_prompt += self._analyst_prompt_context()
             self.understanding_result = self.organization_agent.query(understanding_prompt, format='str')
         logging.info(f"Current understanding: {self.understanding_result}")
+
+    def _analyst_prompt_context(self):
+        context = getattr(self, 'analyst_context', {})
+        if not context:
+            return ''
+        return '\nAnalyst-supplied context (validate against trace and source):\n' + json.dumps(context)
 
     def _update_potentially_vulnerable_function(self):
         prompt = self.vulnerability_prompts.update_potentially_vulnerable_function
@@ -373,7 +394,7 @@ class FunctionAnalyzer:
                 current_output = deepcopy(self.trace)
                 for d in function_call['depth']:
                     current_output = current_output[d]['children']
-                    self._update_children_call_memo(current_output, function.split('_')[0])
+                    self._update_children_call_memo(current_output, function.rsplit('_',1)[0])
             self.children_call_memo[function] = self.children_call_memo_single
             self.children_call_memo_single = {}
     
@@ -452,11 +473,12 @@ class FunctionAnalyzer:
         contract_info = self.contract_info
         if address not in self.contract_info:
             contract_info = ContractDownloader(self.analysis_result.chain,[address]).run()
+            self.contract_info.update(contract_info)
         if address in contract_info:
             if function_name in contract_info[address]:
                 source_code_list = contract_info[address][function_name]
                 for source_code in source_code_list:
-                    if source_code['start_line'] != source_code['end_line']:
+                    if source_code.get('content'):
                         if source_code['content'] not in output_memo:
                             output_memo.append(source_code['content'])
                             output.append({'path':source_code['path'],'source_code':source_code['content']})
@@ -523,6 +545,9 @@ class FunctionAnalyzer:
         self.potentially_vulnerable_functions = potentially_vulnerable_functions
 
     def _rank_potentially_vulnerable_functions(self):
+        if not self.potentially_vulnerable_functions:
+            self.ranked_result = []
+            return
         prompt_text = self.vulnerability_prompts.rank_potentially_vulnerable_functions.format(
             current_understanding=json.dumps(self.understanding_result),
             potentially_vulnerable_functions=json.dumps(self.potentially_vulnerable_functions)
@@ -586,7 +611,7 @@ class FunctionAnalyzer:
             function_call_related_info = {}
             for f in repeated_pattern['pattern']:
                 if f['function']:
-                    self.examined_function_memo.append(f['function'])
+                    self.examined_function_memo.append(f"{f['function']}::{f['address'].lower()}")
                     related_info = self._retrieve_related_info(f['address'], f['function'])
                     if related_info:
                         current_output = deepcopy(self.trace)
@@ -605,10 +630,11 @@ class FunctionAnalyzer:
             }
         print('functions with created contract in params to be analyzed:', selected_functions_with_created_contract_in_params)
         for function in selected_functions_with_created_contract_in_params:
-            function = function.split('_')[0]
-            if function in self.examined_function_memo:
+            addresses = self.address_calls_with_created_contract_in_params[function]['address']
+            identities = [f'{function}::{address.lower()}' for address in addresses]
+            if all(identity in self.examined_function_memo for identity in identities):
                 continue
-            self.examined_function_memo.append(function)
+            self.examined_function_memo.extend(identities)
             if function in self.address_calls_with_created_contract_in_params:
                 current += 1
                 print(f"         [{current}/{total_functions}] Analyzing {function} (created contract param)...")
@@ -656,12 +682,13 @@ class FunctionAnalyzer:
                 self.current_task = ''
                 self.processing_result = ''
                 # self.understanding_result = ''
-                temp = function.split('_')
+                temp = function.rsplit('_',1)
                 function_name = temp[0]
                 address = temp[1]
-                if function_name in self.examined_function_memo:
+                identity = f'{function_name}::{address.lower()}'
+                if identity in self.examined_function_memo:
                     continue
-                self.examined_function_memo.append(function_name)
+                self.examined_function_memo.append(identity)
                 current += 1
                 print(f"         [{current}/{total_functions}] Analyzing {function_name}...")
                 appearance_count = self.functions_to_be_inspected[function]['count']
@@ -758,6 +785,16 @@ class FunctionAnalyzer:
         """
         # Initialize state
         self.task_tree = ''
+        self.potentially_vulnerable_functions = {}
+        self.function_call_info_summary = {}
+        self.children_call_memo_single = {}
+        self.children_call_memo = {}
+        self.current_task = ''
+        self.processing_result = ''
+        self.understanding_result = ''
+        for name in ('reasoning_agent', 'generation_agent', 'processing_agent',
+                     'organization_agent', 'children_call_filtering_agent', 'agent'):
+            getattr(self, name).reset_memory()
         self.txn_hash = forensics_result.transaction_hash
         self.cheatsheet = []
 
@@ -771,6 +808,14 @@ class FunctionAnalyzer:
         self.rule_confidence = getattr(forensics_result, 'rule_confidence', 0.0)
         self.vuln_type_hint  = getattr(forensics_result, 'vuln_type_hint', '')
         self.signals_raw     = getattr(forensics_result, 'signals', {})
+        self.analyst_context = {
+            'address_roles': {'attackers': forensics_result.potential_attacker,
+                              'victims': forensics_result.potential_victim},
+            'evidence': self.signals_raw.get('analyst_evidence', []),
+            'hypotheses': self.signals_raw.get('attack_hypotheses', []),
+            'vulnerability_guidance': self.signals_raw.get('analyst_vulnerability_guidance', {}),
+            'function_focus': forensics_result.functions_to_be_inspected,
+        }
         # Seed the cheatsheet so the LLM prompt includes confirmed signals
         if self.rule_verdict == 'EXPLOIT' and self.vuln_type_hint:
             self.cheatsheet.append({

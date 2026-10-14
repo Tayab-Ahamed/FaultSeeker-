@@ -2,6 +2,9 @@ import os
 import logging
 import json
 import shutil
+import tempfile
+import re
+from pathlib import Path
 from faultseeker.utils.solidityParser.loc_parser import get_loc_info
 from faultseeker.utils.explorer_provider import explorer_call, print_explorer_stats
 from dotenv import load_dotenv
@@ -41,7 +44,7 @@ class ContractDownloader:
                  output_dir: str = './temp2',
                  cache_dir: str = './data/cache/contracts'):
         self.chain = chain.lower()
-        self.address = address
+        self.address = [address] if isinstance(address, str) else list(address)
         self.output_dir = output_dir
         self.cache_dir = cache_dir
         os.makedirs(self.cache_dir, exist_ok=True)
@@ -62,6 +65,7 @@ class ContractDownloader:
         result = data['result'][0]
         source_code   = result.get('SourceCode', '')
         contract_name = result.get('ContractName', 'Contract') or 'Contract'
+        contract_name = re.sub(r'[^A-Za-z0-9_-]', '_', contract_name)[:120] or 'Contract'
 
         if not source_code:
             return
@@ -72,7 +76,7 @@ class ContractDownloader:
                 inner = json.loads(source_code[1:-1])
                 sources = inner.get('sources', {})
                 for path, content in sources.items():
-                    safe_name = os.path.basename(path.replace('/', '_'))
+                    safe_name = re.sub(r'[^A-Za-z0-9_.-]', '_', path.replace('\\', '_').replace('/', '_'))
                     impl_dir  = os.path.join(output_dir, 'Implementation')
                     os.makedirs(impl_dir, exist_ok=True)
                     with open(os.path.join(impl_dir, safe_name), 'w', encoding='utf-8') as f:
@@ -198,19 +202,19 @@ class ContractDownloader:
                 with open(path, 'r', encoding='utf-8') as f:
                     output[address.lower()] = json.load(f)
             else:
-                self.get_source_code(self.chain, address, self.output_dir)
-                # self.process_log(self.chain, address, self.output_dir)
-                data = self.parse_contract(self.output_dir)
+                # Only the newly created child directory belongs to this run.
+                # Never recursively delete a caller-supplied directory or CWD.
+                root = Path(self.output_dir).resolve()
+                root.mkdir(parents=True, exist_ok=True)
+                with tempfile.TemporaryDirectory(prefix='contract-', dir=root) as directory:
+                    target = Path(directory).resolve()
+                    if not target.is_relative_to(root):
+                        raise ValueError('Temporary source directory escapes configured root')
+                    self.get_source_code(self.chain, address, str(target))
+                    data = self.parse_contract(str(target))
                 if data:
                     with open(os.path.join(self.cache_dir, f'{address.lower()}_{self.chain}.json'), 'w') as f:
                         json.dump(data, f, indent=4)
-                if os.path.exists(self.output_dir):
-                    try:
-                        shutil.rmtree(self.output_dir)
-                    except Exception:
-                        continue
-                if os.path.exists('./Implementation'):
-                    shutil.rmtree('./Implementation')
                 output[address.lower()] = data
         return output
 
