@@ -2,6 +2,7 @@ import argparse
 import csv
 import json
 import os
+from faultseeker.research.calibration import production_features
 
 
 FEATURE_FIELDS = [
@@ -20,19 +21,9 @@ FEATURE_FIELDS = [
 def features_from_result(result: dict, label: int) -> dict:
     confidence = _first_confidence(result)
     signals = result.get("signals", {}) or {}
-    graph = signals.get("graph_reasoning", {}) if isinstance(signals, dict) else {}
-    debug = signals.get("debug", {}) if isinstance(signals, dict) else {}
-    return {
-        "pattern_match": confidence.get("pattern_match", 0.0),
-        "code_evidence": confidence.get("code_evidence", 0.0),
-        "txn_consistency": confidence.get("txn_consistency", 0.0),
-        "llm_confidence": confidence.get("llm_confidence", 0.0),
-        "trace_entropy": signals.get("trace_entropy", 0.0),
-        "call_depth": debug.get("call_depth_max", signals.get("call_depth_max", 0.0)),
-        "state_delta": debug.get("storage_events_total", 0.0),
-        "token_flow_anomaly": graph.get("anomaly_score", signals.get("token_flow_anomaly", 0.0)),
-        "label": int(label),
-    }
+    if label not in (0,1):
+        raise ValueError('Binary adjudicated label required')
+    return dict(production_features(confidence,signals),label=int(label))
 
 
 def export_feature_rows(input_dir: str, output_csv: str, label: int) -> int:

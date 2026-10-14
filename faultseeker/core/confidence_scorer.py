@@ -14,6 +14,7 @@ Factors:
 """
 
 import logging
+import math
 from dataclasses import dataclass, field
 from typing import Dict, List, Any, Optional
 
@@ -37,6 +38,7 @@ class ConfidenceScore:
         return {
             'overall': round(self.overall, 4),
             'level': self.level,
+            'score_semantics': 'heuristic-relative-ranking',
             'components': {
                 'pattern_match': round(self.pattern_match, 4),
                 'code_evidence': round(self.code_evidence, 4),
@@ -282,7 +284,7 @@ class ConfidenceScorer:
 
         # Check depth (deeper calls often more suspicious)
         depth = func_data.get('depth', 0)
-        if depth and isinstance(depth, (int, float)):
+        if depth and isinstance(depth, (int, float)) and math.isfinite(depth) and depth > 0:
             score += min(0.1, depth * 0.02)
 
         return max(0.0, min(1.0, score))
@@ -300,6 +302,8 @@ class ConfidenceScorer:
             if isinstance(cs, (int, float)):
                 # Already numeric (0-1 or 0-100)
                 val = float(cs)
+                if isinstance(cs,bool) or not math.isfinite(val) or val < 0 or val > 100:
+                    continue
                 if val > 1.0:
                     val = val / 100.0
                 normalized.append(max(0.0, min(1.0, val)))
@@ -316,6 +320,8 @@ class ConfidenceScorer:
                     # Try to parse as number
                     try:
                         val = float(cs.strip().rstrip('%'))
+                        if not math.isfinite(val) or val < 0 or val > 100:
+                            continue
                         if val > 1.0:
                             val = val / 100.0
                         normalized.append(max(0.0, min(1.0, val)))

@@ -16,6 +16,26 @@ FEATURE_NAMES = [
 ]
 
 
+def production_features(components, signals):
+    """One feature contract for training export and production inference.
+
+    The first four factors are the Equation 4 components; entropy/anomaly are
+    normalized scores, call depth is trace depth, state delta is SSTORE count.
+    Missing observations cannot silently become zero-valued training evidence.
+    """
+    debug = signals.get('debug', {})
+    try:
+        row = {name:components[name] for name in FEATURE_NAMES[:4]}
+        row.update(trace_entropy=signals['trace_entropy'],call_depth=debug['call_depth_max'],
+                   state_delta=debug['storage_events_total'],token_flow_anomaly=signals['token_flow_anomaly'])
+        values = {name:float(value) for name,value in row.items()}
+    except (KeyError,TypeError,ValueError) as error:
+        raise ValueError('Missing genuine production confidence observations') from error
+    if not all(math.isfinite(value) and value >= 0 for value in values.values()):
+        raise ValueError('Production confidence observations must be finite and nonnegative')
+    return values
+
+
 @dataclass
 class CalibrationMetrics:
     brier_score: float
@@ -33,6 +53,41 @@ class LogisticConfidenceCalibrator:
         self.means = [0.0 for _ in self.feature_names]
         self.scales = [1.0 for _ in self.feature_names]
         self.trained = False
+        self.schema_id = "legacy-unspecified"
+        self.training_ids = []
+        self.evaluation_ids = []
+
+    def require_schema(self, expected: str) -> None:
+        if self.schema_id != expected or self.feature_names != FEATURE_NAMES or not self.trained:
+            raise ValueError("Calibration schema is incompatible with production features")
+        if any(not isinstance(ids,list) or not ids or any(not isinstance(item,str) or not item for item in ids)
+               or len(set(ids)) != len(ids) for ids in (self.training_ids,self.evaluation_ids)):
+            raise ValueError("Calibration schema requires disjoint training and evaluation provenance")
+        if set(self.training_ids) & set(self.evaluation_ids):
+            raise ValueError("Calibration provenance overlap")
+
+    def fit_observations(self, rows, labels, training_ids, evaluation_ids, **kwargs):
+        rows, labels = list(rows), list(labels)
+        training_ids, evaluation_ids = list(training_ids), list(evaluation_ids)
+        for identifiers in (training_ids, evaluation_ids):
+            if not identifiers or any(not isinstance(item, str) or not item for item in identifiers):
+                raise ValueError("Calibration requires nonempty observation identifiers")
+            if len(set(identifiers)) != len(identifiers):
+                raise ValueError("Duplicate calibration observation identifiers")
+        if set(training_ids) & set(evaluation_ids):
+            raise ValueError("Training and evaluation observation overlap")
+        if len(training_ids) != len(rows) or self.feature_names != FEATURE_NAMES:
+            raise ValueError("Calibration schema or observation count mismatch")
+        if any(any(name not in row for name in FEATURE_NAMES) for row in rows):
+            raise ValueError("Production schema requires every observed feature")
+        if any(any(row[name] is None for name in FEATURE_NAMES) for row in rows):
+            raise ValueError('Production schema requires numeric observations')
+        if any(label not in (0, 1) for label in labels):
+            raise ValueError("Calibration labels must be binary")
+        self.fit(rows, labels, **kwargs)
+        self.schema_id = "production-confidence-v1"
+        self.training_ids, self.evaluation_ids = training_ids, evaluation_ids
+        return self
 
     def fit(
         self,
@@ -43,6 +98,8 @@ class LogisticConfidenceCalibrator:
         l2: float = 0.001,
     ) -> "LogisticConfidenceCalibrator":
         matrix = [self._raw_features(row) for row in rows]
+        self.schema_id = "legacy-unspecified"
+        self.training_ids, self.evaluation_ids = [], []
         y = [1 if int(label) else 0 for label in labels]
         if not matrix or len(matrix) != len(y):
             raise ValueError("Calibration training requires equal non-empty rows and labels")
@@ -127,6 +184,9 @@ class LogisticConfidenceCalibrator:
             "means": self.means,
             "scales": self.scales,
             "trained": self.trained,
+            "schema_id": self.schema_id,
+            "training_ids": self.training_ids,
+            "evaluation_ids": self.evaluation_ids,
         }
 
     @classmethod
@@ -135,8 +195,18 @@ class LogisticConfidenceCalibrator:
         model.weights = [float(v) for v in data.get("weights", model.weights)]
         model.bias = float(data.get("bias", 0.0))
         model.means = [float(v) for v in data.get("means", model.means)]
-        model.scales = [float(v) or 1.0 for v in data.get("scales", model.scales)]
+        model.scales = [float(v) for v in data.get("scales", model.scales)]
         model.trained = bool(data.get("trained", False))
+        model.schema_id = data.get("schema_id", "legacy-unspecified")
+        model.training_ids = data.get("training_ids", [])
+        model.evaluation_ids = data.get("evaluation_ids", [])
+        for values in (model.weights, model.means, model.scales):
+            if len(values) != len(model.feature_names) or not all(math.isfinite(v) for v in values):
+                raise ValueError("Calibration model dimensions and values must be finite and valid")
+        if not math.isfinite(model.bias) or any(v <= 0 for v in model.scales):
+            raise ValueError("Calibration scales must be positive and model values finite")
+        if model.schema_id == "production-confidence-v1":
+            model.require_schema(model.schema_id)
         return model
 
     def save(self, path: str) -> None:
@@ -149,7 +219,12 @@ class LogisticConfidenceCalibrator:
             return cls.from_dict(json.load(f))
 
     def _raw_features(self, row: Dict[str, Any]) -> List[float]:
-        return [float(row.get(name, 0.0) or 0.0) for name in self.feature_names]
+        if self.schema_id == "production-confidence-v1" and any(name not in row for name in self.feature_names):
+            raise ValueError("Production schema requires every observed feature")
+        values = [float(row.get(name, 0.0) or 0.0) for name in self.feature_names]
+        if not all(math.isfinite(value) for value in values):
+            raise ValueError("Calibration features must be finite")
+        return values
 
     def _fit_scaler(self, matrix: List[List[float]]) -> None:
         n = len(matrix)
