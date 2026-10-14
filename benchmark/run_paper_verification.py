@@ -56,7 +56,7 @@ def attach_commit_provenance(report):
 def write_report(report, output):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    (output/'claim_report.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+    (output/'claim_report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode('utf-8'))
     lines = ['# Local paper claim verification', '',
              'Local acceptance tests do not establish empirical paper outcomes.', '',
              f"Suite exit code: {report['test_exit_code']}; test outcomes: {report['test_counts']}.", '',
@@ -82,7 +82,7 @@ def write_report(report, output):
               '- No authentic cohort rows, query outcomes or traces are synthesized to meet a target.',
               '- The .80 structural cap equals the .80 CONFIRMED label boundary; fallback context remains explicit and is not storage proof.',
               '', 'Kluster is waived for local development only. Re-enable repository rules before PR or push.']
-    (output/'claim_report.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
+    (output/'claim_report.md').write_bytes(('\n'.join(lines)+'\n').encode('utf-8'))
 
 
 def main(argv=None):
@@ -97,6 +97,9 @@ def main(argv=None):
     import pytest
     plugin = TestEvidence()
     code = int(pytest.main([str(ROOT/'tests'), '-q', '--junitxml='+str(args.output/'tests.xml')], plugins=[plugin]))
+    junit = args.output/'tests.xml'
+    if junit.is_file():
+        junit.write_bytes(junit.read_bytes().replace(b'\r\n',b'\n'))
     audit = audit_dataset(args.dataset, args.evidence_root, target=246)
     report = claim_report(plugin.outcomes, audit)
     baseline = json.loads((ROOT/'benchmark/baseline_tests.json').read_text(encoding='utf-8-sig'))
