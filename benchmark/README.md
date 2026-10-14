@@ -1,10 +1,16 @@
 # FaultSeeker++ Benchmark
 
-This directory contains the verified exploit benchmark, public-source importers, staged external data, and validation scripts used for research evaluation.
+This directory contains legacy benchmark candidates, public-source importers,
+staged external data, and research evaluation scripts. Historical verification
+labels and aggregate/proxy outputs below are not current paper-claim proof.
+Use `python scripts/reproduce_paper.py` from the project root and the
+[current reproduction protocol](../docs/PAPER_REPRODUCTION.md). Its evidence gate
+requires recorded canonical acquisition, independent sources and annotations;
+it never pads a cohort or manufactures a measured outcome.
 
 > **Dataset Integrity:** For a full disclosure of verification tiers and dataset composition, see [`DATASET_INTEGRITY.md`](./DATASET_INTEGRITY.md).
 
-## Dataset Summary (JISA Paper)
+## Historical Dataset Metadata (not reverified by the current evidence gate)
 
 | Metric | Value |
 |---|---:|

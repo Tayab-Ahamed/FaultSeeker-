@@ -67,7 +67,8 @@ def claim_report(test_outcomes, dataset_audit):
         status = ('IMPLEMENTED-LOCAL' if proof else 'LOCAL-ACCEPTANCE-PENDING') if scope == 'LOCAL' else {
             'DATA': 'BLOCKED-BY-DATA', 'EXTERNAL': 'PENDING-CREDENTIALS',
             'TOOLS': 'PENDING-CREDENTIALS', 'PENDING-PUBLICATION': 'PENDING-PUBLICATION'}[scope]
-        rows.append(dict(claim, status=status, local_proof='PASSED' if proof else 'FAILED-OR-MISSING'))
+        local_proof = 'OUTSIDE-LOCAL-SCOPE' if scope=='PENDING-PUBLICATION' else 'PASSED' if proof else 'FAILED-OR-MISSING'
+        rows.append(dict(claim, status=status, local_proof=local_proof))
     return {'claims': rows, 'dataset_audit': dataset_audit,
             'scope': 'local acceptance only; empirical and live claims require separate evidence',
             'paid_api_spend_this_run_usd': 0.0}

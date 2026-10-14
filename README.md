@@ -7,11 +7,11 @@
 ### AI-Powered Blockchain Transaction Forensics & Vulnerability Localization
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-22c55e?style=flat-square)](LICENSE)
 [![Chains](https://img.shields.io/badge/Chains-10%20EVM-f97316?style=flat-square&logo=ethereum&logoColor=white)](#-supported-networks)
-[![Dataset](https://img.shields.io/badge/Dataset-1059%20Exploit%20Txns-dc2626?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
-[![Benign](https://img.shields.io/badge/Benign-10000%20Real%20Traces-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](#-benchmark--evaluation)
-[![Tests](https://img.shields.io/badge/Tests-124%20Passing-16a34a?style=flat-square&logo=pytest&logoColor=white)](#-development)
+[![Dataset](https://img.shields.io/badge/Dataset-Verification%20Pending-dc2626?style=flat-square&logo=databricks&logoColor=white)](reports/local_verification/claim_report.md)
+[![Benign](https://img.shields.io/badge/Benign-Legacy%20Candidates-0ea5e9?style=flat-square&logo=databricks&logoColor=white)](docs/PAPER_REPRODUCTION.md)
+[![Tests](https://img.shields.io/badge/Tests-Local%20Suite-16a34a?style=flat-square&logo=pytest&logoColor=white)](reports/local_verification/claim_report.md)
 [![Status](https://img.shields.io/badge/Status-Research%20Active-6366f1?style=flat-square)](#-citation)
 
 
@@ -20,6 +20,15 @@
 > **FaultSeeker++** replays exploit transactions, reconstructs execution traces, extracts deterministic security signals, ranks suspicious functions, and generates benchmark-ready forensic outputs — all in a single unified pipeline.
 
 *Built for security researchers, auditors, and academics working on smart contract vulnerability analysis.*
+
+Current paper-claim verification: run `python scripts/reproduce_paper.py` and read
+the [claim-by-claim evidence report](reports/local_verification/claim_report.md).
+Local mechanism tests are separate from live-provider and empirical proof.
+The legacy cohort labels, historical numbers below, aggregate/proxy experiment
+scripts and legacy calibrator do not establish current paper-claim verification.
+See [reproduction requirements](docs/PAPER_REPRODUCTION.md) for authentic-data
+gates, isolated tests, actual experiment runners and the cumulative $10 API cap.
+Paper sources remain unchanged.
 
 ---
 
