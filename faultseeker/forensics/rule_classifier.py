@@ -137,6 +137,12 @@ def classify(signals: SignalBundle) -> tuple[str, float, str, str]:
         and not signals.large_transfer_to_eoa
     )
     if no_signals:
+        coverage = signals.raw.get('coverage', {}) if isinstance(signals.raw, dict) else {}
+        if (not signals.single_transfer_only
+                and all(coverage.get(key) is True for key in (
+                    'trace_complete', 'token_flow_complete',
+                    'multi_tx_context_complete'))):
+            return ('BENIGN', 0.90, 'complete_clean_coverage', 'Benign')
         return ('UNCERTAIN', 0.40, 'no_signals_llm_required', 'Unknown')
 
     # ── Rule 14: Everything else → UNCERTAIN ─────────────────────────────────
