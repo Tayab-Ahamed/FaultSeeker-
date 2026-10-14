@@ -26,6 +26,7 @@ Usage:
 
 import os
 import json
+import hashlib
 import math
 import random
 import time
@@ -34,10 +35,16 @@ import threading
 from typing import Any
 import urllib.request
 import urllib.error
+from urllib.parse import quote, urlparse
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
 log = logging.getLogger('faultseeker.rpc')
+
+
+def safe_endpoint_label(url):
+    parsed = urlparse(url)
+    return f'{parsed.scheme}://{parsed.hostname}/…#{hashlib.sha256(url.encode()).hexdigest()[:8]}'
 
 # ── LRU + TTL Cache (thread-safe) ─────────────────────────────────────────────
 
@@ -220,7 +227,7 @@ class _RPCProvider:
                 if self._half_probes >= self.CB_PROBES:
                     self._cb_until    = 0
                     self._half_probes = 0
-                    log.info(f'[circuit CLOSED] {self.url[:50]}')
+                    log.info(f'[circuit CLOSED] {safe_endpoint_label(self.url)}')
         self.metrics.record(latency_ms, ok=True)
 
     def penalize(self, latency_ms: float, penalty: int):
@@ -232,12 +239,12 @@ class _RPCProvider:
             self._half_probes  = 0   # reset half-open progress on any fail
             if self._consec_fail >= self.CB_THRESHOLD:
                 self._cb_until = time.time() + self.CB_PAUSE_SECS
-                log.warning(f'[circuit TRIPPED] {self.url[:50]} — paused {self.CB_PAUSE_SECS}s')
+                log.warning(f'[circuit TRIPPED] {safe_endpoint_label(self.url)} — paused {self.CB_PAUSE_SECS}s')
         self.metrics.record(latency_ms, ok=False)
 
     def __repr__(self):
         state = 'OPEN' if self.is_circuit_open else ('HALF' if self._is_half_open else 'OK')
-        return (f'<RPC {self.url[:42]} score={self.score:.0f} '
+        return (f'<RPC {safe_endpoint_label(self.url)} score={self.score:.0f} '
                 f'w={self.dynamic_weight:.2f} ok={self.metrics.success} '
                 f'fail={self.metrics.fail} ema={self.metrics.ema_ms:.0f}ms [{state}]>')
 
@@ -394,6 +401,13 @@ def _canonical(chain: str) -> str:
 
 def _build_providers(chain: str) -> list[_RPCProvider]:
     providers = []
+    drpc_template = os.getenv('DRPC_RPC_URL', '').strip()
+    drpc_key = os.getenv('DRPC_API_KEY', '').strip()
+    if drpc_template:
+        drpc_url = drpc_template.replace('{chain}', quote(chain, safe='')).replace('{api_key}', quote(drpc_key, safe=''))
+        if '{api_key}' in drpc_template and not drpc_key:
+            raise ValueError('DRPC_API_KEY is required by DRPC_RPC_URL template')
+        providers.append(_RPCProvider(drpc_url, initial_score=98))
     key = chain.upper().replace('-', '_')
     for suffix in ['_RPC_URL', '_RPC_URL_2', '_RPC_URL_3', '_RPC_URL_4']:
         url = os.getenv(f'{key}{suffix}', '').strip()
@@ -444,6 +458,8 @@ def _http_post(url: str, body: bytes, timeout: int = 5) -> Any:
 
 def _check_rpc_error(data: dict) -> Any:
     """Extract result or raise typed error for RPC-level errors."""
+    if not isinstance(data, dict) or not ('result' in data or 'error' in data):
+        raise RuntimeError('Malformed JSON-RPC response without result or error')
     if 'error' in data:
         msg = data['error'].get('message', str(data['error']))
         if any(w in msg.lower() for w in ('unauthorized', 'api key', 'authenticate', 'forbidden')):
@@ -493,7 +509,7 @@ def rpc_call(chain: str, method: str, params: list,
     last_err = None
     for provider in providers:
         if provider.is_circuit_open:
-            log.debug(f'[circuit SKIP] {provider.url[:50]}')
+            log.debug(f'[circuit SKIP] {safe_endpoint_label(provider.url)}')
             continue
 
         t_out = timeout or provider.adaptive_timeout
@@ -504,7 +520,7 @@ def rpc_call(chain: str, method: str, params: list,
             data   = _http_post(provider.url, body, timeout=t_out)
             result = _check_rpc_error(data)
             ms     = (time.time() - t0) * 1000
-            log.debug(f'[rpc OK] {provider.url[:42]} {method} {ms:.0f}ms')
+            log.debug(f'[rpc OK] {safe_endpoint_label(provider.url)} {method} {ms:.0f}ms')
             provider.reward(ms)
             if cacheable:
                 _cache.set(cache_key, result)
@@ -513,7 +529,7 @@ def rpc_call(chain: str, method: str, params: list,
         except Exception as exc:
             ms      = (time.time() - t0) * 1000
             penalty = _penalty_for(exc)
-            log.warning(f'[rpc FAIL +{penalty}] {provider.url[:42]} {method}: {exc} ({ms:.0f}ms)')
+            log.warning(f'[rpc FAIL +{penalty}] {safe_endpoint_label(provider.url)} {method}: {type(exc).__name__} ({ms:.0f}ms)')
             provider.penalize(ms, penalty)
             last_err = exc
 
@@ -568,6 +584,9 @@ def rpc_batch(chain: str,
                 if not isinstance(data, list):
                     raise RuntimeError(f'Expected list, got {type(data)}')
                 id_map = {item['id']: item for item in data}
+                expected = {orig_i for orig_i,_,_ in chunk}
+                if len(id_map) != len(data) or set(id_map) != expected:
+                    raise RuntimeError('Missing, duplicate or unexpected JSON-RPC batch response IDs')
                 for orig_i, method, params in chunk:
                     item   = id_map.get(orig_i, {})
                     result = _check_rpc_error(item)
@@ -575,7 +594,7 @@ def rpc_batch(chain: str,
                     if cacheable:
                         key = f'{canonical}:{method}:{json.dumps(params, sort_keys=True)}'
                         _cache.set(key, result)
-                log.debug(f'[batch OK] {provider.url[:42]} chunk={len(chunk)} {ms:.0f}ms')
+                log.debug(f'[batch OK] {safe_endpoint_label(provider.url)} chunk={len(chunk)} {ms:.0f}ms')
                 provider.reward(ms)
                 sent = True
                 break
@@ -583,7 +602,7 @@ def rpc_batch(chain: str,
                 ms      = (time.time() - t0) * 1000
                 penalty = _penalty_for(exc)
                 provider.penalize(ms, penalty)
-                log.warning(f'[batch FAIL] {provider.url[:42]}: {exc} ({ms:.0f}ms)')
+                log.warning(f'[batch FAIL] {safe_endpoint_label(provider.url)}: {type(exc).__name__} ({ms:.0f}ms)')
 
         if not sent:
             # ── Per-call fallback — batch failed, retry each call individually ──
@@ -869,113 +888,9 @@ def normalize_trace_node(node: dict, depth: int = 0, call_id: str = '0') -> dict
 
 
 def extract_storage_writes_from_struct_logs(struct_logs: list[dict], root_trace: dict | None = None) -> list[dict]:
-    """
-    Build canonical SSTORE events from opcode logs.
-
-    Output shape:
-      {
-        address, slot, value_before, value_after, pc, depth,
-        event_index, after_external_call
-      }
-    """
-    if not struct_logs:
-        return []
-
-    root_addr = ''
-    if isinstance(root_trace, dict):
-        root_addr = (
-            root_trace.get('callee')
-            or root_trace.get('to')
-            or root_trace.get('address')
-            or ''
-        ).lower()
-    if not root_addr:
-        return []
-
-    call_ops = {'CALL', 'CALLCODE', 'DELEGATECALL', 'STATICCALL'}
-    mutating_call_ops = {'CALL', 'CALLCODE', 'DELEGATECALL'}
-
-    address_stack: list[str] = [root_addr]
-    call_id_stack: list[str] = ['0']
-    child_counters: list[int] = [0]
-    after_external_stack: list[bool] = [False]
-    events: list[dict] = []
-
-    for idx, entry in enumerate(struct_logs):
-        op = (entry.get('op') or '').upper()
-        try:
-            depth = max(int(entry.get('depth', 1)), 1)
-        except (TypeError, ValueError):
-            depth = max(len(address_stack), 1)
-
-        while len(address_stack) > depth:
-            address_stack.pop()
-            call_id_stack.pop()
-            child_counters.pop()
-            after_external_stack.pop()
-        while len(address_stack) < depth:
-            address_stack.append(address_stack[-1])
-            call_id_stack.append(call_id_stack[-1])
-            child_counters.append(0)
-            after_external_stack.append(False)
-
-        current_address = address_stack[-1]
-        current_call_id = call_id_stack[-1]
-        stack = entry.get('stack') or []
-
-        if op == 'SSTORE':
-            slot = _normalize_word_hex(stack[-1] if len(stack) >= 1 else None)
-            value_after = _normalize_word_hex(stack[-2] if len(stack) >= 2 else None)
-
-            storage_map = entry.get('storage') or {}
-            value_before = None
-            if slot and isinstance(storage_map, dict):
-                value_before = (
-                    storage_map.get(slot)
-                    or storage_map.get(slot[2:])
-                    or storage_map.get(slot.lower())
-                    or storage_map.get(slot[2:].lower())
-                )
-                value_before = _normalize_word_hex(value_before)
-
-            if slot:
-                events.append({
-                    'address': current_address,
-                    'slot': slot,
-                    'value_before': value_before,
-                    'value_after': value_after,
-                    'pc': entry.get('pc'),
-                    'depth': depth,
-                    'call_id': current_call_id,
-                    'event_index': idx,
-                    'after_external_call': bool(after_external_stack[-1]),
-                })
-
-        next_depth = depth
-        if idx + 1 < len(struct_logs):
-            try:
-                next_depth = max(int(struct_logs[idx + 1].get('depth', depth)), 1)
-            except (TypeError, ValueError):
-                next_depth = depth
-
-        if op in call_ops and next_depth > depth:
-            target_addr = current_address
-            if op not in {'DELEGATECALL', 'CALLCODE'}:
-                target_addr = _normalize_address_hex(stack[-2] if len(stack) >= 2 else None) or current_address
-
-            is_external_boundary = op in {'DELEGATECALL', 'CALLCODE'} or target_addr.lower() != current_address.lower()
-            if op in mutating_call_ops and is_external_boundary:
-                after_external_stack[-1] = True
-
-            parent_call_id = call_id_stack[-1]
-            child_index = child_counters[-1]
-            child_counters[-1] += 1
-            address_stack.append(target_addr.lower())
-            call_id_stack.append(f'{parent_call_id}.{child_index}')
-            child_counters.append(0)
-            after_external_stack.append(False)
-
-    return events
+    """Compatibility API for chronological SSTORE observations."""
+    from faultseeker.data_collection.storage_trace import normalize_opcode_storage_trace
+    return normalize_opcode_storage_trace(struct_logs, root_trace)['storage_events']
 
 
 def _sanity_check_trace(result: dict) -> tuple[bool, int, int, set]:
@@ -1017,7 +932,7 @@ def _sanity_check_trace(result: dict) -> tuple[bool, int, int, set]:
     return sane, max_depth, call_count, call_types
 
 
-def probe_trace_support(chain: str, force: bool = False) -> str | None:
+def probe_trace_support(chain: str, force: bool = False, transaction_hash: str | None = None) -> str | None:
     """
     Probe providers for debug_traceTransaction support.
     Returns the first URL that responds with a SANE trace, or None.
@@ -1039,7 +954,11 @@ def probe_trace_support(chain: str, force: bool = False) -> str | None:
         if cached:
             return cached
 
-    probe_txs = _PROBE_TXS.get(canonical, [])
+    # The actual requested transaction is a valid capability probe on every
+    # supported chain; historical samples only supplement eth/bsc probes.
+    probe_txs = ([transaction_hash] if transaction_hash else []) + [
+        tx for tx in _PROBE_TXS.get(canonical, []) if tx != transaction_hash
+    ]
     if not probe_txs:
         return None
 
@@ -1064,15 +983,18 @@ def probe_trace_support(chain: str, force: bool = False) -> str | None:
                 ms     = (time.time() - t0) * 1000
 
                 sane, max_depth, call_count, call_types = _sanity_check_trace(result)
+                if test_tx == transaction_hash and isinstance(result, dict) and (result.get('to') or result.get('from')):
+                    # Root-only transactions still establish tracer support.
+                    sane = True
                 if not sane:
-                    log.warning(f'[probe EMPTY] {provider.url[:50]} returned empty/trivial trace for {test_tx[:16]}')
+                    log.warning(f'[probe EMPTY] {safe_endpoint_label(provider.url)} returned empty/trivial trace for {test_tx[:16]}')
                     provider.penalize(ms, 15)  # empty trace = worse than error
                     continue
 
                 # Valid trace confirmed — reward and cache
                 provider.reward(ms)
-                log.info(f'[probe OK] {provider.url[:50]} depth={max_depth} calls={call_count} types={call_types}')
-                print(f'      [trace probe] OK — {provider.url[:50]}')
+                log.info(f'[probe OK] {safe_endpoint_label(provider.url)} depth={max_depth} calls={call_count} types={call_types}')
+                print(f'      [trace probe] OK — {safe_endpoint_label(provider.url)}')
                 print(f'      [trace probe] calls={call_count}  depth={max_depth}  types={sorted(call_types)}')
                 _save_probe_cache(canonical, provider.url)
                 return provider.url
@@ -1080,7 +1002,7 @@ def probe_trace_support(chain: str, force: bool = False) -> str | None:
             except Exception as e:
                 ms = (time.time() - t0) * 1000
                 provider.penalize(ms, _penalty_for(e))
-                log.debug(f'[probe FAIL] {provider.url[:50]} tx={test_tx[:16]}: {e}')
+                log.debug(f'[probe FAIL] {safe_endpoint_label(provider.url)} tx={test_tx[:16]}: {type(e).__name__}')
                 break  # this provider failed — try next provider, not next tx
 
     print(f'      [trace probe] FAIL — no provider on {chain} supports debug_traceTransaction')
@@ -1114,7 +1036,7 @@ def print_provider_stats(chain: str):
         m     = p.metrics
         rate  = f'{m.success_rate*100:.0f}%' if m.total else 'N/A'
         state = '⛔ OPEN' if p.is_circuit_open else ('🟡 HALF' if p._is_half_open else '✅ OK')
-        print(f'  {p.url[:46]:<46} {p.score:>5.0f}  {p.dynamic_weight:>6.3f}  '
+        print(f'  {safe_endpoint_label(p.url):<46} {p.score:>5.0f}  {p.dynamic_weight:>6.3f}  '
               f'{m.success:>4}  {m.fail:>4}  {m.ema_ms:>7.0f}  {rate:>5}  {state}')
 
 

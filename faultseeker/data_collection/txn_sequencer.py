@@ -95,7 +95,17 @@ class TransactionSequencer:
             "trace": root_node,
             "canonical_trace": structured_trace.get('trace') if structured_trace else None,
             "storage_events": structured_trace.get('storage_events', []) if structured_trace else [],
+            "storage_reads": structured_trace.get('storage_reads', []) if structured_trace else [],
             "trace_state_diff": structured_trace.get('state_diff', {}) if structured_trace else {},
+            "trace_coverage": structured_trace.get('trace_coverage', {
+                'trace_complete': False,
+                'token_flow_complete': False,
+                'multi_tx_context_complete': False,
+            }) if structured_trace else {
+                'trace_complete': False,
+                'token_flow_complete': False,
+                'multi_tx_context_complete': False,
+            },
             "address_relation": address_relation,
             "address_calls": self.parser.address_call_memo,
             "created_address": self.parser.created_address,

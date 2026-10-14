@@ -2,7 +2,24 @@ import os
 import re
 import json
 import subprocess
+import hashlib
 from faultseeker.utils.rpc_provider import get_rpc, get_all_rpcs, retry_with_backoff, rpc_call, probe_trace_support
+
+
+STRUCTURED_TRACER_CONFIG = {
+    'call': {'tracer': 'callTracer', 'timeout': '60s'},
+    'opcode': {'disableMemory': True, 'disableStack': False,
+               'disableStorage': False, 'timeout': '60s'},
+    'schema_version': 2,
+}
+REPLAY_TRACER_CONFIG = {'tool': 'cast', 'subcommand': 'run', 'quick': True, 'version': 2}
+
+
+def cache_identity(txn_hash: str, chain: str, config: dict) -> str:
+    """Scope cached traces to chain, transaction, and tracer semantics."""
+    payload = json.dumps({'chain': chain.lower(), 'transaction_hash': txn_hash.lower(),
+                          'tracer': config}, sort_keys=True, separators=(',', ':'))
+    return hashlib.sha256(payload.encode('utf-8')).hexdigest()
 
 
 # Chain RPC maps now live in faultseeker/utils/rpc_provider.py
@@ -28,10 +45,14 @@ class TransactionReplayer:
     @staticmethod
     def _run_cast(txn_hash, rpc_url):
         """Run cast run with a given RPC URL. Returns clean stdout or None."""
-        command = ["cast", "run", "--quick", txn_hash, '--rpc-url', rpc_url]
-        print(' '.join(command))
+        binary = os.getenv('CAST_BINARY') or (os.path.join(os.environ['FOUNDRY_BIN'], 'cast.exe' if os.name == 'nt' else 'cast') if os.getenv('FOUNDRY_BIN') else 'cast')
+        command = [binary, "run", "--quick", txn_hash, '--rpc-url', rpc_url]
+        print('Running Foundry transaction replay')
         try:
             result = subprocess.run(command, capture_output=True, timeout=7200)
+            if result.returncode:
+                print('      Foundry replay failed; result is not cached as a success')
+                return None
             ansi_escape = re.compile(rb'\x1b\[[0-9;]*[a-zA-Z]')
             clean_bytes = ansi_escape.sub(b'', result.stdout)
             clean = clean_bytes.decode('utf-8', errors='ignore')
@@ -98,20 +119,27 @@ class TransactionReplayer:
         print('      No supported trace method available on any provider.')
         return None
 
-    def get_structured_cache(self, txn_hash: str) -> dict | None:
+    def get_structured_cache(self, txn_hash: str, chain: str = 'eth') -> dict | None:
         """Check if a structured trace exists in cache."""
-        cache_file = os.path.join(self.structured_cache_path, txn_hash.lower() + '.json')
+        cache_file = os.path.join(self.structured_cache_path,
+                                  cache_identity(txn_hash, chain, STRUCTURED_TRACER_CONFIG) + '.json')
         if not os.path.exists(cache_file):
             return None
         try:
             with open(cache_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                data = json.load(f)
+                if data.get('schema_version') != STRUCTURED_TRACER_CONFIG['schema_version']:
+                    return None
+                if data.get('chain', '').lower() != chain.lower() or data.get('transaction_hash', '').lower() != txn_hash.lower():
+                    return None
+                return data
         except Exception:
             return None
 
-    def cache_structured_trace(self, txn_hash: str, structured_trace: dict) -> None:
+    def cache_structured_trace(self, txn_hash: str, structured_trace: dict, chain: str = 'eth') -> None:
         """Persist structured trace/state metadata to disk."""
-        cache_file = os.path.join(self.structured_cache_path, txn_hash.lower() + '.json')
+        cache_file = os.path.join(self.structured_cache_path,
+                                  cache_identity(txn_hash, chain, STRUCTURED_TRACER_CONFIG) + '.json')
         with open(cache_file, 'w', encoding='utf-8') as f:
             json.dump(structured_trace, f, indent=2)
 
@@ -128,19 +156,21 @@ class TransactionReplayer:
         """
         from faultseeker.utils.rpc_provider import (
             build_parity_tree,
-            extract_storage_writes_from_struct_logs,
             normalize_trace_node,
         )
+        from faultseeker.data_collection.storage_trace import normalize_opcode_storage_trace
 
         canonical_trace = None
         state_diff = {}
         storage_events = []
+        storage_reads = []
+        opcode_trace_complete = False
 
         try:
             trace_result = rpc_call(
                 chain,
                 'debug_traceTransaction',
-                [txn_hash, {'tracer': 'callTracer', 'timeout': '60s'}],
+                [txn_hash, STRUCTURED_TRACER_CONFIG['call']],
                 timeout=60,
             )
             if trace_result:
@@ -174,19 +204,15 @@ class TransactionReplayer:
             opcode_trace = rpc_call(
                 chain,
                 'debug_traceTransaction',
-                [txn_hash, {
-                    'disableMemory': True,
-                    'disableStack': False,
-                    'disableStorage': False,
-                    'timeout': '60s',
-                }],
+                [txn_hash, STRUCTURED_TRACER_CONFIG['opcode']],
                 timeout=60,
             )
-            if isinstance(opcode_trace, dict):
-                storage_events = extract_storage_writes_from_struct_logs(
-                    opcode_trace.get('structLogs', []) or [],
-                    canonical_trace,
-                )
+            if (isinstance(opcode_trace, dict) and isinstance(opcode_trace.get('structLogs'), list)
+                    and not opcode_trace.get('error') and not opcode_trace.get('truncated')):
+                opcode_trace_complete = True
+                normalized_storage = normalize_opcode_storage_trace(opcode_trace['structLogs'], canonical_trace)
+                storage_events = normalized_storage['storage_events']
+                storage_reads = normalized_storage['storage_reads']
         except Exception as e:
             print(f'      structured opcode trace failed: {e}')
 
@@ -204,23 +230,30 @@ class TransactionReplayer:
                 print(f'      structured stateDiff replay failed: {e}')
 
         return {
-            'schema_version': 1,
+            'schema_version': STRUCTURED_TRACER_CONFIG['schema_version'],
             'transaction_hash': txn_hash,
             'chain': chain,
             'trace': canonical_trace,
             'storage_events': storage_events,
+            'storage_reads': storage_reads,
             'state_diff': state_diff,
+            'trace_coverage': {
+                'trace_complete': bool(canonical_trace and opcode_trace_complete),
+                'storage_trace_complete': opcode_trace_complete,
+                'token_flow_complete': False,
+                'multi_tx_context_complete': False,
+            },
         }
 
     def get_structured_trace(self, txn_hash: str, chain: str) -> dict | None:
         """Fetch canonical trace/state data with cache."""
-        structured = self.get_structured_cache(txn_hash)
+        structured = self.get_structured_cache(txn_hash, chain)
         if structured:
             return structured
 
         structured = self._rpc_structured_trace(txn_hash, chain)
         if structured:
-            self.cache_structured_trace(txn_hash, structured)
+            self.cache_structured_trace(txn_hash, structured, chain)
         return structured
 
     @staticmethod
@@ -252,7 +285,7 @@ class TransactionReplayer:
             print('      cast (Foundry) not installed -- using RPC trace fallback')
 
         # Probe trace capability ONCE before committing to 60s timeout cycles
-        trace_rpc = probe_trace_support(chain)
+        trace_rpc = probe_trace_support(chain, transaction_hash=txn_hash)
         if not trace_rpc:
             msg = f'No provider on {chain} supports debug_traceTransaction'
             print(f'      [TRACE FAIL] {txn_hash[:16]}... -- {msg}')
@@ -277,16 +310,18 @@ class TransactionReplayer:
         return None
 
 
-    def get_replay_cache(self, txn_hash):
+    def get_replay_cache(self, txn_hash, chain='eth'):
         """Check if replay result exists in cache."""
-        cache_file = os.path.join(self.cache_path, txn_hash.lower() + '.txt')
+        cache_file = os.path.join(self.cache_path,
+                                  cache_identity(txn_hash, chain, REPLAY_TRACER_CONFIG) + '.txt')
         if os.path.exists(cache_file):
             return open(cache_file, 'r', encoding='utf-8', errors='ignore').read()
         return None
 
-    def cache_replay(self, txn_hash, invocation_flow):
+    def cache_replay(self, txn_hash, invocation_flow, chain='eth'):
         """Cache replay result to disk."""
-        with open(os.path.join(self.cache_path, txn_hash.lower() + '.txt'), 'w', encoding='utf-8') as f:
+        with open(os.path.join(self.cache_path,
+                               cache_identity(txn_hash, chain, REPLAY_TRACER_CONFIG) + '.txt'), 'w', encoding='utf-8') as f:
             f.write(invocation_flow)
 
     def run(self, txn_hash: str, chain: str) -> str:
@@ -301,13 +336,14 @@ class TransactionReplayer:
             Transaction replay trace text
         """
         # Check cache first
-        invocation_flow = self.get_replay_cache(txn_hash)
+        invocation_flow = self.get_replay_cache(txn_hash, chain)
         if invocation_flow:
             # Reject previously cached rate-limit / Cloudflare error pages
             if '<html' in invocation_flow.lower() or 'cloudflare' in invocation_flow.lower():
                 print(f"      ⚠ Stale/invalid cache detected for {txn_hash[:10]}... — clearing")
                 import os
-                bad = os.path.join(self.cache_path, txn_hash.lower() + '.txt')
+                bad = os.path.join(self.cache_path,
+                                   cache_identity(txn_hash, chain, REPLAY_TRACER_CONFIG) + '.txt')
                 try:
                     os.remove(bad)
                 except OSError:
@@ -323,7 +359,7 @@ class TransactionReplayer:
             if '<html' in invocation_flow.lower() or 'cloudflare' in invocation_flow.lower():
                 print("      ✗ RPC returned an error page (rate-limited?). Not caching.")
                 return None
-            self.cache_replay(txn_hash, invocation_flow)
+            self.cache_replay(txn_hash, invocation_flow, chain)
 
         return invocation_flow
 

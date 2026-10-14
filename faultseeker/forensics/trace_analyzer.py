@@ -21,7 +21,7 @@ class TraceAnalyzer:
         self.attack_vector_record = ''
         self.memo = []
 
-        self.agent = build_agent('', model)
+        # Trace analysis is purely structural; no model is needed here.
         self.repeated_patterns = {
             'keys': [],
             'keys_function_only': []
@@ -202,6 +202,7 @@ class TraceAnalyzer:
                 'trace': self.trace,
                 'canonical_trace': self.txn_seq.get('canonical_trace'),
                 'storage_events': self.txn_seq.get('storage_events', []),
+                'storage_reads': self.txn_seq.get('storage_reads', []),
                 'trace_state_diff': self.txn_seq.get('trace_state_diff', {}),
                 'address_relation': self.txn_seq['address_relation'],
                 'address_calls': self.address_call_memo,
