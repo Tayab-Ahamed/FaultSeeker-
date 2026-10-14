@@ -123,11 +123,12 @@ class SignalExtractor:
     """
 
     def __init__(self, txn_seq: dict, tx_analysis: dict,
-                 txn_hash: str = '', chain: str = '') -> None:
+                 txn_hash: str = '', chain: str = '', paper_mode: bool = False) -> None:
         self.txn_seq = txn_seq or {}
         self.tx_analysis = tx_analysis or {}
         self.txn_hash = txn_hash
         self.chain = chain
+        self.paper_mode = paper_mode
         self.signals = SignalBundle(txn_hash=txn_hash, chain=chain)
 
         # Flat trace list (list of dicts, each with depth, function, call_type, …)
@@ -162,7 +163,9 @@ class SignalExtractor:
         # Balance changes  {addr: {token_addr: delta_str}}
         self.balance_change: dict = {}
         # Absolute path to the cast replay cache for this transaction
-        self._cast_cache_path = os.path.join(_REPLAY_CACHE_DIR, f'{txn_hash.lower()}.txt')
+        from faultseeker.data_collection.txn_replayer import REPLAY_TRACER_CONFIG, cache_identity
+        self._cast_cache_path = os.path.join(
+            _REPLAY_CACHE_DIR, cache_identity(txn_hash, chain or 'eth', REPLAY_TRACER_CONFIG) + '.txt')
 
     # ── helpers ───────────────────────────────────────────────────────────────
 
@@ -270,6 +273,8 @@ class SignalExtractor:
         normalized: list[dict] = []
         for raw in self.storage_events:
             if not isinstance(raw, dict):
+                continue
+            if self.paper_mode and raw.get('reverted') is True:
                 continue
 
             address = str(raw.get('address') or '').lower()
@@ -544,6 +549,10 @@ class SignalExtractor:
                 break
 
         fallback_active = valid_storage_event_count == 0
+        if self.paper_mode:
+            coverage = self.txn_seq.get('trace_coverage', {})
+            if coverage.get('storage_trace_complete') is True:
+                fallback_active = False
         external_call_chain = (
             external_calls >= 2
             and max_depth >= 2
@@ -552,7 +561,19 @@ class SignalExtractor:
         detection_threshold = 0.65 if fallback_active else 0.45
 
         score = 0.0
-        if fallback_active:
+        if self.paper_mode:
+            from faultseeker.core.paper_profile import PAPER_DETECTION_THRESHOLD, score_reentrancy
+            score = score_reentrancy({
+                'repeated_slot_nested': repeated_slot_nested,
+                'write_after_external_call': write_after_external_call,
+                'same_function_reentered': same_function_reentered,
+                'write_before_and_after': write_before_and_after,
+                'same_slot_rewritten': same_slot_rewritten,
+                'same_contract_different_selector': same_contract_different_selector,
+                'nested_depth_reentry': nested_depth_reentry,
+            }, fallback_active)
+            detection_threshold = PAPER_DETECTION_THRESHOLD
+        elif fallback_active:
             score += 0.45 if same_function_reentered else 0.0
             score += 0.35 if same_contract_different_selector else 0.0
             score += 0.35 if nested_depth_reentry else 0.0
@@ -863,6 +884,10 @@ class SignalExtractor:
         score = self.signals.reentrancy_score
         threshold = self.signals.reentrancy_detection_threshold
 
+        if self.paper_mode:
+            from faultseeker.core.paper_profile import reentrancy_tier
+            return reentrancy_tier(score)
+
         if score >= 0.85:
             return 'HIGH_RISK_REENTRANCY' if self.signals.reentrancy_fallback_mode else 'CONFIRMED_REENTRANCY'
         if score >= 0.70:
@@ -1006,6 +1031,7 @@ class SignalExtractor:
         reentrancy_context = {
             'fallback_mode': self.signals.reentrancy_fallback_mode,
             'storage_trace_available': _dbg.get('storage_trace_available', False),
+            'paper_profile': self.paper_mode,
         }
         reentrancy = {
             'score': self.signals.reentrancy_score,

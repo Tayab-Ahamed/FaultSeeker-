@@ -200,6 +200,7 @@ class ForensicsOrchestrator:
                 tx_analysis=self.tx_analysis,
                 txn_hash=txn_hash,
                 chain=chain,
+                paper_mode=True,
             ).run()
 
         # Ablation: when the transaction interaction graph is disabled, no graph
