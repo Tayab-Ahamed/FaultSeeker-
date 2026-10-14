@@ -36,6 +36,8 @@ def detector_observation(capture, variant):
             if not isinstance(opcode, dict) or not isinstance(opcode.get('structLogs'), list):
                 raise ValueError('full detector requires captured opcode logs')
             storage = normalize_opcode_storage_trace(opcode['structLogs'], root)
+            if not storage['normalization_complete']:
+                raise ValueError('Full detector measurement requires complete opcode normalization')
         else:
             storage = {'storage_events': [], 'storage_reads': []}
         analysis = dict(storage, canonical_trace=root, trace={}, flatten_trace=[], repeated_patterns={})

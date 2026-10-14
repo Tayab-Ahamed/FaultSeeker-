@@ -15,8 +15,10 @@ from benchmark.paper_experiments import run_paired, compare_runs, summarize_cate
 
 def execute(args):
     root = (args.evidence_root or args.cohort.parent).resolve()
-    audit = audit_dataset(args.cohort, root, target=246)
-    if audit['accepted_rows'] != 246 or audit['input_rows'] != 246:
+    main_cohort = args.experiment in {'detectors','categories'}
+    audit = audit_dataset(args.cohort, root, target=246 if main_cohort else 1)
+    if (not audit['input_rows'] or audit['accepted_rows'] != audit['input_rows']
+            or (main_cohort and audit['accepted_rows'] != 246)):
         return {'status':'BLOCKED-BY-DATA', 'audit':audit}, 2
     payload = json.loads(args.cohort.read_text(encoding='utf-8-sig'))
     records = payload['records'] if isinstance(payload,dict) else payload
@@ -63,10 +65,12 @@ def execute(args):
         COST_RATES[model] = rates
     variants = {'routing':['cloud_only','hybrid'], 'prefilter':['prefilter_off','prefilter_on'],
                 'guidance':['unassisted','guided']}[args.experiment]
-    count = 20 if args.experiment == 'guidance' else 100
     if not args.selection_file:
         raise ValueError('BLOCKED-BY-DATA: preregistered selection file required')
     selection = json.loads(args.selection_file.read_text(encoding='utf-8-sig'))
+    count = 20 if args.experiment=='guidance' else 100 if args.experiment=='routing' else selection.get('expected_n')
+    if type(count) is not int or count<=0:
+        raise ValueError('BLOCKED-BY-DATA: preregistered positive expected_n is required for the benign study')
     selected_ids = selection['transaction_ids']
     if len(selected_ids) != count or len(set(selected_ids)) != count:
         raise ValueError(f'BLOCKED-BY-DATA: exactly {count} unique preregistered transaction IDs required')
@@ -81,6 +85,8 @@ def execute(args):
         record['expected_functions'] = findings
         if type(record.get('label')) is not bool:
             raise ValueError('BLOCKED-BY-DATA: adjudicated binary exploit label required')
+    if args.experiment=='prefilter' and any(record['label'] for record in records):
+        raise ValueError('BLOCKED-BY-DATA: benign prefilter study requires independently benign labels')
     if args.experiment == 'routing' and Counter(r.get('workload_tier') for r in records) != Counter({1:50,2:30,3:20}):
         raise ValueError('BLOCKED-BY-DATA: 100-transaction workload must have recorded 50/30/20 tiers')
     def factory(variant):
@@ -98,6 +104,8 @@ def execute(args):
     return {'status':'MEASURED','scope':'executed production pipeline; guidance is simulated',
             'pricing_sha256':digest_file(args.pricing_file), 'selection_sha256':digest_file(args.selection_file),
             'runs':runs,'comparison':compare_runs(runs[variants[0]],runs[variants[1]]),
+            'benign_prefilter_fraction':{variant:sum(row['stage2_bypassed'] and not row['label'] for row in rows)/sum(not row['label'] for row in rows)
+                if any(not row['label'] for row in rows) else None for variant,rows in runs.items()},
             'actual_query_tiers':{v:dict(Counter(call['tier'] for row in rows for call in row['query_records'])) for v,rows in runs.items()}}, 0
 
 

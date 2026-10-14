@@ -54,13 +54,17 @@ Undefined denominators stay undefined. Category means are never fabricated.
 Routing, prefilter and simulated-guidance experiments use the same public
 production pipeline, with genuine configuration changes. They require
 `--execute-live`, a dated sourced `--pricing-file`, and preregistered
-`--selection-file`. Routing/prefilter use 100 selected transactions; guidance uses
-20. The routing workload records the 50/30/20 tier split explicitly. Guidance is
+`--selection-file`. Routing uses 100 selected transactions; guidance uses 20.
+The independently benign prefilter pool has a preregistered `expected_n` and is
+separate from the main 246-row exploit cohort. No study pool is padded to 246.
+The routing workload records the 50/30/20 tier split explicitly. Guidance is
 simulated and its policy must be recorded; it is not a practitioner study.
 Variant execution order rotates across paired transactions. Record cache state
 and host/model versions before interpreting latency or reproducing a publication.
 Exploit detection and function localization are reported as distinct metrics.
 Function quality uses exact adjudicated address/function identities.
+Incomplete agent analyses are refused as measurements. An empty completed
+finding set is distinct from a deterministic BENIGN triage verdict.
 
 Prices must contain `units` (`USD per 1000000 tokens`), `verified_at`, `source_url`
 and a `models` mapping containing positive finite `input` and `output` rates.

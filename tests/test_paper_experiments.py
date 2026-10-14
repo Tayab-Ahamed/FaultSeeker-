@@ -88,3 +88,40 @@ def test_localization_quality_uses_ground_truth_functions_not_exploit_labels():
     assert metrics['top1_accuracy'] == .5
     assert metrics['micro_f1'] == .5
     assert metrics['tp'] == metrics['fp'] == metrics['fn'] == 1
+
+
+def test_pipeline_adapter_refuses_incomplete_analysis_and_preserves_uncertain_triage():
+    from benchmark.paper_experiments import PipelineObservationAdapter
+    state = {'complete':False}
+    class ObservedPipeline:
+        def analyze_transaction(self,**kwargs):
+            assert kwargs['txn_hash'] == '0x'+'a'*64
+            assert kwargs['chain'] == 'eth'
+            return {'analysis_complete':state['complete'],'analysis_errors':[],
+                'rule_verdict':'UNCERTAIN','potentially_vulnerable_functions':[],
+                'scored_functions':[],'query_records':[]}
+    adapter = PipelineObservationAdapter(lambda variant:ObservedPipeline())
+    row = {'txn_hash':'0x'+'a'*64,'chain':'eth'}
+    with pytest.raises(RuntimeError,match='incomplete'):
+        adapter(row,'hybrid',None)
+    state['complete'] = True
+    observed = adapter(row,'hybrid',None)
+    assert observed['predicted_exploit'] is False
+    assert observed['triage_verdict'] == 'UNCERTAIN'
+
+
+def test_external_study_pool_is_not_padded_to_the_main_246_row_cohort(monkeypatch,tmp_path):
+    import json
+    from types import SimpleNamespace
+    from benchmark import run_paper_experiments as runner
+    path = tmp_path/'study.json'
+    records = [{'txn_hash':'0x'+letter*64,'chain':'eth','label':False} for letter in ('a','b')]
+    path.write_text(json.dumps(records))
+    # Authenticate at the dependency boundary; this test measures pool routing,
+    # not whether the fixture transactions are historical chain observations.
+    monkeypatch.setattr(runner,'audit_dataset',lambda *a,**k:{'accepted_rows':2,'input_rows':2})
+    report,code = runner.execute(SimpleNamespace(cohort=path,evidence_root=tmp_path,
+        experiment='prefilter',execute_live=False))
+    assert report['status'] == 'PENDING-CREDENTIALS'
+    assert code == 2
+    assert json.loads(path.read_text()) == records

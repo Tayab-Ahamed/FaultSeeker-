@@ -195,12 +195,14 @@ class PipelineObservationAdapter:
             analyst_guidance=guidance, analysis_context=record.get('analysis_context'))
         if result.get('error'):
             raise RuntimeError(result['error'])
+        if result.get('analysis_complete') is False:
+            raise RuntimeError('Production analysis is incomplete; no measurement is reported')
         verdict = result.get('rule_verdict')
         if isinstance(verdict, dict):
             verdict = verdict.get('verdict')
-        if verdict == 'UNCERTAIN' and not result.get('potentially_vulnerable_functions'):
-            raise RuntimeError('Analysis abstained; an explicit evaluation policy is required')
         return {'predicted_exploit': bool(result.get('potentially_vulnerable_functions')) or verdict == 'EXPLOIT',
+                'triage_verdict':verdict,
+                'decision_semantics':'reported_finding_or_deterministic_exploit; absence does not assert BENIGN',
                 'ranked_functions': result.get('scored_functions', []),
                 'query_records': result.get('query_records', []),
                 'duration_seconds': time.perf_counter()-started,
