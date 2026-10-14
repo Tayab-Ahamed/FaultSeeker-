@@ -15,6 +15,12 @@ def test_unknown_provenance_never_becomes_verified(tmp_path):
     assert 'missing_independent_sources' in result['missing']
 
 
+def test_reviewer_string_is_not_counted_as_multiple_independent_reviewers(tmp_path):
+    record = {'txn_hash':'0x'+'a'*64,'chain':'eth','annotation':{
+        'reviewers':'alice,bob','adjudicated_label':'reentrancy','attacker_addresses':['0xattacker']}}
+    assert 'missing_independent_annotation' in validate_record(record,tmp_path)['missing']
+
+
 def test_ground_truth_identity_mismatch_is_rejected(tmp_path):
     gt = tmp_path / 'gt.json'
     gt.write_text(json.dumps({'transaction_hash': ['0x' + 'b' * 64]}))

@@ -126,7 +126,7 @@ def validate_record(record, evidence_root):
             valid = path and path.is_file() and digest_file(path) == source.get('sha256')
         except (ValueError, OSError):
             valid = False
-        if publisher and url.scheme == 'https' and url.hostname and valid:
+        if isinstance(publisher,str) and publisher.strip() and url.scheme == 'https' and url.hostname and valid:
             publishers.add(publisher)
     if len(publishers) < 2:
         missing.append('missing_independent_sources')
@@ -136,7 +136,9 @@ def validate_record(record, evidence_root):
             annotation = json.loads(annotation)
         except ValueError:
             annotation = {}
-    if not isinstance(annotation, dict) or len(set(annotation.get('reviewers', []))) < 2:
+    reviewers = annotation.get('reviewers', []) if isinstance(annotation,dict) else []
+    valid_reviewers = (isinstance(reviewers,list) and all(isinstance(item,str) and item.strip() for item in reviewers))
+    if not valid_reviewers or len({item.strip().casefold() for item in reviewers}) < 2:
         missing.append('missing_independent_annotation')
     elif not annotation.get('adjudicated_label') or not annotation.get('attacker_addresses'):
         missing.append('missing_adjudicated_label_or_attacker')
@@ -146,7 +148,8 @@ def validate_record(record, evidence_root):
         if verification.get('chain_id') != CHAIN_IDS.get(chain):
             missing.append('verification_chain_mismatch')
         endpoints = verification.get('rpc_endpoints', [])
-        if not isinstance(endpoints, list) or len(set(endpoints)) < 2:
+        if (not isinstance(endpoints,list) or any(not isinstance(item,str) or not item.strip() for item in endpoints)
+                or len({item.strip().casefold() for item in endpoints}) < 2):
             missing.append('missing_independent_rpc_confirmation')
         for key, path in [('transaction', tx_path), ('receipt', receipt_path), ('trace', trace_path)]:
             if path and path.is_file() and verification.get(key + '_sha256') != digest_file(path):
