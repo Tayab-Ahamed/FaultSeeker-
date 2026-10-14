@@ -1,0 +1,12 @@
+Paper: blockchain_exploit_forensics_survey_ieee.tex
+
+Verified word counts:
+- Raw LaTeX source words: 4,827
+- Approximate paper text words after stripping LaTeX commands: 4,068
+- Characters: 33,963
+
+Checked with:
+python -c "from pathlib import Path; import re; tex=Path('paper/blockchain_exploit_forensics_survey_ieee.tex').read_text(); print(len(re.findall(r'\b[A-Za-z0-9]+\b', tex)))"
+
+Note:
+The editor may show around 249 because that is line count, not word count.

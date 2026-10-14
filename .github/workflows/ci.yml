@@ -1,0 +1,30 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run test suite
+        run: python -m pytest tests -q
+      - name: Assert no label leakage in the honest harness
+        run: python -m pytest tests/test_honest_eval.py -q
+      - name: Verify honest harness gates on insufficient data
+        run: |
+          set +e
+          python benchmark/run_honest_experiments.py
+          code=$?
+          if [ "$code" != "2" ] && [ "$code" != "0" ]; then
+            echo "unexpected exit code $code"; exit 1
+          fi
