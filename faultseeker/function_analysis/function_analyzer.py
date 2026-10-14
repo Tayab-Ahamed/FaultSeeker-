@@ -61,6 +61,15 @@ class FunctionAnalyzer:
         self.children_call_memo_single = {}
         self.children_call_memo = {}
         self.repeated_patterns = []
+        self.analysis_errors = []
+
+    def _record_analysis_error(self,error):
+        from faultseeker.core.spend_guard import BudgetApprovalRequired
+        if isinstance(error,BudgetApprovalRequired):
+            raise error
+        self.analysis_errors.append({'error_type':type(error).__name__,
+            'function':self.function_call_info_summary.get('function',''),
+            'address':self.function_call_info_summary.get('address','')})
 
     def _stage(self, name):
         """Time a pipeline stage when a CostTracker is attached, else no-op."""
@@ -460,7 +469,8 @@ class FunctionAnalyzer:
                     result = self.organization_agent.query(check_prompt, format='str')
                     if result and 'yes' in str(result).lower():
                         break
-            except Exception:
+            except Exception as error:
+                self._record_analysis_error(error)
                 if self.potentially_vulnerable_functions:
                     break
             if i >= max_iterations:
@@ -766,7 +776,8 @@ class FunctionAnalyzer:
                     result = self.organization_agent.query(check_prompt, format='str')
                     if result and 'yes' in str(result).lower():
                         break
-            except Exception:
+            except Exception as error:
+                self._record_analysis_error(error)
                 if self.potentially_vulnerable_functions:
                     break
     
@@ -786,6 +797,7 @@ class FunctionAnalyzer:
         # Initialize state
         self.task_tree = ''
         self.potentially_vulnerable_functions = {}
+        self.analysis_errors = []
         self.function_call_info_summary = {}
         self.children_call_memo_single = {}
         self.children_call_memo = {}
@@ -884,6 +896,8 @@ class FunctionAnalyzer:
 
         # Build result — include signal layer outputs for downstream / eval
         result = {
+            'analysis_complete': not self.analysis_errors,
+            'analysis_errors': self.analysis_errors,
             'duration': time.time() - start_time,
             'ranked_result': self.ranked_result,
             'potentially_vulnerable_functions': self.potentially_vulnerable_functions,

@@ -7,7 +7,8 @@ from faultseeker.data_collection.contract_downloader import ContractDownloader
 
 
 @pytest.mark.parametrize('function_name',['withdraw','withdraw_funds(uint256)'])
-def test_real_function_analysis_executes_every_role_including_child_filter(monkeypatch,function_name):
+@pytest.mark.parametrize('fail_processing',[False,True])
+def test_real_function_analysis_executes_every_role_including_child_filter(monkeypatch,function_name,fail_processing):
     """Mock only model replies/source acquisition; run actual analysis methods."""
     owner, attacker = '0x'+'11'*20, '0x'+'22'*20
     function_key = function_name+'_'+owner
@@ -20,6 +21,8 @@ def test_real_function_analysis_executes_every_role_including_child_filter(monke
             self.memory.clear()
         def query(self,prompt,format='json',**kwargs):
             calls.append((self.role,prompt))
+            if self.role=='processing' and fail_processing:
+                raise RuntimeError('fixture provider unavailable')
             if self.role == 'children':
                 return [0]
             if self.role == 'generation':
@@ -49,6 +52,11 @@ def test_real_function_analysis_executes_every_role_including_child_filter(monke
                'address_calls':{},'created_address':[]}
     output = FunctionAnalyzer(model='gpt-4o-mini').run(result,txn_seq,
         {'transaction_hash':result.transaction_hash},ranking)
+    if fail_processing:
+        assert output['analysis_complete'] is False
+        assert output['analysis_errors']
+        assert output['finalized_vulnerable_functions'] == []
+        return
     assert set(role for role,_ in calls) == set(roles)
     assert output['finalized_vulnerable_functions'][0]['address'] == owner
     assert output['finalized_vulnerable_functions'][0]['confidence_score'] == [.8,.8,.8]
