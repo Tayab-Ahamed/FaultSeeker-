@@ -35,24 +35,14 @@ class TransactionInfoCollector:
         'GNOSIS':    'https://rpc.gnosischain.com',
     }
 
-    def __init__(self):
-        pass
+    def __init__(self, recovery_client=None):
+        from faultseeker.utils.waf_recovery import RecoveryClient
+        self.recovery_client = recovery_client or RecoveryClient()
+        self.last_fetch_evidence = {}
     
-    @staticmethod
-    def _fetch_website_content(url):
-        try:
-            result = subprocess.run(
-                ['curl', '-s', '-A',
-                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                 url],
-                capture_output=True,
-                encoding='utf-8',
-                errors='ignore',
-                check=True
-            )
-            return result.stdout
-        except Exception:
-            return None
+    def _fetch_website_content(self, url):
+        self.last_fetch_evidence = self.recovery_client.fetch(url)
+        return self.last_fetch_evidence['content']
 
     @staticmethod
     def _find_and_convert_datetimes(content):
@@ -288,9 +278,13 @@ class TransactionInfoCollector:
 
         receipt_resp = _rpc(rpc_url, 'eth_getTransactionReceipt', [txn_hash])
         receipt = receipt_resp.get('result') or {}
+        if not receipt or receipt.get('transactionHash', '').lower() != txn_hash.lower() or tx.get('hash', '').lower() != txn_hash.lower():
+            return {}
 
         # Decode status: 0x1 = success, 0x0 = reverted
-        raw_status = receipt.get('status', '0x1')
+        raw_status = receipt.get('status')
+        if raw_status not in ('0x0', '0x1'):
+            return {}
         status = 'Success' if raw_status == '0x1' else 'Reverted'
         if status == 'Reverted':
             return {}
@@ -303,7 +297,7 @@ class TransactionInfoCollector:
 
         return {
             'status': status,
-            'gas_consumption': None,
+            'gas_consumption': int(receipt['gasUsed'], 16) if receipt.get('gasUsed') else None,
             'block_number': {'block_number': block_num, 'confirmations': -1},
             'address_info': {
                 'from_address': from_addr,
@@ -313,6 +307,8 @@ class TransactionInfoCollector:
             'transaction_date': '',
             'token_transfer': {},
             '_source': 'rpc_fallback',
+            'receipt_identity_verified': True,
+            'receipt_logs': receipt.get('logs'),
         }
 
     def run(self, txn_hash: str, chain: str) -> dict:
@@ -356,6 +352,7 @@ class TransactionInfoCollector:
                 'transaction_date': tx_date,
                 'token_transfer':   token_transfer,
                 '_source':          'html_scrape',
+                'acquisition_evidence': self.last_fetch_evidence,
             }
 
             # If addresses were successfully extracted, we are done.
@@ -365,9 +362,12 @@ class TransactionInfoCollector:
                 return html_result
 
         # ── Fallback: direct JSON-RPC ─────────────────────────────────────────
-        rpc_url = self._CHAIN_RPC_MAP.get(chain.upper())
+        from faultseeker.utils.rpc_provider import get_rpc
+        rpc_url = get_rpc(chain.lower())
         if rpc_url:
             rpc_result = self._fetch_via_rpc(rpc_url, txn_hash)
+            if rpc_result:
+                rpc_result['acquisition_evidence'] = self.last_fetch_evidence
             if rpc_result:
                 return rpc_result
 
@@ -405,6 +405,3 @@ if __name__ == "__main__":
     df = pandas.read_csv('./dumps/transaction_links_metatrustalert.csv')
     for _,row in tqdm(df.iterrows()):
         collector.run_with_txn_link(row['attack_tx'])
-
-
-        
