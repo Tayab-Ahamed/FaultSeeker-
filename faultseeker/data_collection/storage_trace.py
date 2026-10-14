@@ -56,7 +56,7 @@ def _canonical_frames(root: dict | None) -> dict[str, dict]:
     return frames
 
 
-def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | None) -> dict[str, list[dict]]:
+def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | None) -> dict[str, Any]:
     """Return chronological ``storage_reads`` and ``storage_events`` from raw logs.
 
     A call frame owns storage at its callee for CALL/STATICCALL, and at its
@@ -64,20 +64,24 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
     executed opcode frame order and are cross-checked with a callTracer tree
     when one is available.
     """
-    result: dict[str, list[dict]] = {"storage_reads": [], "storage_events": []}
-    if not struct_logs or not isinstance(root_trace, dict):
+    result = {"storage_reads": [], "storage_events": [], "normalization_complete": False}
+    if not isinstance(root_trace, dict):
         return result
     root_owner = str(root_trace.get("callee") or root_trace.get("to") or root_trace.get("address") or "").lower()
     if not root_owner:
         return result
+    result['normalization_complete'] = True
+    if not struct_logs:
+        return result
 
     canonical = _canonical_frames(root_trace)
     frames = [{"owner": root_owner, "call_id": "0", "children": 0,
-               "after_external": False, "reverted": False, "entries": [], "value_undo": {}}]
+               "after_external": False, "reverted": False, "entries": [], "value_undo": {},
+               "reference":root_trace}]
     observed_values: dict[tuple[str, str], str] = {}
 
     def finalize(frame: dict) -> None:
-        reference = canonical.get(frame["call_id"], {})
+        reference = frame['reference']
         failed = frame["reverted"] or reference.get("success") is False
         if failed:
             for entry in frame["entries"]:
@@ -102,15 +106,20 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
             finalize(frames.pop())
         # An unexplained depth jump cannot establish an accurate owner.
         if depth != len(frames):
+            result['normalization_complete'] = False
             continue
         frame = frames[-1]
         op = str(log.get("op") or "").upper()
         stack = log.get("stack") or []
         owner = frame["owner"]
-        if op in REVERT_OPS:
+        if op in REVERT_OPS or log.get('error'):
             frame["reverted"] = True
+        if op in {'SLOAD','SSTORE'} and (not owner or not stack or (op=='SSTORE' and len(stack)<2)):
+            result['normalization_complete'] = False
         if owner and op in {"SLOAD", "SSTORE"}:
             slot = _word(stack[-1]) if stack else None
+            if slot is None:
+                result['normalization_complete'] = False
             if slot:
                 base = {"address": owner, "slot": slot, "pc": log.get("pc"),
                         "depth": depth, "call_id": frame["call_id"],
@@ -130,6 +139,8 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
                         observed_values[(owner, slot)] = value_before
                 elif len(stack) >= 2:
                     value_after = _word(stack[-2])
+                    if value_after is None:
+                        result['normalization_complete'] = False
                     entry = {**base, "value_before": value_before,
                              "value_after": value_after,
                              "after_external_call": frame["after_external"]}
@@ -145,11 +156,25 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
                 next_depth = int(struct_logs[index + 1].get("depth", depth))
             except (TypeError, ValueError):
                 pass
-        if op in CALL_OPS and next_depth == depth + 1:
-            call_id = f"{frame['call_id']}.{frame['children']}"
-            frame["children"] += 1
+        if op in CALL_OPS:
             callee = _address(stack[-2]) if len(stack) >= 2 and op not in {"CREATE", "CREATE2"} else None
-            canonical_node = canonical.get(call_id, {})
+            # Precompiles and failed/empty calls can have callTracer nodes but
+            # no opcode frame. Consume their canonical identity at the CALL
+            # instruction, rather than counting only entered opcode frames.
+            children = frame['reference'].get('children',[])
+            child_index = frame['children']
+            matched = False
+            for candidate_index in range(child_index,len(children)):
+                candidate = children[candidate_index]
+                candidate_owner = str(candidate.get('callee') or candidate.get('to') or '').lower()
+                candidate_type = str(candidate.get('call_type') or '').upper()
+                if (not callee or candidate_owner==callee) and (not candidate_type or candidate_type==op):
+                    child_index = candidate_index
+                    matched = True
+                    break
+            call_id = f"{frame['call_id']}.{child_index}"
+            frame['children'] = child_index+1
+            canonical_node = canonical.get(call_id, {}) if matched else {}
             if op in {"DELEGATECALL", "CALLCODE"}:
                 child_owner = owner
             else:
@@ -157,8 +182,12 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
             external = op in {"DELEGATECALL", "CALLCODE"} or (child_owner and child_owner != owner)
             if op in MUTATING_CALL_OPS and external:
                 frame["after_external"] = True
-            frames.append({"owner": child_owner, "call_id": call_id, "children": 0,
-                           "after_external": False, "reverted": False, "entries": [], "value_undo": {}})
+            if next_depth == depth+1:
+                if not canonical_node:
+                    result['normalization_complete'] = False
+                frames.append({"owner": child_owner, "call_id": call_id, "children": 0,
+                               "after_external": False, "reverted": False, "entries": [], "value_undo": {},
+                               "reference":canonical_node})
     while len(frames) > 1:
         finalize(frames.pop())
     finalize(frames.pop())

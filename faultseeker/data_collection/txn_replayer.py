@@ -209,8 +209,8 @@ class TransactionReplayer:
             )
             if (isinstance(opcode_trace, dict) and isinstance(opcode_trace.get('structLogs'), list)
                     and not opcode_trace.get('error') and not opcode_trace.get('truncated')):
-                opcode_trace_complete = True
                 normalized_storage = normalize_opcode_storage_trace(opcode_trace['structLogs'], canonical_trace)
+                opcode_trace_complete = normalized_storage['normalization_complete']
                 storage_events = normalized_storage['storage_events']
                 storage_reads = normalized_storage['storage_reads']
         except Exception as e:

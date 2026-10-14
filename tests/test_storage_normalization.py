@@ -58,6 +58,23 @@ def test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes():
     assert writes[1]["after_external_call"] is True
 
 
+def test_precompile_without_opcode_frame_does_not_shift_reverted_call_identity():
+    proxy,implementation = '0x'+'11'*20,'0x'+'22'*20
+    precompile = '0x'+'0'*39+'1'
+    root = {'callee':proxy,'success':True,'children':[
+        {'callee':precompile,'call_type':'CALL','success':True,'children':[]},
+        {'callee':implementation,'call_type':'DELEGATECALL','success':False,'children':[]}]}
+    logs = [
+        {'depth':1,'op':'CALL','stack':[_word(int(precompile,16)),_word(100)]},
+        {'depth':1,'op':'DELEGATECALL','stack':[_word(int(implementation,16)),_word(100)]},
+        {'depth':2,'op':'SSTORE','stack':[_word(9),_word(7)]},
+        {'depth':1,'op':'STOP','stack':[]},
+    ]
+    write = normalize_opcode_storage_trace(logs,root)['storage_events'][0]
+    assert write['call_id'] == '0.1'
+    assert write['reverted'] is True
+
+
 def test_structured_trace_cache_is_chain_and_tracer_scoped(tmp_path):
     replayer = TransactionReplayer(str(tmp_path / "text"), str(tmp_path / "structured"))
     tx = "0x" + "ab" * 32
