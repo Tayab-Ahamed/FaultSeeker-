@@ -21,6 +21,17 @@ def test_reviewer_string_is_not_counted_as_multiple_independent_reviewers(tmp_pa
     assert 'missing_independent_annotation' in validate_record(record,tmp_path)['missing']
 
 
+def test_explicit_benign_ground_truth_does_not_require_fabricated_attacker_or_location(tmp_path):
+    tx = '0x'+'a'*64
+    (tmp_path/'benign.json').write_text(json.dumps({'transaction_hash':[tx],
+        'is_exploit':False,'cause':'independently adjudicated benign','findings':[]}))
+    row = {'txn_hash':tx,'chain':'eth','ground_truth':'benign.json','annotation':{
+        'reviewers':['a','b'],'adjudicated_label':'benign','attacker_addresses':[]}}
+    missing = validate_record(row,tmp_path)['missing']
+    assert 'missing_ground_truth_label_or_location' not in missing
+    assert 'missing_adjudicated_label_or_attacker' not in missing
+
+
 def test_ground_truth_identity_mismatch_is_rejected(tmp_path):
     gt = tmp_path / 'gt.json'
     gt.write_text(json.dumps({'transaction_hash': ['0x' + 'b' * 64]}))

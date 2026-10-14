@@ -107,7 +107,7 @@ def validate_record(record, evidence_root):
         hashes = [hashes] if isinstance(hashes, str) else hashes
         if not isinstance(hashes, list) or txn_hash not in [str(h).lower() for h in hashes]:
             missing.append('ground_truth_identity_mismatch')
-        if not gt.get('location') or not gt.get('cause'):
+        if (not gt.get('location') and gt.get('is_exploit') is not False) or not gt.get('cause'):
             missing.append('missing_ground_truth_label_or_location')
     sources = record.get('sources', [])
     if isinstance(sources, str):
@@ -140,8 +140,12 @@ def validate_record(record, evidence_root):
     valid_reviewers = (isinstance(reviewers,list) and all(isinstance(item,str) and item.strip() for item in reviewers))
     if not valid_reviewers or len({item.strip().casefold() for item in reviewers}) < 2:
         missing.append('missing_independent_annotation')
-    elif not annotation.get('adjudicated_label') or not annotation.get('attacker_addresses'):
+    elif (not annotation.get('adjudicated_label') or
+          (not annotation.get('attacker_addresses') and not (gt and gt.get('is_exploit') is False))):
         missing.append('missing_adjudicated_label_or_attacker')
+    if (gt and gt.get('is_exploit') is False and isinstance(annotation,dict)
+            and str(annotation.get('adjudicated_label','')).strip().lower() != 'benign'):
+        missing.append('benign_ground_truth_annotation_mismatch')
     if verification:
         if verification.get('mode') != 'live-rpc-and-replay':
             missing.append('unverified_acquisition_mode')
