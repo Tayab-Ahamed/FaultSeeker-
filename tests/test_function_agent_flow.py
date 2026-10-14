@@ -8,7 +8,7 @@ from faultseeker.data_collection.contract_downloader import ContractDownloader
 
 @pytest.mark.parametrize('function_name',['withdraw','withdraw_funds(uint256)'])
 @pytest.mark.parametrize('fail_processing',[False,True])
-def test_real_function_analysis_executes_every_role_including_child_filter(monkeypatch,function_name,fail_processing):
+def test_real_function_analysis_executes_every_role_including_child_filter(monkeypatch,tmp_path,function_name,fail_processing):
     """Mock only model replies/source acquisition; run actual analysis methods."""
     owner, attacker = '0x'+'11'*20, '0x'+'22'*20
     function_key = function_name+'_'+owner
@@ -50,12 +50,22 @@ def test_real_function_analysis_executes_every_role_including_child_filter(monke
     ranking = FunctionRanker().rank(result,{'repeated_patterns':{},'function_call_loc_memo':result.function_call_loc_memo})
     txn_seq = {'address_relation':{'directed':True,'multigraph':False,'graph':{},'nodes':[],'edges':[]},
                'address_calls':{},'created_address':[]}
-    output = FunctionAnalyzer(model='gpt-4o-mini').run(result,txn_seq,
+    analyzer = FunctionAnalyzer(model='gpt-4o-mini')
+    output = analyzer.run(result,txn_seq,
         {'transaction_hash':result.transaction_hash},ranking)
     if fail_processing:
         assert output['analysis_complete'] is False
         assert output['analysis_errors']
         assert output['finalized_vulnerable_functions'] == []
+        from types import SimpleNamespace
+        from faultseeker.core.pipeline import FaultSeekerPipeline
+        from faultseeker.core.config import FaultSeekerConfig
+        pipeline = FaultSeekerPipeline(FaultSeekerConfig(cache_dir=str(tmp_path)),
+            forensics_orchestrator=SimpleNamespace(run=lambda *a:(result,txn_seq,{'transaction_hash':result.transaction_hash})),
+            function_ranker=FunctionRanker(),function_analyzer=analyzer)
+        final = pipeline.analyze_transaction(txn_hash=result.transaction_hash,chain='eth')
+        assert final['analysis_complete'] is False
+        assert final['analysis_errors']
         return
     assert set(role for role,_ in calls) == set(roles)
     assert output['finalized_vulnerable_functions'][0]['address'] == owner

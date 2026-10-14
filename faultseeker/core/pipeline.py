@@ -353,6 +353,8 @@ class FaultSeekerPipeline:
             'rule_confidence': rule_confidence,
             'matched_rule': getattr(forensics_result, 'matched_rule', ''),
             'stage2_bypassed': False,
+            'analysis_complete': analysis_result.get('analysis_complete',True),
+            'analysis_errors': analysis_result.get('analysis_errors',[]),
             'reclassification_locked': reclassification_locked,
 
             # Main analysis results
