@@ -6,7 +6,9 @@ COPY requirements.txt setup.py pyproject.toml ./
 COPY faultseeker ./faultseeker
 COPY benchmark ./benchmark
 COPY tests ./tests
-COPY THREAT_MODEL.md EVALUATION_PROTOCOL.md TDSC_ROADMAP.md README.md LICENSE ./
+COPY README.md LICENSE Dockerfile.benchmark run_tests_nopytest.py ./
+COPY scripts ./scripts
+COPY docs ./docs
 
 RUN pip install --no-cache-dir -r requirements.txt
 
