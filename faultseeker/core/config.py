@@ -44,6 +44,7 @@ class FaultSeekerConfig:
 
     # Gap 2: Human-in-the-Loop
     human_in_loop: bool = False                 # Enable HITL checkpoints
+    enable_benign_prefilter: bool = True         # Paired experiment ablation
 
     # Logistic calibration model (paper §5.3) — path to pre-trained calibrator JSON.
     # When set, Stage 3 replaces the heuristic 4-factor scorer with the logistic
@@ -72,13 +73,13 @@ class FaultSeekerConfig:
         return path
 
 
-    def validate_api_keys(self):
-        """Raise RuntimeError early if a required API key is missing."""
+    def validate_api_keys(self, model: str = ''):
+        """Validate credentials when a cloud model is actually selected."""
         from dotenv import load_dotenv
         load_dotenv()
 
-        models_to_check = [self.forensics_model, self.function_analysis_model]
-        if self.cloud_model:
+        models_to_check = [model] if model else [self.forensics_model, self.function_analysis_model]
+        if not model and self.cloud_model:
             models_to_check.append(self.cloud_model)
         if self.auto_route and self.local_model:
             # local_model is Ollama — no API key needed
@@ -95,6 +96,5 @@ class FaultSeekerConfig:
                     break  # matched prefix, no need to check others
 
     def __post_init__(self):
-        """Ensure all directories exist and API keys are valid after initialization."""
+        """Create the local cache without requiring an unused model credential."""
         os.makedirs(self.cache_dir, exist_ok=True)
-        self.validate_api_keys()

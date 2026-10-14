@@ -20,7 +20,7 @@ class AddressClassifier:
         self.txn_sequencer = TransactionSequencer()
         self.txn_info_collector = TransactionInfoCollector()
         self.fundflow_analyzer = FundFlowAnalyzer(model=model)
-        self.agent = build_routed_agent('', router=self.router, agent_role='AddressClassifier', system_prompt='') if router else build_agent('', model)
+        self.agent = None
         self.prompts = AddressClassificationPrompts()
         self.address_inspected = {}
         self.same_function_calls = {}
@@ -65,7 +65,7 @@ class AddressClassifier:
                     if addr in self.address_to_be_inspected:
                         del self.address_to_be_inspected[addr]
     
-    def _identify_role_of_address(self):
+    def _identify_role_of_address(self, interpret_roles=False):
         self._find_address_with_same_function_calls()
         common_address = get_common_address_lower(self.txn_seq['chain'])
         for addr in self.address_to_be_inspected:
@@ -73,6 +73,13 @@ class AddressClassifier:
                 self.address_inspected[addr] = self.address_to_be_inspected[addr]
                 self.address_inspected[addr]['role'] = ['common_address']
                 continue
+            if not interpret_roles:
+                self.address_to_be_inspected[addr]['role'] = ['unresolved']
+                continue
+            if self.agent is None:
+                self.agent = (build_routed_agent('', router=self.router,
+                              agent_role='AddressClassifier', system_prompt='')
+                              if self.router else build_agent('', self.model))
             address_call_summary = deepcopy(self.address_to_be_inspected[addr])
             address_call_summary['function_calls'] = list(self.address_to_be_inspected[addr]['function_calls'].keys())
             address_call_summary['address'] = addr
@@ -88,8 +95,14 @@ class AddressClassifier:
         for addr in self.address_inspected:
             if addr in self.address_to_be_inspected:
                 del self.address_to_be_inspected[addr]
+
+    def interpret_roles_with_llm(self):
+        """Optional Stage 2 interpretation after the rule gate has run."""
+        self._identify_role_of_address(interpret_roles=True)
+        return self.address_inspected, self.address_to_be_inspected
     
-    def run(self, txn_hash: str, chain: str) -> dict:
+    def run(self, txn_hash: str, chain: str, *, txn_seq=None, txn_info=None,
+            tx_analysis=None) -> dict:
         """
         Classify addresses involved in the transaction.
 
@@ -108,8 +121,8 @@ class AddressClassifier:
         self.txn_hash = txn_hash
 
         # Collect data using refactored methods
-        self.txn_seq = self.txn_sequencer.run(txn_hash, chain)
-        self.txn_info = self.txn_info_collector.run(txn_hash, chain)
+        self.txn_seq = txn_seq if txn_seq is not None else self.txn_sequencer.run(txn_hash, chain)
+        self.txn_info = txn_info if txn_info is not None else self.txn_info_collector.run(txn_hash, chain)
 
         if not (self.txn_seq and self.txn_info):
             return None
@@ -118,7 +131,8 @@ class AddressClassifier:
             return None
 
         # Analyze trace and fund flow
-        self.tx_analysis = TraceAnalyzer(self.txn_seq, self.txn_info, self.model).run()
+        self.tx_analysis = (tx_analysis if tx_analysis is not None else
+                            TraceAnalyzer(self.txn_seq, self.txn_info, self.model).run())
         self.fundflow_analysis_result = self.fundflow_analyzer.run(self.txn_info)
 
         if not self.fundflow_analysis_result:

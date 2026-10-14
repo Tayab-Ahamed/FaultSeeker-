@@ -7,7 +7,8 @@ class FundFlowAnalyzer:
 
     def __init__(self, model='gpt-4o-mini'):
         self.prompts = FundFlowPrompts()
-        self.agent = build_agent('', model)
+        self.model = model
+        self.agent = None
         
         self.txn_info = None
         self.graph = None
@@ -56,6 +57,17 @@ class FundFlowAnalyzer:
         self.address_memo = address_memo
         
     def _identify_victims(self):
+        # Net outflows are observations, not a claim that a theft occurred.
+        self.potential_victim = sorted(
+            addr for addr, tokens in self.balance_change.items()
+            if addr != '0x0000000000000000000000000000000000000000'
+            and any(token.get('amount', 0) < 0 for token in tokens.values())
+        )
+
+    def interpret_victims_with_llm(self):
+        """Optional Stage 2 interpretation after the deterministic verdict gate."""
+        if self.agent is None:
+            self.agent = build_agent('', self.model)
         prompt_text = self.prompts.identify_victims.format(balance_change_summary=json.dumps(self.balance_change))
         result = self.agent.query(prompt_text)
         if isinstance(result, list):
@@ -72,6 +84,8 @@ class FundFlowAnalyzer:
         self.txn_info = txn_info
         if self.txn_info and self.txn_info['transaction_hash']:
             start = time()
+            self.potential_attacker = []
+            self.potential_victim = []
             self._get_balance_change()
             self._identify_victims()
             self._identify_attackers()    

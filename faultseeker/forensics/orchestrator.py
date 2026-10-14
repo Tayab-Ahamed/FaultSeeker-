@@ -45,7 +45,6 @@ class ForensicsOrchestrator:
         self.txn_info_collector = TransactionInfoCollector()
         self.adaptive_controller = AdaptiveFailureAwareController(ablation=self.ablation)
         self.address_classifier = AddressClassifier(model, router=router)
-        self.agent = build_routed_agent('', router=self.router, agent_role='AddressClassifier', system_prompt='') if router else build_agent('', model)
         
         self.address_inspected = {}
         self.same_function_calls = {}
@@ -88,6 +87,33 @@ class ForensicsOrchestrator:
         if self.cost_tracker is None:
             return nullcontext()
         return self.cost_tracker.stage(name)
+
+    @staticmethod
+    def _verified_coverage(txn_seq, analysis_context=None, txn_info=None):
+        """Admit only provider-backed coverage and recorded multi-tx context."""
+        trace = (txn_seq or {}).get('trace_coverage', {}) or {}
+        context = analysis_context or {}
+        evidence = context.get('context_evidence')
+        info = txn_info or {}
+        # This narrow path proves absence of token state changes. Transactions
+        # containing writes or logs remain incomplete until token-specific flow
+        # decoding is available; a missing receipt never means clean coverage.
+        observed_no_token_changes = (
+            trace.get('trace_complete') is True
+            and trace.get('storage_trace_complete') is True
+            and info.get('receipt_identity_verified') is True
+            and info.get('receipt_logs') == []
+            and (txn_seq or {}).get('storage_events') == []
+        )
+        return {
+            'trace_complete': trace.get('trace_complete') is True,
+            'token_flow_complete': trace.get('token_flow_complete') is True or observed_no_token_changes,
+            'multi_tx_context_complete': (
+                context.get('multi_tx_context_complete') is True
+                and isinstance(evidence, (list, tuple))
+                and any(isinstance(item, str) and item.strip() for item in evidence)
+            ),
+        }
 
     def _get_function_calls_by_loc(self, loc):
         current_cut = self.trace
@@ -152,7 +178,7 @@ class ForensicsOrchestrator:
                     
 
     
-    def run(self, txn_hash: str, chain: str):
+    def run(self, txn_hash: str, chain: str, analysis_context=None):
         # Initialize state
         self.address_inspected = {}
         self.same_function_calls = {}
@@ -202,6 +228,8 @@ class ForensicsOrchestrator:
                 chain=chain,
                 paper_mode=True,
             ).run()
+        self.signals.raw['coverage'] = self._verified_coverage(
+            self.txn_seq, analysis_context, self.txn_info)
 
         # Ablation: when the transaction interaction graph is disabled, no graph
         # features are produced at all (rather than a score being adjusted).
@@ -216,21 +244,12 @@ class ForensicsOrchestrator:
             self.graph_reasoning = {'ablated': True, 'component': 'tig'}
         self.signals.raw['graph_reasoning'] = self.graph_reasoning
         self.signals.raw['trace_entropy'] = self._trace_entropy(self.tx_analysis.get('flatten_trace', []))
-        self.signals.raw['call_depth_max'] = self.graph_reasoning.get('node_count', 0)
+        self.signals.raw['call_depth_max'] = self.signals.raw.get('debug', {}).get('call_depth_max', 0)
         self.signals.raw['token_flow_anomaly'] = self.graph_reasoning.get('anomaly_score', 0.0)
 
-        # Calibration (paper section 5.3) is now on the real scoring path.
-        calibrated = self._calibrated_confidence({
-            'pattern_match': self.signals.raw.get('pattern_match', 0.0),
-            'code_evidence': self.signals.raw.get('code_evidence', 0.0),
-            'txn_consistency': self.signals.raw.get('txn_consistency', 0.0),
-            'llm_confidence': self.signals.raw.get('llm_confidence', 0.0),
-            'trace_entropy': self.signals.raw.get('trace_entropy', 0.0),
-            'call_depth': self.signals.raw.get('call_depth_max', 0),
-            'token_flow_anomaly': self.signals.raw.get('token_flow_anomaly', 0.0),
-            'state_delta': self.graph_reasoning.get('state_delta_score', 0.0),
-        })
-        self.signals.raw['calibrated_confidence'] = calibrated
+        # Production calibration belongs after function evidence is available.
+        # Stage1 has no LLM confidence or source-evidence factors to calibrate.
+        self.signals.raw['calibrated_confidence'] = None
         self.signals.raw['ablation'] = self.ablation.to_dict()
 
         rule_verdict, rule_conf, matched_rule, vuln_type_hint = rule_classifier.classify(self.signals)
@@ -247,7 +266,9 @@ class ForensicsOrchestrator:
 
         # Classify addresses
         print("      [+] Classifying addresses...")
-        self.token_filter_result = self.address_classifier.run(txn_hash, chain)
+        self.token_filter_result = self.address_classifier.run(
+            txn_hash, chain, txn_seq=self.txn_seq, txn_info=self.txn_info,
+            tx_analysis=self.tx_analysis)
 
         # Identify vulnerable functions
         print("      [+] Identifying vulnerable functions...")
