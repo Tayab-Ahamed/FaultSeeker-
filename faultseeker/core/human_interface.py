@@ -53,6 +53,66 @@ class HumanInterface:
         self.enabled = enabled
         self.feedback_log: List[AnalystFeedback] = []
 
+    def apply_post_forensics(self, result, feedback: AnalystFeedback):
+        """Apply structured analyst guidance before function ranking."""
+        if feedback.action != 'modify':
+            return result
+        mods = feedback.modifications
+        for entry in mods.get('address_label', []):
+            address, separator, role = entry.partition(':')
+            address, role = address.strip().lower(), role.strip().lower()
+            if not separator or not address or role not in ('attacker', 'victim', 'neutral'):
+                continue
+            result.address_memo.setdefault(address, {})['analyst_role'] = role
+            result.potential_attacker = [a for a in result.potential_attacker if a.lower() != address]
+            result.potential_victim = [a for a in result.potential_victim if a.lower() != address]
+            if role == 'attacker':
+                result.potential_attacker.append(address)
+            elif role == 'victim':
+                result.potential_victim.append(address)
+        for entry in mods.get('function_focus', []):
+            address, separator, function = entry.partition('::')
+            if not separator or not address.strip() or not function.strip():
+                continue
+            address, function = address.strip().lower(), function.strip()
+            calls = result.function_call_loc_memo.get(f'{function}::{address}'.lower(), [])
+            if not calls:
+                result.signals.setdefault('unresolved_function_focus', []).append(entry)
+            for call in calls:
+                candidate = dict(call, address=address, function=function,
+                                 type='call', call_type='call', analyst_priority=True)
+                if candidate not in result.functions_to_be_inspected.setdefault('others', []):
+                    result.functions_to_be_inspected['others'].append(candidate)
+        result.signals.setdefault('analyst_evidence', []).extend(mods.get('evidence_add', []))
+        result.signals.setdefault('attack_hypotheses', []).extend(mods.get('attack_hypothesis', []))
+        guidance = result.signals.setdefault('analyst_vulnerability_guidance', {})
+        for entry in mods.get('vuln_confirm', []):
+            function, separator, verdict = entry.rpartition(':')
+            if separator and function.strip() and verdict.strip().lower() in ('confirm', 'reject'):
+                guidance[function.strip()] = verdict.strip().lower() == 'confirm'
+        return result
+
+    def apply_vulnerability_review(self, scored_functions, feedback: AnalystFeedback):
+        """Return accepted findings and an audit record of rejected findings."""
+        confirmations = feedback.modifications.get('confirmations', {}) if feedback.action == 'modify' else {}
+        accepted, rejected = [], []
+        for finding in scored_functions:
+            name = finding.get('function', '')
+            identity = finding.get('address','').lower()+'::'+name
+            decision = confirmations.get(identity, {})
+            if not decision and sum(item.get('function','') == name for item in scored_functions) == 1:
+                decision = confirmations.get(name, {})
+            if decision.get('confirmed') is False:
+                rejected.append({'function': name, 'address': finding.get('address', ''),
+                                 'reason': decision.get('note', '')})
+            else:
+                updated = dict(finding)
+                if decision.get('confirmed') is True:
+                    updated['analyst_confirmed'] = True
+                    updated['analyst_notes'] = decision.get('note', '')
+                accepted.append(updated)
+        return accepted, rejected
+
     def checkpoint_post_forensics(
         self,
         forensics_result: Dict[str, Any],
@@ -66,7 +126,9 @@ class HumanInterface:
         - Function call prioritization
         """
         if not self.enabled:
-            return AnalystFeedback(checkpoint='post_forensics', action='skip')
+            feedback = AnalystFeedback(checkpoint='post_forensics', action='skip')
+            self.feedback_log.append(feedback)
+            return feedback
 
         print("\n" + "=" * 60)
         print("🔍 CHECKPOINT: Post-Forensics Review")
@@ -115,7 +177,9 @@ class HumanInterface:
         Allows analyst to confirm/reject findings and adjust confidence.
         """
         if not self.enabled:
-            return AnalystFeedback(checkpoint='vulnerability_review', action='skip')
+            feedback = AnalystFeedback(checkpoint='vulnerability_review', action='skip')
+            self.feedback_log.append(feedback)
+            return feedback
 
         print("\n" + "=" * 60)
         print("🔍 CHECKPOINT: Vulnerability Review")
@@ -202,7 +266,8 @@ class HumanInterface:
                 default='s'
             )
             if choice in ('c', 'r'):
-                confirmations[func_name] = {
+                identity = sf.get('address','').lower()+'::'+func_name
+                confirmations[identity] = {
                     'confirmed': choice == 'c',
                     'note': self._prompt("    Note (optional): ", default=''),
                 }
