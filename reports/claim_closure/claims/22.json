@@ -2,13 +2,13 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "All local analysis roles execute under boundary tests, but no authenticated function-localization evaluation exists. Verified contract-source access, source-linked ground truth and live model-quality observations are absent.",
-  "verification_scope": "Current recorded evidence only",
+  "reason": "New incident and receipt evidence does not establish source-linked function-ranking ground truth. Gateway smoke responses test chat transport only; no localization-quality experiment was dispatched or inferred.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Verified source-linked function ground truth",
     "Live model/localization quality evaluation"
   ],
-  "human_decision": "Verified source-linked function ground truth; Live model/localization quality evaluation must be supplied or independently established before reopening.",
+  "human_decision": "Next required input artifact: Verified source-linked function localization evaluation manifest",
   "acceptance_tests": [
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
     "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
@@ -21,7 +21,30 @@
     {
       "path": "reports/claim_closure/environment.json",
       "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/experiments/measurement_frontier.json",
+      "sha256": "fc55b13147027afcb5a8d3186ac052e1ed30ab1ffff4f43fdba2a21cea2cf8bd"
     }
   ],
-  "session_date": "2026-10-15"
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Verified source-linked function localization evaluation manifest",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/22.json"
 }
