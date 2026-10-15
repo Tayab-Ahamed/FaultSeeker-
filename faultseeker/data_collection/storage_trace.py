@@ -138,6 +138,10 @@ def normalize_opcode_storage_trace(struct_logs: list[dict], root_trace: dict | N
                         frame['value_undo'].setdefault((owner, slot), observed_values.get((owner, slot)))
                         observed_values[(owner, slot)] = value_before
                 elif len(stack) >= 2:
+                    # Anvil reports the slot's post-write value on SSTORE.
+                    # Prefer the rollback-aware journal established by earlier
+                    # reads/writes over this provider-dependent snapshot.
+                    value_before = observed_values.get((owner, slot), value_before)
                     value_after = _word(stack[-2])
                     if value_after is None:
                         result['normalization_complete'] = False

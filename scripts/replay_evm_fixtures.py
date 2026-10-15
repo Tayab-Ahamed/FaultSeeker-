@@ -85,14 +85,14 @@ def _rpc(url: str, method: str, params: list) -> object:
 def _send(cast: str, url: str, target: str | None, signature: str | None = None,
           arguments: tuple[str, ...] = (), value: str | None = None,
           bytecode: str | None = None) -> dict:
-    command = [cast, "send"]
+    # --create enters a subcommand; parent options must precede it.
+    command = [cast, "send", "--json", "--rpc-url", url, "--private-key", DEV_KEY]
+    if value:
+        command += ["--value", value]
     if bytecode is not None:
         command += ["--create", "0x" + bytecode]
     else:
         command += [target or "", signature or ""] + list(arguments)
-    if value:
-        command += ["--value", value]
-    command += ["--json", "--rpc-url", url, "--private-key", DEV_KEY]
     receipt = _json_output(_command(command))
     if receipt.get("status") not in ("0x1", 1, "1"):
         raise RuntimeError(f"transaction reverted: {receipt.get('transactionHash')}")
@@ -138,7 +138,9 @@ def execute_cases(compiled: dict, cast: str, url: str) -> dict:
         opcode_trace = _rpc(url, "debug_traceTransaction", [tx, {"disableMemory": True,
                                                                   "disableStack": False,
                                                                   "disableStorage": False}])
-        if not isinstance(call_trace, dict) or not isinstance(opcode_trace, dict) or not isinstance(opcode_trace.get("structLogs"), list):
+        if (not isinstance(call_trace, dict) or not isinstance(opcode_trace, dict)
+                or not isinstance(opcode_trace.get("structLogs"), list)
+                or not opcode_trace["structLogs"]):
             raise RuntimeError(f"incomplete trace for {name}: {tx}")
         cases[name] = {"receipt": receipt, "call_trace": call_trace,
                        "opcode_trace": opcode_trace}
@@ -148,7 +150,7 @@ def execute_cases(compiled: dict, cast: str, url: str) -> dict:
 def replay(output: Path, tools: dict[str, str], port: int = 18545) -> dict:
     compiled, source_hashes = compile_contracts(tools["solc"])
     url = f"http://127.0.0.1:{port}"
-    server = subprocess.Popen([tools["anvil"], "--port", str(port), "--silent"],
+    server = subprocess.Popen([tools["anvil"], "--port", str(port), "--steps-tracing", "--silent"],
                               stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
     try:
         for _ in range(50):

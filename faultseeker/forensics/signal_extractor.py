@@ -419,6 +419,13 @@ class SignalExtractor:
             nonlocal same_contract_different_selector
             nonlocal nested_depth_reentry
 
+            # A mutex-rejected callback is an observed attempt, not a
+            # successful reentry. Its raw trace remains available for review.
+            if self.paper_mode and (node.get('success') is False
+                                    or node.get('reverted') is True
+                                    or node.get('error')):
+                return
+
             node_depth = node.get('depth')
             if not isinstance(node_depth, int):
                 node_depth = len(ancestor_addrs)

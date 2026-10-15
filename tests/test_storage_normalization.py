@@ -133,7 +133,7 @@ def test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers(monk
 
     def rpc(_url, method, params):
         rpc_methods.append((method, params))
-        return {"structLogs": []} if not params[1].get("tracer") else {"type": "CALL", "calls": []}
+        return {"structLogs": [{"op": "STOP", "depth": 1, "stack": []}]} if not params[1].get("tracer") else {"type": "CALL", "calls": []}
 
     monkeypatch.setattr(runner, "_command", command)
     monkeypatch.setattr(runner, "_rpc", rpc)
