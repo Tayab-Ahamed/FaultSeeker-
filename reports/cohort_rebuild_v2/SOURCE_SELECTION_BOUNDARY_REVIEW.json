@@ -1,0 +1,55 @@
+{
+  "scope": "Offline source provenance and model selection boundary review; no new empirical quality result",
+  "reviewed_baseline_commit": "7bd01ae",
+  "findings": [
+    {
+      "issue": "Uncached source lookup bypassed injected downloader and constructed live ContractDownloader directly",
+      "fix": "Use configured factory for every fallback; retain explicit empty misses per transaction; source errors propagate",
+      "test": "tests/test_source_fallback_factories.py",
+      "test_first": "Three tests failed on the direct fallback before the fix; fixed implementation passes actual cached historical Revest source lookup with live downloader construction prohibited",
+      "historical_pilot_caveat": "Baseline snapshots contain this bypass. No transport instrumentation proves whether it was exercised in either past pilot, so no claim that an unbound source was actually fetched. Both pilots remain unscored; do not retroactively repair outputs."
+    },
+    {
+      "issue": "Malformed, empty, duplicate, wrapped or unknown model filter output could drop candidates silently or crash with incidental exceptions",
+      "fix": "Validate nonempty unique string lists against exactly offered keys before narrowing; abort typed ValueError on invalid output",
+      "test": "tests/test_function_selection_safety.py",
+      "test_first": "Agent reproduced 18 failing tests and four preexisting-valid behavior cases before fix; four later multi-pass regressions also pass"
+    },
+    {
+      "issue": "Repeated narrowing offered removed candidates again, permitting reintroduction; created-contract prompts incorrectly advertised address-suffixed keys",
+      "fix": "Build follow-up prompts from current selected subset and validate against that subset; created-contract prompts request supplied function-name keys",
+      "test": "tests/test_function_selection_safety.py",
+      "remaining_semantics": "Valid no-progress responses retain all candidates after existing three-attempt bound; not classified as completed inference evidence"
+    }
+  ],
+  "code": [
+    {
+      "path": "faultseeker/function_analysis/function_analyzer.py",
+      "sha256": "43cb5e3aa022fc8e87d621ba29bc66c315447d2c9c84db086b1147ae69671335"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/worker_prompts.py",
+      "sha256": "63f0a317dae302b6cfbf7408ab72244d284059263f533b6b4ed9cf60148e33c5"
+    },
+    {
+      "path": "faultseeker/prompts/local_model_prompts.py",
+      "sha256": "5f6c0e2aebf44d47495dce52c9ac0a37926d2c3e1f1583d5c82373eb69f65412"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/test_source_fallback_factories.py",
+      "sha256": "2dd35f91042480ae9382fcc0563a51d4575b02f5060b9ee90906f75d83a85137"
+    },
+    {
+      "path": "tests/test_function_selection_safety.py",
+      "sha256": "cd1a1bf2d05a1cd7e27f2d547ce6dc29b08ed27359633ba81bb60d2066ba11cb"
+    }
+  ],
+  "new_model_requests": 0,
+  "new_rpc_requests": 0,
+  "new_paid_spend_usd": 0,
+  "heldout_used": false,
+  "paper_changed": false,
+  "publication_claim_promoted": false
+}

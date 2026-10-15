@@ -175,7 +175,7 @@ Return ONLY a JSON list of function keys to keep, e.g.:
 From the list below, keep only the functions most likely to be vulnerable.
 {function_call_to_be_inspected}
 
-Return ONLY a JSON list of function keys, e.g.: ["funcA_0xabc"]"""
+Return ONLY a JSON list of the exact supplied function keys, e.g.: ["funcA"]. Do not append addresses."""
 
 
 @dataclass

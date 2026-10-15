@@ -503,8 +503,11 @@ class FunctionAnalyzer:
         address = address.lower()
         contract_info = self.contract_info
         if address not in self.contract_info:
-            contract_info = ContractDownloader(self.analysis_result.chain,[address]).run()
+            contract_info = self.contract_downloader_factory(self.analysis_result.chain,[address]).run()
             self.contract_info.update(contract_info)
+            # An explicit cache miss remains unavailable within this run. Do
+            # not silently retry through another source/provenance boundary.
+            self.contract_info.setdefault(address, {})
         if address in contract_info:
             if function_name in contract_info[address]:
                 source_code_list = contract_info[address][function_name]
@@ -585,6 +588,15 @@ class FunctionAnalyzer:
         )
         self.ranked_result = self.agent.query(prompt_text)
 
+    @staticmethod
+    def _validate_function_selection(selection, offered):
+        if (not isinstance(selection, list) or not selection
+                or any(not isinstance(key, str) for key in selection)):
+            raise ValueError('Function narrowing selection must be a nonempty list of exact keys')
+        if len(set(selection)) != len(selection) or any(key not in offered for key in selection):
+            raise ValueError('Function narrowing selection contains duplicate or unknown keys')
+        return selection
+
     def _review_function_calls(self):
         self.examined_function_memo = []
         selected_functions = {k:v['count'] for k,v in self.functions_to_be_inspected.items()}
@@ -592,7 +604,7 @@ class FunctionAnalyzer:
         while (len(selected_functions) > 5) and (count < 3):
             count += 1
             function_call_to_be_inspected_summary = {}
-            for function_call in self.functions_to_be_inspected:
+            for function_call in selected_functions:
                 function_call_to_be_inspected_summary[function_call] = {
                     'count_of_appearance': self.functions_to_be_inspected[function_call]['count'],
                     'example_calls': self.functions_to_be_inspected[function_call]['calls'][:3]
@@ -601,7 +613,7 @@ class FunctionAnalyzer:
                 function_call_to_be_inspected = json.dumps(function_call_to_be_inspected_summary),
                 balance_change = json.dumps(self.fundflow_analysis['balance_change'])
             )
-            selected_functions_new = self.agent.query(prompt)
+            selected_functions_new = self._validate_function_selection(self.agent.query(prompt), selected_functions)
             if len(selected_functions_new) < len(selected_functions):
                 selected_functions = selected_functions_new
         selected_functions_with_created_contract_in_params = list(self.address_calls_with_created_contract_in_params.keys())
@@ -609,7 +621,7 @@ class FunctionAnalyzer:
         while (len(selected_functions_with_created_contract_in_params) > 5) and (count < 3):
             count += 1
             function_call_to_be_inspected_summary = {}
-            for function_call in self.address_calls_with_created_contract_in_params:
+            for function_call in selected_functions_with_created_contract_in_params:
                 function_call_to_be_inspected_summary[function_call] = {
                     'count_of_appearance': self.address_calls_with_created_contract_in_params[function_call]['count'],
                     'example_calls': self.address_calls_with_created_contract_in_params[function_call]['calls'][:3]
@@ -617,7 +629,8 @@ class FunctionAnalyzer:
             prompt = self.function_prompts.narrow_down_functions_with_created_contracts.format(
                 function_call_to_be_inspected = json.dumps(function_call_to_be_inspected_summary),
             )
-            selected_functions_new = self.agent.query(prompt)
+            selected_functions_new = self._validate_function_selection(
+                self.agent.query(prompt), selected_functions_with_created_contract_in_params)
             if len(selected_functions_new) < len(selected_functions_with_created_contract_in_params):
                 selected_functions_with_created_contract_in_params = selected_functions_new
         
