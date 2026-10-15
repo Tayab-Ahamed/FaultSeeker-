@@ -80,3 +80,20 @@ pending. The hash-bound pool, nonce and block observations are retained under
 `opcodes/failures/`; rejection is not an accepted opcode capture. Cumulative
 recorded spend estimate/allocation after this attempt is $1.823988. This is not
 a confirmed invoice. Held-out outcomes and the one-time final exam remain unused.
+
+## Seventh component run, broader production coverage and source-linked ranking
+
+Actual public-provider captures add Grim Finance (248 Fantom frames) and Hundred
+Finance (519 Gnosis frames). Run `20261015T161923-4650ee37` scores nine of ten
+train call traces: structural TP5 FP1 FN0 TN3, F1=0.9090909090909091;
+repeated TP5 FP4 FN0 TN0, F1=0.7142857142857143. Full opcodes remain four
+train cases, TP1 FP0 FN0 TN3. No threshold or weight changed.
+
+Production run `20261015T162935-701ee97b` executes real Stage1 and FunctionRanker
+on nine train identities, no network dispatch. Its explicit count-ranked function
+serialization preserves the existing stable encounter-order tie policy. On two
+source-supported function-identity cases, Euler ranks33 and Revest ranks24;
+top1=0, top5=0, MRR=0.03598484848484848. The failure is count priority: often
+called helper functions precede the source-supported root-cause function. These
+are actual deterministic baseline results, not multi-agent localization or
+held-out numbers. Source names, labels and targets never entered prediction.

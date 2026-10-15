@@ -1,0 +1,788 @@
+{
+  "run_id": "20261015T161923-4650ee37",
+  "scope": "train-only reentrancy components; not overall system F1",
+  "frozen_train_n": 10,
+  "config": {
+    "experiment": "reentrancy-components-v1",
+    "variants": [
+      "structural",
+      "repeated",
+      "full"
+    ],
+    "positive_rule": "HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full",
+    "repeated_rule": "address appears more than once outside STATICCALL frames",
+    "thresholds": "unchanged production paper-mode values",
+    "system_sha256": "81038fb8b9002a24c9e5372508af0ba1ea12224e043ff53ba8513b5928ced73e",
+    "split": {
+      "path": "benchmark/eval_split.json",
+      "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+    },
+    "population": "all frozen train identities; only available evidence is scored",
+    "no_overall_f1_inference": true,
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T161923-4650ee37/system_sources.json.gz",
+      "sha256": "87f62ed7b03f56110066516809849cdde93ed087ff81132df2289debad9d3978"
+    }
+  },
+  "variants": {
+    "structural": {
+      "metrics": {
+        "n": 9,
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "tn": 3,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "accuracy": 0.8888888888888888
+      },
+      "observations": [
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "47d204f3d66bae779211f7092b3d01e031cf6d19d24add298e293ce777503d68",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.00365330000204267,
+          "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json.gz",
+            "sha256": "6b81421b82009ac16edc728448076cf7bd76013afdf76e3c2ebd93e43800b160"
+          }
+        },
+        {
+          "predicted_exploit": false,
+          "algorithm": "structural",
+          "input_sha256": "69bbcfa67ae372fd44c4c0693ea0bddbd0c395ccab8de3d6e541e88ca7c755fb",
+          "detector_result": {
+            "score": 0.525,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0042930999989039265,
+          "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+            "sha256": "10b82a7f90d86983d4af821b3206d5d17c7b009a3d7f434ed9eff330f518d196"
+          }
+        },
+        {
+          "predicted_exploit": false,
+          "algorithm": "structural",
+          "input_sha256": "c1b57c3b4f3c8c1647ae52bd510c7341b87da2ec28ca3fea8fc9eb1bf715c5ce",
+          "detector_result": {
+            "score": 0.2625,
+            "detected": false,
+            "tier": "UNLIKELY_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": false,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0036535000035655685,
+          "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+            "sha256": "43e1f8db0c7f2445f72f4d79f4db4d5dcfc02999f4f8e2d44f6a0a55872cb53f"
+          }
+        },
+        {
+          "predicted_exploit": false,
+          "algorithm": "structural",
+          "input_sha256": "5ee34a8b1a78047e579ab9b7dada9f1d2a643dd924c42e9a0c5ede76c5fb42da",
+          "detector_result": {
+            "score": 0.525,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0036536999978125095,
+          "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+            "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "939d0989e622eb13e26fd8c14bd7bace46eff34f668cacd740bca0cf70c1b968",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.007013100002950523,
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json.gz",
+            "sha256": "889afaac8257b4a7d8395048cb9947bde2e2ef47526099857aa7bae423fad45e"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "d9882a0bdf994f0dc4c23478d7daecf7e668e9ac788420bb374ebdcb3af546dc",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.002379799996560905,
+          "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+            "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "ac23f2207462d5dfa1059f6e1183b9de6c6fd1b59380a7a8c2b162707d1f0cb9",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0038754999986849725,
+          "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+            "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "bc55bc248a0e11fd190cbee3c39c38437345dbfd8603fc3b2f53994745a3f372",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.014415500001632608,
+          "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+            "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "structural",
+          "input_sha256": "363c74c623c1a21cb93dfca73ad50580160bfaf72fdb942ecf1436672dfa301a",
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.1121426000026986,
+          "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json.gz",
+            "sha256": "14d1edf016938c6fa7b7e5ec2a174b106dbb533aa55a2faedc25330df11f7d14"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+          "reason": "No bound call trace"
+        }
+      ],
+      "coverage": {
+        "scored": 9,
+        "eligible_train": 10
+      },
+      "contains_both_classes": true,
+      "status": "SCORED_COMPONENT",
+      "failures": [
+        {
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "expected_reentrant": false,
+          "observed_reentrant": true,
+          "detail": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        }
+      ]
+    },
+    "repeated": {
+      "metrics": {
+        "n": 9,
+        "tp": 5,
+        "fp": 4,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.5555555555555556,
+        "recall": 1.0,
+        "f1": 0.7142857142857143,
+        "accuracy": 0.5555555555555556
+      },
+      "observations": [
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "47d204f3d66bae779211f7092b3d01e031cf6d19d24add298e293ce777503d68",
+          "detector_result": {
+            "repeated_addresses": 6
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.001413899997714907,
+          "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json.gz",
+            "sha256": "6b81421b82009ac16edc728448076cf7bd76013afdf76e3c2ebd93e43800b160"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "69bbcfa67ae372fd44c4c0693ea0bddbd0c395ccab8de3d6e541e88ca7c755fb",
+          "detector_result": {
+            "repeated_addresses": 18
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0035340000031283125,
+          "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+            "sha256": "10b82a7f90d86983d4af821b3206d5d17c7b009a3d7f434ed9eff330f518d196"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "c1b57c3b4f3c8c1647ae52bd510c7341b87da2ec28ca3fea8fc9eb1bf715c5ce",
+          "detector_result": {
+            "repeated_addresses": 6
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.002084400002786424,
+          "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+            "sha256": "43e1f8db0c7f2445f72f4d79f4db4d5dcfc02999f4f8e2d44f6a0a55872cb53f"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "5ee34a8b1a78047e579ab9b7dada9f1d2a643dd924c42e9a0c5ede76c5fb42da",
+          "detector_result": {
+            "repeated_addresses": 17
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0024487999980919994,
+          "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+            "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "939d0989e622eb13e26fd8c14bd7bace46eff34f668cacd740bca0cf70c1b968",
+          "detector_result": {
+            "repeated_addresses": 40
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.010562899995420594,
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json.gz",
+            "sha256": "889afaac8257b4a7d8395048cb9947bde2e2ef47526099857aa7bae423fad45e"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "d9882a0bdf994f0dc4c23478d7daecf7e668e9ac788420bb374ebdcb3af546dc",
+          "detector_result": {
+            "repeated_addresses": 6
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0015191999991657212,
+          "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+            "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "ac23f2207462d5dfa1059f6e1183b9de6c6fd1b59380a7a8c2b162707d1f0cb9",
+          "detector_result": {
+            "repeated_addresses": 8
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.0035891000006813556,
+          "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+            "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "bc55bc248a0e11fd190cbee3c39c38437345dbfd8603fc3b2f53994745a3f372",
+          "detector_result": {
+            "repeated_addresses": 18
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.007937900001707021,
+          "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+            "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "repeated",
+          "input_sha256": "363c74c623c1a21cb93dfca73ad50580160bfaf72fdb942ecf1436672dfa301a",
+          "detector_result": {
+            "repeated_addresses": 51
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.08233509999990929,
+          "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/traces/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json.gz",
+            "sha256": "14d1edf016938c6fa7b7e5ec2a174b106dbb533aa55a2faedc25330df11f7d14"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+          "reason": "No bound call trace"
+        }
+      ],
+      "coverage": {
+        "scored": 9,
+        "eligible_train": 10
+      },
+      "contains_both_classes": true,
+      "status": "SCORED_COMPONENT",
+      "failures": [
+        {
+          "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "expected_reentrant": false,
+          "observed_reentrant": true,
+          "detail": {
+            "repeated_addresses": 18
+          }
+        },
+        {
+          "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+          "expected_reentrant": false,
+          "observed_reentrant": true,
+          "detail": {
+            "repeated_addresses": 6
+          }
+        },
+        {
+          "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "expected_reentrant": false,
+          "observed_reentrant": true,
+          "detail": {
+            "repeated_addresses": 17
+          }
+        },
+        {
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "expected_reentrant": false,
+          "observed_reentrant": true,
+          "detail": {
+            "repeated_addresses": 40
+          }
+        }
+      ]
+    },
+    "full": {
+      "metrics": {
+        "n": 4,
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "tn": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0
+      },
+      "observations": [
+        {
+          "predicted_exploit": false,
+          "algorithm": "full",
+          "input_sha256": "f072b870d85a2ff5a0f71286805566c35be0f123fbbef2e464000964f8ca3f10",
+          "detector_result": {
+            "score": 0.45,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": true,
+              "write_after_call": true,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": false,
+              "storage_trace_available": true,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 3.11885970000003,
+          "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+            "sha256": "164b59f593859c92ab383e9633c57922cc1b402fad28e0ac27459f19d35fac27"
+          }
+        },
+        {
+          "predicted_exploit": false,
+          "algorithm": "full",
+          "input_sha256": "6fb417601fe76f00a4833277dce71934602fdea5a52aacff98de5eb1fda09089",
+          "detector_result": {
+            "score": 0.45,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": false,
+              "reentry_before_return": true,
+              "slot_rewrite": true,
+              "write_after_call": true,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": false,
+              "storage_trace_available": true,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 1.1261754000006476,
+          "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/opcodes/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+            "sha256": "0ee80ad3e8dca8ad2ee620fdc09f9f4debabf2859eac2fd3aea70d999413cba8"
+          }
+        },
+        {
+          "predicted_exploit": false,
+          "algorithm": "full",
+          "input_sha256": "f91d535d3a3d386f148554fefa67603819d39553eb0b77814324d795444c135c",
+          "detector_result": {
+            "score": 0.45,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": true,
+              "write_after_call": true,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": false,
+              "storage_trace_available": true,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.7571749999988242,
+          "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "label": false,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+            "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+          }
+        },
+        {
+          "predicted_exploit": true,
+          "algorithm": "full",
+          "input_sha256": "40a7f149755678608436fb8998c46dce7d8eb70e34370aba83f834a9160c592c",
+          "detector_result": {
+            "score": 1.0,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": true,
+              "write_after_call": true,
+              "state_slot_reentry": true
+            },
+            "context": {
+              "fallback_mode": false,
+              "storage_trace_available": true,
+              "paper_profile": true
+            }
+          },
+          "ranked_functions": [],
+          "query_records": [],
+          "duration_seconds": 0.2712236000006669,
+          "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "label": true,
+          "label_scope": "independently sourced reentrancy root cause",
+          "capture_artifact": {
+            "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+            "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+          }
+        }
+      ],
+      "missing": [
+        {
+          "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "reason": "No bound canonical opcode capture"
+        },
+        {
+          "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+          "reason": "No bound canonical opcode capture"
+        },
+        {
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "reason": "No bound canonical opcode capture"
+        },
+        {
+          "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "reason": "No bound canonical opcode capture"
+        },
+        {
+          "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "reason": "No bound canonical opcode capture"
+        },
+        {
+          "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "reason": "No bound canonical opcode capture"
+        }
+      ],
+      "coverage": {
+        "scored": 4,
+        "eligible_train": 10
+      },
+      "contains_both_classes": true,
+      "status": "SCORED_COMPONENT",
+      "failures": []
+    }
+  },
+  "unmeasured": {
+    "overall_system_f1": "No full-system production outcomes in this component experiment",
+    "cost_savings": "No paired billed production inference observations",
+    "localization": "No complete source-linked function ground truth and executed rankings",
+    "table_vi": "No production per-function confidence component observations"
+  },
+  "heldout_exam_dispatched": false
+}

@@ -8,6 +8,7 @@ class RankingResult:
     address_calls_with_created_contract_in_params: Dict[str, Dict] = field(default_factory=dict)
     functions_to_be_inspected: Dict[str, Dict] = field(default_factory=dict)
     address_list: List[str] = field(default_factory=list)
+    ranked_functions: List[Dict] = field(default_factory=list)
 
 
 class FunctionRanker:
@@ -178,11 +179,26 @@ class FunctionRanker:
             if v['count'] > 0
         }
 
+        # Export the actual stable count ordering explicitly. Address priority
+        # and JSON member ordering are not substitutes for function ranks.
+        ranked_functions = []
+        for key, candidate in functions_to_be_inspected.items():
+            function, address = key.rsplit('_', 1)
+            ranked_functions.append({
+                'rank': len(ranked_functions) + 1,
+                'code_address': address.lower(), 'function': function,
+                'selector': function.lower() if (function.startswith('0x') and len(function) == 10) else None,
+                'count': candidate['count'],
+                'supporting_call_depths': [call['depth'] for call in candidate['calls']],
+                'tie_policy': 'stable candidate encounter order',
+            })
+
         return RankingResult(
             repeated_patterns=repeated_patterns,
             address_calls_with_created_contract_in_params=address_calls_with_created_contract_in_params,
             functions_to_be_inspected=functions_to_be_inspected,
-            address_list=address_list
+            address_list=address_list,
+            ranked_functions=ranked_functions
         )
 
     def get_function_call_depth(self, function_call: str, tx_analysis: dict) -> int:

@@ -2,8 +2,8 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "Two frozen TRAIN root-cause function identities now have publisher-supported names, Sourcify verified ABIs, exact captured historical runtime-bytecode matches and actual trace selectors: Euler donateToReserves and Revest depositAdditionalToFNFT. Euler delegate code and storage owner are explicitly distinguished. This acquisition does not establish vulnerable lines or multi-agent localization quality; production ranked predictions and broader authenticated targets remain required.",
-  "verification_scope": "Two source-linked TRAIN function identities only; no line localization, held-out evaluation or inferred performance",
+  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred.",
+  "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate",
   "requirements_unmet": [
     "Executed explicit ranked function predictions and multi-agent outputs on source-linked authenticated study targets"
   ],
@@ -12,7 +12,10 @@
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
     "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
     "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_identity_requires_historical_exact_match",
-    "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_delegate_keeps_storage_owner"
+    "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_delegate_keeps_storage_owner",
+    "tests/test_explicit_function_rank_order.py::test_actual_revest_ranker_exports_function_identity_and_stable_count_order",
+    "tests/test_train_localization_metrics.py::test_proxy_storage_owner_cannot_replace_implementation_target",
+    "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected"
   ],
   "evidence": [
     {
@@ -70,6 +73,26 @@
     {
       "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
       "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/localization_train_protocol.json",
+      "sha256": "00f59bd9a02afa29490a20cf350b0e4affa07ec7740caa16b2e9a6f2aec2cc7c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/source_localization.json",
+      "sha256": "305bd886693de83f3d9789bbed11b21e7f87c53d565ba4960c5457b11a91e4dd"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/summary.json",
+      "sha256": "efffab35b957f222314cf3c35186354fe898a29b3245d36e87fc9d600e301f21"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system.json",
+      "sha256": "ef39dcac65f5b1c6e2811e96338a277da7d4b8063e3eb122e39687ad4e57d1f7"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system_sources.json.gz",
+      "sha256": "9692655e91ce9dca991c40eb057bec1fb8cbfca39f5e9118c46cf3441ffd5c6d"
     }
   ],
   "session_date": "2026-10-15",

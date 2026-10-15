@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "experiment": "source-linked-train-count-rank-v1",
+  "targets": {
+    "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+    "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+  },
+  "population": "Only source-identity-verified frozen TRAIN cases; source-target availability selection, not representative full cohort",
+  "identity": "Lowercase (code_address,selector); storage owners remain separate and cannot substitute implementation identity",
+  "prediction": "Actual FunctionRanker ranked_functions explicit count ordering; stable candidate encounter ties unchanged. All predictions generated before labels/targets joined. No model call, no threshold change.",
+  "metrics": "Top1,Top5,MRR; missing target rank means zero; unavailable execution is unscored, reported explicitly",
+  "limitations": [
+    "Not multi-agent Stage3 localization",
+    "No line targets",
+    "Only two target-evidence cases currently available",
+    "No held-out loading or exam dispatch"
+  ]
+}
