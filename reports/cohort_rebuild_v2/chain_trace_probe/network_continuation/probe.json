@@ -1,0 +1,152 @@
+{
+  "created_at": "2026-10-15T15:25:58.273897+00:00",
+  "sources": [
+    {
+      "url": "https://docs.bnbchain.org/bnb-smart-chain/developers/json_rpc/json-rpc-endpoint/",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/sources/bsc.html",
+        "sha256": "919af87f4defd19462efce9102cdcde04e62795c2ee82864be238eae1d7a5e8e"
+      }
+    },
+    {
+      "url": "https://docs.fantom.foundation/build-on-opera/api/public-endpoints",
+      "error_type": "HTTPError"
+    },
+    {
+      "url": "https://docs.gnosischain.com/tools/RPC%20Providers/",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/sources/gnosis.html",
+        "sha256": "cc48c0be4e1bc763096681387a97315aa906f06700259f835134d915891ee1a6"
+      }
+    },
+    {
+      "url": "https://docs.gnosischain.com/about/networks/mainnet",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/sources/gnosis-gateway.html",
+        "sha256": "6cb7b015f35978ecae3ad2ca535dda16242e6b6126c450a7baf73174c526e085"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "endpoint_label": "configured-drpc",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "RuntimeError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8240299999999006,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "endpoint_label": "official-public",
+      "attempts": [
+        {
+          "method": "debug_traceTransaction",
+          "status": "RPC_REJECTED",
+          "rpc_code": -32000
+        },
+        {
+          "method": "trace_transaction",
+          "status": "METHOD_UNAVAILABLE",
+          "rpc_code": -32002
+        }
+      ],
+      "chain_id_verified": 56,
+      "status": "NO_TRACE",
+      "accounting": {
+        "outbound_rpc_requests": 3,
+        "methods": {
+          "eth_chainId": 1,
+          "debug_traceTransaction": 1,
+          "trace_transaction": 1
+        },
+        "estimated_cost_usd": 1.8e-05,
+        "cumulative_ledger_estimate_usd": 1.8240479999999004,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "endpoint_label": "official-tracing",
+      "attempts": [
+        {
+          "method": "debug_traceTransaction",
+          "status": "METHOD_UNAVAILABLE",
+          "rpc_code": -32601
+        },
+        {
+          "method": "trace_transaction",
+          "status": "CAPTURED",
+          "artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+            "sha256": "86988f95d37f17557f72a98eb498db5198c994317185e9176d1af5b25e208b34"
+          }
+        }
+      ],
+      "chain_id_verified": 250,
+      "status": "CAPTURED",
+      "accounting": {
+        "outbound_rpc_requests": 3,
+        "methods": {
+          "eth_chainId": 1,
+          "debug_traceTransaction": 1,
+          "trace_transaction": 1
+        },
+        "estimated_cost_usd": 1.8e-05,
+        "cumulative_ledger_estimate_usd": 1.8240659999999003,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "endpoint_label": "official-starter",
+      "attempts": [
+        {
+          "method": "debug_traceTransaction",
+          "status": "CAPTURED",
+          "artifact": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+            "sha256": "facd0b6683db551db31b6bee13c6e26754ceb54ba948147e717f5f8b5dc583e1"
+          }
+        }
+      ],
+      "chain_id_verified": 100,
+      "status": "CAPTURED",
+      "accounting": {
+        "outbound_rpc_requests": 2,
+        "methods": {
+          "eth_chainId": 1,
+          "debug_traceTransaction": 1
+        },
+        "estimated_cost_usd": 1.2e-05,
+        "cumulative_ledger_estimate_usd": 1.8240779999999002,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    }
+  ],
+  "scope": "Three specified frozen TRAIN identities only; call traces are not opcode/storage evidence.",
+  "outbound_rpc_requests": 9,
+  "estimated_cost_usd": 5.4e-05,
+  "cumulative_ledger_estimate_usd": 1.8240779999999002,
+  "billing_confirmed": false
+}

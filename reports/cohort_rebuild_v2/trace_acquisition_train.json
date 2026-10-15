@@ -1,5 +1,27 @@
 [
   {
+    "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+      "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+    },
+    "frame_count": 248,
+    "trace_identity_verified": true,
+    "storage_trace_complete": false
+  },
+  {
+    "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+      "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+    },
+    "frame_count": 519,
+    "trace_identity_verified": true,
+    "storage_trace_complete": false
+  },
+  {
     "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
     "artifact": {
       "path": "reports/cohort_rebuild_v2/traces/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json.gz",
@@ -81,50 +103,6 @@
       "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
     },
     "status": "RECORDED"
-  },
-  {
-    "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
-    "status": "UNAVAILABLE",
-    "rpc_error": {
-      "code": -32000,
-      "message": "transaction 0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6 not found"
-    },
-    "reason": "callTracer returned no trace",
-    "accounting": {
-      "outbound_rpc_requests": 2,
-      "methods": {
-        "eth_chainId": 1,
-        "debug_traceTransaction": 1
-      },
-      "estimated_cost_usd": 1.2e-05,
-      "cumulative_ledger_estimate_usd": 1.8168779999999596,
-      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
-      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
-      "billing_confirmed": false,
-      "proxy_errors": []
-    }
-  },
-  {
-    "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
-    "status": "UNAVAILABLE",
-    "rpc_error": {
-      "code": -32000,
-      "message": "transaction not found"
-    },
-    "reason": "callTracer returned no trace",
-    "accounting": {
-      "outbound_rpc_requests": 2,
-      "methods": {
-        "eth_chainId": 1,
-        "debug_traceTransaction": 1
-      },
-      "estimated_cost_usd": 1.2e-05,
-      "cumulative_ledger_estimate_usd": 1.8168899999999595,
-      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
-      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
-      "billing_confirmed": false,
-      "proxy_errors": []
-    }
   },
   {
     "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",

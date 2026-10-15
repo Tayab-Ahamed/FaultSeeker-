@@ -1,0 +1,21 @@
+{
+  "scope": "Actual TRAIN call trees, no opcode evidence",
+  "requests": 15,
+  "estimated_cost_usd": 9e-05,
+  "cumulative_recorded_estimate_usd": 1.824078,
+  "billing_confirmed": false,
+  "captures": [
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+      "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+      "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+    }
+  ],
+  "limitations": [
+    "BSC remains unavailable",
+    "Call traces do not prove SLOAD/SSTORE or source-linked complexity"
+  ]
+}

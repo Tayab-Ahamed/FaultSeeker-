@@ -1,0 +1,142 @@
+{
+  "created_at": "2026-10-15T15:25:07.265868+00:00",
+  "sources": [
+    {
+      "url": "https://docs.bnbchain.org/bnb-smart-chain/developers/json_rpc/json-rpc-endpoint/",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://docs.fantom.foundation/build-on-opera/api/public-endpoints",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://docs.gnosischain.com/tools/RPC%20Providers/",
+      "error_type": "URLError"
+    },
+    {
+      "url": "https://docs.gnosischain.com/about/networks/mainnet",
+      "error_type": "URLError"
+    }
+  ],
+  "observations": [
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "endpoint_label": "configured-drpc",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8239939999999009,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "endpoint_label": "official-public",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8239999999999008,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "endpoint_label": "official-tracing",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8240059999999008,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "endpoint_label": "documented-publicnode",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8240119999999007,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "endpoint_label": "official-starter",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8240179999999007,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    },
+    {
+      "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "endpoint_label": "official-gateway",
+      "attempts": [],
+      "status": "FAILED",
+      "error_type": "URLError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.8240239999999006,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      }
+    }
+  ],
+  "scope": "Three specified frozen TRAIN identities only; call traces are not opcode/storage evidence.",
+  "outbound_rpc_requests": 6,
+  "estimated_cost_usd": 3.6e-05,
+  "cumulative_ledger_estimate_usd": 1.8240239999999006,
+  "billing_confirmed": false
+}

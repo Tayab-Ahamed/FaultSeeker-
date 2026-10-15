@@ -2,10 +2,10 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "Two newly admitted Ethereum training exploits now have canonically validated local Anvil opcode captures. Euler served 147 exact-parent prestate reads from observed RPC evidence. Other-chain archive/debug and live independent-provider recovery evidence remain incomplete.",
-  "verification_scope": "Observed Ethereum train replay plus existing local RPC mechanism tests; not ten-chain or general live failover verification",
+  "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established.",
+  "verification_scope": "Observed provider methods and authenticated historical call trees on specified train identities; no inferred opcode evidence or all-chain capability",
   "requirements_unmet": [
-    "Required-chain archive/debug observations and live provider recovery evidence"
+    "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
   ],
   "human_decision": "Next evidence input: Required-chain archive/debug observations and live provider recovery evidence",
   "acceptance_tests": [
@@ -14,7 +14,9 @@
     "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
     "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure",
     "tests/test_authentic_opcode_partition.py::test_real_train_captures_pass_canonical_revalidation_and_have_storage_events",
-    "tests/test_pinned_prestate_rpc.py::test_wrong_block_unknown_account_or_missing_slot_always_use_metered_upstream"
+    "tests/test_pinned_prestate_rpc.py::test_wrong_block_unknown_account_or_missing_slot_always_use_metered_upstream",
+    "tests/test_train_probe_integration.py::test_actual_recovered_train_traces_preserve_canonical_identity",
+    "tests/test_train_chain_trace_probe.py::TrainChainTraceProbeTests::test_parity_rejects_missing_child_and_wrong_block"
   ],
   "evidence": [
     {
@@ -96,10 +98,34 @@
     {
       "path": "reports/cohort_rebuild_v2/opcode_runs/euler_first_capture.json",
       "sha256": "444289a55f99c344f88be19f9d2bd77161b84665fc4e7e77fe43b05e6ce71b6f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/probe.json",
+      "sha256": "144f6fe690b4011331aa5b8a3545921b7364a579ff9aa7f0fc7ba5472c34af5f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/probe.json",
+      "sha256": "e184261a2390c2ad013b66646e7cb740f15370aebabfd22ff026f1ead6ec7976"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+      "sha256": "86988f95d37f17557f72a98eb498db5198c994317185e9176d1af5b25e208b34"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+      "sha256": "facd0b6683db551db31b6bee13c6e26754ceb54ba948147e717f5f8b5dc583e1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+      "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+      "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Required-chain archive/debug observations and live provider recovery evidence",
+  "next_input_artifact": "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/25.json",
   "paper_verdict": "ETHEREUM-TRAIN-CAPTURE-VERIFIED-BROADER-CAPABILITY-UNVERIFIABLE",
