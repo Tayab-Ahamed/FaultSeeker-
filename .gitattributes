@@ -5,5 +5,6 @@ reports/provenance_hunt/*.txt -text -diff
 reports/provenance_hunt/providers/*.txt -text -diff
 reports/provenance_hunt/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Canonical Git blobs are immutable evidence, including upstream line endings.
+reports/canonical_history/** -text
 reports/canonical_history/snapshots/** -text -diff
 reports/canonical_history/reruns/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

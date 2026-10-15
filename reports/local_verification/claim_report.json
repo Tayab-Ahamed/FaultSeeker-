@@ -81,14 +81,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The 246-entry file now contains the original 231 plus 15 new canonical Ethereum transaction-reference candidates, not the original missing paper members. Full acceptance remains zero. Of 132 original Ethereum identities, 108 matched and 24 returned both RPC results null. New candidate receipts do not establish exploit roles or labels.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Early 246 unique records existed (15 malformed hashes), then231/213/183. Original115 files cover114 unique tx; reconstructions48 are separate. No fully authenticated 246-row adjudicated cohort.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "246 accepted row manifests",
-        "Two qualified independent label attestations per row",
-        "15 missing candidate rows"
+        "Frozen cohort with complete independent provenance and qualified annotation records"
       ],
-      "human_decision": "Next required input artifact: Author cohort manifest with corrected canonical identities and complete provenance/adjudication attachments",
+      "human_decision": "Next evidence input: Frozen cohort with complete independent provenance and qualified annotation records",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -117,6 +115,30 @@
         {
           "path": "reports/provenance_hunt/frontiers.json",
           "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -124,10 +146,10 @@
         "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
       ],
       "closure_decision_path": "reports/claim_closure/claims/03.json",
-      "claim_commit": "275d24f4452a8ccb26f08b30fddae2a345b698f8",
+      "claim_commit": "c0ae6c5e796b2d612e64a6f4805c893846ad98c6",
       "decision_commit": "b0ffb3e8b363e35bcf455d6bde02626ccfe93018",
       "implementation_commits": [
-        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
+        "c0ae6c5e796b2d612e64a6f4805c893846ad98c6"
       ]
     },
     {
@@ -141,13 +163,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "All 231 exact identities were searched. There are 734 cached public-source request records and four content-reviewed pairs of original security-publisher accounts. The remaining 242 candidate rows lack an accepted pair and all 246 lack independent annotation. Mirrors and distinct domains alone were not accepted.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Original April3 GT and source catalog/disclosure links are recovered, not manufactured in October. They do not contain two qualified annotator attestations or a complete independent evidence chain per row.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Two independent cached research reports per row",
-        "Independent annotator identities and consensus records"
+        "Per-row independent corroboration plus signed independent annotation/consensus ledger"
       ],
-      "human_decision": "Next required input artifact: Complete dual-source and independent-annotation evidence manifest for the intended study cohort",
+      "human_decision": "Next evidence input: Per-row independent corroboration plus signed independent annotation/consensus ledger",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -184,17 +205,41 @@
         {
           "path": "reports/provenance_hunt/reviewed_source_pairs.json",
           "sha256": "72e9b7ba2a763bd4af3847af179feeb5927bc6eb4ef7b202ee79f15f6026d12a"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/04.json",
-      "claim_commit": "86d77db0401152b2ceaf022696b9ded9dec98b1d",
+      "claim_commit": "a689f78e62945b77b21b2ec074ab612af76bd42b",
       "decision_commit": "d0c613469a5651314dfe56117e13930adceb48dc",
       "implementation_commits": [
-        "275d24f4452a8ccb26f08b30fddae2a345b698f8",
-        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
+        "c0ae6c5e796b2d612e64a6f4805c893846ad98c6",
+        "adc3b2816f2c2ccf1e486281b778042ac712cbc7"
       ]
     },
     {
@@ -208,13 +253,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No accepted ten-chain paper population exists. Adding 15 Ethereum reference candidates cannot establish the published chain mix or 47.6 percent share. Original Ethereum null identities further invalidate naive counting.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Every fixedCSV version has8chains, not10; fca6b99 Ethereum132/231=57.1429%, not47.6%. Unvalidated candidate-pool coverage is a different denominator.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Authenticated ten-chain 246-row population",
-        "Measured chain shares on that population"
+        "Accepted frozen study cohort and independently verified chain membership"
       ],
-      "human_decision": "Next required input artifact: Frozen accepted ten-chain cohort membership manifest",
+      "human_decision": "Next evidence input: Accepted frozen study cohort and independently verified chain membership",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -243,16 +287,40 @@
         {
           "path": "reports/provenance_hunt/frontiers.json",
           "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
       ],
       "closure_decision_path": "reports/claim_closure/claims/05.json",
-      "claim_commit": "c1d51f893bd6e9f1396407af02113957b380ee0c",
+      "claim_commit": "54959e4cbe20bffd0716735084ad401fd78d9583",
       "decision_commit": "c9eacdf40b63ca9edf61ab4974c44d5a2cf58dda",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -266,12 +334,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Incident sources supply candidate mechanism descriptions, but no qualified independently adjudicated SWC/DASP taxonomy is supplied. Public descriptions and legacy strings remain separate from accepted labels.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "fca6b99 has82 distinct vulnerability strings with SWC/DASP columns; original GT supports partial named targets but semantic taxonomy uniqueness/correctness is not adjudicated.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Adjudicated SWC/DASP-aligned vulnerability taxonomy"
+        "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort"
       ],
-      "human_decision": "Next required input artifact: Independently adjudicated SWC/DASP taxonomy manifest",
+      "human_decision": "Next evidence input: Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -300,17 +368,41 @@
         {
           "path": "reports/provenance_hunt/frontiers.json",
           "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/06.json",
-      "claim_commit": "04020065e53fefb0784ad8e1c7332976cea2fe30",
+      "claim_commit": "9bcbfd1351b49dfe39bef74e58f870aed522c4d4",
       "decision_commit": "9ee5e45213f22bc864c989e9c391c664cf5c6b6e",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f",
-        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134",
+        "c0ae6c5e796b2d612e64a6f4805c893846ad98c6"
       ]
     },
     {
@@ -324,13 +416,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Existing class labels have not been altered, and new candidates were not assigned classes. No accepted 246-case trace-complexity population or frozen class assignment protocol verifies the published proportions.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "231-row class counts Simple19/Moderate62/Complex91/Exceptional59 differ from paper proportions. The early246 also differs (20/71/93/62).",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Frozen class-mapping protocol",
-        "Authentic trace-size/class labels for all 246 rows"
+        "Trace-verified function-count bins for the authentic paper cohort"
       ],
-      "human_decision": "Next required input artifact: Frozen trace-complexity class assignment manifest for the authentic cohort",
+      "human_decision": "Next evidence input: Trace-verified function-count bins for the authentic paper cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -359,17 +450,41 @@
         {
           "path": "reports/provenance_hunt/frontiers.json",
           "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/07.json",
-      "claim_commit": "a8d4a4db82283fbe9559e4437c590d4e677d7691",
+      "claim_commit": "c9b71291b466eb027f50cd453fe997e2ba2d71e2",
       "decision_commit": "570eff9ce0ad39b2b47a28e56aaaa41f76b80364",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f",
-        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134",
+        "c0ae6c5e796b2d612e64a6f4805c893846ad98c6"
       ]
     },
     {
@@ -383,12 +498,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Reentrancy is independently corroborated for some incidents such as Orion, but no accepted cohort-wide binary annotation manifest establishes exactly 18 reentrant rows among the paper 246.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "17 reentrancy strings among231 and213,16amongcurrent183,19amongearly246. No18-row authenticated study. Label counts are now checkable, label truth is separate.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Independent reentrancy labels and exact positive/negative membership"
+        "Independently adjudicated reentrancy positives in the frozen evaluation cohort"
       ],
-      "human_decision": "Next required input artifact: Independently adjudicated reentrancy membership manifest",
+      "human_decision": "Next evidence input: Independently adjudicated reentrancy positives in the frozen evaluation cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -417,17 +532,41 @@
         {
           "path": "reports/provenance_hunt/frontiers.json",
           "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/08.json",
-      "claim_commit": "51cc168bedfa0108147763615298db859773a501",
+      "claim_commit": "574de8d9651bbc3cf82d68ee7e89215eeff1424e",
       "decision_commit": "f9f3c4890b1af4ebf6ad0fff46333534ed29aeca",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f",
-        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134",
+        "c0ae6c5e796b2d612e64a6f4805c893846ad98c6"
       ]
     },
     {
@@ -582,14 +721,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The real detector runner was invoked against the rebuilt candidate evidence and returned BLOCKED-BY-DATA before prediction. Precision, recall, F1 and deltas are undefined, not zero, on zero accepted records.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Historical .86/.69/.57 were literal result declarations; Oct6 recompute evaluates0 and emitsnull F1. Reproduced .7586/.8593 feature classification has a different target and cannot validate TableV.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Frozen adjudicated evaluation set",
-        "Raw integer confusion outcomes",
-        "Declared pooling/averaging protocol"
+        "Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging"
       ],
-      "human_decision": "Next required input artifact: Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
+      "human_decision": "Next evidence input: Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -626,16 +763,40 @@
         {
           "path": "reports/provenance_hunt/experiments/detectors.json",
           "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/13.json",
-      "claim_commit": "4d5c1856ba5483e9c01885decb075968a0e5460f",
+      "claim_commit": "a2f891c9b0e883f1a2d58d2764beddb2d5262134",
       "decision_commit": "b2eab9a3e92584bd59ad09becb37fff9ca305120",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -649,12 +810,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The paired detector experiment entry point refused the unaccepted cohort. No paired outcomes exist from which to compute the published 17/29 point gains or their deltas.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "17/29pp are arithmetic between unsupported TableV declarations. Feature-harness ablations are different mechanisms/endpoints; even -TIG recorded .6565 differs from rerun .6531.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Paired predictions for all three detector variants on identical adjudicated records"
+        "Paired executed SSTORE/structural/repeated-address outcomes on the same adjudicated rows"
       ],
-      "human_decision": "Next required input artifact: Accepted paired detector-study manifest",
+      "human_decision": "Next evidence input: Paired executed SSTORE/structural/repeated-address outcomes on the same adjudicated rows",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -691,16 +852,40 @@
         {
           "path": "reports/provenance_hunt/experiments/detectors.json",
           "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
       ],
       "closure_decision_path": "reports/claim_closure/claims/14.json",
-      "claim_commit": "101c88acffc7a990adcb001737bfd6aaaebbc274",
+      "claim_commit": "bc0841022265818b34997c3120a498b1c3da7be6",
       "decision_commit": "e1e48234fb519d2bf384ae920aaf0faf758a7995",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -714,12 +899,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Targeted public searches and the paper/repository narrative did not establish a unique legitimate Compound cToken transaction. No arbitrary Compound interaction or inflation exploit was substituted, and no unidentified transaction was claimed as replayed.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Historical reentrancy_metrics.json contains the cToken narrative with no hash. Compound-related exploit annotations cannot identify the legitimate recursive transaction.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Exact legitimate Compound cToken transaction and source corroboration"
+        "Exact legitimate cToken case-study transaction plus source linkage"
       ],
-      "human_decision": "Next required input artifact: Exact author-identified Compound cToken case-study transaction hash",
+      "human_decision": "Next evidence input: Exact legitimate cToken case-study transaction plus source linkage",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -752,18 +937,42 @@
         {
           "path": "reports/provenance_hunt/compound_search.json",
           "sha256": "3de9a6449100a276f4dd627c9ff1e8e9cee8c7d650c004e0c676f4f71845cca8"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/15.json",
-      "claim_commit": "731c4048c48f2a565aff531bf92aefd020268f48",
+      "claim_commit": "87c79d1db54afe4d5b58733ca33c45c12bcea61f",
       "decision_commit": "c76e58a456be4ace743be4bd84c2d7ed300f1e8a",
       "implementation_commits": [
-        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
-        "1e62f37a6bcce77bc75f892fae42a6865b4fded6",
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "d7519904f923998b91b2cea72b3e12fdd5f54144",
+        "adc3b2816f2c2ccf1e486281b778042ac712cbc7",
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -816,15 +1025,12 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Actual routed attempts did not verify the claimed Claude or Qwen families: two Nara credential variables gave 402/429, diagnostic messages said insufficient credits, and a documented NVIDIA Qwen endpoint gave 410. Atria exposes only Atria-Dawn. The eligible Agnes free control passed but is not either claimed family. Native Anthropic/DashScope adapters remain untested; Ollama remains unreachable.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Canonical adapter/pricing declarations add no authenticated Claude/Qwen/Ollama response. Prior gateway failures remain recorded; native adapters untested, not inferred failed.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Eligible Claude model access",
-        "Eligible Qwen model access",
-        "Reachable installed Ollama model",
-        "Full six-family live conformance observations"
+        "Eligible live family access including a reachable installed Ollama model"
       ],
-      "human_decision": "Next required input artifact: Executable six-family access configuration, including eligible Claude/Qwen access and a reachable installed Ollama model",
+      "human_decision": "Next evidence input: Eligible live family access including a reachable installed Ollama model",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -861,6 +1067,30 @@
         {
           "path": "reports/provenance_hunt/providers/bynara_conformance_diagnostic.json",
           "sha256": "cc3ca0db2dff6a0d8663272ca16463d28b92e9520768a5115032ca6ce9fcfd2f"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -868,7 +1098,7 @@
         "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
       ],
       "closure_decision_path": "reports/claim_closure/claims/17.json",
-      "claim_commit": "72495ba53a49b589d3eb9aaeab092b479f7e3e90",
+      "claim_commit": "986a11f589db79eb8c654c945e1627ed8eebbed1",
       "decision_commit": "b3ff55373875442575abb93a432a3166dc4d2a10",
       "implementation_commits": [
         "6dd294165b4340d26b68433cd2f338864c6e6106"
@@ -886,14 +1116,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Routing experiment preflight returned BLOCKED-BY-DATA. A successful tiny free-model control and conservative spend allocations are not a 100-case paired cost/quality study. No savings percentage or empirical delta is reported.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Canonical Oct6 removes58%; the published mixture computes35% modeled, with no observed100-case paired workload. No ranking-quality comparison or token billing log.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Preregistered 100-case workload",
-        "Sourced dated prices",
-        "Paired observed query usage and quality/rank outcomes"
+        "Frozen100-case paired workload with observed usage, pricing and quality outputs"
       ],
-      "human_decision": "Next required input artifact: Preregistered 100-case 50/30/20 paired routing workload and pricing manifest",
+      "human_decision": "Next evidence input: Frozen100-case paired workload with observed usage, pricing and quality outputs",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -934,6 +1162,30 @@
         {
           "path": "reports/provenance_hunt/experiments/routing.json",
           "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -941,12 +1193,12 @@
         "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
       ],
       "closure_decision_path": "reports/claim_closure/claims/18.json",
-      "claim_commit": "3e4fd3b2d41c2591484ac5353c08a3e4e9dae2f6",
+      "claim_commit": "e213c2782caadc4aabba66839f75ebd2b2efa41f",
       "decision_commit": "57844e369bd3c97ca42c3e57d0f6ac23e8f89964",
       "implementation_commits": [
-        "3e4fd3b2d41c2591484ac5353c08a3e4e9dae2f6",
+        "e213c2782caadc4aabba66839f75ebd2b2efa41f",
         "6dd294165b4340d26b68433cd2f338864c6e6106",
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -1029,13 +1281,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The existing source CSV is exploit-oriented and no independently benign evaluation cohort is accepted. The real prefilter runner returned BLOCKED-BY-DATA before any rate/latency measurement.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Canonical runtime artifact explicitly marks benign prefilter rate unmeasured. Executed skip mechanism does not establish40% of traffic or paired latency effect.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Authenticated benign population",
-        "Paired production latency and bypass observations"
+        "Verified benign workload and paired prefilter latency observations"
       ],
-      "human_decision": "Next required input artifact: Independent benign-cohort paired prefilter study manifest",
+      "human_decision": "Next evidence input: Verified benign workload and paired prefilter latency observations",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1072,6 +1323,30 @@
         {
           "path": "reports/provenance_hunt/experiments/prefilter.json",
           "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -1079,11 +1354,11 @@
         "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
       ],
       "closure_decision_path": "reports/claim_closure/claims/21.json",
-      "claim_commit": "b0f6c40455c11868459280b3e07c5cb349806972",
+      "claim_commit": "885020a306d56b5fc7f7272e3f93cbde8a939d2c",
       "decision_commit": "86636646cd16562dfdef6b750e32c20689347475",
       "implementation_commits": [
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -1102,13 +1377,12 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "New incident and receipt evidence does not establish source-linked function-ranking ground truth. Gateway smoke responses test chat transport only; no localization-quality experiment was dispatched or inferred.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Recovered top1 7/115=6.09% and114 per-tx provenance entries; original GT contains one duplicate transaction explaining target/tx difference. No tracked raw ranked outputs in any reachable canonical commit; cannot rerun localization.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Verified source-linked function ground truth",
-        "Live model/localization quality evaluation"
+        "Original per-transaction ranked predictions tied to traces/models and source-linked GT"
       ],
-      "human_decision": "Next required input artifact: Verified source-linked function localization evaluation manifest",
+      "human_decision": "Next evidence input: Original per-transaction ranked predictions tied to traces/models and source-linked GT",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1137,6 +1411,30 @@
         {
           "path": "reports/provenance_hunt/experiments/measurement_frontier.json",
           "sha256": "fc55b13147027afcb5a8d3186ac052e1ed30ab1ffff4f43fdba2a21cea2cf8bd"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -1144,10 +1442,10 @@
         "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
       ],
       "closure_decision_path": "reports/claim_closure/claims/22.json",
-      "claim_commit": "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
+      "claim_commit": "d7519904f923998b91b2cea72b3e12fdd5f54144",
       "decision_commit": "e4bfb007db6ed615eec66ff1c54c3e239205eea9",
       "implementation_commits": [
-        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
+        "d7519904f923998b91b2cea72b3e12fdd5f54144",
         "6dd294165b4340d26b68433cd2f338864c6e6106"
       ]
     },
@@ -1216,7 +1514,7 @@
       "implementation_commits": [
         "120b11be7b693720024f12eafbdc72620de1cff1",
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
-        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c"
+        "d7519904f923998b91b2cea72b3e12fdd5f54144"
       ]
     },
     {
@@ -1236,13 +1534,12 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "302 further metered Ethereum identity/receipt requests were recorded, including null identities. They add evidence for the specific Ethereum read methods but do not establish other-chain archive/opcode support or sustained independent-provider failover.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Canonical data covers8chains; ten-chain provider declarations and protocol add no live archive/opcode/failover observations beyond prior Ethereum probes and replay.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Remaining-chain trace/archive endpoints and observations",
-        "Live multi-provider outage/recovery evidence"
+        "Required-chain archive/debug observations and live provider recovery evidence"
       ],
-      "human_decision": "Next required input artifact: Multi-chain endpoint and preregistered live failover test manifest",
+      "human_decision": "Next evidence input: Required-chain archive/debug observations and live provider recovery evidence",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1279,6 +1576,30 @@
         {
           "path": "reports/provenance_hunt/ethereum_requests.json",
           "sha256": "191254b9676c98b2229d265a2056c13b6a60c79222a530f1924b0900401eda33"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -1288,12 +1609,12 @@
         "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
       ],
       "closure_decision_path": "reports/claim_closure/claims/25.json",
-      "claim_commit": "401f5a6f84a79cb21e78b5daf1d1ee994b490cf5",
+      "claim_commit": "6e3e2acce61e5fd2f4a717eaeb9b6b94399d34da",
       "decision_commit": "74079850d7123692f338b1506924a293bbb9be59",
       "implementation_commits": [
-        "401f5a6f84a79cb21e78b5daf1d1ee994b490cf5",
+        "6e3e2acce61e5fd2f4a717eaeb9b6b94399d34da",
         "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
-        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
+        "adc3b2816f2c2ccf1e486281b778042ac712cbc7"
       ]
     },
     {
@@ -1380,13 +1701,12 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Public-source HTTP 403/challenge failures were cached, but these are not a preregistered explorer recovery denominator. The WAF runner reports missing challenge cases and CURL_IMPERSONATE_BINARY; no 23 percent rate is inferred.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Recovered protocol and audit do not supply challenged-request denominator or successes for23%. Ethereum RPC success is not an explorer WAF bypass experiment.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Authorized challenge cases and strategy configuration",
-        "Observed challenged-request denominator and recovery outcomes"
+        "Authorized challenged explorer-request corpus with recovery logs and denominator"
       ],
-      "human_decision": "Next required input artifact: Authorized preregistered explorer-challenge case and browser-transport bundle",
+      "human_decision": "Next evidence input: Authorized challenged explorer-request corpus with recovery logs and denominator",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1423,6 +1743,30 @@
         {
           "path": "reports/provenance_hunt/experiments/waf.json",
           "sha256": "730f83db847f52e0846f083a2b18695252649d3278a7bab3ce6559ca9367094d"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
@@ -1430,10 +1774,10 @@
         "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
       ],
       "closure_decision_path": "reports/claim_closure/claims/27.json",
-      "claim_commit": "1e62f37a6bcce77bc75f892fae42a6865b4fded6",
+      "claim_commit": "adc3b2816f2c2ccf1e486281b778042ac712cbc7",
       "decision_commit": "48912b580f76f8ae8e8446b22e39c36f79f450dc",
       "implementation_commits": [
-        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
+        "adc3b2816f2c2ccf1e486281b778042ac712cbc7"
       ]
     },
     {
@@ -1447,13 +1791,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No authentic production PMS/CES/TCS/LCS vectors exist for an accepted study cohort. Receipt data and free-model conformance are not Table VI observations; means and deltas remain undefined.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "No TableVI component observations; CV classifier derives proxy factors from four numeric trace features, not PMS/CES/TCS/LCS for actual candidate functions.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Observed production confidence vectors for authenticated study records",
-        "Predeclared function/transaction aggregation"
+        "Raw production per-function four-factor scores with adjudicated categories and declared averaging"
       ],
-      "human_decision": "Next required input artifact: Observed production confidence-vector dataset for the accepted cohort",
+      "human_decision": "Next evidence input: Raw production per-function four-factor scores with adjudicated categories and declared averaging",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1486,16 +1829,40 @@
         {
           "path": "reports/provenance_hunt/experiments/measurement_frontier.json",
           "sha256": "fc55b13147027afcb5a8d3186ac052e1ed30ab1ffff4f43fdba2a21cea2cf8bd"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
       ],
       "closure_decision_path": "reports/claim_closure/claims/28.json",
-      "claim_commit": "92c756b0fdb61461b6e335f2c9b08021a133dea3",
+      "claim_commit": "9c780471292ce93a1da782d51b5192565045a719",
       "decision_commit": "b01e68080997810f9904da711528223138127596",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f"
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134"
       ]
     },
     {
@@ -1509,14 +1876,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The guidance experiment runner returned BLOCKED-BY-DATA. No original or preregistered 20-case selection, independent function ranks, guidance policy or denominator establishes 68 to 81 percent.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "All53 reachable canonical text versions searched: no68%-to81% paired study; binary n20 increments5pp. 6.09% localization belongs to another study, not guidance.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Original or preregistered 20-case guidance study",
-        "Ground-truth function rankings",
-        "Explicit accuracy aggregation protocol"
+        "Original20-case selection/policy and paired rankings with explicit aggregation definition"
       ],
-      "human_decision": "Next required input artifact: Preregistered 20-case guidance evaluation manifest with ranking ground truth and aggregation",
+      "human_decision": "Next evidence input: Original20-case selection/policy and paired rankings with explicit aggregation definition",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1557,16 +1922,40 @@
         {
           "path": "reports/provenance_hunt/experiments/guidance.json",
           "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
       ],
       "closure_decision_path": "reports/claim_closure/claims/29.json",
-      "claim_commit": "905d2f671be846e731a6909fede76c6f2c432a85",
+      "claim_commit": "22d316813c057e565dc355d1d3a119a469348ab4",
       "decision_commit": "3ec4baea63b89aeb9d7e77f9e724f6882586f265",
       "implementation_commits": [
-        "4d5c1856ba5483e9c01885decb075968a0e5460f",
+        "a2f891c9b0e883f1a2d58d2764beddb2d5262134",
         "120b11be7b693720024f12eafbdc72620de1cff1"
       ]
     },
@@ -1581,12 +1970,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Real experiment entry points and all local tests run, but source acquisition does not supply the authentic labels and observations required to reproduce the published tables/figures. No empirical output is generated from rejected records. A gzip/plain-JSON mismatch in the experiment reader was repaired and tested against the actual 21,300-step historical JAY capture; this proves artifact IO, not empirical metrics.",
-      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+      "closure_reason": "Canonical protocol recovered; two historical proxy/feature harnesses actually reproduced offline without tuning. They do not reproduce TableV/VI/guidance or authenticate the paper cohort.",
+      "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
       "unmet_requirements": [
-        "Authentic inputs and observed outputs for the three published tables/figures"
+        "Authentic paper-study input/output artifacts and exact experiment protocol"
       ],
-      "human_decision": "Next required input artifact: Author reproducibility bundle with authentic inputs, study protocols and raw outcomes",
+      "human_decision": "Next evidence input: Authentic paper-study input/output artifacts and exact experiment protocol",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1623,16 +2012,40 @@
         {
           "path": "reports/provenance_hunt/compressed_trace_regression.json",
           "sha256": "ad7514088484fa677551ef1cd88806c619b1f91e64ce56808a2adf478b327f19"
+        },
+        {
+          "path": "reports/canonical_history/manifest.json",
+          "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+        },
+        {
+          "path": "reports/canonical_history/cohort_history.json",
+          "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+        },
+        {
+          "path": "reports/canonical_history/findings.json",
+          "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+        },
+        {
+          "path": "reports/canonical_history/paper_vs_repo.json",
+          "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+        },
+        {
+          "path": "reports/canonical_history/history_search.json",
+          "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+        },
+        {
+          "path": "reports/canonical_history/accounting.json",
+          "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
       ],
       "closure_decision_path": "reports/claim_closure/claims/30.json",
-      "claim_commit": "3eeb964fc4ece56d179a7d31d3492e43adc99100",
+      "claim_commit": "7c10f725e61372939bf1dbd53cf06572de817ff3",
       "decision_commit": "9b0c71e9b92ff524de9d2c6d46034e57cee53f09",
       "implementation_commits": [
-        "3eeb964fc4ece56d179a7d31d3492e43adc99100"
+        "7c10f725e61372939bf1dbd53cf06572de817ff3"
       ]
     },
     {
@@ -5287,7 +5700,7 @@
   },
   "test_exit_code": 0,
   "test_counts": {
-    "passed": 361,
+    "passed": 367,
     "skipped": 1
   },
   "test_outcomes": {
@@ -5310,6 +5723,12 @@
     "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score": "passed",
     "tests/test_calibration_schema.py::test_export_and_inference_use_the_same_observed_depth_and_storage_features": "passed",
     "tests/test_calibration_schema.py::test_nonfinite_model_confidence_never_becomes_high_confidence": "passed",
+    "tests/test_canonical_evidence.py::test_csv_inventory_counts_rows_separately_from_unique_hashes": "passed",
+    "tests/test_canonical_evidence.py::test_reconstructions_never_enter_original_ground_truth_set": "passed",
+    "tests/test_canonical_evidence.py::test_modeled_cost_and_absent_predictions_cannot_be_empirical": "passed",
+    "tests/test_canonical_evidence.py::test_every_registered_canonical_blob_matches_git_identity_and_sha256": "passed",
+    "tests/test_canonical_evidence.py::test_history_counts_do_not_repeat_incorrect_no_246_premise": "passed",
+    "tests/test_canonical_evidence.py::test_paper_map_distinguishes_recorded_reproduced_modeled_and_unsupported_numbers": "passed",
     "tests/test_claim_closure.py::test_closure_requires_hashed_evidence_and_explicit_reason": "passed",
     "tests/test_claim_closure.py::test_verified_closure_requires_passing_behavior_acceptance": "passed",
     "tests/test_claim_closure.py::test_strict_closure_does_not_hide_unreviewed_claims": "passed",
@@ -5654,14 +6073,15 @@
     "tests/test_table_vi.py::test_table_vi_aggregates_real_confidence_scorer_output": "passed",
     "tests/test_table_vi.py::test_table_vi_refuses_missing_components_and_duplicate_functions": "passed"
   },
-  "timestamp": "2026-10-15T08:54:51.404046+00:00",
+  "timestamp": "2026-10-15T09:49:28.509991+00:00",
   "python_version": "3.11.9",
-  "revision": "3eeb964fc4ece56d179a7d31d3492e43adc99100",
+  "revision": "7c10f725e61372939bf1dbd53cf06572de817ff3",
   "test_manifest_sha256": {
     "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
     "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
     "tests\\test_analyst_guidance.py": "89ff0f509b938e07cbf7bc6d9674a4577b65782ea92b0ee042c00bc7da9da4cd",
     "tests\\test_calibration_schema.py": "93d043bd4cb6d961012a17addb0d8ca64d30c6c91a2a93a6abff63609cb6b420",
+    "tests\\test_canonical_evidence.py": "ac18125cf912a694cd1640e5fc7c3e95c096e6e4a78417da89fee7524bc52cc7",
     "tests\\test_claim_closure.py": "c497c3cc336504101b48d256573386dbf7cf1d1bc5cb297a8ab8f591c9309e71",
     "tests\\test_claim_registry.py": "94fb380d58105c620bb1624c5f345957e329c6b8773fa0f65b752d3d65ebd04a",
     "tests\\test_cohort_rebuild.py": "6435e0154d5a0d4659254227aebaab44b9f5ac8550dbca36d6c24332b40e80ea",

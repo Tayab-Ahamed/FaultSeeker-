@@ -14,6 +14,13 @@ def test_csv_inventory_counts_rows_separately_from_unique_hashes():
     assert result['unique_hashes'] == 2
     assert result['chains'] == ['BSC', 'Ethereum']
     assert result['reentrancy_labeled'] == 1
+    from scripts.finalize_canonical_review import call_count_bin
+    assert call_count_bin({'functioncall_count': ''}) is None
+    assert call_count_bin({'functioncall_count': 'nan'}) is None
+    assert call_count_bin({'functioncall_count': '-1'}) is None
+    assert call_count_bin({'functioncall_count': '5'}) == 'Simple'
+    assert call_count_bin({'functioncall_count': '6'}) == 'Moderate'
+    assert call_count_bin({'functioncall_count': '501'}) == 'Exceptionally Complex'
 
 
 def test_reconstructions_never_enter_original_ground_truth_set():

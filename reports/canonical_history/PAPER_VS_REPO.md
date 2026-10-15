@@ -110,3 +110,11 @@ New paid/model/RPC calls:0. New paid spend:$0. Cumulative conservative ledger:$0
 Kluster waived for local development only; before any PR or push, repository AGENTS.md rules apply in full and Kluster review is re-enabled. No push performed.
 
 Per-decision commits and post-commit full-suite records are published in `verification.json` after decisions complete. Original201 test-source digests are checked at every gate.
+
+## Additional strict-control audit
+
+The older .8593 run uses **1000 benign rows with exactly one distinct four-feature vector**. Its coverage gate checked populated columns but did not detect this degeneracy. The .8593 table is reproducible arithmetic on an unsuitable control population, not a stronger alternative to the later CV result. Exact input identity and counted vector are in `strict_control_audit.json`. This additional finding does not promote any claim or change the immutable decision-map JSON.
+
+## Complexity definition check
+
+Applying the stated 5/50/500 boundaries to the stored `functioncall_count` column gives 14/136/49/32 records in the four bins at 231 rows, and 14/148/50/34 at 246 rows. These differ both from the stored class labels and the paper proportions. Call count is not proven to mean unique functions, so these are conditional descriptive bins, not replacement authenticated complexity outcomes. Ethereum is 142/246 (57.7236%) in the early CSV, as well as 132/231 (57.1429%) in the requested frozen version. Exact input hashes and all version counts: `cohort_definition_audit.json`.

@@ -1,0 +1,33 @@
+{
+  "commit": "50853e461b635bc1e2cc088b91957cdac2a610d2",
+  "input": {
+    "commit": "50853e461b635bc1e2cc088b91957cdac2a610d2",
+    "source_path": "benchmark/imported/benign_traces.csv",
+    "git_blob_sha1": "bfc1f6b841a17e670c8f8d337cf42d502ccf97fc",
+    "sha256": "a407cee13a1aded8d7243f6c191cea681f95801f28d6102e0f2a1f7a1f76a73c",
+    "bytes": 86085,
+    "cache": "reports/canonical_history/snapshots/50853e461b635bc1e2cc088b91957cdac2a610d2/benchmark/imported/benign_traces.csv",
+    "category": "versioned-results-or-method",
+    "evidence_scope": "SOURCE-ARTIFACT-NOT-AUTOMATIC-VERIFICATION"
+  },
+  "benign_rows": 1000,
+  "distinct_feature_vectors": 1,
+  "feature_names": [
+    "functioncall_count",
+    "address_count",
+    "max_depth",
+    "gas_cost"
+  ],
+  "vector_counts": [
+    {
+      "vector": [
+        "1",
+        "2",
+        "0",
+        "21000"
+      ],
+      "count": 1000
+    }
+  ],
+  "verdict": "The reproduced .8593 result uses a degenerate benign control population: 1000 rows, one feature vector. Numerical reproducibility is not credible end-to-end discrimination evidence."
+}
