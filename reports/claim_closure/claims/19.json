@@ -1,0 +1,20 @@
+{
+  "id": 19,
+  "claim": "Stage 1 makes no model calls",
+  "status": "VERIFIED",
+  "reason": "Executed deterministic Stage 1 constructors and fund-flow analysis make no model calls and remain keyless.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+    "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
