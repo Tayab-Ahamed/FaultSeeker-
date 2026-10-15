@@ -26,10 +26,10 @@ def detector_observation(capture, variant):
     raw, root = _trace(capture)
     digest = hashlib.sha256(json.dumps(raw, sort_keys=True).encode()).hexdigest()
     if variant == 'repeated':
-        appearances = Counter((node['callee'], node['function_selector'])
+        appearances = Counter(node['callee']
                               for node in _walk(root) if node['call_type'] != 'STATICCALL')
         prediction = any(count > 1 for count in appearances.values())
-        detail = {'repeated_function_pairs': sum(count > 1 for count in appearances.values())}
+        detail = {'repeated_addresses': sum(count > 1 for count in appearances.values())}
     elif variant in {'full', 'structural'}:
         if variant == 'full':
             opcode = raw.get('opcode')
@@ -43,8 +43,10 @@ def detector_observation(capture, variant):
         analysis = dict(storage, canonical_trace=root, trace={}, flatten_trace=[], repeated_patterns={})
         signals = SignalExtractor(txn_seq={'trace_coverage':{'storage_trace_complete':variant=='full'}},
                                   tx_analysis=analysis, paper_mode=True).run()
-        prediction = signals.raw['reentrancy_detected']
         detail = signals.raw['reentrancy']
+        # Paper IV-B: only HIGH_RISK and CONFIRMED are metric positives.
+        # The engine's broader POSSIBLE alert threshold is unchanged.
+        prediction = detail['tier'] in {'HIGH_RISK_REENTRANCY', 'CONFIRMED_REENTRANCY'}
     else:
         raise ValueError('Unknown detector variant')
     return {'predicted_exploit': bool(prediction), 'algorithm': variant,

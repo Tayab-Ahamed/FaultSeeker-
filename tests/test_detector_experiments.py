@@ -20,3 +20,11 @@ def test_category_observations_are_derived_from_receipt_and_actual_tree():
         {'type':'CALL','from':'0xb','to':'0xc'}]},'opcode':{'structLogs':[]}}}
     row = category_observation(trace, {'gasUsed':'0x64'}, 'access')
     assert row == {'category':'access','gas_used':100,'function_calls':2,'addresses':3,'max_depth':1}
+
+
+def test_simple_baseline_counts_address_repetition_across_different_selectors():
+    a,b = '0x'+'11'*20,'0x'+'22'*20
+    capture = {'raw_trace':{'call':{'type':'CALL','to':a,'input':'0x11111111','calls':[
+        {'type':'CALL','to':b,'input':'0x22222222','calls':[
+            {'type':'CALL','to':a,'input':'0x33333333'}]}]}}}
+    assert detector_observation(capture,'repeated')['predicted_exploit'] is True

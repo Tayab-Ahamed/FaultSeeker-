@@ -1,0 +1,20 @@
+{
+  "paper_sha256": "96878e703f5c0bc27324f7da63c775fab66d4fed3ef6a272d238244ff6e7b31b",
+  "page_references": {
+    "1": "Public repository URL is https://github.com/Tayab-Ahamed/FaultSeeker-.",
+    "5": "246 incidents; two independent research sources; attacker fund flow; two qualified label annotators; trace-complexity classes; Table V positives are CONFIRMED or HIGH_RISK.",
+    "6": "Table VI contains PMS/CES/TCS/LCS/overall confidence means, not receipt gas or call-count averages.",
+    "7": "Compound cToken legitimate-recursion example has no transaction hash; simulated-guidance result uses 20 selected transactions."
+  },
+  "corrections_to_measurement_code": [
+    "Table V metric positives now use only HIGH_RISK/CONFIRMED; engine weights and thresholds unchanged.",
+    "Repeated-address baseline now counts addresses independently of selectors.",
+    "A Table VI confidence-component aggregator now exists; no authentic per-function study vectors are supplied."
+  ],
+  "human_decisions_needed": [
+    "Provide original qualified-independent annotation records and consensus provenance; otherwise perform new independent annotation.",
+    "Identify the exact legitimate Compound cToken transaction used in the stated case study.",
+    "Specify aggregation/denominators for Table V and 20-transaction top-1 accuracy.",
+    "Preregister authentic workload selections, guidance policy and dated model prices before new performance/cost experiments."
+  ]
+}

@@ -72,9 +72,9 @@ def test_paper_tiers_on_compiled_contracts(executed_cases, name, tier):
     detail = observation["detector_result"]
     assert detail["tier"] == tier
     if name == "guarded":
-        # The published weights/threshold still flag this blocked attempt.
-        # Preserve and expose that false positive instead of tuning it away.
+        # The engine still emits POSSIBLE at its unchanged .30 threshold;
+        # Table V counts only HIGH_RISK and CONFIRMED as metric positives.
         assert detail["score"] == pytest.approx(0.35)
-        assert observation["predicted_exploit"] is True
+        assert observation["predicted_exploit"] is False
         assert detail["signals"]["same_function_reentry"] is False
         assert detail["signals"]["state_slot_reentry"] is False
