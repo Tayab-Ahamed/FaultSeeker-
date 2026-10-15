@@ -45,21 +45,47 @@ def configuration(root=ROOT):
     read_bound(protocol['source_inputs'],root)
     return protocol,rates
 
-def claim_dispatch(path,approval,run_id):
+def approved_call_cap(approval,protocol_binding):
+    cap=approval.get('max_completion_requests')
+    if (approval.get('approved') is not True or type(cap) is not int or not 1<=cap<=20
+            or approval.get('protocol')!=protocol_binding
+            or approval.get('destination')!='https://router.bynara.id/v1/chat/completions'
+            or approval.get('stop_on_any_error') is not True):
+        raise ValueError('Explicit approved bounded pilot scope missing or changed')
+    if 'aggregate_pilot_limit' in approval:
+        prior=approval.get('previous_completion_requests')
+        if (approval['aggregate_pilot_limit']!=20 or type(prior) is not int
+                or not 0<=prior<=20 or prior+cap>20):
+            raise ValueError('Combined pilot completion ceiling would be exceeded')
+    return cap
+
+
+def claim_dispatch(path,approval,run_id,max_calls=20):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     with path.open('x',encoding='utf-8') as handle:
-        json.dump({'run_id':run_id,'approval':approval,'max_completion_requests':20},handle,indent=2)
+        json.dump({'run_id':run_id,'approval':approval,'max_completion_requests':max_calls},handle,indent=2)
         handle.flush();os.fsync(handle.fileno())
 
-def run(root=ROOT,live=False):
+def run(root=ROOT,live=False,approval_file=None):
     if not live:raise ValueError('Explicit --live required before credentials or dispatch')
     root=Path(root);base=root/BASE;protocol,rates=configuration(root)
-    approval_path=base/'provider_pilot/approval.json'
+    approval_path=Path(approval_file).resolve() if approval_file else base/'provider_pilot/approval.json'
+    if approval_path.parent.resolve()!=(base/'provider_pilot').resolve():
+        raise ValueError('Approval must be a reviewed provider_pilot artifact')
     approval=json.loads(approval_path.read_text(encoding='utf-8'))
-    if (approval.get('approved') is not True or approval.get('max_completion_requests')!=20
-            or approval.get('protocol')!=bind(base/'provider_pilot/protocol.json',root)
-            or approval.get('stop_on_any_error') is not True):
-        raise ValueError('Explicit approved pilot scope missing or changed')
+    max_calls=approved_call_cap(approval,bind(base/'provider_pilot/protocol.json',root))
+    if approval.get('prior_batch'):
+        prior_name=approval['prior_batch']
+        import re
+        if not re.fullmatch(r'[0-9]{8}T[0-9]{6}-[a-f0-9]{8}',prior_name):
+            raise ValueError('Invalid previous batch identity')
+        prior=json.loads((base/'gateway_runs'/prior_name/'summary.json').read_text(encoding='utf-8'))
+        if prior['completion_requests']!=approval.get('previous_completion_requests'):
+            raise ValueError('Previous request count differs from actual stopped batch')
+
+    permit_path=(base/'provider_pilot/dispatch_permit.json' if approval_path.name=='approval.json'
+                 else approval_path.with_name(approval_path.stem+'.dispatch_permit.json'))
+    if permit_path.exists():raise ValueError('Approved dispatch permit already consumed')
     from dotenv import dotenv_values
     values={}
     for path in (Path(r'C:\Users\91701\Downloads\Wingman-main\Wingman-main\.env'),root/'.env'):
@@ -72,12 +98,12 @@ def run(root=ROOT,live=False):
     config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
     common={'run_id':out.name,'seed':protocol['seed'],'config':config}
-    claim_dispatch(base/'provider_pilot/dispatch_permit.json',bind(approval_path,root),out.name)
+    claim_dispatch(permit_path,bind(approval_path,root),out.name,max_calls)
     append_experiment(log,split,dict(common,kind='dispatch-train',metrics=None,sample_ids=[]))
     guard=SpendGuard(root/'data/research/spend_ledger.json',limit_usd=10,pricing={MODEL:rates})
     budget_before=guard.report();COST_RATES[MODEL]=rates
     router=HybridLLMRouter(cloud_model=MODEL,routing_strategy='cloud-only',spend_guard=guard,remote_model_ids={MODEL})
-    pilot=NaraPilot(api_key=key,router=router,output_dir=out/'calls',max_calls=protocol['max_calls'])
+    pilot=NaraPilot(api_key=key,router=router,output_dir=out/'calls',max_calls=max_calls)
     observations=[];stop='';stream=io.StringIO()
     try:
         for identity in protocol['train_identities']:
@@ -107,4 +133,4 @@ def run(root=ROOT,live=False):
     return report
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');args=parser.parse_args();run(live=args.live)
+    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--approval-file',type=Path);args=parser.parse_args();run(live=args.live,approval_file=args.approval_file)

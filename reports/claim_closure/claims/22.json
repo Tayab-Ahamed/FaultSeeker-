@@ -7,7 +7,7 @@
   "requirements_unmet": [
     "Complete real model-assisted TRAIN outputs and validated function ranks, followed by the frozen final held-out evaluation; the stopped pilot is unscored"
   ],
-  "human_decision": "The initial pilot approval is consumed. Stop-on-error was honored; a new bounded live batch requires fresh approval. No held-out data was used.",
+  "human_decision": "Fresh user approval authorizes at most 14 further TRAIN requests after stopped six-request batch, combined ceiling 20, same reviewed egress exclusions and stop-on-any-error. Second batch currently executing; no complete quality output yet.",
   "acceptance_tests": [
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
     "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
@@ -125,10 +125,14 @@
     {
       "path": "reports/cohort_rebuild_v2/provider_pilot/STOPPED_BATCH_DIAGNOSIS.json",
       "sha256": "9e86c4f3b2e89041b5be737f5c5ba1fda273a8514ac1a7b6273a8e47004e17af"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.json",
+      "sha256": "9db389ce33d5d427054d9e59640cf0cd8dfcfffecd78a969e1dc9d2b1d52198c"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "New approved bounded live pilot after offline parser regression and full-suite validation",
+  "next_input_artifact": "Complete genuine production output from bounded approved follow-up, otherwise preserved stop/failure evidence",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/22.json",
   "paper_verdict": "HISTORICAL-AGGREGATE-RECOVERED",

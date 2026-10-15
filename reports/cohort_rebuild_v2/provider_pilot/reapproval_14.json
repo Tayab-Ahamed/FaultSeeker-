@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "approval_origin": "Explicit user reply to call_e6e899799f0a46e0b6063d3f38998066",
+  "max_completion_requests": 14,
+  "destination": "https://router.bynara.id/v1/chat/completions",
+  "model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+    "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+  },
+  "reviewed_data_scope": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/EGRESS_REVIEW.json",
+    "sha256": "7ace968ca00ae9e3b4e7cd1f56de06d875a8ff9272a82541dd52a5688be2f2b4"
+  },
+  "stop_on_any_error": true,
+  "conditions": [
+    "Hard stop at 14 new completion attempts; combined original + new batch <=20; new exclusive permit; stop on any error",
+    "Every attempted completion links to spend-ledger events",
+    "Exact requested/returned model identity retained",
+    "Held-out excluded without exceptions",
+    "Stop and report on any rate-limit or error; no retries"
+  ],
+  "prior_batch": "20261015T172438-be45711f",
+  "aggregate_pilot_limit": 20,
+  "previous_completion_requests": 6
+}
