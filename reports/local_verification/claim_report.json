@@ -7,9 +7,32 @@
       "tests": [],
       "required_evidence": "Public fork/release URL; local Apache license alone does not prove publication.",
       "required_env": [],
-      "status": "PENDING-PUBLICATION",
+      "status": "VERIFIED",
       "local_proof": "OUTSIDE-LOCAL-SCOPE",
-      "claim_commit": null,
+      "closure_reason": "A public upstream repository and its Apache-2.0 license were fetched and cached. This is availability proof, not publication of this local branch.",
+      "verification_scope": "Public upstream source availability; local branch publication not asserted",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/sources/public_repository.json",
+          "sha256": "a5410f67567090e6ee99f97104a81ab1b78664ece9f80163e7999c956f282347"
+        },
+        {
+          "path": "reports/claim_closure/sources/public_repository_LICENSE.txt",
+          "sha256": "2cd2e5d17873dc4aea8414b5893436fb9adfcd4e76031cb7a7a97473cc0ea865"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_claim_closure.py::test_publication_snapshot_is_public_and_open_licensed"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/01.json",
+      "claim_commit": "72e3754051fb46992b4116491621b4c30f4494fe",
+      "decision_commit": "164e65e393fe800f087de8c70661d55abfd3b9b2",
       "implementation_commits": [
         "849ef2949ff42244edad5d2c02aebcc46a04f31d"
       ]
@@ -23,9 +46,25 @@
       ],
       "required_evidence": "Full suite with original baseline tests retained; runner unit test alone is insufficient.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "All 201 baseline cases passed and every original test source matches its frozen digest.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure",
+        "tests/test_reproduction_entrypoints.py::test_original_test_sources_match_the_frozen_baseline_manifest"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/02.json",
       "claim_commit": "0252e6b4eff2604072c507f94ae560504581985d",
+      "decision_commit": "af5eabef3266f097d83724497b31e68f36f3b89c",
       "implementation_commits": [
         "0252e6b4eff2604072c507f94ae560504581985d"
       ]
@@ -40,11 +79,39 @@
       ],
       "required_evidence": "246 unique accepted acquisition manifests; no padded rows.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "claim_commit": "43d85201c95e97b515dcd5a4b0f614a2377f810f",
+      "closure_reason": "The rebuilt corpus has 231 candidates, zero accepted provenance chains, and 15 additional rows are absent. Qualified independent annotation attestations are missing for every candidate.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "246 accepted row manifests",
+        "Two qualified independent label attestations per row",
+        "15 missing candidate rows"
+      ],
+      "human_decision": "246 accepted row manifests; Two qualified independent label attestations per row; 15 missing candidate rows must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/03.json",
+      "claim_commit": "84ea6599644ed64ed8d24a12ed85ac7a474e585f",
+      "decision_commit": "b0ffb3e8b363e35bcf455d6bde02626ccfe93018",
       "implementation_commits": [
-        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
       ]
     },
     {
@@ -56,11 +123,37 @@
       ],
       "required_evidence": "Canonical transaction/receipt/traces, two source artifacts, independent adjudication per row.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "Two independent cached corroborating research sources and two independent annotation records are not available per row. Only one published PoC source was recovered for each of two replayed rows.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Two independent cached research reports per row",
+        "Independent annotator identities and consensus records"
+      ],
+      "human_decision": "Two independent cached research reports per row; Independent annotator identities and consensus records must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/04.json",
       "claim_commit": null,
+      "decision_commit": "d0c613469a5651314dfe56117e13930adceb48dc",
       "implementation_commits": [
-        "43d85201c95e97b515dcd5a4b0f614a2377f810f",
+        "84ea6599644ed64ed8d24a12ed85ac7a474e585f",
         "0fc67678afba9b32e371b817e130ebded1c25bf5"
       ]
     },
@@ -73,11 +166,37 @@
       ],
       "required_evidence": "Authenticated frozen ten-chain cohort; compute true chain counts and proportions.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "The unadjudicated CSV has eight chains and 132/231 Ethereum rows; no accepted 246-row ten-chain corpus establishes the stated 47.6 percent share.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Authenticated ten-chain 246-row population",
+        "Measured chain shares on that population"
+      ],
+      "human_decision": "Authenticated ten-chain 246-row population; Measured chain shares on that population must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/05.json",
       "claim_commit": null,
+      "decision_commit": "c9eacdf40b63ca9edf61ab4974c44d5a2cf58dda",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -89,12 +208,37 @@
       ],
       "required_evidence": "Adjudicated taxonomy and true unique labels on the frozen cohort.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "Distinct legacy vulnerability strings are observable, but their taxonomy assignment and independent label adjudication are not attested. String counts alone do not verify more than 80 confirmed vulnerability types.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Adjudicated SWC/DASP-aligned vulnerability taxonomy"
+      ],
+      "human_decision": "Adjudicated SWC/DASP-aligned vulnerability taxonomy must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/06.json",
       "claim_commit": null,
+      "decision_commit": "9ee5e45213f22bc864c989e9c391c664cf5c6b6e",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d",
-        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
       ]
     },
     {
@@ -106,12 +250,38 @@
       ],
       "required_evidence": "Predeclared non-overlapping class mapping and authentic row labels.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "The original class labels and trace-size observations are unadjudicated and do not establish the published proportions over 246 accepted rows. No labels were changed to meet percentages.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Frozen class-mapping protocol",
+        "Authentic trace-size/class labels for all 246 rows"
+      ],
+      "human_decision": "Frozen class-mapping protocol; Authentic trace-size/class labels for all 246 rows must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/07.json",
       "claim_commit": null,
+      "decision_commit": "570eff9ce0ad39b2b47a28e56aaaa41f76b80364",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d",
-        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
       ]
     },
     {
@@ -123,12 +293,37 @@
       ],
       "required_evidence": "Independently adjudicated reentrancy labels for all accepted rows.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "Legacy reentrancy-string matches are not independent ground truth; the required accepted 246-row corpus and its stated 18 positives are unavailable.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Independent reentrancy labels and exact positive/negative membership"
+      ],
+      "human_decision": "Independent reentrancy labels and exact positive/negative membership must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/08.json",
       "claim_commit": null,
+      "decision_commit": "f9f3c4890b1af4ebf6ad0fff46333534ed29aeca",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d",
-        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
       ]
     },
     {
@@ -142,12 +337,31 @@
       ],
       "required_evidence": "Compiled execution still separately required under claim 26.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "Production paper-mode storage signals, mutex filtering, reverted-frame handling and delegatecall storage ownership pass behavioral and compiled execution tests.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/09.json",
       "claim_commit": "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e",
+      "decision_commit": "0f4f630c5676505a894d8c1e43c392566e5af230",
       "implementation_commits": [
         "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e",
-        "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
         "ad437c547d0b7d5938d78d5f97a2accf1df29ed1"
       ]
     },
@@ -161,9 +375,25 @@
       ],
       "required_evidence": "Weights must fire on observed opcode events.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "Each specified storage weight contributes through executed detector evidence; weights were not tuned during this review.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/10.json",
       "claim_commit": "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
+      "decision_commit": "97d18113487f51a0a15ed10fcfb08cf426aa67d0",
       "implementation_commits": [
         "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
         "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
@@ -179,9 +409,25 @@
       ],
       "required_evidence": "Threshold boundaries and production paper profile.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "All five tier boundaries and lower neighbors pass, including production paper-profile activation.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/11.json",
       "claim_commit": "8c7bcbdf3c2028aea82cbe7f8ea4155c987834ed",
+      "decision_commit": "ecb86ccb3219a814f32e5fe8d804fa2105882cab",
       "implementation_commits": [
         "8c7bcbdf3c2028aea82cbe7f8ea4155c987834ed",
         "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
@@ -197,9 +443,24 @@
       ],
       "required_evidence": "Fallback when storage capture unavailable, no extra terms.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "The three structural terms, 0.75 penalty and 0.80 cap fire in the real fallback path under tests.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/12.json",
       "claim_commit": "4106092c3ded4ea176ed731f8d66d2f14a50b279",
+      "decision_commit": "8814f6be18117572b47d9d853a1c1efe7628668d",
       "implementation_commits": [
         "4106092c3ded4ea176ed731f8d66d2f14a50b279",
         "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
@@ -215,11 +476,42 @@
       ],
       "required_evidence": "Actual predictions on one frozen adjudicated cohort; integer confusion counts.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "claim_commit": "872e584207d190160d8d6f914eec53ac20d8419d",
+      "closure_reason": "No adjudicated positive/negative evaluation cohort or raw Table V outcomes exist. The metric runner now uses the paper HIGH_RISK/CONFIRMED positive rule, but no paper precision/recall/F1 is inferred from two unadjudicated samples. Pooled integer-count constraints also require clarification.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Frozen adjudicated evaluation set",
+        "Raw integer confusion outcomes",
+        "Declared pooling/averaging protocol"
+      ],
+      "human_decision": "Frozen adjudicated evaluation set; Raw integer confusion outcomes; Declared pooling/averaging protocol must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/numeric_constraints.json",
+          "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/13.json",
+      "claim_commit": "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+      "decision_commit": "b2eab9a3e92584bd59ad09becb37fff9ca305120",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -231,11 +523,40 @@
       ],
       "required_evidence": "Paired executed baseline detector outcomes; report measured differences.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "The 17/29 percentage-point differences require paired detector predictions on the same frozen adjudicated cohort. Those outcomes are absent; the corrected repeated-address baseline is implemented and tested.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Paired predictions for all three detector variants on identical adjudicated records"
+      ],
+      "human_decision": "Paired predictions for all three detector variants on identical adjudicated records must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/numeric_constraints.json",
+          "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/14.json",
       "claim_commit": null,
+      "decision_commit": "e1e48234fb519d2bf384ae920aaf0faf758a7995",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -247,13 +568,38 @@
       ],
       "required_evidence": "Exact transaction, raw traces, independent source/GT and executed localization result.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "The paper names legitimate Compound cToken recursion but gives no exact transaction. Compoundv2 inflation-attack CSV rows are not a substitute benign case study.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Exact legitimate Compound cToken transaction and source corroboration"
+      ],
+      "human_decision": "Exact legitimate Compound cToken transaction and source corroboration must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/15.json",
       "claim_commit": null,
+      "decision_commit": "c76e58a456be4ace743be4bd84c2d7ed300f1e8a",
       "implementation_commits": [
         "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
         "0fc67678afba9b32e371b817e130ebded1c25bf5",
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -265,9 +611,24 @@
       ],
       "required_evidence": "Local quality/confidence gate must dispatch escalation.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "Tier-2 confidence/evidence gating demonstrably dispatches escalation and records both attempts at the provider boundary.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/16.json",
       "claim_commit": "6dd294165b4340d26b68433cd2f338864c6e6106",
+      "decision_commit": "b1a9e6ef591c721a6ae836c6f89ec182635952de",
       "implementation_commits": [
         "6dd294165b4340d26b68433cd2f338864c6e6106"
       ]
@@ -289,9 +650,34 @@
         "ANTHROPIC_API_KEY",
         "OLLAMA_HOST"
       ],
-      "status": "PENDING-CREDENTIALS",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "Six-family live conformance cannot be established: Anthropic and DashScope credentials are absent and no local Ollama endpoint/model was reachable. Other key presence is not authentication proof.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Anthropic live access",
+        "DashScope live access",
+        "Installed reachable Ollama model",
+        "Six-family live conformance observations"
+      ],
+      "human_decision": "Anthropic live access; DashScope live access; Installed reachable Ollama model; Six-family live conformance observations must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+        "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/17.json",
       "claim_commit": null,
+      "decision_commit": "b3ff55373875442575abb93a432a3166dc4d2a10",
       "implementation_commits": [
         "6dd294165b4340d26b68433cd2f338864c6e6106"
       ]
@@ -306,13 +692,49 @@
       ],
       "required_evidence": "100 paired production runs, observed provider usage, pricing snapshot and 5:3:2 workload.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "No preregistered authenticated 100-transaction 5:3:2 paired workload, observed usage, quality/rank outcomes or verified pricing snapshot is available. The paper cost inputs imply 35 percent overall, not the Tier-2-only 58 percent figure.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Preregistered 100-case workload",
+        "Sourced dated prices",
+        "Paired observed query usage and quality/rank outcomes"
+      ],
+      "human_decision": "Preregistered 100-case workload; Sourced dated prices; Paired observed query usage and quality/rank outcomes must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/numeric_constraints.json",
+          "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/18.json",
       "claim_commit": "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
+      "decision_commit": "57844e369bd3c97ca42c3e57d0f6ac23e8f89964",
       "implementation_commits": [
         "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
         "6dd294165b4340d26b68433cd2f338864c6e6106",
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -325,12 +747,28 @@
       ],
       "required_evidence": "Constructor and executed Stage1 must remain keyless.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "Executed deterministic Stage 1 constructors and fund-flow analysis make no model calls and remain keyless.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+        "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/19.json",
       "claim_commit": "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec",
+      "decision_commit": "9bf99a4463340cf3f66f18509cb23e7d17a2c569",
       "implementation_commits": [
         "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec",
-        "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf"
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684"
       ]
     },
     {
@@ -343,9 +781,25 @@
       ],
       "required_evidence": "Coverage required; positive verdict cannot be overwritten.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "Complete-coverage BENIGN bypass occurs before Stage 2 model setup; EXPLOIT locking and UNCERTAIN escalation pass production-flow tests.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/20.json",
       "claim_commit": "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
+      "decision_commit": "ad8ab927b8496e506ccb6ecd8942dd6449f76e88",
       "implementation_commits": [
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
         "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec"
@@ -361,12 +815,43 @@
       ],
       "required_evidence": "Paired production runs on independently verified benign transactions and measured latency.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "There is no independently verified benign study pool or preregistered paired prefilter latency experiment. The BENIGN skip mechanism alone cannot establish a 40 percent population rate.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Authenticated benign population",
+        "Paired production latency and bypass observations"
+      ],
+      "human_decision": "Authenticated benign population; Paired production latency and bypass observations must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/21.json",
       "claim_commit": null,
+      "decision_commit": "86636646cd16562dfdef6b750e32c20689347475",
       "implementation_commits": [
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -383,9 +868,32 @@
         "OPENAI_API_KEY",
         "ETHERSCAN_API_KEY"
       ],
-      "status": "PENDING-CREDENTIALS",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "All local analysis roles execute under boundary tests, but no authenticated function-localization evaluation exists. Verified contract-source access, source-linked ground truth and live model-quality observations are absent.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Verified source-linked function ground truth",
+        "Live model/localization quality evaluation"
+      ],
+      "human_decision": "Verified source-linked function ground truth; Live model/localization quality evaluation must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+        "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/22.json",
       "claim_commit": "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+      "decision_commit": "e4bfb007db6ed615eec66ff1c54c3e239205eea9",
       "implementation_commits": [
         "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
         "6dd294165b4340d26b68433cd2f338864c6e6106"
@@ -401,9 +909,25 @@
       ],
       "required_evidence": "Heuristic score identified separately from calibrated probability.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "The executed four-component weighted formula is a relative heuristic score; incompatible calibration schemas are rejected rather than presented as validated probabilities.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+        "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/23.json",
       "claim_commit": "53316ac130cc4eff98f52b8ac01b5ac407bcf34a",
+      "decision_commit": "2ed07865650d10a464341cbf7b1d2cd0f782dcf2",
       "implementation_commits": [
         "53316ac130cc4eff98f52b8ac01b5ac407bcf34a"
       ]
@@ -418,9 +942,25 @@
       ],
       "required_evidence": "All feedback must affect downstream state, with rejection audit trail.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "All five first-checkpoint guidance actions affect downstream state and second-checkpoint rejection removes findings with an audit record and contract/function identity checks.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+        "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/24.json",
       "claim_commit": "120b11be7b693720024f12eafbdc72620de1cff1",
+      "decision_commit": "ec65b942cdc215144be9047ef3e8bcf0e1224736",
       "implementation_commits": [
         "120b11be7b693720024f12eafbdc72620de1cff1",
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
@@ -442,12 +982,45 @@
         "DRPC_API_KEY",
         "DRPC_RPC_URL"
       ],
-      "status": "PENDING-CREDENTIALS",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "claim_commit": "9bc8b22303c74dae8e006ebee6b09a40ccd36d94",
+      "closure_reason": "Observed Ethereum method and batch responses are recorded. The configured endpoint does not establish other-chain archive/trace support or sustained multi-provider recovery. Native opcode logging is rejected, while the tested Ethereum Anvil workaround works.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Remaining-chain trace/archive endpoints and observations",
+        "Live multi-provider outage/recovery evidence"
+      ],
+      "human_decision": "Remaining-chain trace/archive endpoints and observations; Live multi-provider outage/recovery evidence must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/claim_closure/rpc_capabilities.json",
+          "sha256": "b37e905f29eff96f00e1e4ab3a21ef21c7802aeafa29ff727d54b41a18c48256"
+        },
+        {
+          "path": "reports/claim_closure/rpc_capability_conclusion.json",
+          "sha256": "c0382de7ae09d63f3692cb6f6bf7baa097457ca9f31df072cc4e8288ff1a228b"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+        "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+        "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+        "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/25.json",
+      "claim_commit": "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+      "decision_commit": "74079850d7123692f338b1506924a293bbb9be59",
       "implementation_commits": [
-        "9bc8b22303c74dae8e006ebee6b09a40ccd36d94",
-        "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
+        "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
         "0fc67678afba9b32e371b817e130ebded1c25bf5"
       ]
     },
@@ -470,18 +1043,53 @@
         "CAST_BINARY",
         "FOUNDRY_BIN"
       ],
-      "status": "VERIFIED-HISTORICAL-ETHEREUM-SAMPLE",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
       "evidence_pointers": [
         "reports/historical_replay/README.md",
         "reports/historical_replay/historical_replay_summary.json",
-        "reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz"
+        "reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz",
+        "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json"
       ],
-      "historical_verification_scope": "One Ethereum transaction; comparison replay timed out. No cohort, all-chain or incident-label verification.",
+      "historical_verification_scope": "Two Ethereum transactions with matching historical receipts and complete normalized storage. No cohort, all-chain or incident-label verification.",
       "historical_acceptance_test": "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
-      "claim_commit": "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
+      "closure_reason": "Two historical Ethereum transactions have hash-checked signed block-prefix replay, matching receipts, full opcode captures and verified storage ownership; all compiled fixtures also pass. This does not certify other chains or incident labels.",
+      "verification_scope": "Compiled EVM fixtures and two matching-receipt Ethereum historical opcode captures",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/comparison_result.json",
+          "sha256": "32935a31c50e929254aea89e8d3fc8d50cb02e9125ee4483c6ce530cb41e2c0b"
+        },
+        {
+          "path": "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json",
+          "sha256": "5d3fe7953cc25e20e19f888a1c87600f9f92aed3f04e412dc99e76f2b4794ac0"
+        },
+        {
+          "path": "reports/historical_replay/final_accounting.json",
+          "sha256": "2b24d73783c7a40857c291e3fcd98096d47162c3e82224b6eafa9843a7cd7cf2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts",
+        "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
+        "tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/26.json",
+      "claim_commit": "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
+      "decision_commit": "5a5c4b8d7d17101881b4a897986c51d6100160f2",
       "implementation_commits": [
-        "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
         "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
       ]
     },
@@ -498,9 +1106,40 @@
         "CURL_IMPERSONATE_BINARY",
         "WAF_CASES_JSON"
       ],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "No recorded authorized challenged-request sample, real challenge denominator or live recovery outcomes establish 23 percent. The challenge transport/case configuration is absent; fixture tests are not a measured bypass rate.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Authorized challenge cases and strategy configuration",
+        "Observed challenged-request denominator and recovery outcomes"
+      ],
+      "human_decision": "Authorized challenge cases and strategy configuration; Observed challenged-request denominator and recovery outcomes must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+        "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/27.json",
       "claim_commit": "0fc67678afba9b32e371b817e130ebded1c25bf5",
+      "decision_commit": "48912b580f76f8ae8e8446b22e39c36f79f450dc",
       "implementation_commits": [
         "0fc67678afba9b32e371b817e130ebded1c25bf5"
       ]
@@ -514,11 +1153,37 @@
       ],
       "required_evidence": "Real receipt gas, call count, address count and depth per adjudicated category.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "claim_commit": null,
+      "closure_reason": "Table VI needs observed PMS/CES/TCS/LCS and overall scores by adjudicated category over the authentic study. No such production vectors exist. The new component aggregator is tested; receipt gas/call averages are explicitly not Table VI.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Observed production confidence vectors for authenticated study records",
+        "Predeclared function/transaction aggregation"
+      ],
+      "human_decision": "Observed production confidence vectors for authenticated study records; Predeclared function/transaction aggregation must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/28.json",
+      "claim_commit": "03c84f0af20603591115d5a269616a209d8e79ca",
+      "decision_commit": "b01e68080997810f9904da711528223138127596",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d"
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
       ]
     },
     {
@@ -530,11 +1195,46 @@
       ],
       "required_evidence": "20 paired runs with preregistered simulation policy, complete integer outcomes; not a human study.",
       "required_env": [],
-      "status": "BLOCKED-BY-DATA",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
+      "closure_reason": "No original 20-case selection, guidance policy, source-linked ranking ground truth or paired outcomes establish 68 to 81 percent. Ordinary binary top-1 accuracy over 20 items has five-point steps; another aggregation requires an explicit protocol.",
+      "verification_scope": "Current recorded evidence only",
+      "unmet_requirements": [
+        "Original or preregistered 20-case guidance study",
+        "Ground-truth function rankings",
+        "Explicit accuracy aggregation protocol"
+      ],
+      "human_decision": "Original or preregistered 20-case guidance study; Ground-truth function rankings; Explicit accuracy aggregation protocol must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/numeric_constraints.json",
+          "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/29.json",
       "claim_commit": null,
+      "decision_commit": "3ec4baea63b89aeb9d7e77f9e724f6882586f265",
       "implementation_commits": [
-        "872e584207d190160d8d6f914eec53ac20d8419d",
+        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
         "120b11be7b693720024f12eafbdc72620de1cff1"
       ]
     },
@@ -547,11 +1247,36 @@
       ],
       "required_evidence": "One offline entry point, genuine test results and blocked evidence report.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "claim_commit": "59b00cb8459f0166612f33a3626f6bfd690faf0e",
+      "closure_reason": "The offline acceptance/closure entry point executes, but exact reproduction of the published Table V, Fig.6 and Table VI cannot be demonstrated without the original authenticated studies and inputs. Infrastructure tests do not verify those unavailable outputs.",
+      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "unmet_requirements": [
+        "Authentic inputs and observed outputs for the three published tables/figures"
+      ],
+      "human_decision": "Authentic inputs and observed outputs for the three published tables/figures must be supplied or independently established before reopening.",
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/paper_requirements.json",
+          "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/claim_closure/cohort/row_decisions.json",
+          "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/30.json",
+      "claim_commit": "de5768e9b126f87bc1e9c9b3b9503064e5175843",
+      "decision_commit": "9b0c71e9b92ff524de9d2c6d46034e57cee53f09",
       "implementation_commits": [
-        "59b00cb8459f0166612f33a3626f6bfd690faf0e"
+        "de5768e9b126f87bc1e9c9b3b9503064e5175843"
       ]
     },
     {
@@ -563,9 +1288,28 @@
       ],
       "required_evidence": "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check.",
       "required_env": [],
-      "status": "IMPLEMENTED-LOCAL",
+      "status": "VERIFIED",
       "local_proof": "PASSED",
+      "closure_reason": "The current Python 3.11.9 suite executes and Docker COPY inputs/layout exist. This scope does not assert an image build or untested interpreter versions; the Docker daemon was unavailable.",
+      "verification_scope": "Observed Python 3.11.9 execution and Docker COPY/layout checks; no Docker build assertion",
+      "unmet_requirements": [],
+      "human_decision": null,
+      "closure_evidence": [
+        {
+          "path": "reports/claim_closure/local_acceptance.json",
+          "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+        },
+        {
+          "path": "reports/claim_closure/environment.json",
+          "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        }
+      ],
+      "closure_acceptance_tests": [
+        "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+      ],
+      "closure_decision_path": "reports/claim_closure/claims/31.json",
       "claim_commit": "849ef2949ff42244edad5d2c02aebcc46a04f31d",
+      "decision_commit": "414e1a3fa3ebbe07f51de6678978138f751344b7",
       "implementation_commits": [
         "849ef2949ff42244edad5d2c02aebcc46a04f31d"
       ]
@@ -573,19 +1317,22 @@
   ],
   "dataset_audit": {
     "status": "BLOCKED-BY-DATA",
-    "dataset_sha256": "9de48282363d44373459ea3253a99c5548e0ef51e2c0db3ed16dad71adaf8032",
+    "dataset_sha256": "f8cd34d6853e5aa14a0dbff3ac3b1f5060dc4c1d35e98e2e531b7ce519b5dc02",
     "input_rows": 231,
     "accepted_rows": 0,
     "target_rows": 246,
     "additional_verified_rows_needed": 246,
     "missing_counts": {
-      "missing_ground_truth": 231,
       "missing_independent_annotation": 231,
       "missing_independent_sources": 231,
-      "missing_receipt": 231,
-      "missing_trace": 231,
-      "missing_transaction": 231,
-      "missing_verification": 231
+      "missing_receipt": 229,
+      "missing_trace": 229,
+      "missing_transaction": 229,
+      "missing_verification": 229,
+      "missing_independent_rpc_confirmation": 2,
+      "unverified_acquisition_mode": 2,
+      "ground_truth_identity_mismatch": 1,
+      "missing_ground_truth": 116
     },
     "rows": [
       {
@@ -593,7 +1340,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -609,7 +1355,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -625,7 +1370,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -641,7 +1385,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -657,13 +1400,10 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
+          "missing_independent_rpc_confirmation",
           "missing_independent_sources",
-          "missing_receipt",
-          "missing_trace",
-          "missing_transaction",
-          "missing_verification"
+          "unverified_acquisition_mode"
         ],
         "verification_scope": "artifact-integrity",
         "input_line": 6
@@ -673,7 +1413,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -689,7 +1428,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -705,7 +1443,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -721,7 +1458,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -737,7 +1473,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -753,7 +1488,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -769,7 +1503,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -785,7 +1518,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -801,7 +1533,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -817,7 +1548,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -833,7 +1563,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -849,7 +1578,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -865,7 +1593,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -881,7 +1608,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -897,7 +1623,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -913,7 +1638,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -929,7 +1653,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -945,7 +1668,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -961,7 +1683,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -977,7 +1698,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -993,7 +1713,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1009,7 +1728,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1025,7 +1743,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1041,7 +1758,7 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
+          "ground_truth_identity_mismatch",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1057,7 +1774,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1073,7 +1789,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1089,7 +1804,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1105,7 +1819,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1121,7 +1834,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1137,7 +1849,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1153,7 +1864,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1169,7 +1879,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1185,7 +1894,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1201,13 +1909,10 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
+          "missing_independent_rpc_confirmation",
           "missing_independent_sources",
-          "missing_receipt",
-          "missing_trace",
-          "missing_transaction",
-          "missing_verification"
+          "unverified_acquisition_mode"
         ],
         "verification_scope": "artifact-integrity",
         "input_line": 40
@@ -1217,7 +1922,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1233,7 +1937,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1249,7 +1952,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1265,7 +1967,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1281,7 +1982,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1297,7 +1997,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1313,7 +2012,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1329,7 +2027,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1345,7 +2042,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1361,7 +2057,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1377,7 +2072,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1393,7 +2087,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1409,7 +2102,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1425,7 +2117,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1441,7 +2132,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1457,7 +2147,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1473,7 +2162,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1489,7 +2177,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1505,7 +2192,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1521,7 +2207,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1537,7 +2222,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1553,7 +2237,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1569,7 +2252,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1585,7 +2267,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1601,7 +2282,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1617,7 +2297,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1633,7 +2312,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1649,7 +2327,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1665,7 +2342,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1681,7 +2357,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1697,7 +2372,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1713,7 +2387,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1729,7 +2402,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1745,7 +2417,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1761,7 +2432,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1777,7 +2447,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1793,7 +2462,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1809,7 +2477,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1825,7 +2492,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1841,7 +2507,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1857,7 +2522,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1873,7 +2537,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1889,7 +2552,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1905,7 +2567,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1921,7 +2582,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1937,7 +2597,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1953,7 +2612,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1969,7 +2627,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -1985,7 +2642,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2001,7 +2657,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2017,7 +2672,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2033,7 +2687,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2049,7 +2702,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2065,7 +2717,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2081,7 +2732,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2097,7 +2747,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2113,7 +2762,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2129,7 +2777,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2145,7 +2792,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2161,7 +2807,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2177,7 +2822,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2193,7 +2837,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2209,7 +2852,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2225,7 +2867,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2241,7 +2882,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2257,7 +2897,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2273,7 +2912,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2289,7 +2927,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2305,7 +2942,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2321,7 +2957,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2337,7 +2972,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2353,7 +2987,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2369,7 +3002,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2385,7 +3017,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2401,7 +3032,6 @@
         "chain": "eth",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -2417,7 +3047,6 @@
         "chain": "bsc",
         "accepted": false,
         "missing": [
-          "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
           "missing_receipt",
@@ -4296,28 +4925,396 @@
     "original_sources_changed": [],
     "baseline_commit": "6282729ce34bd4a17cc99e750d23ad383ff4b0c1"
   },
+  "closure": {
+    "reviewed": 31,
+    "unreviewed_ids": [],
+    "complete": true,
+    "statuses": {
+      "VERIFIED": 13,
+      "UNVERIFIABLE": 18
+    },
+    "semantics": "VERIFIED is limited to stated evidence scope; UNVERIFIABLE is an evidence gap in this run, not proof of impossibility."
+  },
   "test_exit_code": 0,
   "test_counts": {
-    "passed": 336,
+    "passed": 353,
     "skipped": 1
   },
-  "timestamp": "2026-10-15T02:22:57.865868+00:00",
+  "test_outcomes": {
+    "tests/test_acquisition_paths.py::test_drpc_key_and_chain_endpoint_are_used_without_live_requests": "passed",
+    "tests/test_acquisition_paths.py::test_capture_checks_chain_and_cross_provider_identity_before_writing": "passed",
+    "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator": "passed",
+    "tests/test_acquisition_paths.py::test_ordinary_failure_is_not_relabelled_as_challenge_success": "passed",
+    "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence": "passed",
+    "tests/test_acquisition_paths.py::test_provider_stats_do_not_expose_rpc_credentials": "passed",
+    "tests/test_adaptive_controller.py::test_adaptive_controller_expands_empty_function_set_from_trace_graph": "passed",
+    "tests/test_adaptive_controller.py::test_adaptive_controller_does_not_change_existing_candidates": "passed",
+    "tests/test_adaptive_controller.py::test_forensics_result_serializes_adaptive_fallback_metadata": "passed",
+    "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state": "passed",
+    "tests/test_analyst_guidance.py::test_second_checkpoint_rejection_removes_finding_and_keeps_audit_record": "passed",
+    "tests/test_analyst_guidance.py::test_review_rejects_only_the_selected_contract_with_same_function_name": "passed",
+    "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors": "passed",
+    "tests/test_calibration_schema.py::test_schema_and_training_provenance_survive_save_load": "passed",
+    "tests/test_calibration_schema.py::test_overlapping_training_and_evaluation_ids_are_rejected": "passed",
+    "tests/test_calibration_schema.py::test_nonfinite_feature_cannot_become_probability": "passed",
+    "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score": "passed",
+    "tests/test_calibration_schema.py::test_export_and_inference_use_the_same_observed_depth_and_storage_features": "passed",
+    "tests/test_calibration_schema.py::test_nonfinite_model_confidence_never_becomes_high_confidence": "passed",
+    "tests/test_claim_closure.py::test_closure_requires_hashed_evidence_and_explicit_reason": "passed",
+    "tests/test_claim_closure.py::test_verified_closure_requires_passing_behavior_acceptance": "passed",
+    "tests/test_claim_closure.py::test_strict_closure_does_not_hide_unreviewed_claims": "passed",
+    "tests/test_claim_closure.py::test_publication_snapshot_is_public_and_open_licensed": "passed",
+    "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof": "passed",
+    "tests/test_claim_registry.py::test_local_status_requires_every_bound_test_to_pass": "passed",
+    "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset": "passed",
+    "tests/test_claim_registry.py::test_tools_claim_requires_executed_compiled_integration_tests": "passed",
+    "tests/test_claim_registry.py::test_historical_capture_status_is_limited_to_verified_ethereum_sample": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuild_retains_every_row_without_inventing_annotation": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuild_preserves_filename_payload_identity_conflict": "passed",
+    "tests/test_cohort_rebuild.py::test_provenance_reader_supports_real_compressed_trace_artifacts": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuilt_cohort_accounts_for_every_source_row_and_revalidates_gaps": "passed",
+    "tests/test_cohort_rebuild.py::test_captured_rows_remain_rejected_without_independent_attestations": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[reentrant-CONFIRMED_REENTRANCY]": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[guarded-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[delegatecall-NOT_REENTRANCY]": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_returns_confidence_score_object": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_overall_in_unit_range": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_all_components_in_unit_range": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_level_is_valid_string": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_explanation_is_non_empty_list": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_empty_func_no_crash": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_pattern_match_flash_loan_keyword": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_pattern_match_caps_at_one": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_numeric": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_text_labels": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_percentage_string": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_no_scores_returns_neutral": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_txn_consistency_attacker_boost": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_code_evidence_no_contract_info": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.95-very_high]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.8-high]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.6-moderate]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.4-low]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.1-very_low]": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_results_sorted_descending_by_overall": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_returns_list_of_dicts": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_each_result_has_confidence_key": "passed",
+    "tests/test_confidence_scorer.py::TestGenerateEvidenceCard::test_card_has_required_keys": "passed",
+    "tests/test_confidence_scorer.py::TestGenerateEvidenceCard::test_function_signature_fields": "passed",
+    "tests/test_cost_tracker_ablation.py::test_local_tier_is_free": "passed",
+    "tests/test_cost_tracker_ablation.py::test_cloud_tier_cost_is_computed_from_pricing": "passed",
+    "tests/test_cost_tracker_ablation.py::test_cost_reduction_is_measured_not_assumed": "passed",
+    "tests/test_cost_tracker_ablation.py::test_all_cloud_run_reports_zero_reduction": "passed",
+    "tests/test_cost_tracker_ablation.py::test_tier_distribution_shares_sum_to_one": "passed",
+    "tests/test_cost_tracker_ablation.py::test_stage_timer_records_latency": "passed",
+    "tests/test_cost_tracker_ablation.py::test_stage_timer_records_even_on_exception": "passed",
+    "tests/test_cost_tracker_ablation.py::test_prefilter_rate_is_tracked": "passed",
+    "tests/test_cost_tracker_ablation.py::test_empty_tracker_reports_zeros_not_estimates": "passed",
+    "tests/test_cost_tracker_ablation.py::test_full_system_enables_everything": "passed",
+    "tests/test_cost_tracker_ablation.py::test_disabling_component_reports_disabled": "passed",
+    "tests/test_cost_tracker_ablation.py::test_variant_name_reflects_ablation": "passed",
+    "tests/test_cost_tracker_ablation.py::test_unknown_component_rejected": "passed",
+    "tests/test_cost_tracker_ablation.py::test_from_env_reads_flags": "passed",
+    "tests/test_cost_tracker_ablation.py::test_from_env_ignores_unset_and_false_values": "passed",
+    "tests/test_cost_tracker_ablation.py::test_standard_suite_covers_full_system_plus_each_component": "passed",
+    "tests/test_cost_tracker_ablation.py::test_config_is_hashable_and_serializable": "passed",
+    "tests/test_detector_experiments.py::test_baselines_execute_different_algorithms_on_identical_captured_input": "passed",
+    "tests/test_detector_experiments.py::test_category_observations_are_derived_from_receipt_and_actual_tree": "passed",
+    "tests/test_detector_experiments.py::test_simple_baseline_counts_address_repetition_across_different_selectors": "passed",
+    "tests/test_evidence_manifest.py::test_unknown_provenance_never_becomes_verified": "passed",
+    "tests/test_evidence_manifest.py::test_reviewer_string_is_not_counted_as_multiple_independent_reviewers": "passed",
+    "tests/test_evidence_manifest.py::test_explicit_benign_ground_truth_does_not_require_fabricated_attacker_or_location": "passed",
+    "tests/test_evidence_manifest.py::test_ground_truth_identity_mismatch_is_rejected": "passed",
+    "tests/test_evidence_manifest.py::test_all_rows_are_audited_and_pending_rows_are_not_padded": "passed",
+    "tests/test_evidence_manifest.py::test_artifact_paths_cannot_escape_evidence_root": "passed",
+    "tests/test_evidence_manifest.py::test_digest_is_of_content_not_filename": "passed",
+    "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering": "passed",
+    "tests/test_external_baseline_and_human_study.py::test_external_baseline_ingest_scores_predictions": "passed",
+    "tests/test_external_baseline_and_human_study.py::test_human_study_summarizes_sus_and_task_metrics": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[False-withdraw]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[False-withdraw_funds(uint256)]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw_funds(uint256)]": "passed",
+    "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[0]": "passed",
+    "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[2]": "passed",
+    "tests/test_historical_fork_replay.py::test_replay_rejects_receipt_changes": "passed",
+    "tests/test_historical_fork_replay.py::test_rpc_meter_refuses_requests_above_limit": "passed",
+    "tests/test_historical_fork_replay.py::test_archive_proxy_cannot_broadcast_to_mainnet": "passed",
+    "tests/test_historical_fork_replay.py::test_mining_can_use_a_separately_bounded_timeout": "passed",
+    "tests/test_historical_fork_replay.py::test_pre_metering_rpc_estimate_is_accounted_exactly_once": "passed",
+    "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt": "passed",
+    "tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt": "passed",
+    "tests/test_historical_fork_replay.py::test_historical_fork_captures_reentrant_storage": "skipped",
+    "tests/test_honest_eval.py::test_guarded_features_exposes_safe_fields": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_label_subscript": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_label_via_get": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_membership_probe": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_strips_forbidden_from_iteration": "passed",
+    "tests/test_honest_eval.py::test_forbidden_fields_cover_known_leak_columns": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_detects_label_reading_scorer": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_passes_clean_scorer": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_flags_perfect_separation": "passed",
+    "tests/test_honest_eval.py::test_classification_metrics_basic_counts": "passed",
+    "tests/test_honest_eval.py::test_f1_perfect_and_zero": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_brackets_point_estimate": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_is_deterministic_under_seed": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_handles_empty_input": "passed",
+    "tests/test_honest_eval.py::test_brier_score_bounds": "passed",
+    "tests/test_honest_eval.py::test_expected_calibration_error_perfect_is_zero": "passed",
+    "tests/test_honest_eval.py::test_expected_calibration_error_detects_overconfidence": "passed",
+    "tests/test_honest_eval.py::test_reliability_table_bins_sum_to_population": "passed",
+    "tests/test_honest_eval.py::test_mcnemar_counts_and_statistic": "passed",
+    "tests/test_honest_eval.py::test_has_trace_features_flag": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_blocks_when_benign_untraced": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_allows_balanced_split": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_blocks_degenerate_constant_features": "passed",
+    "tests/test_honest_eval.py::test_comparable_subset_filters_untraced": "passed",
+    "tests/test_honest_eval.py::test_feature_dict_excludes_label": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_function_match": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_returns_none_when_absent": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_line_match": "passed",
+    "tests/test_honest_eval.py::test_rank_ignores_function_signature_parens": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_top_k_and_mrr": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_blocks_without_predictions": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_counts_misses": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_excludes_non_ok_trace_status": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_enforces_80_percent_coverage": "passed",
+    "tests/test_honest_eval.py::test_fn_selector_known_value": "passed",
+    "tests/test_honest_eval.py::test_register_and_resolve_selector": "passed",
+    "tests/test_honest_eval.py::test_selector_not_in_table_returns_none": "passed",
+    "tests/test_honest_eval.py::test_prediction_keys_resolves_hex_selector": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_with_hex_selector": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier1_agent_returns_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_children_filtering_returns_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier3_agent_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier3_processing_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_cloud_only_strategy_always_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier_override_forces_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier_override_forces_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_unknown_role_returns_valid_model": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_known_roles_return_correct_tier": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_heuristic_complex_prompt_is_tier3": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_heuristic_simple_prompt_is_tier1": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_local_query_costs_zero": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_cloud_query_costs_nonzero": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_query_count_increments": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_local_and_cloud_counts_split": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_savings_with_local_queries": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_savings_percent_in_valid_range": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_no_tracking_skips_records": "passed",
+    "tests/test_llm_router.py::TestIsLocalModel::test_ollama_models_are_local": "passed",
+    "tests/test_llm_router.py::TestIsLocalModel::test_gpt_models_are_cloud": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_enabled_sends_tier1_to_the_local_model": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_disabled_forces_every_query_to_cloud": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_ablation_changes_the_selected_model": "passed",
+    "tests/test_llm_router_ablation.py::test_disabling_another_component_leaves_routing_alone": "passed",
+    "tests/test_llm_router_ablation.py::test_record_query_feeds_the_cost_tracker": "passed",
+    "tests/test_llm_router_ablation.py::test_local_calls_are_recorded_as_free_local_tier": "passed",
+    "tests/test_llm_router_ablation.py::test_stage_defaults_when_no_agent_role_given": "passed",
+    "tests/test_llm_router_ablation.py::test_router_without_tracker_does_not_crash": "passed",
+    "tests/test_llm_router_ablation.py::test_tracker_measures_a_real_cost_reduction": "passed",
+    "tests/test_llm_router_ablation.py::test_orchestrator_propagates_ablation_and_tracker_into_router": "passed",
+    "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign": "passed",
+    "tests/test_local_control_flow.py::test_explicit_legacy_calibrator_cannot_be_used_as_production_probability": "passed",
+    "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign": "passed",
+    "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings": "passed",
+    "tests/test_orchestrator_research_metrics.py::test_trace_entropy_is_normalized": "passed",
+    "tests/test_orchestrator_research_metrics.py::test_trace_entropy_handles_empty_trace": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_enabled_by_default": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_disabled_controller_is_a_real_noop": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_ablation_bypasses_the_localizer": "passed",
+    "tests/test_orchestrator_wiring.py::test_enabled_path_does_consult_the_localizer": "passed",
+    "tests/test_orchestrator_wiring.py::test_controller_keeps_the_config_object_it_was_given": "passed",
+    "tests/test_orchestrator_wiring.py::test_orchestrator_accepts_and_propagates_ablation": "passed",
+    "tests/test_orchestrator_wiring.py::test_orchestrator_defaults_to_full_system_and_no_tracker": "passed",
+    "tests/test_orchestrator_wiring.py::test_stage_helper_records_timing_when_tracker_attached": "passed",
+    "tests/test_orchestrator_wiring.py::test_stage_helper_is_safe_without_tracker": "passed",
+    "tests/test_orchestrator_wiring.py::test_calibration_returns_float_when_model_present": "passed",
+    "tests/test_orchestrator_wiring.py::test_calibration_returns_none_when_ablated": "passed",
+    "tests/test_paper_detector.py::test_paper_profile_uses_five_tiers_and_actual_storage_signals": "passed",
+    "tests/test_paper_detector.py::test_paper_profile_ignores_reverted_opcode_writes": "passed",
+    "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter": "passed",
+    "tests/test_paper_detector.py::test_paper_structural_terms_penalty_cap_and_tiers": "passed",
+    "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile": "passed",
+    "tests/test_paper_detector.py::test_complete_storage_capture_with_no_writes_does_not_activate_fallback": "passed",
+    "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints": "passed",
+    "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators": "passed",
+    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance": "passed",
+    "tests/test_paper_experiments.py::test_comparison_rejects_unpaired_ids_and_missing_cost_usage": "passed",
+    "tests/test_paper_experiments.py::test_function_identity_includes_address_and_full_signature": "passed",
+    "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations": "passed",
+    "tests/test_paper_experiments.py::test_published_precision_recall_cannot_be_forced_on_18_positive_incidents": "passed",
+    "tests/test_paper_experiments.py::test_cohort_statistics_count_real_labels_without_padding": "passed",
+    "tests/test_paper_experiments.py::test_localization_quality_uses_ground_truth_functions_not_exploit_labels": "passed",
+    "tests/test_paper_experiments.py::test_pipeline_adapter_refuses_incomplete_analysis_and_preserves_uncertain_triage": "passed",
+    "tests/test_paper_experiments.py::test_external_study_pool_is_not_padded_to_the_main_246_row_cohort": "passed",
+    "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped": "passed",
+    "tests/test_paper_rpc_probe.py::test_capability_probe_records_rejection_without_echoing_exception": "passed",
+    "tests/test_paper_rpc_probe.py::test_capability_probe_does_not_promote_rpc_error_to_support": "passed",
+    "tests/test_paper_rpc_probe.py::test_archive_proxy_allows_trace_reads_but_still_denies_broadcast": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.0-NOT_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.0999-NOT_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.1-UNLIKELY_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.2999-UNLIKELY_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.3-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.5499-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.55-HIGH_RISK_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.7999-HIGH_RISK_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.8-CONFIRMED_REENTRANCY]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[repeated_slot_nested-0.55]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[write_after_external_call-0.25]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[same_function_reentered-0.2]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[write_before_and_after-0.1]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[same_slot_rewritten-0.1]": "passed",
+    "tests/test_paper_weights.py::test_storage_score_clamps_the_actual_one_point_two_sum": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-eth]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://bscscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-bsc]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://polygonscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-polygon]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://arbiscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-arbitrum]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://optimistic.etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-optimism]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://snowtrace.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-avalanche]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://basescan.org/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-base]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://ftmscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-fantom]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://bscscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://polygonscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_bare_hash_with_chain_keyword_eth": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_case_insensitive_url": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_missing_hash_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_unsupported_chain_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_empty_string_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_hash_too_short_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_hash_exactly_64_chars_is_valid": "passed",
+    "tests/test_pipeline_parse.py::TestChainDisambiguation::test_bscscan_not_detected_as_eth": "passed",
+    "tests/test_pipeline_parse.py::TestChainDisambiguation::test_optimism_on_etherscan_subdomain": "passed",
+    "tests/test_public_incident_import.py::test_normalize_incident_extracts_contracts_chains_and_tx_hashes": "passed",
+    "tests/test_public_incident_import.py::test_normalize_incident_accepts_json_encoded_contracts": "passed",
+    "tests/test_public_incident_import.py::test_normalize_defillama_hack_marks_row_as_staged_incident": "passed",
+    "tests/test_public_incident_import.py::test_normalize_rugpull_row_stages_contract_without_tx_claim": "passed",
+    "tests/test_public_incident_import.py::test_normalize_hf_benign_row_requires_non_scam_and_excludes_scam": "passed",
+    "tests/test_public_incident_import.py::test_hf_benign_summary_marks_target_status": "passed",
+    "tests/test_public_incident_import.py::test_research_readiness_report_uses_current_benchmark": "passed",
+    "tests/test_public_incident_import.py::test_validate_imported_incident_marks_known_hash_as_existing": "passed",
+    "tests/test_public_incident_import.py::test_validate_imported_incident_marks_new_hash_for_manual_review": "passed",
+    "tests/test_public_incident_import.py::test_build_candidate_rows_expands_each_transaction_hash": "passed",
+    "tests/test_public_incident_import.py::test_split_hashes_rejects_invalid_hashes": "passed",
+    "tests/test_public_incident_import.py::test_research_exploit_pool_dedupes_candidates_against_verified": "passed",
+    "tests/test_public_incident_import.py::test_build_candidate_rows_marks_unsupported_chain_blocker": "passed",
+    "tests/test_public_incident_import.py::test_readiness_truthy_parser_accepts_bool_and_string_forms": "passed",
+    "tests/test_query_routing.py::test_tier_two_good_local_result_stays_local": "passed",
+    "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts": "passed",
+    "tests/test_query_routing.py::test_tier_one_stays_local_and_tier_three_goes_cloud": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[{\"confidence\": 0.9, \"evidence\": []}]": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[{\"confidence\": 0.9}]": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[not json]": "passed",
+    "tests/test_query_routing.py::test_cloud_budget_blocks_dispatch_and_local_loop_remains_free": "passed",
+    "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage": "passed",
+    "tests/test_query_routing.py::test_percentage_confidence_below_gate_falls_back": "passed",
+    "tests/test_query_routing.py::test_failed_cloud_attempt_is_recorded_and_reserved_cost_is_kept": "passed",
+    "tests/test_query_routing.py::test_sdk_cannot_retry_paid_calls_behind_budget_accounting": "passed",
+    "tests/test_query_routing.py::test_exported_cost_summary_contains_every_attempt_for_production_measurement": "passed",
+    "tests/test_query_routing.py::test_child_filter_can_return_empty_selection_without_being_a_provider_failure": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[gpt-4o-mini-GPTAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[grok-3-mini-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[qwen-plus-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[gemini-2.0-flash-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[claude-3-5-sonnet-AnthropicAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[llama3:8b-OllmaAgent]": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_extract_reentrancy_analysis_supports_legacy_flat_fields": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_build_dataset_row_flattens_only_compact_reentrancy_fields": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_priority_total_uses_probabilistic_union": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_reentrancy_metrics_use_tier_weighting_and_trace_rates": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_forensics_result_serialization_exposes_grouped_reentrancy_and_priority": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_priority_breakdown_discounts_fallback_reentrancy": "passed",
+    "tests/test_reentrancy_state_signals.py::test_classic_withdraw_scores_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_no_state_trace_fallback_scores_recursive_call_graph_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_cross_function_reentry_scores_high_without_state_trace": "passed",
+    "tests/test_reentrancy_state_signals.py::test_fallback_score_is_hard_capped": "passed",
+    "tests/test_reentrancy_state_signals.py::test_checks_effects_interactions_safe_pattern_scores_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_staticcall_only_recursion_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_multicall_style_same_contract_batching_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_reentrant_fallback_scores_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_delegatecall_proxy_scores_medium_but_not_high_confidence": "passed",
+    "tests/test_reentrancy_state_signals.py::test_plain_proxy_delegatecall_without_callback_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_delegatecall_effective_address_normalization_survives_no_state_trace": "passed",
+    "tests/test_reentrancy_state_signals.py::test_nested_delegatecall_root_storage_context_survives_reentry": "passed",
+    "tests/test_reentrancy_state_signals.py::test_mutex_guard_slot_is_filtered": "passed",
+    "tests/test_reentrancy_state_signals.py::test_same_pc_loop_writes_are_deduped": "passed",
+    "tests/test_reentrancy_state_signals.py::test_same_pc_same_call_id_loop_writes_are_deduped": "passed",
+    "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure": "passed",
+    "tests/test_reproduction_entrypoints.py::test_original_test_sources_match_the_frozen_baseline_manifest": "passed",
+    "tests/test_research_experiment_suite.py::test_research_experiment_suite_generates_nontrivial_comparisons": "passed",
+    "tests/test_research_modules.py::test_logistic_calibrator_trains_and_reports_calibration_metrics": "passed",
+    "tests/test_research_modules.py::test_transaction_interaction_graph_extracts_motifs_and_metrics": "passed",
+    "tests/test_research_modules.py::test_failure_aware_exploit_graph_localizer_selects_modes_and_ranks_candidates": "passed",
+    "tests/test_research_modules.py::test_adversarial_evaluator_generates_attack_variants_and_degradation_report": "passed",
+    "tests/test_research_modules.py::test_statistical_helpers_return_reproducible_values": "passed",
+    "tests/test_research_system_surfaces.py::test_chain_profiles_are_chain_specific": "passed",
+    "tests/test_research_system_surfaces.py::test_temporal_correlator_groups_repeated_attacker_victim_pairs": "passed",
+    "tests/test_research_system_surfaces.py::test_remediation_suggestions_follow_vulnerability_hint": "passed",
+    "tests/test_research_system_surfaces.py::test_mempool_risk_scorer_flags_large_contract_creation": "passed",
+    "tests/test_research_tooling_robustness.py::test_split_hashes_fuzz_rejects_near_misses": "passed",
+    "tests/test_research_tooling_robustness.py::test_large_benign_dataset_validation_meets_minimum_and_detects_duplicates": "passed",
+    "tests/test_research_tooling_robustness.py::test_candidate_expansion_dedupes_same_tx_same_chain_but_keeps_cross_chain": "passed",
+    "tests/test_research_tooling_robustness.py::test_empty_benign_csv_reports_all_required_fields_missing": "passed",
+    "tests/test_research_tooling_robustness.py::test_benign_dataset_reports_schema_and_duplicates": "passed",
+    "tests/test_research_tooling_robustness.py::test_benign_dataset_reports_missing_required_fields": "passed",
+    "tests/test_research_tooling_robustness.py::test_candidate_expansion_ignores_malformed_manifest_rows_without_crashing": "passed",
+    "tests/test_research_tooling_robustness.py::test_readiness_summary_handles_corrupt_json_without_crashing": "passed",
+    "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two": "passed",
+    "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl": "passed",
+    "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes": "passed",
+    "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure": "passed",
+    "tests/test_rpc_mechanisms.py::test_missing_batch_response_is_not_silently_accepted_as_null": "passed",
+    "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist": "passed",
+    "tests/test_source_analysis_safety.py::test_single_line_function_source_is_not_dropped": "passed",
+    "tests/test_source_analysis_safety.py::test_downloaded_source_cannot_escape_output_directory": "passed",
+    "tests/test_source_analysis_safety.py::test_downloader_preserves_caller_directory_and_unrelated_implementation": "passed",
+    "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions": "passed",
+    "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[-1]": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[nan]": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[inf]": "passed",
+    "tests/test_spend_guard.py::test_unknown_cloud_price_cannot_be_treated_as_free": "passed",
+    "tests/test_spend_guard.py::test_failed_call_without_usage_keeps_full_reservation": "passed",
+    "tests/test_spend_guard.py::test_concurrent_reservations_cannot_spend_same_remaining_budget": "passed",
+    "tests/test_spend_guard.py::test_direct_cloud_agent_cannot_bypass_cumulative_budget": "passed",
+    "tests/test_stage_one_local.py::test_default_configuration_can_start_without_cloud_credentials": "passed",
+    "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless": "passed",
+    "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents": "passed",
+    "tests/test_stage_one_local.py::test_multi_tx_coverage_requires_recorded_context_evidence": "passed",
+    "tests/test_storage_normalization.py::test_reverted_delegate_write_does_not_poison_following_parent_read": "passed",
+    "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters": "passed",
+    "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes": "passed",
+    "tests/test_storage_normalization.py::test_precompile_without_opcode_frame_does_not_shift_reverted_call_identity": "passed",
+    "tests/test_storage_normalization.py::test_structured_trace_cache_is_chain_and_tracer_scoped": "passed",
+    "tests/test_storage_normalization.py::test_rpc_trace_uses_opcode_normalizer_and_reports_coverage": "passed",
+    "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers": "passed",
+    "tests/test_table_vi.py::test_table_vi_aggregates_real_confidence_scorer_output": "passed",
+    "tests/test_table_vi.py::test_table_vi_refuses_missing_components_and_duplicate_functions": "passed"
+  },
+  "timestamp": "2026-10-15T04:16:58.422375+00:00",
   "python_version": "3.11.9",
-  "revision": "1ab64992a3011a402b80a1867819005f791bbd0e",
+  "revision": "414e1a3fa3ebbe07f51de6678978138f751344b7",
   "test_manifest_sha256": {
     "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
     "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
     "tests\\test_analyst_guidance.py": "89ff0f509b938e07cbf7bc6d9674a4577b65782ea92b0ee042c00bc7da9da4cd",
     "tests\\test_calibration_schema.py": "93d043bd4cb6d961012a17addb0d8ca64d30c6c91a2a93a6abff63609cb6b420",
-    "tests\\test_claim_registry.py": "0c6aca2df0fbcd1870001923f72e7d93d39995c4e0f696f5a2e74bd7ed146f82",
-    "tests\\test_compiled_evm_integration.py": "77f372bc95ce3898a34c159fb281d0e93c02a4d16177592a983cb20ebe1303f0",
+    "tests\\test_claim_closure.py": "c497c3cc336504101b48d256573386dbf7cf1d1bc5cb297a8ab8f591c9309e71",
+    "tests\\test_claim_registry.py": "94fb380d58105c620bb1624c5f345957e329c6b8773fa0f65b752d3d65ebd04a",
+    "tests\\test_cohort_rebuild.py": "6435e0154d5a0d4659254227aebaab44b9f5ac8550dbca36d6c24332b40e80ea",
+    "tests\\test_compiled_evm_integration.py": "0b2c5cc8f63e218be644181326d1ab994858a8428734cc7f4ffafa53e5a783bc",
     "tests\\test_confidence_scorer.py": "7e3f08dc2ae43f802a8928cff527f1e4c44227606b7760a82be84cb904dbc9ca",
     "tests\\test_cost_tracker_ablation.py": "75d6362dd38ce6b1c1f54a04083836333bd0c0edcbb3a50a982b5b9bb9f45475",
-    "tests\\test_detector_experiments.py": "24ea3d15edc36228dc2fdb07674eda5ab7e15018be63b946f47e4100625de897",
+    "tests\\test_detector_experiments.py": "b7c600bb75df8bccae2d5bc893996cfd88145fa6cecd1de4f0afe4ed5393c40e",
     "tests\\test_evidence_manifest.py": "95e28b6e6b60a77b8f810f76e1455978b8ce1b0b9eb5dfd78fd7dab31b59c862",
     "tests\\test_external_baseline_and_human_study.py": "4e125f44ad53d5f823306918390d81ccaf268858f9c0c0f514fe533642209b3d",
     "tests\\test_function_agent_flow.py": "4e4773fff0e33c006eb99cb78dfef7f3eebe0fac598da0ad324e1c83237e2520",
-    "tests\\test_historical_fork_replay.py": "56eb765914eb3090aef48235479f5394ddd840b8e2a47b6f3839a07947f140db",
+    "tests\\test_historical_fork_replay.py": "ac9db5846936d84c00111f26702849df69594bba486d2d8f9c81f6fafc05f345",
     "tests\\test_honest_eval.py": "62fad84821b37b417fd44bdd0f1fdb30ce83fc4f6b7a2dd61622bdb6c7862ce5",
     "tests\\test_llm_router.py": "63d4f51ca71102343d1c582eb5b7d1285fa566677039691ff16976bef4cb7140",
     "tests\\test_llm_router_ablation.py": "6b7db9f5ba4380cc69686ae5092c7ca1d57f5a5fde320bf5f9d3630f5e9177dd",
@@ -4327,6 +5324,7 @@
     "tests\\test_paper_detector.py": "e4089a990872a3553af46dc87215fd9ffa9f078412c567b495e6ad3928544f51",
     "tests\\test_paper_experiments.py": "7a650ba0719684da8d7ee980363f0f126e2a1abd9784d178b87d021e3fc6a4d5",
     "tests\\test_paper_fallback.py": "25b7b3e49d3786d1fac7b954d12e205507c28558c1f00874f8d14fa503323bf2",
+    "tests\\test_paper_rpc_probe.py": "02951a38cd0adc80990b31e014d6f79b06862c3615bdc175367436798a85d79f",
     "tests\\test_paper_tiers.py": "b1dfb2a3d3412c37794bb2fe2212f74299681747c651f8e0748b25c6c91568b7",
     "tests\\test_paper_weights.py": "79343a381ecc41e8bcece91185683554696838953e45f4db232e30149274e810",
     "tests\\test_pipeline_parse.py": "77a64e816741336ed6ae484b46b958b3ba1dc2c75590ae2f7eb21839d7770056",
@@ -4344,6 +5342,7 @@
     "tests\\test_source_analysis_safety.py": "d4134b77b0ae8997269fc6e310bc638a25b6bcba97ad715ea97af116c838419b",
     "tests\\test_spend_guard.py": "446f98bd76d18e234de5cec6af08a7469339a10de6140c02dc8158c7eed92515",
     "tests\\test_stage_one_local.py": "9a47cd495d82908fdc610d2193f63169f9b40d0ca1cc033463bfb4f895dbf8e7",
-    "tests\\test_storage_normalization.py": "ccd1273c9e5466e557d524b25e91932ab047e5a7c09a953ed9a7727c929a88da"
+    "tests\\test_storage_normalization.py": "ccd1273c9e5466e557d524b25e91932ab047e5a7c09a953ed9a7727c929a88da",
+    "tests\\test_table_vi.py": "2b988d588316cd864966ad3457ba20fed709db4ba6b6c3dbbdc9b70e67a354cd"
   }
 }
