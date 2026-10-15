@@ -2,8 +2,8 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "Canonical data covers8chains; ten-chain provider declarations and protocol add no live archive/opcode/failover observations beyond prior Ethereum probes and replay.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Two newly admitted Ethereum training exploits now have canonically validated local Anvil opcode captures. Euler served 147 exact-parent prestate reads from observed RPC evidence. Other-chain archive/debug and live independent-provider recovery evidence remain incomplete.",
+  "verification_scope": "Observed Ethereum train replay plus existing local RPC mechanism tests; not ten-chain or general live failover verification",
   "requirements_unmet": [
     "Required-chain archive/debug observations and live provider recovery evidence"
   ],
@@ -12,7 +12,9 @@
     "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
     "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
     "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
-    "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+    "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure",
+    "tests/test_authentic_opcode_partition.py::test_real_train_captures_pass_canonical_revalidation_and_have_storage_events",
+    "tests/test_pinned_prestate_rpc.py::test_wrong_block_unknown_account_or_missing_slot_always_use_metered_upstream"
   ],
   "evidence": [
     {
@@ -74,12 +76,33 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/RPC_TRAIN_CONCLUSION.json",
+      "sha256": "3df1967b9e669d8a57873dd6d8b85305cb743185b850eef0dffb9602e756972e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcodes/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+      "sha256": "0ee80ad3e8dca8ad2ee620fdc09f9f4debabf2859eac2fd3aea70d999413cba8"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+      "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcode_history/5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc.json",
+      "sha256": "5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcode_runs/euler_first_capture.json",
+      "sha256": "444289a55f99c344f88be19f9d2bd77161b84665fc4e7e77fe43b05e6ce71b6f"
     }
   ],
   "session_date": "2026-10-15",
   "next_input_artifact": "Required-chain archive/debug observations and live provider recovery evidence",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/25.json",
-  "paper_verdict": "CAPABILITY-DECLARATIONS-NOT-LIVE-PROOF",
-  "canonical_review_run": "canonical-history-review-2026-10-15"
+  "paper_verdict": "ETHEREUM-TRAIN-CAPTURE-VERIFIED-BROADER-CAPABILITY-UNVERIFIABLE",
+  "canonical_review_run": "canonical-history-review-2026-10-15",
+  "train_replay_review": "reports/cohort_rebuild_v2/RPC_TRAIN_CONCLUSION.json"
 }

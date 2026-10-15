@@ -1,0 +1,65 @@
+{
+  "attempts": [
+    {
+      "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "status": "UNAVAILABLE",
+      "error_type": "ValueError",
+      "reason": "Target transaction was not mined in canonical prefix order",
+      "outbound_rpc_requests": 21
+    }
+  ],
+  "accounting": {
+    "outbound_rpc_requests": 21,
+    "methods": {
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 2,
+      "eth_getBlockByHash": 1,
+      "eth_chainId": 2,
+      "eth_getBlockByNumber": 2,
+      "eth_getTransactionCount": 4,
+      "eth_getBalance": 4,
+      "eth_getCode": 4,
+      "eth_getStorageAt": 1
+    },
+    "estimated_cost_usd": 0.000126,
+    "cumulative_ledger_estimate_usd": 1.8170519999999581,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      {
+        "methods": [
+          "eth_gasPrice"
+        ],
+        "error_type": "ValueError"
+      },
+      {
+        "methods": [
+          "eth_getAccountInfo"
+        ],
+        "error_type": "ValueError"
+      },
+      {
+        "methods": [
+          "eth_getCode"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getBalance"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getTransactionCount"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      "local-client-disconnected-after-upstream-request"
+    ]
+  }
+}

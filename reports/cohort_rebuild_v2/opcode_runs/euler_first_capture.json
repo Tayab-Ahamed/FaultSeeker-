@@ -1,0 +1,94 @@
+{
+  "attempts": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "status": "CAPTURED_CANONICAL_OPCODES",
+      "capture": {
+        "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+        "label": "provenance-admitted exploit; label not used during replay",
+        "block": 16817996,
+        "transaction_index": 0,
+        "prefix_transactions_replayed": 1,
+        "artifact": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "artifact_sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7",
+        "opcode_count": 89623,
+        "sload_count": 448,
+        "sstore_count": 95,
+        "normalization_complete": true,
+        "storage_owners_verified": true,
+        "receipt_matches": true,
+        "storage_contracts": [
+          "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "0x158228e08c52f3e2211ccbc8ec275fa93f6033fc",
+          "0x27182842e098f60e3d576794a5bffb0777e025d3",
+          "0x583c21631c48d442b5c0e605d624f54a0b366c72",
+          "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "0x773616e4d11a78f511299002da57a0a94577f1f4",
+          "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
+          "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "0x8a32f49ffba88aba6eff96f45d8bd1d4b3f35c7d",
+          "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+          "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
+          "0xebc29199c817dc47ba12e3f86102564d640cbf99"
+        ]
+      },
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+      },
+      "outbound_rpc_requests": 17,
+      "prestate_read_cache": {
+        "mode": "observed-prestate-exact-parent-read-cache-v1",
+        "prestate": {
+          "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+          "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+        },
+        "rpc_identity": {
+          "path": "reports/cohort_rebuild_v2/rpc/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+          "sha256": "4caea532b5d230d597e6f0e7816a2352dda68f3038609204cb7a099975281ae1"
+        },
+        "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+        "parent_block": 16817995,
+        "first_in_block": true,
+        "pre_shanghai_only": true,
+        "cache_hits": 147,
+        "methods": {
+          "eth_getBalance": 28,
+          "eth_getTransactionCount": 28,
+          "eth_getCode": 26,
+          "eth_getStorageAt": 65
+        },
+        "unknown_fields_and_slots": "metered upstream fallback; never defaulted to zero"
+      }
+    }
+  ],
+  "accounting": {
+    "outbound_rpc_requests": 17,
+    "methods": {
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_chainId": 2,
+      "eth_getBlockByNumber": 2,
+      "eth_gasPrice": 1,
+      "eth_getCode": 4,
+      "eth_getAccountInfo": 1,
+      "eth_getBalance": 2,
+      "eth_getTransactionCount": 2
+    },
+    "estimated_cost_usd": 0.000102,
+    "cumulative_ledger_estimate_usd": 1.8180719999999497,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      {
+        "methods": [
+          "eth_getAccountInfo"
+        ],
+        "error_type": "RuntimeError"
+      }
+    ]
+  }
+}

@@ -40,6 +40,7 @@ REENTRANT = '0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6'
 COMPARISON = '0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b'
 READ_METHODS = {
     'eth_chainId', 'net_version', 'web3_clientVersion', 'eth_blockNumber',
+    'eth_gasPrice', 'eth_getAccountInfo',
     'eth_getBlockByNumber', 'eth_getBlockByHash', 'eth_getBalance',
     'eth_getCode', 'eth_getStorageAt', 'eth_getTransactionCount',
     'eth_getTransactionByHash', 'eth_getTransactionReceipt',
@@ -127,6 +128,16 @@ def account_prior_requests(guard, count):
         guard._write(state)
 
 
+def proxy_failure_diagnostic(payload, error):
+    calls = payload if isinstance(payload, list) else [payload]
+    methods = []
+    for call in calls:
+        method = call.get('method') if isinstance(call, dict) else None
+        methods.append(method if isinstance(method, str) and re.fullmatch(
+            r'(?:eth|net|web3|debug|trace)_[A-Za-z0-9]{1,80}', method) else 'INVALID_METHOD')
+    return {'methods': methods, 'error_type': type(error).__name__}
+
+
 @contextmanager
 def upstream_proxy(meter):
     class Handler(BaseHTTPRequestHandler):
@@ -134,6 +145,7 @@ def upstream_proxy(meter):
             pass
 
         def do_POST(self):
+            payload = None
             try:
                 size = int(self.headers.get('Content-Length', '0'))
                 if not 0 < size <= 2 * 1024 * 1024:
@@ -143,7 +155,7 @@ def upstream_proxy(meter):
             except Exception as error:
                 # Codes and local boundary names only, never upstream exception text.
                 kind = type(error).__name__
-                meter.errors.append(kind)
+                meter.errors.append(proxy_failure_diagnostic(payload, error))
                 data = {'jsonrpc': '2.0', 'id': None, 'error': {
                     'code': -32099, 'message': 'Metered archive boundary failed: ' + kind}}
             body = json.dumps(data).encode()
@@ -265,7 +277,7 @@ def signed_transaction(transaction):
     return '0x' + raw.hex()
 
 
-def validate_recorded_capture(path, expected_hash):
+def validate_recorded_capture(path, expected_hash, root=ROOT):
     """Recheck preserved replay output without making any network requests."""
     with gzip.open(path, 'rt', encoding='utf-8') as handle:
         capture = json.load(handle)
@@ -284,6 +296,20 @@ def validate_recorded_capture(path, expected_hash):
     for tx in prefix:
         signed_transaction(tx)
     verify_receipt(receipt, capture['replay_receipt'])
+    if 'fork_read_cache' in capture:
+        from scripts.pinned_prestate_rpc import PinnedPrestateRPC
+        from benchmark.research_protocol import read_bound
+        cached = capture['fork_read_cache']
+        if cached.get('mode') != 'observed-prestate-exact-parent-read-cache-v1':
+            raise ValueError('Unknown historical read-cache provenance')
+        row = {'chain': 'eth', 'txn_hash': expected_hash, 'rpc': cached['rpc_identity'],
+               'prestate': cached['prestate']}
+        verified = PinnedPrestateRPC(None, row, root)
+        verified.activate(block, expected_hash)
+        evidence_rpc = json.loads(read_bound(row['rpc'], root))
+        verify_receipt(receipt, evidence_rpc['receipt'])
+        if verified.parent != cached['parent_block'] or evidence_rpc['receipt']['blockHash'] != receipt['blockHash']:
+            raise ValueError('Read-cache evidence differs from canonical replay')
     storage = validate_storage(capture['raw_trace']['opcode'], capture['raw_trace']['call'])
     if storage != capture['normalization']:
         raise ValueError('Stored normalization differs from raw opcode reconstruction')
@@ -305,6 +331,8 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120
     parent = int(block['number'], 16) - 1
     prefix = block['transactions'][:index + 1]
     signed = [signed_transaction(tx) for tx in prefix]
+    if hasattr(meter, 'activate'):
+        meter.activate(block, tx_hash)
     with socket.socket() as listener:
         listener.bind(('127.0.0.1', 0))
         port = listener.getsockname()[1]
@@ -364,6 +392,8 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120
             'canonical_block': block, 'replayed_prefix_hashes': [tx['hash'] for tx in prefix],
             'fork_parent_block': parent, 'raw_trace': {'call': call, 'opcode': opcode},
             'normalization': storage, 'capture_version': 'anvil-historical-v1'}
+        if hasattr(meter, 'cache_evidence'):
+            artifact['fork_read_cache'] = meter.cache_evidence()
         output.mkdir(parents=True, exist_ok=True)
         with gzip.open(output / name, 'wt', encoding='utf-8') as handle:
             json.dump(artifact, handle)

@@ -1,0 +1,57 @@
+{
+  "claim": 25,
+  "status": "UNVERIFIABLE",
+  "scope": "Two provenance-accepted Ethereum train transactions, not all-chain capability",
+  "captures": [
+    {
+      "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+        "sha256": "0ee80ad3e8dca8ad2ee620fdc09f9f4debabf2859eac2fd3aea70d999413cba8"
+      },
+      "attempt": {
+        "path": "reports/cohort_rebuild_v2/opcode_history/5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc.json",
+        "sha256": "5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc"
+      },
+      "outbound_rpc_requests": 153,
+      "sload_count": 668,
+      "sstore_count": 220,
+      "cache_hits": 0
+    },
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+      },
+      "attempt": {
+        "path": "reports/cohort_rebuild_v2/opcode_runs/euler_first_capture.json",
+        "sha256": "444289a55f99c344f88be19f9d2bd77161b84665fc4e7e77fe43b05e6ce71b6f"
+      },
+      "outbound_rpc_requests": 17,
+      "sload_count": 448,
+      "sstore_count": 95,
+      "cache_hits": 147
+    }
+  ],
+  "new_accepted_captures": 2,
+  "capture_attempt_requests": 197,
+  "call_trace_retry_requests": 65,
+  "all_new_requests_this_checkpoint": 262,
+  "incremental_estimated_rpc_cost_usd": 0.001572,
+  "cumulative_ledger_estimate_allocation_usd": 1.8180719999999497,
+  "billing_confirmed": false,
+  "cache_semantics": "Only explicitly observed prestate fields/slots at the exact parent; index zero, pre-Shanghai; misses metered; no state overrides",
+  "method_observations": {
+    "eth_gasPrice": "allowed read; request dispatched",
+    "eth_getAccountInfo": "allowed read; upstream failed and Anvil used separate account reads",
+    "callTracer": "new accepted Beanstalk call capture",
+    "opcodeTracer": "captured locally by canonical Anvil replay; not proof of native upstream opcode method support"
+  },
+  "remaining_missing_input": "Required-chain archive/debug observations and live independent-provider recovery evidence",
+  "heldout_exam_used": false,
+  "technical_sources": [
+    "https://geth.ethereum.org/docs/developers/evm-tracing/built-in-tracers",
+    "https://foundry-rs.github.io/foundry/anvil/eth/api/struct.EthApi.html"
+  ]
+}
