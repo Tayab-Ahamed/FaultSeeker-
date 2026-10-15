@@ -1,0 +1,27 @@
+{
+  "id": 22,
+  "claim": "Multi-agent function localization",
+  "status": "UNVERIFIABLE",
+  "reason": "All local analysis roles execute under boundary tests, but no authenticated function-localization evaluation exists. Verified contract-source access, source-linked ground truth and live model-quality observations are absent.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Verified source-linked function ground truth",
+    "Live model/localization quality evaluation"
+  ],
+  "human_decision": "Verified source-linked function ground truth; Live model/localization quality evaluation must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+    "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
