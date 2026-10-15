@@ -81,14 +81,14 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The rebuilt corpus has 231 candidates, zero accepted provenance chains, and 15 additional rows are absent. Qualified independent annotation attestations are missing for every candidate.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "The 246-entry file now contains the original 231 plus 15 new canonical Ethereum transaction-reference candidates, not the original missing paper members. Full acceptance remains zero. Of 132 original Ethereum identities, 108 matched and 24 returned both RPC results null. New candidate receipts do not establish exploit roles or labels.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "246 accepted row manifests",
         "Two qualified independent label attestations per row",
         "15 missing candidate rows"
       ],
-      "human_decision": "246 accepted row manifests; Two qualified independent label attestations per row; 15 missing candidate rows must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Author cohort manifest with corrected canonical identities and complete provenance/adjudication attachments",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -101,6 +101,22 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
         }
       ],
       "closure_acceptance_tests": [
@@ -108,10 +124,10 @@
         "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
       ],
       "closure_decision_path": "reports/claim_closure/claims/03.json",
-      "claim_commit": "84ea6599644ed64ed8d24a12ed85ac7a474e585f",
+      "claim_commit": "275d24f4452a8ccb26f08b30fddae2a345b698f8",
       "decision_commit": "b0ffb3e8b363e35bcf455d6bde02626ccfe93018",
       "implementation_commits": [
-        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
+        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
       ]
     },
     {
@@ -125,13 +141,13 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Two independent cached corroborating research sources and two independent annotation records are not available per row. Only one published PoC source was recovered for each of two replayed rows.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "All 231 exact identities were searched. There are 734 cached public-source request records and four content-reviewed pairs of original security-publisher accounts. The remaining 242 candidate rows lack an accepted pair and all 246 lack independent annotation. Mirrors and distinct domains alone were not accepted.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Two independent cached research reports per row",
         "Independent annotator identities and consensus records"
       ],
-      "human_decision": "Two independent cached research reports per row; Independent annotator identities and consensus records must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Complete dual-source and independent-annotation evidence manifest for the intended study cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -144,17 +160,41 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/source_manifest.json",
+          "sha256": "20ae4fd63a0941e0eb8fb3708310222e7a5c1bbfd54f83ef2001117deb128998"
+        },
+        {
+          "path": "reports/provenance_hunt/reviewed_source_pairs.json",
+          "sha256": "72e9b7ba2a763bd4af3847af179feeb5927bc6eb4ef7b202ee79f15f6026d12a"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/04.json",
-      "claim_commit": null,
+      "claim_commit": "86d77db0401152b2ceaf022696b9ded9dec98b1d",
       "decision_commit": "d0c613469a5651314dfe56117e13930adceb48dc",
       "implementation_commits": [
-        "84ea6599644ed64ed8d24a12ed85ac7a474e585f",
-        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+        "275d24f4452a8ccb26f08b30fddae2a345b698f8",
+        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
       ]
     },
     {
@@ -168,13 +208,13 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The unadjudicated CSV has eight chains and 132/231 Ethereum rows; no accepted 246-row ten-chain corpus establishes the stated 47.6 percent share.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "No accepted ten-chain paper population exists. Adding 15 Ethereum reference candidates cannot establish the published chain mix or 47.6 percent share. Original Ethereum null identities further invalidate naive counting.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Authenticated ten-chain 246-row population",
         "Measured chain shares on that population"
       ],
-      "human_decision": "Authenticated ten-chain 246-row population; Measured chain shares on that population must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Frozen accepted ten-chain cohort membership manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -187,16 +227,32 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
       ],
       "closure_decision_path": "reports/claim_closure/claims/05.json",
-      "claim_commit": null,
+      "claim_commit": "c1d51f893bd6e9f1396407af02113957b380ee0c",
       "decision_commit": "c9eacdf40b63ca9edf61ab4974c44d5a2cf58dda",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -210,12 +266,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Distinct legacy vulnerability strings are observable, but their taxonomy assignment and independent label adjudication are not attested. String counts alone do not verify more than 80 confirmed vulnerability types.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Incident sources supply candidate mechanism descriptions, but no qualified independently adjudicated SWC/DASP taxonomy is supplied. Public descriptions and legacy strings remain separate from accepted labels.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Adjudicated SWC/DASP-aligned vulnerability taxonomy"
       ],
-      "human_decision": "Adjudicated SWC/DASP-aligned vulnerability taxonomy must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Independently adjudicated SWC/DASP taxonomy manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -228,17 +284,33 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/06.json",
-      "claim_commit": null,
+      "claim_commit": "04020065e53fefb0784ad8e1c7332976cea2fe30",
       "decision_commit": "9ee5e45213f22bc864c989e9c391c664cf5c6b6e",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
-        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f",
+        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
       ]
     },
     {
@@ -252,13 +324,13 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The original class labels and trace-size observations are unadjudicated and do not establish the published proportions over 246 accepted rows. No labels were changed to meet percentages.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Existing class labels have not been altered, and new candidates were not assigned classes. No accepted 246-case trace-complexity population or frozen class assignment protocol verifies the published proportions.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Frozen class-mapping protocol",
         "Authentic trace-size/class labels for all 246 rows"
       ],
-      "human_decision": "Frozen class-mapping protocol; Authentic trace-size/class labels for all 246 rows must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Frozen trace-complexity class assignment manifest for the authentic cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -271,17 +343,33 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/07.json",
-      "claim_commit": null,
+      "claim_commit": "a8d4a4db82283fbe9559e4437c590d4e677d7691",
       "decision_commit": "570eff9ce0ad39b2b47a28e56aaaa41f76b80364",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
-        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f",
+        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
       ]
     },
     {
@@ -295,12 +383,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Legacy reentrancy-string matches are not independent ground truth; the required accepted 246-row corpus and its stated 18 positives are unavailable.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Reentrancy is independently corroborated for some incidents such as Orion, but no accepted cohort-wide binary annotation manifest establishes exactly 18 reentrant rows among the paper 246.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Independent reentrancy labels and exact positive/negative membership"
       ],
-      "human_decision": "Independent reentrancy labels and exact positive/negative membership must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Independently adjudicated reentrancy membership manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -313,17 +401,33 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/08.json",
-      "claim_commit": null,
+      "claim_commit": "51cc168bedfa0108147763615298db859773a501",
       "decision_commit": "f9f3c4890b1af4ebf6ad0fff46333534ed29aeca",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
-        "84ea6599644ed64ed8d24a12ed85ac7a474e585f"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f",
+        "275d24f4452a8ccb26f08b30fddae2a345b698f8"
       ]
     },
     {
@@ -478,14 +582,14 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No adjudicated positive/negative evaluation cohort or raw Table V outcomes exist. The metric runner now uses the paper HIGH_RISK/CONFIRMED positive rule, but no paper precision/recall/F1 is inferred from two unadjudicated samples. Pooled integer-count constraints also require clarification.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "The real detector runner was invoked against the rebuilt candidate evidence and returned BLOCKED-BY-DATA before prediction. Precision, recall, F1 and deltas are undefined, not zero, on zero accepted records.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Frozen adjudicated evaluation set",
         "Raw integer confusion outcomes",
         "Declared pooling/averaging protocol"
       ],
-      "human_decision": "Frozen adjudicated evaluation set; Raw integer confusion outcomes; Declared pooling/averaging protocol must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -502,16 +606,36 @@
         {
           "path": "reports/claim_closure/numeric_constraints.json",
           "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/detectors.json",
+          "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
       ],
       "closure_decision_path": "reports/claim_closure/claims/13.json",
-      "claim_commit": "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+      "claim_commit": "4d5c1856ba5483e9c01885decb075968a0e5460f",
       "decision_commit": "b2eab9a3e92584bd59ad09becb37fff9ca305120",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -525,12 +649,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The 17/29 percentage-point differences require paired detector predictions on the same frozen adjudicated cohort. Those outcomes are absent; the corrected repeated-address baseline is implemented and tested.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "The paired detector experiment entry point refused the unaccepted cohort. No paired outcomes exist from which to compute the published 17/29 point gains or their deltas.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Paired predictions for all three detector variants on identical adjudicated records"
       ],
-      "human_decision": "Paired predictions for all three detector variants on identical adjudicated records must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Accepted paired detector-study manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -547,16 +671,36 @@
         {
           "path": "reports/claim_closure/numeric_constraints.json",
           "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/detectors.json",
+          "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
       ],
       "closure_decision_path": "reports/claim_closure/claims/14.json",
-      "claim_commit": null,
+      "claim_commit": "101c88acffc7a990adcb001737bfd6aaaebbc274",
       "decision_commit": "e1e48234fb519d2bf384ae920aaf0faf758a7995",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -570,12 +714,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The paper names legitimate Compound cToken recursion but gives no exact transaction. Compoundv2 inflation-attack CSV rows are not a substitute benign case study.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Targeted public searches and the paper/repository narrative did not establish a unique legitimate Compound cToken transaction. No arbitrary Compound interaction or inflation exploit was substituted, and no unidentified transaction was claimed as replayed.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Exact legitimate Compound cToken transaction and source corroboration"
       ],
-      "human_decision": "Exact legitimate Compound cToken transaction and source corroboration must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Exact author-identified Compound cToken case-study transaction hash",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -588,18 +732,38 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/compound_search.json",
+          "sha256": "3de9a6449100a276f4dd627c9ff1e8e9cee8c7d650c004e0c676f4f71845cca8"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
       ],
       "closure_decision_path": "reports/claim_closure/claims/15.json",
-      "claim_commit": null,
+      "claim_commit": "731c4048c48f2a565aff531bf92aefd020268f48",
       "decision_commit": "c76e58a456be4ace743be4bd84c2d7ed300f1e8a",
       "implementation_commits": [
-        "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
-        "0fc67678afba9b32e371b817e130ebded1c25bf5",
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
+        "1e62f37a6bcce77bc75f892fae42a6865b4fded6",
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -652,15 +816,15 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Six-family live conformance cannot be established: Anthropic and DashScope credentials are absent and no local Ollama endpoint/model was reachable. Other key presence is not authentication proof.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Actual routed attempts did not verify the claimed Claude or Qwen families: two Nara credential variables gave 402/429, diagnostic messages said insufficient credits, and a documented NVIDIA Qwen endpoint gave 410. Atria exposes only Atria-Dawn. The eligible Agnes free control passed but is not either claimed family. Native Anthropic/DashScope adapters remain untested; Ollama remains unreachable.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
-        "Anthropic live access",
-        "DashScope live access",
-        "Installed reachable Ollama model",
-        "Six-family live conformance observations"
+        "Eligible Claude model access",
+        "Eligible Qwen model access",
+        "Reachable installed Ollama model",
+        "Full six-family live conformance observations"
       ],
-      "human_decision": "Anthropic live access; DashScope live access; Installed reachable Ollama model; Six-family live conformance observations must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Executable six-family access configuration, including eligible Claude/Qwen access and a reachable installed Ollama model",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -669,6 +833,34 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/providers/inventory.json",
+          "sha256": "bda7f1720db94b45a08f1e298f67bc9c1b877cf5703bf619efee85084a8aff0b"
+        },
+        {
+          "path": "reports/provenance_hunt/providers/observations_manifest.json",
+          "sha256": "5d095c0b4450a5b7be2917c778c5b24f319b4faf753bbcb5680dd8b14156058c"
+        },
+        {
+          "path": "reports/provenance_hunt/providers/bynara_conformance_diagnostic.json",
+          "sha256": "cc3ca0db2dff6a0d8663272ca16463d28b92e9520768a5115032ca6ce9fcfd2f"
         }
       ],
       "closure_acceptance_tests": [
@@ -676,7 +868,7 @@
         "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
       ],
       "closure_decision_path": "reports/claim_closure/claims/17.json",
-      "claim_commit": null,
+      "claim_commit": "72495ba53a49b589d3eb9aaeab092b479f7e3e90",
       "decision_commit": "b3ff55373875442575abb93a432a3166dc4d2a10",
       "implementation_commits": [
         "6dd294165b4340d26b68433cd2f338864c6e6106"
@@ -694,14 +886,14 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No preregistered authenticated 100-transaction 5:3:2 paired workload, observed usage, quality/rank outcomes or verified pricing snapshot is available. The paper cost inputs imply 35 percent overall, not the Tier-2-only 58 percent figure.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Routing experiment preflight returned BLOCKED-BY-DATA. A successful tiny free-model control and conservative spend allocations are not a 100-case paired cost/quality study. No savings percentage or empirical delta is reported.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Preregistered 100-case workload",
         "Sourced dated prices",
         "Paired observed query usage and quality/rank outcomes"
       ],
-      "human_decision": "Preregistered 100-case workload; Sourced dated prices; Paired observed query usage and quality/rank outcomes must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Preregistered 100-case 50/30/20 paired routing workload and pricing manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -722,6 +914,26 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/routing.json",
+          "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
         }
       ],
       "closure_acceptance_tests": [
@@ -729,12 +941,12 @@
         "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
       ],
       "closure_decision_path": "reports/claim_closure/claims/18.json",
-      "claim_commit": "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
+      "claim_commit": "3e4fd3b2d41c2591484ac5353c08a3e4e9dae2f6",
       "decision_commit": "57844e369bd3c97ca42c3e57d0f6ac23e8f89964",
       "implementation_commits": [
-        "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
+        "3e4fd3b2d41c2591484ac5353c08a3e4e9dae2f6",
         "6dd294165b4340d26b68433cd2f338864c6e6106",
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -817,13 +1029,13 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "There is no independently verified benign study pool or preregistered paired prefilter latency experiment. The BENIGN skip mechanism alone cannot establish a 40 percent population rate.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "The existing source CSV is exploit-oriented and no independently benign evaluation cohort is accepted. The real prefilter runner returned BLOCKED-BY-DATA before any rate/latency measurement.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Authenticated benign population",
         "Paired production latency and bypass observations"
       ],
-      "human_decision": "Authenticated benign population; Paired production latency and bypass observations must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Independent benign-cohort paired prefilter study manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -840,6 +1052,26 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/prefilter.json",
+          "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
         }
       ],
       "closure_acceptance_tests": [
@@ -847,11 +1079,11 @@
         "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
       ],
       "closure_decision_path": "reports/claim_closure/claims/21.json",
-      "claim_commit": null,
+      "claim_commit": "b0f6c40455c11868459280b3e07c5cb349806972",
       "decision_commit": "86636646cd16562dfdef6b750e32c20689347475",
       "implementation_commits": [
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -870,13 +1102,13 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "All local analysis roles execute under boundary tests, but no authenticated function-localization evaluation exists. Verified contract-source access, source-linked ground truth and live model-quality observations are absent.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "New incident and receipt evidence does not establish source-linked function-ranking ground truth. Gateway smoke responses test chat transport only; no localization-quality experiment was dispatched or inferred.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Verified source-linked function ground truth",
         "Live model/localization quality evaluation"
       ],
-      "human_decision": "Verified source-linked function ground truth; Live model/localization quality evaluation must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Verified source-linked function localization evaluation manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -885,6 +1117,26 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/measurement_frontier.json",
+          "sha256": "fc55b13147027afcb5a8d3186ac052e1ed30ab1ffff4f43fdba2a21cea2cf8bd"
         }
       ],
       "closure_acceptance_tests": [
@@ -892,10 +1144,10 @@
         "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
       ],
       "closure_decision_path": "reports/claim_closure/claims/22.json",
-      "claim_commit": "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+      "claim_commit": "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
       "decision_commit": "e4bfb007db6ed615eec66ff1c54c3e239205eea9",
       "implementation_commits": [
-        "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c",
         "6dd294165b4340d26b68433cd2f338864c6e6106"
       ]
     },
@@ -964,7 +1216,7 @@
       "implementation_commits": [
         "120b11be7b693720024f12eafbdc72620de1cff1",
         "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
-        "54d85eab24b2d549c7f26acc8c283bef98c7ad05"
+        "896c9d3a7c40fe9b4459043e6b0781e974c72e7c"
       ]
     },
     {
@@ -984,13 +1236,13 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Observed Ethereum method and batch responses are recorded. The configured endpoint does not establish other-chain archive/trace support or sustained multi-provider recovery. Native opcode logging is rejected, while the tested Ethereum Anvil workaround works.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "302 further metered Ethereum identity/receipt requests were recorded, including null identities. They add evidence for the specific Ethereum read methods but do not establish other-chain archive/opcode support or sustained independent-provider failover.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Remaining-chain trace/archive endpoints and observations",
         "Live multi-provider outage/recovery evidence"
       ],
-      "human_decision": "Remaining-chain trace/archive endpoints and observations; Live multi-provider outage/recovery evidence must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Multi-chain endpoint and preregistered live failover test manifest",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1007,6 +1259,26 @@
         {
           "path": "reports/claim_closure/rpc_capability_conclusion.json",
           "sha256": "c0382de7ae09d63f3692cb6f6bf7baa097457ca9f31df072cc4e8288ff1a228b"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/ethereum_requests.json",
+          "sha256": "191254b9676c98b2229d265a2056c13b6a60c79222a530f1924b0900401eda33"
         }
       ],
       "closure_acceptance_tests": [
@@ -1016,12 +1288,12 @@
         "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
       ],
       "closure_decision_path": "reports/claim_closure/claims/25.json",
-      "claim_commit": "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+      "claim_commit": "401f5a6f84a79cb21e78b5daf1d1ee994b490cf5",
       "decision_commit": "74079850d7123692f338b1506924a293bbb9be59",
       "implementation_commits": [
-        "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+        "401f5a6f84a79cb21e78b5daf1d1ee994b490cf5",
         "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
-        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
       ]
     },
     {
@@ -1108,13 +1380,13 @@
       ],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No recorded authorized challenged-request sample, real challenge denominator or live recovery outcomes establish 23 percent. The challenge transport/case configuration is absent; fixture tests are not a measured bypass rate.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "Public-source HTTP 403/challenge failures were cached, but these are not a preregistered explorer recovery denominator. The WAF runner reports missing challenge cases and CURL_IMPERSONATE_BINARY; no 23 percent rate is inferred.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Authorized challenge cases and strategy configuration",
         "Observed challenged-request denominator and recovery outcomes"
       ],
-      "human_decision": "Authorized challenge cases and strategy configuration; Observed challenged-request denominator and recovery outcomes must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Authorized preregistered explorer-challenge case and browser-transport bundle",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1131,6 +1403,26 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/waf.json",
+          "sha256": "730f83db847f52e0846f083a2b18695252649d3278a7bab3ce6559ca9367094d"
         }
       ],
       "closure_acceptance_tests": [
@@ -1138,10 +1430,10 @@
         "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
       ],
       "closure_decision_path": "reports/claim_closure/claims/27.json",
-      "claim_commit": "0fc67678afba9b32e371b817e130ebded1c25bf5",
+      "claim_commit": "1e62f37a6bcce77bc75f892fae42a6865b4fded6",
       "decision_commit": "48912b580f76f8ae8e8446b22e39c36f79f450dc",
       "implementation_commits": [
-        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+        "1e62f37a6bcce77bc75f892fae42a6865b4fded6"
       ]
     },
     {
@@ -1155,13 +1447,13 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "Table VI needs observed PMS/CES/TCS/LCS and overall scores by adjudicated category over the authentic study. No such production vectors exist. The new component aggregator is tested; receipt gas/call averages are explicitly not Table VI.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "No authentic production PMS/CES/TCS/LCS vectors exist for an accepted study cohort. Receipt data and free-model conformance are not Table VI observations; means and deltas remain undefined.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Observed production confidence vectors for authenticated study records",
         "Predeclared function/transaction aggregation"
       ],
-      "human_decision": "Observed production confidence vectors for authenticated study records; Predeclared function/transaction aggregation must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Observed production confidence-vector dataset for the accepted cohort",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1174,16 +1466,36 @@
         {
           "path": "reports/claim_closure/paper_requirements.json",
           "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/measurement_frontier.json",
+          "sha256": "fc55b13147027afcb5a8d3186ac052e1ed30ab1ffff4f43fdba2a21cea2cf8bd"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
       ],
       "closure_decision_path": "reports/claim_closure/claims/28.json",
-      "claim_commit": "03c84f0af20603591115d5a269616a209d8e79ca",
+      "claim_commit": "92c756b0fdb61461b6e335f2c9b08021a133dea3",
       "decision_commit": "b01e68080997810f9904da711528223138127596",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5"
+        "4d5c1856ba5483e9c01885decb075968a0e5460f"
       ]
     },
     {
@@ -1197,14 +1509,14 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "No original 20-case selection, guidance policy, source-linked ranking ground truth or paired outcomes establish 68 to 81 percent. Ordinary binary top-1 accuracy over 20 items has five-point steps; another aggregation requires an explicit protocol.",
-      "verification_scope": "Current recorded evidence only",
+      "closure_reason": "The guidance experiment runner returned BLOCKED-BY-DATA. No original or preregistered 20-case selection, independent function ranks, guidance policy or denominator establishes 68 to 81 percent.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Original or preregistered 20-case guidance study",
         "Ground-truth function rankings",
         "Explicit accuracy aggregation protocol"
       ],
-      "human_decision": "Original or preregistered 20-case guidance study; Ground-truth function rankings; Explicit accuracy aggregation protocol must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Preregistered 20-case guidance evaluation manifest with ranking ground truth and aggregation",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1225,16 +1537,36 @@
         {
           "path": "reports/claim_closure/environment.json",
           "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/guidance.json",
+          "sha256": "23947e4039336acadfc8c9fb73891da3514a50b2944a7546dc21e71eb66a16c2"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
       ],
       "closure_decision_path": "reports/claim_closure/claims/29.json",
-      "claim_commit": null,
+      "claim_commit": "905d2f671be846e731a6909fede76c6f2c432a85",
       "decision_commit": "3ec4baea63b89aeb9d7e77f9e724f6882586f265",
       "implementation_commits": [
-        "4330a3453b70415739e37fa9e4a88c20fdba7cb5",
+        "4d5c1856ba5483e9c01885decb075968a0e5460f",
         "120b11be7b693720024f12eafbdc72620de1cff1"
       ]
     },
@@ -1249,12 +1581,12 @@
       "required_env": [],
       "status": "UNVERIFIABLE",
       "local_proof": "PASSED",
-      "closure_reason": "The offline acceptance/closure entry point executes, but exact reproduction of the published Table V, Fig.6 and Table VI cannot be demonstrated without the original authenticated studies and inputs. Infrastructure tests do not verify those unavailable outputs.",
-      "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+      "closure_reason": "Real experiment entry points and all local tests run, but source acquisition does not supply the authentic labels and observations required to reproduce the published tables/figures. No empirical output is generated from rejected records. A gzip/plain-JSON mismatch in the experiment reader was repaired and tested against the actual 21,300-step historical JAY capture; this proves artifact IO, not empirical metrics.",
+      "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
       "unmet_requirements": [
         "Authentic inputs and observed outputs for the three published tables/figures"
       ],
-      "human_decision": "Authentic inputs and observed outputs for the three published tables/figures must be supplied or independently established before reopening.",
+      "human_decision": "Next required input artifact: Author reproducibility bundle with authentic inputs, study protocols and raw outcomes",
       "closure_evidence": [
         {
           "path": "reports/claim_closure/local_acceptance.json",
@@ -1267,16 +1599,40 @@
         {
           "path": "reports/claim_closure/cohort/row_decisions.json",
           "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+        },
+        {
+          "path": "reports/provenance_hunt/hunt.json",
+          "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+        },
+        {
+          "path": "reports/provenance_hunt/cohort/row_decisions.json",
+          "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+        },
+        {
+          "path": "reports/provenance_hunt/accounting.json",
+          "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+        },
+        {
+          "path": "reports/provenance_hunt/frontiers.json",
+          "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+        },
+        {
+          "path": "reports/provenance_hunt/experiments/dispatch_log.json",
+          "sha256": "f3602c927923d3fa965cfcc9c072c6c720217428d932128292d1365894b4fbd8"
+        },
+        {
+          "path": "reports/provenance_hunt/compressed_trace_regression.json",
+          "sha256": "ad7514088484fa677551ef1cd88806c619b1f91e64ce56808a2adf478b327f19"
         }
       ],
       "closure_acceptance_tests": [
         "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
       ],
       "closure_decision_path": "reports/claim_closure/claims/30.json",
-      "claim_commit": "de5768e9b126f87bc1e9c9b3b9503064e5175843",
+      "claim_commit": "3eeb964fc4ece56d179a7d31d3492e43adc99100",
       "decision_commit": "9b0c71e9b92ff524de9d2c6d46034e57cee53f09",
       "implementation_commits": [
-        "de5768e9b126f87bc1e9c9b3b9503064e5175843"
+        "3eeb964fc4ece56d179a7d31d3492e43adc99100"
       ]
     },
     {
@@ -1317,22 +1673,22 @@
   ],
   "dataset_audit": {
     "status": "BLOCKED-BY-DATA",
-    "dataset_sha256": "f8cd34d6853e5aa14a0dbff3ac3b1f5060dc4c1d35e98e2e531b7ce519b5dc02",
-    "input_rows": 231,
+    "dataset_sha256": "fde21766e1b26e805e528feb2a1d6d27f125b29f8959acc7284b3949f6675d5e",
+    "input_rows": 246,
     "accepted_rows": 0,
     "target_rows": 246,
     "additional_verified_rows_needed": 246,
     "missing_counts": {
-      "missing_independent_annotation": 231,
-      "missing_independent_sources": 231,
-      "missing_receipt": 229,
-      "missing_trace": 229,
-      "missing_transaction": 229,
-      "missing_verification": 229,
+      "missing_independent_annotation": 246,
+      "missing_independent_sources": 242,
+      "missing_receipt": 123,
+      "missing_trace": 244,
+      "missing_transaction": 123,
+      "missing_verification": 244,
       "missing_independent_rpc_confirmation": 2,
       "unverified_acquisition_mode": 2,
       "ground_truth_identity_mismatch": 1,
-      "missing_ground_truth": 116
+      "missing_ground_truth": 131
     },
     "rows": [
       {
@@ -1415,9 +1771,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1430,9 +1784,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1445,9 +1797,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1460,9 +1810,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1475,9 +1823,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1490,9 +1836,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1505,9 +1849,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1520,9 +1862,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1535,9 +1875,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1565,9 +1903,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1580,9 +1916,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1595,9 +1929,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1610,9 +1942,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1625,9 +1955,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1640,9 +1968,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1655,9 +1981,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1685,9 +2009,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1700,9 +2022,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1715,9 +2035,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1730,9 +2048,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1745,9 +2061,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1761,9 +2075,7 @@
           "ground_truth_identity_mismatch",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1776,9 +2088,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1791,9 +2101,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1806,9 +2114,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1821,9 +2127,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1836,9 +2140,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1851,9 +2153,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1866,9 +2166,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1881,9 +2179,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1896,9 +2192,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1924,9 +2218,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1939,9 +2231,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1954,9 +2244,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1969,9 +2257,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1984,9 +2270,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -1999,9 +2283,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2014,9 +2296,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2044,9 +2324,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2059,9 +2337,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2074,9 +2350,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2089,9 +2363,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2104,9 +2376,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2119,9 +2389,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2134,9 +2402,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2149,9 +2415,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2164,9 +2428,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2179,9 +2441,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2194,9 +2454,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2209,9 +2467,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2224,9 +2480,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2238,10 +2492,7 @@
         "accepted": false,
         "missing": [
           "missing_independent_annotation",
-          "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2269,9 +2520,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2284,9 +2533,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2299,9 +2546,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2329,9 +2574,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2344,9 +2587,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2359,9 +2600,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2374,9 +2613,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2389,9 +2626,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2404,9 +2639,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2418,10 +2651,7 @@
         "accepted": false,
         "missing": [
           "missing_independent_annotation",
-          "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2449,9 +2679,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2464,9 +2692,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2479,9 +2705,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2494,9 +2718,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2509,9 +2731,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2524,9 +2744,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2538,10 +2756,7 @@
         "accepted": false,
         "missing": [
           "missing_independent_annotation",
-          "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2554,9 +2769,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2569,9 +2782,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2584,9 +2795,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2599,9 +2808,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2614,9 +2821,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2629,9 +2834,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2644,9 +2847,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2659,9 +2860,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2689,9 +2888,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2704,9 +2901,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2719,9 +2914,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2734,9 +2927,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2749,9 +2940,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2779,9 +2968,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2794,9 +2981,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2808,10 +2993,7 @@
         "accepted": false,
         "missing": [
           "missing_independent_annotation",
-          "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2824,9 +3006,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2839,9 +3019,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2854,9 +3032,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2869,9 +3045,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2884,9 +3058,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2899,9 +3071,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2914,9 +3084,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2929,9 +3097,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2944,9 +3110,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2959,9 +3123,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2974,9 +3136,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -2989,9 +3149,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3004,9 +3162,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3019,9 +3175,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3034,9 +3188,7 @@
         "missing": [
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3081,9 +3233,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3097,9 +3247,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3113,9 +3261,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3721,9 +3867,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3737,9 +3881,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -3833,9 +3975,7 @@
           "missing_ground_truth",
           "missing_independent_annotation",
           "missing_independent_sources",
-          "missing_receipt",
           "missing_trace",
-          "missing_transaction",
           "missing_verification"
         ],
         "verification_scope": "artifact-integrity",
@@ -4912,6 +5052,216 @@
         ],
         "verification_scope": "artifact-integrity",
         "input_line": 232
+      },
+      {
+        "txn_hash": "0x59ddcf5ee5c687af2cbf291c3ac63bf28316a8ecbb621d9f62d07fa8a5b8ef4e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 233
+      },
+      {
+        "txn_hash": "0x27e64a8215ae1528245c912bcca09883fdd7cce69249bd5d5d1c0eecf5297b96",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 234
+      },
+      {
+        "txn_hash": "0x804ff3801542bff435a5d733f4d8a93a535d73d0de0f843fd979756a7eab26af",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 235
+      },
+      {
+        "txn_hash": "0x05d65e0adddc5d9ccfe6cd65be4a7899ebcb6e5ec7a39787971bcc3d6ba73996",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 236
+      },
+      {
+        "txn_hash": "0x8bded20c1db5a1d5f595b15e682a95ce11d3c895d6031147fa49c4ffa5729a30",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 237
+      },
+      {
+        "txn_hash": "0x9a6227ef97d7ce75732645bd604ef128bb5dfbc1bfbe0966ad1cd2870d45a20e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 238
+      },
+      {
+        "txn_hash": "0xab486012f21be741c9e674ffda227e30518e8a1e37a5f1d58d0b0d41f6e76530",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 239
+      },
+      {
+        "txn_hash": "0x68cdec0ac76454c3b0f7af0b8a3895db00adf6daaf3b50a99716858c4fa54c6f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 240
+      },
+      {
+        "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 241
+      },
+      {
+        "txn_hash": "0xc28fad5e8d5e0ce6a2eaf67b6687be5d58113e16be590824d6cfa1a94467d0b7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 242
+      },
+      {
+        "txn_hash": "0xed2c72ef1a552ddaec6dd1f5cddf0b59a8f37f82bdda5257d9c7c37db7bb9b08",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 243
+      },
+      {
+        "txn_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 244
+      },
+      {
+        "txn_hash": "0x2e7d7e7a6eb157b98974c8687fbd848d0158d37edc1302ea08ee5ddb376befea",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 245
+      },
+      {
+        "txn_hash": "0x4b4143cbe7f5475029cf23d6dcbb56856366d91794426f2e33819b9b1aac4e96",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 246
+      },
+      {
+        "txn_hash": "0xacfcaa8e1c482148f9f2d592c78ca7a27934c7333dab31978ed0aef333a28ab6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_trace",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 247
       }
     ]
   },
@@ -4937,7 +5287,7 @@
   },
   "test_exit_code": 0,
   "test_counts": {
-    "passed": 353,
+    "passed": 361,
     "skipped": 1
   },
   "test_outcomes": {
@@ -5038,6 +5388,7 @@
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[False-withdraw_funds(uint256)]": "passed",
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw]": "passed",
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw_funds(uint256)]": "passed",
+    "tests/test_gateway_conformance.py::test_gateway_alias_does_not_prove_native_adapter_or_model_quality": "passed",
     "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[0]": "passed",
     "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[2]": "passed",
     "tests/test_historical_fork_replay.py::test_replay_rejects_receipt_changes": "passed",
@@ -5190,6 +5541,12 @@
     "tests/test_pipeline_parse.py::TestParseInvalidInput::test_hash_exactly_64_chars_is_valid": "passed",
     "tests/test_pipeline_parse.py::TestChainDisambiguation::test_bscscan_not_detected_as_eth": "passed",
     "tests/test_pipeline_parse.py::TestChainDisambiguation::test_optimism_on_etherscan_subdomain": "passed",
+    "tests/test_provenance_hunt.py::test_exact_hash_in_url_or_challenge_is_not_incident_corroboration": "passed",
+    "tests/test_provenance_hunt.py::test_optimism_explorer_is_not_ethereum_mainnet": "passed",
+    "tests/test_provenance_hunt.py::test_explorer_echo_of_unknown_hash_is_rejected": "passed",
+    "tests/test_provenance_hunt_results.py::test_new_candidates_never_become_adjudicated_exploits_from_receipts": "passed",
+    "tests/test_provenance_hunt_results.py::test_recorded_search_covers_every_original_exact_identity_once": "passed",
+    "tests/test_provenance_hunt_results.py::test_cached_http_sources_match_both_compressed_and_original_body_hashes": "passed",
     "tests/test_public_incident_import.py::test_normalize_incident_extracts_contracts_chains_and_tx_hashes": "passed",
     "tests/test_public_incident_import.py::test_normalize_incident_accepts_json_encoded_contracts": "passed",
     "tests/test_public_incident_import.py::test_normalize_defillama_hack_marks_row_as_staged_incident": "passed",
@@ -5223,6 +5580,7 @@
     "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[gemini-2.0-flash-UniversalAgent]": "passed",
     "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[claude-3-5-sonnet-AnthropicAgent]": "passed",
     "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[llama3:8b-OllmaAgent]": "passed",
+    "tests/test_recorded_experiment_capture.py::test_experiment_reader_loads_real_compressed_historical_opcodes": "passed",
     "tests/test_reentrancy_eval_integration.py::test_extract_reentrancy_analysis_supports_legacy_flat_fields": "passed",
     "tests/test_reentrancy_eval_integration.py::test_build_dataset_row_flattens_only_compact_reentrancy_fields": "passed",
     "tests/test_reentrancy_eval_integration.py::test_priority_total_uses_probabilistic_union": "passed",
@@ -5296,9 +5654,9 @@
     "tests/test_table_vi.py::test_table_vi_aggregates_real_confidence_scorer_output": "passed",
     "tests/test_table_vi.py::test_table_vi_refuses_missing_components_and_duplicate_functions": "passed"
   },
-  "timestamp": "2026-10-15T04:16:58.422375+00:00",
+  "timestamp": "2026-10-15T08:54:51.404046+00:00",
   "python_version": "3.11.9",
-  "revision": "414e1a3fa3ebbe07f51de6678978138f751344b7",
+  "revision": "3eeb964fc4ece56d179a7d31d3492e43adc99100",
   "test_manifest_sha256": {
     "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
     "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
@@ -5314,6 +5672,7 @@
     "tests\\test_evidence_manifest.py": "95e28b6e6b60a77b8f810f76e1455978b8ce1b0b9eb5dfd78fd7dab31b59c862",
     "tests\\test_external_baseline_and_human_study.py": "4e125f44ad53d5f823306918390d81ccaf268858f9c0c0f514fe533642209b3d",
     "tests\\test_function_agent_flow.py": "4e4773fff0e33c006eb99cb78dfef7f3eebe0fac598da0ad324e1c83237e2520",
+    "tests\\test_gateway_conformance.py": "f75700611bf1ca71f2be988acb01214b3637dbef97ac6d6aa02a9f5848e82ccc",
     "tests\\test_historical_fork_replay.py": "ac9db5846936d84c00111f26702849df69594bba486d2d8f9c81f6fafc05f345",
     "tests\\test_honest_eval.py": "62fad84821b37b417fd44bdd0f1fdb30ce83fc4f6b7a2dd61622bdb6c7862ce5",
     "tests\\test_llm_router.py": "63d4f51ca71102343d1c582eb5b7d1285fa566677039691ff16976bef4cb7140",
@@ -5328,8 +5687,11 @@
     "tests\\test_paper_tiers.py": "b1dfb2a3d3412c37794bb2fe2212f74299681747c651f8e0748b25c6c91568b7",
     "tests\\test_paper_weights.py": "79343a381ecc41e8bcece91185683554696838953e45f4db232e30149274e810",
     "tests\\test_pipeline_parse.py": "77a64e816741336ed6ae484b46b958b3ba1dc2c75590ae2f7eb21839d7770056",
+    "tests\\test_provenance_hunt.py": "893f716e80c962e05f7756ccb8616eb1a642b4d791c6e75e9db873b4af8a5141",
+    "tests\\test_provenance_hunt_results.py": "67ce57b21de1a013acc9853ebab6c454c7ccea5017c907d4cd7a10e6a4db5923",
     "tests\\test_public_incident_import.py": "984035483c39ab66d53718cc2c25d24f8d479c945d39d1742a015ce8103b7830",
     "tests\\test_query_routing.py": "f8a6c2256db13cb3ce248c71339438e4fe979b7176b1608861b546ddfe5c922d",
+    "tests\\test_recorded_experiment_capture.py": "0a4edaedd80f6dea2b069f33db9df61e18723287cc653467f529d16662c8db79",
     "tests\\test_reentrancy_eval_integration.py": "4ccfa0521967a976f98d6fa005ed63127b8791822c9f2ea7fd1f2c20288ebd90",
     "tests\\test_reentrancy_state_signals.py": "8cea73d001335fe13e46b02abbcd2e2d7c0c64b2853412da6f40cadbb7039611",
     "tests\\test_reproduction_entrypoints.py": "a167a0cc8968453a907795b1f22e66aa04624e92ce6f3dc5b3115a3c945125a9",
