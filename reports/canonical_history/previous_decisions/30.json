@@ -1,0 +1,56 @@
+{
+  "id": 30,
+  "claim": "Reproduction scripts",
+  "status": "UNVERIFIABLE",
+  "reason": "Real experiment entry points and all local tests run, but source acquisition does not supply the authentic labels and observations required to reproduce the published tables/figures. No empirical output is generated from rejected records. A gzip/plain-JSON mismatch in the experiment reader was repaired and tested against the actual 21,300-step historical JAY capture; this proves artifact IO, not empirical metrics.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "requirements_unmet": [
+    "Authentic inputs and observed outputs for the three published tables/figures"
+  ],
+  "human_decision": "Next required input artifact: Author reproducibility bundle with authentic inputs, study protocols and raw outcomes",
+  "acceptance_tests": [
+    "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/experiments/dispatch_log.json",
+      "sha256": "f3602c927923d3fa965cfcc9c072c6c720217428d932128292d1365894b4fbd8"
+    },
+    {
+      "path": "reports/provenance_hunt/compressed_trace_regression.json",
+      "sha256": "ad7514088484fa677551ef1cd88806c619b1f91e64ce56808a2adf478b327f19"
+    }
+  ],
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Author reproducibility bundle with authentic inputs, study protocols and raw outcomes",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/30.json"
+}
