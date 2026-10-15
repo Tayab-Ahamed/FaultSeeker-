@@ -1,0 +1,29 @@
+{
+  "id": 15,
+  "claim": "Compound case study",
+  "status": "UNVERIFIABLE",
+  "reason": "The paper names legitimate Compound cToken recursion but gives no exact transaction. Compoundv2 inflation-attack CSV rows are not a substitute benign case study.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Exact legitimate Compound cToken transaction and source corroboration"
+  ],
+  "human_decision": "Exact legitimate Compound cToken transaction and source corroboration must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
