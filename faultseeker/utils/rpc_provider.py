@@ -298,7 +298,6 @@ _PUBLIC: dict[str, list[tuple[str, int]]] = {
     #   - Alchemy BSC: https://bnb-mainnet.g.alchemy.com/v2/<key>
     #   - Ankr with key: https://rpc.ankr.com/bsc/<key>
     'bsc': [
-        ('https://restless-thrilling-darkness.bsc.quiknode.pro/5b30b0da70126411f777c3c8d9730d1998fc7922/', 85),
         ('https://bsc-dataseed1.binance.org',         68),
         ('https://bsc-dataseed2.binance.org',         65),
         ('https://bsc-dataseed1.defibit.io',          62),
