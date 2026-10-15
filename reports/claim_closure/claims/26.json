@@ -1,0 +1,38 @@
+{
+  "id": 26,
+  "claim": "Foundry replay extracts SLOAD and SSTORE",
+  "status": "VERIFIED",
+  "reason": "Two historical Ethereum transactions have hash-checked signed block-prefix replay, matching receipts, full opcode captures and verified storage ownership; all compiled fixtures also pass. This does not certify other chains or incident labels.",
+  "verification_scope": "Compiled EVM fixtures and two matching-receipt Ethereum historical opcode captures",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+    "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+    "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+    "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+    "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts",
+    "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
+    "tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/comparison_result.json",
+      "sha256": "32935a31c50e929254aea89e8d3fc8d50cb02e9125ee4483c6ce530cb41e2c0b"
+    },
+    {
+      "path": "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json",
+      "sha256": "5d3fe7953cc25e20e19f888a1c87600f9f92aed3f04e412dc99e76f2b4794ac0"
+    },
+    {
+      "path": "reports/historical_replay/final_accounting.json",
+      "sha256": "2b24d73783c7a40857c291e3fcd98096d47162c3e82224b6eafa9843a7cd7cf2"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
