@@ -1,0 +1,47 @@
+{
+  "public_repository": {
+    "url": "https://github.com/Tayab-Ahamed/FaultSeeker-",
+    "private": false,
+    "license_spdx": "Apache-2.0",
+    "metadata_artifact": "reports/claim_closure/sources/public_repository.json",
+    "scope": "Public upstream repository availability; current local branch has not been pushed",
+    "license_artifact": "reports/claim_closure/sources/public_repository_LICENSE.txt"
+  },
+  "source_artifacts": [
+    {
+      "file": "reports/claim_closure/sources/jay_published_poc.sol.txt",
+      "url": "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/git/blobs/5f36cbfaa10bf0f4d4e0d6ff1c1f56fc7547e2f5",
+      "publisher_id": "SunWeb3Sec-DeFiHackLabs",
+      "transaction_hashes": [
+        "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6"
+      ],
+      "sha256": "482af8031d437d0d0f9a8b25601c8ad99f3e9b5f7819db410bbb006d34e2b102",
+      "git_blob_sha1": "5f36cbfaa10bf0f4d4e0d6ff1c1f56fc7547e2f5",
+      "original_repository_path": "src/test/2022-12/JAY_exp.sol",
+      "scope": "Published PoC reference, not an independent reviewer adjudication"
+    },
+    {
+      "file": "reports/claim_closure/sources/cowswap_published_poc.sol.txt",
+      "url": "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/git/blobs/a03fc780e428eeb693102927f7d6d783d3f29368",
+      "publisher_id": "SunWeb3Sec-DeFiHackLabs",
+      "transaction_hashes": [
+        "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b"
+      ],
+      "sha256": "bfcb07c4ecb015afee4f392f4729c7aa04f9fdf4497a15a19aa55fcb76b8e89d",
+      "git_blob_sha1": "a03fc780e428eeb693102927f7d6d783d3f29368",
+      "original_repository_path": "src/test/2023-02/CowSwap_exp.sol",
+      "scope": "Published PoC reference, not an independent reviewer adjudication"
+    }
+  ],
+  "public_http_fetch_attempts": 5,
+  "requested_public_urls": [
+    "https://api.github.com/repos/Tayab-Ahamed/FaultSeeker-",
+    "https://raw.githubusercontent.com/Tayab-Ahamed/FaultSeeker-/main/LICENSE",
+    "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/git/trees/main?recursive=1",
+    "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/git/blobs/5f36cbfaa10bf0f4d4e0d6ff1c1f56fc7547e2f5",
+    "https://api.github.com/repos/SunWeb3Sec/DeFiHackLabs/git/blobs/a03fc780e428eeb693102927f7d6d783d3f29368"
+  ],
+  "errors": [],
+  "paid_provider_calls": 0,
+  "downloaded_code_executed": false
+}
