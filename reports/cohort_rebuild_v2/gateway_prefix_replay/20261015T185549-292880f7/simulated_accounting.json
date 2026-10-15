@@ -1,0 +1,87 @@
+{
+  "scope": "Replay-only synthetic accounting of historical usage; no new provider billing",
+  "temporary_ledger_deleted": true,
+  "simulation": {
+    "spent_usd": 0.014835400000000002,
+    "reserved_usd": 0.0164204,
+    "limit_usd": 1000000.0,
+    "events": [
+      {
+        "event": "reserve",
+        "id": "ab9e4ae9757a4cc993b737945695b905",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0055493999999999995
+      },
+      {
+        "event": "settle",
+        "id": "ab9e4ae9757a4cc993b737945695b905",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0019032,
+        "failed": false,
+        "usage_source": "provider"
+      },
+      {
+        "event": "reserve",
+        "id": "cbfda45adb2a4743aa9fb280312a9f4e",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.029049800000000004
+      },
+      {
+        "event": "settle",
+        "id": "cbfda45adb2a4743aa9fb280312a9f4e",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0091176,
+        "failed": false,
+        "usage_source": "provider"
+      },
+      {
+        "event": "reserve",
+        "id": "86c4a631c5394c7aafd010e44d044ac8",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0058341999999999995
+      },
+      {
+        "event": "settle",
+        "id": "86c4a631c5394c7aafd010e44d044ac8",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0010227,
+        "failed": false,
+        "usage_source": "provider"
+      },
+      {
+        "event": "reserve",
+        "id": "621ac4cf7f9d4605993570742f8e75c6",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0062816
+      },
+      {
+        "event": "settle",
+        "id": "621ac4cf7f9d4605993570742f8e75c6",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0011405,
+        "failed": false,
+        "usage_source": "provider"
+      },
+      {
+        "event": "reserve",
+        "id": "0e8d21692e014c33943f246bcb5a0fe4",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.011051400000000001
+      },
+      {
+        "event": "settle",
+        "id": "0e8d21692e014c33943f246bcb5a0fe4",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0016514000000000001,
+        "failed": false,
+        "usage_source": "provider"
+      },
+      {
+        "event": "reserve",
+        "id": "f3222c7971cb4af1b9506fe23e43418d",
+        "model": "agnes-2.5-flash",
+        "amount_usd": 0.0164204
+      }
+    ]
+  }
+}

@@ -2,8 +2,8 @@
   "id": 30,
   "claim": "Reproduction scripts",
   "status": "UNVERIFIABLE",
-  "reason": "Real recorded-input reproduction now executes production Stage1 plus the deterministic function ranker on seven accepted train transactions with socket I/O prohibited. Exact source snapshots and raw outputs are hash-bound. Stage2/3, genuine hybrid billing/localization/guidance studies and the final one-use held-out evaluation are not reproduced, so the full paper reproduction claim remains unverified.",
-  "verification_scope": "Actual production Stage1 and ranker on frozen train inputs; no fixture outcomes counted as empirical performance and no full-system metric inferred",
+  "reason": "Production Stage1 and ranker have real recorded-input reproduction. A strict offline replay of the Agnes pilot matches five exact request bodies and responses, then stops at request six because current request bytes diverge. Network and real-ledger mutation are prohibited. Timing is not reproduced and no complete model-assisted case or quality metric results; final full-system paper reproduction remains unverified.",
+  "verification_scope": "Hash-bound real-input Stage1/ranker and exact five-request historical prefix; debug replay is not a new empirical quality experiment or wall-time reproduction",
   "requirements_unmet": [
     "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes"
   ],
@@ -12,7 +12,8 @@
     "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof",
     "tests/test_captured_production_inputs.py::test_real_train_capture_runs_production_stage_one_without_network_or_llm",
     "tests/test_captured_production_inputs.py::test_real_stage_one_runner_executes_production_ranker_without_claiming_stage_two",
-    "tests/test_captured_production_inputs.py::test_structured_sequence_retains_actual_creation_and_call_metadata"
+    "tests/test_captured_production_inputs.py::test_structured_sequence_retains_actual_creation_and_call_metadata",
+    "tests/test_gateway_prefix_replay.py"
   ],
   "evidence": [
     {
@@ -94,6 +95,14 @@
     {
       "path": "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system_sources.json.gz",
       "sha256": "b7684025b7a15f80cb07ef05f1be32f2619a1f3c456a6a50b959d28b18fc3eef"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T185549-292880f7/summary.json",
+      "sha256": "924ea9491e75bbadbd51aa69c25988ad911be0a62d8451dfb7a085c5bbc381fc"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T190349-a5249514/summary.json",
+      "sha256": "f793428036fd3dbc65554e24c5aa6187c87542814d315b59a451795e02fe1fa8"
     }
   ],
   "session_date": "2026-10-15",
