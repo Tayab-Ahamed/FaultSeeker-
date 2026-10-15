@@ -1,0 +1,32 @@
+{
+  "id": 3,
+  "claim": "Authentic 246-row cohort",
+  "status": "UNVERIFIABLE",
+  "reason": "The rebuilt corpus has 231 candidates, zero accepted provenance chains, and 15 additional rows are absent. Qualified independent annotation attestations are missing for every candidate.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "246 accepted row manifests",
+    "Two qualified independent label attestations per row",
+    "15 missing candidate rows"
+  ],
+  "human_decision": "246 accepted row manifests; Two qualified independent label attestations per row; 15 missing candidate rows must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+    "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
