@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 sys.modules.setdefault('readline',None)
 from dotenv import dotenv_values
-from benchmark.research_protocol import admit, bind, write_json
+from benchmark.research_protocol import admit, bind, write_json, acquisition_records
 from scripts.rebuild_authentic_cohort import BASE
 from scripts.replay_historical_opcodes import MeteredRPC, replay_one, upstream_proxy, validate_recorded_capture
 
@@ -26,10 +26,10 @@ def run(transaction_hashes=None, mine_timeout=300):
     if not endpoint:
         raise ValueError('DRPC_RPC_URL required')
     output=BASE/'opcodes'
-    rows=[r for r in json.loads((BASE/'admitted_records.json').read_text()) if r['chain']=='eth']
+    rows=[r for r in acquisition_records(ROOT,BASE/'admitted_records.json') if r['chain']=='eth']
     if transaction_hashes:
         if not set(transaction_hashes)<={r['txn_hash'] for r in rows}:
-            raise ValueError('Requested transaction is not admitted on Ethereum')
+            raise ValueError('Requested transaction is outside the authorized Ethereum acquisition partition')
         rows=[r for r in rows if r['txn_hash'] in transaction_hashes]
     from scripts.capture_authentic_prestate import archive
     archive(BASE/'opcode_acquisition.json',BASE/'opcode_history')

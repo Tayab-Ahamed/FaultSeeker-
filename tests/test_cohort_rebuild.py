@@ -45,7 +45,7 @@ def test_rebuilt_cohort_accounts_for_every_source_row_and_revalidates_gaps():
     from pathlib import Path
     from benchmark.evidence_manifest import validate_record
     root=Path(__file__).resolve().parents[1]
-    with (root/'benchmark/benchmark_classification_fixed.csv').open(encoding='utf-8-sig') as handle:
+    with (root/'reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/benchmark_classification_fixed.csv').open(encoding='utf-8-sig') as handle:
         original=list(csv.DictReader(handle))
     directory=root/'reports/claim_closure/cohort'
     rebuilt=json.loads((directory/'records.json').read_text())

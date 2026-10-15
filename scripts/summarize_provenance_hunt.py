@@ -79,7 +79,7 @@ def rebuild_evidence(root, output):
     for decision, observed in zip(report['rows'], observations):
         decision.update(observed)
     report.update(original_rows=len(old), new_candidate_rows=len(extra),
-        original_dataset_sha256=digest_file(root / 'benchmark/benchmark_classification_fixed.csv'),
+        original_dataset_sha256=digest_file(root / 'reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/benchmark_classification_fixed.csv'),
         scope='246 candidate identities, zero implied paper-population membership or exploit-label adjudications')
     write(output / 'row_decisions.json', report)
     write(output / 'accepted_records.json', [r for r, d in zip(records, report['rows']) if d['accepted']])

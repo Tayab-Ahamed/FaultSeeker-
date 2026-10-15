@@ -16,7 +16,7 @@ def test_recorded_search_covers_every_original_exact_identity_once():
     import json
     from pathlib import Path
     root = Path(__file__).resolve().parents[1]
-    with (root / 'benchmark/benchmark_classification_fixed.csv').open(encoding='utf-8-sig') as handle:
+    with (root / 'reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/benchmark_classification_fixed.csv').open(encoding='utf-8-sig') as handle:
         originals = list(csv.DictReader(handle))
     queries = []
     for path in sorted((root / 'reports/provenance_hunt/search').glob('batch_*.json')):

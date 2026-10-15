@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 sys.modules.setdefault('readline',None)
 from dotenv import dotenv_values
-from benchmark.research_protocol import admit, bind, read_bound, sha, write_json
+from benchmark.research_protocol import admit, bind, read_bound, sha, write_json, acquisition_records
 from scripts.rebuild_authentic_cohort import BASE, drpc_url
 from scripts.replay_historical_opcodes import MeteredRPC
 from scripts.capture_authentic_traces import complexity_observation, walk
@@ -59,7 +59,9 @@ def run():
     if not endpoint:
         raise ValueError('DRPC_RPC_URL required')
     records=[]
-    for row in json.loads((BASE/'admitted_records.json').read_text()):
+    frozen=(ROOT/'benchmark/eval_split.json').exists()
+    prestate_index=BASE/('prestate_acquisition_train.json' if frozen else 'prestate_acquisition.json')
+    for row in acquisition_records(ROOT,BASE/'admitted_records.json'):
         if not admit(row,ROOT)['accepted']:
             raise ValueError('Invalidated admission')
         target=BASE/'prestate'/row['chain']/(row['txn_hash']+'.json.gz')
@@ -89,16 +91,19 @@ def run():
                 if trace_path.exists():
                     capture=enrich_capture(json.loads(gzip.decompress(trace_path.read_bytes())),accounts)
                     capture['prestate_artifact']=result['artifact']
-                    archive(trace_path,BASE/'trace_history')
-                    trace_path.write_bytes(gzip.compress(json.dumps(capture).encode(),mtime=0))
-                    result.update(trace_artifact=bind(trace_path,ROOT),complexity=capture['complexity'])
+                    destination=(BASE/'training_traces'/row['chain']/trace_path.name) if frozen else trace_path
+                    if not frozen:
+                        archive(trace_path,BASE/'trace_history')
+                    destination.parent.mkdir(parents=True,exist_ok=True)
+                    destination.write_bytes(gzip.compress(json.dumps(capture).encode(),mtime=0))
+                    result.update(trace_artifact=bind(destination,ROOT),complexity=capture['complexity'])
             else:
                 result.update(status='UNAVAILABLE',rpc_error=response.get('error'))
         records.append(result)
-        write_json(BASE/'prestate_acquisition.json',records)
+        write_json(prestate_index,records)
         print(row['chain'],row['txn_hash'][:12],result.get('status'),flush=True)
     # Retain pre-enrichment request accounting before updating selected bindings.
-    index=BASE/'trace_acquisition.json'
+    index=BASE/('trace_acquisition_train.json' if frozen else 'trace_acquisition.json')
     archive(index,BASE/'trace_history')
     selected=json.loads(index.read_text()) if index.exists() else []
     for record in selected:

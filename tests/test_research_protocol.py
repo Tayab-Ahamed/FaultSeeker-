@@ -148,3 +148,13 @@ def test_small_chain_strata_preserve_nearest_global_70_30_without_splitting_inci
     assert split['status']=='FROZEN'
     assert len(split['train_ids'])==7 and len(split['heldout_ids'])==3
     assert split==p.make_split(rows,'a'*64)
+
+
+def test_post_freeze_acquisition_reads_only_train_partition(tmp_path):
+    p=_protocol()
+    row={'txn_hash':'0x'+'a'*64,'chain':'eth'}
+    p.write_json(tmp_path/'train.json',[row])
+    p.write_json(tmp_path/'benchmark/eval_split.json',{'status':'FROZEN','train_ids':[p.identity(row)],
+        'heldout_ids':['eth:0x'+'b'*64], 'partitions':{'train':p.bind(tmp_path/'train.json',tmp_path),
+        'heldout':{'path':'DO_NOT_READ.json','sha256':'0'*64}}})
+    assert p.acquisition_records(tmp_path,tmp_path/'ADMITTED_FILE_MUST_NOT_BE_READ.json')==[row]

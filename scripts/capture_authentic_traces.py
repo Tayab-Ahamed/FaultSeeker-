@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 sys.modules.setdefault('readline',None)
 from dotenv import dotenv_values
-from benchmark.research_protocol import bind, read_bound, write_json, admit
+from benchmark.research_protocol import bind, read_bound, write_json, admit, acquisition_records
 from scripts.rebuild_authentic_cohort import BASE, drpc_url
 from scripts.replay_historical_opcodes import MeteredRPC
 
@@ -64,7 +64,8 @@ def run():
     if not endpoint:
         raise ValueError('DRPC_RPC_URL required')
     results=[]
-    for row in json.loads((BASE/'admitted_records.json').read_text()):
+    index=BASE/('trace_acquisition_train.json' if (ROOT/'benchmark/eval_split.json').exists() else 'trace_acquisition.json')
+    for row in acquisition_records(ROOT,BASE/'admitted_records.json'):
         if not admit(row,ROOT)['accepted']:
             raise ValueError('Admission no longer valid')
         target=BASE/'traces'/row['chain']/(row['txn_hash']+'.json.gz')
@@ -109,9 +110,9 @@ def run():
             result['error_type']=type(error).__name__
         result['accounting']=meter.summary()
         results.append(result)
-        write_json(BASE/'trace_acquisition.json',results)
+        write_json(index,results)
         print(row['chain'],row['txn_hash'][:12],result['status'],flush=True)
-    write_json(BASE/'trace_acquisition.json',results)
+    write_json(index,results)
 
 
 if __name__=='__main__':

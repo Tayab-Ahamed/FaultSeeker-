@@ -269,6 +269,18 @@ def load_train(split, root):
     return rows
 
 
+def acquisition_records(root, admitted_path):
+    """After freezing, acquisition may open only the bound train population."""
+    root=Path(root).resolve()
+    split_path=root/'benchmark/eval_split.json'
+    if split_path.exists():
+        return load_train(json.loads(split_path.read_text()),root)
+    path=Path(admitted_path).resolve()
+    if not path.is_relative_to(root):
+        raise ValueError('Admission path escapes workspace')
+    return json.loads(path.read_text())
+
+
 def claim_exam(path, split, system_sha256):
     if split.get('status') != 'FROZEN' or not split.get('train_ids') or not split.get('heldout_ids'):
         raise ValueError('Final exam requires nonempty frozen partitions')
