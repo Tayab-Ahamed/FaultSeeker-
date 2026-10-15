@@ -1,0 +1,58 @@
+{
+  "id": 27,
+  "claim": "23% WAF challenge bypass",
+  "status": "UNVERIFIABLE",
+  "reason": "Public-source HTTP 403/challenge failures were cached, but these are not a preregistered explorer recovery denominator. The WAF runner reports missing challenge cases and CURL_IMPERSONATE_BINARY; no 23 percent rate is inferred.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "requirements_unmet": [
+    "Authorized challenge cases and strategy configuration",
+    "Observed challenged-request denominator and recovery outcomes"
+  ],
+  "human_decision": "Next required input artifact: Authorized preregistered explorer-challenge case and browser-transport bundle",
+  "acceptance_tests": [
+    "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+    "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/experiments/waf.json",
+      "sha256": "730f83db847f52e0846f083a2b18695252649d3278a7bab3ce6559ca9367094d"
+    }
+  ],
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Authorized preregistered explorer-challenge case and browser-transport bundle",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/27.json"
+}
