@@ -1,0 +1,60 @@
+{
+  "id": 17,
+  "claim": "Six provider families",
+  "status": "UNVERIFIABLE",
+  "reason": "Actual routed attempts did not verify the claimed Claude or Qwen families: two Nara credential variables gave 402/429, diagnostic messages said insufficient credits, and a documented NVIDIA Qwen endpoint gave 410. Atria exposes only Atria-Dawn. The eligible Agnes free control passed but is not either claimed family. Native Anthropic/DashScope adapters remain untested; Ollama remains unreachable.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "requirements_unmet": [
+    "Eligible Claude model access",
+    "Eligible Qwen model access",
+    "Reachable installed Ollama model",
+    "Full six-family live conformance observations"
+  ],
+  "human_decision": "Next required input artifact: Executable six-family access configuration, including eligible Claude/Qwen access and a reachable installed Ollama model",
+  "acceptance_tests": [
+    "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/providers/inventory.json",
+      "sha256": "bda7f1720db94b45a08f1e298f67bc9c1b877cf5703bf619efee85084a8aff0b"
+    },
+    {
+      "path": "reports/provenance_hunt/providers/observations_manifest.json",
+      "sha256": "5d095c0b4450a5b7be2917c778c5b24f319b4faf753bbcb5680dd8b14156058c"
+    },
+    {
+      "path": "reports/provenance_hunt/providers/bynara_conformance_diagnostic.json",
+      "sha256": "cc3ca0db2dff6a0d8663272ca16463d28b92e9520768a5115032ca6ce9fcfd2f"
+    }
+  ],
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Executable six-family access configuration, including eligible Claude/Qwen access and a reachable installed Ollama model",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/17.json"
+}
