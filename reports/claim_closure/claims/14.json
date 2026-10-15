@@ -1,0 +1,33 @@
+{
+  "id": 14,
+  "claim": "17/29 percentage-point gains",
+  "status": "UNVERIFIABLE",
+  "reason": "The 17/29 percentage-point differences require paired detector predictions on the same frozen adjudicated cohort. Those outcomes are absent; the corrected repeated-address baseline is implemented and tested.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Paired predictions for all three detector variants on identical adjudicated records"
+  ],
+  "human_decision": "Paired predictions for all three detector variants on identical adjudicated records must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    },
+    {
+      "path": "reports/claim_closure/numeric_constraints.json",
+      "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
