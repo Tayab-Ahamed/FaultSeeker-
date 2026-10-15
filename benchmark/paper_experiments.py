@@ -148,6 +148,47 @@ def summarize_categories(rows):
             for category, items in groups.items()}
 
 
+def summarize_confidence_categories(rows):
+    """Table VI means from observed per-function Eq.4 component records.
+
+    This function-weighted aggregation is explicit; it cannot supply missing
+    observations or establish that a caller's categories are adjudicated.
+    """
+    from collections import defaultdict
+    from faultseeker.core.confidence_scorer import DEFAULT_WEIGHTS
+    groups,seen = defaultdict(list),set()
+    names = {'pattern_match':'PMS','code_evidence':'CES',
+             'txn_consistency':'TCS','llm_confidence':'LCS'}
+    for row in rows:
+        if not all(isinstance(row.get(k),str) and row[k] for k in
+                   ['identity','function_identity','category']):
+            raise ValueError('Observed transaction, function and category identities required')
+        key = (row['identity'],row['function_identity'])
+        if key in seen:
+            raise ValueError('Duplicate confidence function observation')
+        seen.add(key)
+        confidence = row.get('confidence') or {}
+        components = confidence.get('components') or {}
+        if any(k not in components for k in names):
+            raise ValueError('All observed confidence components are required')
+        values = {name:_finite(components[name],'confidence component') for name in names}
+        overall = _finite(confidence.get('overall'),'overall confidence')
+        if any(not 0<=v<=1 for v in [*values.values(),overall]):
+            raise ValueError('Confidence components must lie in [0,1]')
+        computed = sum(DEFAULT_WEIGHTS[name]*value for name,value in values.items())
+        if abs(computed-overall)>0.0002:
+            raise ValueError('Observed confidence is inconsistent with Eq.4')
+        groups[row['category']].append((row['identity'],values,overall))
+    if not groups:
+        raise ValueError('No observed confidence components available')
+    return {category:{**{label:sum(values[name] for _,values,_ in items)/len(items)
+                         for name,label in names.items()},
+            'C_f':sum(overall for _,_,overall in items)/len(items),
+            'n_functions':len(items),'n_transactions':len({identity for identity,_,_ in items}),
+            'aggregation':'equal weight per observed function; no imputation'}
+            for category,items in groups.items()}
+
+
 def cohort_statistics(records):
     from collections import Counter
     records = list(records)
