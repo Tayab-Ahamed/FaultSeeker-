@@ -2,12 +2,12 @@
   "id": 14,
   "claim": "17/29 percentage-point gains",
   "status": "UNVERIFIABLE",
-  "reason": "The 17/29 percentage-point differences require paired detector predictions on the same frozen adjudicated cohort. Those outcomes are absent; the corrected repeated-address baseline is implemented and tested.",
-  "verification_scope": "Current recorded evidence only",
+  "reason": "The paired detector experiment entry point refused the unaccepted cohort. No paired outcomes exist from which to compute the published 17/29 point gains or their deltas.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Paired predictions for all three detector variants on identical adjudicated records"
   ],
-  "human_decision": "Paired predictions for all three detector variants on identical adjudicated records must be supplied or independently established before reopening.",
+  "human_decision": "Next required input artifact: Accepted paired detector-study manifest",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
   ],
@@ -27,7 +27,30 @@
     {
       "path": "reports/claim_closure/numeric_constraints.json",
       "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/experiments/detectors.json",
+      "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
     }
   ],
-  "session_date": "2026-10-15"
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Accepted paired detector-study manifest",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/14.json"
 }
