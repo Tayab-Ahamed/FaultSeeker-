@@ -15,7 +15,8 @@
     "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_delegate_keeps_storage_owner",
     "tests/test_explicit_function_rank_order.py::test_actual_revest_ranker_exports_function_identity_and_stable_count_order",
     "tests/test_train_localization_metrics.py::test_proxy_storage_owner_cannot_replace_implementation_target",
-    "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected"
+    "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected",
+    "tests/test_function_input_factories.py::test_input_factories_cover_all_roles_and_verified_source"
   ],
   "evidence": [
     {
@@ -97,6 +98,10 @@
     {
       "path": "reports/cohort_rebuild_v2/VERIFIED_SOURCE_INPUT_ACCEPTANCE.json",
       "sha256": "908125d1bdf2a1c9dd5b83d191566c1db99102e5496589b0f22876ce9b07c481"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/SOURCE_FACTORY_INTEGRATION.json",
+      "sha256": "ef1fb5fa8017c908c5524e8556dfd50e5cd6f9455540b607d2d75996fa71b697"
     }
   ],
   "session_date": "2026-10-15",

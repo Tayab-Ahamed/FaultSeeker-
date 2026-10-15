@@ -26,10 +26,12 @@ class FunctionAnalyzer:
     def __init__(self,
                  model='gpt-4o-mini',
                  router: Optional[HybridLLMRouter] = None,
-                 cost_tracker: Optional[CostTracker] = None):
+                 cost_tracker: Optional[CostTracker] = None,
+                 agent_factory=None, contract_downloader_factory=None):
         self.txn_analyzer_model = model
         self.router = router
         self.cost_tracker = cost_tracker
+        self.contract_downloader_factory = contract_downloader_factory or ContractDownloader
 
         # Prompt selection: always use the LOCAL model name to pick prompt complexity.
         # In hybrid mode, `model` might be 'gemini-2.0-flash' (Stage 2) but agents
@@ -44,14 +46,22 @@ class FunctionAnalyzer:
         self.vulnerability_prompts = get_vuln_prompts(prompt_model)   # local-aware
         self.local_task_prompts = LocalTaskPrompts()
 
-        # Initialize agents — use routed agent builder when router is provided
-        self.reasoning_agent = build_routed_agent(self.session_prompts.function_call_reasoning_init, router=self.router, agent_role='reasoning_agent', system_prompt=self.session_prompts.function_call_reasoning_init) if router else build_agent(self.session_prompts.function_call_reasoning_init, model)
-        self.generation_agent = build_routed_agent(self.session_prompts.function_call_task_generation_init, router=self.router, agent_role='generation_agent', system_prompt=self.session_prompts.function_call_task_generation_init) if router else build_agent(self.session_prompts.function_call_task_generation_init, model)
-        self.processing_agent = build_routed_agent(self.session_prompts.function_call_info_processing_init, router=self.router, agent_role='processing_agent', system_prompt=self.session_prompts.function_call_info_processing_init) if router else build_agent(self.session_prompts.function_call_info_processing_init, model)
-        self.organization_agent = build_routed_agent(self.session_prompts.function_call_organization_init, router=self.router, agent_role='organization_agent', system_prompt=self.session_prompts.function_call_organization_init) if router else build_agent(self.session_prompts.function_call_organization_init, model)
-        self.children_call_filtering_agent = build_routed_agent(self.session_prompts.function_call_children_call_filtering_init, router=self.router, agent_role='children_call_filtering', system_prompt=self.session_prompts.function_call_children_call_filtering_init) if router else build_agent(self.session_prompts.function_call_children_call_filtering_init, model)
-        self.agent = build_routed_agent("", router=self.router, agent_role='ranking_agent', system_prompt="") if router else build_agent("", model)
-        
+        # Replace only provider/source transport. Every analysis role below
+        # remains the production implementation with its original prompts.
+        def make_agent(task, role):
+            if agent_factory is not None:
+                return agent_factory(task, role)
+            if router:
+                return build_routed_agent(task, router=self.router, agent_role=role, system_prompt=task)
+            return build_agent(task, model)
+
+        self.reasoning_agent = make_agent(self.session_prompts.function_call_reasoning_init, 'reasoning_agent')
+        self.generation_agent = make_agent(self.session_prompts.function_call_task_generation_init, 'generation_agent')
+        self.processing_agent = make_agent(self.session_prompts.function_call_info_processing_init, 'processing_agent')
+        self.organization_agent = make_agent(self.session_prompts.function_call_organization_init, 'organization_agent')
+        self.children_call_filtering_agent = make_agent(self.session_prompts.function_call_children_call_filtering_init, 'children_call_filtering')
+        self.agent = make_agent('', 'ranking_agent')
+
         self.task_tree = ''
         self.function_call_info_summary = {}
         self.current_task = ''
@@ -878,7 +888,7 @@ class FunctionAnalyzer:
         self.address_relation = nx.node_link_graph(self.txn_seq['address_relation'], directed=True, edges='edges')
 
         print("      [+] Downloading contract source code...")
-        self.contract_info = ContractDownloader(self.analysis_result.chain, self.address_list).run()
+        self.contract_info = self.contract_downloader_factory(self.analysis_result.chain, self.address_list).run()
 
         with self._stage('stage2_llm_analysis'):
             print("      [+] Reviewing function calls...")

@@ -1,0 +1,25 @@
+{
+  "scope": "Production FunctionAnalyzer transport injection; analysis roles/prompts/weights preserved. Model-assisted empirical run still pending",
+  "implementation": {
+    "path": "faultseeker/function_analysis/function_analyzer.py",
+    "sha256": "330f8d1ab466bf984b341216b9d25d9de7f443af59ade1f89390d0d10f9e8d15"
+  },
+  "test": {
+    "path": "tests/test_function_input_factories.py",
+    "sha256": "3ed7315cc060a028e0aa8c7124ae7eb7f55a7772ecc8fea201b1a9bd2bf2b9fc"
+  },
+  "source_acceptance": {
+    "path": "reports/cohort_rebuild_v2/VERIFIED_SOURCE_INPUT_ACCEPTANCE.json",
+    "sha256": "908125d1bdf2a1c9dd5b83d191566c1db99102e5496589b0f22876ce9b07c481"
+  },
+  "provider_roles": [
+    "reasoning_agent",
+    "generation_agent",
+    "processing_agent",
+    "organization_agent",
+    "children_call_filtering",
+    "ranking_agent"
+  ],
+  "network_requests": 0,
+  "heldout_used": false
+}
