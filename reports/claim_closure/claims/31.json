@@ -1,0 +1,23 @@
+{
+  "id": 31,
+  "claim": "Repository layout/runtime compatibility",
+  "status": "VERIFIED",
+  "reason": "The current Python 3.11.9 suite executes and Docker COPY inputs/layout exist. This scope does not assert an image build or untested interpreter versions; the Docker daemon was unavailable.",
+  "verification_scope": "Observed Python 3.11.9 execution and Docker COPY/layout checks; no Docker build assertion",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
