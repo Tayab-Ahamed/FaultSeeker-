@@ -1,0 +1,20 @@
+{
+  "id": 24,
+  "claim": "Evidence cards and two HITL checkpoints, five guidance types",
+  "status": "VERIFIED",
+  "reason": "All five first-checkpoint guidance actions affect downstream state and second-checkpoint rejection removes findings with an audit record and contract/function identity checks.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+    "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
