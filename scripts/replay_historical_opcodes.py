@@ -318,6 +318,53 @@ def validate_recorded_capture(path, expected_hash, root=ROOT):
             'artifact_sha256': hashlib.sha256(Path(path).read_bytes()).hexdigest()}
 
 
+class UnminedReplayError(ValueError):
+    def __init__(self, evidence):
+        super().__init__('Target transaction was not mined in canonical prefix order')
+        self.failure_evidence = evidence
+
+
+def save_unmined_diagnostic(url, canonical_block, prefix, target, output, root=ROOT):
+    """Preserve local failure observations, never as an accepted trace."""
+    from benchmark.research_protocol import bind, canonical, sha, write_json
+    data = {'phase': 'TARGET_NOT_MINED', 'accepted_capture': False,
+            'transaction_hash': target['hash'],
+            'expected_prefix_hashes': [tx['hash'] for tx in prefix],
+            'canonical_environment': {k: canonical_block.get(k) for k in
+                ('number', 'timestamp', 'gasLimit', 'baseFeePerGas', 'miner', 'mixHash', 'difficulty')},
+            'target': {k: target[k] for k in ('hash', 'from', 'to', 'nonce', 'gas', 'gasPrice',
+                       'maxFeePerGas', 'maxPriorityFeePerGas') if k in target},
+            'errors': []}
+    try:
+        data['observed_block'] = local_rpc(url, 'eth_getBlockByNumber', [canonical_block['number'], False])
+    except Exception as error:
+        data['errors'].append({'method': 'eth_getBlockByNumber', 'error_type': type(error).__name__})
+    try:
+        pool = local_rpc(url, 'txpool_content', [])
+        known = set(data['expected_prefix_hashes'])
+        data['pool'] = {}
+        for state in ('pending', 'queued'):
+            rows = []
+            for by_nonce in (pool.get(state) or {}).values():
+                for value in by_nonce.values():
+                    for tx in (value if isinstance(value, list) else [value]):
+                        if isinstance(tx, dict) and tx.get('hash') in known:
+                            rows.append({k: tx[k] for k in ('hash', 'from', 'to', 'nonce', 'gas',
+                                'gasPrice', 'maxFeePerGas', 'maxPriorityFeePerGas') if k in tx})
+            data['pool'][state] = rows
+    except Exception as error:
+        data['errors'].append({'method': 'txpool_content', 'error_type': type(error).__name__})
+    data['sender_nonce'] = {}
+    for tag in ('latest', 'pending'):
+        try:
+            data['sender_nonce'][tag] = local_rpc(url, 'eth_getTransactionCount', [target['from'], tag])
+        except Exception as error:
+            data['errors'].append({'method': 'eth_getTransactionCount:' + tag, 'error_type': type(error).__name__})
+    path = Path(output) / 'failures' / (target['hash'] + '.' + sha(canonical(data))[:16] + '.json')
+    write_json(path, data)
+    return bind(path, root)
+
+
 def configure_block_environment(url, block):
     local_rpc(url, 'evm_setNextBlockTimestamp', [int(block['timestamp'], 16)])
     local_rpc(url, 'anvil_setNextBlockBaseFeePerGas', [block['baseFeePerGas']])
@@ -377,7 +424,8 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120
         local_rpc(url, 'evm_mine', [], timeout_seconds=mine_timeout)
         local_receipt = local_rpc(url, 'eth_getTransactionReceipt', [tx_hash])
         if not local_receipt:
-            raise ValueError('Target transaction was not mined in canonical prefix order')
+            raise UnminedReplayError(save_unmined_diagnostic(
+                url, block, prefix, transaction, output))
         verify_receipt(receipt, local_receipt)
         local_block = local_rpc(url, 'eth_getBlockByNumber', [block['number'], False])
         if local_block['transactions'] != [tx['hash'] for tx in prefix]:

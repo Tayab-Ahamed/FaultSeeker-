@@ -3,9 +3,13 @@
     {
       "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
       "status": "UNAVAILABLE",
-      "error_type": "ValueError",
+      "error_type": "UnminedReplayError",
       "reason": "Target transaction was not mined in canonical prefix order",
-      "outbound_rpc_requests": 252
+      "failure_evidence": {
+        "path": "reports/cohort_rebuild_v2/opcodes/failures/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.633fe0b086f3a692.json",
+        "sha256": "3bdaca6b60e9aa3ba9b34ace603b942613c84f16b676b5aadf62158e3dd88618"
+      },
+      "outbound_rpc_requests": 239
     },
     {
       "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
@@ -146,7 +150,7 @@
     }
   ],
   "accounting": {
-    "outbound_rpc_requests": 252,
+    "outbound_rpc_requests": 239,
     "methods": {
       "eth_getTransactionByHash": 1,
       "eth_getTransactionReceipt": 2,
@@ -154,14 +158,14 @@
       "eth_chainId": 2,
       "eth_getBlockByNumber": 2,
       "eth_gasPrice": 1,
-      "eth_getTransactionCount": 52,
-      "eth_getBalance": 52,
-      "eth_getCode": 52,
+      "eth_getBalance": 47,
       "eth_getAccountInfo": 1,
-      "eth_getStorageAt": 86
+      "eth_getCode": 47,
+      "eth_getTransactionCount": 47,
+      "eth_getStorageAt": 88
     },
-    "estimated_cost_usd": 0.001512,
-    "cumulative_ledger_estimate_usd": 1.8225539999999127,
+    "estimated_cost_usd": 0.001434,
+    "cumulative_ledger_estimate_usd": 1.823987999999901,
     "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
     "pricing_source": "https://drpc.org/docs/pricing/compute-units",
     "billing_confirmed": false,
@@ -172,60 +176,6 @@
         ],
         "error_type": "RuntimeError"
       },
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getStorageAt"
-        ],
-        "error_type": "RuntimeError"
-      },
-      {
-        "methods": [
-          "eth_getTransactionCount"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getBalance"
-        ],
-        "error_type": "RuntimeError"
-      },
-      {
-        "methods": [
-          "eth_getTransactionCount"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getCode"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getCode"
-        ],
-        "error_type": "RuntimeError"
-      },
-      {
-        "methods": [
-          "eth_getStorageAt"
-        ],
-        "error_type": "RuntimeError"
-      },
-      {
-        "methods": [
-          "eth_getCode"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
       {
         "methods": [
           "eth_getBalance"
@@ -233,33 +183,7 @@
         "error_type": "RuntimeError"
       },
       "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getCode"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getBalance"
-        ],
-        "error_type": "RuntimeError"
-      },
-      {
-        "methods": [
-          "eth_getTransactionCount"
-        ],
-        "error_type": "RuntimeError"
-      },
-      "local-client-disconnected-after-upstream-request",
-      "local-client-disconnected-after-upstream-request",
-      {
-        "methods": [
-          "eth_getStorageAt"
-        ],
-        "error_type": "RuntimeError"
-      }
+      "local-client-disconnected-after-upstream-request"
     ]
   },
   "accounting_scope": "Current invocation only; prior observations are preserved per identity and archived per run"

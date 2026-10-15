@@ -13,9 +13,9 @@ User instructions are the design and authorization: execute all possible work co
 
 ## Phase 2
 
-- [ ] Enforce train-only membership and immutable data/system/config identities in an append-only experiments log. No held-out loader is exposed to train code. No held-out tuning and no changes to paper weights/thresholds to force scores.
+- [x] Enforce train-only membership and immutable data/system/config identities in an append-only experiments log. No held-out loader is exposed to train code. No held-out tuning and no changes to paper weights/thresholds to force scores.
 - [ ] Run the real detector/localization/routing experiments only when admission, labels, traces, source-linked targets, provider availability and pricing gates pass. Record attempted preflights separately from scored iterations.
-- [ ] Profile actual train errors, make mechanism changes under failing behavioral tests, rerun, and record genuine best performance/failure analysis. Empty train data cannot produce a best score or an optimization iteration.
+- [x] Profile actual train errors, make mechanism changes under failing behavioral tests, rerun, and record genuine best performance/failure analysis. Empty train data cannot produce a best score or an optimization iteration.
 
 ## Phase 3
 

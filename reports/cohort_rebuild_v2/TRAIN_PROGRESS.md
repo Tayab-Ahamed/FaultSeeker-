@@ -57,3 +57,26 @@ repeated-address results remain unchanged on their seven call traces.
 REENTRANCY_POSITIVE_TRAIN.json pins the actual run, positive capture and request
 record. Held-out data and the final exam remain unused. Cumulative recorded
 spend estimate/allocation is $1.820964, not a confirmed invoice.
+
+## Sixth component run and real production Stage 1
+
+Run `20261015T150659-1141df8b` adds the accepted Inverse Finance opcode
+capture: 628 SLOADs, 162 SSTOREs, exact signed transaction/receipt/environment
+checks, 13 upstream requests and 362 exact-parent prestate cache hits.
+Full component: TP=1 FP=0 FN=0 TN=3, F1=1.0 on only four of ten train
+identities. There is only one scored positive. This is incomplete-case train
+performance, not full-system F1 or paper metric verification.
+
+Production run `20261015T150951-4a3803b0` executes the actual Stage 1
+orchestrator and FunctionRanker on seven of ten train identities with socket
+connections prohibited. All seven rule verdicts are EXPLOIT; the exploit-only
+population does not establish general exploit precision. Reentrancy component
+F1 is 0.8571428571428571. Stage 2/3, localization ground-truth scoring, paired
+billed inference savings and Table VI remain unmeasured.
+
+A diagnostic Beanstalk retry used 239 upstream requests and was rejected: the
+first thirteen canonical prefix transactions mined, while the target stayed
+pending. The hash-bound pool, nonce and block observations are retained under
+`opcodes/failures/`; rejection is not an accepted opcode capture. Cumulative
+recorded spend estimate/allocation after this attempt is $1.823988. This is not
+a confirmed invoice. Held-out outcomes and the one-time final exam remain unused.

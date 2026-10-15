@@ -2,10 +2,10 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Five real train component runs are preserved. After canonical-frame ancestry repair, the full detector scores TP=1 FP=0 FN=0 TN=2 (F1=1.0) on only three of ten train cases. Structural/repeated F1 is 0.8571428571428571/0.6 on seven call traces. Revest supplies real positive SLOAD/SSTORE evidence; missing full-cohort coverage and final system/held-out outcomes prevent paper-metric verification.",
+  "reason": "Six real train component runs are preserved. After canonical-frame ancestry repair, the full detector scores TP=1 FP=0 FN=0 TN=3 (F1=1.0) on only four of ten train cases. Structural/repeated F1 remains 0.8571428571428571/0.6 on seven call traces. Revest supplies the only full-detector positive; Inverse supplies an additional independently sourced negative. Missing coverage and final production-system/held-out outcomes prevent paper-metric verification.",
   "verification_scope": "Observed train-only reentrancy component outcomes on hash-bound captures, with missing coverage retained; not full-system or held-out performance",
   "requirements_unmet": [
-    "Full captured execution and paired detector outcomes for the remaining seven train cases, then a frozen production-system held-out evaluation"
+    "Complete authenticated execution observations for the remaining six train cases, followed by a frozen full production-system held-out evaluation"
   ],
   "human_decision": "No decision needed; continue train-only evidence acquisition and semantic failure analysis",
   "acceptance_tests": [
@@ -150,17 +150,37 @@
     {
       "path": "reports/cohort_rebuild_v2/opcode_runs/revest_first_capture.json",
       "sha256": "8609255ab9f01afda8270a8e31d5e84710f50c84d11332e42128c13bc2d0a276"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/summary.json",
+      "sha256": "7cb2c59ca0f3048146e0403634a830901320fe7acb1b3ac14af157e08131462a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/full.json",
+      "sha256": "491646ae2798e4b7d7f84fb810cf3cd5154ae02c416eddc2faddb44bebebb0f5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system.json",
+      "sha256": "4b2d87e9a828b1813f5ffb460fa6f8bb47255858f59fa8344fd0ecd03b9d63eb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system_sources.json.gz",
+      "sha256": "faf3c3376bc2c48f804d36bb815c22ac99d56a86735aeb2689e140883f874fba"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+      "sha256": "164b59f593859c92ab383e9633c57922cc1b402fad28e0ac27459f19d35fac27"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Full captured execution and paired detector outcomes for the remaining seven train cases, then a frozen production-system held-out evaluation",
+  "next_input_artifact": "Complete authenticated execution observations for the remaining six train cases, followed by a frozen full production-system held-out evaluation",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/13.json",
   "paper_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
   "canonical_review_run": "canonical-history-review-2026-10-15",
   "train_experiment": {
-    "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
-    "sha256": "8526774936b8fd618f3e9659ab71d7ff281a9913f73cadc628a0fcf1841a5342"
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/summary.json",
+    "sha256": "7cb2c59ca0f3048146e0403634a830901320fe7acb1b3ac14af157e08131462a"
   },
   "train_semantic_repair": {
     "path": "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",

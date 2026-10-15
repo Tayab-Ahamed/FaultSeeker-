@@ -66,6 +66,8 @@ def run(transaction_hashes=None, mine_timeout=300, use_prestate_cache=False):
                 if value and len(value)>10 and ('KEY' in key or 'URL' in key):
                     message=message.replace(value,'[REDACTED]')
             record.update(error_type=type(error).__name__,reason=message[:600])
+            if getattr(error,'failure_evidence',None):
+                record['failure_evidence']=error.failure_evidence
         record['outbound_rpc_requests']=meter.count-before
         if hasattr(active_meter,'cache_evidence'):
             record['prestate_read_cache']=active_meter.cache_evidence()
