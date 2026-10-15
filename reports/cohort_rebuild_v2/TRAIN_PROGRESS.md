@@ -27,3 +27,33 @@ New replay request counts, source hashes and honest capability limitations are i
 RPC_TRAIN_CONCLUSION.json. Overall system F1, paired billed inference savings,
 source-linked localization and Table VI remain unmeasured. No component statistic
 substitutes for them. Claim 13 remains UNVERIFIABLE at the paper's full scope.
+
+## Fourth run: canonical-frame semantic repair
+
+Run `20261015T144524-c6d2fefd` used the same two full-detector train cases.
+Euler no longer fires the nested rewrite signal: FP=0 TN=2, accuracy=1.0;
+precision, recall and F1 are undefined because no scored row is reentrant.
+Structural and repeated-address outcomes did not change. The paired raw evidence
+and limitations are in REENTRANCY_ANCESTRY_FIX.json.
+
+Revest first replay was rejected after receipt validation because London mixHash
+setup had been skipped. A real local London probe verified the installed setter.
+The runner now sets the canonical mixHash before mining for London too, retaining
+the equality check. The retry remains an acquisition attempt until every check passes.
+
+## Fifth run: genuine positive capture
+
+Revest passed the complete five-transaction canonical-prefix replay after London
+mixHash setup was corrected: 326 SLOADs and 113 SSTOREs, 241 outbound requests.
+No difficulty/randao opcode was executed in this target trace.
+
+Run `20261015T145100-560abff3`: full-detector TP=1 FP=0 FN=0 TN=2,
+precision=recall=F1=1.0 on three of ten training identities. The new regression
+revalidates the saved positive and confirms the ancestry fix preserves its actual
+nested-slot signal. This small incomplete-case result does not meet the full
+population experiment requirement and does not promote claim 13. Structural and
+repeated-address results remain unchanged on their seven call traces.
+
+REENTRANCY_POSITIVE_TRAIN.json pins the actual run, positive capture and request
+record. Held-out data and the final exam remain unused. Cumulative recorded
+spend estimate/allocation is $1.820964, not a confirmed invoice.

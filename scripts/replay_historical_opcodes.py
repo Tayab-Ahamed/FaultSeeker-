@@ -318,6 +318,17 @@ def validate_recorded_capture(path, expected_hash, root=ROOT):
             'artifact_sha256': hashlib.sha256(Path(path).read_bytes()).hexdigest()}
 
 
+def configure_block_environment(url, block):
+    local_rpc(url, 'evm_setNextBlockTimestamp', [int(block['timestamp'], 16)])
+    local_rpc(url, 'anvil_setNextBlockBaseFeePerGas', [block['baseFeePerGas']])
+    local_rpc(url, 'anvil_setCoinbase', [block['miner']])
+    # Anvil's setter also populates the London header mixHash. Skipping it
+    # before Paris leaves a different header even after an exact receipt replay.
+    local_rpc(url, 'anvil_setNextBlockPrevRandao', [block['mixHash']])
+    if block.get('parentBeaconBlockRoot'):
+        local_rpc(url, 'anvil_setNextBlockParentBeaconBlockRoot', [block['parentBeaconBlockRoot']])
+
+
 def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120):
     if not re.fullmatch(r'0x[0-9a-fA-F]{64}', tx_hash):
         raise ValueError('Invalid transaction hash')
@@ -358,13 +369,7 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120
         fork = local_rpc(url, 'eth_getBlockByNumber', [hex(parent), False])
         if not fork or fork['hash'] != block['parentHash']:
             raise ValueError('Fork parent hash mismatch')
-        local_rpc(url, 'evm_setNextBlockTimestamp', [int(block['timestamp'], 16)])
-        local_rpc(url, 'anvil_setNextBlockBaseFeePerGas', [block['baseFeePerGas']])
-        local_rpc(url, 'anvil_setCoinbase', [block['miner']])
-        if hardfork(block) != 'london':
-            local_rpc(url, 'anvil_setNextBlockPrevRandao', [block['mixHash']])
-        if block.get('parentBeaconBlockRoot'):
-            local_rpc(url, 'anvil_setNextBlockParentBeaconBlockRoot', [block['parentBeaconBlockRoot']])
+        configure_block_environment(url, block)
         for tx, raw in zip(prefix, signed):
             accepted = local_rpc(url, 'eth_sendRawTransaction', [raw])
             if accepted != tx['hash']:

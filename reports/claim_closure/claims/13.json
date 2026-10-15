@@ -2,17 +2,21 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Genuine train-only components now run on source-adjudicated captures. Structural/repeated F1 are 0.8571428571428571/0.6 on seven of ten train cases. Full storage detection covers two negatives, with one false positive (Euler), so no positive-class recall or target reentrancy F1 is established. These results do not reproduce paper Table V or overall system F1.",
+  "reason": "Five real train component runs are preserved. After canonical-frame ancestry repair, the full detector scores TP=1 FP=0 FN=0 TN=2 (F1=1.0) on only three of ten train cases. Structural/repeated F1 is 0.8571428571428571/0.6 on seven call traces. Revest supplies real positive SLOAD/SSTORE evidence; missing full-cohort coverage and final system/held-out outcomes prevent paper-metric verification.",
   "verification_scope": "Observed train-only reentrancy component outcomes on hash-bound captures, with missing coverage retained; not full-system or held-out performance",
   "requirements_unmet": [
-    "Paired full-detector observations covering accepted reentrancy positives and negatives; final frozen-system held-out evaluation remains unused"
+    "Full captured execution and paired detector outcomes for the remaining seven train cases, then a frozen production-system held-out evaluation"
   ],
   "human_decision": "No decision needed; continue train-only evidence acquisition and semantic failure analysis",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
     "tests/test_authentic_research_runner.py::test_runner_executes_real_train_detectors_without_heldout_or_label_input",
     "tests/test_authentic_research_runner.py::test_runner_records_tampered_trace_as_unscored_not_negative",
-    "tests/test_authentic_research_runner.py::test_system_snapshot_preserves_exact_source_bytes_and_detects_changed_input"
+    "tests/test_authentic_research_runner.py::test_system_snapshot_preserves_exact_source_bytes_and_detects_changed_input",
+    "tests/test_nested_storage_ancestry.py::test_sequential_writes_in_different_branches_are_not_nested",
+    "tests/test_nested_storage_ancestry.py::test_actual_ancestor_callback_keeps_nested_slot_signal",
+    "tests/test_nested_storage_ancestry.py::test_actual_euler_sequential_token_transfers_do_not_fire_nested_rewrite",
+    "tests/test_nested_storage_ancestry.py::test_actual_revest_callback_keeps_positive_after_ancestry_fix"
   ],
   "evidence": [
     {
@@ -98,16 +102,68 @@
     {
       "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system_sources.json.gz",
       "sha256": "fed6604736a83e1244cf5740b8ec1aaac5e00541fe6921d8a96755590f4f42d9"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",
+      "sha256": "1ac2121d30210430e2ea7d5281ebee4a11a835260573c049021cc494668fde06"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/full.json",
+      "sha256": "70c60e3ab95e8c025e69c9ceb50b009bf8ef8efe859b2b619f1e1dee65333986"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/summary.json",
+      "sha256": "8142ef5612060008a3c49e856455df1598568e092582f6393563766371643540"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system.json",
+      "sha256": "3a4533432b3a7d81f2c6f07cc156bab874f49eb03e11432d6667dfdbcee2cc56"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system_sources.json.gz",
+      "sha256": "8c6772662e50d23a98fce51c973e987b2d802e4b41c87a10e698c7ad0f6726e2"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/REENTRANCY_POSITIVE_TRAIN.json",
+      "sha256": "292229f61582c54ba705ae23ce1c36fdb67cbaa13db69ec7b5e409b23424e0e5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
+      "sha256": "8526774936b8fd618f3e9659ab71d7ff281a9913f73cadc628a0fcf1841a5342"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/full.json",
+      "sha256": "be8c3a527bb03619d51eb7672ffda5c782f2fca368ebdfeae70eed0d73924d9e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system.json",
+      "sha256": "2016ad1c7a235c01621b5b9f8c9a684fdb1acec2b5fda63088ac35a86ed13744"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system_sources.json.gz",
+      "sha256": "a15930771c3678b14566d1e938b68e3b3fbab56068473365c3567307e80f7c4e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+      "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/opcode_runs/revest_first_capture.json",
+      "sha256": "8609255ab9f01afda8270a8e31d5e84710f50c84d11332e42128c13bc2d0a276"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Paired full-detector observations covering accepted reentrancy positives and negatives; final frozen-system held-out evaluation remains unused",
+  "next_input_artifact": "Full captured execution and paired detector outcomes for the remaining seven train cases, then a frozen production-system held-out evaluation",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/13.json",
   "paper_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
   "canonical_review_run": "canonical-history-review-2026-10-15",
   "train_experiment": {
-    "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/summary.json",
-    "sha256": "a08e8b9c26dd22ae57fe114fef8a3a75dccf4ba578f2bdc9154c520cf5406915"
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
+    "sha256": "8526774936b8fd618f3e9659ab71d7ff281a9913f73cadc628a0fcf1841a5342"
+  },
+  "train_semantic_repair": {
+    "path": "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",
+    "sha256": "1ac2121d30210430e2ea7d5281ebee4a11a835260573c049021cc494668fde06"
   }
 }

@@ -511,6 +511,47 @@ class SignalExtractor:
             )
 
         storage_events = self._normalized_storage_events()
+        # Opcode frame IDs distinguish callbacks from later sequential branches.
+        # Call depth alone is not evidence that two writes were nested.
+        frame_lineage = {}
+
+        def index_frame(node, frame_id, ancestors=(), owner='', boundaries=0, parent_owner=''):
+            effective = self._effective_address(node, owner)
+            kind = self._node_call_type(node)
+            crossed = bool(parent_owner and effective != parent_owner
+                           and kind in {'CALL', 'DELEGATECALL', 'CALLCODE', 'CREATE', 'CREATE2'})
+            current_boundaries = boundaries + int(crossed)
+            frame_lineage[frame_id] = (ancestors, current_boundaries, effective)
+            for index, child in enumerate(node.get('children', [])):
+                index_frame(child, f'{frame_id}.{index}', ancestors + (frame_id,),
+                            effective, current_boundaries, effective)
+
+        if any(event.get('call_id') is not None for event in storage_events):
+            for root_index, root in enumerate(self._canonical_roots()):
+                index_frame(root, str(root_index))
+
+        def nested_slot_writes(writes):
+            if not any(write.get('call_id') is not None for write in writes):
+                # Legacy manually supplied events lack frame IDs. Complete
+                # opcode experiments always carry verified frame identities.
+                depths = [write['depth'] for write in writes]
+                return bool(depths and max(depths) - min(depths) >= 2)
+            by_frame = defaultdict(list)
+            for write in writes:
+                by_frame[write.get('call_id')].append(write)
+            for write in writes:
+                current = frame_lineage.get(write.get('call_id'))
+                if current is None:
+                    continue
+                ancestors, boundaries, owner = current
+                for ancestor_id in ancestors:
+                    ancestor = frame_lineage[ancestor_id]
+                    if owner != write['address'] or ancestor[2] != owner or boundaries - ancestor[1] < 2:
+                        continue
+                    if any(abs(write['depth'] - prior['depth']) >= 2 for prior in by_frame.get(ancestor_id, [])):
+                        return True
+            return False
+
         writes_by_slot: dict[tuple[str, str], list[dict]] = defaultdict(list)
         writes_by_frame: dict[tuple[str, int], list[dict]] = defaultdict(list)
 
@@ -541,7 +582,7 @@ class SignalExtractor:
             )
             same_slot_rewritten = same_slot_rewritten or len(writes) >= 2
 
-            if len(writes) >= 2 and unique_depths and (max(unique_depths) - min(unique_depths) >= 2):
+            if len(writes) >= 2 and nested_slot_writes(writes):
                 repeated_slot_nested = True
                 suspicious_paths.append({
                     'address': address,

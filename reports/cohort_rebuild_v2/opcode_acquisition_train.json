@@ -1,6 +1,42 @@
 {
   "attempts": [
     {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "status": "CAPTURED_CANONICAL_OPCODES",
+      "capture": {
+        "transaction_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+        "label": "provenance-admitted exploit; label not used during replay",
+        "block": 14465357,
+        "transaction_index": 4,
+        "prefix_transactions_replayed": 5,
+        "artifact": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "artifact_sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e",
+        "opcode_count": 44936,
+        "sload_count": 326,
+        "sstore_count": 113,
+        "normalization_complete": true,
+        "storage_owners_verified": true,
+        "receipt_matches": true,
+        "storage_contracts": [
+          "0x1820a4b7618bde71dce8cdc73aab6c95905fad24",
+          "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+          "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "0xb480ac726528d1c195cd3bb32f19c92e8d928519",
+          "0xbc2c5392b0b841832bec8b9c30747badda7b70ca",
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "0xe952bda8c06481506e4731c4f54ced2d4ab81659"
+        ]
+      },
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+      },
+      "outbound_rpc_requests": 241
+    },
+    {
       "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
       "status": "VALIDATED_RECORDED_CAPTURE",
       "artifact": {
@@ -20,14 +56,34 @@
     }
   ],
   "accounting": {
-    "outbound_rpc_requests": 0,
-    "methods": {},
-    "estimated_cost_usd": 0.0,
-    "cumulative_ledger_estimate_usd": 1.8180719999999497,
+    "outbound_rpc_requests": 241,
+    "methods": {
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_chainId": 2,
+      "eth_getBlockByNumber": 2,
+      "eth_gasPrice": 1,
+      "eth_getBalance": 33,
+      "eth_getCode": 33,
+      "eth_getTransactionCount": 33,
+      "eth_getAccountInfo": 1,
+      "eth_getStorageAt": 133
+    },
+    "estimated_cost_usd": 0.001446,
+    "cumulative_ledger_estimate_usd": 1.8209639999999259,
     "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
     "pricing_source": "https://drpc.org/docs/pricing/compute-units",
     "billing_confirmed": false,
-    "proxy_errors": []
+    "proxy_errors": [
+      {
+        "methods": [
+          "eth_getAccountInfo"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request"
+    ]
   },
   "accounting_scope": "Current invocation only; prior observations are preserved per identity and archived per run"
 }

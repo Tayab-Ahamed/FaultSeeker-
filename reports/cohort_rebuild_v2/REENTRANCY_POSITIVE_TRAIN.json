@@ -1,0 +1,45 @@
+{
+  "claim": 13,
+  "scope": "Three real full-detector train cases: one reentrancy-positive, two negative root causes; not full cohort/system/heldout metrics",
+  "run": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
+    "sha256": "8526774936b8fd618f3e9659ab71d7ff281a9913f73cadc628a0fcf1841a5342"
+  },
+  "full": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/full.json",
+    "sha256": "be8c3a527bb03619d51eb7672ffda5c782f2fca368ebdfeae70eed0d73924d9e"
+  },
+  "metrics": {
+    "n": 3,
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "tn": 2,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0
+  },
+  "coverage": {
+    "scored": 3,
+    "eligible_train": 10
+  },
+  "revest_capture": {
+    "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+    "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+  },
+  "revest_attempt": {
+    "path": "reports/cohort_rebuild_v2/opcode_runs/revest_first_capture.json",
+    "sha256": "8609255ab9f01afda8270a8e31d5e84710f50c84d11332e42128c13bc2d0a276"
+  },
+  "revest_opcode_count": 44936,
+  "revest_sloads": 326,
+  "revest_sstores": 113,
+  "prefix_transactions_replayed": 5,
+  "outbound_rpc_requests_this_revest_attempt": 241,
+  "cumulative_ledger_estimate_allocation_usd": 1.8209639999999259,
+  "billing_confirmed": false,
+  "paper_weights_changed": false,
+  "thresholds_changed": false,
+  "heldout_used": false
+}

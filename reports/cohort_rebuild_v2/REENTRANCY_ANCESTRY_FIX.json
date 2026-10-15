@@ -1,0 +1,44 @@
+{
+  "claim": 13,
+  "kind": "paired train semantic repair",
+  "before": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/full.json",
+    "sha256": "a8370c3b6d8f081260f68e5f990d4b15c13f5b9cb4c25b6d0e82af0d43b26ab5"
+  },
+  "after": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/full.json",
+    "sha256": "70c60e3ab95e8c025e69c9ceb50b009bf8ef8efe859b2b619f1e1dee65333986"
+  },
+  "paired_sample_ids": [
+    "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+    "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+  ],
+  "before_metrics": {
+    "n": 2,
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "tn": 1,
+    "precision": 0.0,
+    "recall": null,
+    "f1": 0.0,
+    "accuracy": 0.5
+  },
+  "after_metrics": {
+    "n": 2,
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "tn": 2,
+    "precision": null,
+    "recall": null,
+    "f1": null,
+    "accuracy": 1.0
+  },
+  "mechanism": "Nested slot rewrite now requires actual canonical write-frame ancestry, matching storage owner and a crossed external boundary. Different depths on sequential branches do not suffice.",
+  "legacy_scope": "Manually supplied legacy events without call IDs retain the previous depth proxy. Accepted opcode experiments have validated frame IDs and cannot use that compatibility path.",
+  "paper_weights_changed": false,
+  "thresholds_changed": false,
+  "heldout_used": false,
+  "limitation": "Two negative-root-cause cases only; no reentrancy-positive recall or general F1 established by this comparison."
+}
