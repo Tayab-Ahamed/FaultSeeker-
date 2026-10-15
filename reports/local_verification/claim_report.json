@@ -470,8 +470,15 @@
         "CAST_BINARY",
         "FOUNDRY_BIN"
       ],
-      "status": "VERIFIED-COMPILED-EVM",
+      "status": "VERIFIED-HISTORICAL-ETHEREUM-SAMPLE",
       "local_proof": "PASSED",
+      "evidence_pointers": [
+        "reports/historical_replay/README.md",
+        "reports/historical_replay/historical_replay_summary.json",
+        "reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz"
+      ],
+      "historical_verification_scope": "One Ethereum transaction; comparison replay timed out. No cohort, all-chain or incident-label verification.",
+      "historical_acceptance_test": "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
       "claim_commit": "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
       "implementation_commits": [
         "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
@@ -4291,17 +4298,18 @@
   },
   "test_exit_code": 0,
   "test_counts": {
-    "passed": 328
+    "passed": 336,
+    "skipped": 1
   },
-  "timestamp": "2026-10-15T00:41:22.890580+00:00",
+  "timestamp": "2026-10-15T02:22:57.865868+00:00",
   "python_version": "3.11.9",
-  "revision": "74fd8fe50d6cadc0d0995a0e22659bd1a488d99d",
+  "revision": "1ab64992a3011a402b80a1867819005f791bbd0e",
   "test_manifest_sha256": {
     "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
     "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
     "tests\\test_analyst_guidance.py": "89ff0f509b938e07cbf7bc6d9674a4577b65782ea92b0ee042c00bc7da9da4cd",
     "tests\\test_calibration_schema.py": "93d043bd4cb6d961012a17addb0d8ca64d30c6c91a2a93a6abff63609cb6b420",
-    "tests\\test_claim_registry.py": "9f02c20ab66f0f523f4a870740105c690f359f7a8155bc1da615bf4ed475873c",
+    "tests\\test_claim_registry.py": "0c6aca2df0fbcd1870001923f72e7d93d39995c4e0f696f5a2e74bd7ed146f82",
     "tests\\test_compiled_evm_integration.py": "77f372bc95ce3898a34c159fb281d0e93c02a4d16177592a983cb20ebe1303f0",
     "tests\\test_confidence_scorer.py": "7e3f08dc2ae43f802a8928cff527f1e4c44227606b7760a82be84cb904dbc9ca",
     "tests\\test_cost_tracker_ablation.py": "75d6362dd38ce6b1c1f54a04083836333bd0c0edcbb3a50a982b5b9bb9f45475",
@@ -4309,6 +4317,7 @@
     "tests\\test_evidence_manifest.py": "95e28b6e6b60a77b8f810f76e1455978b8ce1b0b9eb5dfd78fd7dab31b59c862",
     "tests\\test_external_baseline_and_human_study.py": "4e125f44ad53d5f823306918390d81ccaf268858f9c0c0f514fe533642209b3d",
     "tests\\test_function_agent_flow.py": "4e4773fff0e33c006eb99cb78dfef7f3eebe0fac598da0ad324e1c83237e2520",
+    "tests\\test_historical_fork_replay.py": "56eb765914eb3090aef48235479f5394ddd840b8e2a47b6f3839a07947f140db",
     "tests\\test_honest_eval.py": "62fad84821b37b417fd44bdd0f1fdb30ce83fc4f6b7a2dd61622bdb6c7862ce5",
     "tests\\test_llm_router.py": "63d4f51ca71102343d1c582eb5b7d1285fa566677039691ff16976bef4cb7140",
     "tests\\test_llm_router_ablation.py": "6b7db9f5ba4380cc69686ae5092c7ca1d57f5a5fde320bf5f9d3630f5e9177dd",
