@@ -2,14 +2,16 @@
   "id": 14,
   "claim": "17/29 percentage-point gains",
   "status": "UNVERIFIABLE",
-  "reason": "17/29pp are arithmetic between unsupported TableV declarations. Feature-harness ablations are different mechanisms/endpoints; even -TIG recorded .6565 differs from rerun .6531.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Two real paired TRAIN comparisons now join executed detector variants on exactly identical transaction identities and labels, excluding missing captures. Latest five-case shared population has full/structural F1 1.0 and repeated-call F1 0.5714285714. Observed full-minus-structural gain is 0 percentage points and full-minus-repeated gain is 42.8571428571 points, versus paper 17 and 29 points (deltas -17 and +13.8571428571). Earlier four-case comparison is preserved. These availability-selected TRAIN measurements do not establish the published broader evaluation gains.",
+  "verification_scope": "Real executed predictions paired by identity on five TRAIN cases; no cross-population subtraction or held-out inference",
   "requirements_unmet": [
-    "Paired executed SSTORE/structural/repeated-address outcomes on the same adjudicated rows"
+    "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains"
   ],
   "human_decision": "Next evidence input: Paired executed SSTORE/structural/repeated-address outcomes on the same adjudicated rows",
   "acceptance_tests": [
-    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+    "tests/test_paired_train_detector_gains.py::test_actual_gain_comparison_uses_exact_shared_identities",
+    "tests/test_paired_train_detector_gains.py::test_duplicate_or_conflicting_actual_observations_are_rejected"
   ],
   "evidence": [
     {
@@ -71,10 +73,18 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/paired_gains/20261015T161923-4650ee37/summary.json",
+      "sha256": "e53d55324c23360af2ed10f31d71d3db8521ad066a63fe1c87081284be3159a7"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/paired_gains/20261015T180152-ca8176ca/summary.json",
+      "sha256": "2df2dacaffa0ff8d81b697a924053d7cdc26140a8a27421fae48adfe436f44e8"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Paired executed SSTORE/structural/repeated-address outcomes on the same adjudicated rows",
+  "next_input_artifact": "Complete paired accepted-data outcomes for the final frozen evaluation",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/14.json",
   "paper_verdict": "PUBLISHED-GAINS-UNSUPPORTED",

@@ -1,0 +1,104 @@
+{
+  "n": 5,
+  "paired_identities": [
+    "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+    "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+    "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+    "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+  ],
+  "metrics": {
+    "structural": {
+      "n": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "repeated": {
+      "n": 5,
+      "tp": 2,
+      "fp": 3,
+      "fn": 0,
+      "tn": 0,
+      "precision": 0.4,
+      "recall": 1.0,
+      "f1": 0.5714285714285714,
+      "accuracy": 0.4
+    },
+    "full": {
+      "n": 5,
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    }
+  },
+  "scope": "Observed complete-case TRAIN comparison only",
+  "gains_pp": {
+    "structural": 0.0,
+    "repeated": 42.85714285714286
+  },
+  "unpaired_exclusions": {
+    "structural": [
+      "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    ],
+    "repeated": [
+      "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    ],
+    "full": []
+  },
+  "source_run": "20261015T180152-ca8176ca",
+  "inputs": [
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/structural.json",
+      "sha256": "7a5bc4accf6c08caaa25afbcccef5bde9b3e92122ce90760b0cf9a9c91a54bab"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/repeated.json",
+      "sha256": "eab75e7d04a5bf430c28b909c29b7e2532c8d70ffd96b8de8c6c89d051fcd3c4"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/full.json",
+      "sha256": "c4f673f0fbc14cf27308c94478e7351420179fadb840550c0ecf9c9957d4d1d9"
+    }
+  ],
+  "frozen_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "eligible_train": 10,
+  "paper_gains_pp": {
+    "structural": 17,
+    "repeated": 29
+  },
+  "limitations": [
+    "Paired cases reflect archive availability, not representative full-cohort outcomes",
+    "No held-out or full production system metrics",
+    "No threshold or weight tuning",
+    "No paired inference cost savings inferred from detector CPU timings"
+  ],
+  "heldout_used": false,
+  "delta_from_paper_pp": {
+    "structural": -17.0,
+    "repeated": 13.857142857142861
+  },
+  "measurer_snapshot": {
+    "path": "reports/cohort_rebuild_v2/paired_gains/20261015T180152-ca8176ca/measurer.py.txt",
+    "sha256": "e9efd22c93c22730208a26019b8f7b1954dd8e2bff779171dea61462306560e1"
+  }
+}
