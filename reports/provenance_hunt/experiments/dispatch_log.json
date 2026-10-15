@@ -1,0 +1,108 @@
+[
+  {
+    "experiment": "detectors",
+    "command": [
+      "benchmark/run_paper_experiments.py",
+      "--cohort",
+      "reports/provenance_hunt/cohort/records.json",
+      "--evidence-root",
+      "reports/provenance_hunt/cohort",
+      "--experiment",
+      "detectors",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\detectors.json"
+    ],
+    "exit_code": 2,
+    "stdout": "BLOCKED-BY-DATA: reports\\provenance_hunt\\experiments\\detectors.json\n",
+    "stderr": "",
+    "model_calls": 0,
+    "rpc_calls": 0
+  },
+  {
+    "experiment": "categories",
+    "command": [
+      "benchmark/run_paper_experiments.py",
+      "--cohort",
+      "reports/provenance_hunt/cohort/records.json",
+      "--evidence-root",
+      "reports/provenance_hunt/cohort",
+      "--experiment",
+      "categories",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\categories.json"
+    ],
+    "exit_code": 2,
+    "stdout": "BLOCKED-BY-DATA: reports\\provenance_hunt\\experiments\\categories.json\n",
+    "stderr": "",
+    "model_calls": 0,
+    "rpc_calls": 0
+  },
+  {
+    "experiment": "routing",
+    "command": [
+      "benchmark/run_paper_experiments.py",
+      "--cohort",
+      "reports/provenance_hunt/cohort/records.json",
+      "--evidence-root",
+      "reports/provenance_hunt/cohort",
+      "--experiment",
+      "routing",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\routing.json"
+    ],
+    "exit_code": 2,
+    "stdout": "BLOCKED-BY-DATA: reports\\provenance_hunt\\experiments\\routing.json\n",
+    "stderr": "",
+    "model_calls": 0,
+    "rpc_calls": 0
+  },
+  {
+    "experiment": "prefilter",
+    "command": [
+      "benchmark/run_paper_experiments.py",
+      "--cohort",
+      "reports/provenance_hunt/cohort/records.json",
+      "--evidence-root",
+      "reports/provenance_hunt/cohort",
+      "--experiment",
+      "prefilter",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\prefilter.json"
+    ],
+    "exit_code": 2,
+    "stdout": "BLOCKED-BY-DATA: reports\\provenance_hunt\\experiments\\prefilter.json\n",
+    "stderr": "",
+    "model_calls": 0,
+    "rpc_calls": 0
+  },
+  {
+    "experiment": "guidance",
+    "command": [
+      "benchmark/run_paper_experiments.py",
+      "--cohort",
+      "reports/provenance_hunt/cohort/records.json",
+      "--evidence-root",
+      "reports/provenance_hunt/cohort",
+      "--experiment",
+      "guidance",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\guidance.json"
+    ],
+    "exit_code": 2,
+    "stdout": "BLOCKED-BY-DATA: reports\\provenance_hunt\\experiments\\guidance.json\n",
+    "stderr": "",
+    "model_calls": 0,
+    "rpc_calls": 0
+  },
+  {
+    "experiment": "waf",
+    "command": [
+      "benchmark/run_waf_experiment.py",
+      "--output",
+      "reports\\provenance_hunt\\experiments\\waf.json"
+    ],
+    "exit_code": 2,
+    "stdout": "PENDING-CREDENTIALS: reports\\provenance_hunt\\experiments\\waf.json\n",
+    "stderr": ""
+  }
+]
