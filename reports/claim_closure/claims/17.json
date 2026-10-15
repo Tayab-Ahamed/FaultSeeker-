@@ -1,0 +1,29 @@
+{
+  "id": 17,
+  "claim": "Six provider families",
+  "status": "UNVERIFIABLE",
+  "reason": "Six-family live conformance cannot be established: Anthropic and DashScope credentials are absent and no local Ollama endpoint/model was reachable. Other key presence is not authentication proof.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Anthropic live access",
+    "DashScope live access",
+    "Installed reachable Ollama model",
+    "Six-family live conformance observations"
+  ],
+  "human_decision": "Anthropic live access; DashScope live access; Installed reachable Ollama model; Six-family live conformance observations must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
