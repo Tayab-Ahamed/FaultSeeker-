@@ -2,8 +2,8 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established.",
-  "verification_scope": "Observed provider methods and authenticated historical call trees on specified train identities; no inferred opcode evidence or all-chain capability",
+  "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established. A direct public Gnosis historical-node opcode probe additionally succeeded: eth_chainId=100, debug_traceTransaction with full stack/storage and fresh canonical receipt. Its 236237-step trace normalizes 1354 reads and 186 writes across 519 verified frames. This is endpoint-specific evidence, not evidence that configured dRPC or every chain supports native opcode tracing.",
+  "verification_scope": "Observed named endpoint/method/chain capabilities only; failed connection and native Gnosis success retained separately from dRPC and Anvil evidence",
   "requirements_unmet": [
     "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
   ],
@@ -122,6 +122,14 @@
     {
       "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
       "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+      "sha256": "71f9c2467a5c26953a9ee6bbdd4aa0b02775b2dd6c25818ed79a627418d318cf"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+      "sha256": "8acbac288a5fb1a3b9a629acb146bfc9763fc7fc57e79e5fc437e82ca4425b61"
     }
   ],
   "session_date": "2026-10-15",
