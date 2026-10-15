@@ -71,3 +71,19 @@ def test_runner_refuses_changed_frozen_manifest(tmp_path):
     with pytest.raises(ValueError, match="manifest"):
         run_train(tmp_path)
     assert not (tmp_path / "reports/cohort_rebuild_v2/experiments_log.json").exists()
+
+
+def test_system_snapshot_preserves_exact_source_bytes_and_detects_changed_input(tmp_path):
+    import base64
+    from scripts.run_authentic_research import snapshot_system
+    source = tmp_path / "module.py"
+    source.write_bytes(b"print('observed source')\n")
+    system = {"files": [bind(source, tmp_path)]}
+    out = tmp_path / "run"
+    out.mkdir()
+    snapshot = snapshot_system(system, out, tmp_path)
+    archived = json.loads(gzip.decompress(snapshot.read_bytes()))
+    assert base64.b64decode(archived["module.py"]) == source.read_bytes()
+    source.write_bytes(b"changed source")
+    with pytest.raises(ValueError, match="digest"):
+        snapshot_system(system, out, tmp_path)

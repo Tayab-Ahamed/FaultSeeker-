@@ -2,14 +2,17 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Historical .86/.69/.57 were literal result declarations; Oct6 recompute evaluates0 and emitsnull F1. Reproduced .7586/.8593 feature classification has a different target and cannot validate TableV.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Genuine train-only components now run on source-adjudicated captures. Structural/repeated F1 are 0.8571428571428571/0.6 on seven of ten train cases. Full storage detection covers two negatives, with one false positive (Euler), so no positive-class recall or target reentrancy F1 is established. These results do not reproduce paper Table V or overall system F1.",
+  "verification_scope": "Observed train-only reentrancy component outcomes on hash-bound captures, with missing coverage retained; not full-system or held-out performance",
   "requirements_unmet": [
-    "Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging"
+    "Paired full-detector observations covering accepted reentrancy positives and negatives; final frozen-system held-out evaluation remains unused"
   ],
-  "human_decision": "Next evidence input: Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging",
+  "human_decision": "No decision needed; continue train-only evidence acquisition and semantic failure analysis",
   "acceptance_tests": [
-    "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+    "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+    "tests/test_authentic_research_runner.py::test_runner_executes_real_train_detectors_without_heldout_or_label_input",
+    "tests/test_authentic_research_runner.py::test_runner_records_tampered_trace_as_unscored_not_negative",
+    "tests/test_authentic_research_runner.py::test_system_snapshot_preserves_exact_source_bytes_and_detects_changed_input"
   ],
   "evidence": [
     {
@@ -71,12 +74,40 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/summary.json",
+      "sha256": "a08e8b9c26dd22ae57fe114fef8a3a75dccf4ba578f2bdc9154c520cf5406915"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/structural.json",
+      "sha256": "c13fcbd98da9ce7b58a6c185533cdf7af0fa69290526245eea51c57935a50a65"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/repeated.json",
+      "sha256": "7e2bce3817c75e7880d0a6bce5520147d80e3e3bc46f8e91a05d5da4c24d96a8"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/full.json",
+      "sha256": "a8370c3b6d8f081260f68e5f990d4b15c13f5b9cb4c25b6d0e82af0d43b26ab5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system.json",
+      "sha256": "e233103ae57d061848d74b033c27119eeef8563566eb56958d0195fdfeb3e889"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system_sources.json.gz",
+      "sha256": "fed6604736a83e1244cf5740b8ec1aaac5e00541fe6921d8a96755590f4f42d9"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging",
+  "next_input_artifact": "Paired full-detector observations covering accepted reentrancy positives and negatives; final frozen-system held-out evaluation remains unused",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/13.json",
-  "paper_verdict": "PUBLISHED-METRICS-UNSUPPORTED",
-  "canonical_review_run": "canonical-history-review-2026-10-15"
+  "paper_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
+  "canonical_review_run": "canonical-history-review-2026-10-15",
+  "train_experiment": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/summary.json",
+    "sha256": "a08e8b9c26dd22ae57fe114fef8a3a75dccf4ba578f2bdc9154c520cf5406915"
+  }
 }

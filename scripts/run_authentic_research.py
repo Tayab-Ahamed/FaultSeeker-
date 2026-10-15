@@ -5,6 +5,7 @@ Reentrancy component scores are not overall exploit-detection performance.
 Missing observations stay missing and are never converted to negative outcomes.
 """
 import argparse
+import base64
 from datetime import datetime, timezone
 import gzip
 import json
@@ -32,9 +33,18 @@ def system_identity():
         ROOT / 'benchmark/detector_experiments.py', ROOT / 'benchmark/paper_experiments.py',
         ROOT / 'benchmark/research_protocol.py', Path(__file__).resolve(),
         ROOT / 'scripts/replay_historical_opcodes.py', ROOT / 'scripts/capture_authentic_traces.py',
+        ROOT / 'scripts/pinned_prestate_rpc.py',
     ]
     files = [bind(path, ROOT) for path in paths]
     return {'sha256': sha(canonical(files)), 'files': files}
+
+
+def snapshot_system(system, output, code_root=ROOT):
+    sources = {bound['path']: base64.b64encode(read_bound(bound, code_root)).decode('ascii')
+               for bound in system['files']}
+    path = Path(output) / 'system_sources.json.gz'
+    path.write_bytes(gzip.compress(canonical(sources), mtime=0))
+    return path
 
 
 def _capture(binding, row, root, full=False):
@@ -91,6 +101,7 @@ def run_train(root=ROOT):
     log = root / BASE / 'experiments_log.json'
     common = {'seed': split['seed'], 'config': config, 'run_id': run_id}
     write_json(out / 'system.json', system)
+    config['system_snapshot'] = bind(snapshot_system(system, out), root)
     append_experiment(log, split, dict(common, kind='dispatch-train', sample_ids=[], metrics=None))
     result = {'run_id': run_id, 'scope': 'train-only reentrancy components; not overall system F1',
               'frozen_train_n': len(rows), 'config': config, 'variants': {},
