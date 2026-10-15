@@ -2,7 +2,7 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available. Follow-up approval was fully consumed by fourteen further HTTP-200 responses. Across both batches all twenty ledger reservation/settlement pairs have provider usage and exact agnes-2.5-flash identity. The follow-up safely stopped at its cap, still in the first case: zero complete cases and no final model ranks or quality metric. Five real roles fired; children filtering and complete localization were not reached. Subsequent offline review fixed a live-source fallback that bypassed the injected provenance boundary and rejects malformed/unknown/duplicate model selections before candidates can be silently dropped. Source-only routing and selection behavior are unit-tested, including real cached historical source input. The legacy pilot snapshots retain the old bypass; no evidence proves whether it was exercised. Neither pilot is retroactively scored and complete model-assisted localization remains unverified.",
+  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available. Follow-up approval was fully consumed by fourteen further HTTP-200 responses. Across both batches all twenty ledger reservation/settlement pairs have provider usage and exact agnes-2.5-flash identity. The follow-up safely stopped at its cap, still in the first case: zero complete cases and no final model ranks or quality metric. Five real roles fired; children filtering and complete localization were not reached. Subsequent offline review fixed a live-source fallback that bypassed the injected provenance boundary and rejects malformed/unknown/duplicate model selections before candidates can be silently dropped. Source-only routing and selection behavior are unit-tested, including real cached historical source input. The legacy pilot snapshots retain the old bypass; no evidence proves whether it was exercised. Neither pilot is retroactively scored and complete model-assisted localization remains unverified. Additional-info normalization now rejects malformed whole requests before any evidence lookup, preserves full contract/function identity and removes the source-owner substitution heuristic. A real-loop regression proves pilot domain errors stop before any subsequent model dispatch. Saved response five exposes the original malformed alias; no historical results are repaired or scored. The changed schema prompt ends current exact-prefix replay at request five after four matches. These are offline correctness fixes, not proof of localization performance.",
   "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate",
   "requirements_unmet": [
     "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases"
@@ -23,7 +23,9 @@
     "tests/test_source_fallback_factories.py::test_real_verified_source_factory_handles_uncached_historical_contract",
     "tests/test_source_fallback_factories.py::test_missing_source_is_cached_without_falling_back_to_live_transport",
     "tests/test_source_fallback_factories.py::test_configured_source_error_is_propagated_not_replaced_with_live_fetch",
-    "tests/test_function_selection_safety.py::test_invalid_narrowing_never_silently_completes_or_discards_candidates"
+    "tests/test_function_selection_safety.py::test_invalid_narrowing_never_silently_completes_or_discards_candidates",
+    "tests/test_additional_info_schema.py",
+    "tests/test_additional_info_integration.py"
   ],
   "evidence": [
     {
@@ -149,6 +151,14 @@
     {
       "path": "reports/cohort_rebuild_v2/SOURCE_SELECTION_BOUNDARY_REVIEW.json",
       "sha256": "449661cfc034234b6a5a85e2754977c84f855a6b4796ee82b1c61ba982ba9910"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/ADDITIONAL_INFO_BOUNDARY_REVIEW.json",
+      "sha256": "15493bb6c5c0e7a1fbb5c1f77300e93e624cf51307b3f3c0750533c5c0425c2c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T191403-a1313c9b/summary.json",
+      "sha256": "8eb58de3b0535c059de5df9ed96ae75222e496ee48b4af941ba17516edbb503b"
     }
   ],
   "session_date": "2026-10-15",

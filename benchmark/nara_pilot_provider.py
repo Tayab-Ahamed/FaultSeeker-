@@ -43,6 +43,16 @@ class NaraPilot:
     def _precheck(self):
         if self.stop_reason:raise StudyStop(self.stop_reason)
         if self.calls>=self.max_calls:raise StudyStop('Pilot request cap reached')
+    def stop_after_analysis_error(self,error):
+        """Domain errors are terminal too; never dispatch a recovery request.
+
+        Persist only the error class, never its possibly sensitive message.
+        StudyStop escapes the analyzer's ordinary Exception recovery loops.
+        """
+        with self.lock:
+            if not self.stop_reason:
+                self.stop_reason='Pilot stopped after analysis error: '+type(error).__name__
+            raise StudyStop(self.stop_reason) from None
     def factory(self, task, role='', *, model_name=MODEL, router=None, agent_role=None):
         agent_role=role if agent_role is None else agent_role
         if model_name!=MODEL or (router is not None and router is not self.router):

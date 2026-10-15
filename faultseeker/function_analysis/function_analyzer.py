@@ -19,6 +19,7 @@ from faultseeker.forensics.result import extract_reentrancy_analysis, compute_pr
 from faultseeker.research.cost_tracker import CostTracker
 from contextlib import nullcontext
 from typing import Optional
+from faultseeker.function_analysis.additional_info_schema import normalize_additional_info
 
 
 class FunctionAnalyzer:
@@ -27,11 +28,12 @@ class FunctionAnalyzer:
                  model='gpt-4o-mini',
                  router: Optional[HybridLLMRouter] = None,
                  cost_tracker: Optional[CostTracker] = None,
-                 agent_factory=None, contract_downloader_factory=None):
+                 agent_factory=None, contract_downloader_factory=None, analysis_error_handler=None):
         self.txn_analyzer_model = model
         self.router = router
         self.cost_tracker = cost_tracker
         self.contract_downloader_factory = contract_downloader_factory or ContractDownloader
+        self.analysis_error_handler = analysis_error_handler
 
         # Prompt selection: always use the LOCAL model name to pick prompt complexity.
         # In hybrid mode, `model` might be 'gemini-2.0-flash' (Stage 2) but agents
@@ -92,6 +94,8 @@ class FunctionAnalyzer:
         self.analysis_errors.append({'error_type':type(error).__name__,
             'function':self.function_call_info_summary.get('function',''),
             'address':self.function_call_info_summary.get('address','')})
+        if self.analysis_error_handler is not None:
+            self.analysis_error_handler(error)
 
     def _stage(self, name):
         """Time a pipeline stage when a CostTracker is attached, else no-op."""
@@ -237,73 +241,38 @@ class FunctionAnalyzer:
         prompt = self.function_prompts.retrieve_additional_info
         prompt += f"Current available information:{self.function_call_info_summary}\n"
         prompt += f"Additional information to be reorganized:{additional_info}"
-        formatted_additional_info = self.generation_agent.query(prompt)
+        # Validate the entire model request before any evidence lookup. A later
+        # malformed field must not trigger earlier partial lookups or source I/O.
+        formatted_additional_info = normalize_additional_info(self.generation_agent.query(prompt))
         output = {}
-        if 'function_call' in formatted_additional_info:
-            function_call = []
-            for f in formatted_additional_info['function_call']:
-                function_call.extend(self._retrieve_function_calls(f))
-            if function_call:
-                output['function_call'] = function_call
-        if 'children_calls' in formatted_additional_info:
-            children_call = {}
-            for function_call in formatted_additional_info['children_calls']:
-                if isinstance(function_call, dict):
-                    function_name = function_call['function']
-                    address = function_call['address']
-                else:
-                    function_name = function_call[0]
-                    address = function_call[1]
-                children_call[f'{function_name}::{address}'] = self._retrieve_children_calls(function_name, address)
-            if children_call:
-                output['children_calls (i.e., for {k:v}, v is the children calls of k)'] = children_call
-        if 'source_code' in formatted_additional_info:
-            source_code = {}
-            if isinstance(formatted_additional_info['source_code'], dict):
-                function_name = formatted_additional_info['source_code']['function_name']
-                address = formatted_additional_info['source_code']['address']
-                if f'{function_name}::{address}' in self.function_call_info_summary['high_appearance_count_children_calls']:
-                    key_list = list(self.function_call_info_summary['high_appearance_count_children_calls'].keys())
-                    index = key_list.index(f'{function_name}::{address}')
-                    if index + 1 < len(key_list):
-                        next_key = key_list[index + 1]
-                        next_function_name = next_key.split('::')[0]
-                        next_address = next_key.split('::')[1]
-                        if next_function_name == function_name:
-                            address = next_address
-                retrieved_source_code = self._retrieve_source_code(address, function_name)
-                source_code[f'{function_name}_{address}'] = retrieved_source_code if retrieved_source_code else 'no source code found, proceed to other analysis for other functions'
-            else:
-                for temp in formatted_additional_info['source_code']:
-                    if isinstance(temp, dict):
-                        function_name = temp['function']
-                        address = temp['address']
-                    else:
-                        function_name = temp[1]
-                        address = temp[0]
-                    if f'{function_name}::{address}' in self.function_call_info_summary['high_appearance_count_children_calls']:
-                        key_list = list(self.function_call_info_summary['high_appearance_count_children_calls'].keys())
-                        index = key_list.index(f'{function_name}::{address}')
-                        if index + 1 < len(key_list):
-                            next_key = key_list[index + 1]
-                            next_function_name = next_key.split('::')[0]
-                            next_address = next_key.split('::')[1]
-                            if next_function_name == function_name:
-                                address = next_address
-                    retrieved_source_code = self._retrieve_source_code(address, function_name)
-                    source_code[f'{function_name}_{address}'] = retrieved_source_code if retrieved_source_code else 'no source code found, proceed to other analysis'
-            if source_code:
-                output['source_code'] = source_code
+        function_calls = []
+        for reference in formatted_additional_info.get('function_call', []):
+            function_calls.extend(self._retrieve_function_calls(reference))
+        if function_calls:
+            output['function_call'] = function_calls
+        children = {}
+        for reference in formatted_additional_info.get('children_calls', []):
+            function_name, address = reference['function'], reference['address']
+            children[f'{function_name}::{address}'] = self._retrieve_children_calls(function_name, address)
+        if children:
+            output['children_calls (i.e., for {k:v}, v is the children calls of k)'] = children
+        sources = {}
+        for reference in formatted_additional_info.get('source_code', []):
+            function_name, address = reference['function'], reference['address']
+            # An explicit requested owner is never replaced by a neighboring
+            # contract merely because its function name matches.
+            source = self._retrieve_source_code(address, function_name)
+            sources[f'{function_name}_{address}'] = source if source else 'no source code found, proceed to other analysis'
+        if sources:
+            output['source_code'] = sources
         if 'balance_change' in formatted_additional_info:
             balance_change = {}
             for address in formatted_additional_info['balance_change']:
-                address = address.lower()
                 if address in self.fundflow_analysis['balance_change']:
                     balance_change[address] = deepcopy(self.fundflow_analysis['balance_change'][address])
                 for addr in self.fundflow_analysis['balance_change']:
-                    if addr != address:
-                        if address in self.fundflow_analysis['balance_change'][addr]:
-                            balance_change[addr] = deepcopy(self.fundflow_analysis['balance_change'][addr])
+                    if addr != address and address in self.fundflow_analysis['balance_change'][addr]:
+                        balance_change[addr] = deepcopy(self.fundflow_analysis['balance_change'][addr])
             if balance_change:
                 output['balance_change'] = balance_change
         return output

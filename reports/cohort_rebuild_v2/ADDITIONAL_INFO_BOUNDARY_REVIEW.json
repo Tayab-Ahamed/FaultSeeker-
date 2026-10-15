@@ -1,0 +1,34 @@
+{
+  "scope": "Offline production-path regression and real saved-response validation; no empirical localization score",
+  "historical_response": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-005.json",
+    "sha256": "d6a5172b2a6b28931bd673dbcceea3a4fffe3211011adca2da37e92be8209752"
+  },
+  "findings": [
+    "String references were indexed as individual characters; children pair order contradicted documented address/function order",
+    "Source lookup could switch an explicitly requested owner to the next contract with the same function name",
+    "Analysis recovery could spend subsequent pilot requests after caught domain errors"
+  ],
+  "implemented": [
+    "Whole-request validation before all evidence lookup; exact full addresses and canonical reference objects",
+    "Same requested owner preserved for every source lookup",
+    "Optional sanitized error callback; pilot StudyStop escapes production recovery and blocks subsequent dispatch"
+  ],
+  "offline_proof": [
+    "tests/test_additional_info_schema.py",
+    "tests/test_additional_info_integration.py"
+  ],
+  "focused_result": {
+    "passed": 74,
+    "scope": "44 schema, 12 production-integration, 4 existing role-flow, 14 existing pilot transport tests"
+  },
+  "current_replay": {
+    "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T191403-a1313c9b/summary.json",
+    "sha256": "8eb58de3b0535c059de5df9ed96ae75222e496ee48b4af941ba17516edbb503b"
+  },
+  "replay_scope": "Four exact historical observations; changed schema prompt diverges at fifth request, before saved response is returned. Timing not reproduced.",
+  "new_external_requests": 0,
+  "real_ledger_unchanged": true,
+  "metrics": null,
+  "heldout_used": false
+}

@@ -126,7 +126,7 @@ def run(root=ROOT,summary_binding=None,output=None):
                         if stage_one is None:raise ValueError('Recorded production Stage1 unavailable')
                         ranking=FunctionRanker().rank(stage_one,{'repeated_patterns':stage_one.repeated_patterns,'function_call_loc_memo':stage_one.function_call_loc_memo})
                         downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity)
-                        analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader)
+                        analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader,analysis_error_handler=pilot.stop_after_analysis_error)
                         production=analyzer.run(stage_one,sequence,info,ranking)
                         path=out/(identity.replace(':','-')+'.json');write_json(path,{'identity':identity,'production_output':production,'inputs':inputs.evidence,'diagnostic_only':True})
                         observations.append({'identity':identity,'artifact':bind(path,root)})

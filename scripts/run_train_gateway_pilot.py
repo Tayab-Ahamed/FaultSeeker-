@@ -114,7 +114,7 @@ def run(root=ROOT,live=False,approval_file=None):
                 if result is None:raise ValueError('Production Stage1 failed')
                 ranking=FunctionRanker().rank(result,{'repeated_patterns':result.repeated_patterns,'function_call_loc_memo':result.function_call_loc_memo})
             downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity)
-            analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader)
+            analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader,analysis_error_handler=pilot.stop_after_analysis_error)
             with redirect_stdout(stream):output=analyzer.run(result,sequence,info,ranking)
             path=out/(identity.replace(':','-')+'.json');write_json(path,{'identity':identity,'production_output':output,'inputs':inputs.evidence,'source_scope':'All cached verified ABI functions; missing contract sources remain unavailable'})
             observations.append({'identity':identity,'complete':bool(output and output.get('analysis_complete')),'artifact':bind(path,root)})

@@ -115,12 +115,12 @@ Children calls:
     # ── Retrieve additional info ───────────────────────────────────────
     retrieve_additional_info: str = '''\
 Convert the requested information into this JSON format.
-Only include keys that are needed.
+Only include keys that are needed. Use full 0x-prefixed 20-byte addresses from the available information. Never guess an owner or use a variable name as an address. Omit unresolved references; return {} if none can be resolved.
 
 {
-  "function_call": [["<address>", "<function_name>"]],
-  "children_calls": [["<address>", "<function_name>"]],
-  "source_code": [["<address>", "<function_name>"]],
+  "function_call": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
+  "children_calls": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
+  "source_code": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
   "balance_change": ["<address>"]
 }
 
