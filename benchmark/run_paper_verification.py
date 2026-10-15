@@ -38,17 +38,20 @@ def _git(*arguments):
 
 def attach_commit_provenance(report):
     commits = {}
+    decisions = {}
     for line in (_git('log','--format=%H\t%s') or '').splitlines():
         revision,_,subject = line.partition('\t')
-        match = re.search(r'\(claim-(\d+)\)',subject)
+        match = re.search(r'(?:\(claim-|\bclaim)(\d+)(?:\)|:)',subject,re.I)
         if match:
-            commits.setdefault(int(match.group(1)),revision)
+            target = decisions if 'close as ' in subject else commits
+            target.setdefault(int(match.group(1)),revision)
     dependencies = {1:[31],4:[3,27],5:[13],6:[13,3],7:[13,3],8:[13,3],9:[9,26,10],
         10:[10,9],11:[11,10,9],12:[12,10,9],14:[13],15:[22,27,13],17:[16],
         18:[18,16,13],19:[19,26],20:[20,19],21:[20,13],22:[22,16],24:[24,20,22],
         25:[25,26,27],26:[26,9],28:[13],29:[13,24]}
     for claim in report['claims']:
         claim['claim_commit'] = commits.get(claim['id'])
+        claim['decision_commit'] = decisions.get(claim['id'])
         claim['implementation_commits'] = [commits[number] for number in dependencies.get(claim['id'],[claim['id']])
                                            if number in commits]
 
@@ -60,7 +63,7 @@ def write_report(report, output):
     lines = ['# Local paper claim verification', '',
              'Local acceptance tests do not establish empirical paper outcomes.', '',
              f"Suite exit code: {report['test_exit_code']}; test outcomes: {report['test_counts']}.", '',
-             'Each commit below passed the accumulated suite in an isolated staged snapshot before commit.', '',
+             'Acceptance results come from real pytest execution; verification scope is stated per claim.', '',
              '| Claim | Status | Local proof | Implementation commits | Acceptance tests | Missing external evidence |',
              '|---|---|---|---|---|---|']
     for row in report['claims']:
@@ -71,6 +74,16 @@ def write_report(report, output):
         tests = '<br>'.join('`'+node+'`' for node in row['tests']) or 'Public release is outside this local run'
         lines.append(f"| {row['id']}. {row['claim']} | {row['status']} | {row['local_proof']} | {commits} | {tests} | {requirement} |")
     lines += ['', 'Original test evidence: `'+json.dumps(report['original_test_evidence'],sort_keys=True)+'`.']
+    if report.get('closure'):
+        lines += ['', '## Terminal claim decisions', '',
+                  'UNVERIFIABLE means the stated evidence was unavailable in this run; it does not establish technical impossibility.', '',
+                  '| Claim | Status | Scope and reason | Evidence |', '|---|---|---|---|']
+        for row in report['claims']:
+            pointers = '<br>'.join('['+Path(e['path']).name+']('+str(ROOT/e['path'])+')'
+                                  for e in row.get('closure_evidence',[]))
+            reason = row.get('closure_reason','Not reviewed')
+            scope = row.get('verification_scope','')
+            lines.append(f"| {row['id']} | {row['status']} | {scope}<br>{reason} | {pointers} |")
     lines += ['', '## Data evidence', '',
               f"Accepted {report['dataset_audit']['accepted_rows']} of {report['dataset_audit']['input_rows']} input rows.",
               'Missing evidence counts: `' + json.dumps(report['dataset_audit']['missing_counts'], sort_keys=True) + '`.',
@@ -91,6 +104,7 @@ def main(argv=None):
     parser.add_argument('--evidence-root', type=Path)
     parser.add_argument('--output', type=Path, default=ROOT/'reports/local_verification')
     parser.add_argument('--require-paper-verification', action='store_true')
+    parser.add_argument('--require-claim-closure', action='store_true')
     args = parser.parse_args(argv)
     if os.name == 'nt':
         sys.modules.setdefault('readline',None)
@@ -116,8 +130,14 @@ def main(argv=None):
     if len(original) != 201 or any(value != 'passed' for value in original.values()) or report['original_test_evidence']['original_sources_changed']:
         row = next(row for row in report['claims'] if row['id']==2)
         row.update(status='LOCAL-ACCEPTANCE-PENDING',local_proof='FAILED-OR-MISSING')
+    closure_directory = ROOT/'reports/claim_closure/claims'
+    if closure_directory.is_dir() or args.require_claim_closure:
+        from benchmark.claim_closure import apply_closure
+        apply_closure(report,plugin.outcomes,closure_directory,ROOT,
+                      require_all=args.require_claim_closure)
     attach_commit_provenance(report)
     report.update(test_exit_code=code, test_counts=dict(Counter(plugin.outcomes.values())),
+                  test_outcomes=plugin.outcomes,
                   timestamp=datetime.now(timezone.utc).isoformat(), python_version=platform.python_version(),
                   revision=_git('rev-parse','HEAD'),
                   test_manifest_sha256={str(p.relative_to(ROOT)): digest_file(p) for p in sorted((ROOT/'tests').glob('test_*.py'))})

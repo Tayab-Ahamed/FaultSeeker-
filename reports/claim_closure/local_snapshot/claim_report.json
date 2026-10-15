@@ -1,0 +1,4741 @@
+{
+  "claims": [
+    {
+      "id": 1,
+      "claim": "Open source release",
+      "scope": "PENDING-PUBLICATION",
+      "tests": [],
+      "required_evidence": "Public fork/release URL; local Apache license alone does not prove publication.",
+      "required_env": [],
+      "status": "PENDING-PUBLICATION",
+      "local_proof": "OUTSIDE-LOCAL-SCOPE",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "849ef2949ff42244edad5d2c02aebcc46a04f31d"
+      ]
+    },
+    {
+      "id": 2,
+      "claim": "201 original tests pass",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure"
+      ],
+      "required_evidence": "Full suite with original baseline tests retained; runner unit test alone is insufficient.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "0252e6b4eff2604072c507f94ae560504581985d",
+      "decision_commit": null,
+      "implementation_commits": [
+        "0252e6b4eff2604072c507f94ae560504581985d"
+      ]
+    },
+    {
+      "id": 3,
+      "claim": "Authentic 246-row cohort",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+      ],
+      "required_evidence": "246 unique accepted acquisition manifests; no padded rows.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": "43d85201c95e97b515dcd5a4b0f614a2377f810f",
+      "decision_commit": null,
+      "implementation_commits": [
+        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+      ]
+    },
+    {
+      "id": 4,
+      "claim": "Real transactions, two independent sources, annotations",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "required_evidence": "Canonical transaction/receipt/traces, two source artifacts, independent adjudication per row.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "43d85201c95e97b515dcd5a4b0f614a2377f810f",
+        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+      ]
+    },
+    {
+      "id": 5,
+      "claim": "Ten chains and Ethereum 47.6%",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+      ],
+      "required_evidence": "Authenticated frozen ten-chain cohort; compute true chain counts and proportions.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 6,
+      "claim": "More than 80 vulnerability labels",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "required_evidence": "Adjudicated taxonomy and true unique labels on the frozen cohort.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d",
+        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+      ]
+    },
+    {
+      "id": 7,
+      "claim": "Class proportions 6.5/33.3/32.5/27.6%",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "required_evidence": "Predeclared non-overlapping class mapping and authentic row labels.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d",
+        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+      ]
+    },
+    {
+      "id": 8,
+      "claim": "18 reentrant incidents among 246",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "required_evidence": "Independently adjudicated reentrancy labels for all accepted rows.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d",
+        "43d85201c95e97b515dcd5a4b0f614a2377f810f"
+      ]
+    },
+    {
+      "id": 9,
+      "claim": "Storage-aware detector, guards and delegatecall",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes"
+      ],
+      "required_evidence": "Compiled execution still separately required under claim 26.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e",
+      "decision_commit": null,
+      "implementation_commits": [
+        "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
+        "ad437c547d0b7d5938d78d5f97a2accf1df29ed1"
+      ]
+    },
+    {
+      "id": 10,
+      "claim": "Five storage signal weights",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+      ],
+      "required_evidence": "Weights must fire on observed opcode events.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
+      "decision_commit": null,
+      "implementation_commits": [
+        "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
+        "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
+      ]
+    },
+    {
+      "id": 11,
+      "claim": "Five confidence tiers",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile"
+      ],
+      "required_evidence": "Threshold boundaries and production paper profile.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "8c7bcbdf3c2028aea82cbe7f8ea4155c987834ed",
+      "decision_commit": null,
+      "implementation_commits": [
+        "8c7bcbdf3c2028aea82cbe7f8ea4155c987834ed",
+        "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
+        "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
+      ]
+    },
+    {
+      "id": 12,
+      "claim": "Three structural signals, .75 penalty, .80 cap",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+      ],
+      "required_evidence": "Fallback when storage capture unavailable, no extra terms.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "4106092c3ded4ea176ed731f8d66d2f14a50b279",
+      "decision_commit": null,
+      "implementation_commits": [
+        "4106092c3ded4ea176ed731f8d66d2f14a50b279",
+        "ad437c547d0b7d5938d78d5f97a2accf1df29ed1",
+        "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
+      ]
+    },
+    {
+      "id": 13,
+      "claim": "Detector precision/recall/F1 and baselines",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "required_evidence": "Actual predictions on one frozen adjudicated cohort; integer confusion counts.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": "872e584207d190160d8d6f914eec53ac20d8419d",
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 14,
+      "claim": "17/29 percentage-point gains",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "required_evidence": "Paired executed baseline detector outcomes; report measured differences.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 15,
+      "claim": "Compound case study",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "required_evidence": "Exact transaction, raw traces, independent source/GT and executed localization result.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+        "0fc67678afba9b32e371b817e130ebded1c25bf5",
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 16,
+      "claim": "Query routing with theta gate",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+      ],
+      "required_evidence": "Local quality/confidence gate must dispatch escalation.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "6dd294165b4340d26b68433cd2f338864c6e6106",
+      "decision_commit": null,
+      "implementation_commits": [
+        "6dd294165b4340d26b68433cd2f338864c6e6106"
+      ]
+    },
+    {
+      "id": 17,
+      "claim": "Six provider families",
+      "scope": "EXTERNAL",
+      "tests": [
+        "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+        "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+      ],
+      "required_evidence": "Live provider conformance and installed Ollama model.",
+      "required_env": [
+        "OPENAI_API_KEY",
+        "XAI_API_KEY",
+        "DASHSCOPE_API_KEY",
+        "GOOGLE_API_KEY",
+        "ANTHROPIC_API_KEY",
+        "OLLAMA_HOST"
+      ],
+      "status": "PENDING-CREDENTIALS",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "6dd294165b4340d26b68433cd2f338864c6e6106"
+      ]
+    },
+    {
+      "id": 18,
+      "claim": "58% cost savings, 100 transactions, quality/rank bounds",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
+      ],
+      "required_evidence": "100 paired production runs, observed provider usage, pricing snapshot and 5:3:2 workload.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
+      "decision_commit": null,
+      "implementation_commits": [
+        "4fdf6c0d8978f266e5eefb8fa6981511cf0644ca",
+        "6dd294165b4340d26b68433cd2f338864c6e6106",
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 19,
+      "claim": "Stage 1 makes no model calls",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+        "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+      ],
+      "required_evidence": "Constructor and executed Stage1 must remain keyless.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec",
+      "decision_commit": null,
+      "implementation_commits": [
+        "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684"
+      ]
+    },
+    {
+      "id": 20,
+      "claim": "BENIGN skip, EXPLOIT lock and UNCERTAIN escalation",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign"
+      ],
+      "required_evidence": "Coverage required; positive verdict cannot be overwritten.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
+      "decision_commit": null,
+      "implementation_commits": [
+        "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
+        "e6dd71f4eb5145f7cc502d4ecf59c30cb747a5ec"
+      ]
+    },
+    {
+      "id": 21,
+      "claim": "40% benign prefilter and latency reduction",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+      ],
+      "required_evidence": "Paired production runs on independently verified benign transactions and measured latency.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 22,
+      "claim": "Multi-agent function localization",
+      "scope": "EXTERNAL",
+      "tests": [
+        "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+        "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
+      ],
+      "required_evidence": "Live model quality and verified contract source retrieval; local role dispatch is proven with model-boundary fixtures.",
+      "required_env": [
+        "OLLAMA_HOST",
+        "OPENAI_API_KEY",
+        "ETHERSCAN_API_KEY"
+      ],
+      "status": "PENDING-CREDENTIALS",
+      "local_proof": "PASSED",
+      "claim_commit": "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+      "decision_commit": null,
+      "implementation_commits": [
+        "54d85eab24b2d549c7f26acc8c283bef98c7ad05",
+        "6dd294165b4340d26b68433cd2f338864c6e6106"
+      ]
+    },
+    {
+      "id": 23,
+      "claim": "Equation 4 confidence scoring",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+        "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+      ],
+      "required_evidence": "Heuristic score identified separately from calibrated probability.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "53316ac130cc4eff98f52b8ac01b5ac407bcf34a",
+      "decision_commit": null,
+      "implementation_commits": [
+        "53316ac130cc4eff98f52b8ac01b5ac407bcf34a"
+      ]
+    },
+    {
+      "id": 24,
+      "claim": "Evidence cards and two HITL checkpoints, five guidance types",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+        "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+      ],
+      "required_evidence": "All feedback must affect downstream state, with rejection audit trail.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "120b11be7b693720024f12eafbdc72620de1cff1",
+      "decision_commit": null,
+      "implementation_commits": [
+        "120b11be7b693720024f12eafbdc72620de1cff1",
+        "e5e6faf0c96e2d1477323b03d1e19812e7b77709",
+        "54d85eab24b2d549c7f26acc8c283bef98c7ad05"
+      ]
+    },
+    {
+      "id": 25,
+      "claim": "RPC EMA, LRU, TTL, breakers and batching",
+      "scope": "EXTERNAL",
+      "tests": [
+        "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+        "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+        "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+        "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+      ],
+      "required_evidence": "Live dRPC/archive debug tracer capability on requested chains.",
+      "required_env": [
+        "DRPC_API_KEY",
+        "DRPC_RPC_URL"
+      ],
+      "status": "PENDING-CREDENTIALS",
+      "local_proof": "PASSED",
+      "claim_commit": "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+      "decision_commit": null,
+      "implementation_commits": [
+        "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
+        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+      ]
+    },
+    {
+      "id": 26,
+      "claim": "Foundry replay extracts SLOAD and SSTORE",
+      "scope": "TOOLS",
+      "tests": [
+        "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts"
+      ],
+      "required_evidence": "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes.",
+      "required_env": [
+        "SOLC_BINARY",
+        "ANVIL_BINARY",
+        "CAST_BINARY",
+        "FOUNDRY_BIN"
+      ],
+      "status": "VERIFIED-HISTORICAL-ETHEREUM-SAMPLE",
+      "local_proof": "PASSED",
+      "evidence_pointers": [
+        "reports/historical_replay/README.md",
+        "reports/historical_replay/historical_replay_summary.json",
+        "reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz",
+        "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json"
+      ],
+      "historical_verification_scope": "Two Ethereum transactions with matching historical receipts and complete normalized storage. No cohort, all-chain or incident-label verification.",
+      "historical_acceptance_test": "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
+      "claim_commit": "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
+      "decision_commit": null,
+      "implementation_commits": [
+        "8aecd8c50d916f2011c9a71f4b2002c858dfc684",
+        "5d7c7f1298bf6b47e84b2b42628de4d012cd7d7e"
+      ]
+    },
+    {
+      "id": 27,
+      "claim": "23% WAF challenge bypass",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+        "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+      ],
+      "required_evidence": "Authorized recorded challenged requests, outcomes/attempts and versioned strategy; no percentage inferred from retry success.",
+      "required_env": [
+        "CURL_IMPERSONATE_BINARY",
+        "WAF_CASES_JSON"
+      ],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": "0fc67678afba9b32e371b817e130ebded1c25bf5",
+      "decision_commit": null,
+      "implementation_commits": [
+        "0fc67678afba9b32e371b817e130ebded1c25bf5"
+      ]
+    },
+    {
+      "id": 28,
+      "claim": "Table VI category averages",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
+      ],
+      "required_evidence": "Real receipt gas, call count, address count and depth per adjudicated category.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d"
+      ]
+    },
+    {
+      "id": 29,
+      "claim": "Simulated guidance on 20 transactions, 68\u219281%",
+      "scope": "DATA",
+      "tests": [
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "required_evidence": "20 paired runs with preregistered simulation policy, complete integer outcomes; not a human study.",
+      "required_env": [],
+      "status": "BLOCKED-BY-DATA",
+      "local_proof": "PASSED",
+      "claim_commit": null,
+      "decision_commit": null,
+      "implementation_commits": [
+        "872e584207d190160d8d6f914eec53ac20d8419d",
+        "120b11be7b693720024f12eafbdc72620de1cff1"
+      ]
+    },
+    {
+      "id": 30,
+      "claim": "Reproduction scripts",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+      ],
+      "required_evidence": "One offline entry point, genuine test results and blocked evidence report.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "a2c0a792050654b006120f0a0e71f18333cb2e46",
+      "decision_commit": null,
+      "implementation_commits": [
+        "a2c0a792050654b006120f0a0e71f18333cb2e46"
+      ]
+    },
+    {
+      "id": 31,
+      "claim": "Repository layout/runtime compatibility",
+      "scope": "LOCAL",
+      "tests": [
+        "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+      ],
+      "required_evidence": "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check.",
+      "required_env": [],
+      "status": "IMPLEMENTED-LOCAL",
+      "local_proof": "PASSED",
+      "claim_commit": "849ef2949ff42244edad5d2c02aebcc46a04f31d",
+      "decision_commit": null,
+      "implementation_commits": [
+        "849ef2949ff42244edad5d2c02aebcc46a04f31d"
+      ]
+    }
+  ],
+  "dataset_audit": {
+    "status": "BLOCKED-BY-DATA",
+    "dataset_sha256": "9de48282363d44373459ea3253a99c5548e0ef51e2c0db3ed16dad71adaf8032",
+    "input_rows": 231,
+    "accepted_rows": 0,
+    "target_rows": 246,
+    "additional_verified_rows_needed": 246,
+    "missing_counts": {
+      "missing_ground_truth": 231,
+      "missing_independent_annotation": 231,
+      "missing_independent_sources": 231,
+      "missing_receipt": 231,
+      "missing_trace": 231,
+      "missing_transaction": 231,
+      "missing_verification": 231
+    },
+    "rows": [
+      {
+        "txn_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 2
+      },
+      {
+        "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 3
+      },
+      {
+        "txn_hash": "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 4
+      },
+      {
+        "txn_hash": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 5
+      },
+      {
+        "txn_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 6
+      },
+      {
+        "txn_hash": "0xb61413c495fdad6114a7aa863a00b2e3c28945979a10885b12b30316ea9f072c",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 7
+      },
+      {
+        "txn_hash": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 8
+      },
+      {
+        "txn_hash": "0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 9
+      },
+      {
+        "txn_hash": "0x46deef0f52e3a983b67abf4714448a41dd7ffd6d32d32da69d62081c68ad7882",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 10
+      },
+      {
+        "txn_hash": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 11
+      },
+      {
+        "txn_hash": "0x2606d459a50ca4920722a111745c2eeced1d8a01ff25ee762e22d5d4b1595739",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 12
+      },
+      {
+        "txn_hash": "0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 13
+      },
+      {
+        "txn_hash": "0x491cf8b2a5753fdbf3096b42e0a16bc109b957dc112d6537b1ed306e483d0744",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 14
+      },
+      {
+        "txn_hash": "0xfc872bf5ca8f04b18b82041ec563e4abf2e31e1fc27d1ea5dee39bc8a79d2d06",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 15
+      },
+      {
+        "txn_hash": "0x21d8b164f0cb8beb1ed27d164ed986c3fc26b33655ce18226b05b9cfcf6cd93c",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 16
+      },
+      {
+        "txn_hash": "0xc9b2cbc1437bbcd8c328b6d7cdbdae33d7d2a9ef07eca18b4922aac0430991e7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 17
+      },
+      {
+        "txn_hash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 18
+      },
+      {
+        "txn_hash": "0x800a5b3178f680feebb81af69bd3dff791b886d4ce31615e601f2bb1f543bb2e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 19
+      },
+      {
+        "txn_hash": "0xdd0636e2598f4d7b74f364fedb38f334365fd956747a04a6dd597444af0bc1c0",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 20
+      },
+      {
+        "txn_hash": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 21
+      },
+      {
+        "txn_hash": "0x0b062361e16a2ea0942cc1b4462b6584208c8c864609ff73aaa640aaa2d92428",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 22
+      },
+      {
+        "txn_hash": "0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 23
+      },
+      {
+        "txn_hash": "0x9f4ef3cc55b016ea6b867807a09f80d1b2e36f6cd6fccfaf0182f46060332c57",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 24
+      },
+      {
+        "txn_hash": "0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 25
+      },
+      {
+        "txn_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 26
+      },
+      {
+        "txn_hash": "0x3c09c6306b67737227edc24c663462d870e7c2bf39e9ab66877a980c900dd5d5",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 27
+      },
+      {
+        "txn_hash": "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 28
+      },
+      {
+        "txn_hash": "0x35a73969f582872c25c96c48d8bb31c23eab8a49c19282c67509b96186734e60",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 29
+      },
+      {
+        "txn_hash": "0x72a252277e30ea6a37d2dc9905c280f3bc389b87f72b81a59aa8f50baebd8eaa",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 30
+      },
+      {
+        "txn_hash": "0xa992b28ecf2eed778d20d5200946ea341b950be0c3d78b1f2237a4d8d795de95",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 31
+      },
+      {
+        "txn_hash": "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 32
+      },
+      {
+        "txn_hash": "0x48d22ea24c1ae707b8b17ca2a3ea81a1aee64a075d93e5bff81a7370e2cacea7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 33
+      },
+      {
+        "txn_hash": "0xdaccbc437cb07427394704fbcc8366589ffccf974ec6524f3483844b043f31d5",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 34
+      },
+      {
+        "txn_hash": "0x138daa4cbeaa3db42eefcec26e234fc2c89a4aa17d6b1870fc460b2856fd11a6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 35
+      },
+      {
+        "txn_hash": "0x19c04bc04ee8117abfdf0c9301787b12b27f3c5c13308b4f66711a8f0ecacc62",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 36
+      },
+      {
+        "txn_hash": "0x8a8145ab28b5d2a2e61d74c02c12350731f479b3175893de2014124f998bff32",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 37
+      },
+      {
+        "txn_hash": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 38
+      },
+      {
+        "txn_hash": "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 39
+      },
+      {
+        "txn_hash": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 40
+      },
+      {
+        "txn_hash": "0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 41
+      },
+      {
+        "txn_hash": "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 42
+      },
+      {
+        "txn_hash": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 43
+      },
+      {
+        "txn_hash": "0x6200bf5c43c214caa1177c3676293442059b4f39eb5dbae6cfd4e6ad16305668",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 44
+      },
+      {
+        "txn_hash": "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 45
+      },
+      {
+        "txn_hash": "0x6fb7f8e9eb09d6ae17dbe82b2b42f46f64fb9c3197438b68ecf03e832d5fc791",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 46
+      },
+      {
+        "txn_hash": "0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9c6ceb921c1",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 47
+      },
+      {
+        "txn_hash": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 48
+      },
+      {
+        "txn_hash": "0xc18ec2eb7d41638d9982281e766945d0428aaeda6211b4ccb6626ea7cff31f4a",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 49
+      },
+      {
+        "txn_hash": "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 50
+      },
+      {
+        "txn_hash": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 51
+      },
+      {
+        "txn_hash": "0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 52
+      },
+      {
+        "txn_hash": "0xf1818f62c635e5c80ef16b7857da812c74ce330ebed46682b4d173bffe84c666",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 53
+      },
+      {
+        "txn_hash": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 54
+      },
+      {
+        "txn_hash": "0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 55
+      },
+      {
+        "txn_hash": "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 56
+      },
+      {
+        "txn_hash": "0xaf46a42fe1ed7193b25c523723dc047c7500e50a00ecb7bbb822d665adb3e1f3",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 57
+      },
+      {
+        "txn_hash": "0x597d11c05563611cb4ad4ed4c57ca53bbe3b7d3fefc37d1ef0724ad58904742b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 58
+      },
+      {
+        "txn_hash": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 59
+      },
+      {
+        "txn_hash": "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 60
+      },
+      {
+        "txn_hash": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 61
+      },
+      {
+        "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 62
+      },
+      {
+        "txn_hash": "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 63
+      },
+      {
+        "txn_hash": "0x2e832f044b4a0a0b8d38166fe4d781ab330b05b9efa9e72a7a0895f1b984084b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 64
+      },
+      {
+        "txn_hash": "0xb36486f032a450782d5d2fac118ea90a6d3b08cac3409d949c59b43bcd6dbb8f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 65
+      },
+      {
+        "txn_hash": "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 66
+      },
+      {
+        "txn_hash": "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 67
+      },
+      {
+        "txn_hash": "0x873f7c77d5489c1990f701e9bb312c103c5ebcdcf0a472db726730814bfd55f3",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 68
+      },
+      {
+        "txn_hash": "0xcbe521aea28911fe9983030748028e12541e347b8b6b974d026fa5065c22f0cf",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 69
+      },
+      {
+        "txn_hash": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 70
+      },
+      {
+        "txn_hash": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 71
+      },
+      {
+        "txn_hash": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 72
+      },
+      {
+        "txn_hash": "0x2a027c8b915c3737942f512fc5d26fd15752d0332353b3059de771a35a606c2d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 73
+      },
+      {
+        "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 74
+      },
+      {
+        "txn_hash": "0xdf6252854362c3e96fd086d9c3a5397c303d265649aee0b023176bb49cf00d4b",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 75
+      },
+      {
+        "txn_hash": "0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 76
+      },
+      {
+        "txn_hash": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 77
+      },
+      {
+        "txn_hash": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 78
+      },
+      {
+        "txn_hash": "0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 79
+      },
+      {
+        "txn_hash": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 80
+      },
+      {
+        "txn_hash": "0xd493c73397952049644c531309df3dd4134bf3db1e64eb6f0b68b016ee0bffde",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 81
+      },
+      {
+        "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 82
+      },
+      {
+        "txn_hash": "0x160c5950a01b88953648ba90ec0a29b0c5383e055d35a7835d905c53a3dda01e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 83
+      },
+      {
+        "txn_hash": "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 84
+      },
+      {
+        "txn_hash": "0x0fc5c0d41e5506fdb9434fab4815a4ff671afc834e47a533b3bed7182ece73b0",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 85
+      },
+      {
+        "txn_hash": "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 86
+      },
+      {
+        "txn_hash": "0x1106418384414ed56cd7cbb9fedc66a02d39b663d580abc618f2d387348354ab",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 87
+      },
+      {
+        "txn_hash": "0xc42fc0e22a0f60cc299be80eb0c0ddce83c21c14a3dddd8430628011c3e20d6b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 88
+      },
+      {
+        "txn_hash": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 89
+      },
+      {
+        "txn_hash": "0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 90
+      },
+      {
+        "txn_hash": "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 91
+      },
+      {
+        "txn_hash": "0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 92
+      },
+      {
+        "txn_hash": "0x1ea0a2e88efceccb2dd93e6e5cb89e5421666caeefb1e6fc41b68168373da342",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 93
+      },
+      {
+        "txn_hash": "0x725f0d65340c859e0f64e72ca8260220c526c3e0ccde530004160809f6177940",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 94
+      },
+      {
+        "txn_hash": "0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 95
+      },
+      {
+        "txn_hash": "0x8e1b0ab098c4cc5f632e00b0842b5f825bbd15ded796d4a59880bb724f6c5372",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 96
+      },
+      {
+        "txn_hash": "0xe4db1550e3aa78a05e93bfd8fbe21b6eba5cce50dc06688949ab479ebed18048",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 97
+      },
+      {
+        "txn_hash": "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 98
+      },
+      {
+        "txn_hash": "0xfeedbf51b4e2338e38171f6e19501327294ab1907ab44cfd2d7e7336c975ace7",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 99
+      },
+      {
+        "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 100
+      },
+      {
+        "txn_hash": "0xf72f1d10fc6923f87279ce6c0aef46e372c6652a696f280b0465a301a92f2e26",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 101
+      },
+      {
+        "txn_hash": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 102
+      },
+      {
+        "txn_hash": "0x44aad3b853866468161735496a5d9cc961ce5aa872924c5d78673076b1cd95aa",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 103
+      },
+      {
+        "txn_hash": "0xd5b4d68432cbbd912130bbb5b93399031ddbb400d8f723c78050574de7533106",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 104
+      },
+      {
+        "txn_hash": "0x2881e839d4d562fad5356183e4f6a9d427ba6f475614ce8ef64dbfe557a4a2cc",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 105
+      },
+      {
+        "txn_hash": "0x6439d63cc57fb68a32ea8ffd8f02496e8abad67292be94904c0b47a4d14ce90d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 106
+      },
+      {
+        "txn_hash": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 107
+      },
+      {
+        "txn_hash": "0xb072f2e88058c147d8ff643694b43a42e36525b7173ce1daf76e6c06170b0e77",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 108
+      },
+      {
+        "txn_hash": "0x04e16a79ff928db2fa88619cdd045cdfc7979a61d836c9c9e585b3d6f6d8bc31",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 109
+      },
+      {
+        "txn_hash": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 110
+      },
+      {
+        "txn_hash": "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 111
+      },
+      {
+        "txn_hash": "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 112
+      },
+      {
+        "txn_hash": "0x7c5a909b45014e35ddb89697f6be38d08eff30e7c3d3d553033a6efc3b444fdd",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 113
+      },
+      {
+        "txn_hash": "0x37acd17a80a5f95728459bfea85cb2e1f64b4c75cf4a4c8dcb61964e26860882",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 114
+      },
+      {
+        "txn_hash": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 115
+      },
+      {
+        "txn_hash": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 116
+      },
+      {
+        "txn_hash": "0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 117
+      },
+      {
+        "txn_hash": "0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 118
+      },
+      {
+        "txn_hash": "0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 119
+      },
+      {
+        "txn_hash": "0xd813751bfb98a51912b8394b5856ae4515be6a9c6e5583e06b41d9255ba6e3c1",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 120
+      },
+      {
+        "txn_hash": "0xcba9f95ab34dd13714e23c86a769fa37dc95c6a60a5ab77d3a0cf2a27ebfee03",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 121
+      },
+      {
+        "txn_hash": "0x2da3f15ed1a5b41b70338ee26aa63a7e13edce72501e1c16c33f4c7b1049e98e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 122
+      },
+      {
+        "txn_hash": "0x9ba57a23e7fd5ad17da7b9a2f03d4aced2b2fcb51c3e87d4a6c04a58c023f5b1",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 123
+      },
+      {
+        "txn_hash": "0x4f6c7b28e3990321849dfe7c35cfcc7d9571cdb33745fd95a28d26cd9db9add3",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 124
+      },
+      {
+        "txn_hash": "0x821cdd09deb2f5a7481820cb4f97e2f02d3a47ed3ad7e78e2f2cbc9f85bde9c3",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 125
+      },
+      {
+        "txn_hash": "0x6b5e14bbfdf21de79c38d3ae41c0a5e7e2ee5f61f4b6e5e6f8d7c9b0a1111111",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 126
+      },
+      {
+        "txn_hash": "0x2a1b3c4d5e6f7a8b9c0d1e2f3a4b5c6da7e8f9a0b1c2d3e4f5a2b7c8d9e0f1a2",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 127
+      },
+      {
+        "txn_hash": "0x7f1e2d3c4b5a697880919aa3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d2e2f3a4b",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 128
+      },
+      {
+        "txn_hash": "0xe4b1f2a3c4d5e6f708192ba3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d3e2f3a4b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 129
+      },
+      {
+        "txn_hash": "0x5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d4e2f3a4b5c6d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 130
+      },
+      {
+        "txn_hash": "0xb7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b5c2d3e4f5a6b7c8",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 131
+      },
+      {
+        "txn_hash": "0xa9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a906",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 132
+      },
+      {
+        "txn_hash": "0x0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f014b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 133
+      },
+      {
+        "txn_hash": "0xf1e2d3c4b5a6978809192a3b4c5d6e7f8091a2b3c4d5e6f7a8b9c0d1e2f3a15c",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 134
+      },
+      {
+        "txn_hash": "0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a216c",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 135
+      },
+      {
+        "txn_hash": "0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b317d",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 136
+      },
+      {
+        "txn_hash": "0x4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c418e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 137
+      },
+      {
+        "txn_hash": "0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d519f",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 138
+      },
+      {
+        "txn_hash": "0x6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6200",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 139
+      },
+      {
+        "txn_hash": "0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7211",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 140
+      },
+      {
+        "txn_hash": "0x8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8322",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 141
+      },
+      {
+        "txn_hash": "0x9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9433",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 142
+      },
+      {
+        "txn_hash": "0xa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a544",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 143
+      },
+      {
+        "txn_hash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b655",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 144
+      },
+      {
+        "txn_hash": "0xc2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c766",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 145
+      },
+      {
+        "txn_hash": "0xd3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d877",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 146
+      },
+      {
+        "txn_hash": "0xe4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e988",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 147
+      },
+      {
+        "txn_hash": "0xa6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabb",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 148
+      },
+      {
+        "txn_hash": "0xb7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbcc",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 149
+      },
+      {
+        "txn_hash": "0xc8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccdd",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 150
+      },
+      {
+        "txn_hash": "0xd9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9cdb1c2d3e4f5aabbccddee",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 151
+      },
+      {
+        "txn_hash": "0xe0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 152
+      },
+      {
+        "txn_hash": "0xf1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff00",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 153
+      },
+      {
+        "txn_hash": "0x12b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff0011",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 154
+      },
+      {
+        "txn_hash": "0x23c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff001122",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 155
+      },
+      {
+        "txn_hash": "0x34d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff00112233",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 156
+      },
+      {
+        "txn_hash": "0x45e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5aabbccddeeff0011223344",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 157
+      },
+      {
+        "txn_hash": "0x56e09abb35ff12271fdb38ff8a23e4d4a7396844426a94c4d3af2e8b7a0a2813",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 158
+      },
+      {
+        "txn_hash": "0x242a0fb4fde9de0dc2fd42e8db743cbc197ffa2bf6a036ba0bba303df296408b",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 159
+      },
+      {
+        "txn_hash": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 160
+      },
+      {
+        "txn_hash": "0x6ab5b7b51f780e8c6c5ddaf65e9badb868811a95c1fd64e86435283074d3149e",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 161
+      },
+      {
+        "txn_hash": "0x0fe3716431f8c2e43217c3ca6d25eed87e14d0fbfa9c9ee8ce4cef2e5ec4583c",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 162
+      },
+      {
+        "txn_hash": "0x5dafa6a7aabdaa85e2f7e40e0aa7de08be18ea2a37e5bfe11f0ec4e2e9e3f999",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 163
+      },
+      {
+        "txn_hash": "0x3a4d9a3f4743de0a3d942b5c6d4a5b7e8f1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 164
+      },
+      {
+        "txn_hash": "0xb3f067618ce54bc26a960b660cfc28f9ea0315e2e9a1a855ede1508eb4017376",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 165
+      },
+      {
+        "txn_hash": "0x8e3bc4d0ef1a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+        "chain": "eth",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 166
+      },
+      {
+        "txn_hash": "0x9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 167
+      },
+      {
+        "txn_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 168
+      },
+      {
+        "txn_hash": "0xa1b2c3d4e5f6a7b000c9d0e1f2a3b4c56d7e8f90a1b2c3d4e5f6a7b8c9d0e1f2",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 169
+      },
+      {
+        "txn_hash": "0xb2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 170
+      },
+      {
+        "txn_hash": "0xc3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 171
+      },
+      {
+        "txn_hash": "0xd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 172
+      },
+      {
+        "txn_hash": "0xe5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 173
+      },
+      {
+        "txn_hash": "0xf6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 174
+      },
+      {
+        "txn_hash": "0xa7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 175
+      },
+      {
+        "txn_hash": "0xb8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 176
+      },
+      {
+        "txn_hash": "0xc9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 177
+      },
+      {
+        "txn_hash": "0xd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1",
+        "chain": "polygon",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 178
+      },
+      {
+        "txn_hash": "0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 179
+      },
+      {
+        "txn_hash": "0xe1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 180
+      },
+      {
+        "txn_hash": "0xf2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 181
+      },
+      {
+        "txn_hash": "0xa3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 182
+      },
+      {
+        "txn_hash": "0xece4e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 183
+      },
+      {
+        "txn_hash": "0xb4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 184
+      },
+      {
+        "txn_hash": "0xc5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 185
+      },
+      {
+        "txn_hash": "0xd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7",
+        "chain": "avalanche",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 186
+      },
+      {
+        "txn_hash": "0xf8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9",
+        "chain": "zksync",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 187
+      },
+      {
+        "txn_hash": "0xa9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0",
+        "chain": "zksync",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 188
+      },
+      {
+        "txn_hash": "0xb0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1",
+        "chain": "zksync",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 189
+      },
+      {
+        "txn_hash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2",
+        "chain": "zksync",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 190
+      },
+      {
+        "txn_hash": "0xd2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 191
+      },
+      {
+        "txn_hash": "0xe3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 192
+      },
+      {
+        "txn_hash": "0xf4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 193
+      },
+      {
+        "txn_hash": "0xa5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 194
+      },
+      {
+        "txn_hash": "0xb6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 195
+      },
+      {
+        "txn_hash": "0xc7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 196
+      },
+      {
+        "txn_hash": "0xd8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 197
+      },
+      {
+        "txn_hash": "0xe9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 198
+      },
+      {
+        "txn_hash": "0xf0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 199
+      },
+      {
+        "txn_hash": "0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a111",
+        "chain": "arbitrum",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 200
+      },
+      {
+        "txn_hash": "0xb2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b222",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 201
+      },
+      {
+        "txn_hash": "0xc3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c333",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 202
+      },
+      {
+        "txn_hash": "0xd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d444",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 203
+      },
+      {
+        "txn_hash": "0xe5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e555",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 204
+      },
+      {
+        "txn_hash": "0xf6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f666",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 205
+      },
+      {
+        "txn_hash": "0xa7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a777",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 206
+      },
+      {
+        "txn_hash": "0xb8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b888",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 207
+      },
+      {
+        "txn_hash": "0xc9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c999",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 208
+      },
+      {
+        "txn_hash": "0xd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9daaa",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 209
+      },
+      {
+        "txn_hash": "0xe1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0ebbb",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 210
+      },
+      {
+        "txn_hash": "0xf2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1fccc",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 211
+      },
+      {
+        "txn_hash": "0xa3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2addd",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 212
+      },
+      {
+        "txn_hash": "0xb4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3beee",
+        "chain": "optimism",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 213
+      },
+      {
+        "txn_hash": "0xc5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4cfff",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 214
+      },
+      {
+        "txn_hash": "0xd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d000",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 215
+      },
+      {
+        "txn_hash": "0xe7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e111",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 216
+      },
+      {
+        "txn_hash": "0xf8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f222",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 217
+      },
+      {
+        "txn_hash": "0xa9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a333",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 218
+      },
+      {
+        "txn_hash": "0xb0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b444",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 219
+      },
+      {
+        "txn_hash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c555",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 220
+      },
+      {
+        "txn_hash": "0xd2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d666",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 221
+      },
+      {
+        "txn_hash": "0xe3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e777",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 222
+      },
+      {
+        "txn_hash": "0xf4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f888",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 223
+      },
+      {
+        "txn_hash": "0xa5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a999",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 224
+      },
+      {
+        "txn_hash": "0xb6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5baaa",
+        "chain": "base",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 225
+      },
+      {
+        "txn_hash": "0xc7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6cbbb",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 226
+      },
+      {
+        "txn_hash": "0xd8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7dccc",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 227
+      },
+      {
+        "txn_hash": "0xe9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8eddd",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 228
+      },
+      {
+        "txn_hash": "0xf0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9feee",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 229
+      },
+      {
+        "txn_hash": "0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0afff",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 230
+      },
+      {
+        "txn_hash": "0xb2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b111",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 231
+      },
+      {
+        "txn_hash": "0xc3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c222",
+        "chain": "bsc",
+        "accepted": false,
+        "missing": [
+          "missing_ground_truth",
+          "missing_independent_annotation",
+          "missing_independent_sources",
+          "missing_receipt",
+          "missing_trace",
+          "missing_transaction",
+          "missing_verification"
+        ],
+        "verification_scope": "artifact-integrity",
+        "input_line": 232
+      }
+    ]
+  },
+  "scope": "local acceptance only; empirical and live claims require separate evidence",
+  "paid_api_spend_this_run_usd": 0.0,
+  "original_test_evidence": {
+    "expected_baseline_count": 201,
+    "observed_outcomes": {
+      "passed": 201
+    },
+    "original_sources_changed": [],
+    "baseline_commit": "6282729ce34bd4a17cc99e750d23ad383ff4b0c1"
+  },
+  "test_exit_code": 0,
+  "test_counts": {
+    "passed": 353,
+    "skipped": 1
+  },
+  "test_outcomes": {
+    "tests/test_acquisition_paths.py::test_drpc_key_and_chain_endpoint_are_used_without_live_requests": "passed",
+    "tests/test_acquisition_paths.py::test_capture_checks_chain_and_cross_provider_identity_before_writing": "passed",
+    "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator": "passed",
+    "tests/test_acquisition_paths.py::test_ordinary_failure_is_not_relabelled_as_challenge_success": "passed",
+    "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence": "passed",
+    "tests/test_acquisition_paths.py::test_provider_stats_do_not_expose_rpc_credentials": "passed",
+    "tests/test_adaptive_controller.py::test_adaptive_controller_expands_empty_function_set_from_trace_graph": "passed",
+    "tests/test_adaptive_controller.py::test_adaptive_controller_does_not_change_existing_candidates": "passed",
+    "tests/test_adaptive_controller.py::test_forensics_result_serializes_adaptive_fallback_metadata": "passed",
+    "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state": "passed",
+    "tests/test_analyst_guidance.py::test_second_checkpoint_rejection_removes_finding_and_keeps_audit_record": "passed",
+    "tests/test_analyst_guidance.py::test_review_rejects_only_the_selected_contract_with_same_function_name": "passed",
+    "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors": "passed",
+    "tests/test_calibration_schema.py::test_schema_and_training_provenance_survive_save_load": "passed",
+    "tests/test_calibration_schema.py::test_overlapping_training_and_evaluation_ids_are_rejected": "passed",
+    "tests/test_calibration_schema.py::test_nonfinite_feature_cannot_become_probability": "passed",
+    "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score": "passed",
+    "tests/test_calibration_schema.py::test_export_and_inference_use_the_same_observed_depth_and_storage_features": "passed",
+    "tests/test_calibration_schema.py::test_nonfinite_model_confidence_never_becomes_high_confidence": "passed",
+    "tests/test_claim_closure.py::test_closure_requires_hashed_evidence_and_explicit_reason": "passed",
+    "tests/test_claim_closure.py::test_verified_closure_requires_passing_behavior_acceptance": "passed",
+    "tests/test_claim_closure.py::test_strict_closure_does_not_hide_unreviewed_claims": "passed",
+    "tests/test_claim_closure.py::test_publication_snapshot_is_public_and_open_licensed": "passed",
+    "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof": "passed",
+    "tests/test_claim_registry.py::test_local_status_requires_every_bound_test_to_pass": "passed",
+    "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset": "passed",
+    "tests/test_claim_registry.py::test_tools_claim_requires_executed_compiled_integration_tests": "passed",
+    "tests/test_claim_registry.py::test_historical_capture_status_is_limited_to_verified_ethereum_sample": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuild_retains_every_row_without_inventing_annotation": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuild_preserves_filename_payload_identity_conflict": "passed",
+    "tests/test_cohort_rebuild.py::test_provenance_reader_supports_real_compressed_trace_artifacts": "passed",
+    "tests/test_cohort_rebuild.py::test_rebuilt_cohort_accounts_for_every_source_row_and_revalidates_gaps": "passed",
+    "tests/test_cohort_rebuild.py::test_captured_rows_remain_rejected_without_independent_attestations": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions": "passed",
+    "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[reentrant-CONFIRMED_REENTRANCY]": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[guarded-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts[delegatecall-NOT_REENTRANCY]": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_returns_confidence_score_object": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_overall_in_unit_range": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_all_components_in_unit_range": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_level_is_valid_string": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_explanation_is_non_empty_list": "passed",
+    "tests/test_confidence_scorer.py::TestScoreFunction::test_empty_func_no_crash": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_pattern_match_flash_loan_keyword": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_pattern_match_caps_at_one": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_numeric": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_text_labels": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_percentage_string": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_llm_confidence_no_scores_returns_neutral": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_txn_consistency_attacker_boost": "passed",
+    "tests/test_confidence_scorer.py::TestComponents::test_code_evidence_no_contract_info": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.95-very_high]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.8-high]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.6-moderate]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.4-low]": "passed",
+    "tests/test_confidence_scorer.py::TestConfidenceLevels::test_threshold_classification[0.1-very_low]": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_results_sorted_descending_by_overall": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_returns_list_of_dicts": "passed",
+    "tests/test_confidence_scorer.py::TestScoreAll::test_each_result_has_confidence_key": "passed",
+    "tests/test_confidence_scorer.py::TestGenerateEvidenceCard::test_card_has_required_keys": "passed",
+    "tests/test_confidence_scorer.py::TestGenerateEvidenceCard::test_function_signature_fields": "passed",
+    "tests/test_cost_tracker_ablation.py::test_local_tier_is_free": "passed",
+    "tests/test_cost_tracker_ablation.py::test_cloud_tier_cost_is_computed_from_pricing": "passed",
+    "tests/test_cost_tracker_ablation.py::test_cost_reduction_is_measured_not_assumed": "passed",
+    "tests/test_cost_tracker_ablation.py::test_all_cloud_run_reports_zero_reduction": "passed",
+    "tests/test_cost_tracker_ablation.py::test_tier_distribution_shares_sum_to_one": "passed",
+    "tests/test_cost_tracker_ablation.py::test_stage_timer_records_latency": "passed",
+    "tests/test_cost_tracker_ablation.py::test_stage_timer_records_even_on_exception": "passed",
+    "tests/test_cost_tracker_ablation.py::test_prefilter_rate_is_tracked": "passed",
+    "tests/test_cost_tracker_ablation.py::test_empty_tracker_reports_zeros_not_estimates": "passed",
+    "tests/test_cost_tracker_ablation.py::test_full_system_enables_everything": "passed",
+    "tests/test_cost_tracker_ablation.py::test_disabling_component_reports_disabled": "passed",
+    "tests/test_cost_tracker_ablation.py::test_variant_name_reflects_ablation": "passed",
+    "tests/test_cost_tracker_ablation.py::test_unknown_component_rejected": "passed",
+    "tests/test_cost_tracker_ablation.py::test_from_env_reads_flags": "passed",
+    "tests/test_cost_tracker_ablation.py::test_from_env_ignores_unset_and_false_values": "passed",
+    "tests/test_cost_tracker_ablation.py::test_standard_suite_covers_full_system_plus_each_component": "passed",
+    "tests/test_cost_tracker_ablation.py::test_config_is_hashable_and_serializable": "passed",
+    "tests/test_detector_experiments.py::test_baselines_execute_different_algorithms_on_identical_captured_input": "passed",
+    "tests/test_detector_experiments.py::test_category_observations_are_derived_from_receipt_and_actual_tree": "passed",
+    "tests/test_detector_experiments.py::test_simple_baseline_counts_address_repetition_across_different_selectors": "passed",
+    "tests/test_evidence_manifest.py::test_unknown_provenance_never_becomes_verified": "passed",
+    "tests/test_evidence_manifest.py::test_reviewer_string_is_not_counted_as_multiple_independent_reviewers": "passed",
+    "tests/test_evidence_manifest.py::test_explicit_benign_ground_truth_does_not_require_fabricated_attacker_or_location": "passed",
+    "tests/test_evidence_manifest.py::test_ground_truth_identity_mismatch_is_rejected": "passed",
+    "tests/test_evidence_manifest.py::test_all_rows_are_audited_and_pending_rows_are_not_padded": "passed",
+    "tests/test_evidence_manifest.py::test_artifact_paths_cannot_escape_evidence_root": "passed",
+    "tests/test_evidence_manifest.py::test_digest_is_of_content_not_filename": "passed",
+    "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering": "passed",
+    "tests/test_external_baseline_and_human_study.py::test_external_baseline_ingest_scores_predictions": "passed",
+    "tests/test_external_baseline_and_human_study.py::test_human_study_summarizes_sus_and_task_metrics": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[False-withdraw]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[False-withdraw_funds(uint256)]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw]": "passed",
+    "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter[True-withdraw_funds(uint256)]": "passed",
+    "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[0]": "passed",
+    "tests/test_historical_fork_replay.py::test_signed_transaction_reconstruction_preserves_hash[2]": "passed",
+    "tests/test_historical_fork_replay.py::test_replay_rejects_receipt_changes": "passed",
+    "tests/test_historical_fork_replay.py::test_rpc_meter_refuses_requests_above_limit": "passed",
+    "tests/test_historical_fork_replay.py::test_archive_proxy_cannot_broadcast_to_mainnet": "passed",
+    "tests/test_historical_fork_replay.py::test_mining_can_use_a_separately_bounded_timeout": "passed",
+    "tests/test_historical_fork_replay.py::test_pre_metering_rpc_estimate_is_accounted_exactly_once": "passed",
+    "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt": "passed",
+    "tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt": "passed",
+    "tests/test_historical_fork_replay.py::test_historical_fork_captures_reentrant_storage": "skipped",
+    "tests/test_honest_eval.py::test_guarded_features_exposes_safe_fields": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_label_subscript": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_label_via_get": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_blocks_membership_probe": "passed",
+    "tests/test_honest_eval.py::test_guarded_features_strips_forbidden_from_iteration": "passed",
+    "tests/test_honest_eval.py::test_forbidden_fields_cover_known_leak_columns": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_detects_label_reading_scorer": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_passes_clean_scorer": "passed",
+    "tests/test_honest_eval.py::test_audit_scorer_flags_perfect_separation": "passed",
+    "tests/test_honest_eval.py::test_classification_metrics_basic_counts": "passed",
+    "tests/test_honest_eval.py::test_f1_perfect_and_zero": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_brackets_point_estimate": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_is_deterministic_under_seed": "passed",
+    "tests/test_honest_eval.py::test_bootstrap_ci_handles_empty_input": "passed",
+    "tests/test_honest_eval.py::test_brier_score_bounds": "passed",
+    "tests/test_honest_eval.py::test_expected_calibration_error_perfect_is_zero": "passed",
+    "tests/test_honest_eval.py::test_expected_calibration_error_detects_overconfidence": "passed",
+    "tests/test_honest_eval.py::test_reliability_table_bins_sum_to_population": "passed",
+    "tests/test_honest_eval.py::test_mcnemar_counts_and_statistic": "passed",
+    "tests/test_honest_eval.py::test_has_trace_features_flag": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_blocks_when_benign_untraced": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_allows_balanced_split": "passed",
+    "tests/test_honest_eval.py::test_audit_coverage_blocks_degenerate_constant_features": "passed",
+    "tests/test_honest_eval.py::test_comparable_subset_filters_untraced": "passed",
+    "tests/test_honest_eval.py::test_feature_dict_excludes_label": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_function_match": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_returns_none_when_absent": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_line_match": "passed",
+    "tests/test_honest_eval.py::test_rank_ignores_function_signature_parens": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_top_k_and_mrr": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_blocks_without_predictions": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_counts_misses": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_excludes_non_ok_trace_status": "passed",
+    "tests/test_honest_eval.py::test_localization_metrics_enforces_80_percent_coverage": "passed",
+    "tests/test_honest_eval.py::test_fn_selector_known_value": "passed",
+    "tests/test_honest_eval.py::test_register_and_resolve_selector": "passed",
+    "tests/test_honest_eval.py::test_selector_not_in_table_returns_none": "passed",
+    "tests/test_honest_eval.py::test_prediction_keys_resolves_hex_selector": "passed",
+    "tests/test_honest_eval.py::test_rank_of_first_hit_with_hex_selector": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier1_agent_returns_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_children_filtering_returns_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier3_agent_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier3_processing_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_cloud_only_strategy_always_returns_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier_override_forces_local": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_tier_override_forces_cloud": "passed",
+    "tests/test_llm_router.py::TestSelectModel::test_unknown_role_returns_valid_model": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_known_roles_return_correct_tier": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_heuristic_complex_prompt_is_tier3": "passed",
+    "tests/test_llm_router.py::TestGetTier::test_heuristic_simple_prompt_is_tier1": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_local_query_costs_zero": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_cloud_query_costs_nonzero": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_query_count_increments": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_local_and_cloud_counts_split": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_savings_with_local_queries": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_savings_percent_in_valid_range": "passed",
+    "tests/test_llm_router.py::TestCostTracking::test_no_tracking_skips_records": "passed",
+    "tests/test_llm_router.py::TestIsLocalModel::test_ollama_models_are_local": "passed",
+    "tests/test_llm_router.py::TestIsLocalModel::test_gpt_models_are_cloud": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_enabled_sends_tier1_to_the_local_model": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_disabled_forces_every_query_to_cloud": "passed",
+    "tests/test_llm_router_ablation.py::test_routing_ablation_changes_the_selected_model": "passed",
+    "tests/test_llm_router_ablation.py::test_disabling_another_component_leaves_routing_alone": "passed",
+    "tests/test_llm_router_ablation.py::test_record_query_feeds_the_cost_tracker": "passed",
+    "tests/test_llm_router_ablation.py::test_local_calls_are_recorded_as_free_local_tier": "passed",
+    "tests/test_llm_router_ablation.py::test_stage_defaults_when_no_agent_role_given": "passed",
+    "tests/test_llm_router_ablation.py::test_router_without_tracker_does_not_crash": "passed",
+    "tests/test_llm_router_ablation.py::test_tracker_measures_a_real_cost_reduction": "passed",
+    "tests/test_llm_router_ablation.py::test_orchestrator_propagates_ablation_and_tracker_into_router": "passed",
+    "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign": "passed",
+    "tests/test_local_control_flow.py::test_explicit_legacy_calibrator_cannot_be_used_as_production_probability": "passed",
+    "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign": "passed",
+    "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings": "passed",
+    "tests/test_orchestrator_research_metrics.py::test_trace_entropy_is_normalized": "passed",
+    "tests/test_orchestrator_research_metrics.py::test_trace_entropy_handles_empty_trace": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_enabled_by_default": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_disabled_controller_is_a_real_noop": "passed",
+    "tests/test_orchestrator_wiring.py::test_faegl_ablation_bypasses_the_localizer": "passed",
+    "tests/test_orchestrator_wiring.py::test_enabled_path_does_consult_the_localizer": "passed",
+    "tests/test_orchestrator_wiring.py::test_controller_keeps_the_config_object_it_was_given": "passed",
+    "tests/test_orchestrator_wiring.py::test_orchestrator_accepts_and_propagates_ablation": "passed",
+    "tests/test_orchestrator_wiring.py::test_orchestrator_defaults_to_full_system_and_no_tracker": "passed",
+    "tests/test_orchestrator_wiring.py::test_stage_helper_records_timing_when_tracker_attached": "passed",
+    "tests/test_orchestrator_wiring.py::test_stage_helper_is_safe_without_tracker": "passed",
+    "tests/test_orchestrator_wiring.py::test_calibration_returns_float_when_model_present": "passed",
+    "tests/test_orchestrator_wiring.py::test_calibration_returns_none_when_ablated": "passed",
+    "tests/test_paper_detector.py::test_paper_profile_uses_five_tiers_and_actual_storage_signals": "passed",
+    "tests/test_paper_detector.py::test_paper_profile_ignores_reverted_opcode_writes": "passed",
+    "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter": "passed",
+    "tests/test_paper_detector.py::test_paper_structural_terms_penalty_cap_and_tiers": "passed",
+    "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile": "passed",
+    "tests/test_paper_detector.py::test_complete_storage_capture_with_no_writes_does_not_activate_fallback": "passed",
+    "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints": "passed",
+    "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators": "passed",
+    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance": "passed",
+    "tests/test_paper_experiments.py::test_comparison_rejects_unpaired_ids_and_missing_cost_usage": "passed",
+    "tests/test_paper_experiments.py::test_function_identity_includes_address_and_full_signature": "passed",
+    "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations": "passed",
+    "tests/test_paper_experiments.py::test_published_precision_recall_cannot_be_forced_on_18_positive_incidents": "passed",
+    "tests/test_paper_experiments.py::test_cohort_statistics_count_real_labels_without_padding": "passed",
+    "tests/test_paper_experiments.py::test_localization_quality_uses_ground_truth_functions_not_exploit_labels": "passed",
+    "tests/test_paper_experiments.py::test_pipeline_adapter_refuses_incomplete_analysis_and_preserves_uncertain_triage": "passed",
+    "tests/test_paper_experiments.py::test_external_study_pool_is_not_padded_to_the_main_246_row_cohort": "passed",
+    "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped": "passed",
+    "tests/test_paper_rpc_probe.py::test_capability_probe_records_rejection_without_echoing_exception": "passed",
+    "tests/test_paper_rpc_probe.py::test_capability_probe_does_not_promote_rpc_error_to_support": "passed",
+    "tests/test_paper_rpc_probe.py::test_archive_proxy_allows_trace_reads_but_still_denies_broadcast": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.0-NOT_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.0999-NOT_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.1-UNLIKELY_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.2999-UNLIKELY_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.3-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.5499-POSSIBLE_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.55-HIGH_RISK_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.7999-HIGH_RISK_REENTRANCY]": "passed",
+    "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor[0.8-CONFIRMED_REENTRANCY]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[repeated_slot_nested-0.55]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[write_after_external_call-0.25]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[same_function_reentered-0.2]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[write_before_and_after-0.1]": "passed",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score[same_slot_rewritten-0.1]": "passed",
+    "tests/test_paper_weights.py::test_storage_score_clamps_the_actual_one_point_two_sum": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-eth]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://bscscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-bsc]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://polygonscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-polygon]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://arbiscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-arbitrum]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://optimistic.etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-optimism]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://snowtrace.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-avalanche]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://basescan.org/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-base]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_chain_detected[https://ftmscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890-fantom]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://etherscan.io/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://bscscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_correct_hash_extracted[https://polygonscan.com/tx/0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890]": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_bare_hash_with_chain_keyword_eth": "passed",
+    "tests/test_pipeline_parse.py::TestParseValidChains::test_case_insensitive_url": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_missing_hash_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_unsupported_chain_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_empty_string_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_hash_too_short_raises_value_error": "passed",
+    "tests/test_pipeline_parse.py::TestParseInvalidInput::test_hash_exactly_64_chars_is_valid": "passed",
+    "tests/test_pipeline_parse.py::TestChainDisambiguation::test_bscscan_not_detected_as_eth": "passed",
+    "tests/test_pipeline_parse.py::TestChainDisambiguation::test_optimism_on_etherscan_subdomain": "passed",
+    "tests/test_public_incident_import.py::test_normalize_incident_extracts_contracts_chains_and_tx_hashes": "passed",
+    "tests/test_public_incident_import.py::test_normalize_incident_accepts_json_encoded_contracts": "passed",
+    "tests/test_public_incident_import.py::test_normalize_defillama_hack_marks_row_as_staged_incident": "passed",
+    "tests/test_public_incident_import.py::test_normalize_rugpull_row_stages_contract_without_tx_claim": "passed",
+    "tests/test_public_incident_import.py::test_normalize_hf_benign_row_requires_non_scam_and_excludes_scam": "passed",
+    "tests/test_public_incident_import.py::test_hf_benign_summary_marks_target_status": "passed",
+    "tests/test_public_incident_import.py::test_research_readiness_report_uses_current_benchmark": "passed",
+    "tests/test_public_incident_import.py::test_validate_imported_incident_marks_known_hash_as_existing": "passed",
+    "tests/test_public_incident_import.py::test_validate_imported_incident_marks_new_hash_for_manual_review": "passed",
+    "tests/test_public_incident_import.py::test_build_candidate_rows_expands_each_transaction_hash": "passed",
+    "tests/test_public_incident_import.py::test_split_hashes_rejects_invalid_hashes": "passed",
+    "tests/test_public_incident_import.py::test_research_exploit_pool_dedupes_candidates_against_verified": "passed",
+    "tests/test_public_incident_import.py::test_build_candidate_rows_marks_unsupported_chain_blocker": "passed",
+    "tests/test_public_incident_import.py::test_readiness_truthy_parser_accepts_bool_and_string_forms": "passed",
+    "tests/test_query_routing.py::test_tier_two_good_local_result_stays_local": "passed",
+    "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts": "passed",
+    "tests/test_query_routing.py::test_tier_one_stays_local_and_tier_three_goes_cloud": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[{\"confidence\": 0.9, \"evidence\": []}]": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[{\"confidence\": 0.9}]": "passed",
+    "tests/test_query_routing.py::test_tier_two_bad_schema_or_evidence_falls_back[not json]": "passed",
+    "tests/test_query_routing.py::test_cloud_budget_blocks_dispatch_and_local_loop_remains_free": "passed",
+    "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage": "passed",
+    "tests/test_query_routing.py::test_percentage_confidence_below_gate_falls_back": "passed",
+    "tests/test_query_routing.py::test_failed_cloud_attempt_is_recorded_and_reserved_cost_is_kept": "passed",
+    "tests/test_query_routing.py::test_sdk_cannot_retry_paid_calls_behind_budget_accounting": "passed",
+    "tests/test_query_routing.py::test_exported_cost_summary_contains_every_attempt_for_production_measurement": "passed",
+    "tests/test_query_routing.py::test_child_filter_can_return_empty_selection_without_being_a_provider_failure": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[gpt-4o-mini-GPTAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[grok-3-mini-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[qwen-plus-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[gemini-2.0-flash-UniversalAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[claude-3-5-sonnet-AnthropicAgent]": "passed",
+    "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter[llama3:8b-OllmaAgent]": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_extract_reentrancy_analysis_supports_legacy_flat_fields": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_build_dataset_row_flattens_only_compact_reentrancy_fields": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_priority_total_uses_probabilistic_union": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_reentrancy_metrics_use_tier_weighting_and_trace_rates": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_forensics_result_serialization_exposes_grouped_reentrancy_and_priority": "passed",
+    "tests/test_reentrancy_eval_integration.py::test_priority_breakdown_discounts_fallback_reentrancy": "passed",
+    "tests/test_reentrancy_state_signals.py::test_classic_withdraw_scores_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_no_state_trace_fallback_scores_recursive_call_graph_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_cross_function_reentry_scores_high_without_state_trace": "passed",
+    "tests/test_reentrancy_state_signals.py::test_fallback_score_is_hard_capped": "passed",
+    "tests/test_reentrancy_state_signals.py::test_checks_effects_interactions_safe_pattern_scores_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_staticcall_only_recursion_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_multicall_style_same_contract_batching_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_reentrant_fallback_scores_high": "passed",
+    "tests/test_reentrancy_state_signals.py::test_delegatecall_proxy_scores_medium_but_not_high_confidence": "passed",
+    "tests/test_reentrancy_state_signals.py::test_plain_proxy_delegatecall_without_callback_stays_low": "passed",
+    "tests/test_reentrancy_state_signals.py::test_delegatecall_effective_address_normalization_survives_no_state_trace": "passed",
+    "tests/test_reentrancy_state_signals.py::test_nested_delegatecall_root_storage_context_survives_reentry": "passed",
+    "tests/test_reentrancy_state_signals.py::test_mutex_guard_slot_is_filtered": "passed",
+    "tests/test_reentrancy_state_signals.py::test_same_pc_loop_writes_are_deduped": "passed",
+    "tests/test_reentrancy_state_signals.py::test_same_pc_same_call_id_loop_writes_are_deduped": "passed",
+    "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure": "passed",
+    "tests/test_reproduction_entrypoints.py::test_original_test_sources_match_the_frozen_baseline_manifest": "passed",
+    "tests/test_research_experiment_suite.py::test_research_experiment_suite_generates_nontrivial_comparisons": "passed",
+    "tests/test_research_modules.py::test_logistic_calibrator_trains_and_reports_calibration_metrics": "passed",
+    "tests/test_research_modules.py::test_transaction_interaction_graph_extracts_motifs_and_metrics": "passed",
+    "tests/test_research_modules.py::test_failure_aware_exploit_graph_localizer_selects_modes_and_ranks_candidates": "passed",
+    "tests/test_research_modules.py::test_adversarial_evaluator_generates_attack_variants_and_degradation_report": "passed",
+    "tests/test_research_modules.py::test_statistical_helpers_return_reproducible_values": "passed",
+    "tests/test_research_system_surfaces.py::test_chain_profiles_are_chain_specific": "passed",
+    "tests/test_research_system_surfaces.py::test_temporal_correlator_groups_repeated_attacker_victim_pairs": "passed",
+    "tests/test_research_system_surfaces.py::test_remediation_suggestions_follow_vulnerability_hint": "passed",
+    "tests/test_research_system_surfaces.py::test_mempool_risk_scorer_flags_large_contract_creation": "passed",
+    "tests/test_research_tooling_robustness.py::test_split_hashes_fuzz_rejects_near_misses": "passed",
+    "tests/test_research_tooling_robustness.py::test_large_benign_dataset_validation_meets_minimum_and_detects_duplicates": "passed",
+    "tests/test_research_tooling_robustness.py::test_candidate_expansion_dedupes_same_tx_same_chain_but_keeps_cross_chain": "passed",
+    "tests/test_research_tooling_robustness.py::test_empty_benign_csv_reports_all_required_fields_missing": "passed",
+    "tests/test_research_tooling_robustness.py::test_benign_dataset_reports_schema_and_duplicates": "passed",
+    "tests/test_research_tooling_robustness.py::test_benign_dataset_reports_missing_required_fields": "passed",
+    "tests/test_research_tooling_robustness.py::test_candidate_expansion_ignores_malformed_manifest_rows_without_crashing": "passed",
+    "tests/test_research_tooling_robustness.py::test_readiness_summary_handles_corrupt_json_without_crashing": "passed",
+    "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two": "passed",
+    "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl": "passed",
+    "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes": "passed",
+    "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure": "passed",
+    "tests/test_rpc_mechanisms.py::test_missing_batch_response_is_not_silently_accepted_as_null": "passed",
+    "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist": "passed",
+    "tests/test_source_analysis_safety.py::test_single_line_function_source_is_not_dropped": "passed",
+    "tests/test_source_analysis_safety.py::test_downloaded_source_cannot_escape_output_directory": "passed",
+    "tests/test_source_analysis_safety.py::test_downloader_preserves_caller_directory_and_unrelated_implementation": "passed",
+    "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions": "passed",
+    "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[-1]": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[nan]": "passed",
+    "tests/test_spend_guard.py::test_invalid_budget_values_fail_closed[inf]": "passed",
+    "tests/test_spend_guard.py::test_unknown_cloud_price_cannot_be_treated_as_free": "passed",
+    "tests/test_spend_guard.py::test_failed_call_without_usage_keeps_full_reservation": "passed",
+    "tests/test_spend_guard.py::test_concurrent_reservations_cannot_spend_same_remaining_budget": "passed",
+    "tests/test_spend_guard.py::test_direct_cloud_agent_cannot_bypass_cumulative_budget": "passed",
+    "tests/test_stage_one_local.py::test_default_configuration_can_start_without_cloud_credentials": "passed",
+    "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless": "passed",
+    "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents": "passed",
+    "tests/test_stage_one_local.py::test_multi_tx_coverage_requires_recorded_context_evidence": "passed",
+    "tests/test_storage_normalization.py::test_reverted_delegate_write_does_not_poison_following_parent_read": "passed",
+    "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters": "passed",
+    "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes": "passed",
+    "tests/test_storage_normalization.py::test_precompile_without_opcode_frame_does_not_shift_reverted_call_identity": "passed",
+    "tests/test_storage_normalization.py::test_structured_trace_cache_is_chain_and_tracer_scoped": "passed",
+    "tests/test_storage_normalization.py::test_rpc_trace_uses_opcode_normalizer_and_reports_coverage": "passed",
+    "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers": "passed",
+    "tests/test_table_vi.py::test_table_vi_aggregates_real_confidence_scorer_output": "passed",
+    "tests/test_table_vi.py::test_table_vi_refuses_missing_components_and_duplicate_functions": "passed"
+  },
+  "timestamp": "2026-10-15T04:00:01.882353+00:00",
+  "python_version": "3.11.9",
+  "revision": "c587afe28f733575d0f25e9bc3bc2b0ab5d7d507",
+  "test_manifest_sha256": {
+    "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
+    "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
+    "tests\\test_analyst_guidance.py": "89ff0f509b938e07cbf7bc6d9674a4577b65782ea92b0ee042c00bc7da9da4cd",
+    "tests\\test_calibration_schema.py": "93d043bd4cb6d961012a17addb0d8ca64d30c6c91a2a93a6abff63609cb6b420",
+    "tests\\test_claim_closure.py": "c497c3cc336504101b48d256573386dbf7cf1d1bc5cb297a8ab8f591c9309e71",
+    "tests\\test_claim_registry.py": "94fb380d58105c620bb1624c5f345957e329c6b8773fa0f65b752d3d65ebd04a",
+    "tests\\test_cohort_rebuild.py": "6435e0154d5a0d4659254227aebaab44b9f5ac8550dbca36d6c24332b40e80ea",
+    "tests\\test_compiled_evm_integration.py": "0b2c5cc8f63e218be644181326d1ab994858a8428734cc7f4ffafa53e5a783bc",
+    "tests\\test_confidence_scorer.py": "7e3f08dc2ae43f802a8928cff527f1e4c44227606b7760a82be84cb904dbc9ca",
+    "tests\\test_cost_tracker_ablation.py": "75d6362dd38ce6b1c1f54a04083836333bd0c0edcbb3a50a982b5b9bb9f45475",
+    "tests\\test_detector_experiments.py": "b7c600bb75df8bccae2d5bc893996cfd88145fa6cecd1de4f0afe4ed5393c40e",
+    "tests\\test_evidence_manifest.py": "95e28b6e6b60a77b8f810f76e1455978b8ce1b0b9eb5dfd78fd7dab31b59c862",
+    "tests\\test_external_baseline_and_human_study.py": "4e125f44ad53d5f823306918390d81ccaf268858f9c0c0f514fe533642209b3d",
+    "tests\\test_function_agent_flow.py": "4e4773fff0e33c006eb99cb78dfef7f3eebe0fac598da0ad324e1c83237e2520",
+    "tests\\test_historical_fork_replay.py": "ac9db5846936d84c00111f26702849df69594bba486d2d8f9c81f6fafc05f345",
+    "tests\\test_honest_eval.py": "62fad84821b37b417fd44bdd0f1fdb30ce83fc4f6b7a2dd61622bdb6c7862ce5",
+    "tests\\test_llm_router.py": "63d4f51ca71102343d1c582eb5b7d1285fa566677039691ff16976bef4cb7140",
+    "tests\\test_llm_router_ablation.py": "6b7db9f5ba4380cc69686ae5092c7ca1d57f5a5fde320bf5f9d3630f5e9177dd",
+    "tests\\test_local_control_flow.py": "257a939a2aa7f4ed1c73a06ea8923e50329a56986c6186b17cc511afb5d5c482",
+    "tests\\test_orchestrator_research_metrics.py": "aa5be2e8aeabe48b4c6849e404d20e240e30615bb699b7a9ca59a5286d6e9493",
+    "tests\\test_orchestrator_wiring.py": "05a9604e95f55f19c9638153b524ad4c593a7105ae06917cadb9917252476aa9",
+    "tests\\test_paper_detector.py": "e4089a990872a3553af46dc87215fd9ffa9f078412c567b495e6ad3928544f51",
+    "tests\\test_paper_experiments.py": "7a650ba0719684da8d7ee980363f0f126e2a1abd9784d178b87d021e3fc6a4d5",
+    "tests\\test_paper_fallback.py": "25b7b3e49d3786d1fac7b954d12e205507c28558c1f00874f8d14fa503323bf2",
+    "tests\\test_paper_rpc_probe.py": "02951a38cd0adc80990b31e014d6f79b06862c3615bdc175367436798a85d79f",
+    "tests\\test_paper_tiers.py": "b1dfb2a3d3412c37794bb2fe2212f74299681747c651f8e0748b25c6c91568b7",
+    "tests\\test_paper_weights.py": "79343a381ecc41e8bcece91185683554696838953e45f4db232e30149274e810",
+    "tests\\test_pipeline_parse.py": "77a64e816741336ed6ae484b46b958b3ba1dc2c75590ae2f7eb21839d7770056",
+    "tests\\test_public_incident_import.py": "984035483c39ab66d53718cc2c25d24f8d479c945d39d1742a015ce8103b7830",
+    "tests\\test_query_routing.py": "f8a6c2256db13cb3ce248c71339438e4fe979b7176b1608861b546ddfe5c922d",
+    "tests\\test_reentrancy_eval_integration.py": "4ccfa0521967a976f98d6fa005ed63127b8791822c9f2ea7fd1f2c20288ebd90",
+    "tests\\test_reentrancy_state_signals.py": "8cea73d001335fe13e46b02abbcd2e2d7c0c64b2853412da6f40cadbb7039611",
+    "tests\\test_reproduction_entrypoints.py": "a167a0cc8968453a907795b1f22e66aa04624e92ce6f3dc5b3115a3c945125a9",
+    "tests\\test_research_experiment_suite.py": "443411a6948ef8df711cda5e7bc6f982e147e623a7ed4825b4b66d11fe808171",
+    "tests\\test_research_modules.py": "feb59a05a31ad8a1e14de6d2fb66dc595ffbaf04f7b5d1bf7e31d947718e5955",
+    "tests\\test_research_system_surfaces.py": "bc105c92193896b3e1cc1b95406b7be400b95f2dee787b718d36f33fc9e76652",
+    "tests\\test_research_tooling_robustness.py": "57c39608eb24609a0f8c9325f39291be37a3c4b0d691e443e1055f7a84a38c68",
+    "tests\\test_rpc_mechanisms.py": "c60ce47cd064eaa62be522583512fe4baa360299006753b4f956638dcbf0a6ce",
+    "tests\\test_runtime_layout.py": "70073bbf22c0a6a4f0c964c6c7e71a63ada9ef3e41f6e63df29d6f98519fdff2",
+    "tests\\test_source_analysis_safety.py": "d4134b77b0ae8997269fc6e310bc638a25b6bcba97ad715ea97af116c838419b",
+    "tests\\test_spend_guard.py": "446f98bd76d18e234de5cec6af08a7469339a10de6140c02dc8158c7eed92515",
+    "tests\\test_stage_one_local.py": "9a47cd495d82908fdc610d2193f63169f9b40d0ca1cc033463bfb4f895dbf8e7",
+    "tests\\test_storage_normalization.py": "ccd1273c9e5466e557d524b25e91932ab047e5a7c09a953ed9a7727c929a88da",
+    "tests\\test_table_vi.py": "2b988d588316cd864966ad3457ba20fed709db4ba6b6c3dbbdc9b70e67a354cd"
+  }
+}

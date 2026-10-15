@@ -1,0 +1,49 @@
+{
+  "python_version": "3.11.9",
+  "credential_presence": {
+    "OPENAI_API_KEY": true,
+    "GOOGLE_API_KEY": true,
+    "XAI_API_KEY": true,
+    "DASHSCOPE_API_KEY": false,
+    "ANTHROPIC_API_KEY": false,
+    "ETHERSCAN_API_KEY": false,
+    "CURL_IMPERSONATE_BINARY": false,
+    "WAF_CASES_JSON": false
+  },
+  "ollama": {
+    "reachable": false,
+    "error_type": "URLError"
+  },
+  "tools": {
+    "anvil": {
+      "available": true,
+      "version": [
+        "anvil Version: 1.8.5",
+        "Commit SHA: 51a52c59cffd940f76eddd0b4bb1791aa4b5ac7f",
+        "Build Timestamp: 2026-10-05T17:01:32.131957300Z (1791219692)"
+      ]
+    },
+    "cast": {
+      "available": true,
+      "version": [
+        "cast Version: 1.8.5",
+        "Commit SHA: 51a52c59cffd940f76eddd0b4bb1791aa4b5ac7f",
+        "Build Timestamp: 2026-10-05T17:01:32.131957300Z (1791219692)"
+      ]
+    },
+    "solc": {
+      "available": true,
+      "version": [
+        "solc, the solidity compiler commandline interface",
+        "Version: 0.8.30+commit.73712a01.Windows.msvc"
+      ]
+    }
+  },
+  "model_api_calls": 0,
+  "docker": {
+    "binary_available": true,
+    "daemon_confirmed": false,
+    "exit_code": 1
+  },
+  "git_remote_configured": false
+}
