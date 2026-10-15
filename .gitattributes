@@ -1,2 +1,6 @@
 # Preserve the fetched upstream license verbatim as an evidence snapshot.
 reports/claim_closure/sources/public_repository_LICENSE.txt -text -diff
+# Preserve downloaded public evidence bytes, including upstream whitespace.
+reports/provenance_hunt/*.txt -text -diff
+reports/provenance_hunt/providers/*.txt -text -diff
+reports/provenance_hunt/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

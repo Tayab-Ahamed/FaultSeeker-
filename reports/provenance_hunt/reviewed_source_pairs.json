@@ -1,0 +1,148 @@
+[
+  {
+    "ordinal": 61,
+    "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+    "sources": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+        "artifact": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+        "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6",
+        "description": "1/ @orion_protocol on both Ethereum (https://t.co/Gbg08RzIR6) and BSC (https://t.co/JEmNVKGztX) were attacked. \nThe root cause is due to a reentrancy issue exists in the PoolFunctionality._doSwapTokens function, which leads to the miscalculation of the asset (i.e., USDT) balance.",
+        "hash_links": [
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1621337925228306433",
+        "artifact": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+        "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019",
+        "description": "1/  Again, a $3M lesson from the reentrancy bug! The @orion_protocol is hacked due to a reentrancy issue in its core contract: ExchangeWithOrionPool. Both eth/bsc deployment are hacked. Here are the two related hack txs: https://t.co/YvRIRq6T57\nhttps://t.co/GbexocEZAo",
+        "hash_links": [
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      }
+    ],
+    "review_status": "TWO_PRIMARY_PUBLISHER_ACCOUNTS_CORROBORATE_INCIDENT",
+    "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+    "annotation_supplied": false,
+    "scope": "Incident and exact transaction corroboration; full provenance and taxonomy remain independently gated"
+  },
+  {
+    "ordinal": 73,
+    "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "sources": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1635262150624305153",
+        "artifact": "reports/provenance_hunt/http/0eb6fb23a2ad6b3dd43f0c0feda1e67580e0992e68971b6def515c5e3193e6e2.gz",
+        "sha256": "b66585e306d95c7441a5ed9ea8e4881f920c926cb48adc56a102c918a4f20fba",
+        "description": "1/ @eulerfinance is attacked. The root cause is due to the lack of liquidity check in the function donateToReserves()\nhttps://t.co/stWtPWK900\n\nSee the detailed attack steps below.",
+        "hash_links": [
+          "https://phalcon.xyz/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d?line=471&debugLine=471",
+          "https://phalcon.blocksec.com/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://phalcon.xyz/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d?line=471&debugLine=471",
+          "https://phalcon.blocksec.com/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1635229594596036608",
+        "artifact": "reports/provenance_hunt/http/c56def597b3cfa0afbee011ce7701b7850671fd9b097b0cb9ee5387d988255b8.gz",
+        "sha256": "08ac9ba1f6c3fb449092420e42c7e9dd522f35ec300cac5127059d548fbdaf62",
+        "description": "1/   @eulerfinance  was exploited in a flurry of  txs on Ethereum (one hack tx: https://t.co/L7ddZhHNq5), leading to the lost of ~$197m from the project.",
+        "hash_links": [
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      }
+    ],
+    "review_status": "TWO_PRIMARY_PUBLISHER_ACCOUNTS_CORROBORATE_INCIDENT",
+    "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+    "annotation_supplied": false,
+    "scope": "Incident and exact transaction corroboration; full provenance and taxonomy remain independently gated"
+  },
+  {
+    "ordinal": 81,
+    "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+    "sources": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://blocksec.com/blog/our-take-on-the-inverse-finance-security-incident-price-manipulation-attack",
+        "artifact": "reports/provenance_hunt/http/3c9ef0134b969ac18b1e7f631dd6466a3adde7c535efe1e3acf9b203a8651c45.gz",
+        "sha256": "60151e58170c7da5a5e0e4d570ed2f74957930ffeeb6ef16342eb27c94f0555c",
+        "description": "Flashloan Exploit in Inverse Finance: Attacker Profits Nearly $100k USDT and 53.2 WBTC",
+        "hash_links": [
+          "https://phalcon.blocksec.com/explorer/tx/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+        ],
+        "visible_hash_context": "ack Code Auditing June 16, 2022 Introduction On June 16th, 2022, Inverse Finance was attacked, leading to the loss of more than 1M. The attack transaction is https://versatile.blocksecteam.com/tx/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c . The root cause is that the price oracle utilized by Inverse Finance has been manipulated. Attack Analysis The attacker burrowed 27,000 WBTCs from Aave with flashloan first. After that, 225 of them were deposited into Curve and 5,375 crv3crypto was minted. The attacker deposited the 5,375 crv3crypto into the yvCurve-3Crypto and got 4,906 Yearn cToken, which will be used as the co",
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1537383690262589440",
+        "artifact": "reports/provenance_hunt/http/4895bbfc766c190584c1103418e49c7a2dabac2d5b9b140d50ae8e46d8647039.gz",
+        "sha256": "e72b41c993d9608f1addb902d9edff2b5e22d22bad43ad9a0aa6c5f27f7f2d8e",
+        "description": "3/ The hack is made possible due to the price oracle manipulation, which misuses the balances of assets in the pool to directly calculate the LP token price. It is greatly facilitated by the flashloan to skew the reserves in the pool.",
+        "hash_links": [
+          "https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      }
+    ],
+    "review_status": "TWO_PRIMARY_PUBLISHER_ACCOUNTS_CORROBORATE_INCIDENT",
+    "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+    "annotation_supplied": false,
+    "scope": "Incident and exact transaction corroboration; full provenance and taxonomy remain independently gated"
+  },
+  {
+    "ordinal": 99,
+    "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+    "sources": [
+      {
+        "publisher": "CertiK",
+        "url": "https://www.certik.com/zh-CN/blog/zunami-protocol-incident-analysis",
+        "artifact": "reports/provenance_hunt/http/102147617b5aafc54cfe2babb5e24b989a5bc48133c7fad032daadc362620da4.gz",
+        "sha256": "30562661ea5b16b68c67da95782ae3652d95a52f87bc7bf6ad19b5159d749af0",
+        "description": "On 13 August, 2023 Zunami Protocol suffered an exploit via flash loan attack, resulting in a loss of ~$2.16 million",
+        "hash_links": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ],
+        "visible_hash_context": "exploit twice, gaining a total of 1178 ETH after repaying flash loans totaling approximately $32.4 million. Attack Flow This attack flow is based on the following transaction: https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb The attacker flash loaned 7,000,000 USDT from UniSwapV3 as well as 7,000,000 USDC and 10,011 WETH (~$18.4 million) from Balancer. The attacker used the flash loaned funds to conduct the following swaps: a. 5,750,000 USDC swapped for 5,746,896 crvFRAX on Curve which was later swapped for 4,082,036 UZD in pool 1. b. 1,250,000 USDC swapped for 1,250,333 crvUSD on Curve which was late",
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1690877589005778945",
+        "artifact": "reports/provenance_hunt/http/60cfb617bc87c5ca737a8bd72e88f554b819ec90f866274218b493b8c47fe78c.gz",
+        "sha256": "d7507fdc5ca73f36d48d7720b6363eed7efd55dfaf6d9ecfc0fd22152ac7d6b0",
+        "description": "Hi @ZunamiProtocol Today's hack leads to >$2.1m loss and there are two hack txs involved: \n- tx1: https://t.co/UNouq1UwfZ\n- tx2:  https://t.co/vPv1ChVcPv\n\nIt is a price manipulation issue, which can be exploited by donation to incorrectly calculate the price as shown in the following figures.",
+        "hash_links": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ],
+        "visible_hash_context": null,
+        "independence": "REQUIRES_CONTENT_REVIEW_NOT_INFERRED_FROM_HOST"
+      }
+    ],
+    "review_status": "TWO_PRIMARY_PUBLISHER_ACCOUNTS_CORROBORATE_INCIDENT",
+    "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+    "annotation_supplied": false,
+    "scope": "Incident and exact transaction corroboration; full provenance and taxonomy remain independently gated"
+  }
+]
