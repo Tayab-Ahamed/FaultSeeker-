@@ -28,14 +28,15 @@ BASE = Path('reports/cohort_rebuild_v2')
 VARIANTS = ('structural', 'repeated', 'full')
 
 
-def system_identity():
+def system_identity(extra_files=()):
     paths = sorted((ROOT / 'faultseeker').rglob('*.py')) + [
         ROOT / 'benchmark/detector_experiments.py', ROOT / 'benchmark/paper_experiments.py',
         ROOT / 'benchmark/research_protocol.py', Path(__file__).resolve(),
         ROOT / 'scripts/replay_historical_opcodes.py', ROOT / 'scripts/capture_authentic_traces.py',
         ROOT / 'scripts/pinned_prestate_rpc.py',
     ]
-    files = [bind(path, ROOT) for path in paths]
+    paths.extend(Path(path) for path in extra_files)
+    files = [bind(path, ROOT) for path in sorted(set(paths))]
     return {'sha256': sha(canonical(files)), 'files': files}
 
 

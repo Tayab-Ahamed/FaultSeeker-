@@ -278,6 +278,15 @@ class TransactionInfoCollector:
 
         receipt_resp = _rpc(rpc_url, 'eth_getTransactionReceipt', [txn_hash])
         receipt = receipt_resp.get('result') or {}
+        return TransactionInfoCollector.from_rpc(tx, receipt, txn_hash)
+
+    @staticmethod
+    def from_rpc(tx, receipt, txn_hash):
+        """Normalize observed transaction/receipt bytes without network access."""
+        if not isinstance(tx, dict) or not isinstance(receipt, dict):
+            return {}
+        if tx.get('blockHash') and receipt.get('blockHash') and tx['blockHash'] != receipt['blockHash']:
+            return {}
         if not receipt or receipt.get('transactionHash', '').lower() != txn_hash.lower() or tx.get('hash', '').lower() != txn_hash.lower():
             return {}
 
@@ -290,7 +299,7 @@ class TransactionInfoCollector:
             return {}
 
         from_addr = (tx.get('from') or '').lower()
-        to_addr   = (tx.get('to')   or '').lower()
+        to_addr   = (tx.get('to') or receipt.get('contractAddress') or '').lower()
 
         block_hex = tx.get('blockNumber', '0x0')
         block_num = int(block_hex, 16) if block_hex else -1

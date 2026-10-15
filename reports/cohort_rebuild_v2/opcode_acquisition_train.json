@@ -1,6 +1,96 @@
 {
   "attempts": [
     {
+      "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "status": "UNAVAILABLE",
+      "error_type": "ValueError",
+      "reason": "Target transaction was not mined in canonical prefix order",
+      "outbound_rpc_requests": 252
+    },
+    {
+      "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "status": "CAPTURED_CANONICAL_OPCODES",
+      "capture": {
+        "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+        "label": "provenance-admitted exploit; label not used during replay",
+        "block": 14972419,
+        "transaction_index": 0,
+        "prefix_transactions_replayed": 1,
+        "artifact": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+        "artifact_sha256": "164b59f593859c92ab383e9633c57922cc1b402fad28e0ac27459f19d35fac27",
+        "opcode_count": 369186,
+        "sload_count": 628,
+        "sstore_count": 162,
+        "normalization_complete": true,
+        "storage_owners_verified": true,
+        "receipt_matches": true,
+        "storage_contracts": [
+          "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+          "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "0x37bc7498f4ff12c19678ee8fe19d713b87f6a9e6",
+          "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+          "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+          "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+          "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+          "0x865377367054516e17014ccded1e7d814edc9ce4",
+          "0x8a32f49ffba88aba6eff96f45d8bd1d4b3f35c7d",
+          "0x8e764be4288b842791989db5b8ec067279829809",
+          "0x8f0439382359c05ed287acd5170757b76402d93f",
+          "0x8f942c20d02befc377d41445793068908e2250d0",
+          "0x90e00ace148ca3b23ac1bc8c240c2a7dd9c2d7f5",
+          "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "0xa964273552c1dba201f5f000215f5bd5576e8f93",
+          "0xaa5a67c256e27a5d80712c51971408db3370927d",
+          "0xae74faa92cb67a95ebcab07358bc222e33a34da7",
+          "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+          "0xb9fc157394af804a3578134a6585c0dc9cc990d4",
+          "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+          "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
+          "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "0xe8929afd47064efd36a7fb51da3f8c5eb40c4cb4",
+          "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+          "0xf4030086522a5beea4988f8ca5b36dbc97bee88c",
+          "0xf508c58ce37ce40a40997c715075172691f92e2d"
+        ]
+      },
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+        "sha256": "164b59f593859c92ab383e9633c57922cc1b402fad28e0ac27459f19d35fac27"
+      },
+      "outbound_rpc_requests": 13,
+      "prestate_read_cache": {
+        "mode": "observed-prestate-exact-parent-read-cache-v1",
+        "prestate": {
+          "path": "reports/cohort_rebuild_v2/prestate/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+          "sha256": "f7e87f970473f297fb49f6f74605c9920386f9c18b4effd695e52f0917f5454c"
+        },
+        "rpc_identity": {
+          "path": "reports/cohort_rebuild_v2/rpc/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+          "sha256": "d467523bdbe1ad15d178c844f725e0a7ee9d578d5abe48e349cf38020155caf5"
+        },
+        "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+        "parent_block": 14972418,
+        "first_in_block": true,
+        "pre_shanghai_only": true,
+        "cache_hits": 362,
+        "methods": {
+          "eth_getBalance": 47,
+          "eth_getTransactionCount": 46,
+          "eth_getCode": 44,
+          "eth_getStorageAt": 225
+        },
+        "unknown_fields_and_slots": "metered upstream fallback; never defaulted to zero"
+      }
+    },
+    {
       "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
       "status": "CAPTURED_CANONICAL_OPCODES",
       "capture": {
@@ -56,22 +146,22 @@
     }
   ],
   "accounting": {
-    "outbound_rpc_requests": 241,
+    "outbound_rpc_requests": 252,
     "methods": {
       "eth_getTransactionByHash": 1,
-      "eth_getTransactionReceipt": 1,
+      "eth_getTransactionReceipt": 2,
       "eth_getBlockByHash": 1,
       "eth_chainId": 2,
       "eth_getBlockByNumber": 2,
       "eth_gasPrice": 1,
-      "eth_getBalance": 33,
-      "eth_getCode": 33,
-      "eth_getTransactionCount": 33,
+      "eth_getTransactionCount": 52,
+      "eth_getBalance": 52,
+      "eth_getCode": 52,
       "eth_getAccountInfo": 1,
-      "eth_getStorageAt": 133
+      "eth_getStorageAt": 86
     },
-    "estimated_cost_usd": 0.001446,
-    "cumulative_ledger_estimate_usd": 1.8209639999999259,
+    "estimated_cost_usd": 0.001512,
+    "cumulative_ledger_estimate_usd": 1.8225539999999127,
     "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
     "pricing_source": "https://drpc.org/docs/pricing/compute-units",
     "billing_confirmed": false,
@@ -82,7 +172,94 @@
         ],
         "error_type": "RuntimeError"
       },
-      "local-client-disconnected-after-upstream-request"
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getStorageAt"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getTransactionCount"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getBalance"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getTransactionCount"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getCode"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getCode"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getStorageAt"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getCode"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getBalance"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getCode"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getBalance"
+        ],
+        "error_type": "RuntimeError"
+      },
+      {
+        "methods": [
+          "eth_getTransactionCount"
+        ],
+        "error_type": "RuntimeError"
+      },
+      "local-client-disconnected-after-upstream-request",
+      "local-client-disconnected-after-upstream-request",
+      {
+        "methods": [
+          "eth_getStorageAt"
+        ],
+        "error_type": "RuntimeError"
+      }
     ]
   },
   "accounting_scope": "Current invocation only; prior observations are preserved per identity and archived per run"

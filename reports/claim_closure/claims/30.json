@@ -2,14 +2,17 @@
   "id": 30,
   "claim": "Reproduction scripts",
   "status": "UNVERIFIABLE",
-  "reason": "Canonical protocol recovered; two historical proxy/feature harnesses actually reproduced offline without tuning. They do not reproduce TableV/VI/guidance or authenticate the paper cohort.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Real recorded-input reproduction now executes production Stage1 plus the deterministic function ranker on seven accepted train transactions with socket I/O prohibited. Exact source snapshots and raw outputs are hash-bound. Stage2/3, genuine hybrid billing/localization/guidance studies and the final one-use held-out evaluation are not reproduced, so the full paper reproduction claim remains unverified.",
+  "verification_scope": "Actual production Stage1 and ranker on frozen train inputs; no fixture outcomes counted as empirical performance and no full-system metric inferred",
   "requirements_unmet": [
-    "Authentic paper-study input/output artifacts and exact experiment protocol"
+    "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes"
   ],
-  "human_decision": "Next evidence input: Authentic paper-study input/output artifacts and exact experiment protocol",
+  "human_decision": "No decision needed for recorded-input work; continue gathering train evidence and explicit experiment prerequisites",
   "acceptance_tests": [
-    "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+    "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof",
+    "tests/test_captured_production_inputs.py::test_real_train_capture_runs_production_stage_one_without_network_or_llm",
+    "tests/test_captured_production_inputs.py::test_real_stage_one_runner_executes_production_ranker_without_claiming_stage_two",
+    "tests/test_captured_production_inputs.py::test_structured_sequence_retains_actual_creation_and_call_metadata"
   ],
   "evidence": [
     {
@@ -71,12 +74,32 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/PRODUCTION_STAGE1.md",
+      "sha256": "6d90f515d10e58d79dd9e6876dce293defb3298baa4ccf1414d38abae9048313"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/outputs_manifest.json",
+      "sha256": "2a84c4518f2767a11093c734bf445b75178e77b1689a5a804220300d24d368e9"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/summary.json",
+      "sha256": "56330fd12662cc7a2512889a69b4d1962d7cf60139053bf12672c52c02f78a99"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system.json",
+      "sha256": "5f7ea38eddab59fbfa3a52be65989300eb924bf5d4fe2b817c8e467ad0499223"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system_sources.json.gz",
+      "sha256": "b7684025b7a15f80cb07ef05f1be32f2619a1f3c456a6a50b959d28b18fc3eef"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Authentic paper-study input/output artifacts and exact experiment protocol",
+  "next_input_artifact": "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/30.json",
-  "paper_verdict": "PARTIAL-REPRODUCTION-NOT-PAPER-REPLICATION",
+  "paper_verdict": "PRODUCTION-STAGE1-REPRODUCED-FULL-PAPER-EXPERIMENTS-UNVERIFIABLE",
   "canonical_review_run": "canonical-history-review-2026-10-15"
 }

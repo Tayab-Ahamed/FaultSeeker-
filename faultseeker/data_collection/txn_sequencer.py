@@ -24,7 +24,7 @@ class TransactionSequencer:
             return {}
 
         return {
-            'type': 'call',
+            'type': 'create' if node.get('call_type') in {'CREATE', 'CREATE2'} else 'call',
             'gas': node.get('gas'),
             'address': node.get('callee'),
             'function': node.get('function_selector'),
@@ -60,6 +60,46 @@ class TransactionSequencer:
         with open(filename, 'w') as f:
             json.dump(root_node, f, indent=2)
     
+    def from_structured(self, structured):
+        """Process an observed canonical trace with the same production metadata.
+
+        This path performs no I/O. The caller establishes capture provenance;
+        missing coverage flags are retained, never promoted by conversion.
+        """
+        if not isinstance(structured.get('trace'), dict) or not structured.get('transaction_hash') or not structured.get('chain'):
+            raise ValueError('Canonical transaction, chain and trace required')
+        root = structured['trace']
+        legacy = self._canonical_to_legacy_trace(root)
+        self.visualizer.build_graph_from_tree(TraceNode.from_dict(legacy))
+        self.parser.address_call_memo = {}
+        self.parser.created_address = []
+
+        def visit(node):
+            address = (node.get('callee') or '').lower()
+            if address:
+                if node.get('call_type') in {'CREATE', 'CREATE2'}:
+                    if address not in self.parser.created_address:
+                        self.parser.created_address.append(address)
+                else:
+                    functions = self.parser.address_call_memo.setdefault(address, [])
+                    selector = node.get('function_selector') or '0x'
+                    if selector not in functions:
+                        functions.append(selector)
+            for child in node.get('children', []):
+                visit(child)
+        visit(root)
+        return {
+            'transaction_hash': structured['transaction_hash'], 'chain': structured['chain'],
+            'trace': legacy, 'canonical_trace': root,
+            'storage_events': structured.get('storage_events', []),
+            'storage_reads': structured.get('storage_reads', []),
+            'trace_state_diff': structured.get('state_diff', {}),
+            'trace_coverage': dict(structured.get('trace_coverage') or {}),
+            'address_relation': self.visualize_address_relation(),
+            'address_calls': self.parser.address_call_memo,
+            'created_address': self.parser.created_address,
+        }
+
     def run(self, txn_hash: str, chain: str) -> dict:
         """
         Analyze transaction sequence for given transaction hash and chain.
@@ -82,8 +122,7 @@ class TransactionSequencer:
         # Analyze trace
         root_node = self.analyze_trace(trace_text) if trace_text else None
         if not root_node and structured_trace and structured_trace.get('trace'):
-            root_node = self._canonical_to_legacy_trace(structured_trace['trace'])
-            self.visualizer.build_graph_from_tree(TraceNode.from_dict(root_node))
+            return self.from_structured(structured_trace)
         if not root_node:
             return {}
 

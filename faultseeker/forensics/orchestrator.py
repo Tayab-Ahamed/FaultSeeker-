@@ -25,7 +25,8 @@ class ForensicsOrchestrator:
                  cache_dir='./data/cache/forensics',
                  router: Optional[HybridLLMRouter] = None,
                  ablation: Optional[AblationConfig] = None,
-                 cost_tracker: Optional[CostTracker] = None):
+                 cost_tracker: Optional[CostTracker] = None,
+                 txn_sequencer=None, txn_info_collector=None):
         os.makedirs(cache_dir, exist_ok=True)
         self.cache_dir = cache_dir
         self.model = model
@@ -41,8 +42,8 @@ class ForensicsOrchestrator:
             if cost_tracker is not None:
                 self.router.cost_tracker = cost_tracker
 
-        self.txn_sequencer = TransactionSequencer()
-        self.txn_info_collector = TransactionInfoCollector()
+        self.txn_sequencer = txn_sequencer if txn_sequencer is not None else TransactionSequencer()
+        self.txn_info_collector = txn_info_collector if txn_info_collector is not None else TransactionInfoCollector()
         self.adaptive_controller = AdaptiveFailureAwareController(ablation=self.ablation)
         self.address_classifier = AddressClassifier(model, router=router)
         
