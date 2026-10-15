@@ -1,0 +1,34 @@
+{
+  "schema": 2,
+  "name": "Clober DEX",
+  "transaction_hash": [
+    "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04"
+  ],
+  "chain": "base",
+  "cause": "Reentrancy",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+    "sha256": "8dfbd9fb0841125b8635216687f1788faa196d6ba92583dae3c881e564b97c37"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "_burn",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/653da36b2e5a872590689d6e2555c39b484b67cb96414ee59d6cd3e3277f15d5.gz",
+        "sha256": "3c11d7cedad9e901eaa0f41c809bf7a08fcd61c60323b3d5b2dfcd6423ff5537"
+      },
+      "evidence_excerpt": "The root cause of the attack was a reentrancy vulnerability in the _burn() function of the Rebalancer contract.",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}

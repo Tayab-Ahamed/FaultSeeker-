@@ -17,8 +17,5 @@ def test_legacy_runner_delegates_arguments_and_propagates_pytest_failure(monkeyp
 
 
 def test_original_test_sources_match_the_frozen_baseline_manifest():
-    manifest = json.loads((ROOT/'benchmark/baseline_tests.json').read_text())
-    for name,digest in manifest['source_sha256'].items():
-        path = (ROOT/name).resolve()
-        assert path.is_relative_to(ROOT)
-        assert hashlib.sha256(path.read_bytes().replace(b'\r\n',b'\n')).hexdigest() == digest
+    from benchmark.test_integrity import original_test_changes
+    assert original_test_changes(ROOT) == []

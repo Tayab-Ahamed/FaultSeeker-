@@ -23,11 +23,10 @@ def write(path, data):
 
 def gate(label):
     outcomes = full_suite(label)
-    baseline = json.loads((ROOT / 'benchmark/baseline_tests.json').read_text())
-    changed = [p for p, sha in baseline['source_sha256'].items()
-               if hashlib.sha256((ROOT / p).read_bytes()).hexdigest() != sha]
+    from benchmark.test_integrity import original_test_changes
+    changed = original_test_changes(ROOT)
     if changed:
-        raise RuntimeError('Original test source changed')
+        raise RuntimeError('Original test source changed: ' + ', '.join(changed))
     return outcomes
 
 

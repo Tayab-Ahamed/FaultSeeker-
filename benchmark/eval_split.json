@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "manifest_sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a",
+  "seed": 1729,
+  "train_fraction": 0.7,
+  "heldout_fraction": 0.3,
+  "stratification": [
+    "chain",
+    "complexity_class"
+  ],
+  "grouping": "incident_id, else transaction identity",
+  "assignment": "Seeded group order minimizes stratum distance, then whole-group moves improve global 70/30 rounding with minimum stratum penalty; incident groups never split",
+  "train_ids": [
+    "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+    "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+    "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+    "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+    "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+    "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+    "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+    "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+    "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+  ],
+  "heldout_ids": [
+    "base:0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+    "eth:0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+    "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+    "polygon:0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008"
+  ],
+  "strata": [
+    {
+      "chain": "base",
+      "complexity_class": "Moderate",
+      "total": 2,
+      "train": 1,
+      "heldout": 1,
+      "rounding_deviation": -0.3999999999999999
+    },
+    {
+      "chain": "bsc",
+      "complexity_class": "UNRECOVERED",
+      "total": 1,
+      "train": 1,
+      "heldout": 0,
+      "rounding_deviation": 0.30000000000000004
+    },
+    {
+      "chain": "eth",
+      "complexity_class": "Complex",
+      "total": 3,
+      "train": 2,
+      "heldout": 1,
+      "rounding_deviation": -0.09999999999999964
+    },
+    {
+      "chain": "eth",
+      "complexity_class": "Moderate",
+      "total": 3,
+      "train": 2,
+      "heldout": 1,
+      "rounding_deviation": -0.09999999999999964
+    },
+    {
+      "chain": "eth",
+      "complexity_class": "UNRECOVERED",
+      "total": 1,
+      "train": 1,
+      "heldout": 0,
+      "rounding_deviation": 0.30000000000000004
+    },
+    {
+      "chain": "fantom",
+      "complexity_class": "UNRECOVERED",
+      "total": 1,
+      "train": 1,
+      "heldout": 0,
+      "rounding_deviation": 0.30000000000000004
+    },
+    {
+      "chain": "gnosis",
+      "complexity_class": "UNRECOVERED",
+      "total": 1,
+      "train": 1,
+      "heldout": 0,
+      "rounding_deviation": 0.30000000000000004
+    },
+    {
+      "chain": "polygon",
+      "complexity_class": "Complex",
+      "total": 2,
+      "train": 1,
+      "heldout": 1,
+      "rounding_deviation": -0.3999999999999999
+    }
+  ],
+  "status": "FROZEN",
+  "manifest": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "limitations": [
+    "Small/singleton strata cannot all have exact 70/30 representation.",
+    "UNRECOVERED is an explicit missing-complexity stratum, not an inferred complexity class.",
+    "Labels were adjudicated before the freeze; model tuning and evaluation have not run."
+  ],
+  "partitions": {
+    "train": {
+      "path": "benchmark/research/train.json",
+      "sha256": "1df9f2d3d1e5d7433c4c0c73b4df41862e7033fe6c14b9ae4494878b1da7c95c"
+    },
+    "heldout": {
+      "path": "benchmark/research/heldout.json",
+      "sha256": "54e8730bff6f024c4fc76c8ad6bbac4e281648a9fb2dcc769603bfad7eaa3870"
+    }
+  }
+}

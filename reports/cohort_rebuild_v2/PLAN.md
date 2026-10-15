@@ -4,12 +4,12 @@ User instructions are the design and authorization: execute all possible work co
 
 ## Phase 1
 
-- [ ] Remove the credential-bearing built-in fallback, with a failing regression test and full-suite commit gates.
-- [ ] Implement and test explicit three-part cohort admission: RPC identity/receipt integrity, two independently reviewed security-publisher artifacts, and independently authored vulnerability adjudication evidence. Titles, mirrors, reviewer-name strings, and receipt success cannot supply missing annotations.
-- [ ] Reuse hash-checked historical RPC/source artifacts; audit every frozen fca6b99 row and all 15 candidates, not a sample. Join original GT by payload identity, preserving duplicates and provenance.
-- [ ] Refresh public incident corpora, extract additional transaction-reference leads including Fantom and Gnosis, fetch primary reports, and query configured dRPC networks with pre-dispatch ledger reservations. Unavailable observations remain unavailable.
-- [ ] Write a hash-bound admitted manifest and per-row quarantine; publish only admitted records in the active CSV/GT. Preserve historical CSV and GT bytes in quarantine and canonical snapshots.
-- [ ] Freeze a deterministic, chain/complexity-stratified 70/30 split by incident group. Record rounding/singleton limitations; if the accepted population is empty or cannot form both partitions, publish BLOCKED with no final-exam permit consumed.
+- [x] Remove the credential-bearing built-in fallback, with a failing regression test and full-suite commit gates.
+- [x] Implement and test explicit three-part cohort admission: RPC identity/receipt integrity, two independently reviewed security-publisher artifacts, and independently authored vulnerability adjudication evidence. Titles, mirrors, reviewer-name strings, and receipt success cannot supply missing annotations.
+- [x] Reuse hash-checked historical RPC/source artifacts; audit every frozen fca6b99 row and all 15 candidates, not a sample. Join original GT by payload identity, preserving duplicates and provenance.
+- [x] Refresh public incident corpora, extract additional transaction-reference leads including Fantom and Gnosis, fetch primary reports, and query configured dRPC networks with pre-dispatch ledger reservations. Unavailable observations remain unavailable.
+- [x] Write a hash-bound admitted manifest and per-row quarantine; publish only admitted records in the active CSV/GT. Preserve historical CSV and GT bytes in quarantine and canonical snapshots.
+- [x] Freeze a deterministic, chain/complexity-stratified 70/30 split by incident group. Record rounding/singleton limitations; if the accepted population is empty or cannot form both partitions, publish BLOCKED with no final-exam permit consumed.
 
 ## Phase 2
 
@@ -34,3 +34,18 @@ Ruling: independence requires evidence, not different host names or two aliases 
 User clarification: no independent human annotation records exist. The user explicitly authorizes Codex to create adjudication records from two independent security publishers agreeing on the vulnerability class, with reasoning documented. These records use `public-source-consensus-v1` and must not be described as two independent human reviews. Their source excerpts, byte hashes, publisher identities and reasoning are retained.
 
 Kluster waived for local development only. Before any push/PR, repository AGENTS.md rules apply in full and Kluster review is re-enabled.
+
+## Publication checkpoint and authorized exception
+
+Published 14 accepted exploits across six chains: five frozen historical rows,
+two of the 15 candidates, and seven additional incidents. The remaining leads
+are quarantined with individual gaps; 246 rows and ten chains were not achieved.
+The manifest and split are frozen (10 train, four held out). Original active CSV
+and 115 ground-truth files are preserved byte-for-byte under quarantine.
+
+The user explicitly authorized the sole original-test assertion change described
+in `docs/DECISIONS.md`. Original baseline hashes remain unchanged, and the integrity
+gate permits only the exact approved assertion replacement. A published admission
+count checkpoint and new negative regression test detect a silent count decrease.
+Phase 2 scored experiments and the final held-out exam remain pending. No new
+performance claim has been promoted by this publication checkpoint.

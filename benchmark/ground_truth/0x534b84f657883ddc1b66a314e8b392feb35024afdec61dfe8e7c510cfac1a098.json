@@ -1,0 +1,34 @@
+{
+  "schema": 2,
+  "name": "Hundred Finance Gnosis",
+  "transaction_hash": [
+    "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+  ],
+  "chain": "gnosis",
+  "cause": "Reentrancy",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+    "sha256": "1ed09f936d58f833de8de0978cec48eeb85edb0c7c9bd63a4c4ee194a2f008c4"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "borrowFresh",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/web/slowmist_hundred_indexed.txt",
+        "sha256": "5e2be276d11e2252e79309030bc2a60fb6201c3bca2d9dab87f3193e06fa1390"
+      },
+      "evidence_excerpt": "The borrowFresh function within the Hundred Finance contract checks the funds after they\u2019ve been transferred.",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}

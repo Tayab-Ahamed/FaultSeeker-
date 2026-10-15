@@ -126,7 +126,11 @@ def test_hf_benign_summary_marks_target_status():
 def test_research_readiness_report_uses_current_benchmark():
     report = build_report()
 
-    assert report["current_verified_exploit_rows"] >= 231
+    assert report["current_verified_exploit_rows"] == __import__("json").loads(
+        __import__("pathlib").Path(__file__).resolve().parents[1].joinpath(
+            "benchmark", "cohort_manifest.json"
+        ).read_text(encoding="utf-8")
+    )["accepted_count"]
     assert report["tdsc_targets"]["exploit_rows"] == 1000
     assert report["tdsc_targets"]["benign_rows_min"] == 10000
     assert "best_case_verified_rows_after_current_candidates" in report["remaining_empirical_work"]

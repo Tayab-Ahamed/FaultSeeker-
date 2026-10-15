@@ -1,24 +1,21 @@
 {
-  "name": "InverseFinance",
-  "cause": "function usage error",
-  "platform": "Ethereum",
+  "schema": 2,
+  "name": "Inverse Finance",
   "transaction_hash": [
     "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
   ],
-  "complexity_level": "Exceptionally Complex",
-  "time": "2022/6/16 08:47",
-  "location": {
-    "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c##4115:21": [
-      "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c#YVCrv3CryptoFeed#latestAnswer",
-      "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c#YVCrv3CryptoFeed#120:8"
-    ]
+  "chain": "eth",
+  "cause": "Oracle price manipulation",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+    "sha256": "5c9afab7b4b7f008476d18b854a037f52a25839ad8df4cf6ab4f2392aa808e8e"
   },
-  "detection": {
-    "time": "2022/6/16 09:51",
-    "link": "https://twitter.com/InverseFinance/status/1537372199769845760"
-  },
-  "disclosure": {
-    "time": "2022/6/16 10:36",
-    "link": "https://twitter.com/peckshield/status/1537383690262589440"
-  }
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
 }

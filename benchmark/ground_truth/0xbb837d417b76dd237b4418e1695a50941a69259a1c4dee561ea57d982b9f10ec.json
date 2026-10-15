@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "name": "LeetSwap",
+  "transaction_hash": [
+    "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec"
+  ],
+  "chain": "base",
+  "cause": "Exposed pool fee-transfer function",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+    "sha256": "22b7c4cb9d5388c11fb2ee87be7a5274e7db10fa83398e34a3395f40c6a8287d"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "_transferFeesSupportingTaxTokens",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/98ffca832a19aacaf8c3a835ca4aead1e21ac029654a168894b908df84c8c052.gz",
+        "sha256": "69d155d5549a7f3a93f08faa69681502058622b2d0d89e94f2964acc1ab6e1c4"
+      },
+      "evidence_excerpt": "The attacker abused the public _transferFeesSupportingTaxTokens function to manipulate the pool:",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    },
+    {
+      "name": "_transferFeesSupportingTaxTokens",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/9555abe4f3c388fd95d4ad2f2fc2bcd4ec4a6b14db2950ce92de8df9f7a505d2.gz",
+        "sha256": "0c75cd5fe33b53092c32539c4dc14ce8e782ca0349522f8015336fe397f799c2"
+      },
+      "evidence_excerpt": "Our analysis shows the root case is from the exposed LeetSwapV2Pair::_transferFeesSupportingTaxTokens() function, which is hardly forked from solidly.",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}
