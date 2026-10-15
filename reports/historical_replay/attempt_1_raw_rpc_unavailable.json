@@ -1,0 +1,25 @@
+{
+  "status": "BLOCKED",
+  "cases": [],
+  "scope": "historical opcode capture, not incident adjudication",
+  "failure": {
+    "type": "RuntimeError",
+    "reason": "Upstream HTTP 400"
+  },
+  "rpc_usage": {
+    "outbound_rpc_requests": 5,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_getRawTransactionByHash": 1
+    },
+    "estimated_cost_usd": 3e-05,
+    "cumulative_ledger_plus_prior_estimate_usd": 7.2e-05,
+    "prior_unmetered_estimate_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

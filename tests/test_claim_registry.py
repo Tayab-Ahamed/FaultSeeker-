@@ -41,3 +41,15 @@ def test_tools_claim_requires_executed_compiled_integration_tests():
     outcomes[compiled[0]] = 'skipped'
     report = claim_report(outcomes, {'accepted_rows': 0})
     assert next(row for row in report['claims'] if row['id'] == 26)['status'] == 'PENDING-CREDENTIALS'
+
+
+def test_historical_capture_status_is_limited_to_verified_ethereum_sample():
+    claim = next(row for row in CLAIMS if row['id'] == 26)
+    outcomes = {node: 'passed' for node in claim['tests']}
+    outcomes['tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt'] = 'passed'
+    report = claim_report(outcomes, {'accepted_rows': 0})
+    row = next(row for row in report['claims'] if row['id'] == 26)
+    assert row['status'] == 'VERIFIED-HISTORICAL-ETHEREUM-SAMPLE'
+    assert row['evidence_pointers']
+    assert next(row for row in report['claims'] if row['id'] == 25)['status'] == 'PENDING-CREDENTIALS'
+    assert next(row for row in report['claims'] if row['id'] == 3)['status'] == 'BLOCKED-BY-DATA'

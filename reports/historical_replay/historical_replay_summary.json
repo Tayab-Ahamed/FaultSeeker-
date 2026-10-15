@@ -1,0 +1,56 @@
+{
+  "status": "BLOCKED",
+  "cases": [
+    {
+      "transaction_hash": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6",
+      "label": "labeled reentrant in benchmark_classification_fixed.csv",
+      "block": 16288200,
+      "transaction_index": 6,
+      "prefix_transactions_replayed": 7,
+      "artifact": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz",
+      "opcode_count": 21300,
+      "sload_count": 80,
+      "sstore_count": 29,
+      "normalization_complete": true,
+      "storage_owners_verified": true,
+      "receipt_matches": true,
+      "storage_contracts": [
+        "0xba12222222228d8ba445958a75a0704d566bf2c8",
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "0xce88686553686da562ce7cea497ce749da109f9f",
+        "0xed42cb11b9d03c807ed1ba9c2ed1d3ba5bf37340",
+        "0xf2919d1d80aff2940274014bef534f7791906ff2"
+      ]
+    }
+  ],
+  "scope": "historical opcode capture, not incident adjudication",
+  "failure": {
+    "type": "TimeoutError",
+    "reason": "timed out"
+  },
+  "rpc_usage": {
+    "outbound_rpc_requests": 413,
+    "methods": {
+      "eth_chainId": 5,
+      "eth_getTransactionByHash": 2,
+      "eth_getTransactionReceipt": 2,
+      "eth_getBlockByHash": 2,
+      "eth_getBlockByNumber": 4,
+      "eth_getBalance": 77,
+      "eth_getTransactionCount": 77,
+      "eth_getCode": 77,
+      "eth_getStorageAt": 167
+    },
+    "estimated_cost_usd": 0.002478,
+    "cumulative_ledger_plus_prior_estimate_usd": 0.0025499999999999846,
+    "prior_unmetered_estimate_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "ValueError",
+      "ValueError",
+      "ValueError"
+    ]
+  }
+}

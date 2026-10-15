@@ -69,8 +69,20 @@ def claim_report(test_outcomes, dataset_audit):
             'TOOLS': 'PENDING-CREDENTIALS', 'PENDING-PUBLICATION': 'PENDING-PUBLICATION'}[scope]
         if scope == 'TOOLS' and proof:
             status = 'VERIFIED-COMPILED-EVM'
+        historical_node = 'tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt'
+        historical = claim['id'] == 26 and proof and passed(historical_node)
+        if historical:
+            status = 'VERIFIED-HISTORICAL-ETHEREUM-SAMPLE'
         local_proof = 'OUTSIDE-LOCAL-SCOPE' if scope=='PENDING-PUBLICATION' else 'PASSED' if proof else 'FAILED-OR-MISSING'
-        rows.append(dict(claim, status=status, local_proof=local_proof))
+        row = dict(claim, status=status, local_proof=local_proof)
+        if historical:
+            row.update(evidence_pointers=[
+                'reports/historical_replay/README.md',
+                'reports/historical_replay/historical_replay_summary.json',
+                'reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz'],
+                historical_verification_scope='One Ethereum transaction; comparison replay timed out. No cohort, all-chain or incident-label verification.',
+                historical_acceptance_test=historical_node)
+        rows.append(row)
     return {'claims': rows, 'dataset_audit': dataset_audit,
             'scope': 'local acceptance only; empirical and live claims require separate evidence',
             'paid_api_spend_this_run_usd': 0.0}
