@@ -82,6 +82,10 @@ def claim_report(test_outcomes, dataset_audit):
                 'reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz'],
                 historical_verification_scope='One Ethereum transaction; comparison replay timed out. No cohort, all-chain or incident-label verification.',
                 historical_acceptance_test=historical_node)
+            comparison_node = 'tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt'
+            if passed(comparison_node):
+                row['historical_verification_scope'] = 'Two Ethereum transactions with matching historical receipts and complete normalized storage. No cohort, all-chain or incident-label verification.'
+                row['evidence_pointers'].append('reports/claim_closure/comparison_attempt_2/historical_replay_summary.json')
         rows.append(row)
     return {'claims': rows, 'dataset_audit': dataset_audit,
             'scope': 'local acceptance only; empirical and live claims require separate evidence',

@@ -48,6 +48,20 @@ def test_archive_proxy_cannot_broadcast_to_mainnet(tmp_path):
     assert meter.count == 0
 
 
+def test_mining_can_use_a_separately_bounded_timeout(monkeypatch):
+    import io
+    from scripts import replay_historical_opcodes as runner
+    observed = []
+    def respond(_request, timeout):
+        observed.append(timeout)
+        return io.BytesIO(b'{"result":"0x0"}')
+    monkeypatch.setattr(runner, 'urlopen', respond)
+    assert runner.local_rpc('http://127.0.0.1:1', 'evm_mine', [], timeout_seconds=600) == '0x0'
+    assert observed == [600]
+    with pytest.raises(ValueError, match='bounded'):
+        runner.local_rpc('http://127.0.0.1:1', 'evm_mine', [], timeout_seconds=0)
+
+
 def test_pre_metering_rpc_estimate_is_accounted_exactly_once(tmp_path):
     from scripts.replay_historical_opcodes import account_prior_requests, MeteredRPC
     meter = MeteredRPC('https://unused.invalid', tmp_path / 'ledger.json')
@@ -65,6 +79,16 @@ def test_recorded_historical_capture_validates_storage_and_receipt():
     assert proof['storage_owners_verified'] is True
     manifest = json.loads((path.parent / 'final_accounting.json').read_text())
     assert proof['artifact_sha256'] == manifest['capture_proof']['artifact_sha256']
+
+
+def test_recorded_comparison_capture_validates_storage_and_receipt():
+    from scripts.replay_historical_opcodes import validate_recorded_capture, COMPARISON
+    directory = Path(__file__).resolve().parents[1] / 'reports/claim_closure/comparison_attempt_2'
+    proof = validate_recorded_capture(directory/(COMPARISON+'.json.gz'),COMPARISON)
+    manifest = json.loads((directory/'historical_replay_summary.json').read_text())
+    assert proof['sload_count'] == 8
+    assert proof['sstore_count'] == 2
+    assert proof['artifact_sha256'] == manifest['cases'][0]['artifact_sha256']
 
 
 def test_historical_fork_captures_reentrant_storage(tmp_path, monkeypatch):

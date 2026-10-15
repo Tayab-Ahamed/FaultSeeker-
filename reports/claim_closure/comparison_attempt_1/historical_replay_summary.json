@@ -1,0 +1,33 @@
+{
+  "status": "BLOCKED",
+  "cases": [],
+  "scope": "historical opcode capture, not incident adjudication",
+  "current_transaction": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+  "failure": {
+    "type": "RuntimeError",
+    "reason": "Local evm_mine timed out after 120 seconds"
+  },
+  "rpc_usage": {
+    "outbound_rpc_requests": 330,
+    "methods": {
+      "eth_chainId": 3,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_getBlockByNumber": 2,
+      "eth_getBalance": 62,
+      "eth_getTransactionCount": 62,
+      "eth_getCode": 62,
+      "eth_getStorageAt": 136
+    },
+    "estimated_cost_usd": 0.00198,
+    "cumulative_ledger_estimate_usd": 0.004523999999999961,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "ValueError"
+    ]
+  }
+}

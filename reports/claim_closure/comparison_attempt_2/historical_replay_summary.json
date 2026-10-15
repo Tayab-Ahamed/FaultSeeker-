@@ -1,0 +1,48 @@
+{
+  "status": "CAPTURED",
+  "cases": [
+    {
+      "transaction_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+      "label": "not labeled reentrant in benchmark_classification_fixed.csv",
+      "block": 16574049,
+      "transaction_index": 32,
+      "prefix_transactions_replayed": 33,
+      "artifact": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b.json.gz",
+      "artifact_sha256": "095fc43ce6901aad0a83a9d82823319bf970b55000f1f8e3c8fe7eabfa44c43a",
+      "opcode_count": 5351,
+      "sload_count": 8,
+      "sstore_count": 2,
+      "normalization_complete": true,
+      "storage_owners_verified": true,
+      "receipt_matches": true,
+      "storage_contracts": [
+        "0x6b175474e89094c44da98b954eedeac495271d0f"
+      ]
+    }
+  ],
+  "scope": "historical opcode capture, not incident adjudication",
+  "current_transaction": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+  "rpc_usage": {
+    "outbound_rpc_requests": 454,
+    "methods": {
+      "eth_chainId": 3,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_getBlockByNumber": 2,
+      "eth_getBalance": 78,
+      "eth_getTransactionCount": 78,
+      "eth_getCode": 78,
+      "eth_getStorageAt": 212
+    },
+    "estimated_cost_usd": 0.002724,
+    "cumulative_ledger_estimate_usd": 0.007247999999999929,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "ValueError"
+    ]
+  }
+}

@@ -45,6 +45,7 @@ READ_METHODS = {
     'eth_getTransactionByHash', 'eth_getTransactionReceipt',
     'eth_getRawTransactionByHash', 'eth_getProof', 'eth_getBlockReceipts',
     'eth_getTransactionByBlockHashAndIndex', 'eth_getTransactionByBlockNumberAndIndex',
+    'eth_call', 'eth_getLogs', 'debug_traceTransaction', 'trace_replayTransaction',
 }
 
 
@@ -167,14 +168,16 @@ def upstream_proxy(meter):
         worker.join(timeout=5)
 
 
-def local_rpc(url, method, params):
+def local_rpc(url, method, params, timeout_seconds=120):
+    if type(timeout_seconds) is not int or not 1 <= timeout_seconds <= 900:
+        raise ValueError('Local RPC timeout must be bounded to 1..900 seconds')
     request = Request(url, data=json.dumps({'jsonrpc': '2.0', 'id': 1,
         'method': method, 'params': params}).encode(), headers={'Content-Type': 'application/json'})
     try:
-        with urlopen(request, timeout=120) as response:
+        with urlopen(request, timeout=timeout_seconds) as response:
             data = json.load(response)
     except TimeoutError:
-        raise RuntimeError(f'Local {method} timed out after 120 seconds') from None
+        raise RuntimeError(f'Local {method} timed out after {timeout_seconds} seconds') from None
     if data.get('error'):
         raise RuntimeError(f'Local {method} failed: RPC code {data["error"].get("code")}')
     return data.get('result')
@@ -288,7 +291,7 @@ def validate_recorded_capture(path, expected_hash):
             'artifact_sha256': hashlib.sha256(Path(path).read_bytes()).hexdigest()}
 
 
-def replay_one(tx_hash, label, meter, proxy_url, anvil, output):
+def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120):
     if not re.fullmatch(r'0x[0-9a-fA-F]{64}', tx_hash):
         raise ValueError('Invalid transaction hash')
     transaction = meter.rpc('eth_getTransactionByHash', [tx_hash])
@@ -337,7 +340,7 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output):
             accepted = local_rpc(url, 'eth_sendRawTransaction', [raw])
             if accepted != tx['hash']:
                 raise ValueError('Signed replay changed transaction identity')
-        local_rpc(url, 'evm_mine', [])
+        local_rpc(url, 'evm_mine', [], timeout_seconds=mine_timeout)
         local_receipt = local_rpc(url, 'eth_getTransactionReceipt', [tx_hash])
         if not local_receipt:
             raise ValueError('Target transaction was not mined in canonical prefix order')
@@ -382,7 +385,7 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output):
             process.stderr.close()
 
 
-def run(output, transaction_hashes=None, max_requests=5000):
+def run(output, transaction_hashes=None, max_requests=5000, mine_timeout=120):
     values = dotenv_values(ROOT / '.env')
     endpoint = os.getenv('DRPC_RPC_URL') or values.get('DRPC_RPC_URL') or ''
     key = os.getenv('DRPC_API_KEY') or values.get('DRPC_API_KEY') or ''
@@ -417,7 +420,7 @@ def run(output, transaction_hashes=None, max_requests=5000):
                 label = ('labeled reentrant in benchmark_classification_fixed.csv'
                          if 'reentran' in rows[tx]['vuln_type'].lower()
                          else 'not labeled reentrant in benchmark_classification_fixed.csv')
-                case = replay_one(tx, label, meter, proxy, anvil, output)
+                case = replay_one(tx, label, meter, proxy, anvil, output, mine_timeout=mine_timeout)
                 report['cases'].append(case)
                 print(json.dumps({'captured': tx, 'sloads': case['sload_count'],
                                   'sstores': case['sstore_count']}), flush=True)
@@ -440,11 +443,12 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'reports/historical_replay')
     parser.add_argument('--max-requests', type=int, default=5000)
     parser.add_argument('--transaction', action='append')
+    parser.add_argument('--mine-timeout', type=int, default=120)
     args = parser.parse_args()
     if not args.execute_live:
         print('No requests dispatched. Pass --execute-live for counted archive replay.')
         return 2
-    result = run(args.output, args.transaction, args.max_requests)
+    result = run(args.output, args.transaction, args.max_requests, args.mine_timeout)
     print(json.dumps(result, indent=2))
     return 0 if result['status'] == 'CAPTURED' else 1
 
