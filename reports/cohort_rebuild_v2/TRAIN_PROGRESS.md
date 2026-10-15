@@ -122,3 +122,8 @@ Six HTTP-200 Agnes 2.5 Flash requests completed with per-call spend receipts, bu
 ### Native Gnosis opcodes integrated into TRAIN
 
 The Hundred Finance Gnosis historical node capture is separately validated from Anvil prefix replay. Actual receipt identity, gas, 519 frames and all 1354 SLOAD / 186 SSTORE owners agree. Four metered attempts (one sandbox connection failure, then three successful RPC methods) cost a conservative $0.000024. Eighth TRAIN component run 20261015T180152-ca8176ca covers five full-opcode cases: TP2 FP0 FN0 TN3, F1 1.0; this is a small availability-selected component population, never overall or held-out performance. Structural nine-case F1 remains 0.90909.
+
+
+### Two bounded cloud batches terminal
+
+The first six and follow-up fourteen calls total exactly twenty, all HTTP 200 with agnes-2.5-flash and genuine usage-backed ledger settlements. First batch stopped on parser error; follow-up demonstrates the parser fix on real fenced responses and stops at its cap. Zero complete cases means localization and confidence quality remain unscored. Combined conservative model cost $0.1008808; cumulative ledger at completion $1.9261888 / $10, billing unconfirmed. The second batch consumed 1126.531 seconds of transport time, including one 198.515-second response: the configured socket timeout does not enforce a total wall-clock deadline. Five real roles fired; children filtering and final ranks were not reached. No pilot authorization remains and held-out stays sealed. See provider_pilot/COMBINED_PILOT_REPORT.json.

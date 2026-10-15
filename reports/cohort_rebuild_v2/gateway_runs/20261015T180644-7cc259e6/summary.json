@@ -1,0 +1,161 @@
+{
+  "run_id": "20261015T180644-7cc259e6",
+  "scope": "Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system.json",
+      "sha256": "36780edad09df90b401a859bc85feed15e8b35d307973027c658e2d7cea66515"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system_sources.json.gz",
+      "sha256": "e025c82b4b10afcad5c3ce9893a99af7ce074bbbd43ecbddc537d17cdd086ad9"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false
+  },
+  "observations": [],
+  "stop_reason": "Pilot request cap reached",
+  "completion_requests": 14,
+  "complete_cases": 0,
+  "requested_train_cases": 2,
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.8483028999998898,
+  "budget_estimate_after_usd": 1.9261887999998901,
+  "incremental_conservative_estimate_usd": 0.07788590000000029,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.json",
+    "sha256": "9db389ce33d5d427054d9e59640cf0cd8dfcfffecd78a969e1dc9d2b1d52198c"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-001.json",
+      "sha256": "d6bea3ebbc4195bccf5f5335a8b7431bd3bf972a8d8aeedb1a364fecb7caf3a6"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-002.json",
+      "sha256": "55102e21ab8135ef713ed6f0173826dea0febcad95c188b029bfe70536a4fe18"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-003.json",
+      "sha256": "38f6030923454cfa846207446aedbf7dda30ebbf39510cfb894553d2917110c6"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-004.json",
+      "sha256": "370097fa7251272fea7e6ed767498965d06c350c3c737fefd4fb3ab8326a161c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-005.json",
+      "sha256": "856f423bd9e93c888a669d2f382b0766c3db8efbb67ff1dc7498672279bd8b73"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-006.json",
+      "sha256": "2dd42e882456d28911d66e09a0d759b95c956512d4520c927eda534c39cd562e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-007.json",
+      "sha256": "07aa2c588166b1a922d3001dc4691f2db57b415a9e0b578c3f3f5812e49605ee"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-008.json",
+      "sha256": "a6111457cef1d9ca9859407a24411fbbad7bbd5932be4dcdec8f0421d2c6e85b"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-009.json",
+      "sha256": "96d00372a6c9086350db02949d6241bfb3f15d0bd08d0c90033f8b06feee8c29"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-010.json",
+      "sha256": "8145eac6987ee1573e35799d03e67f454a0bc43eae1087a7548b3d3677bd9c7f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-011.json",
+      "sha256": "2088bd9646af7a5be768460e9ea0dcb6a270cdce8554567f9390734b5e5514ff"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-012.json",
+      "sha256": "f78ed51c16f3a36eeaf31ebb288268e4e45010255ed81d8319c4fc1d9816719c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-013.json",
+      "sha256": "f0237bcd1f5ff3485a582788cd4467e14baaa8655d7371b458407f178f6cacd5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/ledger/call-014.json",
+      "sha256": "69989fc57e3212c3dc416e3dfeefba59f86a71b47fd6f483705944d69a7c770d"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-001.json",
+      "sha256": "c6b63a3e6e551b1bc15e737a8d4378f0bcc0154bd4646e5179611c0fde7d6334"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-002.json",
+      "sha256": "03a2b56deb48fa4421c1dc6b43487ae9f6e0ffa8271b5cf40e53135de79b16f5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-003.json",
+      "sha256": "66510ee0741596245dd0fc8686ee1b1e22ac7848199e5720469aae689d018899"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-004.json",
+      "sha256": "c1cb1e90191b2ff236741650fb30d4a58032adf7cf6d65341b35f80925b8229f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-005.json",
+      "sha256": "d6a5172b2a6b28931bd673dbcceea3a4fffe3211011adca2da37e92be8209752"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-006.json",
+      "sha256": "99bff8b0512ea263f773dbd82a3f0ac9ddc7e55f3401d0c75eb4e4fb7790798f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-007.json",
+      "sha256": "739daca17f549eb76fd0c44b933601cad1016b26d5df0e171f42be49a33108a6"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-008.json",
+      "sha256": "a3efe68b252b4b69a9596ea6dae3d46c77db7b7846ee48d06954043f66466287"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-009.json",
+      "sha256": "90828d14974e5d3c53b3aa1f1808d1c9036ddcc3105f34d65806a603bd60f136"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-010.json",
+      "sha256": "7069111c0abffd712b1860ff7f92d10b14ec1f4ef6a2f5a1b6e3ef5670a39fa8"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-011.json",
+      "sha256": "5370522ba870b626f8adbe0f991c077d2a9ff8b4659c7e0efb64a002d2bea979"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-012.json",
+      "sha256": "b622cf2dd9e992636b809ce991054a28caa56f3edd25b7a0da4365075f782218"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-013.json",
+      "sha256": "37c9ff5d95cc7ff38def43d98a7cfca981257ed1990e4467e91b5661e6200236"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-014.json",
+      "sha256": "355d9cfb59135113ed15433904bde6da21ae80649ad444b34ba8298427709251"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false
+}

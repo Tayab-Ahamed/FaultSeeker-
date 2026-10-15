@@ -118,3 +118,22 @@ The older .8593 run uses **1000 benign rows with exactly one distinct four-featu
 ## Complexity definition check
 
 Applying the stated 5/50/500 boundaries to the stored `functioncall_count` column gives 14/136/49/32 records in the four bins at 231 rows, and 14/148/50/34 at 246 rows. These differ both from the stored class labels and the paper proportions. Call count is not proven to mean unique functions, so these are conditional descriptive bins, not replacement authenticated complexity outcomes. Ethereum is 142/246 (57.7236%) in the early CSV, as well as 132/231 (57.1429%) in the requested frozen version. Exact input hashes and all version counts: `cohort_definition_audit.json`.
+
+
+## Subsequent authentic TRAIN evidence (checkpoint, not final exam)
+
+The numerical map above records the canonical-history audit. New provenance-complete work admits 14 exploits across six chains, frozen into 10 TRAIN and four sealed held-out identities; it does not authenticate 246 exploits across ten chains. Source-consensus annotation follows the user-approved two-independent-security-publisher policy, not invented human reviewer attestations.
+
+| Claim / endpoint | New actual observation | Scope / remaining limitation |
+|---|---|---|
+| Table V structural reentrancy | P=5/6, R=5/5, F1=0.9090909091, nine observed TRAIN cases | One of ten TRAIN cases lacks a call trace; not overall exploit F1 |
+| Table V repeated-call baseline | P=5/9, R=5/5, F1=0.7142857143, nine observed TRAIN cases | Same available call-trace population |
+| Table V full opcode detector | TP2 / FP0 / FN0 / TN3; P=R=F1=1.0 | Five availability-selected TRAIN cases only; no full-cohort or held-out inference |
+| Paired 17 / 29 point gains | 0 / 42.8571428571 percentage points | Same five identities for all three variants; deltas -17 / +13.8571428571 points; not the paper population |
+| Localization top-1 / top-5 / MRR | Count ranking: 0 / 0 / 0.03598484848 on two source-linked cases | Deterministic count ranking, not complete model-assisted localization |
+| Multi-agent quality / claimed localization gains | Unmeasured | Twenty actual Agnes 2.5 Flash requests across two stopped/capped batches produced zero complete cases; partial answers are unscored |
+| Benign prefilter | 30 actual Stage1 controls UNCERTAIN; zero skip-eligible | 32 distinct EOA transfers admitted; 30 call traces, two failures. No paired speedup or general benign-contract rate inferred |
+| Native historical storage evidence | Gnosis: 236237 steps, 1354 SLOAD, 186 SSTORE, 519 frames | Direct native node trace, receipt identity and normalization checked; four metered attempts including one failed connection |
+| 58% cost savings | Unmeasured | Pilot is cloud-only, without paired local/cloud quality or billed savings. Real token usage does not turn a conservative price estimate into an invoice |
+
+Evidence: ../cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json; ../cohort_rebuild_v2/paired_gains/20261015T180152-ca8176ca/summary.json; ../cohort_rebuild_v2/provider_pilot/COMBINED_PILOT_REPORT.json. Both model batches together used exactly 20 requests, conservative estimate $0.1008808. Cumulative ledger at second batch completion: $1.9261888 / $10, billing unconfirmed. Paper unchanged; held-out final exam not consumed. This checkpoint does not claim Phase 2 or Phase 3 complete.

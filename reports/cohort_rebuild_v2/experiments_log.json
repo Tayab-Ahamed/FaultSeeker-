@@ -2339,5 +2339,71 @@
     "sequence": 39,
     "previous_sha256": "f2e75006dd7bdccaf72858dd37d1573e326c4d48193ed8364dee06eca72fc756",
     "timestamp": "2026-10-15T18:02:07.553734+00:00"
+  },
+  {
+    "run_id": "20261015T180644-7cc259e6",
+    "seed": 1729,
+    "config": {
+      "experiment": "verified-source-cloud-only-train-pilot-v1",
+      "protocol": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+        "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+      },
+      "system": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system.json",
+        "sha256": "36780edad09df90b401a859bc85feed15e8b35d307973027c658e2d7cea66515"
+      },
+      "system_snapshot": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system_sources.json.gz",
+        "sha256": "e025c82b4b10afcad5c3ce9893a99af7ce074bbbd43ecbddc537d17cdd086ad9"
+      },
+      "conservative_usd_rates_per_million": {
+        "input": 0.1,
+        "output": 0.2
+      },
+      "billing_confirmed": false,
+      "local_model_used": false
+    },
+    "kind": "dispatch-train",
+    "metrics": null,
+    "sample_ids": [],
+    "sequence": 40,
+    "previous_sha256": "299af8b277ef7e674f45f82540d402cd14616025f930faa05325899f2ce87089",
+    "timestamp": "2026-10-15T18:06:44.615668+00:00"
+  },
+  {
+    "run_id": "20261015T180644-7cc259e6",
+    "seed": 1729,
+    "config": {
+      "experiment": "verified-source-cloud-only-train-pilot-v1",
+      "protocol": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+        "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+      },
+      "system": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system.json",
+        "sha256": "36780edad09df90b401a859bc85feed15e8b35d307973027c658e2d7cea66515"
+      },
+      "system_snapshot": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/system_sources.json.gz",
+        "sha256": "e025c82b4b10afcad5c3ce9893a99af7ce074bbbd43ecbddc537d17cdd086ad9"
+      },
+      "conservative_usd_rates_per_million": {
+        "input": 0.1,
+        "output": 0.2
+      },
+      "billing_confirmed": false,
+      "local_model_used": false
+    },
+    "kind": "recorded-train-pilot",
+    "metrics": null,
+    "sample_ids": [],
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/summary.json",
+      "sha256": "1e496e3cd7c063594b1cbab4a9f80992eccd3bf40bc588cb80793f9db60b4b4c"
+    },
+    "sequence": 41,
+    "previous_sha256": "3f0f2bc5ff1a666053b5ee34d0d7da5115d30b522cdc9afaf768b26ab457c867",
+    "timestamp": "2026-10-15T18:25:45.035440+00:00"
   }
 ]
