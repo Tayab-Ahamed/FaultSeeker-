@@ -2,14 +2,14 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "No adjudicated positive/negative evaluation cohort or raw Table V outcomes exist. The metric runner now uses the paper HIGH_RISK/CONFIRMED positive rule, but no paper precision/recall/F1 is inferred from two unadjudicated samples. Pooled integer-count constraints also require clarification.",
-  "verification_scope": "Current recorded evidence only",
+  "reason": "The real detector runner was invoked against the rebuilt candidate evidence and returned BLOCKED-BY-DATA before prediction. Precision, recall, F1 and deltas are undefined, not zero, on zero accepted records.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Frozen adjudicated evaluation set",
     "Raw integer confusion outcomes",
     "Declared pooling/averaging protocol"
   ],
-  "human_decision": "Frozen adjudicated evaluation set; Raw integer confusion outcomes; Declared pooling/averaging protocol must be supplied or independently established before reopening.",
+  "human_decision": "Next required input artifact: Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
   ],
@@ -29,7 +29,30 @@
     {
       "path": "reports/claim_closure/numeric_constraints.json",
       "sha256": "81e3b331e1a263c6a802905bfd4845669512d38300b4513f0c1d3e418f830f0a"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/experiments/detectors.json",
+      "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
     }
   ],
-  "session_date": "2026-10-15"
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/13.json"
 }
