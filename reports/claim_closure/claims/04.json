@@ -2,13 +2,13 @@
   "id": 4,
   "claim": "Real transactions, two independent sources, annotations",
   "status": "UNVERIFIABLE",
-  "reason": "Two independent cached corroborating research sources and two independent annotation records are not available per row. Only one published PoC source was recovered for each of two replayed rows.",
-  "verification_scope": "Current recorded evidence only",
+  "reason": "All 231 exact identities were searched. There are 734 cached public-source request records and four content-reviewed pairs of original security-publisher accounts. The remaining 242 candidate rows lack an accepted pair and all 246 lack independent annotation. Mirrors and distinct domains alone were not accepted.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Two independent cached research reports per row",
     "Independent annotator identities and consensus records"
   ],
-  "human_decision": "Two independent cached research reports per row; Independent annotator identities and consensus records must be supplied or independently established before reopening.",
+  "human_decision": "Next required input artifact: Complete dual-source and independent-annotation evidence manifest for the intended study cohort",
   "acceptance_tests": [
     "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
   ],
@@ -24,7 +24,34 @@
     {
       "path": "reports/claim_closure/paper_requirements.json",
       "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/source_manifest.json",
+      "sha256": "20ae4fd63a0941e0eb8fb3708310222e7a5c1bbfd54f83ef2001117deb128998"
+    },
+    {
+      "path": "reports/provenance_hunt/reviewed_source_pairs.json",
+      "sha256": "72e9b7ba2a763bd4af3847af179feeb5927bc6eb4ef7b202ee79f15f6026d12a"
     }
   ],
-  "session_date": "2026-10-15"
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Complete dual-source and independent-annotation evidence manifest for the intended study cohort",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/04.json"
 }
