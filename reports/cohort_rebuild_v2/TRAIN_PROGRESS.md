@@ -97,3 +97,18 @@ top1=0, top5=0, MRR=0.03598484848484848. The failure is count priority: often
 called helper functions precede the source-supported root-cause function. These
 are actual deterministic baseline results, not multi-agent localization or
 held-out numbers. Source names, labels and targets never entered prediction.
+
+## Preregistered distinct EOA control study
+
+32 actual Ethereum transfers admitted from eight fixed preregistered blocks,
+with 32 distinct hashes, senders and destinations. 302 candidates were inspected;
+receipts and explicit hash-tagged parent/inclusion code observations support
+each admission. 201 upstream logical RPC requests cost an estimated $0.001206;
+cumulative recorded estimate/allocation is $1.825284, not a confirmed invoice.
+
+Production run `20261015T163542-28c7cef6` scored actual Stage1 observations on
+30 authenticated call traces; two transport failures remain missing. All thirty
+are UNCERTAIN: observed BENIGN-skip eligibility is 0/30. Context/token/storage
+coverage is incomplete; no coverage flag was invented to force a BENIGN skip.
+EOA execution controls do not establish general legitimate-contract error rates
+or the paper's 40-percent paired latency claim. No held-out exam was dispatched.

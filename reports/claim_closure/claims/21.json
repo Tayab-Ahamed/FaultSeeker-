@@ -2,15 +2,17 @@
   "id": 21,
   "claim": "40% benign prefilter and latency reduction",
   "status": "UNVERIFIABLE",
-  "reason": "Canonical runtime artifact explicitly marks benign prefilter rate unmeasured. Executed skip mechanism does not establish40% of traffic or paired latency effect.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "A preregistered distinct historical EOA-transfer control study accepted 32 unique transactions with distinct senders and recipients after canonical receipts, no logs, positive value, empty input and hash-tagged EOA code checks. Actual production Stage1 executed on 30 authenticated call traces; two tracing failures remain unscored. All 30 verdicts are UNCERTAIN, so observed BENIGN-skip eligibility is 0/30. Missing opcode/token/multi-transaction coverage was not fabricated. This narrow population does not verify a general 40 percent prefilter gain or paired inference latency saving.",
+  "verification_scope": "32 independently checked execution controls; actual Stage1 verdicts for 30 with explicit missing coverage, not general benign contract accuracy or paired cost saving",
   "requirements_unmet": [
-    "Verified benign workload and paired prefilter latency observations"
+    "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations"
   ],
-  "human_decision": "Next evidence input: Verified benign workload and paired prefilter latency observations",
+  "human_decision": "No decision needed; preserve narrow measured outcome and continue complete production evidence work",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
-    "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+    "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+    "tests/test_benign_production_bridge.py::test_control_admissions_revalidate_and_execute_actual_stage_one",
+    "tests/test_distinct_benign_controls.py::test_complete_control_requires_canonical_receipt_and_all_explicit_code_observations"
   ],
   "evidence": [
     {
@@ -72,10 +74,34 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_control_preregistration.json",
+      "sha256": "27941c3c38180abcc2f52bc587a93292173f6585aae0203cb95c8479d1768db8"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_controls/summary.json",
+      "sha256": "6b0f7ac5e0704709f803e48d53b63c23c6e37e8cdfc8cd92443f2bbeb9b3c42e"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/summary.json",
+      "sha256": "f9552f62a4be6afabba85dcdd029a366041f341293002e9526687497c7eaf93c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system.json",
+      "sha256": "8853fed286856f2bbe3490c2057193eeb367bec91dfc94e282b511d576472351"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system_sources.json.gz",
+      "sha256": "23a38362791675833c80586dfa2f04317f3ea37efd86739b8797c67755d91839"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/benign_control_runs/experiments_log.json",
+      "sha256": "2eb7c065d0af82301ee06a2bfbafd0d880a83d11c3755cf0129e25647e63aae1"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Verified benign workload and paired prefilter latency observations",
+  "next_input_artifact": "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/21.json",
   "paper_verdict": "RATE-UNMEASURED",

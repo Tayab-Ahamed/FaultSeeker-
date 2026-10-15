@@ -1,0 +1,43 @@
+{
+  "chain": "eth",
+  "chain_id": 1,
+  "transaction": {
+    "blockHash": "0x23de0c44879d947b518415832ecae537d690d257782b27cfa4e4790131943cd0",
+    "blockNumber": "0xe7ef00",
+    "blockTimestamp": "0x62dc22a3",
+    "from": "0xe705f41a6166bba45b1c97a55a04f078d12704b8",
+    "gas": "0x11de4",
+    "gasPrice": "0x8150aa347",
+    "maxPriorityFeePerGas": "0xb2d05e00",
+    "maxFeePerGas": "0xd09dc3000",
+    "hash": "0xbc09b9c0bcdf44963ba1ce10b74ee76478680e64f3b173f55c0a9db3b7cd591f",
+    "input": "0xa9059cbb00000000000000000000000060239f69c8a53e6e58c55dcb63d809728ffc62af000000000000000000000000000000000000000000000000000000000c2a5436",
+    "nonce": "0x97",
+    "to": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "transactionIndex": "0x1a",
+    "value": "0x0",
+    "type": "0x2",
+    "accessList": [],
+    "chainId": "0x1",
+    "v": "0x1",
+    "yParity": "0x1",
+    "r": "0xe772c2a734490be5a0560fe903b3dfe6899a04338cdb93e5b314b8de99197f01",
+    "s": "0x299f8075f8aac5ad9447540a5f7291fe5048aaef2f0fe1715ea7dc85e255512b"
+  },
+  "canonical": {
+    "block": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15200000.json",
+      "sha256": "8c17276aced7aea31c3816044c50430db63c27da934afa7a9455b54b74afec54"
+    },
+    "parent": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15200000-parent.json",
+      "sha256": "d3cbe7245369ab2be510c50df6e830be1dceff377ecf36a07fa6b3b7f9206c10"
+    }
+  },
+  "requests": [],
+  "eligibility_reasons": [
+    "NONPOSITIVE_VALUE",
+    "NONEMPTY_INPUT"
+  ],
+  "accepted": false
+}

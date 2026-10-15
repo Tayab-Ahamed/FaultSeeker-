@@ -1,0 +1,138 @@
+{
+  "chain": "eth",
+  "chain_id": 1,
+  "transaction": {
+    "blockHash": "0x23de0c44879d947b518415832ecae537d690d257782b27cfa4e4790131943cd0",
+    "blockNumber": "0xe7ef00",
+    "blockTimestamp": "0x62dc22a3",
+    "from": "0xd059d677b1a28804f06f48281cc84a130ef2b86d",
+    "gas": "0x5208",
+    "gasPrice": "0x861c46800",
+    "hash": "0x1959b80687b50d893bb8aa0fe9a722c3caa3f1e74262ed1da7cbf74be9d02798",
+    "input": "0x",
+    "nonce": "0x1175",
+    "to": "0x9185490e010b7e2a1a8f6a61b8e0b5a4b2e69f63",
+    "transactionIndex": "0x15",
+    "value": "0x85037b4c64000",
+    "type": "0x0",
+    "chainId": "0x1",
+    "v": "0x25",
+    "r": "0x1e68cc8e4afa5c1d0698d81da44c50946dffd3338400ca356a9b0e66ab353a1b",
+    "s": "0x2bf4b5128aea60c13ae523181fc0cdaaa5c5d7a598a666d7a185d309e2109ca1"
+  },
+  "canonical": {
+    "block": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15200000.json",
+      "sha256": "8c17276aced7aea31c3816044c50430db63c27da934afa7a9455b54b74afec54"
+    },
+    "parent": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15200000-parent.json",
+      "sha256": "d3cbe7245369ab2be510c50df6e830be1dceff377ecf36a07fa6b3b7f9206c10"
+    }
+  },
+  "requests": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 112,
+        "method": "eth_getTransactionReceipt",
+        "params": [
+          "0x1959b80687b50d893bb8aa0fe9a722c3caa3f1e74262ed1da7cbf74be9d02798"
+        ]
+      },
+      "response": {
+        "id": 112,
+        "jsonrpc": "2.0",
+        "result": {
+          "blockHash": "0x23de0c44879d947b518415832ecae537d690d257782b27cfa4e4790131943cd0",
+          "blockNumber": "0xe7ef00",
+          "contractAddress": null,
+          "cumulativeGasUsed": "0x1c59ce",
+          "effectiveGasPrice": "0x861c46800",
+          "from": "0xd059d677b1a28804f06f48281cc84a130ef2b86d",
+          "gasUsed": "0x5208",
+          "logs": [],
+          "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "status": "0x1",
+          "to": "0x9185490e010b7e2a1a8f6a61b8e0b5a4b2e69f63",
+          "transactionHash": "0x1959b80687b50d893bb8aa0fe9a722c3caa3f1e74262ed1da7cbf74be9d02798",
+          "transactionIndex": "0x15",
+          "type": "0x0"
+        }
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 113,
+        "method": "eth_getCode",
+        "params": [
+          "0x9185490e010b7e2a1a8f6a61b8e0b5a4b2e69f63",
+          {
+            "blockHash": "0x47e0c6f3b7d32ea86c0055a75cab7c007e6e184c19f61ccbc4c493bd2e333403",
+            "requireCanonical": true
+          }
+        ]
+      },
+      "response": {
+        "id": 113,
+        "jsonrpc": "2.0",
+        "result": "0x"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 114,
+        "method": "eth_getCode",
+        "params": [
+          "0x9185490e010b7e2a1a8f6a61b8e0b5a4b2e69f63",
+          {
+            "blockHash": "0x23de0c44879d947b518415832ecae537d690d257782b27cfa4e4790131943cd0",
+            "requireCanonical": true
+          }
+        ]
+      },
+      "response": {
+        "id": 114,
+        "jsonrpc": "2.0",
+        "result": "0x"
+      }
+    },
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 115,
+        "method": "eth_getCode",
+        "params": [
+          "0xd059d677b1a28804f06f48281cc84a130ef2b86d",
+          {
+            "blockHash": "0x47e0c6f3b7d32ea86c0055a75cab7c007e6e184c19f61ccbc4c493bd2e333403",
+            "requireCanonical": true
+          }
+        ]
+      },
+      "transport_error_type": "RuntimeError"
+    }
+  ],
+  "receipt": {
+    "blockHash": "0x23de0c44879d947b518415832ecae537d690d257782b27cfa4e4790131943cd0",
+    "blockNumber": "0xe7ef00",
+    "contractAddress": null,
+    "cumulativeGasUsed": "0x1c59ce",
+    "effectiveGasPrice": "0x861c46800",
+    "from": "0xd059d677b1a28804f06f48281cc84a130ef2b86d",
+    "gasUsed": "0x5208",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "status": "0x1",
+    "to": "0x9185490e010b7e2a1a8f6a61b8e0b5a4b2e69f63",
+    "transactionHash": "0x1959b80687b50d893bb8aa0fe9a722c3caa3f1e74262ed1da7cbf74be9d02798",
+    "transactionIndex": "0x15",
+    "type": "0x0"
+  },
+  "eligibility_reasons": [
+    "SENDER_PARENT_CODE_NOT_EMPTY_OR_UNOBSERVED"
+  ],
+  "accepted": false
+}

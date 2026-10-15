@@ -1,0 +1,262 @@
+{
+  "transaction": {
+    "hash": "0x65c5364bb7f3dc6ab04a76e69a3c0877dc81074be7e49b570d476682a203ce6d",
+    "chain": "eth",
+    "analysis_duration": 0.0,
+    "timestamp": null
+  },
+  "summary": {
+    "total_functions_to_inspect": 1,
+    "repeated_patterns_detected": 0,
+    "addresses_to_inspect": 0,
+    "addresses_inspected": 0,
+    "created_contract_calls": 0,
+    "potential_attackers": 2,
+    "potential_victims": 0
+  },
+  "classification": {
+    "rule_verdict": "UNCERTAIN",
+    "rule_confidence": 0.4,
+    "matched_rule": "no_signals_llm_required",
+    "vuln_type_hint": "Unknown",
+    "reentrancy": {
+      "score": 0.0,
+      "detected": false,
+      "tier": "NOT_REENTRANCY",
+      "signals": {
+        "same_function_reentry": false,
+        "cross_function_reentry": false,
+        "reentry_before_return": false,
+        "slot_rewrite": false,
+        "write_after_call": false,
+        "state_slot_reentry": false
+      },
+      "context": {
+        "fallback_mode": true,
+        "storage_trace_available": false,
+        "paper_profile": true
+      }
+    },
+    "priority": {
+      "total": 0.4,
+      "exploitability": 0.4,
+      "reentrancy": 0.0,
+      "flashloan": 0.0,
+      "price_manipulation": 0.0,
+      "liquidity_drain": 0.0001,
+      "reentrancy_source": "fallback"
+    },
+    "priority_score": 0.4,
+    "signals": {
+      "reentrancy": {
+        "score": 0.0,
+        "detected": false,
+        "tier": "NOT_REENTRANCY",
+        "signals": {
+          "same_function_reentry": false,
+          "cross_function_reentry": false,
+          "reentry_before_return": false,
+          "slot_rewrite": false,
+          "write_after_call": false,
+          "state_slot_reentry": false
+        },
+        "context": {
+          "fallback_mode": true,
+          "storage_trace_available": false,
+          "paper_profile": true
+        }
+      },
+      "reentrancy_score": 0.0,
+      "reentrancy_detected": false,
+      "reentrancy_paths_count": 0,
+      "reentrancy_fallback_mode": true,
+      "reentrancy_detection_threshold": 0.3,
+      "reentrancy_confidence_tier": "NOT_REENTRANCY",
+      "reentrancy_signals": {
+        "same_function_reentry": false,
+        "cross_function_reentry": false,
+        "reentry_before_return": false,
+        "slot_rewrite": false,
+        "write_after_call": false,
+        "state_slot_reentry": false
+      },
+      "reentrancy_context": {
+        "fallback_mode": true,
+        "storage_trace_available": false,
+        "paper_profile": true
+      },
+      "flash_loan_detected": false,
+      "flash_callback_detected": false,
+      "flash_profit_eth": 0.0,
+      "price_read_write_sequences": 0,
+      "price_delta_ratio": 0.0,
+      "price_manipulation_detected": false,
+      "hashed_fn_count": 0,
+      "closed_source_state_change": false,
+      "access_control_bypass": false,
+      "privileged_calls_count": 0,
+      "created_contract_in_privileged": false,
+      "arbitrary_external_call": false,
+      "inflation_attack": false,
+      "single_transfer_only": false,
+      "profit_extraction_eth": 0.0007,
+      "large_transfer_to_eoa": false,
+      "top_vuln_hints": [],
+      "debug": {
+        "same_contract_reentry": 0,
+        "ancestor_proximity_reentry": 0,
+        "same_selector_reentry": 0,
+        "delegatecall_proxy_reentry": 0,
+        "call_depth_max": 0,
+        "external_calls": 0,
+        "state_changes_after_call": false,
+        "state_reentry": false,
+        "write_before_and_after": false,
+        "same_function_reentered": false,
+        "same_contract_different_selector": false,
+        "nested_depth_reentry": false,
+        "external_call_chain": false,
+        "same_slot_rewritten": false,
+        "storage_events_total": 0,
+        "storage_trace_available": false,
+        "detection_threshold": 0.3,
+        "guard_slots_filtered": 0,
+        "reentrant_patterns_found": 2,
+        "score_components": {
+          "same_contract_reentry": 0,
+          "ancestor_proximity_reentry": 0,
+          "same_selector_reentry": 0,
+          "delegatecall_proxy_reentry": 0,
+          "call_depth_max": 0,
+          "external_calls": 0,
+          "state_changes_after_call": false,
+          "state_reentry": false,
+          "write_before_and_after": false,
+          "same_function_reentered": false,
+          "same_contract_different_selector": false,
+          "nested_depth_reentry": false,
+          "external_call_chain": false,
+          "same_slot_rewritten": false,
+          "storage_events_total": 0,
+          "storage_trace_available": false,
+          "detection_threshold": 0.3,
+          "guard_slots_filtered": 0,
+          "score": 0.0
+        }
+      },
+      "coverage": {
+        "trace_complete": true,
+        "token_flow_complete": false,
+        "multi_tx_context_complete": false
+      },
+      "graph_reasoning": {
+        "node_count": 0,
+        "edge_count": 0,
+        "node_kinds": {},
+        "edge_kinds": {},
+        "cycle_count": 0,
+        "delegatecall_edges": 0,
+        "transfer_edges": 0,
+        "storage_slot_edges": 0,
+        "anomaly_score": 0.0,
+        "motifs": []
+      },
+      "trace_entropy": 0.0,
+      "call_depth_max": 0,
+      "token_flow_anomaly": 0.0,
+      "calibrated_confidence": null,
+      "ablation": {
+        "disable_faegl": false,
+        "disable_tig": false,
+        "disable_calibration": false,
+        "disable_llm_routing": false,
+        "disable_adversarial_hardening": false,
+        "variant": "full_system",
+        "disabled_components": []
+      }
+    }
+  },
+  "attack_analysis": {
+    "potential_attackers": [
+      "0xfd54078badd5653571726c3370afb127351a6f26",
+      "0x46414b7d7feabe4d6d4a38697cb942ead96fb0df"
+    ],
+    "potential_victims": [],
+    "address_labels": {},
+    "balance_changes": {}
+  },
+  "function_analysis": {
+    "functions_to_inspect": {
+      "flashloan_callback": [],
+      "function_name_with_hash": [],
+      "function_name_with_hash_children": [],
+      "call_with_created_contract": [],
+      "others": [
+        {
+          "type": "call",
+          "gas": "0x5208",
+          "address": "0x46414b7d7feabe4d6d4a38697cb942ead96fb0df",
+          "function": "0x",
+          "params": "",
+          "call_type": "call",
+          "value": "0x2610654042168",
+          "contract_type": null,
+          "depth": [
+            0
+          ],
+          "_adaptive_priority": 0.04,
+          "_adaptive_fallback": true,
+          "_faegl_score": 0.04,
+          "_adaptive_algorithm": "FAEGL-v1.0"
+        }
+      ]
+    },
+    "repeated_patterns": {
+      "keys": [],
+      "keys_function_only": []
+    },
+    "calls_with_created_contracts": [],
+    "adaptive_fallback": {
+      "activated": true,
+      "trigger": "functions_to_inspect_count == 0",
+      "modes": [
+        "graph_expansion"
+      ],
+      "before_count": 0,
+      "after_count": 1,
+      "functions_added": 1,
+      "algorithm_decision": {
+        "algorithm": "FAEGL",
+        "version": "1.0",
+        "activated": true,
+        "trigger": "functions_to_inspect_count == 0",
+        "failure_severity": 0.58,
+        "features": {
+          "trace_entropy": -0.0,
+          "call_depth": 0.0,
+          "state_delta": 0.0,
+          "token_flow_anomaly": 0.0,
+          "delegatecall_density": 0.0,
+          "graph_anomaly": 0.0,
+          "graph_cycles": 0.0
+        },
+        "fallback_utilities": {
+          "entropy_trace_analysis": 0.261,
+          "state_delta_reasoning": 0.203,
+          "graph_expansion": 0.35,
+          "aggressive_call_depth_inspection": 0.203,
+          "proxy_unwrapping": 0.203
+        },
+        "selected_modes": [
+          "graph_expansion"
+        ],
+        "candidate_count": 0
+      }
+    }
+  },
+  "address_classification": {
+    "addresses_to_inspect": {},
+    "inspected_addresses": {},
+    "same_function_calls": {}
+  }
+}

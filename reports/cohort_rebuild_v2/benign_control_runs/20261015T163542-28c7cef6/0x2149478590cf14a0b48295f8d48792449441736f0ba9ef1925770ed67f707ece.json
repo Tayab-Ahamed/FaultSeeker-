@@ -1,0 +1,149 @@
+{
+  "transaction_hash": "0x2149478590cf14a0b48295f8d48792449441736f0ba9ef1925770ed67f707ece",
+  "evidence": {
+    "path": "reports/cohort_rebuild_v2/benign_controls/candidates/14700000-12.json",
+    "sha256": "4c7652b56b40fd28974ee7ef2beba070a3106b900d32fce751641fb354301d3b"
+  },
+  "verdict": "UNCERTAIN",
+  "confidence": 0.45,
+  "matched_rule": "ambiguous",
+  "coverage": {
+    "trace_complete": true,
+    "token_flow_complete": false,
+    "multi_tx_context_complete": false
+  },
+  "signals": {
+    "reentrancy": {
+      "score": 0.0,
+      "detected": false,
+      "tier": "NOT_REENTRANCY",
+      "signals": {
+        "same_function_reentry": false,
+        "cross_function_reentry": false,
+        "reentry_before_return": false,
+        "slot_rewrite": false,
+        "write_after_call": false,
+        "state_slot_reentry": false
+      },
+      "context": {
+        "fallback_mode": true,
+        "storage_trace_available": false,
+        "paper_profile": true
+      }
+    },
+    "reentrancy_score": 0.0,
+    "reentrancy_detected": false,
+    "reentrancy_paths_count": 0,
+    "reentrancy_fallback_mode": true,
+    "reentrancy_detection_threshold": 0.3,
+    "reentrancy_confidence_tier": "NOT_REENTRANCY",
+    "reentrancy_signals": {
+      "same_function_reentry": false,
+      "cross_function_reentry": false,
+      "reentry_before_return": false,
+      "slot_rewrite": false,
+      "write_after_call": false,
+      "state_slot_reentry": false
+    },
+    "reentrancy_context": {
+      "fallback_mode": true,
+      "storage_trace_available": false,
+      "paper_profile": true
+    },
+    "flash_loan_detected": false,
+    "flash_callback_detected": false,
+    "flash_profit_eth": 0.0,
+    "price_read_write_sequences": 0,
+    "price_delta_ratio": 0.0,
+    "price_manipulation_detected": false,
+    "hashed_fn_count": 0,
+    "closed_source_state_change": false,
+    "access_control_bypass": false,
+    "privileged_calls_count": 0,
+    "created_contract_in_privileged": false,
+    "arbitrary_external_call": false,
+    "inflation_attack": false,
+    "single_transfer_only": false,
+    "profit_extraction_eth": 0.2464,
+    "large_transfer_to_eoa": false,
+    "top_vuln_hints": [],
+    "debug": {
+      "same_contract_reentry": 0,
+      "ancestor_proximity_reentry": 0,
+      "same_selector_reentry": 0,
+      "delegatecall_proxy_reentry": 0,
+      "call_depth_max": 0,
+      "external_calls": 0,
+      "state_changes_after_call": false,
+      "state_reentry": false,
+      "write_before_and_after": false,
+      "same_function_reentered": false,
+      "same_contract_different_selector": false,
+      "nested_depth_reentry": false,
+      "external_call_chain": false,
+      "same_slot_rewritten": false,
+      "storage_events_total": 0,
+      "storage_trace_available": false,
+      "detection_threshold": 0.3,
+      "guard_slots_filtered": 0,
+      "reentrant_patterns_found": 2,
+      "score_components": {
+        "same_contract_reentry": 0,
+        "ancestor_proximity_reentry": 0,
+        "same_selector_reentry": 0,
+        "delegatecall_proxy_reentry": 0,
+        "call_depth_max": 0,
+        "external_calls": 0,
+        "state_changes_after_call": false,
+        "state_reentry": false,
+        "write_before_and_after": false,
+        "same_function_reentered": false,
+        "same_contract_different_selector": false,
+        "nested_depth_reentry": false,
+        "external_call_chain": false,
+        "same_slot_rewritten": false,
+        "storage_events_total": 0,
+        "storage_trace_available": false,
+        "detection_threshold": 0.3,
+        "guard_slots_filtered": 0,
+        "score": 0.0
+      }
+    },
+    "coverage": {
+      "trace_complete": true,
+      "token_flow_complete": false,
+      "multi_tx_context_complete": false
+    },
+    "graph_reasoning": {
+      "node_count": 0,
+      "edge_count": 0,
+      "node_kinds": {},
+      "edge_kinds": {},
+      "cycle_count": 0,
+      "delegatecall_edges": 0,
+      "transfer_edges": 0,
+      "storage_slot_edges": 0,
+      "anomaly_score": 0.0,
+      "motifs": []
+    },
+    "trace_entropy": 0.0,
+    "call_depth_max": 0,
+    "token_flow_anomaly": 0.0,
+    "calibrated_confidence": null,
+    "ablation": {
+      "disable_faegl": false,
+      "disable_tig": false,
+      "disable_calibration": false,
+      "disable_llm_routing": false,
+      "disable_adversarial_hardening": false,
+      "variant": "full_system",
+      "disabled_components": []
+    }
+  },
+  "network_attempts": 0,
+  "stage2_executed": false,
+  "duration_seconds": 0.002956399999675341,
+  "duration_scope": "Captured inputs and actual production Stage1 only; no inference latency",
+  "benign_skip_eligible": false,
+  "stdout": "      [+] Collecting transaction sequence...\n      [+] Collecting transaction info...\n      [+] Analyzing execution trace...\n      [+] Extracting deterministic signals...\n      [+] Rule verdict: [UNCERTAIN] confidence=45%  rule='ambiguous'  type='Unknown'\n      [+] Classifying addresses...\n      [+] Identifying vulnerable functions...\n      [+] Adaptive fallback added 1 inspection candidates\n"
+}

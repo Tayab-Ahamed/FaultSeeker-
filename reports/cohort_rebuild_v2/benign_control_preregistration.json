@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "study": "distinct-plain-eoa-controls-v1",
+  "status": "PREREGISTERED_NOT_DISPATCHED",
+  "population": "Historical Ethereum successful plain value transfers to non-precompile EOAs; narrow execution controls, not general legitimate-contract population",
+  "target_count": 32,
+  "chain": "eth",
+  "chain_id": 1,
+  "block_numbers": [
+    14700000,
+    14825000,
+    14950000,
+    15075000,
+    15200000,
+    15325000,
+    15450000,
+    15575000,
+    15700000,
+    15825000,
+    15950000,
+    16075000,
+    16200000,
+    16325000,
+    16450000,
+    16575000
+  ],
+  "selection": "Ascending listed block, canonical transaction index; first eligible identities with distinct sender and recipient, at most four per block; stop at 32 or exhaustion. No model or detector outputs enter selection.",
+  "eligibility": [
+    "Unique transaction hash; canonical transaction and receipt share block hash and chain identity",
+    "Receipt status 0x1 and empty logs",
+    "Positive value, empty input, destination exists and is not precompile (integer address > 65535)",
+    "Destination code is 0x at both parent and inclusion block; sender code 0x at parent block",
+    "Sender and recipient each not previously admitted in this control study"
+  ],
+  "acquisition": "Read-only MeteredRPC through shared $10 ledger; maximum 512 upstream logical requests; SHA-256 pinned raw responses; no synthetic trace or zero-default state",
+  "analysis": "Actual production Stage 1 and ranker only when authenticated call trace exists; incomplete coverage stays incomplete. General benign detection, full-system F1 and paired billed latency require their own complete production observations.",
+  "metrics": [
+    "Eligibility pass count and per-row rejection reason",
+    "Actual Stage 1 verdict frequencies and BENIGN-skip eligibility fraction on captured controls",
+    "Observed execution wall time with explicit stage scope; never substitute for paired inference cost saving"
+  ],
+  "isolation": "Separate control population; no held-out exploit file loading, no final-exam dispatch, no threshold changes",
+  "limitations": [
+    "EOA transfers cannot establish benign smart-contract false-positive rates",
+    "32 intended controls cannot replicate the paper 1000-row population",
+    "Transaction execution benign by the user-authorized construction; no claim that sender has never been involved in an incident"
+  ]
+}

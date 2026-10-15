@@ -1,0 +1,68 @@
+{
+  "chain": "eth",
+  "chain_id": 1,
+  "transaction": {
+    "blockHash": "0x485f0cd754251d8e58b1919867299d18b4312629e3109775112dbe4a3529b189",
+    "blockNumber": "0xeda7d8",
+    "blockTimestamp": "0x6329c093",
+    "from": "0x5aa17fc7f2950eca85376c3a8cb1509e8e4b39df",
+    "gas": "0x221eb",
+    "gasPrice": "0x49671eaa6",
+    "maxFeePerGas": "0x49671eaa6",
+    "maxPriorityFeePerGas": "0x0",
+    "hash": "0x429a44c21dec11de7996ab4448046954d76fd8ec12a7f6c11335891819f80c01",
+    "input": "0x000001e2257ba36e45c800001c1c6d94fb682891b9dcc543c7d82452d6567be393636d825cb9aa3812cdc73b",
+    "nonce": "0x17c6d",
+    "to": "0x01ff6318440f7d5553a82294d78262d5f5084eff",
+    "transactionIndex": "0x12",
+    "value": "0xeda7d8",
+    "type": "0x2",
+    "accessList": [
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "storageKeys": [
+          "0xa16f6733e9a6e575701fc996707206adb879e7981d0e768b0d54351c053ccb2b",
+          "0xf04b8bee51191cdd45ac0f08fb5c05e7b83f0d2452d4b759e47f4be4f277e8ca"
+        ]
+      },
+      {
+        "address": "0xc7d82452d6567be393636d825cb9aa3812cdc73b",
+        "storageKeys": [
+          "0x000000000000000000000000000000000000000000000000000000000000000a",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000006",
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x0000000000000000000000000000000000000000000000000000000000000009"
+        ]
+      },
+      {
+        "address": "0x512a4c0a936f2208a3f60d0b8d33523dc886c9cd",
+        "storageKeys": [
+          "0x2683023440a4b2cf253e40488435ff348ff581508cc019da33bf986040c65c89",
+          "0xfe3b247b4660499a8b482ec4c25c60ab4e77c2245c27088eb7b038386c6a9842"
+        ]
+      }
+    ],
+    "chainId": "0x1",
+    "v": "0x1",
+    "r": "0x26c4344bcdb6320ba442d3ffed368f3af57ba0adf1ea11a8116ca2f993160f17",
+    "s": "0x4b19b9b246e62e03a8c26962588247b65b2676d4de2aa05441fc8e6c52428c5d",
+    "yParity": "0x1"
+  },
+  "canonical": {
+    "block": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15575000.json",
+      "sha256": "681f5568b367918361760a9c5adb99f61d9826884bb9a81b2c5d4110ad34bc72"
+    },
+    "parent": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15575000-parent.json",
+      "sha256": "8509ce8ba9d175e8b8883ce5caa319b2827fdb1c22dfd27873450a90a18f104e"
+    }
+  },
+  "requests": [],
+  "eligibility_reasons": [
+    "NONEMPTY_INPUT"
+  ],
+  "accepted": false
+}

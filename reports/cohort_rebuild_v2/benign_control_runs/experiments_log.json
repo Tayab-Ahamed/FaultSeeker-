@@ -1,0 +1,36 @@
+[
+  {
+    "run_id": "20261015T163542-28c7cef6",
+    "seed": 0,
+    "randomness": "None; fixed preregistered block and transaction ordering",
+    "config": {
+      "preregistration": {
+        "path": "reports/cohort_rebuild_v2/benign_control_preregistration.json",
+        "sha256": "27941c3c38180abcc2f52bc587a93292173f6585aae0203cb95c8479d1768db8"
+      },
+      "system": {
+        "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system.json",
+        "sha256": "8853fed286856f2bbe3490c2057193eeb367bec91dfc94e282b511d576472351"
+      },
+      "source_snapshot": {
+        "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system_sources.json.gz",
+        "sha256": "23a38362791675833c80586dfa2f04317f3ea37efd86739b8797c67755d91839"
+      },
+      "stage": "Actual production Stage1 only",
+      "network_policy": "socket connect prohibited"
+    },
+    "metrics": {
+      "admitted": 32,
+      "observed": 30,
+      "verdict_counts": {
+        "UNCERTAIN": 30
+      },
+      "benign_skip_eligible_fraction": 0.0,
+      "stage1_seconds": 0.09871919993020128
+    },
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/summary.json",
+      "sha256": "f9552f62a4be6afabba85dcdd029a366041f341293002e9526687497c7eaf93c"
+    }
+  }
+]

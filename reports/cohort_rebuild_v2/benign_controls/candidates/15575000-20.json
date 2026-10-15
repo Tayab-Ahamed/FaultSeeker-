@@ -1,0 +1,66 @@
+{
+  "chain": "eth",
+  "chain_id": 1,
+  "transaction": {
+    "blockHash": "0x485f0cd754251d8e58b1919867299d18b4312629e3109775112dbe4a3529b189",
+    "blockNumber": "0xeda7d8",
+    "blockTimestamp": "0x6329c093",
+    "from": "0x5aa17fc7f2950eca85376c3a8cb1509e8e4b39df",
+    "gas": "0x1fbb2",
+    "gasPrice": "0x105f4c7367",
+    "maxFeePerGas": "0x105f4c7367",
+    "maxPriorityFeePerGas": "0xbc8da88c1",
+    "hash": "0x01028db19c7e85e58bbcbc4a5621448bd0c19fa82fa1cefaba01c52ba9f42862",
+    "input": "0x030001fbc439dafce47800001c1c6d94fb682891b9dcc542c7d82452d6567be393636d825cb9aa3812cdc73b512a4c0a936f2208a3f60d0b8d33523dc886c9cd",
+    "nonce": "0x17c6e",
+    "to": "0x01ff6318440f7d5553a82294d78262d5f5084eff",
+    "transactionIndex": "0x14",
+    "value": "0xeda7d8",
+    "type": "0x2",
+    "accessList": [
+      {
+        "address": "0x512a4c0a936f2208a3f60d0b8d33523dc886c9cd",
+        "storageKeys": [
+          "0xfe3b247b4660499a8b482ec4c25c60ab4e77c2245c27088eb7b038386c6a9842",
+          "0x2683023440a4b2cf253e40488435ff348ff581508cc019da33bf986040c65c89"
+        ]
+      },
+      {
+        "address": "0xc7d82452d6567be393636d825cb9aa3812cdc73b",
+        "storageKeys": [
+          "0x0000000000000000000000000000000000000000000000000000000000000007",
+          "0x000000000000000000000000000000000000000000000000000000000000000c",
+          "0x0000000000000000000000000000000000000000000000000000000000000008",
+          "0x0000000000000000000000000000000000000000000000000000000000000006"
+        ]
+      },
+      {
+        "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+        "storageKeys": [
+          "0xf04b8bee51191cdd45ac0f08fb5c05e7b83f0d2452d4b759e47f4be4f277e8ca",
+          "0xa16f6733e9a6e575701fc996707206adb879e7981d0e768b0d54351c053ccb2b"
+        ]
+      }
+    ],
+    "chainId": "0x1",
+    "v": "0x1",
+    "r": "0x7ff2567b47ea6cbf6d910736428cf325f361f0b1673ad73197773629c8842ee6",
+    "s": "0x340991bfe7a80843c8b6af09716ff0230d56e4d93d67503c2c449b8fa5ac6b72",
+    "yParity": "0x1"
+  },
+  "canonical": {
+    "block": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15575000.json",
+      "sha256": "681f5568b367918361760a9c5adb99f61d9826884bb9a81b2c5d4110ad34bc72"
+    },
+    "parent": {
+      "path": "reports/cohort_rebuild_v2/benign_controls/blocks/15575000-parent.json",
+      "sha256": "8509ce8ba9d175e8b8883ce5caa319b2827fdb1c22dfd27873450a90a18f104e"
+    }
+  },
+  "requests": [],
+  "eligibility_reasons": [
+    "NONEMPTY_INPUT"
+  ],
+  "accepted": false
+}
