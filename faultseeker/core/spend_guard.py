@@ -55,7 +55,7 @@ class SpendGuard:
             handle.seek(0)
             if os.name == 'nt':
                 import msvcrt
-                msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                self._acquire_windows_lock(handle, msvcrt)
             else:
                 import fcntl
                 fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
@@ -72,6 +72,24 @@ class SpendGuard:
                     msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
                 else:
                     fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+    @staticmethod
+    def _acquire_windows_lock(handle, api, timeout_seconds=60):
+        # The CRT blocking lock has a fixed retry window and can starve the
+        # Python thread holding the lock. Nonblocking retries explicitly yield
+        # between attempts; no ledger read or dispatch occurs before acquisition.
+        deadline = time.monotonic() + timeout_seconds
+        while True:
+            handle.seek(0)
+            try:
+                api.locking(handle.fileno(), api.LK_NBLCK, 1)
+                return
+            except OSError as error:
+                if error.errno not in (11, 13, 36):
+                    raise
+                if time.monotonic() >= deadline:
+                    raise TimeoutError('Spend ledger lock unavailable; dispatch refused') from None
+                time.sleep(0.02)
 
     def _read(self):
         if not self.ledger_path.exists():

@@ -69,3 +69,30 @@ def test_direct_cloud_agent_cannot_bypass_cumulative_budget(monkeypatch,tmp_path
     with pytest.raises(BudgetApprovalRequired):
         agent.query('inspect')
     assert dispatched == []
+
+
+def test_windows_lock_contention_retries_nonblocking_and_yields_to_owner(monkeypatch):
+    from faultseeker.core import spend_guard
+    from types import SimpleNamespace
+    calls=[]; sleeps=[]
+    class Handle:
+        def fileno(self): return 9
+        def seek(self,offset): assert offset==0
+    def locking(fd,mode,length):
+        calls.append((fd,mode,length))
+        if len(calls)==1:raise OSError(36,'Resource deadlock avoided')
+    api=SimpleNamespace(LK_NBLCK=2,locking=locking)
+    monkeypatch.setattr(spend_guard.time,'sleep',sleeps.append)
+    SpendGuard._acquire_windows_lock(Handle(),api)
+    assert calls==[(9,2,1),(9,2,1)]
+    assert sleeps and 0<sleeps[0]<1
+
+
+def test_windows_lock_unexpected_failure_is_not_retried(monkeypatch):
+    from types import SimpleNamespace
+    class Handle:
+        def fileno(self):return 9
+        def seek(self,offset):pass
+    def locking(*args):raise OSError(5,'I/O failure')
+    with pytest.raises(OSError,match='I/O failure'):
+        SpendGuard._acquire_windows_lock(Handle(),SimpleNamespace(LK_NBLCK=2,locking=locking))
