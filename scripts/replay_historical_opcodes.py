@@ -153,7 +153,7 @@ def upstream_proxy(meter):
                 self.send_header('Content-Length', str(len(body)))
                 self.end_headers()
                 self.wfile.write(body)
-            except (BrokenPipeError, ConnectionResetError):
+            except ConnectionError:
                 # Anvil's timeout may expire before an upstream read returns.
                 meter.errors.append('local-client-disconnected-after-upstream-request')
 
@@ -179,7 +179,8 @@ def local_rpc(url, method, params, timeout_seconds=120):
     except TimeoutError:
         raise RuntimeError(f'Local {method} timed out after {timeout_seconds} seconds') from None
     if data.get('error'):
-        raise RuntimeError(f'Local {method} failed: RPC code {data["error"].get("code")}')
+        message = re.sub(r'https?://[^\s\"\'<>]+', '[endpoint]', str(data['error'].get('message','')))
+        raise RuntimeError(f'Local {method} failed: RPC code {data["error"].get("code")}: {message[:400]}')
     return data.get('result')
 
 
@@ -312,7 +313,7 @@ def replay_one(tx_hash, label, meter, proxy_url, anvil, output, mine_timeout=120
         '--accounts', '0', '--fork-url', proxy_url, '--fork-block-number', str(parent),
         '--chain-id', '1', '--hardfork', hardfork(block), '--steps-tracing',
         '--no-mining', '--order', 'fifo', '--no-storage-caching', '--no-fork-node-info',
-        '--no-bal', '--retries', '0', '--timeout', '10000', '--gas-limit', str(int(block['gasLimit'], 16))]
+        '--no-bal', '--retries', '0', '--timeout', '45000', '--gas-limit', str(int(block['gasLimit'], 16))]
     process = subprocess.Popen(arguments, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
                                creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
     try:

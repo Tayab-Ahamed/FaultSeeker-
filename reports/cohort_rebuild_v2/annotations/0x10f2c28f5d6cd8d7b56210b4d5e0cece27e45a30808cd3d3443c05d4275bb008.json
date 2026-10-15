@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+  "chain": "polygon",
+  "is_exploit": true,
+  "vuln_type": "Donation-based oracle price manipulation",
+  "adjudication_basis": "Use BlockSec's corrected investigation, which explicitly retracts the original deflationary-token explanation. Both organizations identify donation-driven oracle distortion. Other 32-byte PoC values are pool IDs, not attack transactions.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1651932529874853888",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/194796e8a77ec66a74d3d483d4d41253c185196aeab5c86a9cd1d0b5f570828c.gz",
+        "sha256": "dacbf019c1c62b6db2531f9d9d419fae2bdb5ae3998eb3aa3686e8407c32f894"
+      },
+      "vulnerability_class": "Donation-based oracle price manipulation",
+      "mechanism_excerpt": "Exploiters can manipulate the price by directly transferring tokens to tampering BalanceOf()."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1651923235603361793",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/44ef56066c1664b98a999b3461c6442e9fda0ba7c9d405e3b48760a25de8e5cc.gz",
+        "sha256": "fa484c48ce18860af75689204eb1229d57050e85fecb200b0467efb360c916b6"
+      },
+      "vulnerability_class": "Donation-based oracle price manipulation",
+      "mechanism_excerpt": "which was deployed on Mar-17-2023 and suffers from today's donation-based price manipulation."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

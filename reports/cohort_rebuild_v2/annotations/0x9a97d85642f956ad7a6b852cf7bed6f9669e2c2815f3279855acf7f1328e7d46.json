@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Unvalidated external call through misconfigured router",
+  "adjudication_basis": "Both reports identify the same mistaken USDC router admission enabling arbitrary transferFrom calls. The linked PoC header names the exploit execution; the funds-to-mixer reference is not substituted for it.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1606993118901198849",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/d38a2129c312380f83ed500b573a32dbc9c0fa19f89608a8ca1b59418653974b.gz",
+        "sha256": "dc3792a09f82cfa67909942a12260cd5dd1b0f74f1c3e72485f9aa364595faf9"
+      },
+      "vulnerability_class": "Unvalidated external call through misconfigured router",
+      "mechanism_excerpt": "The attacker abused that USDC had been added as a router (by the admin), leading to an arbitrary function call with USDC contract."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1606937055761952770",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/125deb4cd5f7b7540923edf474b331be0f7ed662d3ffdfea85c76f99f4a9a4ea.gz",
+        "sha256": "538e31d50d23295550e62aeada1c0986f7f90f6515356063baed582f5b6924cc"
+      },
+      "vulnerability_class": "Unvalidated external call through misconfigured router",
+      "mechanism_excerpt": "The hack is made possible due to mistakenly adding USDC into supported routers."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

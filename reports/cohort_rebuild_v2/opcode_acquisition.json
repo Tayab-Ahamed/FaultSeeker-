@@ -1,0 +1,30 @@
+{
+  "attempts": [
+    {
+      "identity": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "status": "UNAVAILABLE",
+      "error_type": "RuntimeError",
+      "reason": "Anvil exited during archive fork startup",
+      "outbound_rpc_requests": 6
+    }
+  ],
+  "accounting": {
+    "outbound_rpc_requests": 6,
+    "methods": {
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_chainId": 2,
+      "eth_getBlockByNumber": 1
+    },
+    "estimated_cost_usd": 3.6e-05,
+    "cumulative_ledger_estimate_usd": 1.8164999999999627,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "RuntimeError"
+    ]
+  }
+}

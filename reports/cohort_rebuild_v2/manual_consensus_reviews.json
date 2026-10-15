@@ -214,5 +214,140 @@
       }
     ],
     "chain": "eth"
+  },
+  {
+    "case_id": "2fd149cb8a877c47",
+    "incident_name": "Fortress Loans",
+    "chain": "bsc",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Unrestricted oracle update",
+    "reentrancy_label": false,
+    "attack_transaction_hashes": [
+      "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    ],
+    "reasoning": "BlockSec and CertiK each identify an authorization failure in oracle submit; CertiK explicitly binds the drain execution. Other PoC constants, prior interactions and the generic PeckShield alert are not accepted as exploit rows or annotation evidence.",
+    "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1523530484877209600",
+        "quote": "The `submit` function of the Chain oracle can be called by anyone and doesn\u2019t have a power verification."
+      },
+      {
+        "publisher": "CertiK",
+        "url": "https://www.certik.com/resources/blog/k6eZOpnK5Kdde7RfHBZgw-fortress-loans-exploit",
+        "quote": "Attacker also manipulated the oracle by calling submit() function in the chain smart contract, where the requiredSignatures can be bypassed and power check is disabled in the deployment."
+      }
+    ]
+  },
+  {
+    "case_id": "965c5b56cadde0ec",
+    "incident_name": "Rubic",
+    "chain": "eth",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Unvalidated external call through misconfigured router",
+    "reentrancy_label": false,
+    "attack_transaction_hashes": [
+      "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46"
+    ],
+    "reasoning": "Both reports identify the same mistaken USDC router admission enabling arbitrary transferFrom calls. The linked PoC header names the exploit execution; the funds-to-mixer reference is not substituted for it.",
+    "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1606993118901198849",
+        "quote": "The attacker abused that USDC had been added as a router (by the admin), leading to an arbitrary function call with USDC contract."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1606937055761952770",
+        "quote": "The hack is made possible due to mistakenly adding USDC into supported routers."
+      }
+    ]
+  },
+  {
+    "case_id": "45988539d0e765b3",
+    "incident_name": "0vix",
+    "chain": "polygon",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Donation-based oracle price manipulation",
+    "reentrancy_label": false,
+    "attack_transaction_hashes": [
+      "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008"
+    ],
+    "reasoning": "Use BlockSec's corrected investigation, which explicitly retracts the original deflationary-token explanation. Both organizations identify donation-driven oracle distortion. Other 32-byte PoC values are pool IDs, not attack transactions.",
+    "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1651932529874853888",
+        "quote": "Exploiters can manipulate the price by directly transferring tokens to tampering BalanceOf()."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1651923235603361793",
+        "quote": "which was deployed on Mar-17-2023 and suffers from today's donation-based price manipulation."
+      }
+    ]
+  },
+  {
+    "case_id": "4f9ee699bac3d8c8",
+    "incident_name": "Themis",
+    "chain": "arbitrum",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Oracle price manipulation",
+    "reentrancy_label": false,
+    "attack_transaction_hashes": [
+      "0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8"
+    ],
+    "reasoning": "Each publisher independently describes manipulable lending collateral pricing in the same Arbitrum attack. The label stays at the supported oracle class; unavailable source code is not reconstructed as an alleged verified line target.",
+    "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+    "observations": [
+      {
+        "publisher": "Beosin",
+        "url": "https://twitter.com/BeosinAlert/status/1673930979348717570",
+        "quote": "Themis @ThemisProtocol was exploited for $370K due to an oracle implementation flaw."
+      },
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1673897088617426946",
+        "quote": "due to an inaccurate Balancer LP token price oracle."
+      }
+    ]
+  },
+  {
+    "case_id": "f2e3679d50e2eb97",
+    "incident_name": "LeetSwap",
+    "chain": "base",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Exposed pool fee-transfer function",
+    "reentrancy_label": false,
+    "attack_transaction_hashes": [
+      "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec"
+    ],
+    "reasoning": "Both independent technical accounts identify the exposed pair function, not merely a price drop or flash loan. The public PoC explicitly identifies this Base exploit transaction.",
+    "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1686217464051539968",
+        "quote": "The attacker abused the public _transferFeesSupportingTaxTokens function to manipulate the pool:"
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1686209024587710464",
+        "quote": "Our analysis shows the root case is from the exposed LeetSwapV2Pair::_transferFeesSupportingTaxTokens() function, which is hardly forked from solidly."
+      }
+    ]
   }
 ]

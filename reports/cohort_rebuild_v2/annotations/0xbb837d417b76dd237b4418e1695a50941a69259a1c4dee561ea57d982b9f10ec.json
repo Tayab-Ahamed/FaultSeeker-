@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+  "chain": "base",
+  "is_exploit": true,
+  "vuln_type": "Exposed pool fee-transfer function",
+  "adjudication_basis": "Both independent technical accounts identify the exposed pair function, not merely a price drop or flash loan. The public PoC explicitly identifies this Base exploit transaction.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1686217464051539968",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/98ffca832a19aacaf8c3a835ca4aead1e21ac029654a168894b908df84c8c052.gz",
+        "sha256": "69d155d5549a7f3a93f08faa69681502058622b2d0d89e94f2964acc1ab6e1c4"
+      },
+      "vulnerability_class": "Exposed pool fee-transfer function",
+      "mechanism_excerpt": "The attacker abused the public _transferFeesSupportingTaxTokens function to manipulate the pool:"
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1686209024587710464",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/9555abe4f3c388fd95d4ad2f2fc2bcd4ec4a6b14db2950ce92de8df9f7a505d2.gz",
+        "sha256": "0c75cd5fe33b53092c32539c4dc14ce8e782ca0349522f8015336fe397f799c2"
+      },
+      "vulnerability_class": "Exposed pool fee-transfer function",
+      "mechanism_excerpt": "Our analysis shows the root case is from the exposed LeetSwapV2Pair::_transferFeesSupportingTaxTokens() function, which is hardly forked from solidly."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

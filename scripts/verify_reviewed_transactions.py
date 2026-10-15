@@ -14,6 +14,7 @@ from scripts.rebuild_authentic_cohort import BASE, drpc_url, identity_observatio
 from scripts.replay_historical_opcodes import MeteredRPC
 
 PUBLIC={'arbitrum':('https://arb1.arbitrum.io/rpc','https://docs.arbitrum.io/chain-info'),
+        'bsc':('https://bsc-dataseed1.binance.org','https://docs.bnbchain.org/bnb-smart-chain/developers/json_rpc/bsc-api-endpoints/'),
         'gnosis':('https://rpc.gnosischain.com/','https://docs.gnosischain.com/tools/RPC%20Providers/')}
 
 

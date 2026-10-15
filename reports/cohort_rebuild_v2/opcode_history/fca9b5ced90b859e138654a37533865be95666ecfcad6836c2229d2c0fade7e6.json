@@ -1,0 +1,50 @@
+{
+  "attempts": [
+    {
+      "identity": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "status": "UNAVAILABLE",
+      "error_type": "RuntimeError",
+      "reason": "Local eth_getBlockByNumber failed: RPC code -32603",
+      "outbound_rpc_requests": 7
+    },
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "status": "UNAVAILABLE",
+      "error_type": "RuntimeError",
+      "reason": "Local eth_sendRawTransaction failed: RPC code -32603",
+      "outbound_rpc_requests": 10
+    },
+    {
+      "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "status": "UNAVAILABLE",
+      "error_type": "RuntimeError",
+      "reason": "Anvil exited during archive fork startup",
+      "outbound_rpc_requests": 4
+    }
+  ],
+  "accounting": {
+    "outbound_rpc_requests": 21,
+    "methods": {
+      "eth_getTransactionByHash": 3,
+      "eth_getTransactionReceipt": 3,
+      "eth_getBlockByHash": 3,
+      "eth_chainId": 5,
+      "eth_getBlockByNumber": 4,
+      "eth_getBalance": 1,
+      "eth_getTransactionCount": 1,
+      "eth_getCode": 1
+    },
+    "estimated_cost_usd": 0.000126,
+    "cumulative_ledger_estimate_usd": 1.8144239999999798,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "OSError",
+      "ValueError",
+      "ValueError",
+      "OSError"
+    ]
+  }
+}

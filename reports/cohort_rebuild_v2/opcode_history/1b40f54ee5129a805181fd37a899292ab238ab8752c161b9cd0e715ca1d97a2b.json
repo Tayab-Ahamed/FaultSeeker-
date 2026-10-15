@@ -1,0 +1,34 @@
+{
+  "attempts": [
+    {
+      "identity": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "status": "UNAVAILABLE",
+      "error_type": "RuntimeError",
+      "reason": "Local evm_mine timed out after 60 seconds",
+      "outbound_rpc_requests": 133
+    }
+  ],
+  "accounting": {
+    "outbound_rpc_requests": 133,
+    "methods": {
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_chainId": 2,
+      "eth_getBlockByNumber": 2,
+      "eth_getBalance": 17,
+      "eth_getTransactionCount": 17,
+      "eth_getCode": 17,
+      "eth_getStorageAt": 75
+    },
+    "estimated_cost_usd": 0.000798,
+    "cumulative_ledger_estimate_usd": 1.816463999999963,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": [
+      "ValueError",
+      "ValueError"
+    ]
+  }
+}

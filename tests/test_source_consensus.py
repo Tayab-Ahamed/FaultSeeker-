@@ -57,3 +57,11 @@ def test_source_review_is_bound_to_chain_as_well_as_transaction_hash():
             'attack_transaction_hashes':['tx']}
     with pytest.raises(ValueError,match='chain'):
         reviewed_annotation(review,{}, {'chain':'eth','txn_hash':'tx'})
+
+
+def test_independent_security_publisher_inventory_includes_original_incident_outlets():
+    from scripts.review_source_consensus import publisher
+    assert publisher('https://rekt.news/incident-rekt/') == 'Rekt'
+    assert publisher('https://www.numencyber.com/incident/') == 'NumenCyber'
+    assert publisher('https://blog.openzeppelin.com/incident') == 'OpenZeppelin'
+    assert publisher('https://blog.openzeppelin.com.attacker.example/incident') is None

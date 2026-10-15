@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8",
+  "chain": "arbitrum",
+  "is_exploit": true,
+  "vuln_type": "Oracle price manipulation",
+  "adjudication_basis": "Each publisher independently describes manipulable lending collateral pricing in the same Arbitrum attack. The label stays at the supported oracle class; unavailable source code is not reconstructed as an alleged verified line target.",
+  "independent_observations": [
+    {
+      "publisher_id": "Beosin",
+      "source_url": "https://twitter.com/BeosinAlert/status/1673930979348717570",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/8dcff8919c921b3d4644c83e09e4dfcac97b864ccee21fff2c70156a06142f2e.gz",
+        "sha256": "20576a0c84e49e8667acd20757c1a38c6f630f31a8fb82a3566ff85c20942d7e"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "Themis @ThemisProtocol was exploited for $370K due to an oracle implementation flaw."
+    },
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1673897088617426946",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/8453c5d28b9c438f6781e86772a2ec776d609451dad4f15127c2e02be169dd94.gz",
+        "sha256": "3f639419682267db3d3c59faa978b5a34281b59895a25bed4bb2b667dd605715"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "due to an inaccurate Balancer LP token price oracle."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

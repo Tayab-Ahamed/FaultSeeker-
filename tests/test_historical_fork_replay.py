@@ -111,3 +111,14 @@ def test_historical_fork_captures_reentrant_storage(tmp_path, monkeypatch):
     assert case['normalization_complete'] is True
     assert case['storage_owners_verified'] is True
     assert case['receipt_matches'] is True
+
+
+def test_local_replay_error_preserves_archive_diagnosis_without_endpoint_credentials(monkeypatch):
+    import io
+    from scripts import replay_historical_opcodes as runner
+    payload={'error':{'code':-32603,'message':'missing historical account at https://upstream.example/private-credential'}}
+    monkeypatch.setattr(runner,'urlopen',lambda *a,**k:io.BytesIO(json.dumps(payload).encode()))
+    with pytest.raises(RuntimeError) as error:
+        runner.local_rpc('http://127.0.0.1:1','eth_getBalance',[])
+    assert 'missing historical account' in str(error.value)
+    assert 'private-credential' not in str(error.value)

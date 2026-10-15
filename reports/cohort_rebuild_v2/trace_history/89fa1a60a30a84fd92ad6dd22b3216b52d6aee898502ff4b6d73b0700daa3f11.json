@@ -1,0 +1,1597 @@
+[
+  {
+    "identity": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json.gz",
+      "sha256": "46bd048c79cc3aa6fa7fb31113468dd36e78738d3e3bc65484689c73b1802c05"
+    },
+    "complexity": {
+      "unique_function_calls": 46,
+      "trace_frames": 95,
+      "complexity_class": "Moderate",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+          "selector": "0x0dfe1681"
+        },
+        {
+          "address": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+          "selector": "0xd21220a7"
+        },
+        {
+          "address": "0x13e557c51c0a37e25e051491037ee546597c689f",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0x13e557c51c0a37e25e051491037ee546597c689f",
+          "selector": "0x0902f1ac"
+        },
+        {
+          "address": "0x420a50a62b17c18b36c64478784536ba980feac8",
+          "selector": "0x0f04ba67"
+        },
+        {
+          "address": "0x420a50a62b17c18b36c64478784536ba980feac8",
+          "selector": "0xd5f724f3"
+        },
+        {
+          "address": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+          "selector": "0x128acb08"
+        },
+        {
+          "address": "0x5fa0060fcfea35b31f7a5f6025f0ff399b98edf1",
+          "selector": "0xe6a43905"
+        },
+        {
+          "address": "0x64acd987a8603eeaf1ee8e87addd512908599aec",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x64acd987a8603eeaf1ee8e87addd512908599aec",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x76fe189e4fa5ff997872ddf44023b04cd7cb03d2",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0x76fe189e4fa5ff997872ddf44023b04cd7cb03d2",
+          "selector": "0x0902f1ac"
+        },
+        {
+          "address": "0x79f774095a33071f6172ab0832ed20adb44df992",
+          "selector": "0x4729ed3c"
+        },
+        {
+          "address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+          "selector": "0x53664c01"
+        },
+        {
+          "address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+          "selector": "0x8293e9af"
+        },
+        {
+          "address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+          "selector": "0x88a0ec62"
+        },
+        {
+          "address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+          "selector": "0xd4fac45d"
+        },
+        {
+          "address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+          "selector": "0xdf0040c8"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0xdd62ed3e"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0xdd62ed3e"
+        },
+        {
+          "address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+          "selector": "0x53664c01"
+        },
+        {
+          "address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+          "selector": "0x8293e9af"
+        },
+        {
+          "address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+          "selector": "0x88a0ec62"
+        },
+        {
+          "address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+          "selector": "0xd4fac45d"
+        },
+        {
+          "address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+          "selector": "0xdf0040c8"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0xdd62ed3e"
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "selector": "0x414bf389"
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "selector": "0xfa461e33"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 20,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 18
+      },
+      "estimated_cost_usd": 0.00012,
+      "cumulative_ledger_estimate_usd": 1.812353999999997,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+      "sha256": "57c075f12a5aad7f57fd88945fd2458d721f7afad8bcd560e1adbf851dc3c32c"
+    },
+    "complexity": {
+      "unique_function_calls": 55,
+      "trace_frames": 151,
+      "complexity_class": "Complex",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "selector": "0x4efecaa5"
+        },
+        {
+          "address": "0x028171bca77440897b824ca71d1c56cac55b68a3",
+          "selector": "0x7df5bd3b"
+        },
+        {
+          "address": "0x158228e08c52f3e2211ccbc8ec275fa93f6033fc",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0x27182842e098f60e3d576794a5bffb0777e025d3",
+          "selector": "0xe9c4a3ac"
+        },
+        {
+          "address": "0x29daddfda3442693c21a50351a2b4820ddbbff79",
+          "selector": "0xd8aed145"
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "selector": "0x37fe974a"
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "selector": "0x41976e09"
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "selector": "0xc39b543a"
+        },
+        {
+          "address": "0x3f87b818f94f3cc21e47fd3bf015e8d8183a3e08",
+          "selector": "0xb1bf962d"
+        },
+        {
+          "address": "0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89",
+          "selector": "0xd50c08f8"
+        },
+        {
+          "address": "0x583c21631c48d442b5c0e605d624f54a0b366c72",
+          "selector": "0x60806040"
+        },
+        {
+          "address": "0x583c21631c48d442b5c0e605d624f54a0b366c72",
+          "selector": "0x9f443549"
+        },
+        {
+          "address": "0x6085bc95f506c326dcbcd7a6dd6c79fbc18d4686",
+          "selector": "0x03ddf252"
+        },
+        {
+          "address": "0x6085bc95f506c326dcbcd7a6dd6c79fbc18d4686",
+          "selector": "0xd8aed145"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x6c3c78838c761c6ac7be9f59fe808ea2a6e4379d",
+          "selector": "0xb1bf962d"
+        },
+        {
+          "address": "0x773616e4d11a78f511299002da57a0a94577f1f4",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
+          "selector": "0x79774338"
+        },
+        {
+          "address": "0x778a13d3eeb110a4f7bb6529f99c000119a08e92",
+          "selector": "0xf731e9be"
+        },
+        {
+          "address": "0x7b2a3cf972c3193f26cdec6217d27379b6417bd0",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0x7b2a3cf972c3193f26cdec6217d27379b6417bd0",
+          "selector": "0x4efecaa5"
+        },
+        {
+          "address": "0x7b2a3cf972c3193f26cdec6217d27379b6417bd0",
+          "selector": "0x7df5bd3b"
+        },
+        {
+          "address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "selector": "0xab9c4b5d"
+        },
+        {
+          "address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "selector": "0xd15e0053"
+        },
+        {
+          "address": "0x8a32f49ffba88aba6eff96f45d8bd1d4b3f35c7d",
+          "selector": "0xbb85c0bb"
+        },
+        {
+          "address": "0xa0b3ee897f233f385e5d61086c32685257d4f12b",
+          "selector": "0x60806040"
+        },
+        {
+          "address": "0xa0b3ee897f233f385e5d61086c32685257d4f12b",
+          "selector": "0xa515d3c6"
+        },
+        {
+          "address": "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+          "selector": "0x3618abba"
+        },
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "selector": "0x1b2ef1ca"
+        },
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "selector": "0x36f022aa"
+        },
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "selector": "0x441a3e70"
+        },
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "selector": "0xe2bbb158"
+        },
+        {
+          "address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+          "selector": "0xab9c4b5d"
+        },
+        {
+          "address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+          "selector": "0xd15e0053"
+        },
+        {
+          "address": "0xd23a44eb2db8ad0817c994d3533528c030279f7c",
+          "selector": "0x79774338"
+        },
+        {
+          "address": "0xd23a44eb2db8ad0817c994d3533528c030279f7c",
+          "selector": "0xf731e9be"
+        },
+        {
+          "address": "0xd737ee2bb39f49c62a436002a77f2710cc45ed98",
+          "selector": "0x1a96d9d5"
+        },
+        {
+          "address": "0xd737ee2bb39f49c62a436002a77f2710cc45ed98",
+          "selector": "0x6f70e66f"
+        },
+        {
+          "address": "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
+          "selector": "0x31873e2e"
+        },
+        {
+          "address": "0xd9ed413bcf58c266f95fe6ba63b13cf79299ce31",
+          "selector": "0x31873e2e"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "selector": "0x03ddf252"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "selector": "0x1b2ef1ca"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "selector": "0x36f022aa"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "selector": "0x441a3e70"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "selector": "0xe2bbb158"
+        },
+        {
+          "address": "0xebc29199c817dc47ba12e3f86102564d640cbf99",
+          "selector": "0x863df8af"
+        },
+        {
+          "address": "0xebc29199c817dc47ba12e3f86102564d640cbf99",
+          "selector": "0x920f5c84"
+        },
+        {
+          "address": "0xf43ce1d09050bafd6980dd43cde2ab9f18c85b34",
+          "selector": "0x1a96d9d5"
+        },
+        {
+          "address": "0xf43ce1d09050bafd6980dd43cde2ab9f18c85b34",
+          "selector": "0x6f70e66f"
+        },
+        {
+          "address": "0xfffe32106a68aa3ed39ccce673b646423eeab62a",
+          "selector": "0x9584df28"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 30,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 28
+      },
+      "estimated_cost_usd": 0.00018,
+      "cumulative_ledger_estimate_usd": 1.8125339999999954,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+      "sha256": "ea49343823c63ed349bb19d5e825e2a6a75f7fc7642f2afc1d80470240dce6f9"
+    },
+    "complexity": {
+      "unique_function_calls": 97,
+      "trace_frames": 228,
+      "complexity_class": "Complex",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+          "selector": "0xa0712d68"
+        },
+        {
+          "address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+          "selector": "0xc37f68e2"
+        },
+        {
+          "address": "0x213be373fdff327658139c7df330817dad2d5bbe",
+          "selector": "0x3df02124"
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x37bc7498f4ff12c19678ee8fe19d713b87f6a9e6",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+          "selector": "0x41c728b9"
+        },
+        {
+          "address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+          "selector": "0x4ef4c3e1"
+        },
+        {
+          "address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+          "selector": "0x5c778605"
+        },
+        {
+          "address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+          "selector": "0xc2998238"
+        },
+        {
+          "address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+          "selector": "0xda3d454c"
+        },
+        {
+          "address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "selector": "0x41c728b9"
+        },
+        {
+          "address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "selector": "0x4ef4c3e1"
+        },
+        {
+          "address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "selector": "0x5c778605"
+        },
+        {
+          "address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "selector": "0xc2998238"
+        },
+        {
+          "address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+          "selector": "0xda3d454c"
+        },
+        {
+          "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+          "selector": "0x79774338"
+        },
+        {
+          "address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+          "selector": "0xf731e9be"
+        },
+        {
+          "address": "0x52fdfb1157878f540dcb961561ce5f3b0bbe6f80",
+          "selector": "0xb1bf962d"
+        },
+        {
+          "address": "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0x6ac108c4c3fe7f4d367513f599da1b9df7c43433",
+          "selector": "0x79774338"
+        },
+        {
+          "address": "0x6ac108c4c3fe7f4d367513f599da1b9df7c43433",
+          "selector": "0xf731e9be"
+        },
+        {
+          "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "selector": "0x79cc6790"
+        },
+        {
+          "address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "selector": "0xab9c4b5d"
+        },
+        {
+          "address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+          "selector": "0xd15e0053"
+        },
+        {
+          "address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+          "selector": "0xaa5af0fd"
+        },
+        {
+          "address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+          "selector": "0xc37f68e2"
+        },
+        {
+          "address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+          "selector": "0xc5ebeaec"
+        },
+        {
+          "address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x8a32f49ffba88aba6eff96f45d8bd1d4b3f35c7d",
+          "selector": "0xbb85c0bb"
+        },
+        {
+          "address": "0x8e764be4288b842791989db5b8ec067279829809",
+          "selector": "0x1a4c1ca3"
+        },
+        {
+          "address": "0x8f0439382359c05ed287acd5170757b76402d93f",
+          "selector": "0x15f24053"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0x36bc8855"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0x4e60b141"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0x571bae3f"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0xbad1dc26"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0xc7fab708"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "selector": "0xfa18042d"
+        },
+        {
+          "address": "0x8f942c20d02befc377d41445793068908e2250d0",
+          "selector": "0x37951049"
+        },
+        {
+          "address": "0x8f942c20d02befc377d41445793068908e2250d0",
+          "selector": "0xeb85226d"
+        },
+        {
+          "address": "0x90e00ace148ca3b23ac1bc8c240c2a7dd9c2d7f5",
+          "selector": "0x37951049"
+        },
+        {
+          "address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+          "selector": "0x6e553f65"
+        },
+        {
+          "address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+          "selector": "0x99530b06"
+        },
+        {
+          "address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+          "selector": "0xb1bf962d"
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "selector": "0x4efecaa5"
+        },
+        {
+          "address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+          "selector": "0x7df5bd3b"
+        },
+        {
+          "address": "0xa964273552c1dba201f5f000215f5bd5576e8f93",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0xaa5a67c256e27a5d80712c51971408db3370927d",
+          "selector": "0x3df02124"
+        },
+        {
+          "address": "0xae74faa92cb67a95ebcab07358bc222e33a34da7",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+          "selector": "0x3618abba"
+        },
+        {
+          "address": "0xb9fc157394af804a3578134a6585c0dc9cc990d4",
+          "selector": "0xeb85226d"
+        },
+        {
+          "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+          "selector": "0x1a4d01d2"
+        },
+        {
+          "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+          "selector": "0xbb7b8b80"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+          "selector": "0x4efecaa5"
+        },
+        {
+          "address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+          "selector": "0x7df5bd3b"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "selector": "0x40c10f19"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+          "selector": "0xab9c4b5d"
+        },
+        {
+          "address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+          "selector": "0xd15e0053"
+        },
+        {
+          "address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "selector": "0x4515cef3"
+        },
+        {
+          "address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "selector": "0x5b41b908"
+        },
+        {
+          "address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+          "selector": "0xf446c1d0"
+        },
+        {
+          "address": "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
+          "selector": "0x31873e2e"
+        },
+        {
+          "address": "0xd9ed413bcf58c266f95fe6ba63b13cf79299ce31",
+          "selector": "0x31873e2e"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "selector": "0x6e553f65"
+        },
+        {
+          "address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+          "selector": "0x99530b06"
+        },
+        {
+          "address": "0xe8929afd47064efd36a7fb51da3f8c5eb40c4cb4",
+          "selector": "0xfc57d4df"
+        },
+        {
+          "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0xf4030086522a5beea4988f8ca5b36dbc97bee88c",
+          "selector": "0x50d25bcd"
+        },
+        {
+          "address": "0xf41e8f817e6c399d1ade102059c454093b24f35b",
+          "selector": "0x9584df28"
+        },
+        {
+          "address": "0xf508c58ce37ce40a40997c715075172691f92e2d",
+          "selector": "0x920f5c84"
+        },
+        {
+          "address": "0xf508c58ce37ce40a40997c715075172691f92e2d",
+          "selector": "0xbe9a6555"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 47,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 45
+      },
+      "estimated_cost_usd": 0.000282,
+      "cumulative_ledger_estimate_usd": 1.812815999999993,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json.gz",
+      "sha256": "115cc7ff16d782d22abbf26df482d896cb275247e37506130468a77d52b4d32d"
+    },
+    "complexity": {
+      "complexity_class": "UNRECOVERED",
+      "reason": "Historical contract code missing"
+    },
+    "accounting": {
+      "outbound_rpc_requests": 146,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 144
+      },
+      "estimated_cost_usd": 0.000876,
+      "cumulative_ledger_estimate_usd": 1.813679999999986,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "polygon:0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json.gz",
+      "sha256": "23ebd0af81a5e349828f1c02f1e79066d6eaf626de27b295e3dad1983e9eebb9"
+    },
+    "complexity": {
+      "complexity_class": "UNRECOVERED",
+      "reason": "Historical contract code missing"
+    },
+    "accounting": {
+      "outbound_rpc_requests": 140,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 138
+      },
+      "estimated_cost_usd": 0.00084,
+      "cumulative_ledger_estimate_usd": 1.8146099999999783,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+    "status": "UNAVAILABLE",
+    "error_type": "ValueError",
+    "accounting": {
+      "outbound_rpc_requests": 2,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1
+      },
+      "estimated_cost_usd": 1.2e-05,
+      "cumulative_ledger_estimate_usd": 1.8146219999999782,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+      "sha256": "d918ca4dc5c22325e9886b410731460e024f2ac560819e10285d5e1c50449724"
+    },
+    "complexity": {
+      "unique_function_calls": 34,
+      "trace_frames": 105,
+      "complexity_class": "Moderate",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x1820a4b7618bde71dce8cdc73aab6c95905fad24",
+          "selector": "0x29965a1d"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "selector": "0x29029c16"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "selector": "0xd7f92205"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "selector": "0xdd6aa4cf"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "selector": "0xfb684805"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "selector": "0xfc9ec25d"
+        },
+        {
+          "address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "selector": "0x02e236bc"
+        },
+        {
+          "address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "selector": "0x5dcb7ab2"
+        },
+        {
+          "address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "selector": "0xf2465f09"
+        },
+        {
+          "address": "0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "selector": "0x375d59ba"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "selector": "0x522f9b37"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "selector": "0x5d61210d"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "selector": "0x8717293d"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "selector": "0xa3606b90"
+        },
+        {
+          "address": "0xb480ac726528d1c195cd3bb32f19c92e8d928519",
+          "selector": "0x01ffc9a7"
+        },
+        {
+          "address": "0xb480ac726528d1c195cd3bb32f19c92e8d928519",
+          "selector": "0x10d1e85c"
+        },
+        {
+          "address": "0xb480ac726528d1c195cd3bb32f19c92e8d928519",
+          "selector": "0xdd869c35"
+        },
+        {
+          "address": "0xb480ac726528d1c195cd3bb32f19c92e8d928519",
+          "selector": "0xf23a6e61"
+        },
+        {
+          "address": "0xbc2c5392b0b841832bec8b9c30747badda7b70ca",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "selector": "0x035d0c69"
+        },
+        {
+          "address": "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "selector": "0x54f2f7af"
+        },
+        {
+          "address": "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "selector": "0xd59e296e"
+        },
+        {
+          "address": "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "selector": "0xf97e7d74"
+        },
+        {
+          "address": "0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4",
+          "selector": "0xf9f5e1dd"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "selector": "0x2b04e840"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "selector": "0x731133e9"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "selector": "0xbc968326"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "selector": "0xf5298aca"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "selector": "0xf77ee79d"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 12,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 10
+      },
+      "estimated_cost_usd": 7.2e-05,
+      "cumulative_ledger_estimate_usd": 1.8146939999999776,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+    "status": "UNAVAILABLE",
+    "rpc_error": {
+      "code": -32000,
+      "message": "transaction 0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6 not found"
+    },
+    "reason": "callTracer returned no trace",
+    "accounting": {
+      "outbound_rpc_requests": 2,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1
+      },
+      "estimated_cost_usd": 1.2e-05,
+      "cumulative_ledger_estimate_usd": 1.8147059999999775,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+    "status": "UNAVAILABLE",
+    "rpc_error": {
+      "code": -32000,
+      "message": "transaction not found"
+    },
+    "reason": "callTracer returned no trace",
+    "accounting": {
+      "outbound_rpc_requests": 2,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1
+      },
+      "estimated_cost_usd": 1.2e-05,
+      "cumulative_ledger_estimate_usd": 1.8147179999999774,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json.gz",
+      "sha256": "4e320ca5852a4fc845634775368e7edeadb753fa085e1c1641c09edd30019a99"
+    },
+    "complexity": {
+      "unique_function_calls": 31,
+      "trace_frames": 60,
+      "complexity_class": "Moderate",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x01d6747dd2d65ddd90faec2c84727c2706ee28e2",
+          "selector": "0xab8a7e3f"
+        },
+        {
+          "address": "0x32fb1bedd95bf78ca2c6943ae5aeaeaafc0d97c1",
+          "selector": "0x"
+        },
+        {
+          "address": "0x32fb1bedd95bf78ca2c6943ae5aeaeaafc0d97c1",
+          "selector": "0x31f57072"
+        },
+        {
+          "address": "0x32fb1bedd95bf78ca2c6943ae5aeaeaafc0d97c1",
+          "selector": "0xa3a36f55"
+        },
+        {
+          "address": "0x32fb1bedd95bf78ca2c6943ae5aeaeaafc0d97c1",
+          "selector": "0xba0bba40"
+        },
+        {
+          "address": "0x32fb1bedd95bf78ca2c6943ae5aeaeaafc0d97c1",
+          "selector": "0xdb7c74b6"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0x55af6a32"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0x6a256b29"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0x9611cf6c"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0x9b22917d"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0x9ca17998"
+        },
+        {
+          "address": "0x382ccccbd3b142d7da063bf68cd0c89634767f76",
+          "selector": "0xfefc7c51"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x2e1a7d4d"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0x00fdd58e"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0x09cb66c4"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0x0a31b953"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0x15c7afb4"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0xa1d5f131"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0xe27ff0ad"
+        },
+        {
+          "address": "0x6a0b87d6b74f7d5c92722f6a11714dbeda9f3895",
+          "selector": "0xf3cbc88c"
+        },
+        {
+          "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+          "selector": "0xe0232b42"
+        },
+        {
+          "address": "0xd3c8d0cd07ade92df2d88752d36b80498ca12788",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xd3c8d0cd07ade92df2d88752d36b80498ca12788",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xd3c8d0cd07ade92df2d88752d36b80498ca12788",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xd3c8d0cd07ade92df2d88752d36b80498ca12788",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xd3c8d0cd07ade92df2d88752d36b80498ca12788",
+          "selector": "0xa9059cbb"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 10,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 8
+      },
+      "estimated_cost_usd": 6e-05,
+      "cumulative_ledger_estimate_usd": 1.814777999999977,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "base:0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json.gz",
+      "sha256": "bc6dfa335ceaf4e93f1d98950cb8c54e294ee0e3ea56b907cc14a9adb586a762"
+    },
+    "complexity": {
+      "unique_function_calls": 26,
+      "trace_frames": 67,
+      "complexity_class": "Moderate",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x169c06b4cfb09bfd73a81e6f2bb1eb514d75bb19",
+          "selector": "0x5cf73108"
+        },
+        {
+          "address": "0x169c06b4cfb09bfd73a81e6f2bb1eb514d75bb19",
+          "selector": "0x68930637"
+        },
+        {
+          "address": "0x169c06b4cfb09bfd73a81e6f2bb1eb514d75bb19",
+          "selector": "0xafda13e9"
+        },
+        {
+          "address": "0x169c06b4cfb09bfd73a81e6f2bb1eb514d75bb19",
+          "selector": "0xb187bd26"
+        },
+        {
+          "address": "0x169c06b4cfb09bfd73a81e6f2bb1eb514d75bb19",
+          "selector": "0xe5e31b13"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x2e1a7d4d"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0x4200000000000000000000000000000000000006",
+          "selector": "0xd0e30db0"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0x0902f1ac"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0x392f37e9"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0xec7e683d"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0xf140a35a"
+        },
+        {
+          "address": "0x94dac4a3ce998143aa119c05460731da80ad90cf",
+          "selector": "0xfff6cae9"
+        },
+        {
+          "address": "0xea8f89f47f3d4293897b4fe8cb69b5c233b9f560",
+          "selector": "0x"
+        },
+        {
+          "address": "0xea8f89f47f3d4293897b4fe8cb69b5c233b9f560",
+          "selector": "0xe2d6a23b"
+        },
+        {
+          "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215",
+          "selector": "0x313ce567"
+        },
+        {
+          "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xeb466342c4d449bc9f53a865d5cb90586f405215",
+          "selector": "0xa9059cbb"
+        },
+        {
+          "address": "0xfcd3842f85ed87ba2889b4d35893403796e67ff1",
+          "selector": "0x5c11d795"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 9,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 7
+      },
+      "estimated_cost_usd": 5.4e-05,
+      "cumulative_ledger_estimate_usd": 1.8148319999999765,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+      "sha256": "edd6eea379a59366aa8a8bc63326454d3c0b7b6cf3451a33e5a2e67eeca3f786"
+    },
+    "complexity": {
+      "unique_function_calls": 18,
+      "trace_frames": 201,
+      "complexity_class": "Moderate",
+      "definition": "Unique contract address and input selector pairs, verified with post-block code; empty input denotes fallback/receive. EOAs excluded. Self-destructed targets may need pre-state code.",
+      "unique_functions": [
+        {
+          "address": "0x253dd81d642220267ccac1d8202c0b96a92b299e",
+          "selector": "0x1f158c06"
+        },
+        {
+          "address": "0x3335a88bb18fd3b6824b59af62b50ce494143333",
+          "selector": "0x0b6b2d42"
+        },
+        {
+          "address": "0x33388cf69e032c6f60a420b37e44b1f5443d3333",
+          "selector": "0x060203eb"
+        },
+        {
+          "address": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+          "selector": "0x"
+        },
+        {
+          "address": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+          "selector": "0x18cbafe5"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "selector": "0xdd62ed3e"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x095ea7b3"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x23b872dd"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "selector": "0xdd62ed3e"
+        },
+        {
+          "address": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
+          "selector": "0x022c0d9f"
+        },
+        {
+          "address": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc",
+          "selector": "0x0902f1ac"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0x2e1a7d4d"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "selector": "0xa9059cbb"
+        }
+      ]
+    },
+    "accounting": {
+      "outbound_rpc_requests": 11,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 9
+      },
+      "estimated_cost_usd": 6.6e-05,
+      "cumulative_ledger_estimate_usd": 1.814897999999976,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+    "status": "CAPTURED_CALL_TRACE",
+    "artifact": {
+      "path": "reports/cohort_rebuild_v2/traces/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json.gz",
+      "sha256": "d83956d1215882612bb32cf2f89d1900ba2eb21e3ea5c8a2ae1eb4599865e144"
+    },
+    "complexity": {
+      "complexity_class": "UNRECOVERED",
+      "reason": "Historical contract code missing"
+    },
+    "accounting": {
+      "outbound_rpc_requests": 105,
+      "methods": {
+        "eth_chainId": 1,
+        "debug_traceTransaction": 1,
+        "eth_getCode": 103
+      },
+      "estimated_cost_usd": 0.00063,
+      "cumulative_ledger_estimate_usd": 1.8155099999999709,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  },
+  {
+    "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+    "status": "UNAVAILABLE",
+    "error_type": "RuntimeError",
+    "accounting": {
+      "outbound_rpc_requests": 1,
+      "methods": {
+        "eth_chainId": 1
+      },
+      "estimated_cost_usd": 6e-06,
+      "cumulative_ledger_estimate_usd": 1.8155159999999708,
+      "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+      "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+      "billing_confirmed": false,
+      "proxy_errors": []
+    }
+  }
+]

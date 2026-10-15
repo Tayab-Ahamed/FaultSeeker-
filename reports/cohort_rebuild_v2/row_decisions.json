@@ -2373,14 +2373,11 @@
     {
       "txn_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
       "chain": "polygon",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
+      "accepted": true,
+      "reasons": [],
       "rpc_identity_verified": true,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "FROZEN-231"
     },
@@ -5354,13 +5351,11 @@
       "chain": "arbitrum",
       "accepted": false,
       "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_OR_INVALID_RPC_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
+        "MISSING_OR_INVALID_RPC_EVIDENCE"
       ],
       "rpc_identity_verified": false,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     },
@@ -5588,15 +5583,11 @@
     {
       "txn_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
       "chain": "base",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_OR_INVALID_RPC_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
-      "rpc_identity_verified": false,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "accepted": true,
+      "reasons": [],
+      "rpc_identity_verified": true,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     },
@@ -13493,15 +13484,11 @@
     {
       "txn_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
       "chain": "eth",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_OR_INVALID_RPC_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
-      "rpc_identity_verified": false,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "accepted": true,
+      "reasons": [],
+      "rpc_identity_verified": true,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     },
@@ -16440,18 +16427,29 @@
       "annotation_verified": false,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
+    },
+    {
+      "txn_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "chain": "bsc",
+      "accepted": true,
+      "reasons": [],
+      "rpc_identity_verified": true,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
+      "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
+      "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     }
   ],
-  "input_rows": 1107,
-  "accepted_rows": 10,
+  "input_rows": 1108,
+  "accepted_rows": 14,
   "by_membership": {
     "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE": {
-      "audited": 861,
-      "accepted": 4
+      "audited": 862,
+      "accepted": 7
     },
     "FROZEN-231": {
       "audited": 231,
-      "accepted": 4
+      "accepted": 5
     },
     "ORIGINAL-15-CANDIDATES": {
       "audited": 15,
@@ -16459,9 +16457,9 @@
     }
   },
   "missing_counts": {
-    "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE": 1095,
-    "MISSING_OR_INVALID_RPC_EVIDENCE": 897,
-    "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS": 1095,
+    "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE": 1091,
+    "MISSING_OR_INVALID_RPC_EVIDENCE": 895,
+    "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS": 1091,
     "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED": 80
   }
 }

@@ -37,7 +37,12 @@ def publisher(url):
             'beosin_com':'Beosin','sharkteamorg':'SharkTeam','sharkteam_org':'SharkTeam'}.get(account)
     return {'blocksec.com':'BlockSec','certik.com':'CertiK','halborn.com':'Halborn',
         'slowmist.medium.com':'SlowMist','blocksecteam.medium.com':'BlockSec','beosin.medium.com':'Beosin',
-        'slowmist.com':'SlowMist','beosin.com':'Beosin','sharkteam.org':'SharkTeam'}.get(host)
+        'slowmist.com':'SlowMist','beosin.com':'Beosin','sharkteam.org':'SharkTeam',
+        'rekt.news':'Rekt','numencyber.com':'NumenCyber',
+        'blog.openzeppelin.com':'OpenZeppelin','openzeppelin.com':'OpenZeppelin',
+        'hacken.io':'Hacken','halborn.com':'Halborn','zellic.io':'Zellic',
+        'blog.zellic.io':'Zellic','dedaub.com':'Dedaub','verichains.io':'Verichains',
+        'coinspect.com':'Coinspect','chainlight.io':'ChainLight','ottersec.io':'OtterSec'}.get(host)
 
 
 def validate_suggestion(suggestion,case):
@@ -114,7 +119,12 @@ def prepare():
                 if text:
                     case['sources'].append({'url':url,'publisher':publisher(url),
                         'artifact':bind(ROOT/source['file'],ROOT),'text':text})
-    write_json(BASE/'consensus_cases.json',cases)
+    # Re-preparation must not erase explicit reviews or newly acquired sources.
+    target=BASE/'consensus_cases.json'
+    existing=json.loads(target.read_text()) if target.exists() else []
+    merged={c['id']:c for c in cases}
+    merged.update({c['id']:c for c in existing})
+    write_json(target,list(merged.values()))
     print('Independent-publisher-reference cases',len(cases),'sources',len(all_urls),
           'with readable publisher pairs',sum(len({s['publisher'] for s in c['sources']})>=2 for c in cases),flush=True)
 

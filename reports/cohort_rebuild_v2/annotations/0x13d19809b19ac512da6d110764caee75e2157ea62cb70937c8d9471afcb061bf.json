@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+  "chain": "bsc",
+  "is_exploit": true,
+  "vuln_type": "Unrestricted oracle update",
+  "adjudication_basis": "BlockSec and CertiK each identify an authorization failure in oracle submit; CertiK explicitly binds the drain execution. Other PoC constants, prior interactions and the generic PeckShield alert are not accepted as exploit rows or annotation evidence.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1523530484877209600",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/a5dac7564c1886e14e2d4f0288e9b6ae26b3c1f234fb61fbe2db979bf39bee47.gz",
+        "sha256": "2aaf983bf994a1547d74f184e26489ae403b82850b551355ae3164f98bcc6f12"
+      },
+      "vulnerability_class": "Unrestricted oracle update",
+      "mechanism_excerpt": "The `submit` function of the Chain oracle can be called by anyone and doesn\u2019t have a power verification."
+    },
+    {
+      "publisher_id": "CertiK",
+      "source_url": "https://www.certik.com/resources/blog/k6eZOpnK5Kdde7RfHBZgw-fortress-loans-exploit",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/13140ad4f4fc935949b7fc12d6d167d3a51fa5a1c27488e176925ada1227ddb2.gz",
+        "sha256": "9186cc53e1727a6318becf882dfd98f765790292297a0392eb4ab7db2277914a"
+      },
+      "vulnerability_class": "Unrestricted oracle update",
+      "mechanism_excerpt": "Attacker also manipulated the oracle by calling submit() function in the chain smart contract, where the requiredSignatures can be bypassed and power check is disabled in the deployment."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

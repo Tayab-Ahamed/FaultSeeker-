@@ -1,0 +1,45 @@
+{
+  "chain": "arbitrum",
+  "txn_hash": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+  "provider": "authorized-dRPC",
+  "provider_documentation": null,
+  "observed_at": "2026-10-15T13:00:18.046637+00:00",
+  "observation": {
+    "mode": "live-rpc",
+    "txn_hash": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+    "chain": "arbitrum",
+    "chain_id": 42161,
+    "provider": "authorized-dRPC",
+    "observed_at": "2026-10-15T13:00:18.928457+00:00",
+    "transaction": null,
+    "receipt": null,
+    "raw_responses": [
+      {
+        "id": 1,
+        "jsonrpc": "2.0",
+        "result": null
+      },
+      {
+        "id": 2,
+        "jsonrpc": "2.0",
+        "result": null
+      }
+    ],
+    "identity_receipt_match": false,
+    "scope": "One authenticated RPC provider; no independent label or second-node attestation"
+  },
+  "accounting": {
+    "outbound_rpc_requests": 3,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1
+    },
+    "estimated_cost_usd": 1.8e-05,
+    "cumulative_ledger_estimate_usd": 1.812089999999999,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}
