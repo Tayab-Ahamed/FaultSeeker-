@@ -2,14 +2,12 @@
   "id": 3,
   "claim": "Authentic 246-row cohort",
   "status": "UNVERIFIABLE",
-  "reason": "The 246-entry file now contains the original 231 plus 15 new canonical Ethereum transaction-reference candidates, not the original missing paper members. Full acceptance remains zero. Of 132 original Ethereum identities, 108 matched and 24 returned both RPC results null. New candidate receipts do not establish exploit roles or labels.",
-  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "reason": "Early 246 unique records existed (15 malformed hashes), then231/213/183. Original115 files cover114 unique tx; reconstructions48 are separate. No fully authenticated 246-row adjudicated cohort.",
+  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
   "requirements_unmet": [
-    "246 accepted row manifests",
-    "Two qualified independent label attestations per row",
-    "15 missing candidate rows"
+    "Frozen cohort with complete independent provenance and qualified annotation records"
   ],
-  "human_decision": "Next required input artifact: Author cohort manifest with corrected canonical identities and complete provenance/adjudication attachments",
+  "human_decision": "Next evidence input: Frozen cohort with complete independent provenance and qualified annotation records",
   "acceptance_tests": [
     "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
     "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
@@ -42,10 +40,36 @@
     {
       "path": "reports/provenance_hunt/frontiers.json",
       "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/canonical_history/manifest.json",
+      "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+    },
+    {
+      "path": "reports/canonical_history/cohort_history.json",
+      "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+    },
+    {
+      "path": "reports/canonical_history/findings.json",
+      "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+    },
+    {
+      "path": "reports/canonical_history/paper_vs_repo.json",
+      "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+    },
+    {
+      "path": "reports/canonical_history/history_search.json",
+      "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+    },
+    {
+      "path": "reports/canonical_history/accounting.json",
+      "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Author cohort manifest with corrected canonical identities and complete provenance/adjudication attachments",
+  "next_input_artifact": "Frozen cohort with complete independent provenance and qualified annotation records",
   "reopen_review_run": "provenance-hunt-2026-10-15",
-  "previous_decision": "reports/provenance_hunt/previous_decisions/03.json"
+  "previous_decision": "reports/canonical_history/previous_decisions/03.json",
+  "paper_verdict": "COUNT-EXISTS-AUTHENTICITY-UNVERIFIED",
+  "canonical_review_run": "canonical-history-review-2026-10-15"
 }
