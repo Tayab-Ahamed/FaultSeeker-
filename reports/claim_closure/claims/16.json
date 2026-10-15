@@ -1,0 +1,19 @@
+{
+  "id": 16,
+  "claim": "Query routing with theta gate",
+  "status": "VERIFIED",
+  "reason": "Tier-2 confidence/evidence gating demonstrably dispatches escalation and records both attempts at the provider boundary.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
