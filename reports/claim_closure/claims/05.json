@@ -1,0 +1,30 @@
+{
+  "id": 5,
+  "claim": "Ten chains and Ethereum 47.6%",
+  "status": "UNVERIFIABLE",
+  "reason": "The unadjudicated CSV has eight chains and 132/231 Ethereum rows; no accepted 246-row ten-chain corpus establishes the stated 47.6 percent share.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Authenticated ten-chain 246-row population",
+    "Measured chain shares on that population"
+  ],
+  "human_decision": "Authenticated ten-chain 246-row population; Measured chain shares on that population must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
