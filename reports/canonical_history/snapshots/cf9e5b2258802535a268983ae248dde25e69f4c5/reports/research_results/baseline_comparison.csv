@@ -1,0 +1,5 @@
+system,transactions,tp,fp,tn,fn,precision,recall,f1,f1_ci_low,f1_ci_high,false_positive_rate,mean_score
+Static proxy,1231,75,6,994,156,0.926,0.325,0.481,0.406,0.552,0.006,measured
+Dynamic trace-rule,1231,56,13,987,175,0.812,0.242,0.373,0.302,0.448,0.013,measured
+LLM-only,1231,127,57,943,104,0.69,0.55,0.612,0.559,0.667,0.057,measured
+FaultSeeker++ (Ours),1231,154,21,979,77,0.88,0.667,0.759,0.707,0.804,0.021,measured

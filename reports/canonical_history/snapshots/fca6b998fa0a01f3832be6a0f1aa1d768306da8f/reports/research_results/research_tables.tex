@@ -1,0 +1,82 @@
+% FaultSeeker++ Research Results — LaTeX Tables
+% Auto-generated to match JISA paper submission.
+% Source: reports/research_results/
+%
+% Table 4: Baseline comparison on 11,059 transactions
+% Table 5: Ablation study results
+% Table 6: Adversarial robustness results
+
+%% TABLE 4 — Baseline Comparison
+\begin{table}[h]
+\centering
+\caption{Baseline comparison on 11,059 transactions (1,059 exploit + 10,000 benign).
+         95\% bootstrap CI for F1 (ours): [0.961, 0.975].}
+\label{tab:baseline}
+\begin{tabular}{lrrrrc}
+\toprule
+System & Precision & Recall & F1 & FPR & TP \\
+\midrule
+Static proxy           & 0.845 & 0.236 & 0.369 & 0.005 & 250  \\
+Dynamic trace-rule     & 0.899 & 0.485 & 0.630 & 0.006 & 514  \\
+LLM-only               & 0.894 & 0.911 & 0.902 & 0.012 & 965  \\
+FaultSeeker++ (Ours)   & 0.972 & 0.966 & \textbf{0.969} & \textbf{0.003} & 1023 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% TABLE 5 — Ablation Study
+\begin{table}[h]
+\centering
+\caption{Ablation study results (N=11,059).}
+\label{tab:ablation}
+\begin{tabular}{lrrrr}
+\toprule
+Configuration & Precision & Recall & F1 & FPR \\
+\midrule
+Full system (Ours)        & 0.972 & 0.966 & \textbf{0.969} & 0.003 \\
+$-$FAEGL                  & 0.962 & 0.717 & 0.821 & 0.003 \\
+$-$TIG graph              & 0.911 & 0.956 & 0.933 & 0.010 \\
+$-$Learned calib.         & 0.673 & 0.973 & 0.795 & 0.050 \\
+$-$Adversarial hdg.       & 0.971 & 0.963 & 0.967 & 0.003 \\
+$-$LLM routing            & 1.000 & 0.823 & 0.903 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% TABLE 6 — Adversarial Robustness
+\begin{table}[h]
+\centering
+\caption{Adversarial robustness results (N=250 per attack type).}
+\label{tab:adversarial}
+\begin{tabular}{lrrrp{5cm}}
+\toprule
+Attack Type & $\Delta$Score & Degradation Rate & Retention $\rho$ & Interpretation \\
+\midrule
+Misleading function names   & $-$0.05 & 1.00 & 0.95 & Stage 2 LLM name-signal disrupted \\
+Prompt injection calldata   & $-$0.04 & 1.00 & 0.96 & Deterministic Stage 1 bounds LLM exposure \\
+Proxy obfuscation           & $-$0.03 & 1.00 & 0.97 & TIG topology absorbs edge relabelling \\
+Fake event emissions        & $-$0.02 & 1.00 & 0.98 & Benign tokens dilute but not dominate \\
+Recursive noise trace       & $+$0.00 & 0.00 & 1.00 & Shannon entropy invariant to appended noise \\
+\bottomrule
+\multicolumn{5}{l}{$\rho \geq 0.94$ across all five attack categories.} \\
+\end{tabular}
+\end{table}
+
+%% TABLE 2 — SSTORE Reentrancy Signals
+\begin{table}[h]
+\centering
+\caption{SSTORE-backed reentrancy detection signals and weights (Eq.\ 2).
+         OZ mutex slots are pre-filtered.}
+\label{tab:sstore}
+\begin{tabular}{lrl}
+\toprule
+Signal & $w_i$ & Description \\
+\midrule
+\texttt{repeated\_slot\_nested}   & 0.55 & Same slot rewritten across nested frames, depth span $\geq 2$ \\
+\texttt{write\_after\_ext\_call}  & 0.25 & SSTORE after a mutating CALL boundary \\
+\texttt{same\_func\_reentered}    & 0.20 & Same (callee, selector) reappears deeper on stack \\
+\texttt{write\_before\_and\_after}& 0.20 & State write before and after external call, same frame \\
+\texttt{same\_slot\_rewritten}    & 0.10 & Same slot written $\geq 2$ times in any context \\
+\bottomrule
+\end{tabular}
+\end{table}

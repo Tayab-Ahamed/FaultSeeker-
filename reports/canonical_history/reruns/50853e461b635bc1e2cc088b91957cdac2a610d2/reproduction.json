@@ -1,0 +1,51 @@
+{
+  "commit": "50853e461b635bc1e2cc088b91957cdac2a610d2",
+  "exit_code": 0,
+  "inputs": [
+    {
+      "path": "benchmark/run_honest_experiments.py",
+      "sha256": "ee533cf5da6893ca65f8a52dab26e8fb7e6934ebc62abac5b7cfee0d03ef9a6b",
+      "git_blob_sha1": "6d9a06de0f5995961aeffc02535fab4d30eb12f2"
+    },
+    {
+      "path": "benchmark/benchmark_classification_fixed.csv",
+      "sha256": "9de48282363d44373459ea3253a99c5548e0ef51e2c0db3ed16dad71adaf8032",
+      "git_blob_sha1": "01f26feb7e5b561c4deaa9addcb336eb783dc217"
+    },
+    {
+      "path": "benchmark/imported/benign_traces.csv",
+      "sha256": "a407cee13a1aded8d7243f6c191cea681f95801f28d6102e0f2a1f7a1f76a73c",
+      "git_blob_sha1": "bfc1f6b841a17e670c8f8d337cf42d502ccf97fc"
+    },
+    {
+      "path": "benchmark/honest_eval/features.py",
+      "sha256": "472a3981082f0633ce1ce36917ca8fa0b9b62648357264ffe37ad5d0a6b92bb6",
+      "git_blob_sha1": "675a8b814396382eedde9d9fc413a3e89ce894ce"
+    },
+    {
+      "path": "benchmark/honest_eval/leakage_guard.py",
+      "sha256": "57ba66bf499b4f018b52d6d289142b138860a69f6a82ed9b716dab4dbc7a72c6",
+      "git_blob_sha1": "a199aa644829c6f8f490f8f27833cb7c27ec6c43"
+    },
+    {
+      "path": "benchmark/honest_eval/metrics.py",
+      "sha256": "825afd213a3543313ad0a61576d0393970dcba6711f8ea314a36af54850b9cad",
+      "git_blob_sha1": "708f8f64e29355bd49545ba368a2d672307c5fb2"
+    },
+    {
+      "path": "faultseeker/research/calibration.py",
+      "sha256": "c7e42cf9e84e494ed879578b06c362aa10aba74be79cb8072f7fbe4f3820a4f3",
+      "git_blob_sha1": "746a3c8983f2df14f9b0b209865f63db5f0ece47"
+    },
+    {
+      "path": "benchmark/imported/hf_ethereum_benign_transactions.csv",
+      "sha256": "e85f88ad321e0d9f9b1c3193cfe5047c586751d1c52f891ba4d032ce9137529c",
+      "git_blob_sha1": "99e9dd510d7c02a75af095b0906e8b962e190330"
+    }
+  ],
+  "scope": "Offline historical proxy/feature scorer arithmetic, not paper mechanism evaluation",
+  "hyperparameters": "Original defaults, no override, no tuning, no allow-incomparable",
+  "network_requests": 0,
+  "paid_cost_usd": 0,
+  "status": "OK"
+}

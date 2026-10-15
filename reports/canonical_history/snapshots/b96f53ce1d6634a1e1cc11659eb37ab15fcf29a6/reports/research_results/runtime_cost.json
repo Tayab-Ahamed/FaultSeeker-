@@ -1,0 +1,39 @@
+{
+  "generated_by": "benchmark/compute_cost.py (audit-fixes)",
+  "generated_at": "2026-10-06T13:27:53.363776+00:00",
+  "git_commit": "fca6b99",
+  "methodology": "Modeled from the paper \u00a76.7 inputs and CostTracker.DEFAULT_PRICING (local tier = $0). NOT a measured run: no production query log exists in the repo. Replaces the hand-typed runtime_cost.json.",
+  "pricing_source": "faultseeker/research/cost_tracker.py: DEFAULT_PRICING",
+  "local_tier_pricing_usd_per_1m_tokens": {
+    "prompt": 0.0,
+    "completion": 0.0
+  },
+  "inputs": {
+    "tier_fractions": {
+      "tier1": 0.5,
+      "tier2": 0.3,
+      "tier3": 0.2
+    },
+    "tier2_hybrid_cost_per_query_usd": 0.05,
+    "tier2_cloud_cost_per_query_usd": 0.12,
+    "tier3_cost_per_query_usd": 0.12,
+    "inputs_note": "per-query costs embed assumed token counts; they are paper inputs, not measurements"
+  },
+  "computed": {
+    "hybrid_cost_per_query_usd": 0.039,
+    "cloud_only_cost_per_query_usd": 0.06,
+    "cost_reduction_pct": 35.0
+  },
+  "correction": {
+    "old_claim_pct": 58,
+    "old_claim_status": "REMOVED \u2014 was Tier-2-only saving, mislabeled as overall",
+    "tier2_only_saving_pct": 58.3,
+    "tier2_only_note": "(0.12-0.05)/0.12 = 58.3%: the old headline number. It ignores Tier 1 (deterministic, $0 in both modes) and Tier 3 (cloud in both modes)."
+  },
+  "latency": null,
+  "latency_note": "REMOVED \u2014 the old stage1/stage23 latency figures (2.3s, 8.1s, 3.4s) had no measurement behind them. Measure with CostTracker stage timings on a real run.",
+  "benign_prefilter": {
+    "status": "mechanism implemented (audit-fixes), rate unmeasured",
+    "note": "RuleClassifier Rule 0 now emits BENIGN and the pipeline skips Stage 2. The old \"40% of Stage 2 calls avoided\" was never measured; no rate is claimed here."
+  }
+}

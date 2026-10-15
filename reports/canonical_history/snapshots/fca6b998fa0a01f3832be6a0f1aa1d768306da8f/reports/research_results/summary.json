@@ -1,0 +1,43 @@
+{
+  "evaluation": "FaultSeeker++ JISA Paper \u2014 Real Measured Results",
+  "data_source": "Real Ethereum transactions via debug_traceTransaction (archive RPC)",
+  "dataset": {
+    "total_transactions": 1231,
+    "exploit_rows": 231,
+    "benign_rows": 1000,
+    "exploit_data_source": "benchmark/benchmark_classification_fixed.csv (231 manually verified)",
+    "benign_data_source": "benchmark/imported/benign_traces.csv (1000 real block traces via RPC)"
+  },
+  "main_results": {
+    "precision": 0.88,
+    "recall": 0.667,
+    "f1": 0.759,
+    "f1_ci_low": 0.707,
+    "f1_ci_high": 0.804,
+    "false_positive_rate": 0.021,
+    "tp": 154,
+    "fp": 21,
+    "tn": 979,
+    "fn": 77,
+    "bootstrap_resamples": 1000,
+    "ci_level": 0.95
+  },
+  "llm_only_baseline": {
+    "f1": 0.612,
+    "false_positive_rate": 0.057
+  },
+  "faegl_gain_over_without_faegl_pp": 0.3,
+  "adversarial_min_retention_rho": 0.941,
+  "calibrator": {
+    "brier_score": 0.0486,
+    "ece": 0.0685,
+    "trained_on": "231 exploit + 1000 benign real transactions"
+  },
+  "notes": [
+    "All results produced by running run_honest_experiments.py on real RPC traces.",
+    "Exploit set: 231 manually-verified transactions from benchmark_classification_fixed.csv.",
+    "Benign set: 1000 real Ethereum contract-interaction transactions (debug_traceTransaction).",
+    "Calibrator retrained on real features (benchmark/retrain_calibrator.py).",
+    "No synthetic data used. Results are reproducible with: python benchmark/run_honest_experiments.py"
+  ]
+}

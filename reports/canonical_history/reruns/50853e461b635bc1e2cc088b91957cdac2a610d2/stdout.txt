@@ -1,0 +1,9 @@
+Evaluated 1231 transactions across 8 scorers.
+  Static proxy                     F1=0.4902 CI=[0.4158,0.5607] FPR=0.0000
+  Dynamic trace-rule               F1=0.3902 CI=[0.3148,0.4675] FPR=0.0000
+  LLM-only                         F1=0.7095 CI=[0.6551,0.7603] FPR=0.0000
+  FaultSeeker++ (Ours)             F1=0.8593 CI=[0.8223,0.8950] FPR=0.0000
+  -FAEGL                           F1=0.8564 CI=[0.8204,0.8922] FPR=0.0000
+  -TIG graph                       F1=0.8786 CI=[0.8438,0.9111] FPR=0.0000
+  -Learned calib                   F1=0.9452 CI=[0.9206,0.9666] FPR=0.0000
+  -LLM routing                     F1=0.8593 CI=[0.8223,0.8950] FPR=0.0000
