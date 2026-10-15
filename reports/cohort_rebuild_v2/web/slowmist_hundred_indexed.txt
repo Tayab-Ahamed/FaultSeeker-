@@ -1,0 +1,222 @@
+Retrieval: web tool indexed extraction; direct HTTP returned 403. Source URL: https://slowmist.medium.com/another-day-another-reentrancy-attack-5cde10bbb2b4
+Medium (https://slowmist.medium.com/another-day-another-reentrancy-attack-5cde10bbb2b4)
+citeturn87view0 [wordlim: 200] Crawled: last month; Content type: text/html; Source: open({"ref_id":"https://slowmist.medium.com/another-day-another-reentrancy-attack-5cde10bbb2b4","lineno":null}); Total lines: 295
+L0: cite0†Sitemap L1: 
+L2: cite1†Open in app†play.google.com L3: 
+L4: [Button: Sign up]
+L5: 
+L6: cite2†Sign in†medium.com L7: 
+L8: [Input: Search]
+L9: 
+L10: Get app
+L11: 
+L12: cite3†Write†medium.com L13: 
+L14: cite4†Search†medium.com L15: 
+L16: [Button: Sign up]
+L17: 
+L18: cite2†Sign in†medium.com L19: 
+L20: cite5†Image: Unknown user†miro.medium.com L21: 
+L22: cite6†Gnosis†medium.com L23: 
+L24: cite7†Xdai†medium.com L25: 
+L26: cite8†Hacking†medium.com L27: # Another Day, Another Reentrancy Attack
+L28: 
+L29: cite9†SlowMist L30: 
+L31: 4 min read
+L32: 
+L33: ·
+L34: 
+L35: Mar 17, 2022
+L36: 
+L37: --
+L38: 
+L39: cite10†Listen†medium.com L40: 
+L41: Share
+L42: 
+L43: Press enter or click to view image in full size
+L44: 
+L45: On March 16, 2022, the SlowMist Intelligent Zone received a notification regarding a vulnerability in the Hundred Finance protocol that cost over 2363 ETH. We immediately looked into the incident and will now be sharing our findings.
+L46: 
+L47: Relevant information
+L48: Hundred Fiance is a decentralized lending and borrowing protocol across various blockchains.
+L49: 
+L50: Address involved
+L51: 
+L52: Attacker contract:
+L53: cite11†https://blockscout.com/xdai/mainnet/address/0xdbf225e3d626ec31f502d435b0f72d82b08e1bdd†blockscout.com L54: Attacker address:
+L55: cite12†https://blockscout.com/xdai/mainnet/address/0xD041Ad9aaE5Cf96b21c3ffcB303a0Cb80779E358†blockscout.com L56: Attack Transaction: cite13†https://blockscout.com/xdai/mainnet/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098†blockscout.com L57: Attacker contract:
+L58: cite11†https://blockscout.com/xdai/mainnet/address/0xdbf225e3d626ec31f502d435b0f72d82b08e1bdd†blockscout.com L59: cite14†https://blockscout.com/xdai/mainnet/address/0xbE8fe2aE087aeCcB1E46EF206368421c9212637B†blockscout.com L60: cite15†https://blockscout.com/xdai/mainnet/address/0x09b4f2551e9f39fa021a99463e21d6044656a7b9†blockscout.com L61: cite16†https://blockscout.com/xdai/mainnet/address/0xf07ac43678b408ff0c86efff99b8d21af3d38c51†blockscout.com L62: cite17†https://blockscout.com/xdai/mainnet/address/0x9c4e6edbc45b16e4378b53cd3e261727e103f633†blockscout.com L63: Attacked contract:
+L64: cite18†https://blockscout.com/xdai/mainnet/address/0x243E33aa7f6787154a8E59d3C27a66db3F8818ee†blockscout.com husdc
+L65: cite19†https://blockscout.com/xdai/mainnet/address/0xe4e43864ea18d5e5211352a4b810383460ab7fcc†blockscout.com hwbtc
+L66: cite20†https://blockscout.com/xdai/mainnet/address/0x8e15a22853a0a60a0fbb0d875055a8e66cff0235†blockscout.com heth
+L67: cite21†https://blockscout.com/xdai/mainnet/address/0x090a00a2de0ea83def700b5e216f87a5d4f394fe†blockscout.com hxdai
+L68: 
+L69: Cause of incident
+L70: The borrowFresh function within the Hundred Finance contract checks the funds after they’ve been transferred. Since USDC, wBTC, and wETH use the ERC677 token protocol, it means they are compatible with the ERC20 protocol. Once the funds have been transferred, the ERC677 protocol can call the onTokenTransfer function in the target contract, allowing the hacker to perform reentrancy attacks using a malicious contract.
+L71: 
+L72: Detailed Analysis
+L73: ## Get SlowMist’s stories in your inbox
+L74: 
+L75: Join Medium for free to get updates from this writer.
+L76: 
+L77: [Input: Enter your email]
+L78: 
+L79: [Button: Subscribe]
+L80: 
+L81: [Button: Subscribe]
+L82: 
+L83: [Input]
+L84: 
+L85: Remember me for faster sign in
+L86: 
+L87: 1.The hacker borrowed millions via flash-loans to be used collateral. Details below.
+L88: 
+L89: Press enter or click to view image in full size
+L90: 
+L91: 2.Using malicious contracts, the hacker deposited millions in USDC as collateral and exchanged it for 59,999,789.075 (hUDSC).
+L92: Press enter or click to view image in full size
+L93: 
+L94: Since the loan contract records the funds after the transfer, the hacker is able to start their attack simultaneously with the transfer.
+L95: 
+L96: Press enter or click to view image in full size
+L97: On the XDai chain, USDC, WBTC, and WETH contain post-transfer callback procedures. This allows malicious contracts to re-enter the WBTC loan contract after USDC has been transferred. Since there’s no record of borrowing USDC yet, the contract borrowed 16.17030715 in WBTC , re-entered the WETH loan contract and borrow additional 24.715930916595319168 WETH.
+L98: 
+L99: Press enter or click to view image in full size
+L100: 3.The contract then transferred 1,964,607 USDC to the USDC loan contract as collateral for 98,230,019.558 in hUSDC. Next, it borrowed 1,748,500.495 USDC from the pool, and re-entered it into the xDai loan contract.
+L101: The xDai was then transferred and exchanged for 234,304,737.048 in hxDAI. The malicious contract continued to borrow xDai and 4,128,044.631 USDC from the USDC loan contract. The attacker then transferred 1,358,759.278 USDC to the USDC loan contract again, and obtained 67,937,725.081 in hUSDC this time. They repeated this step again and borrowed 1,209,295.758 USDC from the USDC loan contract.
+L102: 
+L103: Press enter or click to view image in full size
+L104: 4.Finally, the contract returned all the borrowed funds from the flashloan to SushiSwap, and then transferred the remaining funds to the hackers address.
+L105: 
+L106: Press enter or click to view image in full size
+L107: 
+L108: MistTrack
+L109: 
+L110: According to our cite22†MistTrack†misttrack.io analysis, the initial funds were transferred in from Tornado.Cash. Once the stolen funds were deposited into their account, it was converted to ETH and bridge to the Ethereum network.
+L111: 
+L112: Press enter or click to view image in full size
+L113: In total, more than 2,363 ETH was converted from the stolen funds. It was then deposited into Tornado.Cash in 32 separate transactions to avoid tracking.
+L114: 
+L115: Summary
+L116: 
+L117: This attack was caused by the borrowFresh function in the loan contract. It does not verify token transfers before the funds are transferred. This allows malicious contracts to re-enter other loan contracts after the transfer.
+L118: The SlowMist security team recommends that when using non-ERC20 token contracts, projects should pay more attention to see if they’re compatible. Contract amounts should be recorded before token transfers, and the Checks-Effects-Interactions rules should be followed to avoid issues like this in the future.
+L119: 
+L120: cite6†Gnosis†medium.com L121: 
+L122: cite7†Xdai†medium.com L123: 
+L124: cite8†Hacking†medium.com L125: 
+L126: --
+L127: 
+L128: --
+L129: 
+L130: cite9†Written by SlowMist L131: 
+L132: cite23†4.2K followers L133: 
+L134: ·cite24†6 following L135: SlowMist is a Blockchain security firm established in 2018, providing services such as security audits, security consultants, red teaming, and more.
+L136: 
+L137: cite25†Help†help.medium.com L138: 
+L139: cite26†Status†status.medium.com L140: 
+L141: cite27†About†medium.com L142: 
+L143: cite28†Careers†medium.com L144: 
+L145: Press (pressinquiries@medium.com)
+L146: 
+L147: cite29†Blog†blog.medium.com L148: 
+L149: cite30†Store†medium.com L150: 
+L151: cite31†Privacy†policy.medium.com L152: 
+L153: cite32†Rules†policy.medium.com L154: 
+L155: cite33†Terms†policy.medium.com L156: 
+L157: cite34†Text to speech†speechify.com L158: ## No responses yet
+L159: ## More from SlowMist
+L160: 
+L161: cite35†Image: SlowMist: Another Airdrop Scam, but with a twist†miro.medium.com L162: 
+L163: cite9†SlowMist L164: 
+L165: ·
+L166: 
+L167: Nov 14, 2022
+L168: 
+L169: cite36†SlowMist: Another Airdrop Scam, but with a twist Airdrop Scam L170: 
+L171: cite36†2 L172: 
+L173: cite37†Image: Coldcard $111 Million Theft: A Deep Dive into the Private Key Vulnerability†miro.medium.com L174: 
+L175: cite9†SlowMist L176: 
+L177: ·
+L178: 
+L179: Aug 12
+L180: cite38†Coldcard $111 Million Theft: A Deep Dive into the Private Key Vulnerability This article is for both humans and AI to read and analyze. Import it into an AI system to reproduce the analysis. L181: 
+L182: cite39†Image: A Cross-Chain Attack Spanning One Month: Analysis of the Allbridge Hack†miro.medium.com L183: 
+L184: cite9†SlowMist L185: 
+L186: ·
+L187: 
+L188: Aug 22
+L189: 
+L190: cite40†A Cross-Chain Attack Spanning One Month: Analysis of the Allbridge Hack Background L191: 
+L192: cite41†Image: Beware of Solidity Pro: A Targeted Poisoning Attack on Web3 Developers†miro.medium.com L193: cite9†SlowMist L194: 
+L195: ·
+L196: 
+L197: Aug 19
+L198: 
+L199: cite42†Beware of Solidity Pro: A Targeted Poisoning Attack on Web3 Developers Background L200: 
+L201: cite9†See all from SlowMist L202: ## Recommended from Medium
+L203: 
+L204: cite43†Image: Elderly man sitting at a wooden table, working on a laptop indoors.†miro.medium.com L205: 
+L206: In
+L207: 
+L208: cite44†The Daily Draft†medium.com L209: 
+L210: by
+L211: 
+L212: cite45†Matt Lillywhite†mattthenomad.medium.com L213: 
+L214: ·
+L215: 
+L216: Jul 7
+L217: 
+L218: cite46†I’ll Instantly Know A Writer Used ChatGPT When I See This It’s pretty damn obvious now that I know what to look for.†mattthenomad.medium.com L219: 
+L220: cite46†1156†mattthenomad.medium.com L221: 
+L222: cite47†Image: I Found 15 Critical Vulnerabilities in One Afternoon†miro.medium.com L223: cite48†Ismail Tasdelen†ismailtasdelen.medium.com L224: 
+L225: ·
+L226: 
+L227: Jul 26
+L228: 
+L229: cite49†I Found 15 Critical Vulnerabilities in One Afternoon The adrenaline rush of a successful bug bounty hunt, followed by the weight of responsibility.†ismailtasdelen.medium.com L230: 
+L231: cite49†7†ismailtasdelen.medium.com L232: 
+L233: cite50†Image: 10 Websites Better Than Another Hour of Doomscrolling†miro.medium.com L234: 
+L235: In
+L236: 
+L237: cite51†The Sunday Journal†medium.com L238: 
+L239: by
+L240: 
+L241: cite52†Rafia Naseem†medium.com L242: 
+L243: ·
+L244: 
+L245: Jul 18
+L246: cite53†10 Websites Better Than Another Hour of Doomscrolling Here’s to the rabbit holes worth taking!†medium.com L247: 
+L248: cite53†388†medium.com L249: 
+L250: cite54†Image: Agentic AI Red Teaming: How to Start From Scratch in 2026 (100% Free Resources)†miro.medium.com L251: 
+L252: cite55†Taimur Ijlal†taimurcloud123.medium.com L253: 
+L254: ·
+L255: 
+L256: Aug 1
+L257: 
+L258: cite56†Agentic AI Red Teaming: How to Start From Scratch in 2026 (100% Free Resources)The Hugging Face Attack Has Made Agentic AI Red Teaming a red hot career ..†taimurcloud123.medium.com L259: cite56†16†taimurcloud123.medium.com L260: 
+L261: cite57†Image: Stop Building a 2003 SOC with AI: Triage Must Die (Part 2)†miro.medium.com L262: 
+L263: In
+L264: 
+L265: cite58†Anton on Security†medium.com L266: 
+L267: by
+L268: 
+L269: cite59†Anton Chuvakin†medium.com L270: 
+L271: ·
+L272: 
+L273: Aug 11
+L274: 
+L275: cite60†Stop Building a 2003 SOC with AI: Triage Must Die (Part 2)(with key ideas from Augusto Barros)†medium.com L276: 
+L277: cite60†5†medium.com L278: 
+L279: cite61†Image: 10 Google Dorks Every Bug Bounty Hunter Should Know†miro.medium.com L280: 
+L281: In
+L282: 
+L283: cite62†MeetCyber†meetcyber.net L284: 
+L285: by
+L286: 
+L287: cite63†Monika†medium.com L288: 
+L289: ·
+L290: 
+L291: 4d ago
+L292: cite64†10 Google Dorks Every Bug Bounty Hunter Should Know Discover the Google Dorks I use during reconnaissance to uncover publicly indexed pages, files, and endpoints more efficiently.†medium.com L293: 
+L294: cite65†See more recommendations†medium.com 
+

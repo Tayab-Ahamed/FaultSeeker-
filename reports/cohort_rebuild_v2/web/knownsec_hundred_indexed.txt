@@ -1,0 +1,117 @@
+Retrieval: web tool indexed extraction of original Knownsec Blockchain Lab report. Source URL: https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9
+Knownsec Blockchain Lab | Hundred and Agave Flash Loan Attack Analysis | by Knownsec Blockchain Lab | Medium (https://medium.com/%40Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9)
+citeturn90view0 [wordlim: 200] Crawled: 1.6 years ago; Content type: text/html; Source: open({"ref_id":"https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9","lineno":null}); Redirected to URL: https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9; Total lines: 134
+L0: cite0†Open in app†rsci.app.link L1: 
+L2: Sign up
+L3: 
+L4: cite1†Sign in L5: 
+L6: cite2†Write L7: 
+L8: Sign up
+L9: 
+L10: cite1†Sign in L11: 
+L12: cite17†Image†medium.com L13: 
+L14: # Knownsec Blockchain Lab | Hundred and Agave Flash Loan Attack Analysis
+L15: 
+L16: cite18†Image: Knownsec Blockchain Lab†medium.com L17: 
+L18: cite3†Knownsec Blockchain Lab L19: 
+L20: ·
+L21: 
+L22: cite4†Follow L23: 
+L24: 4 min read
+L25: 
+L26: ·
+L27: 
+L28: Mar 16, 2022
+L29: 
+L30: --
+L31: 
+L32: Listen
+L33: 
+L34: Share
+L35: # Preface
+L36: 
+L37: On the evening of March 15 Beijing time, Knownsec Blockchain Lab monitored that both Knownsec Blockchain Lab and Agave, the lending-like protocols on the Gnosis chain, had suffered a lightning loan attack, including Agave, a branch of AAVE, and Hundred Finance, a branch of Compound. the protocol lost over $11 million. Project parties have now suspended hundreds of their markets.
+L38: 
+L39: Knownsec Blockchain Lab was the first to track this incident and analyze it.
+L40: 
+L41: # Analysis
+L42: ## Attacker-related information
+L43: 
+L44: Hundred Finance was attacked tx.
+L45: 
+L46: 0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098
+L47: 
+L48: Attack contract: 0xdbf225e3d626ec31f502d435b0f72d82b08e1bdd
+L49: 
+L50: Attack Address: 0xd041ad9aae5cf96b21c3ffcb303a0cb80779e358
+L51: 
+L52: Cross-chain anonymization after the attack: https://etherscan.io/txs?a=0xd041ad9aae5cf96b21c3ffcb303a0cb80779e358
+L53: 
+L54: Agave was attacked tx.
+L55: 
+L56: 0xa262141abcf7c127b88b4042aee8bf601f4f3372c9471dbd75cb54e76524f18e
+L57: Attack contract: 0xF98169301B06e906AF7f9b719204AA10D1F160d6
+L58: 
+L59: Attack Address: 0x0a16a85be44627c10cee75db06b169c7bc76de2c
+L60: 
+L61: Cross-chain anonymization after the attack: https://etherscan.io/txs?a=0x0a16a85be44627c10cee75db06b169c7bc76de2c
+L62: ## Attack process
+L63: 
+L64: Since the Hundred Finance and Agave attack processes and techniques are similar, we use Hundred Finance for our analysis.
+L65: 
+L66: Hundred Finance attack invocation process
+L67: 
+L68: 1.The attacker uses contracts to lend WXDAI and USDC in three pools using lightning loans
+L69: 
+L70: 2.A portion of the USDC lent in the WETH pool pledge
+L71: 
+L72: 3.Use re-entry to leverage a pledge and over-lend funds in the pool
+L73: 
+L74: 4.Repeat the pledge-re-entry lending step to over-lend the other two pool assets
+L75: 
+L76: 5. Returning the flash loan
+L77: 6. Profit transfer
+L78: ## Vulnerability details
+L79: 
+L80: The root cause of this problem is due to a callback (callAfterTransfer function) implemented in the official bridge token xDAI contract on the Gnosis chain for the to address
+L81: 
+L82: The contract is implemented： athttps://blockscout.com/xdai/mainnet/address/0xf8D1677c8a0c961938bf2f9aDc3F3CFDA759A9d9/contracts
+L83: This callback would have directly led to the creation of the reentry vulnerability, and because the check-validate-interaction (another way to prevent reentry) was not strictly followed in the Compound version of the Hundred Finance team fork, which in turn led to the total debits being updated later than the reentry implementation. Ultimately the attacker was able to overborrow.
+L84: Similarly, for the Agave project side, an attacker using the internal call to the liquidateCall function will call the callAfterTransfer method of xDAI to make a callback, ultimately resulting in the attacker being able to debit again.
+L85: 
+L86: The call path reentered by the attacker in the Hundred Finance attack is as follows：
+L87: 
+L88: In the Agave attack the attacker callback path (callback on internal call when calling liquidateCall) is as follows：
+L89: # Summary
+L90: 
+L91: The two lending projects that suffered from this attack caused the problem due to the wrong introduction of the reentrant token and the failure of the project’s fork code to use the check-validate-interact pattern.
+L92: 
+L93: We emphasize that the citation of a good project must be based on sufficient understanding and rigorous development, especially the existence of differentiated parts, do not lose sight of the end because of a small error leads to the total loss of the project.
+L94: Recently, various types of contract vulnerability security incidents have occurred frequently, contract audits, risk control measures, contingency plans, etc. are necessary to effectively implement.
+L95: 
+L96: --
+L97: 
+L98: --
+L99: 
+L100: cite19†Image: Knownsec Blockchain Lab†medium.com L101: 
+L102: cite20†Image: Knownsec Blockchain Lab†medium.com L103: 
+L104: Follow
+L105: 
+L106: cite5†Written by Knownsec Blockchain Lab L107: 
+L108: cite6†140 Followers L109: 
+L110: ·cite7†1 Following L111: 
+L112: Follow
+L113: ## No responses yet
+L114: 
+L115: cite8†Help†help.medium.com L116: 
+L117: cite9†Status†medium.statuspage.io L118: 
+L119: cite10†About L120: 
+L121: cite11†Careers L122: 
+L123: Press
+L124: 
+L125: cite12†Blog†blog.medium.com L126: 
+L127: cite13†Privacy†policy.medium.com L128: 
+L129: cite14†Terms†policy.medium.com L130: 
+L131: cite15†Text to speech†speechify.com L132: 
+L133: cite16†Teams 
+

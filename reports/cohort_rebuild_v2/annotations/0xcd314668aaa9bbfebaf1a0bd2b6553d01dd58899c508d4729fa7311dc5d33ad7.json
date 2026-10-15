@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Flash-loan governance capture",
+  "adjudication_basis": "CertiK explicitly distinguishes proposal setup transaction 68cdec from execution cd314; only execution is admitted here. Halborn independently analyzes flash-loan-funded governance capture. Financing alone is not the annotation: instantaneous voting power and emergency execution are the failed governance invariant.",
+  "independent_observations": [
+    {
+      "publisher_id": "CertiK",
+      "source_url": "https://www.certik.com/blog/revisiting-beanstalk-farms-exploit",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+        "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+      },
+      "vulnerability_class": "Flash-loan governance capture",
+      "mechanism_excerpt": "The exploiter deposited all gained assets from the flash loan into a Beanstalk Diamond contract and voted for the malicious BIP18 proposal."
+    },
+    {
+      "publisher_id": "Halborn",
+      "source_url": "https://www.halborn.com/blog/post/explained-the-beanstalk-hack-april-2022",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/0f04765fc43f47a50be47f152d0e24f21182c2c6e62bae5282f5cfa7c666e759.gz",
+        "sha256": "6376665e84817da779baffe8bd73bec5e5a1110bc07e8b142f39456885ecbd2a"
+      },
+      "vulnerability_class": "Flash-loan governance capture",
+      "mechanism_excerpt": "the attacker was able to use a flashloan to perform a large deposit to the Diamond contract."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

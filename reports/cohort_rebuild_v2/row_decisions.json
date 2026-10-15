@@ -3458,14 +3458,11 @@
     {
       "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
       "chain": "eth",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
+      "accepted": true,
+      "reasons": [],
       "rpc_identity_verified": true,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ORIGINAL-15-CANDIDATES"
     },
@@ -3500,14 +3497,11 @@
     {
       "txn_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
       "chain": "eth",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
+      "accepted": true,
+      "reasons": [],
       "rpc_identity_verified": true,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ORIGINAL-15-CANDIDATES"
     },
@@ -3856,15 +3850,11 @@
     {
       "txn_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
       "chain": "fantom",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_OR_INVALID_RPC_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
-      ],
-      "rpc_identity_verified": false,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "accepted": true,
+      "reasons": [],
+      "rpc_identity_verified": true,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     },
@@ -4474,10 +4464,9 @@
       "accepted": false,
       "reasons": [
         "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_OR_INVALID_RPC_EVIDENCE",
         "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS"
       ],
-      "rpc_identity_verified": false,
+      "rpc_identity_verified": true,
       "independent_security_publishers": 0,
       "annotation_verified": false,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
@@ -4591,15 +4580,11 @@
     {
       "txn_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
       "chain": "gnosis",
-      "accepted": false,
-      "reasons": [
-        "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE",
-        "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS",
-        "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED"
-      ],
-      "rpc_identity_verified": false,
-      "independent_security_publishers": 0,
-      "annotation_verified": false,
+      "accepted": true,
+      "reasons": [],
+      "rpc_identity_verified": true,
+      "independent_security_publishers": 2,
+      "annotation_verified": true,
       "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication",
       "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE"
     },
@@ -16458,11 +16443,11 @@
     }
   ],
   "input_rows": 1107,
-  "accepted_rows": 6,
+  "accepted_rows": 10,
   "by_membership": {
     "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE": {
       "audited": 861,
-      "accepted": 2
+      "accepted": 4
     },
     "FROZEN-231": {
       "audited": 231,
@@ -16470,13 +16455,13 @@
     },
     "ORIGINAL-15-CANDIDATES": {
       "audited": 15,
-      "accepted": 0
+      "accepted": 2
     }
   },
   "missing_counts": {
-    "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE": 1099,
-    "MISSING_OR_INVALID_RPC_EVIDENCE": 899,
-    "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS": 1099,
-    "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED": 81
+    "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE": 1095,
+    "MISSING_OR_INVALID_RPC_EVIDENCE": 897,
+    "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS": 1095,
+    "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED": 80
   }
 }

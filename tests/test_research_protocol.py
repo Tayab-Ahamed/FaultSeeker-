@@ -138,3 +138,13 @@ def test_experiment_log_rejects_heldout_members_and_zero_sample_scores(tmp_path)
     p.append_experiment(tmp_path/'experiments_log.json', split,
         {'kind':'blocked-preflight','sample_ids':[],'metrics':None,'seed':1729,'config':{},'reason':'no data'})
     assert json.loads((tmp_path/'experiments_log.json').read_text())[0]['metrics'] is None
+
+
+def test_small_chain_strata_preserve_nearest_global_70_30_without_splitting_incidents():
+    p = _protocol()
+    rows=[{'txn_hash':'0x'+format(i,'064x'),'chain':'eth' if i<6 else ['base','polygon','gnosis','fantom'][i-6],
+           'incident_id':str(i),'complexity_class':'UNRECOVERED'} for i in range(10)]
+    split=p.make_split(rows,'a'*64)
+    assert split['status']=='FROZEN'
+    assert len(split['train_ids'])==7 and len(split['heldout_ids'])==3
+    assert split==p.make_split(rows,'a'*64)

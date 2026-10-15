@@ -256,5 +256,427 @@
       "path": "reports/cohort_rebuild_v2/rpc/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
       "sha256": "e285e25bd2fa5e443210c42f781a9f00a72a7fbec5d4ab4719af72f8a6858c1f"
     }
+  },
+  {
+    "ordinal": 9,
+    "title": "20220416 BeanstalkFarms - DAO + Flashloan",
+    "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+    "chain": "eth",
+    "index_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+    "index_artifact": {
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+      "request_kind": "public-unauthenticated-http",
+      "paid_calls": 0,
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+      "content_type": "text/plain; charset=utf-8",
+      "file": "reports/provenance_hunt/http/fc895093f34b4a8c50643eb181f502dfeae340fa4e856ac467c137b9e78e1dd7.gz",
+      "compressed": true,
+      "sha256": "6e3ada33cb91eec2e2776702e688f4121603bcfd8ed957b233f8b99b06c6f9af",
+      "body_sha256": "e7668ddd37e305db9052d4f208bb3b87d1e75956950739d5e9f1fd66f4c26267",
+      "body_bytes": 62904
+    },
+    "reference_links": [
+      "https://rekt.news/beanstalk-rekt/",
+      "https://medium.com/uno-re/beanstalk-farms-hacked-total-damage-is-182-million-b699dd3e5c8",
+      "https://twitter.com/peckshield/status/1515680335769456640",
+      "https://etherscan.io/tx/0x68cdec0ac76454c3b0f7af0b8a3895db00adf6daaf3b50a99716858c4fa54c6f",
+      "https://etherscan.io/tx/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7"
+    ],
+    "membership": "ORIGINAL-15-CANDIDATES",
+    "accepted": false,
+    "incident_id": "reviewed:Beanstalk",
+    "legacy_labels": {},
+    "legacy_ground_truth": [],
+    "sources": [
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/blog/revisiting-beanstalk-farms-exploit",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+          "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "incident": "Beanstalk",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+            "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+          },
+          "review": "CertiK explicitly distinguishes proposal setup transaction 68cdec from execution cd314; only execution is admitted here. Halborn independently analyzes flash-loan-funded governance capture. Financing alone is not the annotation: instantaneous voting power and emergency execution are the failed governance invariant."
+        }
+      },
+      {
+        "publisher_id": "Halborn",
+        "independence_group": "Halborn",
+        "url": "https://www.halborn.com/blog/post/explained-the-beanstalk-hack-april-2022",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/0f04765fc43f47a50be47f152d0e24f21182c2c6e62bae5282f5cfa7c666e759.gz",
+          "sha256": "6376665e84817da779baffe8bd73bec5e5a1110bc07e8b142f39456885ecbd2a"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "incident": "Beanstalk",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+            "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+          },
+          "review": "CertiK explicitly distinguishes proposal setup transaction 68cdec from execution cd314; only execution is admitted here. Halborn independently analyzes flash-loan-funded governance capture. Financing alone is not the annotation: instantaneous voting power and emergency execution are the failed governance invariant."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+      "sha256": "02834c9e630876c4797aa75cd9e080eaca7fb9e49e79302cb72a5ecbce7933b9"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+      "sha256": "49d579b9de184685115764d702a9c0a7f4b46919be3bedb95f61761976860817"
+    }
+  },
+  {
+    "ordinal": 12,
+    "title": "20220327 Revest Finance - Reentrancy",
+    "txn_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+    "chain": "eth",
+    "index_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+    "index_artifact": {
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+      "request_kind": "public-unauthenticated-http",
+      "paid_calls": 0,
+      "http_status": 200,
+      "final_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+      "content_type": "text/plain; charset=utf-8",
+      "file": "reports/provenance_hunt/http/fc895093f34b4a8c50643eb181f502dfeae340fa4e856ac467c137b9e78e1dd7.gz",
+      "compressed": true,
+      "sha256": "6e3ada33cb91eec2e2776702e688f4121603bcfd8ed957b233f8b99b06c6f9af",
+      "body_sha256": "e7668ddd37e305db9052d4f208bb3b87d1e75956950739d5e9f1fd66f4c26267",
+      "body_bytes": 62904
+    },
+    "reference_links": [
+      "https://blocksecteam.medium.com/revest-finance-vulnerabilities-more-than-re-entrancy-1609957b742f",
+      "https://etherscan.io/tx/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+    ],
+    "membership": "ORIGINAL-15-CANDIDATES",
+    "accepted": false,
+    "incident_id": "reviewed:Revest Finance",
+    "legacy_labels": {},
+    "legacy_ground_truth": [],
+    "sources": [
+      {
+        "publisher_id": "SlowMist",
+        "independence_group": "SlowMist",
+        "url": "https://slowmist.medium.com/revest-finance-incident-analysis-6fcd9b6be207",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/web/slowmist_1.txt",
+          "sha256": "bb024459b5e563a2744c1191a0ad554fd83d580b1564016873ca14772ccff7c9"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "incident": "Revest Finance",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_1.txt",
+            "sha256": "bb024459b5e563a2744c1191a0ad554fd83d580b1564016873ca14772ccff7c9"
+          },
+          "review": "SlowMist names this among the four actual exploit transactions. BlockSec independently reconstructs the executed ERC1155 callback attack. Its additional hypothetical zero-day PoC is explicitly separate and is not treated as a historical transaction or another admitted row."
+        }
+      },
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://blocksec.com/blog/revest-finance-vulnerabilities-more-than-re-entrancy",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/54d303c1cac544d567aff7844706b39e4a7caf83d9823a207de82dbff7e39c4b.gz",
+          "sha256": "dbc6316bb7ea941b8ec2ffaa6b77d57fa0e6f19c16561d8355b4403def1d0ef1"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "incident": "Revest Finance",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_1.txt",
+            "sha256": "bb024459b5e563a2744c1191a0ad554fd83d580b1564016873ca14772ccff7c9"
+          },
+          "review": "SlowMist names this among the four actual exploit transactions. BlockSec independently reconstructs the executed ERC1155 callback attack. Its additional hypothetical zero-day PoC is explicitly separate and is not treated as a historical transaction or another admitted row."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+      "sha256": "ef05b1c1ece3a4f2c8f73b81c28d6ab6bdf8b51d5d23e206c153661ad5d4b4cb"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+      "sha256": "18c5011371032faef1859c131c3aa6274fe22b112157758d1df893f452417086"
+    }
+  },
+  {
+    "txn_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+    "chain": "fantom",
+    "incident_title": "20211218 Grim Finance - Flashloan & Reentrancy",
+    "incident_id": "reviewed:Grim Finance",
+    "index_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2021/README.md",
+    "reference_links": [
+      "https://cointelegraph.com/news/defi-protocol-grim-finance-lost-30m-in-5x-reentrancy-hack",
+      "https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "https://rekt.news/grim-finance-rekt/"
+    ],
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "role": "NOT-YET-ESTABLISHED; may include funding/recovery references",
+    "index_artifact": {
+      "path": "reports/cohort_rebuild_v2/http/877a80eeeba73a8157cd0440d9ce830827d7572112b55f5177a8f5109543a3ee.gz",
+      "sha256": "e87637ff91ec2539e139358a0c98c7a5ca45a3ad133b351999cfbe584fd5e6d9"
+    },
+    "legacy_labels": {},
+    "legacy_ground_truth": [],
+    "sources": [
+      {
+        "publisher_id": "SlowMist",
+        "independence_group": "SlowMist",
+        "url": "https://slowmist.medium.com/analysis-of-the-grim-finance-hack-bc440108b069",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/web/slowmist_0.txt",
+          "sha256": "b3dd1f572d96a39ffb6750ae6833fbc089ca4b2be55dfa20ffbc66344656bf4e"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "incident": "Grim Finance",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_0.txt",
+            "sha256": "b3dd1f572d96a39ffb6750ae6833fbc089ca4b2be55dfa20ffbc66344656bf4e"
+          },
+          "review": "SlowMist explicitly identifies this Fantom exploit execution and the depositFor callback flaw. Halborn independently explains the same nested reward-accounting reentry in the December 2021 Grim incident; its analysis cites the protocol, not SlowMist. The second article is incident corroboration, not a second assertion of the exact hash."
+        }
+      },
+      {
+        "publisher_id": "Halborn",
+        "independence_group": "Halborn",
+        "url": "https://www.halborn.com/blog/post/explained-the-grim-finance-hack-december-2021",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/e932ebf8e1fdd8e6275b0124b8fa9862fe0edac6ae25d41399d9ee99739970eb.gz",
+          "sha256": "32811bb7f208b348309995e873c489e57e67cdb30a1d684a8e5987047e760ac4"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "incident": "Grim Finance",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_0.txt",
+            "sha256": "b3dd1f572d96a39ffb6750ae6833fbc089ca4b2be55dfa20ffbc66344656bf4e"
+          },
+          "review": "SlowMist explicitly identifies this Fantom exploit execution and the depositFor callback flaw. Halborn independently explains the same nested reward-accounting reentry in the December 2021 Grim incident; its analysis cites the protocol, not SlowMist. The second article is incident corroboration, not a second assertion of the exact hash."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+      "sha256": "9224fc7d542613d086ebc6f1cfcf35e9fe342941e11a4283cc451ea6817bf593"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/fantom/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+      "sha256": "9783b992deec2918e560e69b5ac801c86281b4b9d65381865657cfeadc38b2e2"
+    }
+  },
+  {
+    "txn_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+    "chain": "gnosis",
+    "incident_title": "20220313 Hundred Finance - ERC667 Reentrancy",
+    "incident_id": "reviewed:Hundred Finance Gnosis",
+    "index_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/past/2022/README.md",
+    "reference_links": [
+      "https://gnosisscan.io/tx/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "https://medium.com/immunefi/a-poc-of-the-hundred-finance-heist-4121f23a098"
+    ],
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "role": "NOT-YET-ESTABLISHED; may include funding/recovery references",
+    "index_artifact": {
+      "path": "reports/cohort_rebuild_v2/http/fc895093f34b4a8c50643eb181f502dfeae340fa4e856ac467c137b9e78e1dd7.gz",
+      "sha256": "6e3ada33cb91eec2e2776702e688f4121603bcfd8ed957b233f8b99b06c6f9af"
+    },
+    "legacy_labels": {},
+    "legacy_ground_truth": [],
+    "sources": [
+      {
+        "publisher_id": "SlowMist",
+        "independence_group": "SlowMist",
+        "url": "https://slowmist.medium.com/another-day-another-reentrancy-attack-5cde10bbb2b4",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/web/slowmist_hundred_indexed.txt",
+          "sha256": "5e2be276d11e2252e79309030bc2a60fb6201c3bca2d9dab87f3193e06fa1390"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "incident": "Hundred Finance Gnosis",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_hundred_indexed.txt",
+            "sha256": "5e2be276d11e2252e79309030bc2a60fb6201c3bca2d9dab87f3193e06fa1390"
+          },
+          "review": "Both original reports explicitly name this Gnosis exploit hash and analyze ERC677 callbacks before borrow accounting. Knownsec and SlowMist are separate security organizations. This is the March 2022 incident, not the distinct April 2023 Optimism donation exploit."
+        }
+      },
+      {
+        "publisher_id": "Knownsec",
+        "independence_group": "Knownsec",
+        "url": "https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/web/knownsec_hundred_indexed.txt",
+          "sha256": "537454491415d0172998bc3298eadbcc7800aa6a7bfd59ffc56d4906b84eea25"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different security research organizations publishing original mechanism analyses. Shared victim and public transaction data do not constitute dependence; no cited observation is a republication of the other.",
+        "identity_basis": {
+          "transaction": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "incident": "Hundred Finance Gnosis",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_hundred_indexed.txt",
+            "sha256": "5e2be276d11e2252e79309030bc2a60fb6201c3bca2d9dab87f3193e06fa1390"
+          },
+          "review": "Both original reports explicitly name this Gnosis exploit hash and analyze ERC677 callbacks before borrow accounting. Knownsec and SlowMist are separate security organizations. This is the March 2022 incident, not the distinct April 2023 Optimism donation exploit."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+      "sha256": "1ed09f936d58f833de8de0978cec48eeb85edb0c7c9bd63a4c4ee194a2f008c4"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+      "sha256": "1c6922091d56308a8df8169197edd64f69360c7f2c887b20a55d6ecd073b1c65"
+    }
+  },
+  {
+    "txn_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+    "chain": "base",
+    "incident_title": "Cloberdex Exp",
+    "incident_id": "reviewed:Clober DEX",
+    "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2024-12/CloberDEX_exp.sol",
+    "reference_links": [],
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+    "sources": [
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/resources/blog/clober-dex-incident-analysis",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/653da36b2e5a872590689d6e2555c39b484b67cb96414ee59d6cd3e3277f15d5.gz",
+          "sha256": "3c11d7cedad9e901eaa0f41c809bf7a08fcd61c60323b3d5b2dfcd6423ff5537"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "incident": "Clober DEX",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/da5f9664c61f52f5100e77faf1bd2e5ee22e94206f797e46092d5bd460fd4dbb.gz",
+            "sha256": "9fd66f747853d10cf5f897acb40bdb29ed509b7642b3f332f038e58a12aae454"
+          },
+          "review": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://x.com/peckshield/status/1866443215186088048",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/9fc23f3938499054c6f3f65923cd68f3b47f04ab471c69aecddcefabde690f16.gz",
+          "sha256": "446da486318f19538d0ab82c7c8c8cdc32ac85deeee76ec2041572231a885296"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "incident": "Clober DEX",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/da5f9664c61f52f5100e77faf1bd2e5ee22e94206f797e46092d5bd460fd4dbb.gz",
+            "sha256": "9fd66f747853d10cf5f897acb40bdb29ed509b7642b3f332f038e58a12aae454"
+          },
+          "review": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+      "sha256": "8dfbd9fb0841125b8635216687f1788faa196d6ba92583dae3c881e564b97c37"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+      "sha256": "a94622dab6eaeb2f849eaf8b91966414c971fbb7c75cd59c828668fb2bd57a50"
+    }
+  },
+  {
+    "txn_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+    "chain": "polygon",
+    "incident_title": "Midas Exp",
+    "incident_id": "reviewed:Midas Capital",
+    "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-01/Midas_exp.sol",
+    "reference_links": [],
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1614864084956254209",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/d9fc373cf2ae25b547912309f83d60b479cb0aa48b5328d501421d60b51358f0.gz",
+          "sha256": "da89e5ea7685652f240ac835b4662af555002e04a8296792b6abf9b33a593cef"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "incident": "Midas Capital",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/65c0ce5b179605b79c1cea0fdf161c852dfc4db6d87946b2e9331e2dd572099c.gz",
+            "sha256": "6b6dbc611c64d9159f081f98e3ceda698567c3c883a2ffd1f3dc51414f5b46ab"
+          },
+          "review": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1614774855999844352",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/034cb7f427b6515f6c0da9d5447778c0edfa79f52dc32859d2444311ef3696bd.gz",
+          "sha256": "e591a6ae62c94327b927a693b10d39df80941879b52f8173822bcea9a37a1c24"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "incident": "Midas Capital",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/65c0ce5b179605b79c1cea0fdf161c852dfc4db6d87946b2e9331e2dd572099c.gz",
+            "sha256": "6b6dbc611c64d9159f081f98e3ceda698567c3c883a2ffd1f3dc51414f5b46ab"
+          },
+          "review": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+      "sha256": "9fff48154d1494d0e0a5fa4caca37d5a39b1c2b255f475b2e7893f9085b2aebe"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+      "sha256": "ca8f4a973a3dbde79e16fb1fcca9eecce39aebacd9c6429f579aafb217507a81"
+    }
   }
 ]

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Reentrancy",
+  "adjudication_basis": "SlowMist names this among the four actual exploit transactions. BlockSec independently reconstructs the executed ERC1155 callback attack. Its additional hypothetical zero-day PoC is explicitly separate and is not treated as a historical transaction or another admitted row.",
+  "independent_observations": [
+    {
+      "publisher_id": "SlowMist",
+      "source_url": "https://slowmist.medium.com/revest-finance-incident-analysis-6fcd9b6be207",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/web/slowmist_1.txt",
+        "sha256": "bb024459b5e563a2744c1191a0ad554fd83d580b1564016873ca14772ccff7c9"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "Therefore, the attacker used a reentrancy attack to modify the information of the NFT that had been minted."
+    },
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://blocksec.com/blog/revest-finance-vulnerabilities-more-than-re-entrancy",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/54d303c1cac544d567aff7844706b39e4a7caf83d9823a207de82dbff7e39c4b.gz",
+        "sha256": "dbc6316bb7ea941b8ec2ffaa6b77d57fa0e6f19c16561d8355b4403def1d0ef1"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "the attacker re-enters the Revest contract's depositAdditionalToFNFT function via the FNFTHandler 's call-back mechanism inherited from the ERC-1155 token standard"
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

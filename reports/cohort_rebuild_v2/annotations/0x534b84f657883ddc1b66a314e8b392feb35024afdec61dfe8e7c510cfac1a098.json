@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+  "chain": "gnosis",
+  "is_exploit": true,
+  "vuln_type": "Reentrancy",
+  "adjudication_basis": "Both original reports explicitly name this Gnosis exploit hash and analyze ERC677 callbacks before borrow accounting. Knownsec and SlowMist are separate security organizations. This is the March 2022 incident, not the distinct April 2023 Optimism donation exploit.",
+  "independent_observations": [
+    {
+      "publisher_id": "SlowMist",
+      "source_url": "https://slowmist.medium.com/another-day-another-reentrancy-attack-5cde10bbb2b4",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/web/slowmist_hundred_indexed.txt",
+        "sha256": "5e2be276d11e2252e79309030bc2a60fb6201c3bca2d9dab87f3193e06fa1390"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "The borrowFresh function within the Hundred Finance contract checks the funds after they\u2019ve been transferred."
+    },
+    {
+      "publisher_id": "Knownsec",
+      "source_url": "https://medium.com/@Knownsec_Blockchain_Lab/knownsec-blockchain-lab-hundred-and-agave-flash-loan-attack-analysis-ba45ee6c06f9",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/web/knownsec_hundred_indexed.txt",
+        "sha256": "537454491415d0172998bc3298eadbcc7800aa6a7bfd59ffc56d4906b84eea25"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "This callback would have directly led to the creation of the reentry vulnerability"
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

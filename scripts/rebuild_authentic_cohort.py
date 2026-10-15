@@ -21,7 +21,7 @@ from urllib.parse import urlsplit, quote, unquote
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.modules.setdefault('readline', None)
-from benchmark.research_protocol import bind, read_bound, write_json, identity, admit, make_split, sha
+from benchmark.research_protocol import bind, read_bound, write_json, identity, admit, make_split, sha, transaction_chain_id
 from benchmark.evidence_manifest import CHAIN_IDS
 
 BASE = ROOT / 'reports/cohort_rebuild_v2'
@@ -113,7 +113,7 @@ def identity_observation(row, chain_id, payload):
         good = bool(chain_id == CHAIN_IDS[row['chain']] and a and b
             and a.get('hash','').lower() == row['txn_hash'] and b.get('transactionHash','').lower() == row['txn_hash']
             and a.get('blockHash') == b.get('blockHash') and a.get('blockHash')
-            and int(a['chainId'],16) == chain_id)
+            and transaction_chain_id(a) == chain_id)
     except (KeyError, TypeError, ValueError):
         good = False
     return {'mode':'live-rpc','txn_hash':row['txn_hash'],'chain':row['chain'],'chain_id':chain_id,

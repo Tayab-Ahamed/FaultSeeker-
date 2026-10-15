@@ -43,3 +43,15 @@ def test_rpc_response_ids_and_identity_are_bound_to_requested_chain():
     assert result['identity_receipt_match']
     wrong = identity_observation({'txn_hash':tx,'chain':'eth'},1,payload)
     assert not wrong['identity_receipt_match']
+
+
+def test_legacy_transaction_chain_is_derived_from_eip155_signature_not_assumed():
+    from benchmark.research_protocol import transaction_chain_id
+    assert transaction_chain_id({'type':'0x0','v':'0x217'}) == 250
+    assert transaction_chain_id({'type':'0x0','v':'0x218'}) == 250
+    with pytest.raises(ValueError):
+        transaction_chain_id({'type':'0x0','v':'0x1b'})
+    with pytest.raises(ValueError):
+        transaction_chain_id({'type':'0x2','v':'0x217'})
+    with pytest.raises(ValueError):
+        transaction_chain_id({'chainId':'0x1','type':'0x0','v':'0x217'})

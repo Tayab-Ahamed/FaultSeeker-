@@ -50,6 +50,8 @@ def reviewed_annotation(review, case, row):
     if (review.get('decision') != 'APPROVE_SOURCE_CONSENSUS'
             or review.get('reviewed_by') != 'Codex'):
         raise ValueError('An explicit source review is required')
+    if review.get('chain') != row['chain']:
+        raise ValueError('Review chain does not match transaction identity')
     if not validate_suggestion(review, case):
         raise ValueError('Reviewed quotes or transaction identities are not bound')
     sources, observations = [], []
@@ -84,7 +86,8 @@ def apply_reviewed():
     rows = json.loads((BASE/'candidate_pool.json').read_text())
     for review in json.loads((BASE/'manual_consensus_reviews.json').read_text()):
         for row in rows:
-            if row['txn_hash'] not in review['attack_transaction_hashes']:
+            if (row['txn_hash'] not in review['attack_transaction_hashes']
+                    or row['chain'] != review['chain']):
                 continue
             sources, annotation = reviewed_annotation(review, cases[review['case_id']], row)
             row['sources'] = sources

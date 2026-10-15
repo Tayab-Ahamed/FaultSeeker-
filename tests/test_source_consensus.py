@@ -49,3 +49,11 @@ def test_unreviewed_model_proposal_cannot_be_materialized_as_ground_truth():
     from scripts.adjudicate_public_sources import reviewed_annotation
     with pytest.raises(ValueError,match='explicit'):
         reviewed_annotation({'consensus':True}, {}, {'chain':'eth','txn_hash':'tx'})
+
+
+def test_source_review_is_bound_to_chain_as_well_as_transaction_hash():
+    from scripts.adjudicate_public_sources import reviewed_annotation
+    review={'decision':'APPROVE_SOURCE_CONSENSUS','reviewed_by':'Codex','chain':'fantom',
+            'attack_transaction_hashes':['tx']}
+    with pytest.raises(ValueError,match='chain'):
+        reviewed_annotation(review,{}, {'chain':'eth','txn_hash':'tx'})
