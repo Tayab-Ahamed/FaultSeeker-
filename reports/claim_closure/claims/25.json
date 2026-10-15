@@ -2,13 +2,12 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "302 further metered Ethereum identity/receipt requests were recorded, including null identities. They add evidence for the specific Ethereum read methods but do not establish other-chain archive/opcode support or sustained independent-provider failover.",
-  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "reason": "Canonical data covers8chains; ten-chain provider declarations and protocol add no live archive/opcode/failover observations beyond prior Ethereum probes and replay.",
+  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
   "requirements_unmet": [
-    "Remaining-chain trace/archive endpoints and observations",
-    "Live multi-provider outage/recovery evidence"
+    "Required-chain archive/debug observations and live provider recovery evidence"
   ],
-  "human_decision": "Next required input artifact: Multi-chain endpoint and preregistered live failover test manifest",
+  "human_decision": "Next evidence input: Required-chain archive/debug observations and live provider recovery evidence",
   "acceptance_tests": [
     "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
     "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
@@ -51,10 +50,36 @@
     {
       "path": "reports/provenance_hunt/ethereum_requests.json",
       "sha256": "191254b9676c98b2229d265a2056c13b6a60c79222a530f1924b0900401eda33"
+    },
+    {
+      "path": "reports/canonical_history/manifest.json",
+      "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+    },
+    {
+      "path": "reports/canonical_history/cohort_history.json",
+      "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+    },
+    {
+      "path": "reports/canonical_history/findings.json",
+      "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+    },
+    {
+      "path": "reports/canonical_history/paper_vs_repo.json",
+      "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+    },
+    {
+      "path": "reports/canonical_history/history_search.json",
+      "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+    },
+    {
+      "path": "reports/canonical_history/accounting.json",
+      "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Multi-chain endpoint and preregistered live failover test manifest",
+  "next_input_artifact": "Required-chain archive/debug observations and live provider recovery evidence",
   "reopen_review_run": "provenance-hunt-2026-10-15",
-  "previous_decision": "reports/provenance_hunt/previous_decisions/25.json"
+  "previous_decision": "reports/canonical_history/previous_decisions/25.json",
+  "paper_verdict": "CAPABILITY-DECLARATIONS-NOT-LIVE-PROOF",
+  "canonical_review_run": "canonical-history-review-2026-10-15"
 }
