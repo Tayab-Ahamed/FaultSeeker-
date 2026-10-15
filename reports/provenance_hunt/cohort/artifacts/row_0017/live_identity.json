@@ -1,0 +1,84 @@
+{
+  "txn_hash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+  "chain": "eth",
+  "provider": "configured-dRPC",
+  "scope": "Single-provider identity and receipt; no incident-label attestation",
+  "transaction": {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+      "type": "0x0",
+      "chainId": "0x1",
+      "nonce": "0x2",
+      "gasPrice": "0x954f78322",
+      "gas": "0x4c4b40",
+      "to": "0xca813e8ba2fd072bde40dd2264bc3774ff685d9c",
+      "value": "0x0",
+      "input": "0x3232a1fd0000000000000000000000007b190a928aa76eece5cb3e0f6b3bdb24fcdd9b4f000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7",
+      "r": "0xfea68f72d174d32c4e96083929e9d78737bed9ef2dbdd013b773befdf2941139",
+      "s": "0x25f782d0c5d5f354e5dede374f6821c7e298c9fc681a7087acf6058df0999e57",
+      "v": "0x26",
+      "hash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+      "blockHash": "0x8eac4fdf463abb26bb64bc760e9def6d8a3fb0813b821f84edabbc736f0c892c",
+      "blockNumber": "0x10ac982",
+      "transactionIndex": "0x0",
+      "from": "0x7021c1b142eb634fa0749cda270c7aff74dc3b7f",
+      "blockTimestamp": "0x648ace9b"
+    }
+  },
+  "receipt": {
+    "id": 2,
+    "jsonrpc": "2.0",
+    "result": {
+      "type": "0x0",
+      "status": "0x1",
+      "cumulativeGasUsed": "0x19961",
+      "logs": [
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "topics": [
+            "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925",
+            "0x0000000000000000000000007b190a928aa76eece5cb3e0f6b3bdb24fcdd9b4f",
+            "0x000000000000000000000000ca813e8ba2fd072bde40dd2264bc3774ff685d9c"
+          ],
+          "data": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "blockHash": "0x8eac4fdf463abb26bb64bc760e9def6d8a3fb0813b821f84edabbc736f0c892c",
+          "blockNumber": "0x10ac982",
+          "blockTimestamp": "0x648ace9b",
+          "transactionHash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+          "transactionIndex": "0x0",
+          "logIndex": "0x0",
+          "removed": false
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "topics": [
+            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+            "0x0000000000000000000000007b190a928aa76eece5cb3e0f6b3bdb24fcdd9b4f",
+            "0x0000000000000000000000007021c1b142eb634fa0749cda270c7aff74dc3b7f"
+          ],
+          "data": "0x000000000000000000000000000000000000000000000000000000104a07eb41",
+          "blockHash": "0x8eac4fdf463abb26bb64bc760e9def6d8a3fb0813b821f84edabbc736f0c892c",
+          "blockNumber": "0x10ac982",
+          "blockTimestamp": "0x648ace9b",
+          "transactionHash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+          "transactionIndex": "0x0",
+          "logIndex": "0x1",
+          "removed": false
+        }
+      ],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000200000100000000000000000000008000000000000000000000000002000000800000008000000000000000000000000000000000000000000000000000012000008000000000000000000000000000000000000000000000000000000000000100000020000000000000004000080000000000000000000000000000000000000000000000002000000000000000000000000002000000000000000000000000000000010000000000000000000000000000000000000000000000000000000080000",
+      "transactionHash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+      "transactionIndex": "0x0",
+      "blockHash": "0x8eac4fdf463abb26bb64bc760e9def6d8a3fb0813b821f84edabbc736f0c892c",
+      "blockNumber": "0x10ac982",
+      "gasUsed": "0x19961",
+      "effectiveGasPrice": "0x954f78322",
+      "from": "0x7021c1b142eb634fa0749cda270c7aff74dc3b7f",
+      "to": "0xca813e8ba2fd072bde40dd2264bc3774ff685d9c",
+      "contractAddress": null
+    }
+  },
+  "identity_receipt_match": true,
+  "rpc_null_result": false
+}

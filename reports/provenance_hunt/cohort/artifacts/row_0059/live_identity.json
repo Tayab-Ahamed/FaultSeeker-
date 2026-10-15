@@ -1,0 +1,55 @@
+{
+  "txn_hash": "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4",
+  "chain": "eth",
+  "provider": "configured-dRPC",
+  "scope": "Single-provider identity and receipt; no incident-label attestation",
+  "transaction": {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "result": {
+      "type": "0x2",
+      "chainId": "0x1",
+      "nonce": "0xe",
+      "gas": "0x350d2f",
+      "maxFeePerGas": "0xdf8475800",
+      "maxPriorityFeePerGas": "0x5f5e100",
+      "to": "0x8d4de2bc1a566b266bd4b387f62c21e15474d12a",
+      "value": "0x853a0d2313c0000",
+      "accessList": [],
+      "input": "0xe8b00990",
+      "r": "0x5e9e12ff8f6acaf6bf97f6196ef1d460149b45fadc629b5f0314e2f55991bf",
+      "s": "0x8e211fdb59c7ebd1aad7b37b63996cf4d39bf5e7e0d441ce81a7f5b5129f09c",
+      "yParity": "0x1",
+      "v": "0x1",
+      "hash": "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4",
+      "blockHash": "0x8c486f128c4c90e67f56480cb039bd773165b97064d2c4095b44832d002ea14d",
+      "blockNumber": "0x1252e7b",
+      "transactionIndex": "0xc",
+      "from": "0x145766a51ae96e69810fe76f6f68fd0e95675a0b",
+      "gasPrice": "0x93bf43a6b",
+      "blockTimestamp": "0x65ca6d73"
+    }
+  },
+  "receipt": {
+    "id": 2,
+    "jsonrpc": "2.0",
+    "result": {
+      "type": "0x2",
+      "status": "0x1",
+      "cumulativeGasUsed": "0x383a7e",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "transactionHash": "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4",
+      "transactionIndex": "0xc",
+      "blockHash": "0x8c486f128c4c90e67f56480cb039bd773165b97064d2c4095b44832d002ea14d",
+      "blockNumber": "0x1252e7b",
+      "gasUsed": "0xc2016",
+      "effectiveGasPrice": "0x93bf43a6b",
+      "from": "0x145766a51ae96e69810fe76f6f68fd0e95675a0b",
+      "to": "0x8d4de2bc1a566b266bd4b387f62c21e15474d12a",
+      "contractAddress": null
+    }
+  },
+  "identity_receipt_match": true,
+  "rpc_null_result": false
+}
