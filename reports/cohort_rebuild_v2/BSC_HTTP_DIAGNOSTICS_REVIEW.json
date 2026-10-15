@@ -1,0 +1,53 @@
+{
+  "scope": "Bounded alternate endpoint capability observation and offline HTTP error diagnostics",
+  "target": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+  "endpoint": "https://bsc-rpc.publicnode.com",
+  "endpoint_documentation": "https://bsc.publicnode.com/",
+  "probe": {
+    "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode/probe.json",
+    "sha256": "3f772df9814b2661baa10e3c9e640412492c0dcb681417e2eb71f88366137e6f"
+  },
+  "raw_observation": {
+    "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode/raw/1-eth_chainId.json",
+    "sha256": "a2dea3bf199e68388335dcff92e6e100aa80253c495a7db1328a89492b9106f7"
+  },
+  "observed_status": "CHAIN_ID_UNVERIFIED",
+  "new_rpc_attempts": 1,
+  "trace_requests": 0,
+  "receipt_requests": 0,
+  "estimated_cost_usd": 6e-06,
+  "cumulative_ledger_estimate_usd": 1.92619479999989,
+  "billing_confirmed": false,
+  "http_status": null,
+  "limitations": [
+    "The preserved legacy observation records RuntimeError only; no numeric HTTP status or raw HTTP response can be recovered from it.",
+    "The legacy shared meter converts upstream HTTPError to RuntimeError without structured status. This is a known diagnostic loss path, not evidence for an invented status code.",
+    "Chain ID was not verified; tracing/archive support at this endpoint remains unknown. No admission/index entry is created.",
+    "New typed status handling is tested offline only; old raw artifacts are preserved unchanged and no retry was made."
+  ],
+  "offline_fix": "RuntimeError-compatible UpstreamHTTPError carries only validated integer http_status. New probes may persist that number and exception type, never URL, headers, body or arbitrary error text.",
+  "code": [
+    {
+      "path": "scripts/replay_historical_opcodes.py",
+      "sha256": "cb3eb0c74c796efd51675a0f3cbd61fe581ec093c59a38e09743df5367bc6632"
+    },
+    {
+      "path": "scripts/probe_bsc_train_trace.py",
+      "sha256": "d74a755f169c511d073ee26c34413dbecb18849b28070d0057a06444eadedfb9"
+    }
+  ],
+  "tests": [
+    {
+      "path": "tests/test_rpc_http_diagnostics.py",
+      "sha256": "91ba3fb15059b1aacdcc0742f2749057a6406102b6bd039ea5de9d695e188039"
+    },
+    {
+      "path": "tests/test_bsc_train_trace.py",
+      "sha256": "ed0f933fa507a2e0fe2b39418331128581bd89eed9244623551544d2f89e3ec2"
+    }
+  ],
+  "test_first": "Agent observed failing status diagnostics before implementation; 21 combined focused tests passed after fix",
+  "new_model_requests": 0,
+  "heldout_used": false,
+  "claim_promoted": false
+}

@@ -55,6 +55,15 @@ def write_json(path, value):
     path.write_bytes((json.dumps(value, indent=2) + '\n').encode())
 
 
+class UpstreamHTTPError(RuntimeError):
+    """A sanitized HTTP failure preserving only a validated status integer."""
+    def __init__(self, http_status):
+        if type(http_status) is not int or not 100 <= http_status <= 599:
+            raise ValueError('Invalid upstream HTTP status')
+        self.http_status = http_status
+        super().__init__(f'Upstream HTTP {http_status}')
+
+
 class MeteredRPC:
     def __init__(self, url, ledger, max_requests=5000):
         self.url = url
@@ -85,7 +94,7 @@ class MeteredRPC:
                     data = json.load(response)
             except HTTPError as error:
                 # Never serialize an exception containing a credential-bearing URL.
-                raise RuntimeError(f'Upstream HTTP {error.code}') from None
+                raise UpstreamHTTPError(error.code) from None
             failed = any(c.get('error') for c in (data if isinstance(data, list) else [data]))
             return data
         finally:

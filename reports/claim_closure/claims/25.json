@@ -2,7 +2,7 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established. A direct public Gnosis historical-node opcode probe additionally succeeded: eth_chainId=100, debug_traceTransaction with full stack/storage and fresh canonical receipt. Its 236237-step trace normalizes 1354 reads and 186 writes across 519 verified frames. This is endpoint-specific evidence, not evidence that configured dRPC or every chain supports native opcode tracing.",
+  "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established. A direct public Gnosis historical-node opcode probe additionally succeeded: eth_chainId=100, debug_traceTransaction with full stack/storage and fresh canonical receipt. Its 236237-step trace normalizes 1354 reads and 186 writes across 519 verified frames. This is endpoint-specific evidence, not evidence that configured dRPC or every chain supports native opcode tracing. An alternate PublicNode BSC attempt stopped after one metered eth_chainId request with a legacy RuntimeError; chain identity, tracing and archive capability were not established. The old artifact lacks an HTTP status, which is not reconstructed. Offline diagnostics now retain a validated numeric HTTP status when available without leaking credential-bearing URLs, headers or bodies. This adds no successful BSC capture and does not broaden the claim.",
   "verification_scope": "Observed named endpoint/method/chain capabilities only; failed connection and native Gnosis success retained separately from dRPC and Anvil evidence",
   "requirements_unmet": [
     "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
@@ -16,7 +16,9 @@
     "tests/test_authentic_opcode_partition.py::test_real_train_captures_pass_canonical_revalidation_and_have_storage_events",
     "tests/test_pinned_prestate_rpc.py::test_wrong_block_unknown_account_or_missing_slot_always_use_metered_upstream",
     "tests/test_train_probe_integration.py::test_actual_recovered_train_traces_preserve_canonical_identity",
-    "tests/test_train_chain_trace_probe.py::TrainChainTraceProbeTests::test_parity_rejects_missing_child_and_wrong_block"
+    "tests/test_train_chain_trace_probe.py::TrainChainTraceProbeTests::test_parity_rejects_missing_child_and_wrong_block",
+    "tests/test_rpc_http_diagnostics.py",
+    "tests/test_bsc_train_trace.py"
   ],
   "evidence": [
     {
@@ -130,6 +132,14 @@
     {
       "path": "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
       "sha256": "8acbac288a5fb1a3b9a629acb146bfc9763fc7fc57e79e5fc437e82ca4425b61"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode/probe.json",
+      "sha256": "3f772df9814b2661baa10e3c9e640412492c0dcb681417e2eb71f88366137e6f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/BSC_HTTP_DIAGNOSTICS_REVIEW.json",
+      "sha256": "9fa3369866bd5f616e941d79e0ccccc5ac8719042b8beb90e18c91271612b191"
     }
   ],
   "session_date": "2026-10-15",
