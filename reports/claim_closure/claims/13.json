@@ -2,14 +2,12 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "The real detector runner was invoked against the rebuilt candidate evidence and returned BLOCKED-BY-DATA before prediction. Precision, recall, F1 and deltas are undefined, not zero, on zero accepted records.",
-  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "reason": "Historical .86/.69/.57 were literal result declarations; Oct6 recompute evaluates0 and emitsnull F1. Reproduced .7586/.8593 feature classification has a different target and cannot validate TableV.",
+  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
   "requirements_unmet": [
-    "Frozen adjudicated evaluation set",
-    "Raw integer confusion outcomes",
-    "Declared pooling/averaging protocol"
+    "Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging"
   ],
-  "human_decision": "Next required input artifact: Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
+  "human_decision": "Next evidence input: Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
   ],
@@ -49,10 +47,36 @@
     {
       "path": "reports/provenance_hunt/experiments/detectors.json",
       "sha256": "132486cb02d9402529666d7ac77260fda6e3a54444636aedb878012e38c1ae88"
+    },
+    {
+      "path": "reports/canonical_history/manifest.json",
+      "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+    },
+    {
+      "path": "reports/canonical_history/cohort_history.json",
+      "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+    },
+    {
+      "path": "reports/canonical_history/findings.json",
+      "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+    },
+    {
+      "path": "reports/canonical_history/paper_vs_repo.json",
+      "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+    },
+    {
+      "path": "reports/canonical_history/history_search.json",
+      "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+    },
+    {
+      "path": "reports/canonical_history/accounting.json",
+      "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Preregistered Table V evaluation manifest with accepted labels and pooling definitions",
+  "next_input_artifact": "Paired raw detector predictions/confusion counts on adjudicated positives and negatives with defined averaging",
   "reopen_review_run": "provenance-hunt-2026-10-15",
-  "previous_decision": "reports/provenance_hunt/previous_decisions/13.json"
+  "previous_decision": "reports/canonical_history/previous_decisions/13.json",
+  "paper_verdict": "PUBLISHED-METRICS-UNSUPPORTED",
+  "canonical_review_run": "canonical-history-review-2026-10-15"
 }
