@@ -5,9 +5,9 @@
   "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred.",
   "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate",
   "requirements_unmet": [
-    "Executed explicit ranked function predictions and multi-agent outputs on source-linked authenticated study targets"
+    "Explicit egress approval for the reviewed bounded cloud-only train pilot, then complete real model ranking outputs and broader source-linked evaluation"
   ],
-  "human_decision": "No decision needed; continue source-linked train evaluation without altering frozen membership",
+  "human_decision": "The automatic approval reviewer requires explicit approval of the reviewed prompt/source/transaction data scope sent to the Nara gateway; request is pending",
   "acceptance_tests": [
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
     "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
@@ -16,7 +16,9 @@
     "tests/test_explicit_function_rank_order.py::test_actual_revest_ranker_exports_function_identity_and_stable_count_order",
     "tests/test_train_localization_metrics.py::test_proxy_storage_owner_cannot_replace_implementation_target",
     "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected",
-    "tests/test_function_input_factories.py::test_input_factories_cover_all_roles_and_verified_source"
+    "tests/test_function_input_factories.py::test_input_factories_cover_all_roles_and_verified_source",
+    "tests/test_explicit_remote_identity.py::test_remote_alias_reserves_before_dispatch_and_denies_over_cap",
+    "tests/test_explicit_remote_identity.py::test_cloud_only_alias_uses_cloud_prompts_not_local_simplification"
   ],
   "evidence": [
     {
@@ -102,10 +104,14 @@
     {
       "path": "reports/cohort_rebuild_v2/SOURCE_FACTORY_INTEGRATION.json",
       "sha256": "ef1fb5fa8017c908c5524e8556dfd50e5cd6f9455540b607d2d75996fa71b697"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/PREFLIGHT.json",
+      "sha256": "654db8924070914c957d8aac21182fe4bc84e2bc769f698fdf8feda85d97f109"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Executed explicit ranked function predictions and multi-agent outputs on source-linked authenticated study targets",
+  "next_input_artifact": "Explicit egress approval for the reviewed bounded cloud-only train pilot, then complete real model ranking outputs and broader source-linked evaluation",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/22.json",
   "paper_verdict": "HISTORICAL-AGGREGATE-RECOVERED",

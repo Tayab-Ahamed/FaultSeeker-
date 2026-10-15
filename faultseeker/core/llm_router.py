@@ -131,6 +131,7 @@ class HybridLLMRouter:
         ablation: Any = None,
         cost_tracker: Any = None,
         spend_guard: Any = None,
+        remote_model_ids: Any = (),
     ):
         self.logger = logging.getLogger(__name__)
         self.local_model = local_model
@@ -143,6 +144,11 @@ class HybridLLMRouter:
         self.ablation = ablation or AblationConfig.full_system()
         self.cost_tracker = cost_tracker
         self.spend_guard = spend_guard
+        if isinstance(remote_model_ids, str):
+            raise ValueError('Remote model identities must be a collection of full identifiers')
+        self.remote_model_ids = frozenset(remote_model_ids)
+        if any(not isinstance(name, str) or not name.strip() for name in self.remote_model_ids):
+            raise ValueError('Remote model identities must be nonempty strings')
 
         # Cost tracking
         self.cost_summary = CostSummary()
@@ -341,6 +347,8 @@ class HybridLLMRouter:
 
     def _is_local_model(self, model: str) -> bool:
         """Check if a model is a local model (not a cloud API)."""
+        if model in self.remote_model_ids:
+            return False
         cloud_prefixes = ('gpt-', 'o1-', 'o3-', 'o4-',
                           'claude-', 'grok-', 'qwen-', 'gemini-')
         return not any(model.startswith(p) for p in cloud_prefixes)

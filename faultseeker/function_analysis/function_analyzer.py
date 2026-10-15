@@ -42,8 +42,14 @@ class FunctionAnalyzer:
 
         self.session_prompts = OrchestrationSessionPrompts()
         self.task_prompts = TaskCoordinatorPrompts()
-        self.function_prompts = get_worker_prompts(prompt_model)      # local-aware
-        self.vulnerability_prompts = get_vuln_prompts(prompt_model)   # local-aware
+        cloud_only = router is not None and (
+            router.routing_strategy == 'cloud-only' or not router.ablation.enabled('llm_routing'))
+        if cloud_only and not router._is_local_model(router.cloud_model):
+            self.function_prompts = WorkerPrompts()
+            self.vulnerability_prompts = VulnerabilityAnalysisPrompts()
+        else:
+            self.function_prompts = get_worker_prompts(prompt_model)
+            self.vulnerability_prompts = get_vuln_prompts(prompt_model)
         self.local_task_prompts = LocalTaskPrompts()
 
         # Replace only provider/source transport. Every analysis role below
@@ -72,6 +78,12 @@ class FunctionAnalyzer:
         self.children_call_memo = {}
         self.repeated_patterns = []
         self.analysis_errors = []
+
+    def _uses_cloud_model(self):
+        if self.router is not None:
+            return not self.router._is_local_model(self.txn_analyzer_model)
+        return any(self.txn_analyzer_model.startswith(prefix) for prefix in
+                   ('gpt-', 'gemini-', 'grok-', 'qwen-', 'claude-', 'o1-', 'o3-', 'o4-'))
 
     def _record_analysis_error(self,error):
         from faultseeker.core.spend_guard import BudgetApprovalRequired
@@ -442,8 +454,7 @@ class FunctionAnalyzer:
         logging.info(f"Task tree: {self.task_tree}")
 
         # Cloud models need fewer iterations than local; 3 passes is plenty.
-        is_cloud = any(self.txn_analyzer_model.startswith(p)
-                       for p in ('gpt-', 'gemini-', 'grok-', 'qwen-', 'claude-', 'o1-', 'o3-', 'o4-'))
+        is_cloud = self._uses_cloud_model()
         max_iterations = 3 if is_cloud else 8
         MAX_FUNCTION_SECS = 480   # 8-min hard wall-clock cap per function
 
@@ -754,8 +765,7 @@ class FunctionAnalyzer:
         logging.info(f"Task tree: {self.task_tree}")
 
         import time as _time
-        is_cloud = any(self.txn_analyzer_model.startswith(p)
-                       for p in ('gpt-', 'gemini-', 'grok-', 'qwen-', 'claude-', 'o1-', 'o3-', 'o4-'))
+        is_cloud = self._uses_cloud_model()
         txn_iters = 2 if is_cloud else 3
         fn_start = _time.time()
         MAX_FUNCTION_SECS = 480

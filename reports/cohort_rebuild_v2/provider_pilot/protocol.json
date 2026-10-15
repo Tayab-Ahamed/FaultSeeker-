@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "experiment": "verified-source-cloud-only-train-pilot-v1",
+  "seed": 1729,
+  "model_alias": "agnes-2.5-flash",
+  "upstream_vendor_identity": "UNATTESTED; gateway alias only",
+  "route": "https://router.bynara.id/v1/chat/completions",
+  "credential_variable": "BYNARA_API_KEY",
+  "train_identities": [
+    "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+  ],
+  "source_inputs": {
+    "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+    "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+  },
+  "pricing": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/catalog_preflight.json",
+    "sha256": "415201b718aa6c176a0a5f8a90d434e70096782617798520a91523046881497d"
+  },
+  "fx": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/pricing_fx.json",
+    "sha256": "82f9242ba6801bb79f3f0ab7d80fc1031d39b09a30a78ab907cf908c9c0a49e3"
+  },
+  "max_calls": 20,
+  "minimum_start_interval_seconds": 5,
+  "completion_cap": 4096,
+  "timeout_seconds": 60,
+  "history_policy": "system plus last two completed turns and complete current prompt; no prompt slicing",
+  "routing": "cloud-only; explicit remote model identity, no local-model claims or savings",
+  "method": "Actual ForensicsOrchestrator, FunctionRanker and every FunctionAnalyzer analysis method; only source/provider I/O injected",
+  "success_rule": "Scores require complete production output, no analysis errors, valid explicit model ranking and independently sourced function targets joined after prediction. Partial/capped failures stay unscored.",
+  "stops": [
+    "Cumulative $10 ledger refuses reservation",
+    "20 dispatched completions across roles/cases",
+    "HTTP401/402/403/429 or model identity mismatch",
+    "Provider context/JSON/schema failures are recorded; no fabricated results or fallback model"
+  ],
+  "weights_thresholds": "unchanged",
+  "heldout_used": false,
+  "final_exam_dispatched": false
+}

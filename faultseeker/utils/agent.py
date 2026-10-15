@@ -350,7 +350,7 @@ class GPTAgent(AbstractAgent):
         start_time = time.time()
         self.last_usage = None
         try:
-            user_message = user_message[:10000]
+            # Send the complete prompt; surface provider context-limit failures.
             self.memory.append({"role": "user", "content": user_message})
             kwargs = dict(
                 messages=self._truncate_history(self.memory),
@@ -423,7 +423,7 @@ class UniversalAgent(AbstractAgent):
         start_time = time.time()
         self.last_usage = None
         try:
-            user_message = user_message[:10000]
+            # Send the complete prompt; surface provider context-limit failures.
             self.memory.append({"role": "user", "content": user_message})
             kwargs = dict(
                 messages=self._truncate_history(self.memory),
@@ -465,7 +465,7 @@ class AnthropicAgent(AbstractAgent):
         if not self.api_key:
             raise ValueError('Set ANTHROPIC_API_KEY for Claude models')
         self.last_usage = None
-        self.memory.append({'role': 'user', 'content': user_message[:10000]})
+        self.memory.append({'role': 'user', 'content': user_message})
         messages = [m for m in self.memory[-5:] if m['role'] != 'system']
         body = json.dumps({'model': self.model, 'max_tokens': 4096,
                            'temperature': temperature, 'system': self.memory[0]['content'],

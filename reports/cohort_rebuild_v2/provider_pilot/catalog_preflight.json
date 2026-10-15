@@ -1,0 +1,27 @@
+{
+  "endpoint": "https://router.bynara.id/v1/models",
+  "credential_variable": "BYNARA_API_KEY",
+  "metadata_requests": 1,
+  "paid_inference_requests": 0,
+  "http_status": 200,
+  "catalog": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/models_current.json",
+    "sha256": "8fb07d30bc92d01ffafc22f1dd6ac31a15d83caeaaf0d3d0028594672aa386ad"
+  },
+  "model": {
+    "id": "agnes-2.5-flash",
+    "object": "model",
+    "owned_by": "byNara",
+    "name": "Agnes 2.5 Flash",
+    "context_window": 512000,
+    "vision": true,
+    "reasoning": true,
+    "payg_enabled": true,
+    "input_idr_per_1k": 0.1,
+    "output_idr_per_1k": 0.2,
+    "cache_read_idr_per_1k": 0.01,
+    "input_idr_per_1m": 100,
+    "output_idr_per_1m": 200,
+    "cache_read_idr_per_1m": 10
+  }
+}

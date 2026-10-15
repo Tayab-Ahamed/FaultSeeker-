@@ -1,0 +1,41 @@
+{
+  "scope": "Tested real cloud transport and production input integration; no new inference dispatched",
+  "system": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/preflight_snapshot/system.json",
+    "sha256": "57abee700feb4d28aae71116dbf0932b74eecbc17257ba5e1cb5bcc9631c1d50"
+  },
+  "source_snapshot": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/preflight_snapshot/system_sources.json.gz",
+    "sha256": "4d37989d534461549cf06f48df1fc3ec5f552f882e043ccffa5ebb7b2e5122e7"
+  },
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+    "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+  },
+  "egress_review": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/EGRESS_REVIEW.json",
+    "sha256": "7ace968ca00ae9e3b4e7cd1f56de06d875a8ff9272a82541dd52a5688be2f2b4"
+  },
+  "full_suite_before_dispatch": {
+    "passed": 484,
+    "skipped": 1,
+    "log": "build/closure_acceptance/gateway-pilot-preflight.log"
+  },
+  "budget": {
+    "spent_usd": 1.8252839999998902,
+    "reserved_usd": 8.999999999999998e-05,
+    "limit_usd": 10.0
+  },
+  "inference_requests_sent": 0,
+  "inference_status": "BLOCKED_AUTOMATIC_EGRESS_REVIEW_PENDING_EXPLICIT_USER_SCOPE_APPROVAL",
+  "model_alias": "agnes-2.5-flash",
+  "upstream_vendor_identity": "UNATTESTED",
+  "local_model_used": false,
+  "heldout_used": false,
+  "production_changes": [
+    "Explicit remote aliases reserve budget and use cloud iteration policy",
+    "Cloud-only routing uses cloud prompts",
+    "Native GPT,Universal andAnthropic transports preserve complete current prompts",
+    "All function roles accept real verified-source and provider transport factories"
+  ]
+}

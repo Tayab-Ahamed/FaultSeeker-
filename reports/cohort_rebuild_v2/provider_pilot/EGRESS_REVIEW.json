@@ -1,0 +1,143 @@
+{
+  "scope": "Offline egress preview only; no API requests or model responses or metric observations",
+  "destination": "https://router.bynara.id/v1/chat/completions",
+  "model_alias": "agnes-2.5-flash",
+  "max_completion_requests": 20,
+  "first_actual_payload": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/first_payload_preview.json",
+    "sha256": "0748bc5458f8439f66faf9fddcd553b9b213e11ebfe34b0d3e93ecf2b2d75aff"
+  },
+  "prompt_templates": [
+    {
+      "path": "faultseeker/prompts/__init__.py",
+      "sha256": "4779715c7707ecc62823218c8ee1cbf69f5809e622a5abf1a1c0989b4c21de2e"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/__init__.py",
+      "sha256": "0c510ec467042bdada6c30fdc39639679425f46ae937c61e53004a88b3955081"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/address_classification_prompts.py",
+      "sha256": "b5e779f35060f9f645338dd5806cd3b6cef3a2dfda545268f4dba622e2ff0e1a"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/fund_flow_prompts.py",
+      "sha256": "e4df4f51a67ebeeb9eadf78b96d337665976fe4ca7daeaff6944fb03e771a595"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/trace_analysis_prompts.py",
+      "sha256": "ed13b4c591cc73d6a85ed4cd889109251d7d0313d6b2644487d02deb8b695267"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/__init__.py",
+      "sha256": "66f00675ba66291bc42c3678bd8dc3e1f960ec9f6ac5591f650397414158731b"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/local_task_prompts.py",
+      "sha256": "81afb60879d35d92208769775d720596d51cb3c0287525ec8756bf9e3d12559d"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/orchestration_session_prompts.py",
+      "sha256": "58123166a99321e6fea0ecf101f29e4aa9a05d2e6b4932f8207ece4487bec524"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/task_coordinator_prompts.py",
+      "sha256": "f86dfd62dbf4fcbfadc5bb629cf49b07a42be2b4b999690c1e160902ddec7088"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/vulnerability_analysis_prompts.py",
+      "sha256": "33403f1c9707f39517141a7d07edd72112e5dec1f55a3f5bedf40b0bcfefa50d"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/worker_prompts.py",
+      "sha256": "b3b0b0d0be6120fc9e3ecafb21d746ecec59aeb85419660993383d6605b7095a"
+    },
+    {
+      "path": "faultseeker/prompts/local_model_prompts.py",
+      "sha256": "9386babd474ebfe8f7d5667957256251928f8869a9c5bfaf88cc7e17c85e1f55"
+    }
+  ],
+  "transaction_inputs": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "trace": {
+        "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a"
+      },
+      "prestate": {
+        "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+      },
+      "opcode_capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+      },
+      "source_responses": [
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.body",
+          "sha256": "65875d9b43bd656fb14743ac613c6b7dea659839815da07d1722b25fc4ced431"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/2aeed0d53a67fe9d33d4638b2b272c1a9eaaa87697317872c5720867c2f903b1.body",
+          "sha256": "3d04433ae9bc13432f02682880f7a481f8e98531672a7b3826ca6440f1f73654"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/69d2a1746c3e64e19ed49132ab683d8be0eeb154e72314e44af8f1172f201373.body",
+          "sha256": "56be193e07e7a9257d368d5d5531c3ccbbd996166d5e44a52373c56702bc81d5"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/99fe19f4bcf8000618fd32f10822c7bc01c9f2d7ff2642dbfb49c079e7f894c1.body",
+          "sha256": "4aec2740c35bc5438c2f379b0d1a22f1dc1bb0d4bc9892d91778326bfb2c6e85"
+        }
+      ]
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "trace": {
+        "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
+      },
+      "prestate": {
+        "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+      },
+      "opcode_capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+      },
+      "source_responses": [
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.body",
+          "sha256": "72df5023703586aa4e7b3e2987f0842fea0ec0ef26f5a86121a118cbd985572c"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/4f5f6da9eb6b076fecd77c979f56708e1ce7b101682bfd3b48ba7287627fa063.body",
+          "sha256": "4e1cbe545afc426ce6346fc5e2849c01fa1f4719c182ef23450c2cf0fd359e5d"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/88a79c835795e94fe9fc7ef85e3e0b9f734e29ae6a167eedeef71f6e29126595.body",
+          "sha256": "373ad4def4e30e77d9f6947ef509179fc5ba4c5117f08ea6b65a911ee132ecaa"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/localization_sources/http/bb690bc787ca53e9d3aa81e34fff0936b864346a1ae3752b371a912e6be19b6d.body",
+          "sha256": "0cfc12052782b2a41aeb4875f7ce04afa40f2533ce1aca745dea6956cf2b914c"
+        }
+      ]
+    }
+  ],
+  "possible_future_payload_content": [
+    "Project prompt templates",
+    "Public historical Ethereum transaction traces/receipts and derived forensics",
+    "Public Sourcify verified contract source bundles",
+    "Model responses derived from these inputs"
+  ],
+  "excluded": [
+    "API key values except Authorization header to the same credential destination",
+    "Environment files",
+    "Paper PDF or claim-registry text",
+    "Publisher annotations and expected target labels",
+    "Held-out outcomes"
+  ],
+  "inference_requests_sent": 0,
+  "approval_status": "AWAITING_EXPLICIT_EGRESS_APPROVAL"
+}
