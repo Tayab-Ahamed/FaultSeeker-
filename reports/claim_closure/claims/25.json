@@ -2,13 +2,13 @@
   "id": 25,
   "claim": "RPC EMA, LRU, TTL, breakers and batching",
   "status": "UNVERIFIABLE",
-  "reason": "Observed Ethereum method and batch responses are recorded. The configured endpoint does not establish other-chain archive/trace support or sustained multi-provider recovery. Native opcode logging is rejected, while the tested Ethereum Anvil workaround works.",
-  "verification_scope": "Current recorded evidence only",
+  "reason": "302 further metered Ethereum identity/receipt requests were recorded, including null identities. They add evidence for the specific Ethereum read methods but do not establish other-chain archive/opcode support or sustained independent-provider failover.",
+  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Remaining-chain trace/archive endpoints and observations",
     "Live multi-provider outage/recovery evidence"
   ],
-  "human_decision": "Remaining-chain trace/archive endpoints and observations; Live multi-provider outage/recovery evidence must be supplied or independently established before reopening.",
+  "human_decision": "Next required input artifact: Multi-chain endpoint and preregistered live failover test manifest",
   "acceptance_tests": [
     "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
     "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
@@ -31,7 +31,30 @@
     {
       "path": "reports/claim_closure/rpc_capability_conclusion.json",
       "sha256": "c0382de7ae09d63f3692cb6f6bf7baa097457ca9f31df072cc4e8288ff1a228b"
+    },
+    {
+      "path": "reports/provenance_hunt/hunt.json",
+      "sha256": "781755b31a08e5bf2240ac21258bbca21e7ae06c12703d165428a9d82b136d0c"
+    },
+    {
+      "path": "reports/provenance_hunt/cohort/row_decisions.json",
+      "sha256": "47a491de6091f359cb5ea330878bec5d70d9adcf3b3d8fbddb3cbf43997264a2"
+    },
+    {
+      "path": "reports/provenance_hunt/accounting.json",
+      "sha256": "a503653e0d53e766a441fa851180de72d33d3256ea95e13d0440ea4dd5f6d6bd"
+    },
+    {
+      "path": "reports/provenance_hunt/frontiers.json",
+      "sha256": "cf56ac1fdca6bb5a149b217e001567e71f63a7b6772b88233e4aa437df919cf7"
+    },
+    {
+      "path": "reports/provenance_hunt/ethereum_requests.json",
+      "sha256": "191254b9676c98b2229d265a2056c13b6a60c79222a530f1924b0900401eda33"
     }
   ],
-  "session_date": "2026-10-15"
+  "session_date": "2026-10-15",
+  "next_input_artifact": "Multi-chain endpoint and preregistered live failover test manifest",
+  "reopen_review_run": "provenance-hunt-2026-10-15",
+  "previous_decision": "reports/provenance_hunt/previous_decisions/25.json"
 }

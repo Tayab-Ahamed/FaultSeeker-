@@ -1,0 +1,37 @@
+{
+  "id": 25,
+  "claim": "RPC EMA, LRU, TTL, breakers and batching",
+  "status": "UNVERIFIABLE",
+  "reason": "Observed Ethereum method and batch responses are recorded. The configured endpoint does not establish other-chain archive/trace support or sustained multi-provider recovery. Native opcode logging is rejected, while the tested Ethereum Anvil workaround works.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Remaining-chain trace/archive endpoints and observations",
+    "Live multi-provider outage/recovery evidence"
+  ],
+  "human_decision": "Remaining-chain trace/archive endpoints and observations; Live multi-provider outage/recovery evidence must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+    "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+    "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+    "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    },
+    {
+      "path": "reports/claim_closure/rpc_capabilities.json",
+      "sha256": "b37e905f29eff96f00e1e4ab3a21ef21c7802aeafa29ff727d54b41a18c48256"
+    },
+    {
+      "path": "reports/claim_closure/rpc_capability_conclusion.json",
+      "sha256": "c0382de7ae09d63f3692cb6f6bf7baa097457ca9f31df072cc4e8288ff1a228b"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
