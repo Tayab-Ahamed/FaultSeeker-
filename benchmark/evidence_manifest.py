@@ -7,6 +7,7 @@ live collection/replay must produce the verification record before publication.
 from __future__ import annotations
 
 import csv
+import gzip
 import hashlib
 import json
 import math
@@ -48,7 +49,11 @@ def _json_artifact(record, key, root, missing):
         missing.append('missing_' + key)
         return None, None
     try:
-        data = json.loads(path.read_text(encoding='utf-8-sig'))
+        if path.suffix == '.gz':
+            with gzip.open(path, 'rt', encoding='utf-8-sig') as handle:
+                data = json.load(handle)
+        else:
+            data = json.loads(path.read_text(encoding='utf-8-sig'))
     except (OSError, ValueError):
         missing.append('invalid_' + key + '_json')
         return None, path
