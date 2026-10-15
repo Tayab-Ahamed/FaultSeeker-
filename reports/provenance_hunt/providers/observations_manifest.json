@@ -1,0 +1,70 @@
+{
+  "observations": [
+    {
+      "path": "reports/provenance_hunt/providers/anthropic_bynara_conformance.json",
+      "sha256": "5b04a026abaf32c467a2087f5c76a8bb8b979b3433845e6dac11d184bf98812f",
+      "model_alias": "claude-haiku-5.5",
+      "status": "UNVERIFIABLE",
+      "http_status": 402,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/anthropic_bynara_diagnostic_conformance.json",
+      "sha256": "ddce0704ada173945bb6fa8a755072900a72478021042a6b0c212eb877ae9e2c",
+      "model_alias": "claude-haiku-5.5",
+      "status": "UNVERIFIABLE",
+      "http_status": 429,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/anthropic_conformance.json",
+      "sha256": "5ca98fc8425148bcc237a20b4acda0be636fa6f7d8242b0374b7804eb3cd2720",
+      "model_alias": "claude-haiku-5.5",
+      "status": "UNVERIFIABLE",
+      "http_status": 402,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/free_control_not_claimed_family_bynara_conformance.json",
+      "sha256": "a01d2a15cb2f8d7e3151878ddab4ec925763e1807d5fdf2295f5df724ea430e5",
+      "model_alias": "agnes-2.5-flash",
+      "status": "VERIFIED-VIA-NARAROUTER",
+      "http_status": 200,
+      "scope": "Authenticated named gateway alias, structured chat response and reported usage only; upstream vendor identity is not independently attested"
+    },
+    {
+      "path": "reports/provenance_hunt/providers/qwen_bynara_conformance.json",
+      "sha256": "7ea421612fcc31107ece53c0bdf29ec8280f772ed51da8528303910374c7267b",
+      "model_alias": "qwen3.8-27b",
+      "status": "UNVERIFIABLE",
+      "http_status": 429,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/qwen_bynara_diagnostic_conformance.json",
+      "sha256": "4c1a8ddfe8698767821579b7591ded79de66fd6fd6926a7a60b99e92f5bb7cdb",
+      "model_alias": "qwen3.8-27b",
+      "status": "UNVERIFIABLE",
+      "http_status": 429,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/qwen_conformance.json",
+      "sha256": "cede3029154f3b07a85a44ad477933ec4ff52d91e25888ce83c1ba3f058dc363",
+      "model_alias": "qwen3.8-27b",
+      "status": "UNVERIFIABLE",
+      "http_status": 429,
+      "scope": null
+    },
+    {
+      "path": "reports/provenance_hunt/providers/qwen_nvidia_conformance.json",
+      "sha256": "ca0064b32c48dd711a5a979c185d8172bfd05f0a94898b29b0ce894a5076479f",
+      "model_alias": "qwen/qwen2.5-coder-32b-instruct",
+      "status": "UNVERIFIABLE",
+      "http_status": 410,
+      "scope": "One documented Qwen endpoint attempt; trial credits and actual billing not confirmed"
+    }
+  ],
+  "claim17_verified": false,
+  "paper_empirical_quality_tested": false
+}

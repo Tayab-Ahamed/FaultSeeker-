@@ -1,0 +1,25 @@
+{
+  "authorized_key_files_checked": [
+    "project ignored .env",
+    "authorized Wingman ignored .env"
+  ],
+  "anthropic_native_key_present": false,
+  "dashscope_native_key_present": false,
+  "openrouter_key_present": false,
+  "NARAROUTER_API_KEY_present": true,
+  "BYNARA_API_KEY_present": true,
+  "ATRIA_API_KEY_present": true,
+  "NVIDIA_API_KEY_present": true,
+  "ollama_preflight": "Unreachable localhost:11434; no installed model observed",
+  "native_anthropic_adapter": "UNTESTED",
+  "native_dashscope_adapter": "UNTESTED",
+  "rotation": "Two explicitly supplied Nara credential variables attempted; named family aliases did not return a conforming completion. No native Grok/Gemini rate-limit retries were needed in this research pass.",
+  "nara_free_control": "VERIFIED-VIA-NARAROUTER",
+  "nara_claude_alias": "HTTP402 then diagnostic HTTP429 rate_limited/Insufficient credits",
+  "nara_qwen_alias": "HTTP429 rate_limited/Insufficient credits",
+  "nvidia_documented_qwen_alias": "HTTP410; no Qwen in returned catalog",
+  "atria_catalog": [
+    "Atria-Dawn"
+  ],
+  "claim17_status": "UNVERIFIABLE"
+}

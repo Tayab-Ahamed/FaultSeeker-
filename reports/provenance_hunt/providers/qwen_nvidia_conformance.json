@@ -1,0 +1,31 @@
+{
+  "family": "qwen_nvidia",
+  "route": "https://integrate.api.nvidia.com/v1/chat/completions",
+  "model_alias": "qwen/qwen2.5-coder-32b-instruct",
+  "request": {
+    "model": "qwen/qwen2.5-coder-32b-instruct",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return only the requested JSON object."
+      },
+      {
+        "role": "user",
+        "content": "Return exactly: {\"nonce\": \"bbded7534db6484a\", \"sum\": 12}"
+      }
+    ],
+    "max_tokens": 128,
+    "temperature": 0
+  },
+  "catalog_price": {},
+  "budget_allocation_usd": 0.1,
+  "billing_confirmed": false,
+  "paid_dispatch_attempts": 1,
+  "alias_source": "https://docs.api.nvidia.com/nim/reference/llm-apis",
+  "scope": "One documented Qwen endpoint attempt; trial credits and actual billing not confirmed",
+  "status": "UNVERIFIABLE",
+  "http_status": 410,
+  "error_type": "HTTPError",
+  "native_adapter_tested": false,
+  "duration_seconds": 0.11212630000227364
+}

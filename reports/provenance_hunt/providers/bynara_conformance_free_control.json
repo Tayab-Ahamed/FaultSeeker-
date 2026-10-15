@@ -1,0 +1,86 @@
+{
+  "observations": [
+    {
+      "family": "free_control_not_claimed_family",
+      "route": "https://router.bynara.id/v1/chat/completions",
+      "model_alias": "agnes-2.5-flash",
+      "request": {
+        "model": "agnes-2.5-flash",
+        "messages": [
+          {
+            "role": "system",
+            "content": "Return only the requested JSON object."
+          },
+          {
+            "role": "user",
+            "content": "Return exactly: {\"nonce\": \"ea46483ad23a9784\", \"sum\": 12}"
+          }
+        ],
+        "max_tokens": 128,
+        "temperature": 0
+      },
+      "catalog_price": {
+        "id": "agnes-2.5-flash",
+        "object": "model",
+        "owned_by": "byNara",
+        "name": "Agnes 2.5 Flash",
+        "context_window": 512000,
+        "vision": true,
+        "reasoning": true,
+        "payg_enabled": true,
+        "input_idr_per_1k": 0.1,
+        "output_idr_per_1k": 0.2,
+        "cache_read_idr_per_1k": 0.01,
+        "input_idr_per_1m": 100,
+        "output_idr_per_1m": 200,
+        "cache_read_idr_per_1m": 10
+      },
+      "credential_variable": "BYNARA_API_KEY",
+      "budget_allocation_usd": 0.1,
+      "billing_confirmed": false,
+      "paid_dispatch_attempts": 1,
+      "http_status": 200,
+      "response": {
+        "id": "chatcmpl-fddc8c80",
+        "model": "agnes-2.5-flash",
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "message": {
+              "content": "\n\n{\"nonce\": \"ea46483ad23a9784\", \"sum\": 12}",
+              "role": "assistant",
+              "reasoning_content": "The user wants me to return exactly a specific JSON object.\n"
+            },
+            "provider_specific_fields": {
+              "matched_stop": 248046
+            }
+          }
+        ],
+        "usage": {
+          "completion_tokens": 42,
+          "prompt_tokens": 321,
+          "prompt_tokens_details": {
+            "cached_tokens": 256
+          },
+          "total_tokens": 363
+        },
+        "provider": null
+      },
+      "status": "VERIFIED-VIA-NARAROUTER",
+      "native_adapter_tested": false,
+      "localization_quality_tested": false,
+      "scope": "Authenticated named gateway alias, structured chat response and reported usage only; upstream vendor identity is not independently attested",
+      "duration_seconds": 29.38690740000311
+    }
+  ],
+  "ollama": "PENDING-LOCAL-SERVICE",
+  "native_anthropic_adapter": "UNTESTED",
+  "native_dashscope_adapter": "UNTESTED",
+  "openrouter": "NOT_USED",
+  "budget": {
+    "spent_usd": 0.8091259999999998,
+    "reserved_usd": 0,
+    "limit_usd": 10.0
+  }
+}

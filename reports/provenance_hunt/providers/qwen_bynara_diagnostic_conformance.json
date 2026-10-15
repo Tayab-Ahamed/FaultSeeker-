@@ -1,0 +1,48 @@
+{
+  "family": "qwen",
+  "route": "https://router.bynara.id/v1/chat/completions",
+  "model_alias": "qwen3.8-27b",
+  "request": {
+    "model": "qwen3.8-27b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Return only the requested JSON object."
+      },
+      {
+        "role": "user",
+        "content": "Return exactly: {\"nonce\": \"6aa9bdfb26362ca4\", \"sum\": 12}"
+      }
+    ],
+    "max_tokens": 128,
+    "temperature": 0
+  },
+  "catalog_price": {
+    "id": "qwen3.8-27b",
+    "object": "model",
+    "owned_by": "byNara",
+    "name": "Qwen 3.8 27B",
+    "context_window": 1000000,
+    "payg_enabled": true,
+    "input_idr_per_1k": 1.131443,
+    "output_idr_per_1k": 13.482143,
+    "cache_read_idr_per_1k": 0.793067,
+    "input_idr_per_1m": 1131.443,
+    "output_idr_per_1m": 13482.143,
+    "cache_read_idr_per_1m": 793.067
+  },
+  "credential_variable": "BYNARA_API_KEY",
+  "budget_allocation_usd": 0.1,
+  "billing_confirmed": false,
+  "paid_dispatch_attempts": 1,
+  "status": "UNVERIFIABLE",
+  "http_status": 429,
+  "error_type": "HTTPError",
+  "native_adapter_tested": false,
+  "provider_error": {
+    "type": "rate_limited",
+    "message": "Insufficient credits. Please top up your balance and try again in a few minutes."
+  },
+  "retry_after": null,
+  "duration_seconds": 0.9827736000006553
+}
