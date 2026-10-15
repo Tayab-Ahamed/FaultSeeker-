@@ -1,0 +1,35 @@
+{
+  "id": 21,
+  "claim": "40% benign prefilter and latency reduction",
+  "status": "UNVERIFIABLE",
+  "reason": "There is no independently verified benign study pool or preregistered paired prefilter latency experiment. The BENIGN skip mechanism alone cannot establish a 40 percent population rate.",
+  "verification_scope": "Current recorded evidence only",
+  "requirements_unmet": [
+    "Authenticated benign population",
+    "Paired production latency and bypass observations"
+  ],
+  "human_decision": "Authenticated benign population; Paired production latency and bypass observations must be supplied or independently established before reopening.",
+  "acceptance_tests": [
+    "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+    "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/cohort/row_decisions.json",
+      "sha256": "fbcfb44e979360353c05c5df8a7ea79a201ec75ca4d4188c567a3a6f08191548"
+    },
+    {
+      "path": "reports/claim_closure/paper_requirements.json",
+      "sha256": "e9b0415ac0d47e5888d0ae824e19597960ae4b1a2b31bdc243dc0c03ddc8262d"
+    },
+    {
+      "path": "reports/claim_closure/environment.json",
+      "sha256": "7464728e41cf40c492ed412256384cd3a4af6cea818e6cc2c33190572eaa77e2"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
