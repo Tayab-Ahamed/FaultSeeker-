@@ -1,0 +1,20 @@
+{
+  "id": 10,
+  "claim": "Five storage signal weights",
+  "status": "VERIFIED",
+  "reason": "Each specified storage weight contributes through executed detector evidence; weights were not tuned during this review.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+    "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
