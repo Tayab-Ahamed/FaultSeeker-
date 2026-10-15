@@ -1,0 +1,19 @@
+{
+  "claim": 25,
+  "status": "UNVERIFIABLE",
+  "verified_scope": "Observed method responses of the configured Ethereum endpoint; local EMA/LRU/TTL/circuit-breaker/batch behavior has passing tests.",
+  "reason": "The configured URL serves Ethereum only. Multi-chain endpoint coverage and sustained live failover/recovery were not established. The default opcode logger is rejected; the tested Ethereum workaround is local Anvil replay. Returned method data is recorded without extrapolation to other chains.",
+  "requirements_unmet": [
+    "Verified archive/trace endpoints on remaining paper chains",
+    "Live multi-provider outage and recovery observations"
+  ],
+  "evidence_pointers": [
+    "reports/claim_closure/rpc_capabilities.json",
+    "tests/test_rpc_mechanisms.py"
+  ],
+  "observed_status_counts": {
+    "RETURNED": 15,
+    "REQUEST-FAILED": 1
+  },
+  "rpc_requests": 17
+}

@@ -1,0 +1,240 @@
+{
+  "scope": "observed configured endpoint only; RETURNED is not a full correctness proof",
+  "endpoint_uses_chain_template": false,
+  "observations": [
+    {
+      "method": "eth_chainId",
+      "mode": "network identity",
+      "status": "RETURNED",
+      "result_type": "str",
+      "chain_id": 1,
+      "elapsed_ms": 359
+    },
+    {
+      "method": "eth_blockNumber",
+      "mode": "head",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 406
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "mode": "historical identity",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "blockHash",
+        "blockNumber",
+        "blockTimestamp",
+        "chainId",
+        "from",
+        "gas",
+        "gasPrice",
+        "hash",
+        "input",
+        "nonce",
+        "r",
+        "s",
+        "to",
+        "transactionIndex",
+        "type",
+        "v",
+        "value"
+      ],
+      "elapsed_ms": 500
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "mode": "historical receipt",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "blockHash",
+        "blockNumber",
+        "contractAddress",
+        "cumulativeGasUsed",
+        "effectiveGasPrice",
+        "from",
+        "gasUsed",
+        "logs",
+        "logsBloom",
+        "status",
+        "to",
+        "transactionHash",
+        "transactionIndex",
+        "type"
+      ],
+      "elapsed_ms": 500
+    },
+    {
+      "method": "eth_getBlockByHash",
+      "mode": "historical block",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "baseFeePerGas",
+        "difficulty",
+        "extraData",
+        "gasLimit",
+        "gasUsed",
+        "hash",
+        "logsBloom",
+        "miner",
+        "mixHash",
+        "nonce",
+        "number",
+        "parentHash",
+        "receiptsRoot",
+        "sha3Uncles",
+        "size",
+        "stateRoot",
+        "timestamp",
+        "transactions",
+        "transactionsRoot",
+        "uncles"
+      ],
+      "elapsed_ms": 625
+    },
+    {
+      "method": "eth_getBlockByNumber",
+      "mode": "parent block",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "baseFeePerGas",
+        "difficulty",
+        "extraData",
+        "gasLimit",
+        "gasUsed",
+        "hash",
+        "logsBloom",
+        "miner",
+        "mixHash",
+        "nonce",
+        "number",
+        "parentHash",
+        "receiptsRoot",
+        "sha3Uncles",
+        "size",
+        "stateRoot",
+        "timestamp",
+        "transactions",
+        "transactionsRoot",
+        "uncles"
+      ],
+      "elapsed_ms": 579
+    },
+    {
+      "method": "eth_getBalance",
+      "mode": "archive balance",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 578
+    },
+    {
+      "method": "eth_getTransactionCount",
+      "mode": "archive nonce",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 609
+    },
+    {
+      "method": "eth_getCode",
+      "mode": "archive bytecode",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 563
+    },
+    {
+      "method": "eth_getStorageAt",
+      "mode": "archive slot",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 562
+    },
+    {
+      "method": "eth_call",
+      "mode": "EOA no-op call",
+      "status": "RETURNED",
+      "result_type": "str",
+      "elapsed_ms": 844
+    },
+    {
+      "method": "eth_getLogs",
+      "mode": "historical logs",
+      "status": "RETURNED",
+      "result_type": "list",
+      "result_length": 0,
+      "elapsed_ms": 781
+    },
+    {
+      "method": "debug_traceTransaction",
+      "mode": "callTracer",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "calls",
+        "from",
+        "gas",
+        "gasUsed",
+        "input",
+        "to",
+        "type",
+        "value"
+      ],
+      "elapsed_ms": 531
+    },
+    {
+      "method": "debug_traceTransaction",
+      "mode": "opcode logger",
+      "status": "REQUEST-FAILED",
+      "error_type": "RuntimeError",
+      "elapsed_ms": 266
+    },
+    {
+      "method": "trace_replayTransaction",
+      "mode": "Parity trace/stateDiff fallback",
+      "status": "RETURNED",
+      "result_type": "dict",
+      "result_fields": [
+        "output",
+        "stateDiff",
+        "trace",
+        "transactionHash",
+        "vmTrace"
+      ],
+      "elapsed_ms": 531
+    },
+    {
+      "method": "JSON-RPC batch",
+      "mode": "two reads; correlation by id",
+      "status": "RETURNED"
+    }
+  ],
+  "rpc_usage": {
+    "outbound_rpc_requests": 17,
+    "methods": {
+      "eth_chainId": 2,
+      "eth_blockNumber": 2,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1,
+      "eth_getBlockByHash": 1,
+      "eth_getBlockByNumber": 1,
+      "eth_getBalance": 1,
+      "eth_getTransactionCount": 1,
+      "eth_getCode": 1,
+      "eth_getStorageAt": 1,
+      "eth_call": 1,
+      "eth_getLogs": 1,
+      "debug_traceTransaction": 2,
+      "trace_replayTransaction": 1
+    },
+    "estimated_cost_usd": 0.000102,
+    "cumulative_ledger_estimate_usd": 0.007349999999999928,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  },
+  "untested_scope": "Other paper chains and sustained-load fault recovery not established by these probes."
+}
