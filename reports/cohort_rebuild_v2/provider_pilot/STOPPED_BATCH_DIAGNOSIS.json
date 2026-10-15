@@ -1,0 +1,24 @@
+{
+  "scope": "Offline diagnosis of the stopped real TRAIN cloud batch; no reconstructed case outcomes",
+  "run": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/summary.json",
+    "sha256": "78ab5ca85f9264b6cf194afcd293e933d4511db58c8609712b573e0b69115c68"
+  },
+  "saved_response": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-006.json",
+    "sha256": "561079a807501c5e02e393c5eb53c16ba1bdbc3c9eb89487a36de5125e743c75"
+  },
+  "root_cause": "Nara _Provider omitted AbstractAgent JSON extraction; valid Markdown-fenced JSON raised JSONDecodeError",
+  "fix": "Inherit AbstractAgent and initialize its safe parser and memory interface; no retry or additional network request",
+  "regression_test": "tests/test_nara_pilot_provider.py::NaraPilotTests::test_actual_pilot_fenced_generation_response_parses_without_redispatch",
+  "test_first": "Regression failed with JSONDecodeError before provider inheritance fix; 19 focused provider/runner/paired tests passed after",
+  "requests": 6,
+  "complete_cases": 0,
+  "metrics": null,
+  "model": "agnes-2.5-flash",
+  "incremental_conservative_estimate_usd": 0.022994899999999818,
+  "cumulative_at_batch_end_usd": 1.84827889999989,
+  "billing_confirmed": false,
+  "approval_consumed": true,
+  "heldout_used": false
+}

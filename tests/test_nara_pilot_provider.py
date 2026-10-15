@@ -65,4 +65,41 @@ class NaraPilotTests(unittest.TestCase):
   with self.assertRaises(ValueError):a.query('one')
   with self.assertRaises(StudyStop):a.query('two')
 
+ def test_any_http_error_stops_after_one_attempt(self):
+  p=self.pilot(transport=lambda *args:(500,b'{}',ENDPOINT));a=p.factory('s')
+  with self.assertRaises(ValueError):a.query('one')
+  with self.assertRaises(StudyStop):a.query('two')
+  self.assertEqual(p.calls,1);self.assertEqual(self.guard.events,['reserve','settle'])
+ def test_invalid_json_stops_before_next_reservation(self):
+  def invalid(*args):
+   data=json.loads(self.response());data['choices'][0]['message']['content']='not json';return 200,json.dumps(data).encode(),ENDPOINT
+  p=self.pilot(transport=invalid);a=p.factory('s')
+  with self.assertRaises(Exception):a.query('one')
+  with self.assertRaises(StudyStop):a.query('two')
+  self.assertEqual(p.calls,1);self.assertEqual(self.guard.events,['reserve','settle'])
+
+ def test_actual_pilot_fenced_generation_response_parses_without_redispatch(self):
+  record=json.loads((Path(__file__).resolve().parents[1]/'reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-006.json').read_text(encoding='utf-8'))
+  content=record['response']['choices'][0]['message']['content']
+  self.assertIn('```json',content)
+  expected=json.loads(content.split('```json',1)[1].split('```',1)[0])
+  p=self.pilot(transport=lambda *args:(200,record['response_text'].encode('utf-8'),ENDPOINT))
+  actual=p.factory('system','generation_agent').query('offline replay of saved response')
+  self.assertEqual(actual,expected);self.assertEqual(p.calls,1)
+  self.assertEqual(self.guard.events,['reserve','settle']);self.assertEqual(p.stop_reason,'')
+
+ def test_real_spend_ledger_events_are_bound_to_each_attempt(self):
+  from faultseeker.core.spend_guard import SpendGuard
+  guard=SpendGuard(Path(self.tmp.name)/'spend.json',pricing={MODEL:{'input':0.1,'output':0.2}})
+  self.router.spend_guard=guard
+  def transport(*args):
+   self.assertGreater(guard.report()['reserved_usd'],0)
+   return 200,self.response(),ENDPOINT
+  p=self.pilot(transport=transport);p.factory('s').query('one')
+  receipt=json.loads((Path(self.tmp.name)/'ledger/call-001.json').read_text(encoding='utf-8'))
+  events=receipt['ledger_events']
+  self.assertEqual([e['event'] for e in events],['reserve','settle'])
+  self.assertEqual(events[0]['id'],events[1]['id'])
+  self.assertEqual(events,guard.report()['events'])
+
 if __name__=='__main__':unittest.main()

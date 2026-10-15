@@ -5,6 +5,7 @@ from datetime import datetime,timezone
 import io
 import json
 import math
+import os
 from pathlib import Path
 import sys
 import uuid
@@ -44,9 +45,21 @@ def configuration(root=ROOT):
     read_bound(protocol['source_inputs'],root)
     return protocol,rates
 
+def claim_dispatch(path,approval,run_id):
+    path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+    with path.open('x',encoding='utf-8') as handle:
+        json.dump({'run_id':run_id,'approval':approval,'max_completion_requests':20},handle,indent=2)
+        handle.flush();os.fsync(handle.fileno())
+
 def run(root=ROOT,live=False):
     if not live:raise ValueError('Explicit --live required before credentials or dispatch')
     root=Path(root);base=root/BASE;protocol,rates=configuration(root)
+    approval_path=base/'provider_pilot/approval.json'
+    approval=json.loads(approval_path.read_text(encoding='utf-8'))
+    if (approval.get('approved') is not True or approval.get('max_completion_requests')!=20
+            or approval.get('protocol')!=bind(base/'provider_pilot/protocol.json',root)
+            or approval.get('stop_on_any_error') is not True):
+        raise ValueError('Explicit approved pilot scope missing or changed')
     from dotenv import dotenv_values
     values={}
     for path in (Path(r'C:\Users\91701\Downloads\Wingman-main\Wingman-main\.env'),root/'.env'):
@@ -59,6 +72,7 @@ def run(root=ROOT,live=False):
     config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
     common={'run_id':out.name,'seed':protocol['seed'],'config':config}
+    claim_dispatch(base/'provider_pilot/dispatch_permit.json',bind(approval_path,root),out.name)
     append_experiment(log,split,dict(common,kind='dispatch-train',metrics=None,sample_ids=[]))
     guard=SpendGuard(root/'data/research/spend_ledger.json',limit_usd=10,pricing={MODEL:rates})
     budget_before=guard.report();COST_RATES[MODEL]=rates
@@ -86,7 +100,7 @@ def run(root=ROOT,live=False):
         if key in stdout:stdout='Output withheld: credential echo detected'
         (out/'stdout.txt').write_bytes(stdout.encode('utf-8'))
         budget_after=guard.report()
-        report={'run_id':out.name,'scope':'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim','config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':2,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
+        report={'run_id':out.name,'scope':'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim','config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':2,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'requested_model_identity':'Agnes 2.5 Flash (agnes-2.5-flash)','pilot_stop_reason':pilot.stop_reason,'approval':bind(approval_path,root),'ledger_records':[bind(p,root) for p in sorted((out/'calls/ledger').glob('*.json'))],'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
         write_json(out/'summary.json',report)
         append_experiment(log,split,dict(common,kind='recorded-train-pilot',metrics=None,sample_ids=[],evidence=bind(out/'summary.json',root)))
         print(json.dumps({'run_id':out.name,'requests':pilot.calls,'complete_cases':report['complete_cases'],'stop_reason':report['stop_reason'],'cumulative_conservative_estimate_usd':budget_after['spent_usd']}),flush=True)

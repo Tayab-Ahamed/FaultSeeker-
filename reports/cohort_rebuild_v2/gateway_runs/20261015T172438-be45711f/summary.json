@@ -1,0 +1,97 @@
+{
+  "run_id": "20261015T172438-be45711f",
+  "scope": "Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/system.json",
+      "sha256": "c92045302c8531a766931434c8da9fce28d978205990e081365ffefe41fd817f"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/system_sources.json.gz",
+      "sha256": "74cfe74a5337a2d45dce22caf538e861e95f828ab18c070ac51b8c84435980f1"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false
+  },
+  "observations": [],
+  "stop_reason": "Production pilot failed: JSONDecodeError",
+  "completion_requests": 6,
+  "complete_cases": 0,
+  "requested_train_cases": 2,
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.8252839999998902,
+  "budget_estimate_after_usd": 1.84827889999989,
+  "incremental_conservative_estimate_usd": 0.022994899999999818,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "Pilot stopped after JSONDecodeError",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/approval.json",
+    "sha256": "274c06d7622c64113d9c7a6bc5c1361aa23107297a4684e769b0a03489b73ee4"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-001.json",
+      "sha256": "49fb6c5747a1b82f935437404817cfa10c0cae6226ae5f4fd0082a69644d8168"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-002.json",
+      "sha256": "a9087c6964b007f08a5946aabd362ed946fabeeea4a01f49ef19637363ebf8a1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-003.json",
+      "sha256": "8d98c172ce612c6b4d9e4171f9f61725f5c3a80e496883bf72153bce884258c3"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-004.json",
+      "sha256": "d7a9f7c4f89c3c957bd4efe59243f7eb6f9a10ab6a1b6e9d9e517893ed1be6bf"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-005.json",
+      "sha256": "120c609900b54a1094c4fae81a5b3504167d57827e65c82672103ac596807ab1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/ledger/call-006.json",
+      "sha256": "f392070f522fd45b27e3d4a8ef3d041e178605186d17abed4f2d85516683be32"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-001.json",
+      "sha256": "eba49c1544c24bcbd6e68219e2a647c2c025bd5a91845507bcf0c89570708044"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-002.json",
+      "sha256": "a1e9b4ced6d58e5dbf480b94d3d69f34d37fcdb77e9695b9a249c31f269b269f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-003.json",
+      "sha256": "9a92096ece118cee7a0827e363c863c2ee52941f2a707ebabf9945b83ee6ee02"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-004.json",
+      "sha256": "538c394bd03776772a3927ebb9ec99ac0737d4e45fbea345b1e4fbbfea0082fb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-005.json",
+      "sha256": "880bd6c0ef6da441d4023730fbb66ea14ac1883fd3e820ea97ff49dd72ef765a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-006.json",
+      "sha256": "561079a807501c5e02e393c5eb53c16ba1bdbc3c9eb89487a36de5125e743c75"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false
+}

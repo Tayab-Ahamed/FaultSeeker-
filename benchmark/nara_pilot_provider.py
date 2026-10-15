@@ -6,6 +6,7 @@ import threading
 import time
 from urllib import request,error
 from faultseeker.core.llm_router import RoutedAgent
+from faultseeker.utils.agent import AbstractAgent
 
 MODEL='agnes-2.5-flash'
 ENDPOINT='https://router.bynara.id/v1/chat/completions'
@@ -72,12 +73,29 @@ class _BoundAgent:
         # Lock spans reservation+dispatch+settlement; shared roles cannot overshoot.
         with self.pilot.lock:
             self.pilot._precheck()
-            return self.agent.query(user_message,temperature,format)
+            guard=self.pilot.router.spend_guard
+            before=guard.report() if hasattr(guard, 'report') else None
+            call_before=self.pilot.calls
+            try:
+                return self.agent.query(user_message,temperature,format)
+            except Exception as exc:
+                if not self.pilot.stop_reason:
+                    self.pilot.stop_reason='Pilot stopped after '+type(exc).__name__
+                raise
+            finally:
+                if before is not None and self.pilot.calls>call_before:
+                    events=guard.report()['events'][len(before['events']):]
+                    events=[e for e in events if e.get('model')==MODEL]
+                    receipt={'call_number':self.pilot.calls,'model':MODEL,'ledger_events':events}
+                    directory=self.pilot.output_dir/'ledger';directory.mkdir(parents=True,exist_ok=True)
+                    path=directory/('call-%03d.json'%self.pilot.calls)
+                    with path.open('x',encoding='utf-8') as handle:
+                        json.dump(receipt,handle,indent=2);handle.write('\n')
 
-class _Provider:
+class _Provider(AbstractAgent):
     def __init__(self,pilot,system,role):
-        self.pilot=pilot;self.model=MODEL;self.role=role
-        self.memory=[{'role':'system','content':system}];self.last_usage=None
+        super().__init__(system, MODEL)
+        self.pilot=pilot;self.role=role
     def _send_message(self,prompt,temperature=0):
         p=self.pilot;p._precheck()
         # Keep system + two completed turns + this full prompt, without slicing.

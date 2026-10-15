@@ -112,3 +112,8 @@ are UNCERTAIN: observed BENIGN-skip eligibility is 0/30. Context/token/storage
 coverage is incomplete; no coverage flag was invented to force a BENIGN skip.
 EOA execution controls do not establish general legitimate-contract error rates
 or the paper's 40-percent paired latency claim. No held-out exam was dispatched.
+
+
+### Approved cloud pilot stopped and diagnosed
+
+Six HTTP-200 Agnes 2.5 Flash requests completed with per-call spend receipts, but no case completed. Model response 6 contains valid Markdown-fenced JSON; the gateway adapter omitted the existing safe parser. A test-first offline regression reproduces and fixes that omission without another live call. The pilot remains UNSCORED; the consumed dispatch permit is preserved. Batch conservative estimate $0.0229949; cumulative at batch end $1.8482789 (not an invoice). Held-out remains sealed. See provider_pilot/STOPPED_BATCH_DIAGNOSIS.json and the hash-bound run summary.

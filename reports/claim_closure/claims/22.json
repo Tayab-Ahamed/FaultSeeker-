@@ -2,12 +2,12 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred.",
+  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available.",
   "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate",
   "requirements_unmet": [
-    "Explicit egress approval for the reviewed bounded cloud-only train pilot, then complete real model ranking outputs and broader source-linked evaluation"
+    "Complete real model-assisted TRAIN outputs and validated function ranks, followed by the frozen final held-out evaluation; the stopped pilot is unscored"
   ],
-  "human_decision": "The automatic approval reviewer requires explicit approval of the reviewed prompt/source/transaction data scope sent to the Nara gateway; request is pending",
+  "human_decision": "The initial pilot approval is consumed. Stop-on-error was honored; a new bounded live batch requires fresh approval. No held-out data was used.",
   "acceptance_tests": [
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
     "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
@@ -18,7 +18,8 @@
     "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected",
     "tests/test_function_input_factories.py::test_input_factories_cover_all_roles_and_verified_source",
     "tests/test_explicit_remote_identity.py::test_remote_alias_reserves_before_dispatch_and_denies_over_cap",
-    "tests/test_explicit_remote_identity.py::test_cloud_only_alias_uses_cloud_prompts_not_local_simplification"
+    "tests/test_explicit_remote_identity.py::test_cloud_only_alias_uses_cloud_prompts_not_local_simplification",
+    "tests/test_nara_pilot_provider.py::NaraPilotTests::test_actual_pilot_fenced_generation_response_parses_without_redispatch"
   ],
   "evidence": [
     {
@@ -108,10 +109,26 @@
     {
       "path": "reports/cohort_rebuild_v2/provider_pilot/PREFLIGHT.json",
       "sha256": "654db8924070914c957d8aac21182fe4bc84e2bc769f698fdf8feda85d97f109"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/summary.json",
+      "sha256": "78ab5ca85f9264b6cf194afcd293e933d4511db58c8609712b573e0b69115c68"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/approval.json",
+      "sha256": "274c06d7622c64113d9c7a6bc5c1361aa23107297a4684e769b0a03489b73ee4"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/dispatch_permit.json",
+      "sha256": "387c121c877f7a4cedd15f56d373b95eef8916dc6aec06ca89283b5946169c30"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/STOPPED_BATCH_DIAGNOSIS.json",
+      "sha256": "9e86c4f3b2e89041b5be737f5c5ba1fda273a8514ac1a7b6273a8e47004e17af"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Explicit egress approval for the reviewed bounded cloud-only train pilot, then complete real model ranking outputs and broader source-linked evaluation",
+  "next_input_artifact": "New approved bounded live pilot after offline parser regression and full-suite validation",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/22.json",
   "paper_verdict": "HISTORICAL-AGGREGATE-RECOVERED",
