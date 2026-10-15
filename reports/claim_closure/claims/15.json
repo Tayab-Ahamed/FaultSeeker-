@@ -2,12 +2,12 @@
   "id": 15,
   "claim": "Compound case study",
   "status": "UNVERIFIABLE",
-  "reason": "Targeted public searches and the paper/repository narrative did not establish a unique legitimate Compound cToken transaction. No arbitrary Compound interaction or inflation exploit was substituted, and no unidentified transaction was claimed as replayed.",
-  "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
+  "reason": "Historical reentrancy_metrics.json contains the cToken narrative with no hash. Compound-related exploit annotations cannot identify the legitimate recursive transaction.",
+  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
   "requirements_unmet": [
-    "Exact legitimate Compound cToken transaction and source corroboration"
+    "Exact legitimate cToken case-study transaction plus source linkage"
   ],
-  "human_decision": "Next required input artifact: Exact author-identified Compound cToken case-study transaction hash",
+  "human_decision": "Next evidence input: Exact legitimate cToken case-study transaction plus source linkage",
   "acceptance_tests": [
     "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
   ],
@@ -43,10 +43,36 @@
     {
       "path": "reports/provenance_hunt/compound_search.json",
       "sha256": "3de9a6449100a276f4dd627c9ff1e8e9cee8c7d650c004e0c676f4f71845cca8"
+    },
+    {
+      "path": "reports/canonical_history/manifest.json",
+      "sha256": "01981d700a6db0122eed175f55079ad26cf66abb64d07d50f37fa5776aaa9439"
+    },
+    {
+      "path": "reports/canonical_history/cohort_history.json",
+      "sha256": "3a583ad71f8d6f38c2ba40408da22c120e9cdd91f6b769f8f068dc69acf85418"
+    },
+    {
+      "path": "reports/canonical_history/findings.json",
+      "sha256": "9d7ec9412936119922e658f5c19cdc6a29804f7c7e255646dda5af7015dfb317"
+    },
+    {
+      "path": "reports/canonical_history/paper_vs_repo.json",
+      "sha256": "f0a23c1872744ff54822f27a0059f6fd99812e7e7d8f7acb366d75d99558646a"
+    },
+    {
+      "path": "reports/canonical_history/history_search.json",
+      "sha256": "e6bd805b317e9997758cfac9420086d6c73791f347e0a0719c90b0db8f864054"
+    },
+    {
+      "path": "reports/canonical_history/accounting.json",
+      "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Exact author-identified Compound cToken case-study transaction hash",
+  "next_input_artifact": "Exact legitimate cToken case-study transaction plus source linkage",
   "reopen_review_run": "provenance-hunt-2026-10-15",
-  "previous_decision": "reports/provenance_hunt/previous_decisions/15.json"
+  "previous_decision": "reports/canonical_history/previous_decisions/15.json",
+  "paper_verdict": "CASE-NARRATIVE-RECOVERED-HASH-MISSING",
+  "canonical_review_run": "canonical-history-review-2026-10-15"
 }
