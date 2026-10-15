@@ -1,0 +1,260 @@
+[
+  {
+    "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+    "chain": "eth",
+    "functioncall_count": "155",
+    "address_count": "16",
+    "max_depth": "14",
+    "gas_cost": "897331",
+    "class": "Complex",
+    "analysis": "[\"https://twitter.com/peckshield/status/1621337925228306433\", \"https://twitter.com/BlockSecTeam/status/1621263393054420992\", \"https://www.numencyber.com/analysis-of-orionprotocol-reentrancy-attack-with-poc/\", \"https://github.com/SunWeb3Sec/DeFiHackLabs#20221223---defrost---reentrancy\", \"https://github.com/SunWeb3Sec/DeFiHackLabs#20221110---dfxfinance---reentrancy\"]",
+    "membership": "FROZEN-231",
+    "incident_id": "reviewed:Orion Protocol",
+    "legacy_labels": {
+      "vuln_type": "Reentrancy",
+      "swc_registry_classification": "SWC-107(Reentrancy)",
+      "dasp_classification": "Reentrancy",
+      "uncategorized": ""
+    },
+    "legacy_ground_truth": [
+      {
+        "path": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/ground_truth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+        "sha256": "aad92448b823ce8353b6ccd5035ad59e387239589ca1dfa077793c6e8525e8c7"
+      }
+    ],
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+          "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1621337925228306433",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+          "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "sha256": "54480eab830be274d5e8d61560bf9d85d921c5fbf67f74bdeebb32274ed7f01e"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "sha256": "23fba2e59b12bc530fbd5519edb47acd5759323f192f08d20861fc73480f11bd"
+    }
+  },
+  {
+    "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+    "chain": "eth",
+    "functioncall_count": "258",
+    "address_count": "28",
+    "max_depth": "13",
+    "gas_cost": "1949994",
+    "class": "Exceptionally Complex",
+    "analysis": "[\"https://twitter.com/FrankResearcher/status/1635241475989721089\", \"https://twitter.com/nomorebear/status/1635230621856600064\", \"https://twitter.com/peckshield/status/1635229594596036608\", \"https://twitter.com/BlockSecTeam/status/1635262150624305153\", \"https://twitter.com/SlowMist_Team/status/1635288963580825606\"]",
+    "membership": "FROZEN-231",
+    "incident_id": "reviewed:Euler Finance",
+    "legacy_labels": {
+      "vuln_type": "Business Logic Flaw",
+      "swc_registry_classification": "",
+      "dasp_classification": "Unknown Unknowns",
+      "uncategorized": ""
+    },
+    "legacy_ground_truth": [
+      {
+        "path": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/ground_truth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "516d02c238400b5c42c6e7384902cd6ec22d982b994f76229b6af4fc3b387a06"
+      }
+    ],
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1635262150624305153",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/0eb6fb23a2ad6b3dd43f0c0feda1e67580e0992e68971b6def515c5e3193e6e2.gz",
+          "sha256": "b66585e306d95c7441a5ed9ea8e4881f920c926cb48adc56a102c918a4f20fba"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://phalcon.xyz/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d?line=471&debugLine=471",
+          "https://phalcon.blocksec.com/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://phalcon.xyz/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d?line=471&debugLine=471",
+          "https://phalcon.blocksec.com/tx/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1635229594596036608",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/c56def597b3cfa0afbee011ce7701b7850671fd9b097b0cb9ee5387d988255b8.gz",
+          "sha256": "08ac9ba1f6c3fb449092420e42c7e9dd522f35ec300cac5127059d548fbdaf62"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "https://etherscan.io/tx/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+      "sha256": "c8719a05af0af546e3f3fd03107b39ed5a8adfbeb06fa7522b4765fdf0a7acc3"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+      "sha256": "4caea532b5d230d597e6f0e7816a2352dda68f3038609204cb7a099975281ae1"
+    }
+  },
+  {
+    "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+    "chain": "eth",
+    "functioncall_count": "412",
+    "address_count": "44",
+    "max_depth": "13",
+    "gas_cost": "2505709",
+    "class": "Exceptionally Complex",
+    "analysis": "[\"https://twitter.com/peckshield/status/1537383690262589440\"]",
+    "membership": "FROZEN-231",
+    "incident_id": "reviewed:Inverse Finance",
+    "legacy_labels": {
+      "vuln_type": "TODO: Needs Annotation",
+      "swc_registry_classification": "",
+      "dasp_classification": "",
+      "uncategorized": "oracle_manipulation"
+    },
+    "legacy_ground_truth": [
+      {
+        "path": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/ground_truth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+        "sha256": "aff0dd752aa8c3424f4e8c19bf4ce107efb3c730177b48548cad3d6e069bd176"
+      }
+    ],
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://blocksec.com/blog/our-take-on-the-inverse-finance-security-incident-price-manipulation-attack",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/3c9ef0134b969ac18b1e7f631dd6466a3adde7c535efe1e3acf9b203a8651c45.gz",
+          "sha256": "60151e58170c7da5a5e0e4d570ed2f74957930ffeeb6ef16342eb27c94f0555c"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://phalcon.blocksec.com/explorer/tx/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1537383690262589440",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/4895bbfc766c190584c1103418e49c7a2dabac2d5b9b140d50ae8e46d8647039.gz",
+          "sha256": "e72b41c993d9608f1addb902d9edff2b5e22d22bad43ad9a0aa6c5f27f7f2d8e"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "https://etherscan.io/tx/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+      "sha256": "5c9afab7b4b7f008476d18b854a037f52a25839ad8df4cf6ab4f2392aa808e8e"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+      "sha256": "d467523bdbe1ad15d178c844f725e0a7ee9d578d5abe48e349cf38020155caf5"
+    }
+  },
+  {
+    "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+    "chain": "eth",
+    "functioncall_count": "1567",
+    "address_count": "143",
+    "max_depth": "15",
+    "gas_cost": "5745078",
+    "class": "Exceptionally Complex",
+    "analysis": "[\"https://twitter.com/peckshield/status/1690877589005778945\", \"https://twitter.com/BlockSecTeam/status/1690931111776358400\"]",
+    "membership": "FROZEN-231",
+    "incident_id": "reviewed:Zunami Protocol",
+    "legacy_labels": {
+      "vuln_type": "Price Manipulation",
+      "swc_registry_classification": "",
+      "dasp_classification": "",
+      "uncategorized": "uncategorized_oracle_manipulation"
+    },
+    "legacy_ground_truth": [
+      {
+        "path": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/ground_truth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+        "sha256": "80efbdc59e51cfbfb3de52b7cff464718030b1d61f56b49de777097900f89a35"
+      }
+    ],
+    "sources": [
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/zh-CN/blog/zunami-protocol-incident-analysis",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/102147617b5aafc54cfe2babb5e24b989a5bc48133c7fad032daadc362620da4.gz",
+          "sha256": "30562661ea5b16b68c67da95782ae3652d95a52f87bc7bf6ad19b5159d749af0"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1690877589005778945",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/60cfb617bc87c5ca737a8bd72e88f554b819ec90f866274218b493b8c47fe78c.gz",
+          "sha256": "d7507fdc5ca73f36d48d7720b6363eed7efd55dfaf6d9ecfc0fd22152ac7d6b0"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "sha256": "63edecad80c237fab25eab39b1a80769e59eb8fd26d818cfe4a174f9f7867f03"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "sha256": "e285e25bd2fa5e443210c42f781a9f00a72a7fbec5d4ab4719af72f8a6858c1f"
+    }
+  }
+]

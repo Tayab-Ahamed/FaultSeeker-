@@ -1,0 +1,30 @@
+{
+  "mode": "live-rpc",
+  "txn_hash": "0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef",
+  "chain": "arbitrum",
+  "chain_id": 42161,
+  "provider": "authorized-dRPC-arbitrum",
+  "observed_at": "2026-10-15T10:18:47.049751+00:00",
+  "transaction": null,
+  "receipt": null,
+  "raw_responses": [
+    {
+      "id": 1,
+      "jsonrpc": "2.0",
+      "error": {
+        "message": "the method eth_getTransactionByHash does not exist/is not available",
+        "code": -32601
+      }
+    },
+    {
+      "id": 2,
+      "jsonrpc": "2.0",
+      "error": {
+        "message": "the method eth_getTransactionReceipt does not exist/is not available",
+        "code": -32601
+      }
+    }
+  ],
+  "identity_receipt_match": false,
+  "scope": "One authenticated RPC provider; no independent label or second-node attestation"
+}

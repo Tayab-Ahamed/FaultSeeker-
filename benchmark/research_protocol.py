@@ -7,6 +7,9 @@ evidence; this module never manufactures labels from titles or receipt success.
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 import hashlib
+import gzip
+from html import unescape
+from html.parser import HTMLParser
 import json
 import os
 from pathlib import Path
@@ -51,6 +54,24 @@ def read_bound(binding, root):
     if sha(raw) != binding['sha256']:
         raise ValueError('Research artifact digest mismatch')
     return raw
+
+
+def source_text(raw):
+    """Normalize visible text and source metadata without executing page code."""
+    if raw.startswith(b'\x1f\x8b'):
+        raw = gzip.decompress(raw)
+    text = raw.decode('utf-8', errors='replace')
+    class Text(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.parts = []
+        def handle_data(self, data):
+            self.parts.append(data)
+        def handle_starttag(self, tag, attrs):
+            self.parts.extend(v for k,v in attrs if v and k in ('content','alt','title','href','data-expanded-url'))
+    parser = Text()
+    parser.feed(text)
+    return re.sub(r'\s+', ' ', unescape(' '.join(parser.parts)).replace('\\n',' ')).strip()
 
 
 def identity(row):
@@ -107,14 +128,33 @@ def admit(row, root):
                 or re.search(r'\b(TODO|TBD|NOT_ADJUDICATED|UNKNOWN)\b', annotation['vuln_type'], re.I)):
             raise ValueError('Incomplete adjudication')
         reviewer_ids = set()
-        for bound in annotation.get('independent_reviews', []):
-            review = json.loads(read_bound(bound, root))
-            if (review.get('type') == 'independent-vulnerability-review'
-                    and review.get('txn_hash') == txhash and review.get('chain') == chain
-                    and review.get('reviewer_id') and review.get('qualification_evidence')
-                    and review.get('mechanism_evidence') and review.get('independently_performed') is True
-                    and review.get('vuln_type') == annotation['vuln_type']):
-                reviewer_ids.add(review['reviewer_id'].casefold())
+        if annotation.get('mode') == 'public-source-consensus-v1':
+            # Explicitly authorized public-source adjudication, not fictional
+            # independent human reviewers. Both observations must come from
+            # the same independently reviewed source artifacts as the row.
+            if annotation.get('adjudication_author') != 'Codex':
+                raise ValueError('Public adjudication author must be explicit')
+            approved = {(s['publisher_id'],s['artifact']['sha256']):s for s in row.get('sources',[])
+                        if s.get('review_status') == 'INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED'}
+            for observation in annotation.get('independent_observations',[]):
+                key = (observation.get('publisher_id'),observation.get('source_artifact',{}).get('sha256'))
+                if key not in approved or observation.get('vulnerability_class') != annotation['vuln_type']:
+                    continue
+                excerpt = re.sub(r'\s+',' ',observation.get('mechanism_excerpt','')).strip()
+                if len(excerpt.split()) < 8:
+                    continue
+                text = source_text(read_bound(observation['source_artifact'],root))
+                if excerpt.casefold() in text.casefold():
+                    reviewer_ids.add(approved[key]['independence_group'].casefold())
+        else:
+            for bound in annotation.get('independent_reviews', []):
+                review = json.loads(read_bound(bound, root))
+                if (review.get('type') == 'independent-vulnerability-review'
+                        and review.get('txn_hash') == txhash and review.get('chain') == chain
+                        and review.get('reviewer_id') and review.get('qualification_evidence')
+                        and review.get('mechanism_evidence') and review.get('independently_performed') is True
+                        and review.get('vuln_type') == annotation['vuln_type']):
+                    reviewer_ids.add(review['reviewer_id'].casefold())
         annotation_ok = len(reviewer_ids) >= 2 and type(annotation.get('uncategorized')) is bool
         if not annotation_ok:
             raise ValueError('Independent reviews absent')

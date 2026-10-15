@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "authorization": "User explicitly authorized two independent security publishers agreeing on the vulnerability class, with Codex reasoning documented",
+  "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Missing collateral health check",
+  "adjudication_basis": "BlockSec attributes the exploit to a missing liquidity check in donateToReserves. PeckShield explicitly says the donation must leave the donor over-collateralized. Their independent mechanism accounts agree on an accounting/solvency check failure, not reentrancy. No SWC/DASP code is forced onto this DeFi-specific invariant failure.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1635262150624305153",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/0eb6fb23a2ad6b3dd43f0c0feda1e67580e0992e68971b6def515c5e3193e6e2.gz",
+        "sha256": "b66585e306d95c7441a5ed9ea8e4881f920c926cb48adc56a102c918a4f20fba"
+      },
+      "vulnerability_class": "Missing collateral health check",
+      "mechanism_excerpt": "The root cause is due to the lack of liquidity check in the function donateToReserves()"
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1635229594596036608",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/c56def597b3cfa0afbee011ce7701b7850671fd9b097b0cb9ee5387d988255b8.gz",
+        "sha256": "08ac9ba1f6c3fb449092420e42c7e9dd522f35ec300cac5127059d548fbdaf62"
+      },
+      "vulnerability_class": "Missing collateral health check",
+      "mechanism_excerpt": "Specifically, the donateToReserves needs to ensure the donator is still over-collateralized."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

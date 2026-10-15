@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "authorization": "User explicitly authorized two independent security publishers agreeing on the vulnerability class, with Codex reasoning documented",
+  "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Oracle price manipulation",
+  "adjudication_basis": "BlockSec identifies manipulation of the oracle used by Inverse. PeckShield explains that LP pricing misuses manipulable pool balances. Both independently diagnose an oracle-price dependency; the flash loan magnifies it. It is not labeled reentrancy or assigned an unrelated SWC category.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://blocksec.com/blog/our-take-on-the-inverse-finance-security-incident-price-manipulation-attack",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/3c9ef0134b969ac18b1e7f631dd6466a3adde7c535efe1e3acf9b203a8651c45.gz",
+        "sha256": "60151e58170c7da5a5e0e4d570ed2f74957930ffeeb6ef16342eb27c94f0555c"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "The root cause is that the price oracle utilized by Inverse Finance has been manipulated."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1537383690262589440",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/4895bbfc766c190584c1103418e49c7a2dabac2d5b9b140d50ae8e46d8647039.gz",
+        "sha256": "e72b41c993d9608f1addb902d9edff2b5e22d22bad43ad9a0aa6c5f27f7f2d8e"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "The hack is made possible due to the price oracle manipulation, which misuses the balances of assets in the pool"
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

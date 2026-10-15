@@ -1,0 +1,217 @@
+Medium (https://slowmist.medium.com/revest-finance-incident-analysis-6fcd9b6be207)
+citeturn81view1 [wordlim: 200] Crawled: 2 days ago; Content type: text/html; Source: open({"ref_id":"https://slowmist.medium.com/revest-finance-incident-analysis-6fcd9b6be207","lineno":null}); Total lines: 284
+L0: cite0†Sitemap L1: 
+L2: cite1†Open in app†play.google.com L3: 
+L4: [Button: Sign up]
+L5: 
+L6: cite2†Sign in†medium.com L7: 
+L8: [Input: Search]
+L9: 
+L10: Get app
+L11: 
+L12: cite3†Write†medium.com L13: 
+L14: cite4†Search†medium.com L15: 
+L16: [Button: Sign up]
+L17: 
+L18: cite2†Sign in†medium.com L19: 
+L20: cite5†Image: Unknown user†miro.medium.com L21: 
+L22: cite6†Revestfinance†medium.com L23: 
+L24: cite7†Hacking†medium.com L25: 
+L26: cite8†Defi†medium.com L27: # Revest Finance incident analysis
+L28: 
+L29: cite9†SlowMist L30: 
+L31: 6 min read
+L32: 
+L33: ·
+L34: 
+L35: Mar 28, 2022
+L36: 
+L37: --
+L38: 
+L39: cite10†Listen†medium.com L40: 
+L41: Share
+L42: 
+L43: Press enter or click to view image in full size
+L44: 
+L45: On March 27, 2022, the SlowMist intelligence zone received an alert that the Revest contract by Revest Finance was exploited. The hackers stole nearly 7.7 million ECO, 579 LYXe, nearly 715 million BLOCKS, and over 350,000 RENA. The SlowMist security team conducted an analysis of the situation, and these are our findings.
+L46: 
+L47: Relevant Information
+L48: Revest Finance proposed a new protocol for packaging, transferring, and storing fungible ERC-20 tokens as non-fungible tokens. This allows them to leverage the ERC-1155 non-fungible token ( NFT ) standard to simplify access and commercial versatility. Using this product, the ownership of assets can be traded in a way that does not affect the value of the assets, resulting in a new business model. The mechanism, governance, and monetization of the agreement are identified through targeted use cases.
+L49: Addresses involved in this incident:
+L50: Attacker address:
+L51: cite11†https://etherscan.io/address/0xef967ece5322c0d7d26dab41778acb55ce5bd58b†etherscan.io L52: Attack contract:
+L53: cite12†https://etherscan.io/address/0xb480ac726528d1c195cd3bb32f19c92e8d928519†etherscan.io L54: Attacked contract:
+L55: cite13†https://etherscan.io/address/0x2320a28f52334d62622cc2eafa15de55f9987ed9#code†etherscan.io L56: Attack transaction:
+L57: cite14†https://etherscan.io/tx/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428†etherscan.io L58: cite15†https://etherscan.io/tx/0x613b2de3bb9043884a219296eeb1ada8c47b5a0262b9c68ca06ffd2de3a5d9f5†etherscan.io L59: cite16†https://etherscan.io/tx/0x0251c2b8012a61567ec5855010d29618ada066642e4a2866755d58337c2866d9†etherscan.io L60: cite17†https://etherscan.io/tx/0x19b10c6d38f0b911fdc0e722d681a70a56699d70559eefef3d4d6fe88276c813†etherscan.io L61: Cause of Incident
+L62: 
+L63: In the targeted Revest contract, when a user calls the mintAddressLock function to deposit a certain amount of ERC-20 tokens into the Revest Smart Vault, an FNFT will be created. This NFT represents the number of token assets owned by the user, and the withdrawFNFT function can be called to redeem the tokens in the future.
+L64: The root cause of the attack is that when the attacker uses the ER1155 standard to cast an NFT, the onERC1155Received function of the recipient’s address will be called. The attacker uses this point to call back the depositAdditionalToFNFT function in the Revest contract. This function will mint a new NFT, and then it will call the tokenVault contract’s handleMultipleDeposits function to record the new NFT information.
+L65: However, the handleMultipleDeposits function has no way to verify whether the newly minted NFT exists. Therefore, the attacker used a reentrancy attack to modify the information of the NFT that had been minted. Since the process of creating NFT tokens for ERC20 assets was prior to the attack, the user has now successfully created NFTs representing their 360001 ERC20 tokens without having to deposit ERC20 tokens.
+L66: Detailed Analysis
+L67: 
+L68: We’ll focus on one transaction since the others are done with the same method.
+L69: 
+L70: 1.The attacker first borrows 2 RENA tokens from the uniswap pool via a flashloan.
+L71: 
+L72: Press enter or click to view image in full size
+L73: 
+L74: 2.Next, they called the mintAddressLock function in the Revest contract and passed in the quantities as 2. After the function performs the locking operation, it will call the doMint function to mint NFT.
+L75: 
+L76: Press enter or click to view image in full size
+L77: In the doMint function, the createFNFT function of the tokenVault contract is called to record the minted NFT function information. Then the user transfers the corresponding ERC20 tokens to the tokenVault contract, and finally calls the mint function in the FNFTHandler contract to issue the NFT.
+L78: 
+L79: Press enter or click to view image in full size
+L80: 
+L81: The fnftId of the minted NFT is 1027, and the recorded information about the NFT is as follows:
+L82: 
+L83: Press enter or click to view image in full size
+L84: Because the depositAmount is 0, the NFT represents that the ERC20 token assets owned by the user are 0, so there is no need to transfer the relevant asset tokens to the contract.
+L85: ## Get SlowMist’s stories in your inbox
+L86: 
+L87: Join Medium for free to get updates from this writer.
+L88: 
+L89: [Input: Enter your email]
+L90: 
+L91: [Button: Subscribe]
+L92: 
+L93: [Button: Subscribe]
+L94: 
+L95: [Input]
+L96: 
+L97: Remember me for faster sign in
+L98: 
+L99: 3.Call the mintAddressLock function in the Revest contract again, pass in the quantities of 360000, and called doMint to mint NFT in the same steps as above. The mint’s fnftId is 1028, and the recorded NFT information is as follows:
+L100: 
+L101: Press enter or click to view image in full size
+L102: The depositAmount is still 0, so there is no need to transfer the token assets to tokenVault, but it’s different than before. This operation of minting NFT is different because the _doSafeTransferAcceptanceCheck function is called when the mint function of the FNFTHandler contract is called.
+L103: 
+L104: Press enter or click to view image in full size
+L105: This function will call the onERC1155Received function of the attack contract, so the attacker uses the rewritten onERC1155Received function in the attack contract to call back the depositAdditionalToFNFT function of the Revest contract.
+L106: 
+L107: Press enter or click to view image in full size
+L108: In the depositAdditionalToFNFT function, you need to pass in the specified fnftId (here is 1027), the quantity of NFTs (here is 1), and the number of assets that need to be deposited in a single NFT (here is 1). This function will burn the specified amount of NFTs of the incoming fnftId, and then the user transfers the specified amount of ER20 token assets and mints the new NFTs. The quantity that needs to be transferred is quantity * amount is 1 and the tokenVault contract is called.
+L109: handleMultipleDeposits records that the deposit amount of the new NFT is the depositAmount value of the NFT passed in with the specified fnftId above + the value of the amount passed in.
+L110: Press enter or click to view image in full size
+L111: 
+L112: However, when the handleMultipleDeposits function mints a new NFT, it does not determine whether the information of the NFT exists in the tokenVault contract. Therefore, the attacker used this exploit to directly modify the data of the NFT №1028. Although the depositAmount recorded for the first time during the doMint operation was 0, it was modified to 1 after the reentrancy attack.
+L113: 
+L114: Press enter or click to view image in full size
+L115: Press enter or click to view image in full size
+L116: 
+L117: 4.Finally, calling the withdrawFNFT function to extract the ERC20 token assets represented in the NFT.
+L118: 
+L119: Press enter or click to view image in full size
+L120: 
+L121: After the function burns the specified NFT, it will call the withdrawToken function in the tokenVault contract to withdraw.
+L122: 
+L123: Press enter or click to view image in full size
+L124: 
+L125: Since the depositAmount was modified to 1 after the callback, the hacker was able to withdraw close to 360,000 RENA.
+L126: 5.The attacker kept the remaining funds after paying back the flashloan.
+L127: 
+L128: Press enter or click to view image in full size
+L129: 
+L130: Summary
+L131: 
+L132: This incident is due to the failure to verify whether the newly minted NFT exists in the handleMultipleDeposits function of the tokenVault contract. The attacker used this exploit to directly modify the data of the minted NFT, and the key functions in the Revest contract did not have any reentrancy restrictions, resulting in the use of callbacks.
+L133: The SlowMist security team recommends that when performing sensitive operations such as minting NFTs, it is necessary to verify the NFTs already exist, and the restriction of reentrant locks must be added to the key functions contracts to avoid incidents like this in the future.
+L134: 
+L135: cite6†Revestfinance†medium.com L136: 
+L137: cite7†Hacking†medium.com L138: 
+L139: cite8†Defi†medium.com L140: 
+L141: --
+L142: 
+L143: --
+L144: 
+L145: cite9†Written by SlowMist L146: 
+L147: cite18†4.2K followers L148: 
+L149: ·cite19†6 following L150: SlowMist is a Blockchain security firm established in 2018, providing services such as security audits, security consultants, red teaming, and more.
+L151: 
+L152: cite20†Help†help.medium.com L153: 
+L154: cite21†Status†status.medium.com L155: 
+L156: cite22†About†medium.com L157: 
+L158: cite23†Careers†medium.com L159: 
+L160: Press (pressinquiries@medium.com)
+L161: 
+L162: cite24†Blog†blog.medium.com L163: 
+L164: cite25†Store†medium.com L165: 
+L166: cite26†Privacy†policy.medium.com L167: 
+L168: cite27†Rules†policy.medium.com L169: 
+L170: cite28†Terms†policy.medium.com L171: 
+L172: cite29†Text to speech†speechify.com L173: ## No responses yet
+L174: ## More from SlowMist
+L175: 
+L176: cite30†Image: Threat Intelligence | Analysis of FomoPeek App Store Poisoning and iOS Kernel Exploitation†miro.medium.com L177: 
+L178: cite9†SlowMist L179: 
+L180: ·
+L181: 
+L182: Sep 20
+L183: 
+L184: cite31†Threat Intelligence | Analysis of FomoPeek App Store Poisoning and iOS Kernel Exploitation Recently, the SlowMist security team received multiple reports of user assets being stolen. Upon verification, all of the incidents… L185: 
+L186: cite32†Image: SlowMist: Another Airdrop Scam, but with a twist†miro.medium.com L187: 
+L188: cite9†SlowMist L189: 
+L190: ·
+L191: 
+L192: Nov 14, 2022
+L193: cite33†SlowMist: Another Airdrop Scam, but with a twist Airdrop Scam L194: 
+L195: cite33†2 L196: 
+L197: cite34†Image: Threat Intelligence | PolinRider Poisons Nova, Using On-Chain Transactions as a C2 Manager†miro.medium.com L198: 
+L199: cite9†SlowMist L200: 
+L201: ·
+L202: 
+L203: Sep 21
+L204: 
+L205: cite35†Threat Intelligence | PolinRider Poisons Nova, Using On-Chain Transactions as a C2 Manager Background L206: 
+L207: cite35†1 L208: 
+L209: cite36†Image: Threat Intelligence | iOS Safari DarkSword Wallet Asset Theft†miro.medium.com L210: 
+L211: cite9†SlowMist L212: 
+L213: ·
+L214: 
+L215: Sep 4
+L216: cite37†Threat Intelligence | iOS Safari DarkSword Wallet Asset Theft Background L217: 
+L218: cite9†See all from SlowMist L219: ## Recommended from Medium
+L220: 
+L221: cite38†Image: RPC Infrastructure Explained -†miro.medium.com L222: 
+L223: cite39†Ashutosh Tiwari†medium.com L224: 
+L225: ·
+L226: 
+L227: Aug 26
+L228: 
+L229: cite40†RPC Infrastructure Explained -How applications interact with blockchains†medium.com L230: 
+L231: cite41†Image: How Was the Aave V1 Protocol Tested?†miro.medium.com L232: 
+L233: cite42†Rosario Borgesi†medium.com L234: 
+L235: ·
+L236: 
+L237: Aug 24
+L238: cite43†How Was the Aave V1 Protocol Tested?Testing a lending protocol requires more than checking whether isolated functions return the right values. A deposit changes liquidity…†medium.com L239: 
+L240: cite44†Image: Detecting MEV & Sandwich Attacks On-Chain: A Practical Methodology†miro.medium.com L241: 
+L242: cite45†Andrew Maury†medium.com L243: 
+L244: ·
+L245: 
+L246: Jul 1
+L247: cite46†Detecting MEV & Sandwich Attacks On-Chain: A Practical Methodology A practical methodology for separating adversarial extraction from normal execution cost - and why the naive approach gets it badly wrong.†medium.com L248: 
+L249: cite47†Image: A sealed charcoal matching chamber releases one amber execution token through a narrow reporting channel toward a blue analytical prism.†miro.medium.com L250: 
+L251: cite48†PineifyAI†medium.com L252: 
+L253: ·
+L254: 
+L255: Sep 14
+L256: 
+L257: cite49†What a Dark-Pool Print Actually Proves†medium.com L258: cite50†Image: Part 1: From Mempool to Extracted Value — The Hunters, the Capital, and the Bundle†miro.medium.com L259: 
+L260: In
+L261: 
+L262: cite51†CoinsBench†coinsbench.com L263: 
+L264: by
+L265: 
+L266: cite52†Prasad†medium.com L267: 
+L268: ·
+L269: 
+L270: May 25
+L271: 
+L272: cite53†Part 1: From Mempool to Extracted Value — The Hunters, the Capital, and the Bundle Every time you swap on a DEX, a sophisticated system scans your transaction, evaluates it for profit, and sometimes extracts value from it…†medium.com L273: cite54†Image: Uniswap v2, v3, and v4: A Security Engineer’s Guide to the Evolution of AMMs†miro.medium.com L274: 
+L275: cite55†Yaghoub Adelzadeh†medium.com L276: 
+L277: ·
+L278: 
+L279: Jun 10
+L280: 
+L281: cite56†Uniswap v2, v3, and v4: A Security Engineer’s Guide to the Evolution of AMMs Understanding how Uniswap’s architecture evolved — and how each version introduced new security assumptions, attack surfaces, and risks.†medium.com L282: 
+L283: cite57†See more recommendations†medium.com

@@ -27,6 +27,36 @@ def test_names_and_titles_are_not_independent_annotations(tmp_path):
     assert 'MISSING_INDEPENDENT_ANNOTATION_EVIDENCE' in decision['reasons']
 
 
+def test_authorized_public_consensus_requires_matching_mechanistic_source_evidence(tmp_path):
+    p = _protocol()
+    tx = '0x'+'a'*64
+    a = 'The price oracle trusts the current pool balances, allowing a flash loan to corrupt the quote.'
+    b = 'Manipulating pool reserves during a flash loan inflates the oracle price and permits excess borrowing.'
+    sources = []
+    observations = []
+    for i, excerpt in enumerate((a,b)):
+        path = tmp_path/f'publisher{i}.txt'
+        path.write_text(excerpt)
+        bound = p.bind(path,tmp_path)
+        sources.append({'publisher_id':f'publisher{i}','independence_group':f'publisher{i}',
+            'artifact':bound,'review_status':'INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED',
+            'independence_basis':'Separate organizations, each describing their own analysis',
+            'identity_basis':tx})
+        observations.append({'publisher_id':f'publisher{i}','source_artifact':bound,
+            'vulnerability_class':'Oracle price manipulation','mechanism_excerpt':excerpt})
+    annotation = {'mode':'public-source-consensus-v1','adjudication_author':'Codex',
+        'txn_hash':tx,'chain':'eth','is_exploit':True,'vuln_type':'Oracle price manipulation',
+        'adjudication_basis':'Both sources identify a manipulable spot-balance oracle; the flash loan is financing, not the root cause.',
+        'independent_observations':observations,'uncategorized':True}
+    p.write_json(tmp_path/'annotation.json',annotation)
+    row = {'txn_hash':tx,'chain':'eth','sources':sources,'annotation_record':p.bind(tmp_path/'annotation.json',tmp_path)}
+    assert p.admit(row,tmp_path)['annotation_verified']
+    annotation['independent_observations'][1]['mechanism_excerpt'] = 'An invented mechanism not in the publisher document'
+    p.write_json(tmp_path/'annotation.json',annotation)
+    row['annotation_record'] = p.bind(tmp_path/'annotation.json',tmp_path)
+    assert not p.admit(row,tmp_path)['annotation_verified']
+
+
 def test_rpc_success_is_not_an_exploit_label(tmp_path):
     p = _protocol()
     tx = '0x' + 'a'*64

@@ -31,4 +31,6 @@ Ruling: the new cohort gate follows the user's stated three-part admission requi
 
 Ruling: independence requires evidence, not different host names or two aliases for one publisher. Original GT files are historical annotations, not invented independent reviewer attestations. No performance result can be obtained by weakening this criterion.
 
+User clarification: no independent human annotation records exist. The user explicitly authorizes Codex to create adjudication records from two independent security publishers agreeing on the vulnerability class, with reasoning documented. These records use `public-source-consensus-v1` and must not be described as two independent human reviews. Their source excerpts, byte hashes, publisher identities and reasoning are retained.
+
 Kluster waived for local development only. Before any push/PR, repository AGENTS.md rules apply in full and Kluster review is re-enabled.

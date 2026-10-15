@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "authorization": "User explicitly authorized two independent security publishers agreeing on the vulnerability class, with Codex reasoning documented",
+  "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Oracle price manipulation",
+  "adjudication_basis": "CertiK explains inflation of UZD balances through manipulated asset pricing. PeckShield independently diagnoses donation-based miscalculation of price. Both link the transaction to the same Zunami incident. The consensus class is oracle price manipulation; no generic flash-loan label or unrelated SWC code is substituted.",
+  "independent_observations": [
+    {
+      "publisher_id": "CertiK",
+      "source_url": "https://www.certik.com/zh-CN/blog/zunami-protocol-incident-analysis",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/102147617b5aafc54cfe2babb5e24b989a5bc48133c7fad032daadc362620da4.gz",
+        "sha256": "30562661ea5b16b68c67da95782ae3652d95a52f87bc7bf6ad19b5159d749af0"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "The attacker was able to inflate their UZD balance 3x by taking advantage of the way in which UDZ is calculated."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1690877589005778945",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/60cfb617bc87c5ca737a8bd72e88f554b819ec90f866274218b493b8c47fe78c.gz",
+        "sha256": "d7507fdc5ca73f36d48d7720b6363eed7efd55dfaf6d9ecfc0fd22152ac7d6b0"
+      },
+      "vulnerability_class": "Oracle price manipulation",
+      "mechanism_excerpt": "It is a price manipulation issue, which can be exploited by donation to incorrectly calculate the price"
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true
+}

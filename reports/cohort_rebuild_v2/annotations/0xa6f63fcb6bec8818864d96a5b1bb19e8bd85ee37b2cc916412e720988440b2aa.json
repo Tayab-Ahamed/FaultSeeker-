@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "authorization": "User explicitly authorized two independent security publishers agreeing on the vulnerability class, with Codex reasoning documented",
+  "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Reentrancy",
+  "adjudication_basis": "BlockSec identifies reentry in _doSwapTokens and resulting USDT balance miscalculation. PeckShield independently identifies reentry in ExchangeWithOrionPool. The two reports identify the same Ethereum exploit transaction; flash-loan use is financing, not the adjudicated root cause.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+        "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "The root cause is due to a reentrancy issue exists in the PoolFunctionality._doSwapTokens function"
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1621337925228306433",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+        "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "The @orion_protocol is hacked due to a reentrancy issue in its core contract: ExchangeWithOrionPool."
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

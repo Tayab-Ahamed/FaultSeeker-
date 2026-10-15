@@ -1,0 +1,197 @@
+Medium (https://slowmist.medium.com/analysis-of-the-grim-finance-hack-bc440108b069)
+citeturn81view0 [wordlim: 200] Crawled: last week; Content type: text/html; Source: open({"ref_id":"https://slowmist.medium.com/analysis-of-the-grim-finance-hack-bc440108b069","lineno":null}); Total lines: 270
+L0: cite0†Sitemap L1: 
+L2: cite1†Open in app†play.google.com L3: 
+L4: [Button: Sign up]
+L5: 
+L6: cite2†Sign in†medium.com L7: 
+L8: [Input: Search]
+L9: 
+L10: Get app
+L11: 
+L12: cite3†Write†medium.com L13: 
+L14: cite4†Search†medium.com L15: 
+L16: [Button: Sign up]
+L17: 
+L18: cite2†Sign in†medium.com L19: 
+L20: cite5†Image: Unknown user†miro.medium.com L21: 
+L22: ## SlowMist
+L23: 
+L24: SlowMist is a Blockchain security firm established in 2018, providing services such as security audits, security consultants, red teaming, and more.
+L25: 
+L26: cite6†Hack†medium.com L27: 
+L28: cite7†Grim Finance†medium.com L29: 
+L30: cite8†Defi†medium.com L31: # Analysis of the Grim Finance Hack
+L32: 
+L33: cite9†SlowMist L34: 
+L35: 2 min read
+L36: 
+L37: ·
+L38: 
+L39: Dec 20, 2021
+L40: 
+L41: --
+L42: 
+L43: 1
+L44: 
+L45: cite10†Listen†medium.com L46: 
+L47: Share
+L48: 
+L49: Press enter or click to view image in full size
+L50: 
+L51: On December 19, 2021, Our team at SlowMist was notified of a Reentrancy attack on the Grim Finance project within the Fantom Blockchain. At the time of writing this, over $30M in funds were transferred to cite11†this†ftmscan.com address. This attack was investigated by our team, and this is our analysis of the incident.
+L52: ## Let’s first explain what is a Reentrancy
+L53: 
+L54: Reentrancy is when a program execution is interrupted mid-operation, re-initiated, and both run completely without any errors in the execution. Here is a quick explanation by cite12†Rugdoc.io†twitter.com L55: ## Get SlowMist’s stories in your inbox
+L56: 
+L57: Join Medium for free to get updates from this writer.
+L58: 
+L59: [Input: Enter your email]
+L60: 
+L61: [Button: Subscribe]
+L62: 
+L63: [Button: Subscribe]
+L64: 
+L65: [Input]
+L66: 
+L67: Remember me for faster sign in
+L68: 
+L69: 1. The attacker borrows WFTM and BTC tokens via a flash loan and adds liquidity to Spirit Swap to obtain Spirit-LP certificates.
+L70: 2. The attacker then uses the certificates as collateral with Grim Finance via the depositFor() in the GrimBoostVault contract. The DepositFor() allows users to specify the token to be deposited and transfer the user-specified token into the Grim Boost Vault via safeTransferFrom(). This creates collateral for the user based on the difference between the contract and the funds received by the policy pool before and after the transfer (In this case SPIRIT-LP).
+L71: 3. However, because the depositFor() does not check the validity of the funds the user specified, the attacker passes the token contract address. When the GrimBoostVault calls the transferFrom function of the malicious contract through the safeTransferFom function, the contract reinvokes the depositFor function. The contract is able to make multiple reentries and use it for collateral into the SPIRIT-LP certificates.
+L72: This ensures the difference between the tokens expected to be received by the GrimBoostVault before and after the reentry exists. The depositFor function then calculates the difference and provides the corresponding collateral for the attacker.
+L73: 4. Since the attacker has re-entered the GrimBoostVault contract many times, this gave them access to more collateral. Allowing them to withdraw more SPIRIT-LP liquidity certificates in the GrimBoostVault contract than previously provided. The hacker then uses the SPIRIT-LP liquidity certificate to remove liquidity within the pool for WFTM and BTC tokens and repay the flashloan.
+L74: This attack was caused by the depositFor function of the GrimBoostVault contract. It failed to check the validity of the token passed in by the user and did not have a reentrancy guard. As a result, a smart contract could reenter the depositFor() and obtain far more than the expected collateral.
+L75: The SlowMist security team recommends that the parameters passed in by users should be checked to see if they meet expectations, and external calls in functions should be controlled for risks such as reentrancy attacks caused by external calls.
+L76: Reference attack deals: cite13†https://ftmscan.com/tx/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6†ftmscan.com L77: 
+L78: cite6†Hack†medium.com L79: 
+L80: cite7†Grim Finance†medium.com L81: 
+L82: cite8†Defi†medium.com L83: 
+L84: --
+L85: 
+L86: --
+L87: 
+L88: 1
+L89: 
+L90: cite9†Written by SlowMist L91: 
+L92: cite14†4.2K followers L93: 
+L94: ·cite15†6 following L95: 
+L96: SlowMist is a Blockchain security firm established in 2018, providing services such as security audits, security consultants, red teaming, and more.
+L97: 
+L98: cite16†Help†help.medium.com L99: 
+L100: cite17†Status†status.medium.com L101: 
+L102: cite18†About†medium.com L103: cite19†Careers†medium.com L104: 
+L105: Press (pressinquiries@medium.com)
+L106: 
+L107: cite20†Blog†blog.medium.com L108: 
+L109: cite21†Store†medium.com L110: 
+L111: cite22†Privacy†policy.medium.com L112: 
+L113: cite23†Rules†policy.medium.com L114: 
+L115: cite24†Terms†policy.medium.com L116: 
+L117: cite25†Text to speech†speechify.com L118: ## Responses (1)
+L119: 
+L120: cite26†Drip Strategy†dripstrategy.medium.com L121: 
+L122: cite27†Dec 21, 2021†dripstrategy.medium.com L123: 
+L124:     Thank you team for posting this article. I really like to see DeFi participants helping out. I know theres a lot of fingerpointing out there saying "they fucked it up, they were lazy, its a scam, they didnt listen, etc." but regardless of what…[Button: more]
+L125: 
+L126: --
+L127: 
+L128: [Button: Reply]
+L129: ## More from SlowMist
+L130: 
+L131: cite28†Image: Threat Intelligence | Analysis of FomoPeek App Store Poisoning and iOS Kernel Exploitation†miro.medium.com L132: 
+L133: cite9†SlowMist L134: 
+L135: ·
+L136: 
+L137: Sep 20
+L138: 
+L139: cite29†Threat Intelligence | Analysis of FomoPeek App Store Poisoning and iOS Kernel Exploitation Recently, the SlowMist security team received multiple reports of user assets being stolen. Upon verification, all of the incidents… L140: 
+L141: cite30†Image: SlowMist: Another Airdrop Scam, but with a twist†miro.medium.com L142: 
+L143: cite9†SlowMist L144: 
+L145: ·
+L146: 
+L147: Nov 14, 2022
+L148: cite31†SlowMist: Another Airdrop Scam, but with a twist Airdrop Scam L149: 
+L150: cite31†2 L151: 
+L152: cite32†Image: Threat Intelligence | PolinRider Poisons Nova, Using On-Chain Transactions as a C2 Manager†miro.medium.com L153: 
+L154: cite9†SlowMist L155: 
+L156: ·
+L157: 
+L158: Sep 21
+L159: 
+L160: cite33†Threat Intelligence | PolinRider Poisons Nova, Using On-Chain Transactions as a C2 Manager Background L161: 
+L162: cite33†1 L163: 
+L164: cite34†Image: Analysis of the Liquid Network Cache Key Collision Vulnerability: Nearly 4,000 L-BTC Minted Out of…†miro.medium.com L165: 
+L166: cite9†SlowMist L167: 
+L168: ·
+L169: 
+L170: Sep 11
+L171: cite35†Analysis of the Liquid Network Cache Key Collision Vulnerability: Nearly 4,000 L-BTC Minted Out of…At 13:52:10 UTC on September 6, two transactions with the same structure appeared in Liquid block 4,050,335. One minute later, a third… L172: 
+L173: cite9†See all from SlowMist L174: ## Recommended from Medium
+L175: 
+L176: cite36†Image: Why Everybody is Leaving Spotify†miro.medium.com L177: 
+L178: In
+L179: 
+L180: cite37†Apple Hacks†medium.com L181: 
+L182: by
+L183: 
+L184: cite38†iTalks with Max 🍏†medium.com L185: 
+L186: ·
+L187: 
+L188: May 21
+L189: 
+L190: cite39†Why Everybody is Leaving Spotify I Cancelled Spotify After 6 Years†medium.com L191: 
+L192: cite39†451†medium.com L193: 
+L194: cite40†Image: Stanford Just Put an $850K/Year Skill on YouTube†miro.medium.com L195: 
+L196: In
+L197: 
+L198: cite41†Dare To Be Better†medium.com L199: 
+L200: by
+L201: 
+L202: cite42†Valerie†medium.com L203: 
+L204: ·
+L205: 
+L206: Aug 10
+L207: 
+L208: cite43†Stanford Just Put an $850K/Year Skill on YouTube†medium.com L209: cite43†114†medium.com L210: 
+L211: cite44†Image: Elderly man sitting at a wooden table, working on a laptop indoors.†miro.medium.com L212: 
+L213: In
+L214: 
+L215: cite45†The Daily Draft†medium.com L216: 
+L217: by
+L218: 
+L219: cite46†Matt Lillywhite†mattthenomad.medium.com L220: 
+L221: ·
+L222: 
+L223: Jul 7
+L224: 
+L225: cite47†I’ll Instantly Know A Writer Used ChatGPT When I See This It’s pretty damn obvious now that I know what to look for.†mattthenomad.medium.com L226: 
+L227: cite47†1354†mattthenomad.medium.com L228: 
+L229: cite48†Image: 10 Websites Better Than Another Hour of Doomscrolling†miro.medium.com L230: 
+L231: In
+L232: cite49†The Sunday Journal†medium.com L233: 
+L234: by
+L235: 
+L236: cite50†Rafia Naseem†medium.com L237: 
+L238: ·
+L239: 
+L240: Jul 18
+L241: 
+L242: cite51†10 Websites Better Than Another Hour of Doomscrolling Here’s to the rabbit holes worth taking!†medium.com L243: 
+L244: cite51†481†medium.com L245: 
+L246: cite52†Image: Is Manual Bug Bounty Hunting Still Worth It in 2026?†miro.medium.com L247: 
+L248: cite53†Abhishek meena†medium.com L249: 
+L250: ·
+L251: 
+L252: Sep 3
+L253: 
+L254: cite54†Is Manual Bug Bounty Hunting Still Worth It in 2026?Everyone keeps asking this question. Nobody gives an honest answer. So here are the real numbers.†medium.com L255: cite54†6†medium.com L256: 
+L257: cite55†Image: What Should Programmers Do While the AI Writes Code?†miro.medium.com L258: 
+L259: cite56†Scott Batson†scottbatson.dev L260: 
+L261: ·
+L262: 
+L263: Aug 31
+L264: 
+L265: cite57†What Should Programmers Do While the AI Writes Code?Hint: not start another AI coding loop†scottbatson.dev L266: 
+L267: cite57†305†scottbatson.dev L268: 
+L269: cite58†See more recommendations†medium.com
