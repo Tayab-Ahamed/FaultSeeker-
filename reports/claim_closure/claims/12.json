@@ -1,0 +1,19 @@
+{
+  "id": 12,
+  "claim": "Three structural signals, .75 penalty, .80 cap",
+  "status": "VERIFIED",
+  "reason": "The three structural terms, 0.75 penalty and 0.80 cap fire in the real fallback path under tests.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
