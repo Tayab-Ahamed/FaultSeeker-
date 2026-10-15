@@ -1,0 +1,16 @@
+{
+  "scope": "Actual historical artifact IO regression; no paper metric experiment or label adjudication",
+  "prior_failure": "UnicodeDecodeError when plain-JSON loading the existing gzip trace",
+  "real_capture": "reports/provenance_hunt/cohort/artifacts/row_0039/trace.json.gz",
+  "real_capture_sha256": "6b7ef3fbbfa9ab2fc8aad56727bd6be30f2121e5097e0c4d092dedc0acea1f56",
+  "observed_opcode_steps": 21300,
+  "observed_sload": 80,
+  "observed_sstore": 29,
+  "acceptance_test": "tests/test_recorded_experiment_capture.py::test_experiment_reader_loads_real_compressed_historical_opcodes",
+  "full_suite": {
+    "passed": 361,
+    "skipped": 1
+  },
+  "junit_sha256": "a47f5dde3bf85cb62845e2b0f07388b338bd2bf2c7c5dcf9aed401a18d0eede3",
+  "dataset_accepted_rows": 0
+}

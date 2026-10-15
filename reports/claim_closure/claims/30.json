@@ -2,7 +2,7 @@
   "id": 30,
   "claim": "Reproduction scripts",
   "status": "UNVERIFIABLE",
-  "reason": "Real experiment entry points and all local tests run, but source acquisition does not supply the authentic labels and observations required to reproduce the published tables/figures. No empirical output is generated from rejected records.",
+  "reason": "Real experiment entry points and all local tests run, but source acquisition does not supply the authentic labels and observations required to reproduce the published tables/figures. No empirical output is generated from rejected records. A gzip/plain-JSON mismatch in the experiment reader was repaired and tested against the actual 21,300-step historical JAY capture; this proves artifact IO, not empirical metrics.",
   "verification_scope": "Reopened public-provenance and live-provider research; local fixtures do not prove empirical outcomes",
   "requirements_unmet": [
     "Authentic inputs and observed outputs for the three published tables/figures"
@@ -43,6 +43,10 @@
     {
       "path": "reports/provenance_hunt/experiments/dispatch_log.json",
       "sha256": "f3602c927923d3fa965cfcc9c072c6c720217428d932128292d1365894b4fbd8"
+    },
+    {
+      "path": "reports/provenance_hunt/compressed_trace_regression.json",
+      "sha256": "ad7514088484fa677551ef1cd88806c619b1f91e64ce56808a2adf478b327f19"
     }
   ],
   "session_date": "2026-10-15",

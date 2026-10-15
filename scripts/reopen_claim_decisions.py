@@ -8,7 +8,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from scripts.finalize_claim_closure import git, full_suite, check_branch
+from scripts.finalize_claim_closure import git, full_suite
 from benchmark.claim_registry import claim_report
 from benchmark.claim_closure import apply_closure
 
@@ -78,14 +78,22 @@ def decisions():
         29: ['experiments/guidance.json'], 30: ['experiments/dispatch_log.json'],
     }
     for number in [3, 4, 5, 6, 7, 8, 15, 17, 13, 14, 18, 21, 22, 25, 27, 28, 29, 30]:
-        check_branch()
+        if git('branch', '--show-current') != 'paper-claims-verified':
+            raise RuntimeError('Wrong branch')
         path = ROOT / 'reports/claim_closure/claims' / f'{number:02d}.json'
         old = json.loads(path.read_text())
-        if old.get('reopen_review_run') == RUN:
+        # A marker written before a failed test/commit is not committed progress.
+        if old.get('reopen_review_run') == RUN and not git('diff', 'HEAD', '--', str(path.relative_to(ROOT))):
             continue
         if old['status'] != 'UNVERIFIABLE':
             raise RuntimeError('Refusing to reopen a claim outside the requested queue')
         previous = ROOT / BASE / 'previous_decisions' / path.name
+        owned = {str(p.relative_to(ROOT)).replace('\\', '/') for p in (
+            path, previous, ROOT / 'reports/claim_closure/progress.json')}
+        if number == 15:
+            owned.add(str(BASE / 'compound_search.json').replace('\\', '/'))
+        if set(git('diff', '--cached', '--name-only').splitlines()) - owned:
+            raise RuntimeError('Index contains unrelated staged work')
         if not previous.exists():
             previous.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, previous)

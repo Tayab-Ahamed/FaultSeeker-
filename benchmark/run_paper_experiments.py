@@ -8,9 +8,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from benchmark.evidence_manifest import audit_dataset, _artifact, digest_file
+from benchmark.evidence_manifest import audit_dataset, _artifact, _json_artifact, digest_file
 from benchmark.detector_experiments import detector_observation, category_observation
 from benchmark.paper_experiments import run_paired, compare_runs, summarize_categories, PipelineObservationAdapter
+
+
+def read_observed_artifact(record, key, root):
+    """Use the provenance gate's JSON/gzip reader for the measured inputs too."""
+    missing = []
+    data, _path = _json_artifact(record, key, Path(root).resolve(), missing)
+    if missing:
+        raise ValueError('BLOCKED-BY-DATA: ' + ', '.join(missing))
+    return data
 
 
 def execute(args):
@@ -26,8 +35,8 @@ def execute(args):
         if args.experiment == 'categories':
             rows = []
             for record in records:
-                capture = json.loads(_artifact(root,record['trace']).read_text(encoding='utf-8-sig'))
-                receipt = json.loads(_artifact(root,record['receipt']).read_text(encoding='utf-8-sig'))
+                capture = read_observed_artifact(record, 'trace', root)
+                receipt = read_observed_artifact(record, 'receipt', root)
                 rows.append(category_observation(capture,receipt,record['vulnerability_class']))
             return {'status':'MEASURED','categories':summarize_categories(rows)}, 0
         for record in records:
@@ -35,7 +44,7 @@ def execute(args):
                 raise ValueError('BLOCKED-BY-DATA: adjudicated reentrancy_label is required')
             record['label'] = record['reentrancy_label']
         def analyze(record,variant,guidance):
-            capture = json.loads(_artifact(root,record['trace']).read_text(encoding='utf-8-sig'))
+            capture = read_observed_artifact(record, 'trace', root)
             return detector_observation(capture,variant)
         runs = run_paired(records,analyze,['full','structural','repeated'])
         return {'status':'MEASURED','scope':'captured detector execution', 'runs':runs,
