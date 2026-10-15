@@ -1,0 +1,27 @@
+{
+  "id": 1,
+  "claim": "Open source release",
+  "status": "VERIFIED",
+  "reason": "A public upstream repository and its Apache-2.0 license were fetched and cached. This is availability proof, not publication of this local branch.",
+  "verification_scope": "Public upstream source availability; local branch publication not asserted",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_claim_closure.py::test_publication_snapshot_is_public_and_open_licensed"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    },
+    {
+      "path": "reports/claim_closure/sources/public_repository.json",
+      "sha256": "a5410f67567090e6ee99f97104a81ab1b78664ece9f80163e7999c956f282347"
+    },
+    {
+      "path": "reports/claim_closure/sources/public_repository_LICENSE.txt",
+      "sha256": "2cd2e5d17873dc4aea8414b5893436fb9adfcd4e76031cb7a7a97473cc0ea865"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
