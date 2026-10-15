@@ -1,0 +1,23 @@
+{
+  "id": 9,
+  "claim": "Storage-aware detector, guards and delegatecall",
+  "status": "VERIFIED",
+  "reason": "Production paper-mode storage signals, mutex filtering, reverted-frame handling and delegatecall storage ownership pass behavioral and compiled execution tests.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+    "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+    "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes",
+    "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+    "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
