@@ -29,3 +29,15 @@ def test_cohort_builder_refuses_to_pad_or_emit_partial_dataset(tmp_path):
     with pytest.raises(ValueError, match='BLOCKED-BY-DATA'):
         freeze_cohort(source, output, target=246)
     assert not output.exists()
+
+
+def test_tools_claim_requires_executed_compiled_integration_tests():
+    claim = next(row for row in CLAIMS if row['id'] == 26)
+    outcomes = {node: 'passed' for node in claim['tests']}
+    report = claim_report(outcomes, {'accepted_rows': 0})
+    assert next(row for row in report['claims'] if row['id'] == 26)['status'] == 'VERIFIED-COMPILED-EVM'
+    compiled = [node for node in claim['tests'] if 'test_compiled_evm_integration' in node]
+    assert len(compiled) >= 3
+    outcomes[compiled[0]] = 'skipped'
+    report = claim_report(outcomes, {'accepted_rows': 0})
+    assert next(row for row in report['claims'] if row['id'] == 26)['status'] == 'PENDING-CREDENTIALS'
