@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
+  "chain": "arbitrum",
+  "is_exploit": true,
+  "vuln_type": "Reentrancy",
+  "adjudication_basis": "BlockSec embeds the exact Arbitrum transaction in its discussion and identifies classical reentrancy; PeckShield independently identifies the CompoundV2 fork vulnerability. No source supports treating this as the legitimate Compound case study.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1645744655357575170",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/16eb333a35642d0594812be6a1238b85dc8b32d86df777bf4948c3a0054d83dd.gz",
+        "sha256": "61b7c0d14965b41b7db269198fdda99796fe3942368761a04460e9cdc470bc07"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "on Arbitrum was just attacked. Yet another example of classical reentrancy issue..."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1645742296904929280",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/a76d74293d04cf16c68248a93f6d84c51a2ac643951376a2553df07fd983ad35.gz",
+        "sha256": "282b4ab826f1c6f22e7c03c149e4b781a3e6e8d2b9117f0ec1591a43e7561f05"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "The root cause turns out to a known reentrancy issue from the forked old version of CompoundV2."
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

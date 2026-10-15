@@ -45,6 +45,56 @@ CASES = {
 }
 
 
+def reviewed_annotation(review, case, row):
+    from scripts.review_source_consensus import validate_suggestion
+    if (review.get('decision') != 'APPROVE_SOURCE_CONSENSUS'
+            or review.get('reviewed_by') != 'Codex'):
+        raise ValueError('An explicit source review is required')
+    if not validate_suggestion(review, case):
+        raise ValueError('Reviewed quotes or transaction identities are not bound')
+    sources, observations = [], []
+    for observation in review['observations']:
+        source = next(s for s in case['sources'] if s['url'] == observation['url']
+                      and s['publisher'] == observation['publisher'])
+        text = source_text(read_bound(source['artifact'], ROOT))
+        if observation['quote'].casefold() not in text.casefold():
+            raise ValueError('Quote absent from complete cached source')
+        sources.append({'publisher_id':source['publisher'], 'independence_group':source['publisher'],
+            'url':source['url'], 'artifact':source['artifact'],
+            'review_status':'INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED',
+            'independence_basis':review['independence_basis'],
+            'identity_basis':{'transaction':row['txn_hash'], 'incident':review['incident_name'],
+                              'public_poc':case['poc_artifact'], 'review':review['reasoning']}})
+        observations.append({'publisher_id':source['publisher'], 'source_url':source['url'],
+            'source_artifact':source['artifact'], 'vulnerability_class':review['vulnerability_class'],
+            'mechanism_excerpt':observation['quote']})
+    reentrant = review.get('reentrancy_label') is True
+    annotation = {'schema':1, 'mode':'public-source-consensus-v1', 'adjudication_author':'Codex',
+        'not_independent_human_review':True, 'txn_hash':row['txn_hash'], 'chain':row['chain'],
+        'is_exploit':True, 'vuln_type':review['vulnerability_class'],
+        'adjudication_basis':review['reasoning'], 'independent_observations':observations,
+        'reentrancy_label':review.get('reentrancy_label'),
+        'swc_registry_classification':'SWC-107' if reentrant else '',
+        'dasp_classification':'Reentrancy' if reentrant else '', 'uncategorized':not reentrant}
+    return sources, annotation
+
+
+def apply_reviewed():
+    cases = {c['id']:c for c in json.loads((BASE/'consensus_cases.json').read_text())}
+    rows = json.loads((BASE/'candidate_pool.json').read_text())
+    for review in json.loads((BASE/'manual_consensus_reviews.json').read_text()):
+        for row in rows:
+            if row['txn_hash'] not in review['attack_transaction_hashes']:
+                continue
+            sources, annotation = reviewed_annotation(review, cases[review['case_id']], row)
+            row['sources'] = sources
+            row['incident_id'] = 'reviewed:'+review['incident_name']
+            target = BASE/'annotations'/(row['txn_hash']+'.json')
+            write_json(target, annotation)
+            row['annotation_record'] = bind(target, ROOT)
+    write_json(BASE/'candidate_pool.json', rows)
+
+
 def core_consensus():
     rows = json.loads((BASE/'candidate_pool.json').read_text())
     by_id = {r['txn_hash']:r for r in rows}
@@ -82,5 +132,9 @@ def core_consensus():
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--core',action='store_true')
-    if parser.parse_args().core:
+    parser.add_argument('--reviewed',action='store_true')
+    args = parser.parse_args()
+    if args.core:
         core_consensus()
+    if args.reviewed:
+        apply_reviewed()

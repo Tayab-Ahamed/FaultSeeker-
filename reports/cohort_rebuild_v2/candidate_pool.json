@@ -7630,13 +7630,58 @@
     "txn_hash": "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
     "chain": "arbitrum",
     "incident_title": "Paribus Exp",
-    "incident_id": "DeFiHackLabs:paribus-exp",
+    "incident_id": "reviewed:Paribus",
     "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-04/Paribus_exp.sol",
     "reference_links": [],
     "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
     "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
-    "sources": [],
-    "legacy_ground_truth": []
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1645744655357575170",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/16eb333a35642d0594812be6a1238b85dc8b32d86df777bf4948c3a0054d83dd.gz",
+          "sha256": "61b7c0d14965b41b7db269198fdda99796fe3942368761a04460e9cdc470bc07"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
+          "incident": "Paribus",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/d0978f423482efcffe29d6578aaf73e1d00d80b88c51761b21c3a39bc4b24537.gz",
+            "sha256": "773e59aa6e2f99ff92f44e93612f93a4d79b61987e76ac811c6e2ce7c12a8e20"
+          },
+          "review": "BlockSec embeds the exact Arbitrum transaction in its discussion and identifies classical reentrancy; PeckShield independently identifies the CompoundV2 fork vulnerability. No source supports treating this as the legitimate Compound case study."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1645742296904929280",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/a76d74293d04cf16c68248a93f6d84c51a2ac643951376a2553df07fd983ad35.gz",
+          "sha256": "282b4ab826f1c6f22e7c03c149e4b781a3e6e8d2b9117f0ec1591a43e7561f05"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
+          "incident": "Paribus",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/d0978f423482efcffe29d6578aaf73e1d00d80b88c51761b21c3a39bc4b24537.gz",
+            "sha256": "773e59aa6e2f99ff92f44e93612f93a4d79b61987e76ac811c6e2ce7c12a8e20"
+          },
+          "review": "BlockSec embeds the exact Arbitrum transaction in its discussion and identifies classical reentrancy; PeckShield independently identifies the CompoundV2 fork vulnerability. No source supports treating this as the legitimate Compound case study."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af.json",
+      "sha256": "ef7f8b2d85530b8a1283451a45d2aaaecd6bb679a1c2250748fa0e3439a8331c"
+    }
   },
   {
     "txn_hash": "0x1f00da742318ad1807b6ea8283bfe22b4a8ab0bc98fe428fbfe443746a4a7353",
@@ -7810,13 +7855,58 @@
     "txn_hash": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
     "chain": "arbitrum",
     "incident_title": "Dforce Exp",
-    "incident_id": "DeFiHackLabs:dforce-exp",
+    "incident_id": "reviewed:dForce",
     "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-02/dForce_exp.sol",
     "reference_links": [],
     "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
     "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
-    "sources": [],
-    "legacy_ground_truth": []
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1623901011680333824",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/19f81e13c77209189988b015103f62b61b0e4f5ca8d78a0e0573603d66f8b4e2.gz",
+          "sha256": "07541eca2559ac68edf1b9e3a87fbd61e1fa58ead4f4d5a66e81eef642d034ac"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+          "incident": "dForce",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/91ddee8de4c1af4a2dfac7d63e3dbd17022ca5fbb71d00745353eac700c042dd.gz",
+            "sha256": "7e8986b5f150cd37eb7a69fa3134689bebf32b50580b4fc05d477bb18c90e268"
+          },
+          "review": "BlockSec names read-only reentrancy and PeckShield explains the affected Curve remove_liquidity dependency. The indexed Arbitrum transaction is an exploit execution, not a funding transfer."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1623910257033617408",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/f3d14c003cf3570ec9843ee650b8ba628ff2a37198c7586456c5e00519a3ff91.gz",
+          "sha256": "f7349c90c5e70fd3aa0d02ea4cede3aa6c28978db71564b5d68cc140b932ebdc"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+          "incident": "dForce",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/91ddee8de4c1af4a2dfac7d63e3dbd17022ca5fbb71d00745353eac700c042dd.gz",
+            "sha256": "7e8986b5f150cd37eb7a69fa3134689bebf32b50580b4fc05d477bb18c90e268"
+          },
+          "review": "BlockSec names read-only reentrancy and PeckShield explains the affected Curve remove_liquidity dependency. The indexed Arbitrum transaction is an exploit execution, not a funding transfer."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd.json",
+      "sha256": "d2bbcdea9f0ee330cef4b686e15514f139ec413b03d30c22493914e87802bd66"
+    }
   },
   {
     "txn_hash": "0x5f16637460021994d40430dadc020fffdb96937cfaf2b8cb6cbc03c91980ac7c",
@@ -8158,13 +8248,58 @@
     "txn_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
     "chain": "base",
     "incident_title": "Cloberdex Exp",
-    "incident_id": "DeFiHackLabs:cloberdex-exp",
+    "incident_id": "reviewed:Clober DEX",
     "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2024-12/CloberDEX_exp.sol",
     "reference_links": [],
     "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
     "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
-    "sources": [],
-    "legacy_ground_truth": []
+    "sources": [
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/resources/blog/clober-dex-incident-analysis",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/653da36b2e5a872590689d6e2555c39b484b67cb96414ee59d6cd3e3277f15d5.gz",
+          "sha256": "3c11d7cedad9e901eaa0f41c809bf7a08fcd61c60323b3d5b2dfcd6423ff5537"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "incident": "Clober DEX",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/da5f9664c61f52f5100e77faf1bd2e5ee22e94206f797e46092d5bd460fd4dbb.gz",
+            "sha256": "9fd66f747853d10cf5f897acb40bdb29ed509b7642b3f332f038e58a12aae454"
+          },
+          "review": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://x.com/peckshield/status/1866443215186088048",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/9fc23f3938499054c6f3f65923cd68f3b47f04ab471c69aecddcefabde690f16.gz",
+          "sha256": "446da486318f19538d0ab82c7c8c8cdc32ac85deeee76ec2041572231a885296"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "incident": "Clober DEX",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/da5f9664c61f52f5100e77faf1bd2e5ee22e94206f797e46092d5bd460fd4dbb.gz",
+            "sha256": "9fd66f747853d10cf5f897acb40bdb29ed509b7642b3f332f038e58a12aae454"
+          },
+          "review": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+      "sha256": "8dfbd9fb0841125b8635216687f1788faa196d6ba92583dae3c881e564b97c37"
+    }
   },
   {
     "txn_hash": "0x984cb29cdb4e92e5899e9c94768f8a34047d0e1074f9c4109364e3682e488873",
@@ -16582,13 +16717,58 @@
     "txn_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
     "chain": "polygon",
     "incident_title": "Midas Exp",
-    "incident_id": "DeFiHackLabs:midas-exp",
+    "incident_id": "reviewed:Midas Capital",
     "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-01/Midas_exp.sol",
     "reference_links": [],
     "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
     "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
-    "sources": [],
-    "legacy_ground_truth": []
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1614864084956254209",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/d9fc373cf2ae25b547912309f83d60b479cb0aa48b5328d501421d60b51358f0.gz",
+          "sha256": "da89e5ea7685652f240ac835b4662af555002e04a8296792b6abf9b33a593cef"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "incident": "Midas Capital",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/65c0ce5b179605b79c1cea0fdf161c852dfc4db6d87946b2e9331e2dd572099c.gz",
+            "sha256": "6b6dbc611c64d9159f081f98e3ceda698567c3c883a2ffd1f3dc51414f5b46ab"
+          },
+          "review": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1614774855999844352",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/034cb7f427b6515f6c0da9d5447778c0edfa79f52dc32859d2444311ef3696bd.gz",
+          "sha256": "e591a6ae62c94327b927a693b10d39df80941879b52f8173822bcea9a37a1c24"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+        "identity_basis": {
+          "transaction": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "incident": "Midas Capital",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/65c0ce5b179605b79c1cea0fdf161c852dfc4db6d87946b2e9331e2dd572099c.gz",
+            "sha256": "6b6dbc611c64d9159f081f98e3ceda698567c3c883a2ffd1f3dc51414f5b46ab"
+          },
+          "review": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected."
+        }
+      }
+    ],
+    "legacy_ground_truth": [],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+      "sha256": "9fff48154d1494d0e0a5fa4caca37d5a39b1c2b255f475b2e7893f9085b2aebe"
+    }
   },
   {
     "txn_hash": "0x051f80a7ef69e1ffad889ec7e1f7d29a9e80883156b5c8528438b5bb8b7a689a",

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+  "chain": "base",
+  "is_exploit": true,
+  "vuln_type": "Reentrancy",
+  "adjudication_basis": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity.",
+  "independent_observations": [
+    {
+      "publisher_id": "CertiK",
+      "source_url": "https://www.certik.com/resources/blog/clober-dex-incident-analysis",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/653da36b2e5a872590689d6e2555c39b484b67cb96414ee59d6cd3e3277f15d5.gz",
+        "sha256": "3c11d7cedad9e901eaa0f41c809bf7a08fcd61c60323b3d5b2dfcd6423ff5537"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "The root cause of the attack was a reentrancy vulnerability in the _burn() function of the Rebalancer contract."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://x.com/peckshield/status/1866443215186088048",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/9fc23f3938499054c6f3f65923cd68f3b47f04ab471c69aecddcefabde690f16.gz",
+        "sha256": "446da486318f19538d0ab82c7c8c8cdc32ac85deeee76ec2041572231a885296"
+      },
+      "vulnerability_class": "Reentrancy",
+      "mechanism_excerpt": "It seems today's @CloberDEX hack is due to a reentrancy issue from the burn() function."
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

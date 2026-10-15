@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+  "chain": "polygon",
+  "is_exploit": true,
+  "vuln_type": "Read-only reentrancy",
+  "adjudication_basis": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1614864084956254209",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/d9fc373cf2ae25b547912309f83d60b479cb0aa48b5328d501421d60b51358f0.gz",
+        "sha256": "da89e5ea7685652f240ac835b4662af555002e04a8296792b6abf9b33a593cef"
+      },
+      "vulnerability_class": "Read-only reentrancy",
+      "mechanism_excerpt": "It is due to an unexcepted external call before updating critical variables->reentrancy & miscalculation of the token prices."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1614774855999844352",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/034cb7f427b6515f6c0da9d5447778c0edfa79f52dc32859d2444311ef3696bd.gz",
+        "sha256": "e591a6ae62c94327b927a693b10d39df80941879b52f8173822bcea9a37a1c24"
+      },
+      "vulnerability_class": "Read-only reentrancy",
+      "mechanism_excerpt": "due to the known read-only-reentrancy issue when interacting w/ certain Curve pools."
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+  "chain": "arbitrum",
+  "is_exploit": true,
+  "vuln_type": "Read-only reentrancy",
+  "adjudication_basis": "BlockSec names read-only reentrancy and PeckShield explains the affected Curve remove_liquidity dependency. The indexed Arbitrum transaction is an exploit execution, not a funding transfer.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1623901011680333824",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/19f81e13c77209189988b015103f62b61b0e4f5ca8d78a0e0573603d66f8b4e2.gz",
+        "sha256": "07541eca2559ac68edf1b9e3a87fbd61e1fa58ead4f4d5a66e81eef642d034ac"
+      },
+      "vulnerability_class": "Read-only reentrancy",
+      "mechanism_excerpt": "The root cause is the well-known read-only reentrancy in the curve pool."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1623910257033617408",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/f3d14c003cf3570ec9843ee650b8ba628ff2a37198c7586456c5e00519a3ff91.gz",
+        "sha256": "f7349c90c5e70fd3aa0d02ea4cede3aa6c28978db71564b5d68cc140b932ebdc"
+      },
+      "vulnerability_class": "Read-only reentrancy",
+      "mechanism_excerpt": "price manipulation of the @dForcenet wstETHCRV-gauge asset via reentrancy (via wstETHCRV.remove_liquidity)"
+    }
+  ],
+  "reentrancy_label": true,
+  "swc_registry_classification": "SWC-107",
+  "dasp_classification": "Reentrancy",
+  "uncategorized": false
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "case_id": "65c0ce5b179605b7",
+    "incident_name": "Midas Capital",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Read-only reentrancy",
+    "reentrancy_label": true,
+    "reasoning": "Both organizations independently explain the Curve callback/state-update ordering and consequent incorrect prices. The Polygon attack hash is the PoC header attack transaction; no funding hash is selected.",
+    "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+    "attack_transaction_hashes": [
+      "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    ],
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1614864084956254209",
+        "quote": "It is due to an unexcepted external call before updating critical variables->reentrancy & miscalculation of the token prices."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1614774855999844352",
+        "quote": "due to the known read-only-reentrancy issue when interacting w/ certain Curve pools."
+      }
+    ]
+  },
+  {
+    "case_id": "91ddee8de4c1af4a",
+    "incident_name": "dForce",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Read-only reentrancy",
+    "reentrancy_label": true,
+    "reasoning": "BlockSec names read-only reentrancy and PeckShield explains the affected Curve remove_liquidity dependency. The indexed Arbitrum transaction is an exploit execution, not a funding transfer.",
+    "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+    "attack_transaction_hashes": [
+      "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd"
+    ],
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1623901011680333824",
+        "quote": "The root cause is the well-known read-only reentrancy in the curve pool."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1623910257033617408",
+        "quote": "price manipulation of the @dForcenet wstETHCRV-gauge asset via reentrancy (via wstETHCRV.remove_liquidity)"
+      }
+    ]
+  },
+  {
+    "case_id": "d0978f423482efcf",
+    "incident_name": "Paribus",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Reentrancy",
+    "reentrancy_label": true,
+    "reasoning": "BlockSec embeds the exact Arbitrum transaction in its discussion and identifies classical reentrancy; PeckShield independently identifies the CompoundV2 fork vulnerability. No source supports treating this as the legitimate Compound case study.",
+    "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+    "attack_transaction_hashes": [
+      "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af"
+    ],
+    "observations": [
+      {
+        "publisher": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1645744655357575170",
+        "quote": "on Arbitrum was just attacked. Yet another example of classical reentrancy issue..."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1645742296904929280",
+        "quote": "The root cause turns out to a known reentrancy issue from the forked old version of CompoundV2."
+      }
+    ]
+  },
+  {
+    "case_id": "da5f9664c61f52f5",
+    "incident_name": "Clober DEX",
+    "reviewed_by": "Codex",
+    "decision": "APPROVE_SOURCE_CONSENSUS",
+    "consensus": true,
+    "vulnerability_class": "Reentrancy",
+    "reentrancy_label": true,
+    "reasoning": "Both original security publishers independently identify the burn-function reentry in the same Base incident. CertiK supplies the technical incident analysis; the public PoC header binds the exploit execution identity.",
+    "independence_basis": "Separate security organizations each publish an original technical mechanism account; neither quoted observation attributes its analysis to the other. Different social accounts of one organization are counted once.",
+    "attack_transaction_hashes": [
+      "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04"
+    ],
+    "observations": [
+      {
+        "publisher": "CertiK",
+        "url": "https://www.certik.com/resources/blog/clober-dex-incident-analysis",
+        "quote": "The root cause of the attack was a reentrancy vulnerability in the _burn() function of the Rebalancer contract."
+      },
+      {
+        "publisher": "PeckShield",
+        "url": "https://x.com/peckshield/status/1866443215186088048",
+        "quote": "It seems today's @CloberDEX hack is due to a reentrancy issue from the burn() function."
+      }
+    ]
+  }
+]
