@@ -1,0 +1,247 @@
+[
+  {
+    "seed": 1729,
+    "config": {
+      "experiment": "reentrancy-components-v1",
+      "variants": [
+        "structural",
+        "repeated",
+        "full"
+      ],
+      "positive_rule": "HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full",
+      "repeated_rule": "address appears more than once outside STATICCALL frames",
+      "thresholds": "unchanged production paper-mode values",
+      "system_sha256": "56b5756da9f2e93bd6430783210aa0fc5203fce1f2d3e7a45a1335a5885fad60",
+      "split": {
+        "path": "benchmark/eval_split.json",
+        "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+      },
+      "population": "all frozen train identities; only available evidence is scored",
+      "no_overall_f1_inference": true
+    },
+    "run_id": "20261015T140915-334cd54a",
+    "kind": "dispatch-train",
+    "sample_ids": [],
+    "metrics": null,
+    "sequence": 1,
+    "previous_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "timestamp": "2026-10-15T14:09:15.668269+00:00"
+  },
+  {
+    "seed": 1729,
+    "config": {
+      "experiment": "reentrancy-components-v1",
+      "variants": [
+        "structural",
+        "repeated",
+        "full"
+      ],
+      "positive_rule": "HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full",
+      "repeated_rule": "address appears more than once outside STATICCALL frames",
+      "thresholds": "unchanged production paper-mode values",
+      "system_sha256": "56b5756da9f2e93bd6430783210aa0fc5203fce1f2d3e7a45a1335a5885fad60",
+      "split": {
+        "path": "benchmark/eval_split.json",
+        "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+      },
+      "population": "all frozen train identities; only available evidence is scored",
+      "no_overall_f1_inference": true
+    },
+    "run_id": "20261015T140915-334cd54a",
+    "kind": "scored-train",
+    "sample_ids": [
+      "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    ],
+    "metrics": {
+      "n": 7,
+      "tp": 3,
+      "fp": 1,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571428571428571,
+      "accuracy": 0.8571428571428571
+    },
+    "variant": "structural",
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T140915-334cd54a/structural.json",
+      "sha256": "ff3e81f7ee6603c7c9c5e6c28ac2e9c9fabb3faf0f736362ccd70e3a8cc5658b"
+    },
+    "coverage": {
+      "scored": 7,
+      "eligible_train": 10
+    },
+    "missing": [
+      {
+        "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+        "reason": "No bound call trace"
+      },
+      {
+        "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+        "reason": "No bound call trace"
+      },
+      {
+        "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+        "reason": "No bound call trace"
+      }
+    ],
+    "sequence": 2,
+    "previous_sha256": "d61c269b7f675e4f3a587e422b33463a77adee508e23811a781af228e653de8e",
+    "timestamp": "2026-10-15T14:09:15.877053+00:00"
+  },
+  {
+    "seed": 1729,
+    "config": {
+      "experiment": "reentrancy-components-v1",
+      "variants": [
+        "structural",
+        "repeated",
+        "full"
+      ],
+      "positive_rule": "HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full",
+      "repeated_rule": "address appears more than once outside STATICCALL frames",
+      "thresholds": "unchanged production paper-mode values",
+      "system_sha256": "56b5756da9f2e93bd6430783210aa0fc5203fce1f2d3e7a45a1335a5885fad60",
+      "split": {
+        "path": "benchmark/eval_split.json",
+        "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+      },
+      "population": "all frozen train identities; only available evidence is scored",
+      "no_overall_f1_inference": true
+    },
+    "run_id": "20261015T140915-334cd54a",
+    "kind": "scored-train",
+    "sample_ids": [
+      "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    ],
+    "metrics": {
+      "n": 7,
+      "tp": 3,
+      "fp": 4,
+      "fn": 0,
+      "tn": 0,
+      "precision": 0.42857142857142855,
+      "recall": 1.0,
+      "f1": 0.6,
+      "accuracy": 0.42857142857142855
+    },
+    "variant": "repeated",
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T140915-334cd54a/repeated.json",
+      "sha256": "ef3a2df5949d41f82dfdf90f4356799f3a5bd1bf7ade9c656c1405b66e15cbf9"
+    },
+    "coverage": {
+      "scored": 7,
+      "eligible_train": 10
+    },
+    "missing": [
+      {
+        "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+        "reason": "No bound call trace"
+      },
+      {
+        "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+        "reason": "No bound call trace"
+      },
+      {
+        "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+        "reason": "No bound call trace"
+      }
+    ],
+    "sequence": 3,
+    "previous_sha256": "11fc8ed0dff9afc551de8c8ec6776fc0db680ed671235ecaaa8b47cbd349e97c",
+    "timestamp": "2026-10-15T14:09:16.090303+00:00"
+  },
+  {
+    "seed": 1729,
+    "config": {
+      "experiment": "reentrancy-components-v1",
+      "variants": [
+        "structural",
+        "repeated",
+        "full"
+      ],
+      "positive_rule": "HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full",
+      "repeated_rule": "address appears more than once outside STATICCALL frames",
+      "thresholds": "unchanged production paper-mode values",
+      "system_sha256": "56b5756da9f2e93bd6430783210aa0fc5203fce1f2d3e7a45a1335a5885fad60",
+      "split": {
+        "path": "benchmark/eval_split.json",
+        "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+      },
+      "population": "all frozen train identities; only available evidence is scored",
+      "no_overall_f1_inference": true
+    },
+    "run_id": "20261015T140915-334cd54a",
+    "kind": "blocked-preflight",
+    "sample_ids": [],
+    "metrics": null,
+    "variant": "full",
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T140915-334cd54a/full.json",
+      "sha256": "6fa9de5325a985f1c9612568f59537038ea0ea1b3c4d29ffaa5a28d053a838fc"
+    },
+    "coverage": {
+      "scored": 0,
+      "eligible_train": 10
+    },
+    "missing": [
+      {
+        "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+        "reason": "No bound canonical opcode capture"
+      },
+      {
+        "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+        "reason": "No bound canonical opcode capture"
+      }
+    ],
+    "sequence": 4,
+    "previous_sha256": "6ac43bc57eb31878d7489a01fb85a1661710abe0a060643720e5a27668e518d3",
+    "timestamp": "2026-10-15T14:09:16.127048+00:00"
+  }
+]
