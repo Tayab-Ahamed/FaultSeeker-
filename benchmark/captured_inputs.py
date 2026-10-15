@@ -57,7 +57,11 @@ class CapturedInputs:
         full = isinstance(capture['raw_trace'].get('opcode', {}).get('structLogs'), list)
         if require_opcodes and not full:
             raise ValueError('Complete opcode capture required for this experiment')
-        self.proof = validate_recorded_capture(root / binding['path'], row['txn_hash'], root) if full else None
+        if full and capture.get('capture_version') == 'direct-native-historical-opcode-v1':
+            from scripts.probe_train_native_opcodes import validate_recorded_native_capture
+            self.proof = validate_recorded_native_capture(root / binding['path'], row['txn_hash'], root)
+        else:
+            self.proof = validate_recorded_capture(root / binding['path'], row['txn_hash'], root) if full else None
         canonical = normalize_trace_node(capture['raw_trace']['call'])
         storage = normalize_opcode_storage_trace(capture['raw_trace']['opcode']['structLogs'], canonical) if full else {}
         self.structured = {'transaction_hash': row['txn_hash'], 'chain': row['chain'], 'trace': canonical,

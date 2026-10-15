@@ -117,3 +117,8 @@ or the paper's 40-percent paired latency claim. No held-out exam was dispatched.
 ### Approved cloud pilot stopped and diagnosed
 
 Six HTTP-200 Agnes 2.5 Flash requests completed with per-call spend receipts, but no case completed. Model response 6 contains valid Markdown-fenced JSON; the gateway adapter omitted the existing safe parser. A test-first offline regression reproduces and fixes that omission without another live call. The pilot remains UNSCORED; the consumed dispatch permit is preserved. Batch conservative estimate $0.0229949; cumulative at batch end $1.8482789 (not an invoice). Held-out remains sealed. See provider_pilot/STOPPED_BATCH_DIAGNOSIS.json and the hash-bound run summary.
+
+
+### Native Gnosis opcodes integrated into TRAIN
+
+The Hundred Finance Gnosis historical node capture is separately validated from Anvil prefix replay. Actual receipt identity, gas, 519 frames and all 1354 SLOAD / 186 SSTORE owners agree. Four metered attempts (one sandbox connection failure, then three successful RPC methods) cost a conservative $0.000024. Eighth TRAIN component run 20261015T180152-ca8176ca covers five full-opcode cases: TP2 FP0 FN0 TN3, F1 1.0; this is a small availability-selected component population, never overall or held-out performance. Structural nine-case F1 remains 0.90909.

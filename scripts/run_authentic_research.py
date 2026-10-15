@@ -34,6 +34,7 @@ def system_identity(extra_files=()):
         ROOT / 'benchmark/research_protocol.py', Path(__file__).resolve(),
         ROOT / 'scripts/replay_historical_opcodes.py', ROOT / 'scripts/capture_authentic_traces.py',
         ROOT / 'scripts/pinned_prestate_rpc.py',
+        ROOT / 'scripts/probe_train_native_opcodes.py', ROOT / 'benchmark/captured_inputs.py',
     ]
     paths.extend(Path(path) for path in extra_files)
     files = [bind(path, ROOT) for path in sorted(set(paths))]
@@ -60,7 +61,11 @@ def _capture(binding, row, root, full=False):
     if full:
         # This validation checks canonical prefix, receipt, signed envelopes,
         # complete normalization and storage attribution against raw opcodes.
-        validate_recorded_capture(root / binding['path'], row['txn_hash'])
+        if capture.get('capture_version') == 'direct-native-historical-opcode-v1':
+            from scripts.probe_train_native_opcodes import validate_recorded_native_capture
+            validate_recorded_native_capture(root / binding['path'], row['txn_hash'], root)
+        else:
+            validate_recorded_capture(root / binding['path'], row['txn_hash'], root)
     # Never pass annotations, source publisher names, expected functions or labels
     # to a detector. Only the captured execution tree/opcodes enter analysis.
     return {'raw_trace': capture['raw_trace']}

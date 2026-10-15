@@ -1,0 +1,42 @@
+{
+  "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+  "endpoint": "https://rpc.gnosischain.com",
+  "rpc_identity": {
+    "path": "reports/cohort_rebuild_v2/rpc/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+    "sha256": "1c6922091d56308a8df8169197edd64f69360c7f2c887b20a55d6ecd073b1c65"
+  },
+  "bound_call_capture": {
+    "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+    "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+  },
+  "call_index": {
+    "path": "reports/cohort_rebuild_v2/chain_trace_probe/INTEGRATION.json",
+    "sha256": "baeb6bbbd6c652a3aaab9c4c247806c6045f280a9d7a8a43c7f3d70b9c837fc4"
+  },
+  "capture_path": "direct native historical node; not Anvil prefix replay",
+  "requests": [
+    {
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "eth_chainId",
+        "params": []
+      }
+    }
+  ],
+  "status": "NATIVE_OPCODES_UNAVAILABLE",
+  "billing_confirmed": false,
+  "error_type": "URLError",
+  "meter": {
+    "outbound_rpc_requests": 1,
+    "methods": {
+      "eth_chainId": 1
+    },
+    "estimated_cost_usd": 6e-06,
+    "cumulative_ledger_estimate_usd": 1.84828489999989,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

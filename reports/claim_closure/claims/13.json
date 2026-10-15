@@ -2,10 +2,10 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Six real train component runs are preserved. After canonical-frame ancestry repair, the full detector scores TP=1 FP=0 FN=0 TN=3 (F1=1.0) on only four of ten train cases. Structural/repeated F1 remains 0.8571428571428571/0.6 on seven call traces. Revest supplies the only full-detector positive; Inverse supplies an additional independently sourced negative. Missing coverage and final production-system/held-out outcomes prevent paper-metric verification.",
-  "verification_scope": "Observed train-only reentrancy component outcomes on hash-bound captures, with missing coverage retained; not full-system or held-out performance",
+  "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval.",
+  "verification_scope": "Frozen TRAIN-only real traces; native historical node and canonical Anvil proof paths verified separately; no held-out or overall F1 inference",
   "requirements_unmet": [
-    "Complete authenticated execution observations for the remaining six train cases, followed by a frozen full production-system held-out evaluation"
+    "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
   ],
   "human_decision": "No decision needed; continue train-only evidence acquisition and semantic failure analysis",
   "acceptance_tests": [
@@ -16,7 +16,9 @@
     "tests/test_nested_storage_ancestry.py::test_sequential_writes_in_different_branches_are_not_nested",
     "tests/test_nested_storage_ancestry.py::test_actual_ancestor_callback_keeps_nested_slot_signal",
     "tests/test_nested_storage_ancestry.py::test_actual_euler_sequential_token_transfers_do_not_fire_nested_rewrite",
-    "tests/test_nested_storage_ancestry.py::test_actual_revest_callback_keeps_positive_after_ancestry_fix"
+    "tests/test_nested_storage_ancestry.py::test_actual_revest_callback_keeps_positive_after_ancestry_fix",
+    "tests/test_train_native_opcodes.py::test_real_native_capture_validates_and_refuses_changed_storage",
+    "tests/test_train_native_opcodes.py::test_real_native_gnosis_capture_enters_production_without_network"
   ],
   "evidence": [
     {
@@ -170,10 +172,26 @@
     {
       "path": "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
       "sha256": "164b59f593859c92ab383e9633c57922cc1b402fad28e0ac27459f19d35fac27"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+      "sha256": "8acbac288a5fb1a3b9a629acb146bfc9763fc7fc57e79e5fc437e82ca4425b61"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+      "sha256": "71f9c2467a5c26953a9ee6bbdd4aa0b02775b2dd6c25818ed79a627418d318cf"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json",
+      "sha256": "95465ceeedbfec9d8052fdfbf545350b96d0b9a345988a5b170ef1baa52622b6"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/system_sources.json.gz",
+      "sha256": "8fe8efcca3e78f5a268335345d591706720511e00710817da2b3b591898318bd"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Complete authenticated execution observations for the remaining six train cases, followed by a frozen full production-system held-out evaluation",
+  "next_input_artifact": "Complete production predictions with accepted trace coverage and frozen final system",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/13.json",
   "paper_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
