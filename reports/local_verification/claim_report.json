@@ -457,16 +457,20 @@
       "scope": "TOOLS",
       "tests": [
         "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
-        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers"
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts"
       ],
-      "required_evidence": "Compile and execute all Solidity fixtures and preserve raw trace captures.",
+      "required_evidence": "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes.",
       "required_env": [
         "SOLC_BINARY",
         "ANVIL_BINARY",
         "CAST_BINARY",
         "FOUNDRY_BIN"
       ],
-      "status": "PENDING-CREDENTIALS",
+      "status": "VERIFIED-COMPILED-EVM",
       "local_proof": "PASSED",
       "claim_commit": "0d440fed7ffe85567e9d962b61acfb73f2bd4fdf",
       "implementation_commits": [
@@ -538,9 +542,9 @@
       "required_env": [],
       "status": "IMPLEMENTED-LOCAL",
       "local_proof": "PASSED",
-      "claim_commit": "a0d4d5f376a1b1575f0c7b002f8b2740f742a6e6",
+      "claim_commit": "59b00cb8459f0166612f33a3626f6bfd690faf0e",
       "implementation_commits": [
-        "a0d4d5f376a1b1575f0c7b002f8b2740f742a6e6"
+        "59b00cb8459f0166612f33a3626f6bfd690faf0e"
       ]
     },
     {
@@ -4287,17 +4291,18 @@
   },
   "test_exit_code": 0,
   "test_counts": {
-    "passed": 321
+    "passed": 328
   },
-  "timestamp": "2026-10-14T19:20:28.801033+00:00",
+  "timestamp": "2026-10-15T00:41:22.890580+00:00",
   "python_version": "3.11.9",
-  "revision": "a0d4d5f376a1b1575f0c7b002f8b2740f742a6e6",
+  "revision": "74fd8fe50d6cadc0d0995a0e22659bd1a488d99d",
   "test_manifest_sha256": {
     "tests\\test_acquisition_paths.py": "51b512d2f1c76ed1d38c889ec81d9870ebe946af4b23881dc85b70c2bf56f180",
     "tests\\test_adaptive_controller.py": "e373d2f5297eaaca48ba3a0ed948890205ba970c285225b92511eb8d5798df09",
     "tests\\test_analyst_guidance.py": "89ff0f509b938e07cbf7bc6d9674a4577b65782ea92b0ee042c00bc7da9da4cd",
     "tests\\test_calibration_schema.py": "93d043bd4cb6d961012a17addb0d8ca64d30c6c91a2a93a6abff63609cb6b420",
-    "tests\\test_claim_registry.py": "5877735a6e0a6ab795dfdd4f716a43288b267148fbf30cb89547f3d3a59bc722",
+    "tests\\test_claim_registry.py": "9f02c20ab66f0f523f4a870740105c690f359f7a8155bc1da615bf4ed475873c",
+    "tests\\test_compiled_evm_integration.py": "77f372bc95ce3898a34c159fb281d0e93c02a4d16177592a983cb20ebe1303f0",
     "tests\\test_confidence_scorer.py": "7e3f08dc2ae43f802a8928cff527f1e4c44227606b7760a82be84cb904dbc9ca",
     "tests\\test_cost_tracker_ablation.py": "75d6362dd38ce6b1c1f54a04083836333bd0c0edcbb3a50a982b5b9bb9f45475",
     "tests\\test_detector_experiments.py": "24ea3d15edc36228dc2fdb07674eda5ab7e15018be63b946f47e4100625de897",
@@ -4330,6 +4335,6 @@
     "tests\\test_source_analysis_safety.py": "d4134b77b0ae8997269fc6e310bc638a25b6bcba97ad715ea97af116c838419b",
     "tests\\test_spend_guard.py": "446f98bd76d18e234de5cec6af08a7469339a10de6140c02dc8158c7eed92515",
     "tests\\test_stage_one_local.py": "9a47cd495d82908fdc610d2193f63169f9b40d0ca1cc033463bfb4f895dbf8e7",
-    "tests\\test_storage_normalization.py": "1266f5b65a3f33e898d6d2acd0a7ac0c86c2d4778601d886ace026ae1fb2bc63"
+    "tests\\test_storage_normalization.py": "ccd1273c9e5466e557d524b25e91932ab047e5a7c09a953ed9a7727c929a88da"
   }
 }

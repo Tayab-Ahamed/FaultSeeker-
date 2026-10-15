@@ -1,0 +1,118 @@
+{
+  "session_date": "2026-10-15",
+  "scope": "local compiled fixtures plus bounded Ethereum RPC capability probes; not cohort verification",
+  "compiled_trace_sha256": "d4fb851f49e661a44bf5eb9d9a57de6978687b46b5475197623e4dfc239eaaa7",
+  "tool_versions": {
+    "foundry": "1.8.5",
+    "solc": "0.8.30"
+  },
+  "download_sha256": {
+    "foundry_zip": "21f86b563d87404a68481f513bf3e419780ee536307b89c658215ae6f8f5aa45",
+    "solc_exe": "ccbd3ed44d5fbd26fe039702d403421f1212d2e8752e3cbe3bfd074986911586"
+  },
+  "cases": {
+    "reentrant": {
+      "opcode_count": 1204,
+      "sload_count": 15,
+      "sstore_count": 6,
+      "normalization_complete": true,
+      "detector": {
+        "score": 1.0,
+        "detected": true,
+        "tier": "CONFIRMED_REENTRANCY",
+        "signals": {
+          "same_function_reentry": true,
+          "cross_function_reentry": false,
+          "reentry_before_return": true,
+          "slot_rewrite": true,
+          "write_after_call": true,
+          "state_slot_reentry": true
+        },
+        "context": {
+          "fallback_mode": false,
+          "storage_trace_available": true,
+          "paper_profile": true
+        }
+      },
+      "predicted_exploit": true
+    },
+    "guarded": {
+      "opcode_count": 835,
+      "sload_count": 8,
+      "sstore_count": 5,
+      "normalization_complete": true,
+      "detector": {
+        "score": 0.35,
+        "detected": true,
+        "tier": "POSSIBLE_REENTRANCY",
+        "signals": {
+          "same_function_reentry": false,
+          "cross_function_reentry": false,
+          "reentry_before_return": true,
+          "slot_rewrite": true,
+          "write_after_call": true,
+          "state_slot_reentry": false
+        },
+        "context": {
+          "fallback_mode": false,
+          "storage_trace_available": true,
+          "paper_profile": true
+        }
+      },
+      "predicted_exploit": true
+    },
+    "delegatecall": {
+      "opcode_count": 201,
+      "sload_count": 1,
+      "sstore_count": 1,
+      "normalization_complete": true,
+      "detector": {
+        "score": 0.0,
+        "detected": false,
+        "tier": "NOT_REENTRANCY",
+        "signals": {
+          "same_function_reentry": false,
+          "cross_function_reentry": false,
+          "reentry_before_return": false,
+          "slot_rewrite": false,
+          "write_after_call": false,
+          "state_slot_reentry": false
+        },
+        "context": {
+          "fallback_mode": false,
+          "storage_trace_available": true,
+          "paper_profile": true
+        }
+      },
+      "predicted_exploit": false
+    }
+  },
+  "drpc": {
+    "network": "Ethereum mainnet",
+    "chain_id": 1,
+    "observed_head": 26194322,
+    "historical_transaction": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+    "receipt": "returned",
+    "callTracer": "returned",
+    "opcode_tracer": "HTTP 400; tracer param required",
+    "outbound_rpc_requests": 7,
+    "estimated_upper_cost_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "model_api_calls": 0,
+    "model_api_spend_usd": 0,
+    "opcode_configurations_rejected": 3
+  },
+  "limitations": [
+    "Guarded attempt remains a false positive under unchanged paper weights: score 0.35 >= detection threshold 0.30.",
+    "dRPC opcode access has not been demonstrated.",
+    "No independent second-provider acquisition, historical Foundry replay, publisher artifacts or reviewer annotations were completed.",
+    "No cohort row or empirical paper statistic is promoted by local fixtures."
+  ],
+  "test_evidence": {
+    "passed": 328,
+    "skipped": 0,
+    "original_passed": 201,
+    "original_test_sources_changed": []
+  }
+}
