@@ -1,0 +1,20 @@
+{
+  "id": 23,
+  "claim": "Equation 4 confidence scoring",
+  "status": "VERIFIED",
+  "reason": "The executed four-component weighted formula is a relative heuristic score; incompatible calibration schemas are rejected rather than presented as validated probabilities.",
+  "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim",
+  "requirements_unmet": [],
+  "human_decision": null,
+  "acceptance_tests": [
+    "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+    "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+  ],
+  "evidence": [
+    {
+      "path": "reports/claim_closure/local_acceptance.json",
+      "sha256": "255e27f91e7f65b8c4fbeba1623187bb581a30645b407bf348962a11943fdb03"
+    }
+  ],
+  "session_date": "2026-10-15"
+}
