@@ -1,0 +1,1605 @@
+{
+  "scope": "Actual cached verified historical source input transport; production FunctionAnalyzer injection still pending",
+  "inputs": {
+    "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+    "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+  },
+  "adapter": {
+    "path": "benchmark/verified_source_inputs.py",
+    "sha256": "7ce7c657603f0a03114fde1a5ebc5c937a5fbd1e641df8c2af50908d7883a519"
+  },
+  "tests": {
+    "path": "tests/test_verified_source_inputs.py",
+    "sha256": "375c2d1edb08d182a1ec6392ed2ad5667297f500fa99992d1da4888693ce8e38"
+  },
+  "results": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "contracts": [
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "verified_abi_selectors": 26,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.body",
+              "sha256": "65875d9b43bd656fb14743ac613c6b7dea659839815da07d1722b25fc4ced431"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+              "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "de569d8dec2f5decb6da5207a2b595a6ef7c0bdb8be7cbeff156de91dbeedd05",
+            "sources": [
+              {
+                "path": "contracts/Base.sol",
+                "utf8_sha256": "2b43c8045558447a2af79dd0f0b2780786376a8a401e20891864a10b9e811d6c",
+                "metadata_keccak256": "0x274734b430e12e7defb4964499a4e40399c541406103f25225e448d588b94b9c"
+              },
+              {
+                "path": "contracts/BaseIRM.sol",
+                "utf8_sha256": "b29e86bb33e29fd156f01585f7bd08c0b19ec6c862d1cb3ba8c598e9acdd2e03",
+                "metadata_keccak256": "0x8f53f8edfd595b4cb8a268cae43bb00e6c1ca7ecd57b310a0729396369fea9b8"
+              },
+              {
+                "path": "contracts/BaseLogic.sol",
+                "utf8_sha256": "f8ddc250d2e2508ac402ae61a4df97c1b664ad6d13c891514d5b7a68ec52cf17",
+                "metadata_keccak256": "0xa78878dbccd0da8b95d2d545ba1812b6e568e51bccb11dbc1987d1f37615201c"
+              },
+              {
+                "path": "contracts/BaseModule.sol",
+                "utf8_sha256": "61921390bff0efd4d74ea527fd5e918862c071d0cbefa48c27814fb45916d9ef",
+                "metadata_keccak256": "0x2b01e3eb1bdb5b176c687898708b2208ccb15cea1d914ac142c7a00185e97489"
+              },
+              {
+                "path": "contracts/Constants.sol",
+                "utf8_sha256": "eabc3439f0332a4ab3cdc06bb4ae65e73f6ff44fdcde0254a30cf2f7ba87ebba",
+                "metadata_keccak256": "0x07ff1abad9bc7ee9b04273d8f5c6afbdeb7150fd9ad79ba44e5e818ccd8d522c"
+              },
+              {
+                "path": "contracts/Events.sol",
+                "utf8_sha256": "b35e6626eee06b4386f27af8feab9be5de131014eaa76208f8cf2c41365c37fc",
+                "metadata_keccak256": "0x3252bf860810afc85ad8008502e88faf92a0fe14ff284c43f941a64500e50286"
+              },
+              {
+                "path": "contracts/IRiskManager.sol",
+                "utf8_sha256": "9183044804d76c17d2fe41bba09ef798313917981f68d52d6f3c7c20f2ade641",
+                "metadata_keccak256": "0x9b682aaaabb796241344c56f0f0f32079f8e4f0ec474c16885a1f7eda96fab12"
+              },
+              {
+                "path": "contracts/Interfaces.sol",
+                "utf8_sha256": "0faa5b60f20906cc34c3942f3618fe1a6697ff96a32d10f7e959f2a9ea8458ff",
+                "metadata_keccak256": "0x452b12f1f762a9c0771cac9a393945249568459646d1f413daa63b2cc55f4135"
+              },
+              {
+                "path": "contracts/Proxy.sol",
+                "utf8_sha256": "2719673213ea07c2326fa6429909212bf198f67b0380de02930eb38b152cc3cd",
+                "metadata_keccak256": "0x23ce39ad82cebbec4d78ff751237769c2790781486a88874701231c562b4ac9f"
+              },
+              {
+                "path": "contracts/Storage.sol",
+                "utf8_sha256": "cdef6720a0b33ab55443b33d051f971f828ad3d74d9d56bcbd7ba22b2070ceaa",
+                "metadata_keccak256": "0xfd67cc7eefc67da96bccb13545e659dfa699a4b65943b1a122651a7dd8f33035"
+              },
+              {
+                "path": "contracts/Utils.sol",
+                "utf8_sha256": "5f741ad3f948bbda41fc0faf920c658a219b0620b9f8b0927a8739c5dbe6350b",
+                "metadata_keccak256": "0xd78912579cb32481e1bab3ebfb93b21bdaed422b9121829f90d0e0f1ec796711"
+              },
+              {
+                "path": "contracts/modules/EToken.sol",
+                "utf8_sha256": "cc81e4d9b92d19087d6cbac40065e132296bb6c8983cf233a7c00037dd09bc6a",
+                "metadata_keccak256": "0x6a4c4c2ef52f0cfd7b4fee3fd53d2e9a3bc4aba87a574859dda84c3259c501f4"
+              },
+              {
+                "path": "contracts/vendor/RPow.sol",
+                "utf8_sha256": "cfdb3fee96bccf6ea423497c7d16b7265028e2c50e188ed8cf3b1d22f888e458",
+                "metadata_keccak256": "0x8853a3c299984b4fedfe8f7fe362563b4ccc917fb9fa44eafda0110b536bdd88"
+              }
+            ],
+            "abi_signatures": {
+              "0xdd62ed3e": [
+                "allowance(address,address)"
+              ],
+              "0x095ea7b3": [
+                "approve(address,uint256)"
+              ],
+              "0x32d1ca9b": [
+                "approveSubAccount(uint256,address,uint256)"
+              ],
+              "0x70a08231": [
+                "balanceOf(address)"
+              ],
+              "0x3af9e669": [
+                "balanceOfUnderlying(address)"
+              ],
+              "0xb390c0ab": [
+                "burn(uint256,uint256)"
+              ],
+              "0x010ad6d1": [
+                "convertBalanceToUnderlying(uint256)"
+              ],
+              "0x52eac8af": [
+                "convertUnderlyingToBalance(uint256)"
+              ],
+              "0x313ce567": [
+                "decimals()"
+              ],
+              "0xe2bbb158": [
+                "deposit(uint256,uint256)"
+              ],
+              "0x36f022aa": [
+                "donateToReserves(uint256,uint256)"
+              ],
+              "0x1b2ef1ca": [
+                "mint(uint256,uint256)"
+              ],
+              "0x69a92ea3": [
+                "moduleGitCommit()"
+              ],
+              "0xa1308f27": [
+                "moduleId()"
+              ],
+              "0x06fdde03": [
+                "name()"
+              ],
+              "0xa10954fe": [
+                "reserveBalance()"
+              ],
+              "0xe73277d0": [
+                "reserveBalanceUnderlying()"
+              ],
+              "0x95d89b41": [
+                "symbol()"
+              ],
+              "0x18160ddd": [
+                "totalSupply()"
+              ],
+              "0xfea61faa": [
+                "totalSupplyUnderlying()"
+              ],
+              "0xa55526db": [
+                "touch()"
+              ],
+              "0xa9059cbb": [
+                "transfer(address,uint256)"
+              ],
+              "0x23b872dd": [
+                "transferFrom(address,address,uint256)"
+              ],
+              "0xcbfdd7e1": [
+                "transferFromMax(address,address)"
+              ],
+              "0x7158da7c": [
+                "underlyingAsset()"
+              ],
+              "0x441a3e70": [
+                "withdraw(uint256,uint256)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "verified_abi_selectors": 9,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/2aeed0d53a67fe9d33d4638b2b272c1a9eaaa87697317872c5720867c2f903b1.body",
+              "sha256": "3d04433ae9bc13432f02682880f7a481f8e98531672a7b3826ca6440f1f73654"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+              "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "5d2f6fd28391744d479f22e7878773ae7112ec9b58c74f28672fa2a48f045cd9",
+            "sources": [
+              {
+                "path": "contracts/Base.sol",
+                "utf8_sha256": "2b43c8045558447a2af79dd0f0b2780786376a8a401e20891864a10b9e811d6c",
+                "metadata_keccak256": "0x274734b430e12e7defb4964499a4e40399c541406103f25225e448d588b94b9c"
+              },
+              {
+                "path": "contracts/BaseIRM.sol",
+                "utf8_sha256": "b29e86bb33e29fd156f01585f7bd08c0b19ec6c862d1cb3ba8c598e9acdd2e03",
+                "metadata_keccak256": "0x8f53f8edfd595b4cb8a268cae43bb00e6c1ca7ecd57b310a0729396369fea9b8"
+              },
+              {
+                "path": "contracts/BaseLogic.sol",
+                "utf8_sha256": "f8ddc250d2e2508ac402ae61a4df97c1b664ad6d13c891514d5b7a68ec52cf17",
+                "metadata_keccak256": "0xa78878dbccd0da8b95d2d545ba1812b6e568e51bccb11dbc1987d1f37615201c"
+              },
+              {
+                "path": "contracts/BaseModule.sol",
+                "utf8_sha256": "61921390bff0efd4d74ea527fd5e918862c071d0cbefa48c27814fb45916d9ef",
+                "metadata_keccak256": "0x2b01e3eb1bdb5b176c687898708b2208ccb15cea1d914ac142c7a00185e97489"
+              },
+              {
+                "path": "contracts/Constants.sol",
+                "utf8_sha256": "eabc3439f0332a4ab3cdc06bb4ae65e73f6ff44fdcde0254a30cf2f7ba87ebba",
+                "metadata_keccak256": "0x07ff1abad9bc7ee9b04273d8f5c6afbdeb7150fd9ad79ba44e5e818ccd8d522c"
+              },
+              {
+                "path": "contracts/Events.sol",
+                "utf8_sha256": "b35e6626eee06b4386f27af8feab9be5de131014eaa76208f8cf2c41365c37fc",
+                "metadata_keccak256": "0x3252bf860810afc85ad8008502e88faf92a0fe14ff284c43f941a64500e50286"
+              },
+              {
+                "path": "contracts/IRiskManager.sol",
+                "utf8_sha256": "9183044804d76c17d2fe41bba09ef798313917981f68d52d6f3c7c20f2ade641",
+                "metadata_keccak256": "0x9b682aaaabb796241344c56f0f0f32079f8e4f0ec474c16885a1f7eda96fab12"
+              },
+              {
+                "path": "contracts/Interfaces.sol",
+                "utf8_sha256": "0faa5b60f20906cc34c3942f3618fe1a6697ff96a32d10f7e959f2a9ea8458ff",
+                "metadata_keccak256": "0x452b12f1f762a9c0771cac9a393945249568459646d1f413daa63b2cc55f4135"
+              },
+              {
+                "path": "contracts/Proxy.sol",
+                "utf8_sha256": "2719673213ea07c2326fa6429909212bf198f67b0380de02930eb38b152cc3cd",
+                "metadata_keccak256": "0x23ce39ad82cebbec4d78ff751237769c2790781486a88874701231c562b4ac9f"
+              },
+              {
+                "path": "contracts/Storage.sol",
+                "utf8_sha256": "cdef6720a0b33ab55443b33d051f971f828ad3d74d9d56bcbd7ba22b2070ceaa",
+                "metadata_keccak256": "0xfd67cc7eefc67da96bccb13545e659dfa699a4b65943b1a122651a7dd8f33035"
+              },
+              {
+                "path": "contracts/Utils.sol",
+                "utf8_sha256": "5f741ad3f948bbda41fc0faf920c658a219b0620b9f8b0927a8739c5dbe6350b",
+                "metadata_keccak256": "0xd78912579cb32481e1bab3ebfb93b21bdaed422b9121829f90d0e0f1ec796711"
+              },
+              {
+                "path": "contracts/modules/RiskManager.sol",
+                "utf8_sha256": "6fc6f6827a6b60f9f108c91bbbe5da4a10107e210ec3c2cd73d5160880a9e90b",
+                "metadata_keccak256": "0xb6c0006b1b92cc93c95a92f950b83a58bdd20c7361bcc7f8b11b244b6dbe281e"
+              },
+              {
+                "path": "contracts/vendor/FullMath.sol",
+                "utf8_sha256": "9ff941b30136426213bb051c7f3691ba0bb62c1c588722a0656234f23e6816ed",
+                "metadata_keccak256": "0x1d81c834eff072e94ce8b92463f637385bfb258c358939853ca529e7bd8e716e"
+              },
+              {
+                "path": "contracts/vendor/RPow.sol",
+                "utf8_sha256": "cfdb3fee96bccf6ea423497c7d16b7265028e2c50e188ed8cf3b1d22f888e458",
+                "metadata_keccak256": "0x8853a3c299984b4fedfe8f7fe362563b4ccc917fb9fa44eafda0110b536bdd88"
+              },
+              {
+                "path": "contracts/vendor/TickMath.sol",
+                "utf8_sha256": "cbeb9cba03375438921a928d76aacff5e031a68914e5eb4c9516db6f68634f90",
+                "metadata_keccak256": "0xcadc432b14f34032d726648fe6457375eb2fca8097df497a281d56878f7e306b"
+              }
+            ],
+            "abi_signatures": {
+              "0xebd7ba19": [
+                "computeAssetLiquidities(address)"
+              ],
+              "0x37fe974a": [
+                "computeLiquidity(address)"
+              ],
+              "0x8eddcd92": [
+                "getNewMarketParameters(address)"
+              ],
+              "0x41976e09": [
+                "getPrice(address)"
+              ],
+              "0x9693fa6b": [
+                "getPriceFull(address)"
+              ],
+              "0xf70c2fde": [
+                "getPriceInternal((address,uint112,uint144,uint96,uint256,uint40,uint8,uint32,int96,uint32,uint16,uint32,uint256,uint256,uint256),(address,bool,uint32,uint32,uint24))"
+              ],
+              "0x69a92ea3": [
+                "moduleGitCommit()"
+              ],
+              "0xa1308f27": [
+                "moduleId()"
+              ],
+              "0xc39b543a": [
+                "requireLiquidity(address)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0x29daddfda3442693c21a50351a2b4820ddbbff79",
+          "verified_abi_selectors": 17,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/69d2a1746c3e64e19ed49132ab683d8be0eeb154e72314e44af8f1172f201373.body",
+              "sha256": "56be193e07e7a9257d368d5d5531c3ccbbd996166d5e44a52373c56702bc81d5"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+              "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "17365335ef66752a27112ea41f8f3215225cc8dd3e4b6f1c56d5b679acfa66c2",
+            "sources": [
+              {
+                "path": "contracts/Base.sol",
+                "utf8_sha256": "2b43c8045558447a2af79dd0f0b2780786376a8a401e20891864a10b9e811d6c",
+                "metadata_keccak256": "0x274734b430e12e7defb4964499a4e40399c541406103f25225e448d588b94b9c"
+              },
+              {
+                "path": "contracts/BaseIRM.sol",
+                "utf8_sha256": "b29e86bb33e29fd156f01585f7bd08c0b19ec6c862d1cb3ba8c598e9acdd2e03",
+                "metadata_keccak256": "0x8f53f8edfd595b4cb8a268cae43bb00e6c1ca7ecd57b310a0729396369fea9b8"
+              },
+              {
+                "path": "contracts/BaseLogic.sol",
+                "utf8_sha256": "f8ddc250d2e2508ac402ae61a4df97c1b664ad6d13c891514d5b7a68ec52cf17",
+                "metadata_keccak256": "0xa78878dbccd0da8b95d2d545ba1812b6e568e51bccb11dbc1987d1f37615201c"
+              },
+              {
+                "path": "contracts/BaseModule.sol",
+                "utf8_sha256": "61921390bff0efd4d74ea527fd5e918862c071d0cbefa48c27814fb45916d9ef",
+                "metadata_keccak256": "0x2b01e3eb1bdb5b176c687898708b2208ccb15cea1d914ac142c7a00185e97489"
+              },
+              {
+                "path": "contracts/Constants.sol",
+                "utf8_sha256": "eabc3439f0332a4ab3cdc06bb4ae65e73f6ff44fdcde0254a30cf2f7ba87ebba",
+                "metadata_keccak256": "0x07ff1abad9bc7ee9b04273d8f5c6afbdeb7150fd9ad79ba44e5e818ccd8d522c"
+              },
+              {
+                "path": "contracts/Events.sol",
+                "utf8_sha256": "b35e6626eee06b4386f27af8feab9be5de131014eaa76208f8cf2c41365c37fc",
+                "metadata_keccak256": "0x3252bf860810afc85ad8008502e88faf92a0fe14ff284c43f941a64500e50286"
+              },
+              {
+                "path": "contracts/IRiskManager.sol",
+                "utf8_sha256": "9183044804d76c17d2fe41bba09ef798313917981f68d52d6f3c7c20f2ade641",
+                "metadata_keccak256": "0x9b682aaaabb796241344c56f0f0f32079f8e4f0ec474c16885a1f7eda96fab12"
+              },
+              {
+                "path": "contracts/Interfaces.sol",
+                "utf8_sha256": "0faa5b60f20906cc34c3942f3618fe1a6697ff96a32d10f7e959f2a9ea8458ff",
+                "metadata_keccak256": "0x452b12f1f762a9c0771cac9a393945249568459646d1f413daa63b2cc55f4135"
+              },
+              {
+                "path": "contracts/Proxy.sol",
+                "utf8_sha256": "2719673213ea07c2326fa6429909212bf198f67b0380de02930eb38b152cc3cd",
+                "metadata_keccak256": "0x23ce39ad82cebbec4d78ff751237769c2790781486a88874701231c562b4ac9f"
+              },
+              {
+                "path": "contracts/Storage.sol",
+                "utf8_sha256": "cdef6720a0b33ab55443b33d051f971f828ad3d74d9d56bcbd7ba22b2070ceaa",
+                "metadata_keccak256": "0xfd67cc7eefc67da96bccb13545e659dfa699a4b65943b1a122651a7dd8f33035"
+              },
+              {
+                "path": "contracts/Utils.sol",
+                "utf8_sha256": "5f741ad3f948bbda41fc0faf920c658a219b0620b9f8b0927a8739c5dbe6350b",
+                "metadata_keccak256": "0xd78912579cb32481e1bab3ebfb93b21bdaed422b9121829f90d0e0f1ec796711"
+              },
+              {
+                "path": "contracts/modules/DToken.sol",
+                "utf8_sha256": "b40980464806de37b4c877fc10d7f56091dacce7ee511f257e08c92873013e59",
+                "metadata_keccak256": "0x38f6249240181566571a14d0e9992d6b4aed94bba68888b739a453c3c3301a61"
+              },
+              {
+                "path": "contracts/vendor/RPow.sol",
+                "utf8_sha256": "cfdb3fee96bccf6ea423497c7d16b7265028e2c50e188ed8cf3b1d22f888e458",
+                "metadata_keccak256": "0x8853a3c299984b4fedfe8f7fe362563b4ccc917fb9fa44eafda0110b536bdd88"
+              }
+            ],
+            "abi_signatures": {
+              "0x7ca90140": [
+                "approveDebt(uint256,address,uint256)"
+              ],
+              "0x70a08231": [
+                "balanceOf(address)"
+              ],
+              "0x1c9f006f": [
+                "balanceOfExact(address)"
+              ],
+              "0x0ecbcdab": [
+                "borrow(uint256,uint256)"
+              ],
+              "0x0b2d9070": [
+                "debtAllowance(address,address)"
+              ],
+              "0x313ce567": [
+                "decimals()"
+              ],
+              "0x5296a431": [
+                "flashLoan(uint256,bytes)"
+              ],
+              "0x69a92ea3": [
+                "moduleGitCommit()"
+              ],
+              "0xa1308f27": [
+                "moduleId()"
+              ],
+              "0x06fdde03": [
+                "name()"
+              ],
+              "0xd8aed145": [
+                "repay(uint256,uint256)"
+              ],
+              "0x95d89b41": [
+                "symbol()"
+              ],
+              "0x18160ddd": [
+                "totalSupply()"
+              ],
+              "0x5ea0c45f": [
+                "totalSupplyExact()"
+              ],
+              "0xa9059cbb": [
+                "transfer(address,uint256)"
+              ],
+              "0x23b872dd": [
+                "transferFrom(address,address,uint256)"
+              ],
+              "0x7158da7c": [
+                "underlyingAsset()"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89",
+          "verified_abi_selectors": 8,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/99fe19f4bcf8000618fd32f10822c7bc01c9f2d7ff2642dbfb49c079e7f894c1.body",
+              "sha256": "4aec2740c35bc5438c2f379b0d1a22f1dc1bb0d4bc9892d91778326bfb2c6e85"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+              "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "1efd93fad1d418fccc450a4c15827a5c3e4e982f0b376a8de4e489624f7c26c7",
+            "sources": [
+              {
+                "path": "contracts/Base.sol",
+                "utf8_sha256": "ee8d16b053d34e56184190aa696046925090aa4d2bbbb35819c2e625ca47e76d",
+                "metadata_keccak256": "0x3e73e339a27422465ba37b52da29cde667c2d835e3cfc3b128f7a8059ec767f7"
+              },
+              {
+                "path": "contracts/BaseIRM.sol",
+                "utf8_sha256": "b29e86bb33e29fd156f01585f7bd08c0b19ec6c862d1cb3ba8c598e9acdd2e03",
+                "metadata_keccak256": "0x8f53f8edfd595b4cb8a268cae43bb00e6c1ca7ecd57b310a0729396369fea9b8"
+              },
+              {
+                "path": "contracts/BaseIRMLinearKink.sol",
+                "utf8_sha256": "eb549c712db5621ed2f35cb4bbe52fc83f493cf296eb835d7559066523a30473",
+                "metadata_keccak256": "0x96b73d6eec131e5fe23251d1d2e31b2320510e53651446a8d01499ac4cf321df"
+              },
+              {
+                "path": "contracts/BaseModule.sol",
+                "utf8_sha256": "2246c7e89dd6f834ae02642ea84676ee8d1397663cbe6b81dd74a371583802aa",
+                "metadata_keccak256": "0x90318f537b34e41ca2e23db684354b4bb5572c026aec5cf64971e669821258dc"
+              },
+              {
+                "path": "contracts/Constants.sol",
+                "utf8_sha256": "16ee65b4cc55c88699edcde0fc9459fbc2ecc57c572660ae2b66f8ac387a38b0",
+                "metadata_keccak256": "0x6fc4a6fa81ebfd7e51f1e699957fbf7d2fb42d008b7b5d27c000167900e73806"
+              },
+              {
+                "path": "contracts/Events.sol",
+                "utf8_sha256": "e6aba499e89b588b7639649804cbb8f6e4ede243e62de1a8f6824d08982870a8",
+                "metadata_keccak256": "0x5f066fdf9eb09673e928ea02ad8dab52ab9a19b19526b4c26474ce6dcfe060b0"
+              },
+              {
+                "path": "contracts/Proxy.sol",
+                "utf8_sha256": "2719673213ea07c2326fa6429909212bf198f67b0380de02930eb38b152cc3cd",
+                "metadata_keccak256": "0x23ce39ad82cebbec4d78ff751237769c2790781486a88874701231c562b4ac9f"
+              },
+              {
+                "path": "contracts/Storage.sol",
+                "utf8_sha256": "4c07aaefae6ac7abe53daf55ac2d6a01ec2f415a3ec68f43b67583fc83c62e46",
+                "metadata_keccak256": "0x7ee8e40ae1915d73c79bfcc91be84fae40ec7127850bfa848155fe32a835efa5"
+              },
+              {
+                "path": "contracts/modules/interest-rate-models/IRMClassStable.sol",
+                "utf8_sha256": "99ca0d8f3885aeb1f7043cdf94525a6ca45dd2b4535e9664fc042175702d9eef",
+                "metadata_keccak256": "0xca888f04aadc46ccefdb29ad698c15f1ecafc91f6dd9c9134edec210c3a0deb7"
+              }
+            ],
+            "abi_signatures": {
+              "0x1f68f20a": [
+                "baseRate()"
+              ],
+              "0xd50c08f8": [
+                "computeInterestRate(address,uint32)"
+              ],
+              "0xfd2da339": [
+                "kink()"
+              ],
+              "0x69a92ea3": [
+                "moduleGitCommit()"
+              ],
+              "0xa1308f27": [
+                "moduleId()"
+              ],
+              "0xc9741a7f": [
+                "reset(address,bytes)"
+              ],
+              "0xa62b75a8": [
+                "slope1()"
+              ],
+              "0xd0134cb7": [
+                "slope2()"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        }
+      ]
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "contracts": [
+        {
+          "address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "verified_abi_selectors": 30,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.body",
+              "sha256": "72df5023703586aa4e7b3e2987f0842fea0ec0ef26f5a86121a118cbd985572c"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+              "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "4e72287aa7d3ff84d1138486c5a60222c3195602081cd1f2aef9383ed18f6a11",
+            "sources": [
+              {
+                "path": "@openzeppelin/contracts/access/AccessControl.sol",
+                "utf8_sha256": "6877e8ac1c1d0febb541b95080314677794f9f3fa1062bfc5b3dc875ba1e3d4b",
+                "metadata_keccak256": "0x084f583de2c714665b0304529fe8b826a2809f29d03314e4dd9eea926e4bb0f3"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+                "utf8_sha256": "80f821aef438c0e45949bfd9b18b57c547f8df0b0e376d8ecdf8605c6481316d",
+                "metadata_keccak256": "0x33ba8a175bb81046a02b02e8d5eb4cabc87e1875f4a74bbc6f11c51db5e40d8c"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/Ownable.sol",
+                "utf8_sha256": "0195650aabf5270babe540969c56f8f244342aebce89266787a3b015e41d608f",
+                "metadata_keccak256": "0x6bb804a310218875e89d12c053e94a13a4607cdf7cc2052f3e52bd32a0dc50a1"
+              },
+              {
+                "path": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+                "utf8_sha256": "399ae351c4edaac918ed1e966953c3f45fc78b062140122c3a57e96b4ffff8e7",
+                "metadata_keccak256": "0x842ccf9a6cd33e17b7acef8372ca42090755217b358fe0c44c98e951ea549d3a"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
+                "utf8_sha256": "87f5b424b847dcaed018459e385c11334d6b3ee20b734aaeb0f97edd62706ae5",
+                "metadata_keccak256": "0x09c24182fc76ee97a5c604b6ff1a8afb3648535b6ba1820c23b243a40cc792a0"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+                "utf8_sha256": "9cc02735fef7fb7eaac28cc7eee69179d37389437e8c2cfb673bc478f4231827",
+                "metadata_keccak256": "0xfce1eb6398eae0e2b50251140866a70a3106193f101972c878bba1dbf44929ec"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
+                "utf8_sha256": "cb2c761b027eaf3060e61d4acc7670e61741f78ecc95761ef13a6b102cd9e206",
+                "metadata_keccak256": "0x7de6e64d4a8075e803a972cc77c4c91463e0c3777e4110eacfb5d4a71759b2fa"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+                "utf8_sha256": "0ae1323bab39b0ff25592d590ba409c12c26ac49dd6c3fd44689cc07e4c6ab4c",
+                "metadata_keccak256": "0x6ba0564f6970414d1166ee83127b834bbe7dbf699241a3005eb7ae64a2211975"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "utf8_sha256": "b2565dec975f684ef0edfa505e212d0d0b602e1311afab782ea06ea8d3f49bb6",
+                "metadata_keccak256": "0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+                "utf8_sha256": "729097c056b8bf1dd93ac16831380ce4ff54703d75983f57354240cc8be2edec",
+                "metadata_keccak256": "0x02348b2e4b9f3200c7e3907c5c2661643a6d8520e9f79939fbb9b4005a54894d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Address.sol",
+                "utf8_sha256": "9b9053aa6ace4bb8d101adf248d93f805ee9e91eef4b2465bdc3baccad7527ab",
+                "metadata_keccak256": "0x3b4820cac4f127869f6eb496c1d74fa6ac86ed24071e0f94742e6aef20e7252c"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Context.sol",
+                "utf8_sha256": "810e94131350fcdbbed52a2a10523565ef98f4c9dda441495262923f251b0d12",
+                "metadata_keccak256": "0x95098bd1d9c8dec4d80d3dedb88a0d949fa0d740ee99f2aa466bc308216ca6d5"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Strings.sol",
+                "utf8_sha256": "3b2b0d75c7e5688950d3b6e63e46473054395dad6e390431f73febb2199913c5",
+                "metadata_keccak256": "0x391d3ba97ab6856a16b225d6ee29617ad15ff00db70f3b4df1ab5ea33aa47c9d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+                "utf8_sha256": "381b0589da0e1a32242d7314905d2cc6edd8dce8193ddb6bfacc5b685e311422",
+                "metadata_keccak256": "0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol",
+                "utf8_sha256": "9f0901e0d1b15514723262a2a7a50d821c0685232b6ee7828015d5e5cc8cdb81",
+                "metadata_keccak256": "0x432ff5e7d029c9f12d377560eccacad10a8b9e11588bf3fb5050d98c058e713d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+                "utf8_sha256": "072805b211a653c333b232a3199b9e65fa7b82fc7a40ee5a3bc8a2dadd1cba01",
+                "metadata_keccak256": "0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
+                "utf8_sha256": "f7b69cd8e46762273807f9b8282690baaae7a5458c99373dabea5882ffd6493c",
+                "metadata_keccak256": "0x211639753e28bdca7f98618f51dca3dcd08a88b57c45050eb05fa4d0053327c3"
+              },
+              {
+                "path": "contracts/FNFTHandler.sol",
+                "utf8_sha256": "f3509df24ee9f84f0da6e1d0f7ae1f0c892eb694ac35a1f66911c603e1628639",
+                "metadata_keccak256": "0x1c8423bc98470430f1354a121572094681fa30bf4121472329e9fd6ade686c9a"
+              },
+              {
+                "path": "contracts/Revest.sol",
+                "utf8_sha256": "0342e2f35f29ff9840cefbde514b938f63053840d8326621fb8eb25ab0ce6977",
+                "metadata_keccak256": "0x373d4bae02de8ebc437c96d54f45ca07de9412dbb0a5c4553b92438c60b1c7b4"
+              },
+              {
+                "path": "contracts/interfaces/IAddressLock.sol",
+                "utf8_sha256": "ac3c7e07e3d7eb4aec3f26f759f4e4d06848d184f5957ffaedd8d704b7a349d3",
+                "metadata_keccak256": "0x09b5aeaae4d209c4630876dabca42ef6367c9864d9809b819aa0ad1fd22f172f"
+              },
+              {
+                "path": "contracts/interfaces/IAddressRegistry.sol",
+                "utf8_sha256": "2a83eb61c24f79ec537b0992e7def7cddb72ab3f9e5d26c062112989abea5c72",
+                "metadata_keccak256": "0x129fecf36c5c18bcf17fcbb1b09267d52ca7a6e136ab9eaa037fd123d4822685"
+              },
+              {
+                "path": "contracts/interfaces/IFNFTHandler.sol",
+                "utf8_sha256": "e3b49e97b25abe04fb3ff5994c1a80d6cda318a2a108c33950b4402a850d4f00",
+                "metadata_keccak256": "0x9824a781b38146e5d6cd04f7a7a126ad3047188f39b8ac63189124219b524df6"
+              },
+              {
+                "path": "contracts/interfaces/IInterestHandler.sol",
+                "utf8_sha256": "ea7c721311cfb2c529df8f5aa0d42b2b3fd056768466a4b961192c59427fab31",
+                "metadata_keccak256": "0x813350d54ddc90d5500d7494e2f939842d321ccf41d3760074005dfb2c205c04"
+              },
+              {
+                "path": "contracts/interfaces/ILockManager.sol",
+                "utf8_sha256": "6f4150b207844725aa55fee3c197b0ee4916be1c8989946a8a0d2e3e550a3be7",
+                "metadata_keccak256": "0x7b3170ed345d9750b315197f48f8076c8731e21640f7a063563bc93a6c2d1c00"
+              },
+              {
+                "path": "contracts/interfaces/IMetadataHandler.sol",
+                "utf8_sha256": "e0dfe63d1a30f0b58d3c3331970424134ed420a9e6191568e2a8723f945b545e",
+                "metadata_keccak256": "0xae9b3a4f306baa4a9291c25006f3e420c3f79401e8d703ef85b5252db56e9bac"
+              },
+              {
+                "path": "contracts/interfaces/IOracleDispatch.sol",
+                "utf8_sha256": "20db38487fdb49872543a78cfaa807dee9df22b97f9573434eae7578891c6397",
+                "metadata_keccak256": "0x8cc943cf9cb22464d728114ce36376d4a57d91b4bbd8c46349d738e0bcfac383"
+              },
+              {
+                "path": "contracts/interfaces/IOutputReceiver.sol",
+                "utf8_sha256": "03c5ff6e8882c00b195988107482b6dcf2af763dc881027100fbe00f60ebef0d",
+                "metadata_keccak256": "0x7520197645c83c986406a059daab5aae5bcd9242dc1d62b96cdf1ef7c132a2a6"
+              },
+              {
+                "path": "contracts/interfaces/IRegistryProvider.sol",
+                "utf8_sha256": "22061a511e0331fdc1ea085023fa327c188a17b0eb1f954db7719e2cd9c251cb",
+                "metadata_keccak256": "0xe94c69d88507b408ecac3a7b7a2dee9b0af8345a41a7be5f21d403d67cfcea31"
+              },
+              {
+                "path": "contracts/interfaces/IRevest.sol",
+                "utf8_sha256": "307113ee6f2ea58d8534b94c08885e332e048789ed2a04f20b0927c6b029d7c2",
+                "metadata_keccak256": "0x28031288ed0d91ec0c0919d9e77b8bac9e09fd6d6d17fa57300d50e87481efe9"
+              },
+              {
+                "path": "contracts/interfaces/IRevestToken.sol",
+                "utf8_sha256": "8080694af62518386846d7f7cde8657c0269a14b90b596af1044905c732d8b14",
+                "metadata_keccak256": "0xef99a2f9ad01fbc75fadc56726c8085ef3e2ff343749018abc8709a6275048a2"
+              },
+              {
+                "path": "contracts/interfaces/IRewardsHandler.sol",
+                "utf8_sha256": "2ad014faf8756799e80df3917baf4c0738d76ee04abf952fd87c943057d4755a",
+                "metadata_keccak256": "0x7940819dfa042009e0b10dff3dd7224f3d1ae3a4c7addab3e8f33631c1ed5db7"
+              },
+              {
+                "path": "contracts/interfaces/ITokenVault.sol",
+                "utf8_sha256": "88122e7aa18214616c3bf70cc3234a91fffbc32d775924ec2316b8f2cc482671",
+                "metadata_keccak256": "0xaf57460b4494ba71a094c4c89f095254c65796c1ddff0f41978c5f141472962d"
+              },
+              {
+                "path": "contracts/lib/IUnicryptV2Locker.sol",
+                "utf8_sha256": "a13f4a1001ccfb748909b09b8386bbd48c69cc6e630970cea2882aee17f4b539",
+                "metadata_keccak256": "0xdbbca545ded91eae368fbea00f3e2657e3b21c7b087df1f4d45cb10e3be49925"
+              },
+              {
+                "path": "contracts/lib/IWETH.sol",
+                "utf8_sha256": "9d8b221adc54a1a76f0df978db729eb8992b0c6dd89fb2cf0777c5706e098dc5",
+                "metadata_keccak256": "0x91830ec72f24914fc0a713b0b71b4bb8b81f11ade210cf66693dcc3dd465d258"
+              },
+              {
+                "path": "contracts/lib/uniswap/IUniswapV2Factory.sol",
+                "utf8_sha256": "1f1295ea22aab10e9283e68df2f8fca155132a518b7d3b3660396b58f1c5f3c5",
+                "metadata_keccak256": "0x1941df3829263f21a1727c016f227a8decd9ce192180ba677d1e38498eed5382"
+              },
+              {
+                "path": "contracts/utils/RevestAccessControl.sol",
+                "utf8_sha256": "755632a5faffb51baa7851de9bb9461df83a3163570ebf3e77ed6349a179af98",
+                "metadata_keccak256": "0x7a003990056628223472d8c9eb6539aea97aeb621cfb0b1f67474882b84c8d2a"
+              },
+              {
+                "path": "contracts/utils/RevestReentrancyGuard.sol",
+                "utf8_sha256": "28f40aad5f14a3c023710b883f51c6c711b5f95d9481561db99f3a10ff8b069c",
+                "metadata_keccak256": "0x0a817087cc86ccb524f419e8a99d2f0aa549b3b79985e6317cb3ee35ffd39aa9"
+              }
+            ],
+            "abi_signatures": {
+              "0xb3f9ff19": [
+                "ADDRESS_LOCK_INTERFACE_ID()"
+              ],
+              "0xa217fddf": [
+                "DEFAULT_ADMIN_ROLE()"
+              ],
+              "0xe63ab1e9": [
+                "PAUSER_ROLE()"
+              ],
+              "0x5dcb7ab2": [
+                "depositAdditionalToFNFT(uint256,uint256,uint256)"
+              ],
+              "0x07d7fb9a": [
+                "erc20Fee()"
+              ],
+              "0x93a9003c": [
+                "extendFNFTMaturity(uint256,uint256)"
+              ],
+              "0x974ffdf7": [
+                "flatWeiFee()"
+              ],
+              "0xfe65acfe": [
+                "getAddressesProvider()"
+              ],
+              "0xecea07d8": [
+                "getERC20Fee()"
+              ],
+              "0x42de99fe": [
+                "getFlatWeiFee()"
+              ],
+              "0x248a9ca3": [
+                "getRoleAdmin(bytes32)"
+              ],
+              "0x9010d07c": [
+                "getRoleMember(bytes32,uint256)"
+              ],
+              "0xca15c873": [
+                "getRoleMemberCount(bytes32)"
+              ],
+              "0x2f2ff15d": [
+                "grantRole(bytes32,address)"
+              ],
+              "0x91d14854": [
+                "hasRole(bytes32,address)"
+              ],
+              "0x02e236bc": [
+                "mintAddressLock(address,bytes,address[],uint256[],(address,address,uint256,uint256,uint256,uint256,bool,bool,bool))"
+              ],
+              "0x5a7c08f0": [
+                "mintTimeLock(uint256,address[],uint256[],(address,address,uint256,uint256,uint256,uint256,bool,bool,bool))"
+              ],
+              "0xbdb132d5": [
+                "mintValueLock(address,address,uint256,bool,address,address[],uint256[],(address,address,uint256,uint256,uint256,uint256,bool,bool,bool))"
+              ],
+              "0x8da5cb5b": [
+                "owner()"
+              ],
+              "0x715018a6": [
+                "renounceOwnership()"
+              ],
+              "0x36568abe": [
+                "renounceRole(bytes32,address)"
+              ],
+              "0xd547741f": [
+                "revokeRole(bytes32,address)"
+              ],
+              "0x27c7812c": [
+                "setAddressRegistry(address)"
+              ],
+              "0xbc2ab8ce": [
+                "setERC20Fee(uint256)"
+              ],
+              "0x58efe201": [
+                "setFlatWeiFee(uint256)"
+              ],
+              "0xfccc19d0": [
+                "splitFNFT(uint256,uint256[],uint256)"
+              ],
+              "0x01ffc9a7": [
+                "supportsInterface(bytes4)"
+              ],
+              "0xf2fde38b": [
+                "transferOwnership(address)"
+              ],
+              "0x22caa234": [
+                "unlockFNFT(uint256)"
+              ],
+              "0xf2465f09": [
+                "withdrawFNFT(uint256,uint256)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "verified_abi_selectors": 26,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/4f5f6da9eb6b076fecd77c979f56708e1ce7b101682bfd3b48ba7287627fa063.body",
+              "sha256": "4e1cbe545afc426ce6346fc5e2849c01fa1f4719c182ef23450c2cf0fd359e5d"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+              "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "a85671d1c06bb0d7559de8fed6c59abebd8665a292d6eda5191c4db90f5968dd",
+            "sources": [
+              {
+                "path": "@openzeppelin/contracts/access/AccessControl.sol",
+                "utf8_sha256": "6877e8ac1c1d0febb541b95080314677794f9f3fa1062bfc5b3dc875ba1e3d4b",
+                "metadata_keccak256": "0x084f583de2c714665b0304529fe8b826a2809f29d03314e4dd9eea926e4bb0f3"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+                "utf8_sha256": "80f821aef438c0e45949bfd9b18b57c547f8df0b0e376d8ecdf8605c6481316d",
+                "metadata_keccak256": "0x33ba8a175bb81046a02b02e8d5eb4cabc87e1875f4a74bbc6f11c51db5e40d8c"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/Ownable.sol",
+                "utf8_sha256": "0195650aabf5270babe540969c56f8f244342aebce89266787a3b015e41d608f",
+                "metadata_keccak256": "0x6bb804a310218875e89d12c053e94a13a4607cdf7cc2052f3e52bd32a0dc50a1"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
+                "utf8_sha256": "87f5b424b847dcaed018459e385c11334d6b3ee20b734aaeb0f97edd62706ae5",
+                "metadata_keccak256": "0x09c24182fc76ee97a5c604b6ff1a8afb3648535b6ba1820c23b243a40cc792a0"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+                "utf8_sha256": "9cc02735fef7fb7eaac28cc7eee69179d37389437e8c2cfb673bc478f4231827",
+                "metadata_keccak256": "0xfce1eb6398eae0e2b50251140866a70a3106193f101972c878bba1dbf44929ec"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
+                "utf8_sha256": "cb2c761b027eaf3060e61d4acc7670e61741f78ecc95761ef13a6b102cd9e206",
+                "metadata_keccak256": "0x7de6e64d4a8075e803a972cc77c4c91463e0c3777e4110eacfb5d4a71759b2fa"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+                "utf8_sha256": "0ae1323bab39b0ff25592d590ba409c12c26ac49dd6c3fd44689cc07e4c6ab4c",
+                "metadata_keccak256": "0x6ba0564f6970414d1166ee83127b834bbe7dbf699241a3005eb7ae64a2211975"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "utf8_sha256": "b2565dec975f684ef0edfa505e212d0d0b602e1311afab782ea06ea8d3f49bb6",
+                "metadata_keccak256": "0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+                "utf8_sha256": "729097c056b8bf1dd93ac16831380ce4ff54703d75983f57354240cc8be2edec",
+                "metadata_keccak256": "0x02348b2e4b9f3200c7e3907c5c2661643a6d8520e9f79939fbb9b4005a54894d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Address.sol",
+                "utf8_sha256": "9b9053aa6ace4bb8d101adf248d93f805ee9e91eef4b2465bdc3baccad7527ab",
+                "metadata_keccak256": "0x3b4820cac4f127869f6eb496c1d74fa6ac86ed24071e0f94742e6aef20e7252c"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Context.sol",
+                "utf8_sha256": "810e94131350fcdbbed52a2a10523565ef98f4c9dda441495262923f251b0d12",
+                "metadata_keccak256": "0x95098bd1d9c8dec4d80d3dedb88a0d949fa0d740ee99f2aa466bc308216ca6d5"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Strings.sol",
+                "utf8_sha256": "3b2b0d75c7e5688950d3b6e63e46473054395dad6e390431f73febb2199913c5",
+                "metadata_keccak256": "0x391d3ba97ab6856a16b225d6ee29617ad15ff00db70f3b4df1ab5ea33aa47c9d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+                "utf8_sha256": "381b0589da0e1a32242d7314905d2cc6edd8dce8193ddb6bfacc5b685e311422",
+                "metadata_keccak256": "0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol",
+                "utf8_sha256": "9f0901e0d1b15514723262a2a7a50d821c0685232b6ee7828015d5e5cc8cdb81",
+                "metadata_keccak256": "0x432ff5e7d029c9f12d377560eccacad10a8b9e11588bf3fb5050d98c058e713d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+                "utf8_sha256": "072805b211a653c333b232a3199b9e65fa7b82fc7a40ee5a3bc8a2dadd1cba01",
+                "metadata_keccak256": "0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
+                "utf8_sha256": "f7b69cd8e46762273807f9b8282690baaae7a5458c99373dabea5882ffd6493c",
+                "metadata_keccak256": "0x211639753e28bdca7f98618f51dca3dcd08a88b57c45050eb05fa4d0053327c3"
+              },
+              {
+                "path": "contracts/TokenVault.sol",
+                "utf8_sha256": "bc348e939be244d2de9a8151883f1cbcd3eb1cd792359a4a0ad45582e348f57a",
+                "metadata_keccak256": "0x76d78532165c95bd0a1fd89fe427ed1fe44d320f16f654b4906aa376da71fcf1"
+              },
+              {
+                "path": "contracts/interfaces/IAddressRegistry.sol",
+                "utf8_sha256": "2a83eb61c24f79ec537b0992e7def7cddb72ab3f9e5d26c062112989abea5c72",
+                "metadata_keccak256": "0x129fecf36c5c18bcf17fcbb1b09267d52ca7a6e136ab9eaa037fd123d4822685"
+              },
+              {
+                "path": "contracts/interfaces/IFNFTHandler.sol",
+                "utf8_sha256": "e3b49e97b25abe04fb3ff5994c1a80d6cda318a2a108c33950b4402a850d4f00",
+                "metadata_keccak256": "0x9824a781b38146e5d6cd04f7a7a126ad3047188f39b8ac63189124219b524df6"
+              },
+              {
+                "path": "contracts/interfaces/IInterestHandler.sol",
+                "utf8_sha256": "ea7c721311cfb2c529df8f5aa0d42b2b3fd056768466a4b961192c59427fab31",
+                "metadata_keccak256": "0x813350d54ddc90d5500d7494e2f939842d321ccf41d3760074005dfb2c205c04"
+              },
+              {
+                "path": "contracts/interfaces/ILockManager.sol",
+                "utf8_sha256": "6f4150b207844725aa55fee3c197b0ee4916be1c8989946a8a0d2e3e550a3be7",
+                "metadata_keccak256": "0x7b3170ed345d9750b315197f48f8076c8731e21640f7a063563bc93a6c2d1c00"
+              },
+              {
+                "path": "contracts/interfaces/IOutputReceiver.sol",
+                "utf8_sha256": "03c5ff6e8882c00b195988107482b6dcf2af763dc881027100fbe00f60ebef0d",
+                "metadata_keccak256": "0x7520197645c83c986406a059daab5aae5bcd9242dc1d62b96cdf1ef7c132a2a6"
+              },
+              {
+                "path": "contracts/interfaces/IRegistryProvider.sol",
+                "utf8_sha256": "22061a511e0331fdc1ea085023fa327c188a17b0eb1f954db7719e2cd9c251cb",
+                "metadata_keccak256": "0xe94c69d88507b408ecac3a7b7a2dee9b0af8345a41a7be5f21d403d67cfcea31"
+              },
+              {
+                "path": "contracts/interfaces/IRevest.sol",
+                "utf8_sha256": "307113ee6f2ea58d8534b94c08885e332e048789ed2a04f20b0927c6b029d7c2",
+                "metadata_keccak256": "0x28031288ed0d91ec0c0919d9e77b8bac9e09fd6d6d17fa57300d50e87481efe9"
+              },
+              {
+                "path": "contracts/interfaces/IRevestToken.sol",
+                "utf8_sha256": "8080694af62518386846d7f7cde8657c0269a14b90b596af1044905c732d8b14",
+                "metadata_keccak256": "0xef99a2f9ad01fbc75fadc56726c8085ef3e2ff343749018abc8709a6275048a2"
+              },
+              {
+                "path": "contracts/interfaces/IRewardsHandler.sol",
+                "utf8_sha256": "2ad014faf8756799e80df3917baf4c0738d76ee04abf952fd87c943057d4755a",
+                "metadata_keccak256": "0x7940819dfa042009e0b10dff3dd7224f3d1ae3a4c7addab3e8f33631c1ed5db7"
+              },
+              {
+                "path": "contracts/interfaces/ITokenVault.sol",
+                "utf8_sha256": "88122e7aa18214616c3bf70cc3234a91fffbc32d775924ec2316b8f2cc482671",
+                "metadata_keccak256": "0xaf57460b4494ba71a094c4c89f095254c65796c1ddff0f41978c5f141472962d"
+              },
+              {
+                "path": "contracts/lib/uniswap/IUniswapV2Factory.sol",
+                "utf8_sha256": "1f1295ea22aab10e9283e68df2f8fca155132a518b7d3b3660396b58f1c5f3c5",
+                "metadata_keccak256": "0x1941df3829263f21a1727c016f227a8decd9ce192180ba677d1e38498eed5382"
+              },
+              {
+                "path": "contracts/utils/RevestAccessControl.sol",
+                "utf8_sha256": "755632a5faffb51baa7851de9bb9461df83a3163570ebf3e77ed6349a179af98",
+                "metadata_keccak256": "0x7a003990056628223472d8c9eb6539aea97aeb621cfb0b1f67474882b84c8d2a"
+              }
+            ],
+            "abi_signatures": {
+              "0xa217fddf": [
+                "DEFAULT_ADMIN_ROLE()"
+              ],
+              "0x88305548": [
+                "OUTPUT_RECEIVER_INTERFACE_ID()"
+              ],
+              "0x0bb007b8": [
+                "cloneFNFTConfig((address,address,uint256,uint256,uint256,uint256,bool,bool,bool))"
+              ],
+              "0x8717293d": [
+                "createFNFT(uint256,(address,address,uint256,uint256,uint256,uint256,bool,bool,bool),uint256,address)"
+              ],
+              "0xa3606b90": [
+                "depositToken(uint256,uint256,uint256)"
+              ],
+              "0x522f9b37": [
+                "getFNFT(uint256)"
+              ],
+              "0x3398498d": [
+                "getFNFTCurrentValue(uint256)"
+              ],
+              "0xf5e574a5": [
+                "getNontransferable(uint256)"
+              ],
+              "0x248a9ca3": [
+                "getRoleAdmin(bytes32)"
+              ],
+              "0x9010d07c": [
+                "getRoleMember(bytes32,uint256)"
+              ],
+              "0xca15c873": [
+                "getRoleMemberCount(bytes32)"
+              ],
+              "0x14f487fa": [
+                "getSplitsRemaining(uint256)"
+              ],
+              "0x2f2ff15d": [
+                "grantRole(bytes32,address)"
+              ],
+              "0x375d59ba": [
+                "handleMultipleDeposits(uint256,uint256,uint256)"
+              ],
+              "0x91d14854": [
+                "hasRole(bytes32,address)"
+              ],
+              "0x3c8b3b62": [
+                "mapFNFTToToken(uint256,(address,address,uint256,uint256,uint256,uint256,bool,bool,bool))"
+              ],
+              "0x8da5cb5b": [
+                "owner()"
+              ],
+              "0x715018a6": [
+                "renounceOwnership()"
+              ],
+              "0x36568abe": [
+                "renounceRole(bytes32,address)"
+              ],
+              "0xd547741f": [
+                "revokeRole(bytes32,address)"
+              ],
+              "0x27c7812c": [
+                "setAddressRegistry(address)"
+              ],
+              "0xfbe42921": [
+                "splitFNFT(uint256,uint256[],uint256[],uint256)"
+              ],
+              "0x01ffc9a7": [
+                "supportsInterface(bytes4)"
+              ],
+              "0x628645c0": [
+                "tokenTrackers(address)"
+              ],
+              "0xf2fde38b": [
+                "transferOwnership(address)"
+              ],
+              "0x5d61210d": [
+                "withdrawToken(uint256,uint256,address)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "verified_abi_selectors": 24,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/88a79c835795e94fe9fc7ef85e3e0b9f734e29ae6a167eedeef71f6e29126595.body",
+              "sha256": "373ad4def4e30e77d9f6947ef509179fc5ba4c5117f08ea6b65a911ee132ecaa"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+              "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "863d8f9babc9fbfd4f3260ffbafb4aba8d35aa938773a117eb58fc43b8a5e186",
+            "sources": [
+              {
+                "path": "@openzeppelin/contracts/access/AccessControl.sol",
+                "utf8_sha256": "6877e8ac1c1d0febb541b95080314677794f9f3fa1062bfc5b3dc875ba1e3d4b",
+                "metadata_keccak256": "0x084f583de2c714665b0304529fe8b826a2809f29d03314e4dd9eea926e4bb0f3"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+                "utf8_sha256": "80f821aef438c0e45949bfd9b18b57c547f8df0b0e376d8ecdf8605c6481316d",
+                "metadata_keccak256": "0x33ba8a175bb81046a02b02e8d5eb4cabc87e1875f4a74bbc6f11c51db5e40d8c"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/Ownable.sol",
+                "utf8_sha256": "0195650aabf5270babe540969c56f8f244342aebce89266787a3b015e41d608f",
+                "metadata_keccak256": "0x6bb804a310218875e89d12c053e94a13a4607cdf7cc2052f3e52bd32a0dc50a1"
+              },
+              {
+                "path": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+                "utf8_sha256": "399ae351c4edaac918ed1e966953c3f45fc78b062140122c3a57e96b4ffff8e7",
+                "metadata_keccak256": "0x842ccf9a6cd33e17b7acef8372ca42090755217b358fe0c44c98e951ea549d3a"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
+                "utf8_sha256": "87f5b424b847dcaed018459e385c11334d6b3ee20b734aaeb0f97edd62706ae5",
+                "metadata_keccak256": "0x09c24182fc76ee97a5c604b6ff1a8afb3648535b6ba1820c23b243a40cc792a0"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+                "utf8_sha256": "9cc02735fef7fb7eaac28cc7eee69179d37389437e8c2cfb673bc478f4231827",
+                "metadata_keccak256": "0xfce1eb6398eae0e2b50251140866a70a3106193f101972c878bba1dbf44929ec"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
+                "utf8_sha256": "cb2c761b027eaf3060e61d4acc7670e61741f78ecc95761ef13a6b102cd9e206",
+                "metadata_keccak256": "0x7de6e64d4a8075e803a972cc77c4c91463e0c3777e4110eacfb5d4a71759b2fa"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+                "utf8_sha256": "0ae1323bab39b0ff25592d590ba409c12c26ac49dd6c3fd44689cc07e4c6ab4c",
+                "metadata_keccak256": "0x6ba0564f6970414d1166ee83127b834bbe7dbf699241a3005eb7ae64a2211975"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "utf8_sha256": "b2565dec975f684ef0edfa505e212d0d0b602e1311afab782ea06ea8d3f49bb6",
+                "metadata_keccak256": "0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Address.sol",
+                "utf8_sha256": "9b9053aa6ace4bb8d101adf248d93f805ee9e91eef4b2465bdc3baccad7527ab",
+                "metadata_keccak256": "0x3b4820cac4f127869f6eb496c1d74fa6ac86ed24071e0f94742e6aef20e7252c"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Context.sol",
+                "utf8_sha256": "810e94131350fcdbbed52a2a10523565ef98f4c9dda441495262923f251b0d12",
+                "metadata_keccak256": "0x95098bd1d9c8dec4d80d3dedb88a0d949fa0d740ee99f2aa466bc308216ca6d5"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Strings.sol",
+                "utf8_sha256": "3b2b0d75c7e5688950d3b6e63e46473054395dad6e390431f73febb2199913c5",
+                "metadata_keccak256": "0x391d3ba97ab6856a16b225d6ee29617ad15ff00db70f3b4df1ab5ea33aa47c9d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+                "utf8_sha256": "381b0589da0e1a32242d7314905d2cc6edd8dce8193ddb6bfacc5b685e311422",
+                "metadata_keccak256": "0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol",
+                "utf8_sha256": "9f0901e0d1b15514723262a2a7a50d821c0685232b6ee7828015d5e5cc8cdb81",
+                "metadata_keccak256": "0x432ff5e7d029c9f12d377560eccacad10a8b9e11588bf3fb5050d98c058e713d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+                "utf8_sha256": "072805b211a653c333b232a3199b9e65fa7b82fc7a40ee5a3bc8a2dadd1cba01",
+                "metadata_keccak256": "0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
+                "utf8_sha256": "f7b69cd8e46762273807f9b8282690baaae7a5458c99373dabea5882ffd6493c",
+                "metadata_keccak256": "0x211639753e28bdca7f98618f51dca3dcd08a88b57c45050eb05fa4d0053327c3"
+              },
+              {
+                "path": "contracts/LockManager.sol",
+                "utf8_sha256": "05f743524ce1ffd58e45367fb29cf9b65b1207127ed3a2337737025129da4d2d",
+                "metadata_keccak256": "0xd4d50ad0b31011f60ab549d832be5ecf172d29ae2a06c6fe7deefc267c81ecc8"
+              },
+              {
+                "path": "contracts/interfaces/IAddressLock.sol",
+                "utf8_sha256": "ac3c7e07e3d7eb4aec3f26f759f4e4d06848d184f5957ffaedd8d704b7a349d3",
+                "metadata_keccak256": "0x09b5aeaae4d209c4630876dabca42ef6367c9864d9809b819aa0ad1fd22f172f"
+              },
+              {
+                "path": "contracts/interfaces/IAddressRegistry.sol",
+                "utf8_sha256": "2a83eb61c24f79ec537b0992e7def7cddb72ab3f9e5d26c062112989abea5c72",
+                "metadata_keccak256": "0x129fecf36c5c18bcf17fcbb1b09267d52ca7a6e136ab9eaa037fd123d4822685"
+              },
+              {
+                "path": "contracts/interfaces/IFNFTHandler.sol",
+                "utf8_sha256": "e3b49e97b25abe04fb3ff5994c1a80d6cda318a2a108c33950b4402a850d4f00",
+                "metadata_keccak256": "0x9824a781b38146e5d6cd04f7a7a126ad3047188f39b8ac63189124219b524df6"
+              },
+              {
+                "path": "contracts/interfaces/IInterestHandler.sol",
+                "utf8_sha256": "ea7c721311cfb2c529df8f5aa0d42b2b3fd056768466a4b961192c59427fab31",
+                "metadata_keccak256": "0x813350d54ddc90d5500d7494e2f939842d321ccf41d3760074005dfb2c205c04"
+              },
+              {
+                "path": "contracts/interfaces/ILockManager.sol",
+                "utf8_sha256": "6f4150b207844725aa55fee3c197b0ee4916be1c8989946a8a0d2e3e550a3be7",
+                "metadata_keccak256": "0x7b3170ed345d9750b315197f48f8076c8731e21640f7a063563bc93a6c2d1c00"
+              },
+              {
+                "path": "contracts/interfaces/IOracleDispatch.sol",
+                "utf8_sha256": "20db38487fdb49872543a78cfaa807dee9df22b97f9573434eae7578891c6397",
+                "metadata_keccak256": "0x8cc943cf9cb22464d728114ce36376d4a57d91b4bbd8c46349d738e0bcfac383"
+              },
+              {
+                "path": "contracts/interfaces/IRegistryProvider.sol",
+                "utf8_sha256": "22061a511e0331fdc1ea085023fa327c188a17b0eb1f954db7719e2cd9c251cb",
+                "metadata_keccak256": "0xe94c69d88507b408ecac3a7b7a2dee9b0af8345a41a7be5f21d403d67cfcea31"
+              },
+              {
+                "path": "contracts/interfaces/IRevest.sol",
+                "utf8_sha256": "307113ee6f2ea58d8534b94c08885e332e048789ed2a04f20b0927c6b029d7c2",
+                "metadata_keccak256": "0x28031288ed0d91ec0c0919d9e77b8bac9e09fd6d6d17fa57300d50e87481efe9"
+              },
+              {
+                "path": "contracts/interfaces/IRevestToken.sol",
+                "utf8_sha256": "8080694af62518386846d7f7cde8657c0269a14b90b596af1044905c732d8b14",
+                "metadata_keccak256": "0xef99a2f9ad01fbc75fadc56726c8085ef3e2ff343749018abc8709a6275048a2"
+              },
+              {
+                "path": "contracts/interfaces/IRewardsHandler.sol",
+                "utf8_sha256": "2ad014faf8756799e80df3917baf4c0738d76ee04abf952fd87c943057d4755a",
+                "metadata_keccak256": "0x7940819dfa042009e0b10dff3dd7224f3d1ae3a4c7addab3e8f33631c1ed5db7"
+              },
+              {
+                "path": "contracts/interfaces/ITokenVault.sol",
+                "utf8_sha256": "88122e7aa18214616c3bf70cc3234a91fffbc32d775924ec2316b8f2cc482671",
+                "metadata_keccak256": "0xaf57460b4494ba71a094c4c89f095254c65796c1ddff0f41978c5f141472962d"
+              },
+              {
+                "path": "contracts/lib/uniswap/IUniswapV2Factory.sol",
+                "utf8_sha256": "1f1295ea22aab10e9283e68df2f8fca155132a518b7d3b3660396b58f1c5f3c5",
+                "metadata_keccak256": "0x1941df3829263f21a1727c016f227a8decd9ce192180ba677d1e38498eed5382"
+              },
+              {
+                "path": "contracts/lib/uniswap/IUniswapV2Pair.sol",
+                "utf8_sha256": "e7361a3c3e6fba0bc4a76bc488fa1911ffe28fd1671c6d42f6dabbc9fb6ed586",
+                "metadata_keccak256": "0x126a75fe45dbf9136723966258f776f0802103257a44f74c0440a6d54e08758a"
+              },
+              {
+                "path": "contracts/utils/RevestAccessControl.sol",
+                "utf8_sha256": "755632a5faffb51baa7851de9bb9461df83a3163570ebf3e77ed6349a179af98",
+                "metadata_keccak256": "0x7a003990056628223472d8c9eb6539aea97aeb621cfb0b1f67474882b84c8d2a"
+              }
+            ],
+            "abi_signatures": {
+              "0xb3f9ff19": [
+                "ADDRESS_LOCK_INTERFACE_ID()"
+              ],
+              "0xa217fddf": [
+                "DEFAULT_ADMIN_ROLE()"
+              ],
+              "0xdd6aa4cf": [
+                "createLock(uint256,(address,uint256,uint8,(address,address,address,uint256,bool)))"
+              ],
+              "0x3fe8ca06": [
+                "fnftIdToLock(uint256)"
+              ],
+              "0x29029c16": [
+                "fnftIdToLockId(uint256)"
+              ],
+              "0xd68f4dd1": [
+                "getLock(uint256)"
+              ],
+              "0xcab4fb9c": [
+                "getLockMaturity(uint256)"
+              ],
+              "0x248a9ca3": [
+                "getRoleAdmin(bytes32)"
+              ],
+              "0x9010d07c": [
+                "getRoleMember(bytes32,uint256)"
+              ],
+              "0xca15c873": [
+                "getRoleMemberCount(bytes32)"
+              ],
+              "0x2f2ff15d": [
+                "grantRole(bytes32,address)"
+              ],
+              "0x91d14854": [
+                "hasRole(bytes32,address)"
+              ],
+              "0xfc9ec25d": [
+                "lockTypes(uint256)"
+              ],
+              "0xf4dadc61": [
+                "locks(uint256)"
+              ],
+              "0xd422cf58": [
+                "numLocks()"
+              ],
+              "0x8da5cb5b": [
+                "owner()"
+              ],
+              "0xd7f92205": [
+                "pointFNFTToLock(uint256,uint256)"
+              ],
+              "0x715018a6": [
+                "renounceOwnership()"
+              ],
+              "0x36568abe": [
+                "renounceRole(bytes32,address)"
+              ],
+              "0xd547741f": [
+                "revokeRole(bytes32,address)"
+              ],
+              "0x27c7812c": [
+                "setAddressRegistry(address)"
+              ],
+              "0x01ffc9a7": [
+                "supportsInterface(bytes4)"
+              ],
+              "0xf2fde38b": [
+                "transferOwnership(address)"
+              ],
+              "0xfb684805": [
+                "unlockFNFT(uint256,address)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "verified_abi_selectors": 31,
+          "provenance": {
+            "response": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/http/bb690bc787ca53e9d3aa81e34fff0936b864346a1ae3752b371a912e6be19b6d.body",
+              "sha256": "0cfc12052782b2a41aeb4875f7ce04afa40f2533ce1aca745dea6956cf2b914c"
+            },
+            "prestate": {
+              "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+              "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+            },
+            "evidence": {
+              "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+              "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+            },
+            "historical_runtime_sha256": "4bf2f55ba4f191a3fb075728c983e9a15288411caf16dd138c4ae1a7d34b9bb3",
+            "sources": [
+              {
+                "path": "@openzeppelin/contracts/access/AccessControl.sol",
+                "utf8_sha256": "6877e8ac1c1d0febb541b95080314677794f9f3fa1062bfc5b3dc875ba1e3d4b",
+                "metadata_keccak256": "0x084f583de2c714665b0304529fe8b826a2809f29d03314e4dd9eea926e4bb0f3"
+              },
+              {
+                "path": "@openzeppelin/contracts/access/Ownable.sol",
+                "utf8_sha256": "0195650aabf5270babe540969c56f8f244342aebce89266787a3b015e41d608f",
+                "metadata_keccak256": "0x6bb804a310218875e89d12c053e94a13a4607cdf7cc2052f3e52bd32a0dc50a1"
+              },
+              {
+                "path": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+                "utf8_sha256": "399ae351c4edaac918ed1e966953c3f45fc78b062140122c3a57e96b4ffff8e7",
+                "metadata_keccak256": "0x842ccf9a6cd33e17b7acef8372ca42090755217b358fe0c44c98e951ea549d3a"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
+                "utf8_sha256": "87f5b424b847dcaed018459e385c11334d6b3ee20b734aaeb0f97edd62706ae5",
+                "metadata_keccak256": "0x09c24182fc76ee97a5c604b6ff1a8afb3648535b6ba1820c23b243a40cc792a0"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+                "utf8_sha256": "9cc02735fef7fb7eaac28cc7eee69179d37389437e8c2cfb673bc478f4231827",
+                "metadata_keccak256": "0xfce1eb6398eae0e2b50251140866a70a3106193f101972c878bba1dbf44929ec"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
+                "utf8_sha256": "cb2c761b027eaf3060e61d4acc7670e61741f78ecc95761ef13a6b102cd9e206",
+                "metadata_keccak256": "0x7de6e64d4a8075e803a972cc77c4c91463e0c3777e4110eacfb5d4a71759b2fa"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+                "utf8_sha256": "0ae1323bab39b0ff25592d590ba409c12c26ac49dd6c3fd44689cc07e4c6ab4c",
+                "metadata_keccak256": "0x6ba0564f6970414d1166ee83127b834bbe7dbf699241a3005eb7ae64a2211975"
+              },
+              {
+                "path": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+                "utf8_sha256": "b2565dec975f684ef0edfa505e212d0d0b602e1311afab782ea06ea8d3f49bb6",
+                "metadata_keccak256": "0x027b891937d20ccf213fdb9c31531574256de774bda99d3a70ecef6e1913ed2a"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Address.sol",
+                "utf8_sha256": "9b9053aa6ace4bb8d101adf248d93f805ee9e91eef4b2465bdc3baccad7527ab",
+                "metadata_keccak256": "0x3b4820cac4f127869f6eb496c1d74fa6ac86ed24071e0f94742e6aef20e7252c"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Context.sol",
+                "utf8_sha256": "810e94131350fcdbbed52a2a10523565ef98f4c9dda441495262923f251b0d12",
+                "metadata_keccak256": "0x95098bd1d9c8dec4d80d3dedb88a0d949fa0d740ee99f2aa466bc308216ca6d5"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/Strings.sol",
+                "utf8_sha256": "3b2b0d75c7e5688950d3b6e63e46473054395dad6e390431f73febb2199913c5",
+                "metadata_keccak256": "0x391d3ba97ab6856a16b225d6ee29617ad15ff00db70f3b4df1ab5ea33aa47c9d"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+                "utf8_sha256": "381b0589da0e1a32242d7314905d2cc6edd8dce8193ddb6bfacc5b685e311422",
+                "metadata_keccak256": "0x5718c5df9bd67ac68a796961df938821bb5dc0cd4c6118d77e9145afb187409b"
+              },
+              {
+                "path": "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+                "utf8_sha256": "072805b211a653c333b232a3199b9e65fa7b82fc7a40ee5a3bc8a2dadd1cba01",
+                "metadata_keccak256": "0xa28007762d9da9db878dd421960c8cb9a10471f47ab5c1b3309bfe48e9e79ff4"
+              },
+              {
+                "path": "contracts/FNFTHandler.sol",
+                "utf8_sha256": "f3509df24ee9f84f0da6e1d0f7ae1f0c892eb694ac35a1f66911c603e1628639",
+                "metadata_keccak256": "0x1c8423bc98470430f1354a121572094681fa30bf4121472329e9fd6ade686c9a"
+              },
+              {
+                "path": "contracts/interfaces/IAddressLock.sol",
+                "utf8_sha256": "ac3c7e07e3d7eb4aec3f26f759f4e4d06848d184f5957ffaedd8d704b7a349d3",
+                "metadata_keccak256": "0x09b5aeaae4d209c4630876dabca42ef6367c9864d9809b819aa0ad1fd22f172f"
+              },
+              {
+                "path": "contracts/interfaces/IAddressRegistry.sol",
+                "utf8_sha256": "2a83eb61c24f79ec537b0992e7def7cddb72ab3f9e5d26c062112989abea5c72",
+                "metadata_keccak256": "0x129fecf36c5c18bcf17fcbb1b09267d52ca7a6e136ab9eaa037fd123d4822685"
+              },
+              {
+                "path": "contracts/interfaces/IFNFTHandler.sol",
+                "utf8_sha256": "e3b49e97b25abe04fb3ff5994c1a80d6cda318a2a108c33950b4402a850d4f00",
+                "metadata_keccak256": "0x9824a781b38146e5d6cd04f7a7a126ad3047188f39b8ac63189124219b524df6"
+              },
+              {
+                "path": "contracts/interfaces/IInterestHandler.sol",
+                "utf8_sha256": "ea7c721311cfb2c529df8f5aa0d42b2b3fd056768466a4b961192c59427fab31",
+                "metadata_keccak256": "0x813350d54ddc90d5500d7494e2f939842d321ccf41d3760074005dfb2c205c04"
+              },
+              {
+                "path": "contracts/interfaces/ILockManager.sol",
+                "utf8_sha256": "6f4150b207844725aa55fee3c197b0ee4916be1c8989946a8a0d2e3e550a3be7",
+                "metadata_keccak256": "0x7b3170ed345d9750b315197f48f8076c8731e21640f7a063563bc93a6c2d1c00"
+              },
+              {
+                "path": "contracts/interfaces/IMetadataHandler.sol",
+                "utf8_sha256": "e0dfe63d1a30f0b58d3c3331970424134ed420a9e6191568e2a8723f945b545e",
+                "metadata_keccak256": "0xae9b3a4f306baa4a9291c25006f3e420c3f79401e8d703ef85b5252db56e9bac"
+              },
+              {
+                "path": "contracts/interfaces/IRegistryProvider.sol",
+                "utf8_sha256": "22061a511e0331fdc1ea085023fa327c188a17b0eb1f954db7719e2cd9c251cb",
+                "metadata_keccak256": "0xe94c69d88507b408ecac3a7b7a2dee9b0af8345a41a7be5f21d403d67cfcea31"
+              },
+              {
+                "path": "contracts/interfaces/IRevest.sol",
+                "utf8_sha256": "307113ee6f2ea58d8534b94c08885e332e048789ed2a04f20b0927c6b029d7c2",
+                "metadata_keccak256": "0x28031288ed0d91ec0c0919d9e77b8bac9e09fd6d6d17fa57300d50e87481efe9"
+              },
+              {
+                "path": "contracts/interfaces/IRevestToken.sol",
+                "utf8_sha256": "8080694af62518386846d7f7cde8657c0269a14b90b596af1044905c732d8b14",
+                "metadata_keccak256": "0xef99a2f9ad01fbc75fadc56726c8085ef3e2ff343749018abc8709a6275048a2"
+              },
+              {
+                "path": "contracts/interfaces/IRewardsHandler.sol",
+                "utf8_sha256": "2ad014faf8756799e80df3917baf4c0738d76ee04abf952fd87c943057d4755a",
+                "metadata_keccak256": "0x7940819dfa042009e0b10dff3dd7224f3d1ae3a4c7addab3e8f33631c1ed5db7"
+              },
+              {
+                "path": "contracts/interfaces/ITokenVault.sol",
+                "utf8_sha256": "88122e7aa18214616c3bf70cc3234a91fffbc32d775924ec2316b8f2cc482671",
+                "metadata_keccak256": "0xaf57460b4494ba71a094c4c89f095254c65796c1ddff0f41978c5f141472962d"
+              },
+              {
+                "path": "contracts/lib/uniswap/IUniswapV2Factory.sol",
+                "utf8_sha256": "1f1295ea22aab10e9283e68df2f8fca155132a518b7d3b3660396b58f1c5f3c5",
+                "metadata_keccak256": "0x1941df3829263f21a1727c016f227a8decd9ce192180ba677d1e38498eed5382"
+              },
+              {
+                "path": "contracts/utils/RevestAccessControl.sol",
+                "utf8_sha256": "755632a5faffb51baa7851de9bb9461df83a3163570ebf3e77ed6349a179af98",
+                "metadata_keccak256": "0x7a003990056628223472d8c9eb6539aea97aeb621cfb0b1f67474882b84c8d2a"
+              }
+            ],
+            "abi_signatures": {
+              "0xa217fddf": [
+                "DEFAULT_ADMIN_ROLE()"
+              ],
+              "0xe63ab1e9": [
+                "PAUSER_ROLE()"
+              ],
+              "0x00fdd58e": [
+                "balanceOf(address,uint256)"
+              ],
+              "0x4e1273f4": [
+                "balanceOfBatch(address[],uint256[])"
+              ],
+              "0xf5298aca": [
+                "burn(address,uint256,uint256)"
+              ],
+              "0x6b20c454": [
+                "burnBatch(address,uint256[],uint256[])"
+              ],
+              "0x4e2297ec": [
+                "fnftsCreated()"
+              ],
+              "0x2b04e840": [
+                "getBalance(address,uint256)"
+              ],
+              "0xbc968326": [
+                "getNextId()"
+              ],
+              "0x248a9ca3": [
+                "getRoleAdmin(bytes32)"
+              ],
+              "0xf77ee79d": [
+                "getSupply(uint256)"
+              ],
+              "0x2f2ff15d": [
+                "grantRole(bytes32,address)"
+              ],
+              "0x91d14854": [
+                "hasRole(bytes32,address)"
+              ],
+              "0xe985e9c5": [
+                "isApprovedForAll(address,address)"
+              ],
+              "0x731133e9": [
+                "mint(address,uint256,uint256,bytes)"
+              ],
+              "0x1f7fdffa": [
+                "mintBatch(address,uint256[],uint256[],bytes)"
+              ],
+              "0x9a46cd5d": [
+                "mintBatchRec(address[],uint256[],uint256,uint256,bytes)"
+              ],
+              "0x8da5cb5b": [
+                "owner()"
+              ],
+              "0x818ae947": [
+                "renderTokenURI(uint256,address)"
+              ],
+              "0x715018a6": [
+                "renounceOwnership()"
+              ],
+              "0x36568abe": [
+                "renounceRole(bytes32,address)"
+              ],
+              "0xd547741f": [
+                "revokeRole(bytes32,address)"
+              ],
+              "0x2eb2c2d6": [
+                "safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)"
+              ],
+              "0xf242432a": [
+                "safeTransferFrom(address,address,uint256,uint256,bytes)"
+              ],
+              "0x27c7812c": [
+                "setAddressRegistry(address)"
+              ],
+              "0xa22cb465": [
+                "setApprovalForAll(address,bool)"
+              ],
+              "0x02fe5305": [
+                "setURI(string)"
+              ],
+              "0x35403023": [
+                "supply(uint256)"
+              ],
+              "0x01ffc9a7": [
+                "supportsInterface(bytes4)"
+              ],
+              "0xf2fde38b": [
+                "transferOwnership(address)"
+              ],
+              "0x0e89341c": [
+                "uri(uint256)"
+              ]
+            },
+            "source_scope": "full_compilation_source_bundle_not_function_slice"
+          }
+        }
+      ]
+    }
+  ],
+  "network_requests": 0,
+  "expected_targets_forwarded": false,
+  "heldout_used": false
+}
