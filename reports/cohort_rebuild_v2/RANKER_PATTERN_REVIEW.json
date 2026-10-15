@@ -1,0 +1,90 @@
+{
+  "scope": "Real production TRAIN repeated-pattern evidence preservation; no weight or threshold changes",
+  "bug": "Deduplication key selected filtered entries only inside a branch proving all entries unfiltered, hence always empty. Output also aliased caller evidence.",
+  "repair": "Exact full-record JSON equality is the only deduplication policy; distinct depths, owners, ordering or repeat counts survive; retained records are deep copied. Existing filter policy unchanged.",
+  "regression_red": "Three focused tests failed on distinct patterns, reversed order and mutable alias before repair",
+  "focused_green": "Six tests passed including recorded Revest rank order",
+  "comparison": [
+    {
+      "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "previous": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/eth-0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+        "sha256": "5f1450139707ad9af7dbddb4cd7756d2ace489b7bb3f1191f37f303992fb4c0b"
+      },
+      "current": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+        "sha256": "0c872283355aa990aae34755052913633edd635aad3bf81162e4b36d4460f370"
+      },
+      "previous_pattern_records": 1,
+      "current_pattern_records": 9,
+      "count_ranks_unchanged": true
+    },
+    {
+      "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "previous": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/eth-0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+        "sha256": "55664e43fc63ab5e383d84054772000e31191f66999d2b9a9c971488fab282b2"
+      },
+      "current": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+        "sha256": "7fce35e7b755716d82bc89c8041e6d02d3da22d1be6ca60af40912be0855e305"
+      },
+      "previous_pattern_records": 1,
+      "current_pattern_records": 3,
+      "count_ranks_unchanged": true
+    },
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "previous": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/eth-0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "77db52293034cb472ba5fc8a17a02d4ab25d5e0975f8cdc55a5e42d9003f7d21"
+      },
+      "current": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "e562fa0e96b79bb060336ab1919a621f9ac2494eb3aac82f71e5702678afc489"
+      },
+      "previous_pattern_records": 1,
+      "current_pattern_records": 2,
+      "count_ranks_unchanged": true
+    },
+    {
+      "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+      "previous": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/eth-0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+        "sha256": "dddc2e55458f3060aa0d45df70a43a9ebcc1dae00b0dfe841649e86b153215da"
+      },
+      "current": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+        "sha256": "14adc2103809b27289dd6fdd71476d1459e2166d79e7adcb892b0d66dd85fc41"
+      },
+      "previous_pattern_records": 1,
+      "current_pattern_records": 13,
+      "count_ranks_unchanged": true
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "previous": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+        "sha256": "e1a3deea68436a98139d84461c96033b294596d0a83c556c2d8ec1987906e1bf"
+      },
+      "current": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+        "sha256": "9cfc168dfceed90735c278b394af8bb426bebb9c49ee3e27b7ed312019a98b94"
+      },
+      "previous_pattern_records": 0,
+      "current_pattern_records": 0,
+      "count_ranks_unchanged": true
+    }
+  ],
+  "current_summary": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/summary.json",
+    "sha256": "ad11be5fd820b024aa7e7df14a27be008a9bc4025475c75dc44546151655ab3a"
+  },
+  "current_source_localization": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/source_localization.json",
+    "sha256": "f9b097baacb66da19c2c650b30aa26dc5232b93bf27c06e562f182e42b439b58"
+  },
+  "result": "Nine of ten TRAIN cases observed, BSC trace unavailable. Reentrancy component F1 0.9090909 unchanged. Two-case deterministic localization top1=0, top5=0, MRR=0.03598484848484848 unchanged. No model-assisted or held-out metric.",
+  "new_network_requests": 0,
+  "heldout_used": false
+}

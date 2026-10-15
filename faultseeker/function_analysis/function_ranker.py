@@ -1,3 +1,5 @@
+from copy import deepcopy
+import json
 from dataclasses import dataclass, field
 from typing import Dict, List
 
@@ -79,20 +81,13 @@ class FunctionRanker:
                                (i['function'].lower() in self.filtered_functions)])
 
                     if check == 0:
-                        repeated_memo_key = ','.join([
-                            i['function'] for i in pattern['pattern']
-                            if (i['function'] is None) or
-                            (i['function'].lower() in self.filtered_functions)
-                        ])
-
+                        # Deduplicate only identical evidence records. Different
+                        # owners, call order, depths or repeat counts are distinct
+                        # observations and must survive for downstream analysis.
+                        repeated_memo_key = json.dumps(pattern, sort_keys=True)
                         if repeated_memo_key not in repeated_patterns_memo:
                             repeated_patterns_memo.append(repeated_memo_key)
-                            pattern['pattern'] = [
-                                i for i in pattern['pattern']
-                                if (i['function'] is not None) and
-                                (i['function'].lower() not in self.filtered_functions)
-                            ]
-                            repeated_patterns.append(pattern)
+                            repeated_patterns.append(deepcopy(pattern))
 
         # Process calls with created contracts in params
         for call in forensics_result.address_calls_with_created_contract:

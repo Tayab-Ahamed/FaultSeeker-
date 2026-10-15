@@ -2,7 +2,7 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available. Follow-up approval was fully consumed by fourteen further HTTP-200 responses. Across both batches all twenty ledger reservation/settlement pairs have provider usage and exact agnes-2.5-flash identity. The follow-up safely stopped at its cap, still in the first case: zero complete cases and no final model ranks or quality metric. Five real roles fired; children filtering and complete localization were not reached. Subsequent offline review fixed a live-source fallback that bypassed the injected provenance boundary and rejects malformed/unknown/duplicate model selections before candidates can be silently dropped. Source-only routing and selection behavior are unit-tested, including real cached historical source input. The legacy pilot snapshots retain the old bypass; no evidence proves whether it was exercised. Neither pilot is retroactively scored and complete model-assisted localization remains unverified. Additional-info normalization now rejects malformed whole requests before any evidence lookup, preserves full contract/function identity and removes the source-owner substitution heuristic. A real-loop regression proves pilot domain errors stop before any subsequent model dispatch. Saved response five exposes the original malformed alias; no historical results are repaired or scored. The changed schema prompt ends current exact-prefix replay at request five after four matches. These are offline correctness fixes, not proof of localization performance.",
+  "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available. Follow-up approval was fully consumed by fourteen further HTTP-200 responses. Across both batches all twenty ledger reservation/settlement pairs have provider usage and exact agnes-2.5-flash identity. The follow-up safely stopped at its cap, still in the first case: zero complete cases and no final model ranks or quality metric. Five real roles fired; children filtering and complete localization were not reached. Subsequent offline review fixed a live-source fallback that bypassed the injected provenance boundary and rejects malformed/unknown/duplicate model selections before candidates can be silently dropped. Source-only routing and selection behavior are unit-tested, including real cached historical source input. The legacy pilot snapshots retain the old bypass; no evidence proves whether it was exercised. Neither pilot is retroactively scored and complete model-assisted localization remains unverified. Additional-info normalization now rejects malformed whole requests before any evidence lookup, preserves full contract/function identity and removes the source-owner substitution heuristic. A real-loop regression proves pilot domain errors stop before any subsequent model dispatch. Saved response five exposes the original malformed alias; no historical results are repaired or scored. The changed schema prompt ends current exact-prefix replay at request five after four matches. These are offline correctness fixes, not proof of localization performance. Repeated-pattern deduplication now preserves distinct evidence records and avoids caller mutation. A new real nine-case TRAIN production run confirms unchanged count ranks and unchanged two-case deterministic localization (0 top1/top5, MRR 0.03598484848484848); this is correctness evidence, not a measured localization gain.",
   "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate",
   "requirements_unmet": [
     "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases"
@@ -25,7 +25,8 @@
     "tests/test_source_fallback_factories.py::test_configured_source_error_is_propagated_not_replaced_with_live_fetch",
     "tests/test_function_selection_safety.py::test_invalid_narrowing_never_silently_completes_or_discards_candidates",
     "tests/test_additional_info_schema.py",
-    "tests/test_additional_info_integration.py"
+    "tests/test_additional_info_integration.py",
+    "tests/test_ranker_pattern_integrity.py"
   ],
   "evidence": [
     {
@@ -159,6 +160,18 @@
     {
       "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T191403-a1313c9b/summary.json",
       "sha256": "8eb58de3b0535c059de5df9ed96ae75222e496ee48b4af941ba17516edbb503b"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/RANKER_PATTERN_REVIEW.json",
+      "sha256": "8f8b3843925089bb1ed878f8b4d86c693765a25dfc844f4a7fc947a3aca0d4d3"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/summary.json",
+      "sha256": "ad11be5fd820b024aa7e7df14a27be008a9bc4025475c75dc44546151655ab3a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/source_localization.json",
+      "sha256": "f9b097baacb66da19c2c650b30aa26dc5232b93bf27c06e562f182e42b439b58"
     }
   ],
   "session_date": "2026-10-15",

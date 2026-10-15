@@ -1,0 +1,52 @@
+{
+  "scope": "Deterministic count-ranked TRAIN function localization only",
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/localization_train_protocol.json",
+    "sha256": "00f59bd9a02afa29490a20cf350b0e4affa07ec7740caa16b2e9a6f2aec2cc7c"
+  },
+  "production_summary": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/summary.json",
+    "sha256": "ad11be5fd820b024aa7e7df14a27be008a9bc4025475c75dc44546151655ab3a"
+  },
+  "metrics": {
+    "n": 2,
+    "top1": 0.0,
+    "top5": 0.0,
+    "mrr": 0.03598484848484848
+  },
+  "observations": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "rank": 33,
+      "reciprocal_rank": 0.030303030303030304,
+      "prediction": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "e562fa0e96b79bb060336ab1919a621f9ac2494eb3aac82f71e5702678afc489"
+      },
+      "target_identities": [
+        [
+          "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "0x36f022aa"
+        ]
+      ]
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "rank": 24,
+      "reciprocal_rank": 0.041666666666666664,
+      "prediction": {
+        "path": "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+        "sha256": "9cfc168dfceed90735c278b394af8bb426bebb9c49ee3e27b7ed312019a98b94"
+      },
+      "target_identities": [
+        [
+          "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "0x5dcb7ab2"
+        ]
+      ]
+    }
+  ],
+  "missing": [],
+  "heldout_used": false,
+  "multi_agent_stage3_executed": false
+}
