@@ -2,15 +2,17 @@
   "id": 22,
   "claim": "Multi-agent function localization",
   "status": "UNVERIFIABLE",
-  "reason": "Recovered top1 7/115=6.09% and114 per-tx provenance entries; original GT contains one duplicate transaction explaining target/tx difference. No tracked raw ranked outputs in any reachable canonical commit; cannot rerun localization.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Two frozen TRAIN root-cause function identities now have publisher-supported names, Sourcify verified ABIs, exact captured historical runtime-bytecode matches and actual trace selectors: Euler donateToReserves and Revest depositAdditionalToFNFT. Euler delegate code and storage owner are explicitly distinguished. This acquisition does not establish vulnerable lines or multi-agent localization quality; production ranked predictions and broader authenticated targets remain required.",
+  "verification_scope": "Two source-linked TRAIN function identities only; no line localization, held-out evaluation or inferred performance",
   "requirements_unmet": [
-    "Original per-transaction ranked predictions tied to traces/models and source-linked GT"
+    "Executed explicit ranked function predictions and multi-agent outputs on source-linked authenticated study targets"
   ],
-  "human_decision": "Next evidence input: Original per-transaction ranked predictions tied to traces/models and source-linked GT",
+  "human_decision": "No decision needed; continue source-linked train evaluation without altering frozen membership",
   "acceptance_tests": [
     "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
-    "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
+    "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
+    "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_identity_requires_historical_exact_match",
+    "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_delegate_keeps_storage_owner"
   ],
   "evidence": [
     {
@@ -64,10 +66,14 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+      "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
     }
   ],
   "session_date": "2026-10-15",
-  "next_input_artifact": "Original per-transaction ranked predictions tied to traces/models and source-linked GT",
+  "next_input_artifact": "Executed explicit ranked function predictions and multi-agent outputs on source-linked authenticated study targets",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/22.json",
   "paper_verdict": "HISTORICAL-AGGREGATE-RECOVERED",

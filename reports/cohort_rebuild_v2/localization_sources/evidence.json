@@ -1,0 +1,526 @@
+{
+  "schema": 1,
+  "scope": "Frozen TRAIN only; source identity acquisition; no scoring and no ground truth mutation",
+  "documentation_url": "https://docs.sourcify.dev/docs/api/",
+  "external_documentation_requests": 1,
+  "new_http_requests_this_run": 0,
+  "prior_failed_attempts": [
+    {
+      "url": "https://docs.sourcify.dev/docs/api/",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/16dc2bbda893bfb3fff0cc27db0ade9c033e138f9ec6563656b5332519d13b52.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x3297c8db9360f87a7f7826f52a4fa143988931a6?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/2aeed0d53a67fe9d33d4638b2b272c1a9eaaa87697317872c5720867c2f903b1.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x2320a28f52334d62622cc2eafa15de55f9987ed9?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/4f5f6da9eb6b076fecd77c979f56708e1ce7b101682bfd3b48ba7287627fa063.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x29daddfda3442693c21a50351a2b4820ddbbff79?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/69d2a1746c3e64e19ed49132ab683d8be0eeb154e72314e44af8f1172f201373.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x226124e83868812d3dae87eb3c5f28047e1070b7?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/88a79c835795e94fe9fc7ef85e3e0b9f734e29ae6a167eedeef71f6e29126595.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/99fe19f4bcf8000618fd32f10822c7bc01c9f2d7ff2642dbfb49c079e7f894c1.attempt1.body"
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xe952bda8c06481506e4731c4f54ced2d4ab81659?fields=all",
+      "status": "NETWORK_ERROR",
+      "body_sha256": "08dcca06fde6f07100d0b6c567fdb8a48af894bc8575cdbef61513fb47c681f2",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/bb690bc787ca53e9d3aa81e34fff0936b864346a1ae3752b371a912e6be19b6d.attempt1.body"
+    }
+  ],
+  "total_session_public_request_attempts_including_external_documentation": 19,
+  "requests": [
+    {
+      "url": "https://docs.sourcify.dev/docs/api/",
+      "status": 200,
+      "body_sha256": "aa7591364100f3daa7ec4ad7567058a0bbc8b7d64d858173e2cb08878c668606",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/16dc2bbda893bfb3fff0cc27db0ade9c033e138f9ec6563656b5332519d13b52.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a?fields=all",
+      "status": 200,
+      "body_sha256": "65875d9b43bd656fb14743ac613c6b7dea659839815da07d1722b25fc4ced431",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x3297c8db9360f87a7f7826f52a4fa143988931a6?fields=all",
+      "status": 200,
+      "body_sha256": "3d04433ae9bc13432f02682880f7a481f8e98531672a7b3826ca6440f1f73654",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/2aeed0d53a67fe9d33d4638b2b272c1a9eaaa87697317872c5720867c2f903b1.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x29daddfda3442693c21a50351a2b4820ddbbff79?fields=all",
+      "status": 200,
+      "body_sha256": "56be193e07e7a9257d368d5d5531c3ccbbd996166d5e44a52373c56702bc81d5",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/69d2a1746c3e64e19ed49132ab683d8be0eeb154e72314e44af8f1172f201373.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89?fields=all",
+      "status": 200,
+      "body_sha256": "4aec2740c35bc5438c2f379b0d1a22f1dc1bb0d4bc9892d91778326bfb2c6e85",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/99fe19f4bcf8000618fd32f10822c7bc01c9f2d7ff2642dbfb49c079e7f894c1.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x2320a28f52334d62622cc2eafa15de55f9987ed9?fields=all",
+      "status": 200,
+      "body_sha256": "72df5023703586aa4e7b3e2987f0842fea0ec0ef26f5a86121a118cbd985572c",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f?fields=all",
+      "status": 200,
+      "body_sha256": "4e1cbe545afc426ce6346fc5e2849c01fa1f4719c182ef23450c2cf0fd359e5d",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/4f5f6da9eb6b076fecd77c979f56708e1ce7b101682bfd3b48ba7287627fa063.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0x226124e83868812d3dae87eb3c5f28047e1070b7?fields=all",
+      "status": 200,
+      "body_sha256": "373ad4def4e30e77d9f6947ef509179fc5ba4c5117f08ea6b65a911ee132ecaa",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/88a79c835795e94fe9fc7ef85e3e0b9f734e29ae6a167eedeef71f6e29126595.body",
+      "reused_cache": true
+    },
+    {
+      "url": "https://sourcify.dev/server/v2/contract/1/0xe952bda8c06481506e4731c4f54ced2d4ab81659?fields=all",
+      "status": 200,
+      "body_sha256": "0cfc12052782b2a41aeb4875f7ce04afa40f2533ce1aca745dea6956cf2b914c",
+      "body": "reports/cohort_rebuild_v2/localization_sources/http/bb690bc787ca53e9d3aa81e34fff0936b864346a1ae3752b371a912e6be19b6d.body",
+      "reused_cache": true
+    }
+  ],
+  "cases": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "incident": "reviewed:Euler Finance",
+      "train_ground_truth": {
+        "path": "benchmark/ground_truth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "259d957891adf7d07ae4af73b6b8dad54e5b1d2030fa759690841a727172d7f6"
+      },
+      "trace": {
+        "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a"
+      },
+      "prestate": {
+        "path": "reports/cohort_rebuild_v2/prestate/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "49cd6f38046b93473ef0ff5d28a58f8233bbe60a53c9558d73e5744716e85c81"
+      },
+      "opcode_capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "sha256": "9d307b7a3bbce02a72290869d3af2d5048f3b40e41f19cfa8cdac5e15c242ac7"
+      },
+      "opcode_normalization_complete": true,
+      "root_cause_citations": [
+        {
+          "name": "donateToReserves",
+          "address": null,
+          "signature": null,
+          "line": null,
+          "source": {
+            "path": "reports/provenance_hunt/http/0eb6fb23a2ad6b3dd43f0c0feda1e67580e0992e68971b6def515c5e3193e6e2.gz",
+            "sha256": "b66585e306d95c7441a5ed9ea8e4881f920c926cb48adc56a102c918a4f20fba"
+          },
+          "evidence_excerpt": "The root cause is due to the lack of liquidity check in the function donateToReserves()",
+          "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+        },
+        {
+          "name": "donateToReserves",
+          "address": null,
+          "signature": null,
+          "line": null,
+          "source": {
+            "path": "reports/provenance_hunt/http/c56def597b3cfa0afbee011ce7701b7850671fd9b097b0cb9ee5387d988255b8.gz",
+            "sha256": "08ac9ba1f6c3fb449092420e42c7e9dd522f35ec300cac5127059d548fbdaf62"
+          },
+          "evidence_excerpt": "Specifically, the donateToReserves needs to ensure the donator is still over-collateralized.",
+          "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+        }
+      ],
+      "contracts": [
+        {
+          "address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "url": "https://sourcify.dev/server/v2/contract/1/0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.body",
+            "sha256": "65875d9b43bd656fb14743ac613c6b7dea659839815da07d1722b25fc4ced431"
+          },
+          "historical_code_sha256": "bcaaa3e0103e988568483dd448e9e3e9d8ab7b277128c8be4772b2ebacc6d4fb"
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "url": "https://sourcify.dev/server/v2/contract/1/0x3297c8db9360f87a7f7826f52a4fa143988931a6?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/2aeed0d53a67fe9d33d4638b2b272c1a9eaaa87697317872c5720867c2f903b1.body",
+            "sha256": "3d04433ae9bc13432f02682880f7a481f8e98531672a7b3826ca6440f1f73654"
+          },
+          "historical_code_sha256": "5ceba0f59e1a34770412db8916df23fb533a92db9e0f9ac74aace1cf4e86950b"
+        },
+        {
+          "address": "0x29daddfda3442693c21a50351a2b4820ddbbff79",
+          "url": "https://sourcify.dev/server/v2/contract/1/0x29daddfda3442693c21a50351a2b4820ddbbff79?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/69d2a1746c3e64e19ed49132ab683d8be0eeb154e72314e44af8f1172f201373.body",
+            "sha256": "56be193e07e7a9257d368d5d5531c3ccbbd996166d5e44a52373c56702bc81d5"
+          },
+          "historical_code_sha256": "30f98d43355392860a4277357dc0b9c32db73ef071e0643f2aee20575ac42e44"
+        },
+        {
+          "address": "0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89",
+          "url": "https://sourcify.dev/server/v2/contract/1/0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/99fe19f4bcf8000618fd32f10822c7bc01c9f2d7ff2642dbfb49c079e7f894c1.body",
+            "sha256": "4aec2740c35bc5438c2f379b0d1a22f1dc1bb0d4bc9892d91778326bfb2c6e85"
+          },
+          "historical_code_sha256": "ff59298b1137e8e932f12ae8405fd07142a382f790cf058e48c510b9b326165b"
+        }
+      ],
+      "function_evidence": [
+        {
+          "name": "donateToReserves",
+          "signature": "donateToReserves(uint256,uint256)",
+          "selector": "0x36f022aa",
+          "code_address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+          "abi_response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/54feaed420631762374bc8620c34eb04903e84c795064693f8d6163d54e4db46.body",
+            "sha256": "65875d9b43bd656fb14743ac613c6b7dea659839815da07d1722b25fc4ced431"
+          },
+          "executed_calls": [
+            {
+              "trace_path": [
+                3,
+                0,
+                1,
+                3,
+                12,
+                0,
+                0
+              ],
+              "code_address": "0xbb0d4bb654a21054af95456a3b29c63e8d1f4c0a",
+              "storage_address": "0x27182842e098f60e3d576794a5bffb0777e025d3",
+              "call_type": "DELEGATECALL",
+              "selector": "0x36f022aa",
+              "error": null,
+              "opcode_frame_call_id": "0.3.0.1.3.12.0.0",
+              "opcode_storage_event_count": 4,
+              "opcode_storage_owners": [
+                "0x27182842e098f60e3d576794a5bffb0777e025d3"
+              ]
+            }
+          ],
+          "verified_compilation": {
+            "language": "Solidity",
+            "compiler": "solc",
+            "compilerVersion": "0.8.10+commit.fc410830",
+            "compilerSettings": {
+              "optimizer": {
+                "runs": 1000000,
+                "enabled": true
+              }
+            },
+            "name": "EToken",
+            "fullyQualifiedName": "contracts/modules/EToken.sol:EToken"
+          },
+          "verified_source_paths": [
+            "contracts/Base.sol",
+            "contracts/BaseIRM.sol",
+            "contracts/BaseLogic.sol",
+            "contracts/BaseModule.sol",
+            "contracts/Constants.sol",
+            "contracts/Events.sol",
+            "contracts/IRiskManager.sol",
+            "contracts/Interfaces.sol",
+            "contracts/Proxy.sol",
+            "contracts/Storage.sol",
+            "contracts/Utils.sol",
+            "contracts/modules/EToken.sol",
+            "contracts/vendor/RPow.sol"
+          ],
+          "status": "PUBLISHER_NAME_AND_HISTORICAL_BYTECODE_VERIFIED_ABI_AND_TRACE_SELECTOR",
+          "ground_truth_mutated": false
+        }
+      ],
+      "line_targets": [],
+      "line_status": "UNAVAILABLE: function declarations do not establish vulnerable source lines",
+      "publisher_mechanism_observations": [
+        {
+          "publisher_id": "BlockSec",
+          "source_url": "https://twitter.com/BlockSecTeam/status/1635262150624305153",
+          "source_artifact": {
+            "path": "reports/provenance_hunt/http/0eb6fb23a2ad6b3dd43f0c0feda1e67580e0992e68971b6def515c5e3193e6e2.gz",
+            "sha256": "b66585e306d95c7441a5ed9ea8e4881f920c926cb48adc56a102c918a4f20fba"
+          },
+          "vulnerability_class": "Missing collateral health check",
+          "mechanism_excerpt": "The root cause is due to the lack of liquidity check in the function donateToReserves()"
+        },
+        {
+          "publisher_id": "PeckShield",
+          "source_url": "https://twitter.com/peckshield/status/1635229594596036608",
+          "source_artifact": {
+            "path": "reports/provenance_hunt/http/c56def597b3cfa0afbee011ce7701b7850671fd9b097b0cb9ee5387d988255b8.gz",
+            "sha256": "08ac9ba1f6c3fb449092420e42c7e9dd522f35ec300cac5127059d548fbdaf62"
+          },
+          "vulnerability_class": "Missing collateral health check",
+          "mechanism_excerpt": "Specifically, the donateToReserves needs to ensure the donator is still over-collateralized."
+        }
+      ],
+      "status": "FUNCTION_IDENTITY_VERIFIED"
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "incident": "reviewed:Revest Finance",
+      "train_ground_truth": {
+        "path": "benchmark/ground_truth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+        "sha256": "b07397a78b9be2520284aacbc4f6d37f59ea58925d23108129f010b2360ccb36"
+      },
+      "trace": {
+        "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
+      },
+      "prestate": {
+        "path": "reports/cohort_rebuild_v2/prestate/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "767da72197da123b197aabf783ba31f9b0b5496c873036f9f13e9876d0827084"
+      },
+      "opcode_capture": {
+        "path": "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "sha256": "0aada716ea05941fabd884ff0b6f7f37cfbf209455d22c8042fe3196b5b30d1e"
+      },
+      "opcode_normalization_complete": true,
+      "root_cause_citations": [
+        {
+          "name": "depositAdditionalToFNFT",
+          "address": null,
+          "signature": null,
+          "line": null,
+          "source": {
+            "path": "reports/cohort_rebuild_v2/http/54d303c1cac544d567aff7844706b39e4a7caf83d9823a207de82dbff7e39c4b.gz",
+            "sha256": "dbc6316bb7ea941b8ec2ffaa6b77d57fa0e6f19c16561d8355b4403def1d0ef1"
+          },
+          "evidence_excerpt": "the attacker re-enters the Revest contract's depositAdditionalToFNFT function via the FNFTHandler 's call-back mechanism inherited from the ERC-1155 token standard",
+          "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+        }
+      ],
+      "contracts": [
+        {
+          "address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "url": "https://sourcify.dev/server/v2/contract/1/0x2320a28f52334d62622cc2eafa15de55f9987ed9?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.body",
+            "sha256": "72df5023703586aa4e7b3e2987f0842fea0ec0ef26f5a86121a118cbd985572c"
+          },
+          "historical_code_sha256": "e2665fe7e3648641c245cb277001f49a16770777c0350bb0beadd6f5cb8279f6"
+        },
+        {
+          "address": "0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f",
+          "url": "https://sourcify.dev/server/v2/contract/1/0xa81bd16aa6f6b25e66965a2f842e9c806c0aa11f?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/4f5f6da9eb6b076fecd77c979f56708e1ce7b101682bfd3b48ba7287627fa063.body",
+            "sha256": "4e1cbe545afc426ce6346fc5e2849c01fa1f4719c182ef23450c2cf0fd359e5d"
+          },
+          "historical_code_sha256": "b430671aae7db51066602b4fdc641394528f9a492521b56269943b00dc888c50"
+        },
+        {
+          "address": "0x226124e83868812d3dae87eb3c5f28047e1070b7",
+          "url": "https://sourcify.dev/server/v2/contract/1/0x226124e83868812d3dae87eb3c5f28047e1070b7?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/88a79c835795e94fe9fc7ef85e3e0b9f734e29ae6a167eedeef71f6e29126595.body",
+            "sha256": "373ad4def4e30e77d9f6947ef509179fc5ba4c5117f08ea6b65a911ee132ecaa"
+          },
+          "historical_code_sha256": "c7ad5da6f0cb9e3acd737c840ffb6df2fba5d67c30b0dfadce0576b21bfce877"
+        },
+        {
+          "address": "0xe952bda8c06481506e4731c4f54ced2d4ab81659",
+          "url": "https://sourcify.dev/server/v2/contract/1/0xe952bda8c06481506e4731c4f54ced2d4ab81659?fields=all",
+          "historical_code_present": true,
+          "status": "HISTORICAL_RUNTIME_MATCH",
+          "runtime_match": "exact_match",
+          "response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/bb690bc787ca53e9d3aa81e34fff0936b864346a1ae3752b371a912e6be19b6d.body",
+            "sha256": "0cfc12052782b2a41aeb4875f7ce04afa40f2533ce1aca745dea6956cf2b914c"
+          },
+          "historical_code_sha256": "b4be2d2affd331e1a0725e39a845643d73c5bf83c348a44c698b0b76ca6feea6"
+        }
+      ],
+      "function_evidence": [
+        {
+          "name": "depositAdditionalToFNFT",
+          "signature": "depositAdditionalToFNFT(uint256,uint256,uint256)",
+          "selector": "0x5dcb7ab2",
+          "code_address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+          "abi_response": {
+            "path": "reports/cohort_rebuild_v2/localization_sources/http/3c7c93ca010b9df5fda8d661d278fc093fe2e1df3d4a13de0c979676aa88515c.body",
+            "sha256": "72df5023703586aa4e7b3e2987f0842fea0ec0ef26f5a86121a118cbd985572c"
+          },
+          "executed_calls": [
+            {
+              "trace_path": [
+                2,
+                1,
+                1,
+                9,
+                1,
+                1
+              ],
+              "code_address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+              "storage_address": "0x2320a28f52334d62622cc2eafa15de55f9987ed9",
+              "call_type": "CALL",
+              "selector": "0x5dcb7ab2",
+              "error": null,
+              "opcode_frame_call_id": "0.2.1.1.9.1.1",
+              "opcode_storage_event_count": 0,
+              "opcode_storage_owners": []
+            }
+          ],
+          "verified_compilation": {
+            "language": "Solidity",
+            "compiler": "solc",
+            "compilerVersion": "0.8.4+commit.c7e474f2",
+            "compilerSettings": {
+              "metadata": {
+                "bytecodeHash": "ipfs",
+                "useLiteralContent": true
+              },
+              "libraries": {},
+              "optimizer": {
+                "runs": 10000,
+                "enabled": true
+              },
+              "evmVersion": "istanbul",
+              "remappings": []
+            },
+            "name": "Revest",
+            "fullyQualifiedName": "contracts/Revest.sol:Revest"
+          },
+          "verified_source_paths": [
+            "@openzeppelin/contracts/access/AccessControl.sol",
+            "@openzeppelin/contracts/access/AccessControlEnumerable.sol",
+            "@openzeppelin/contracts/access/Ownable.sol",
+            "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+            "@openzeppelin/contracts/token/ERC1155/ERC1155.sol",
+            "@openzeppelin/contracts/token/ERC1155/IERC1155.sol",
+            "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol",
+            "@openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+            "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "@openzeppelin/contracts/utils/Address.sol",
+            "@openzeppelin/contracts/utils/Context.sol",
+            "@openzeppelin/contracts/utils/Strings.sol",
+            "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+            "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol",
+            "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+            "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
+            "contracts/FNFTHandler.sol",
+            "contracts/Revest.sol",
+            "contracts/interfaces/IAddressLock.sol",
+            "contracts/interfaces/IAddressRegistry.sol",
+            "contracts/interfaces/IFNFTHandler.sol",
+            "contracts/interfaces/IInterestHandler.sol",
+            "contracts/interfaces/ILockManager.sol",
+            "contracts/interfaces/IMetadataHandler.sol",
+            "contracts/interfaces/IOracleDispatch.sol",
+            "contracts/interfaces/IOutputReceiver.sol",
+            "contracts/interfaces/IRegistryProvider.sol",
+            "contracts/interfaces/IRevest.sol",
+            "contracts/interfaces/IRevestToken.sol",
+            "contracts/interfaces/IRewardsHandler.sol",
+            "contracts/interfaces/ITokenVault.sol",
+            "contracts/lib/IUnicryptV2Locker.sol",
+            "contracts/lib/IWETH.sol",
+            "contracts/lib/uniswap/IUniswapV2Factory.sol",
+            "contracts/utils/RevestAccessControl.sol",
+            "contracts/utils/RevestReentrancyGuard.sol"
+          ],
+          "status": "PUBLISHER_NAME_AND_HISTORICAL_BYTECODE_VERIFIED_ABI_AND_TRACE_SELECTOR",
+          "ground_truth_mutated": false
+        }
+      ],
+      "line_targets": [],
+      "line_status": "UNAVAILABLE: function declarations do not establish vulnerable source lines",
+      "publisher_mechanism_observations": [
+        {
+          "publisher_id": "SlowMist",
+          "source_url": "https://slowmist.medium.com/revest-finance-incident-analysis-6fcd9b6be207",
+          "source_artifact": {
+            "path": "reports/cohort_rebuild_v2/web/slowmist_1.txt",
+            "sha256": "bb024459b5e563a2744c1191a0ad554fd83d580b1564016873ca14772ccff7c9"
+          },
+          "vulnerability_class": "Reentrancy",
+          "mechanism_excerpt": "Therefore, the attacker used a reentrancy attack to modify the information of the NFT that had been minted."
+        },
+        {
+          "publisher_id": "BlockSec",
+          "source_url": "https://blocksec.com/blog/revest-finance-vulnerabilities-more-than-re-entrancy",
+          "source_artifact": {
+            "path": "reports/cohort_rebuild_v2/http/54d303c1cac544d567aff7844706b39e4a7caf83d9823a207de82dbff7e39c4b.gz",
+            "sha256": "dbc6316bb7ea941b8ec2ffaa6b77d57fa0e6f19c16561d8355b4403def1d0ef1"
+          },
+          "vulnerability_class": "Reentrancy",
+          "mechanism_excerpt": "the attacker re-enters the Revest contract's depositAdditionalToFNFT function via the FNFTHandler 's call-back mechanism inherited from the ERC-1155 token standard"
+        }
+      ],
+      "status": "FUNCTION_IDENTITY_VERIFIED"
+    }
+  ],
+  "limitations": [
+    "Sourcify attestation is not an independent rebuild of the compiler output.",
+    "No line targets inferred from function names, ABI, or model predictions.",
+    "Candidate search is bounded, not exhaustive; failed lookup is not evidence of absence."
+  ]
+}
