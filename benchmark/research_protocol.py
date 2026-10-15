@@ -78,6 +78,26 @@ def identity(row):
     return row['chain'].lower() + ':' + row['txn_hash'].lower()
 
 
+def transaction_chain_id(tx):
+    """Recover omitted legacy chainId using EIP-155, never endpoint assumptions."""
+    def integer(value):
+        if isinstance(value, bool):
+            raise ValueError('Invalid integer')
+        return value if isinstance(value, int) else int(value, 16)
+    declared = integer(tx['chainId']) if tx.get('chainId') is not None else None
+    inferred = None
+    if integer(tx.get('type', '0x0')) == 0 and tx.get('v') is not None:
+        v = integer(tx['v'])
+        if v >= 35:
+            inferred = (v-35)//2
+    if declared is not None and inferred is not None and declared != inferred:
+        raise ValueError('Signature and declared chain ID disagree')
+    chain = declared if declared is not None else inferred
+    if chain is None or chain <= 0:
+        raise ValueError('Transaction has no verifiable chain ID')
+    return chain
+
+
 def admit(row, root):
     reasons = []
     txhash = str(row.get('txn_hash', '')).lower()
@@ -93,7 +113,7 @@ def admit(row, root):
             and isinstance(tx, dict) and isinstance(receipt, dict)
             and tx.get('hash', '').lower() == txhash and receipt.get('transactionHash', '').lower() == txhash
             and tx.get('blockHash') == receipt.get('blockHash') and HASH.fullmatch(str(tx.get('blockHash', '')))
-            and int(str(tx.get('chainId')), 16) == CHAIN_IDS.get(chain))
+            and transaction_chain_id(tx) == CHAIN_IDS.get(chain))
         if not rpc_ok:
             reasons.append('RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED')
         elif receipt.get('status') != '0x1':
@@ -176,7 +196,7 @@ def make_split(records, manifest_sha256, seed=1729):
     result = {'schema': 1, 'manifest_sha256': manifest_sha256, 'seed': seed,
         'train_fraction': 0.7, 'heldout_fraction': 0.3,
         'stratification': ['chain', 'complexity_class'], 'grouping': 'incident_id, else transaction identity',
-        'assignment': 'Seeded group order, minimizing per-stratum distance to 70% train targets; incident groups never split',
+        'assignment': 'Seeded group order minimizes stratum distance, then whole-group moves improve global 70/30 rounding with minimum stratum penalty; incident groups never split',
         'train_ids': [], 'heldout_ids': [], 'strata': []}
     if not records:
         return dict(result, status='BLOCKED_NO_ACCEPTED_DATA', reason='No accepted rows; partition not frozen')
@@ -200,6 +220,36 @@ def make_split(records, manifest_sha256, seed=1729):
             train_counts.update(weights)
         else:
             heldout.extend(group)
+    # Sparse singleton strata otherwise all enter train. Improve global rounding
+    # using identities and strata only, never labels or model predictions.
+    while True:
+        current_distance = abs(len(train)-.7*len(records))
+        moves = []
+        train_id_set = set(map(identity, train))
+        for key, group in groups.items():
+            in_train = identity(group[0]) in train_id_set
+            delta = -len(group) if in_train else len(group)
+            next_size = len(train)+delta
+            distance = abs(next_size-.7*len(records))
+            if not 0 < next_size < len(records) or distance >= current_distance:
+                continue
+            weights = Counter((r['chain'],r.get('complexity_class','UNRECOVERED')) for r in group)
+            sign = -1 if in_train else 1
+            penalty = sum(abs(train_counts[s]+sign*w-.7*strata[s])
+                          - abs(train_counts[s]-.7*strata[s]) for s,w in weights.items())
+            moves.append((distance,penalty,sha((str(seed)+':'+key).encode()),key,in_train))
+        if not moves:
+            break
+        _,_,_,key,in_train = min(moves)
+        group = groups[key]
+        group_ids = set(map(identity,group))
+        if in_train:
+            train = [r for r in train if identity(r) not in group_ids]
+            heldout.extend(group)
+        else:
+            heldout = [r for r in heldout if identity(r) not in group_ids]
+            train.extend(group)
+        train_counts = Counter((r['chain'],r.get('complexity_class','UNRECOVERED')) for r in train)
     if not heldout or not train:
         return dict(result, status='BLOCKED_INSUFFICIENT_STRATIFIABLE_DATA', reason='Rounding/group constraints leave an empty partition')
     result.update(status='FROZEN', train_ids=sorted(map(identity, train)), heldout_ids=sorted(map(identity, heldout)))
