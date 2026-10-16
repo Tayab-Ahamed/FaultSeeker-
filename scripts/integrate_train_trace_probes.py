@@ -34,9 +34,13 @@ def integrate(root=ROOT,write_index=True):
                 'complexity':{'complexity_class':'UNRECOVERED','reason':'Historical contract code not acquired; no inferred complexity'}}
             path=base/'chain_trace_probe/integrated'/(row['chain']+'-'+row['txn_hash']+'.json.gz')
             payload=gzip.compress(json.dumps(capture,sort_keys=True).encode(),mtime=0)
-            if path.exists() and path.read_bytes()!=payload: raise ValueError('Immutable integrated capture differs')
-            path.parent.mkdir(parents=True,exist_ok=True)
-            path.write_bytes(payload)
+            if path.exists():
+                existing_content=gzip.decompress(path.read_bytes())
+                if existing_content!=gzip.decompress(payload):
+                    raise ValueError('Immutable integrated capture content differs')
+            else:
+                path.parent.mkdir(parents=True,exist_ok=True)
+                path.write_bytes(payload)
             accepted.append({'identity':observation['identity'],'status':'CAPTURED_CALL_TRACE',
                 'artifact':bind(path,root),'frame_count':len(list(walk(tree))),
                 'trace_identity_verified':True,'storage_trace_complete':False})
