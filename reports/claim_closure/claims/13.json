@@ -2,12 +2,12 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval.",
-  "verification_scope": "Frozen TRAIN-only real traces; native historical node and canonical Anvil proof paths verified separately; no held-out or overall F1 inference",
+  "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval. A genuine accepted TRAIN Beanstalk failure review reproduces the structural score 0.80 from successful attacker-contract callback nesting. CertiK/Halborn independently support governance capture as the vulnerability root cause; the reentrancy label remains false. Current relevant detector source files match the recorded experiment snapshot. No storage-complete observation exists for this case in that experiment. This documents a causal-attribution false positive without changing weights, labels or interpreting missing evidence as a negative. All nine stored structural observations were then reproduced on their accepted real TRAIN captures. The three-bit all-true vector occurs in five root-cause reentrancy positives and the Beanstalk negative, so a decision depending only on those bits cannot distinguish them by changing weights or cutoffs. This does not bound the richer full detector/system; negative here means a different exploit root cause, not a benign transaction. All annotation authorship is Codex public-source consensus under the approved two-independent-publisher policy; no independent human review is asserted.",
+  "verification_scope": "Frozen TRAIN-only real traces; native historical node and canonical Anvil proof paths verified separately; no held-out or overall F1 inference; selected Beanstalk semantic failure reproduced from authenticated real capture and source-consensus annotation, not a new population metric",
   "requirements_unmet": [
     "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
   ],
-  "human_decision": "No decision needed; continue train-only evidence acquisition and semantic failure analysis",
+  "human_decision": "No label decision required. Recorded-input analysis is allowed; any new live inference needs separate explicit authorization because the previous pilot allowance is consumed.",
   "acceptance_tests": [
     "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
     "tests/test_authentic_research_runner.py::test_runner_executes_real_train_detectors_without_heldout_or_label_input",
@@ -188,6 +188,18 @@
     {
       "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/system_sources.json.gz",
       "sha256": "8fe8efcca3e78f5a268335345d591706720511e00710817da2b3b591898318bd"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/BEANSTALK_REAL_FAILURE_ANALYSIS.json",
+      "sha256": "818e2b164d9bbf6d31329a7eaea1cba37610ade3921ade0d4f7086083a4336f5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/REAL_TRAIN_STRUCTURAL_COLLISION.json",
+      "sha256": "26e05cd62e995473a13d7291bb8cab132bc8c026eb1e6d5f2a55038e294901f3"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/REAL_TRAIN_FAILURE_ANALYSIS_REVIEW.json",
+      "sha256": "af33dcfc46b24887664cc89059b095b22f08e789d30d6b5ec6dc34b34591c547"
     }
   ],
   "session_date": "2026-10-15",
@@ -203,5 +215,17 @@
   "train_semantic_repair": {
     "path": "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",
     "sha256": "1ac2121d30210430e2ea7d5281ebee4a11a835260573c049021cc494668fde06"
+  },
+  "real_train_failure_analysis": {
+    "path": "reports/cohort_rebuild_v2/BEANSTALK_REAL_FAILURE_ANALYSIS.json",
+    "sha256": "818e2b164d9bbf6d31329a7eaea1cba37610ade3921ade0d4f7086083a4336f5"
+  },
+  "real_train_feature_collision": {
+    "path": "reports/cohort_rebuild_v2/REAL_TRAIN_STRUCTURAL_COLLISION.json",
+    "sha256": "26e05cd62e995473a13d7291bb8cab132bc8c026eb1e6d5f2a55038e294901f3"
+  },
+  "real_train_failure_review": {
+    "path": "reports/cohort_rebuild_v2/REAL_TRAIN_FAILURE_ANALYSIS_REVIEW.json",
+    "sha256": "af33dcfc46b24887664cc89059b095b22f08e789d30d6b5ec6dc34b34591c547"
   }
 }

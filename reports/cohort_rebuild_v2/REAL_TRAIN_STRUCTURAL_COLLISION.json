@@ -1,0 +1,342 @@
+{
+  "scope": "Authenticated real TRAIN feature-collision diagnosis; no synthetic data, tuning or new performance estimate",
+  "config": {
+    "method": "real-train-structural-input-collision-review-v1",
+    "seed": 1729,
+    "source_summary": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json",
+      "sha256": "95465ceeedbfec9d8052fdfbf545350b96d0b9a345988a5b170ef1baa52622b6"
+    },
+    "scope": "All recorded structural observations from frozen TRAIN, not full cohort or held-out",
+    "signal_fields": [
+      "same_function_reentry",
+      "cross_function_reentry",
+      "reentry_before_return"
+    ],
+    "threshold_or_weight_search": false
+  },
+  "observed_count": 9,
+  "frozen_train_count": 10,
+  "unobserved_train_ids": [
+    "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+  ],
+  "groups": [
+    {
+      "signal_values": {
+        "same_function_reentry": true,
+        "cross_function_reentry": true,
+        "reentry_before_return": true
+      },
+      "positive_labels": 5,
+      "negative_labels": 1,
+      "members": [
+        {
+          "identity": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+          "root_cause_reentrancy_label": true,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+            "sha256": "8dfbd9fb0841125b8635216687f1788faa196d6ba92583dae3c881e564b97c37"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json.gz",
+            "sha256": "6b81421b82009ac16edc728448076cf7bd76013afdf76e3c2ebd93e43800b160"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+          "root_cause_reentrancy_label": false,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+            "sha256": "02834c9e630876c4797aa75cd9e080eaca7fb9e49e79302cb72a5ecbce7933b9"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json.gz",
+            "sha256": "889afaac8257b4a7d8395048cb9947bde2e2ef47526099857aa7bae423fad45e"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+          "root_cause_reentrancy_label": true,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+            "sha256": "ef05b1c1ece3a4f2c8f73b81c28d6ab6bdf8b51d5d23e206c153661ad5d4b4cb"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+            "sha256": "a1fc0985a7cf791b50178c2241c6da626af628c5c53e4742aef344e0219d0ca5"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+          "root_cause_reentrancy_label": true,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+            "sha256": "9224fc7d542613d086ebc6f1cfcf35e9fe342941e11a4283cc451ea6817bf593"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+            "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+          "root_cause_reentrancy_label": true,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+            "sha256": "1ed09f936d58f833de8de0978cec48eeb85edb0c7c9bd63a4c4ee194a2f008c4"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+            "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+          "root_cause_reentrancy_label": true,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+            "sha256": "9fff48154d1494d0e0a5fa4caca37d5a39b1c2b255f475b2e7893f9085b2aebe"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json.gz",
+            "sha256": "14d1edf016938c6fa7b7e5ec2a174b106dbb533aa55a2faedc25330df11f7d14"
+          },
+          "detector_result": {
+            "score": 0.8,
+            "detected": true,
+            "tier": "CONFIRMED_REENTRANCY",
+            "signals": {
+              "same_function_reentry": true,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "signal_values": {
+        "same_function_reentry": false,
+        "cross_function_reentry": true,
+        "reentry_before_return": true
+      },
+      "positive_labels": 0,
+      "negative_labels": 2,
+      "members": [
+        {
+          "identity": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+          "root_cause_reentrancy_label": false,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+            "sha256": "5c9afab7b4b7f008476d18b854a037f52a25839ad8df4cf6ab4f2392aa808e8e"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+            "sha256": "10b82a7f90d86983d4af821b3206d5d17c7b009a3d7f434ed9eff330f518d196"
+          },
+          "detector_result": {
+            "score": 0.525,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        },
+        {
+          "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+          "root_cause_reentrancy_label": false,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+            "sha256": "c8719a05af0af546e3f3fd03107b39ed5a8adfbeb06fa7522b4765fdf0a7acc3"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+            "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a"
+          },
+          "detector_result": {
+            "score": 0.525,
+            "detected": true,
+            "tier": "POSSIBLE_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": true,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "signal_values": {
+        "same_function_reentry": false,
+        "cross_function_reentry": false,
+        "reentry_before_return": true
+      },
+      "positive_labels": 0,
+      "negative_labels": 1,
+      "members": [
+        {
+          "identity": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+          "root_cause_reentrancy_label": false,
+          "annotation": {
+            "path": "reports/cohort_rebuild_v2/annotations/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+            "sha256": "a39a32fcb474283ca790eac3921572592c7cdacae669f145f869639d95325244"
+          },
+          "call_capture": {
+            "path": "reports/cohort_rebuild_v2/traces/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+            "sha256": "43e1f8db0c7f2445f72f4d79f4db4d5dcfc02999f4f8e2d44f6a0a55872cb53f"
+          },
+          "detector_result": {
+            "score": 0.2625,
+            "detected": false,
+            "tier": "UNLIKELY_REENTRANCY",
+            "signals": {
+              "same_function_reentry": false,
+              "cross_function_reentry": false,
+              "reentry_before_return": true,
+              "slot_rewrite": false,
+              "write_after_call": false,
+              "state_slot_reentry": false
+            },
+            "context": {
+              "fallback_mode": true,
+              "storage_trace_available": false,
+              "paper_profile": true
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "finding": "The same all-true structural vector is observed in five independently adjudicated reentrancy positives and the governance-capture negative Beanstalk. A deterministic decision based only on these three bits must assign all six the same prediction; no weights or cutoff can separate them.",
+  "limits": [
+    "This is a representation limitation on nine observed TRAIN cases only, not a bound on the storage-aware or full multi-agent system.",
+    "No threshold/weight search was performed and no optimized score is reported.",
+    "One frozen TRAIN case lacks the required captured call trace; absence remains unscored.",
+    "Annotations are joined after each actual prediction; expected labels never enter the detector.",
+    "The complete real-data system and its held-out performance remain unverified."
+  ],
+  "metrics": null,
+  "software_fixtures_used": false,
+  "new_network_requests": 0,
+  "new_spend_usd": 0,
+  "real_ledger_unchanged": true,
+  "heldout_used": false
+}

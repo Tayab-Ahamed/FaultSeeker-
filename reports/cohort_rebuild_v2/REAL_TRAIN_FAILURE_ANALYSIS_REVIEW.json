@@ -1,0 +1,37 @@
+{
+  "scope": "Read-only review of authentic TRAIN failure artifacts; wording clarification, no new model/prediction/metric",
+  "inputs": [
+    {
+      "path": "reports/cohort_rebuild_v2/BEANSTALK_REAL_FAILURE_ANALYSIS.json",
+      "sha256": "818e2b164d9bbf6d31329a7eaea1cba37610ade3921ade0d4f7086083a4336f5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/REAL_TRAIN_STRUCTURAL_COLLISION.json",
+      "sha256": "26e05cd62e995473a13d7291bb8cab132bc8c026eb1e6d5f2a55038e294901f3"
+    }
+  ],
+  "checks": [
+    "Evidence bindings verified against local cached bytes",
+    "Nine observations belong to frozen TRAIN and use accepted source-consensus annotations",
+    "Recorded call paths, successful nesting and CertiK actor attribution verified",
+    "Relevant detector source bytes match the historical experiment snapshot",
+    "No causal-negative/benign conflation or full-system impossibility inference"
+  ],
+  "annotation_policy": {
+    "author": "Codex",
+    "mode": "public-source-consensus-v1",
+    "independent_security_publishers_per_row": 2,
+    "independent_human_review": false
+  },
+  "wording_clarification": {
+    "original_phrase": "five independently adjudicated reentrancy positives",
+    "read_as": "five public-source-adjudicated reentrancy positives",
+    "reason": "Independence belongs to the publisher artifacts. No separate human adjudication is asserted."
+  },
+  "historical_artifacts_retained_unchanged": true,
+  "metrics": null,
+  "heldout_used": false,
+  "new_network_requests": 0,
+  "new_spend_usd": 0,
+  "software_fixtures_used": false
+}

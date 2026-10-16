@@ -1,0 +1,188 @@
+{
+  "scope": "Real accepted TRAIN transaction failure analysis; no synthetic inputs, held-out data, inference calls or new population metrics",
+  "run_id": "beanstalk-real-failure-review-2026-10-16",
+  "config": {
+    "method": "real-train-semantic-failure-review-v1",
+    "seed": 1729,
+    "selection": "Previously recorded structural false positives, TRAIN only; not a new performance population",
+    "summary": {
+      "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json",
+      "sha256": "95465ceeedbfec9d8052fdfbf545350b96d0b9a345988a5b170ef1baa52622b6"
+    },
+    "split": {
+      "path": "benchmark/eval_split.json",
+      "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+    },
+    "no_threshold_or_weight_changes": true
+  },
+  "identity": "eth:0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+  "incident": "Beanstalk",
+  "admission": {
+    "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+    "chain": "eth",
+    "accepted": true,
+    "reasons": [],
+    "rpc_identity_verified": true,
+    "independent_security_publishers": 2,
+    "annotation_verified": true,
+    "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+    "sha256": "49d579b9de184685115764d702a9c0a7f4b46919be3bedb95f61761976860817"
+  },
+  "annotation": {
+    "path": "reports/cohort_rebuild_v2/annotations/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+    "sha256": "02834c9e630876c4797aa75cd9e080eaca7fb9e49e79302cb72a5ecbce7933b9"
+  },
+  "publishers": [
+    {
+      "publisher_id": "CertiK",
+      "source_url": "https://www.certik.com/blog/revisiting-beanstalk-farms-exploit",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+        "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+      },
+      "vulnerability_class": "Flash-loan governance capture"
+    },
+    {
+      "publisher_id": "Halborn",
+      "source_url": "https://www.halborn.com/blog/post/explained-the-beanstalk-hack-april-2022",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/0f04765fc43f47a50be47f152d0e24f21182c2c6e62bae5282f5cfa7c666e759.gz",
+        "sha256": "6376665e84817da779baffe8bd73bec5e5a1110bc07e8b142f39456885ecbd2a"
+      },
+      "vulnerability_class": "Flash-loan governance capture"
+    }
+  ],
+  "captured_call_trace": {
+    "path": "reports/cohort_rebuild_v2/traces/eth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json.gz",
+    "sha256": "889afaac8257b4a7d8395048cb9947bde2e2ef47526099857aa7bae423fad45e"
+  },
+  "source_checks": [
+    {
+      "path": "benchmark/detector_experiments.py",
+      "sha256": "6aec74d82a4ec6f1b311300a9efcdbb9d79e2230830886748119a39bb8d9cc7c",
+      "matches_historical_source": true
+    },
+    {
+      "path": "faultseeker/forensics/signal_extractor.py",
+      "sha256": "343530529a01835ac8870ab19e8850d79a71938e73e5c35ae8f42b35a9e179fa",
+      "matches_historical_source": true
+    },
+    {
+      "path": "faultseeker/core/paper_profile.py",
+      "sha256": "57b93108f982080c73c9d0f87217347222b9abf2ac9f1410d63037634d658078",
+      "matches_historical_source": true
+    },
+    {
+      "path": "faultseeker/data_collection/storage_trace.py",
+      "sha256": "d4bbbb58f42835d01f6e81dc5e45afbf8769b7e8ef60bff1cdd48f32f3e57944",
+      "matches_historical_source": true
+    },
+    {
+      "path": "faultseeker/utils/rpc_provider.py",
+      "sha256": "4bd1945d842554b77006f648eaa08c263b70a6edd231f98e6f1114723e50056a",
+      "matches_historical_source": true
+    }
+  ],
+  "historical_source_snapshot": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/system_sources.json.gz",
+    "sha256": "8fe8efcca3e78f5a268335345d591706720511e00710817da2b3b591898318bd"
+  },
+  "current_reproduction": {
+    "predicted_exploit": true,
+    "algorithm": "structural",
+    "input_sha256": "939d0989e622eb13e26fd8c14bd7bace46eff34f668cacd740bca0cf70c1b968",
+    "detector_result": {
+      "score": 0.8,
+      "detected": true,
+      "tier": "CONFIRMED_REENTRANCY",
+      "signals": {
+        "same_function_reentry": true,
+        "cross_function_reentry": true,
+        "reentry_before_return": true,
+        "slot_rewrite": false,
+        "write_after_call": false,
+        "state_slot_reentry": false
+      },
+      "context": {
+        "fallback_mode": true,
+        "storage_trace_available": false,
+        "paper_profile": true
+      }
+    },
+    "ranked_functions": [],
+    "query_records": [],
+    "duration_seconds": 0.019623200001660734
+  },
+  "matches_saved_prediction_and_signals": true,
+  "accepted_reentrancy_root_cause_label": false,
+  "accepted_vulnerability_class": "Flash-loan governance capture",
+  "actual_successful_nested_frames": [
+    {
+      "path": "0.1.0.0.3",
+      "call_type": "CALL",
+      "caller": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+      "callee": "0x79224bc0bf70ec34f0ef56ed8251619499a59def",
+      "selector": "0x920f5c84",
+      "error": null
+    },
+    {
+      "path": "0.1.0.0.3.1.1",
+      "call_type": "CALL",
+      "caller": "0x87898263b6c5babe34b4ec53f22d98430b91e371",
+      "callee": "0x79224bc0bf70ec34f0ef56ed8251619499a59def",
+      "selector": "0x10d1e85c",
+      "error": null
+    },
+    {
+      "path": "0.1.0.0.3.1.1.1",
+      "call_type": "CALL",
+      "caller": "0x79224bc0bf70ec34f0ef56ed8251619499a59def",
+      "callee": "0x46e4d8a1322b9448905225e52f914094dbd6dddf",
+      "selector": "0x022c0d9f",
+      "error": null
+    },
+    {
+      "path": "0.1.0.0.3.1.1.1.1",
+      "call_type": "CALL",
+      "caller": "0x46e4d8a1322b9448905225e52f914094dbd6dddf",
+      "callee": "0x79224bc0bf70ec34f0ef56ed8251619499a59def",
+      "selector": "0x10d1e85c",
+      "error": null
+    }
+  ],
+  "source_attributed_actor": [
+    {
+      "publisher_id": "CertiK",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/904490a996833de932b90e9539fbd6917d1450f45cc7e13073d5f37140d743e0.gz",
+        "sha256": "4c0f7823d6a1abd892bc7ebe53909e00881406e216c6301bf8a4a0ffbce92706"
+      },
+      "literal_role_phrase": "attacker contract",
+      "address": "0x79224bc0bf70ec34f0ef56ed8251619499a59def"
+    }
+  ],
+  "interpretation": "Successful same-function and cross-function callback nesting is present in an address independently identified by CertiK as the attacker contract. The accepted CertiK/Halborn adjudication attributes exploit causality to flash-loan-funded governance capture. A whole-transaction structural positive is therefore a false positive for the root-cause reentrancy endpoint, not a fabricated trace signal or evidence to relabel the incident.",
+  "scope_limits": [
+    "This is selected TRAIN failure analysis, not a new F1 estimate or representative population.",
+    "Same-transaction callback nesting does not by itself prove a vulnerable victim state invariant.",
+    "No full opcode observation for this transaction is available in the scored experiment; missing storage evidence is not interpreted as absence of storage operations.",
+    "Publisher annotation and actor attribution enter only after prediction; they are not injected into the detector.",
+    "No weights, tier boundaries, labels, cohort membership or held-out partition changed.",
+    "No claim that a generic attacker-filtering heuristic would resolve all such cases."
+  ],
+  "software_fixtures_used": false,
+  "metrics": null,
+  "heldout_used": false,
+  "new_external_requests": 0,
+  "new_spend_usd": 0,
+  "assessment": "Share with caveats: authenticated single-incident semantic failure, not a publication-performance result",
+  "reproduce": [
+    "Verify every input SHA-256 binding and frozen TRAIN membership.",
+    "Load the captured call trace with scripts.run_authentic_research._capture(row=accepted_train_row, full=False).",
+    "Call benchmark.detector_experiments.detector_observation(capture, structural); no labels enter this call.",
+    "Join the accepted annotation after prediction; follow the four raw calls paths listed above and verify publisher actor attribution."
+  ]
+}
