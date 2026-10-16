@@ -184,3 +184,8 @@ The20 provenance-complete rows are now published in benchmark/versions/cohort_v3
 ## Actual v3 TRAIN baseline (2026-10-16)
 
 The preregistered20-row version has14TRAIN identities. Real cached-input component and production Stage1 runs observe9/14:structural TP5 FP1 FN0 TN3,precision0.8333333333,recall1,F1=0.9090909091; repeated-address F1=0.7142857143. Full-storage F1=1.0 is limited to5 available cases (2positive,3negative), not the full TRAIN set. All five missing captures remain explicit. No overall-system F1, paper CI, billed savings or model-assisted localization number is inferred. Exact commands and hash-bound outputs: reports/cohort_rebuild_v3/BASELINE_REAL_TRAIN.json. Zero new RPC/model calls or spend; held-out sealed, final exam unconsumed, weights/thresholds unchanged. Claim13 remains UNVERIFIABLE for its full paper scope.
+
+
+### Claim 4: fresh complete provenance gate (2026-10-16)
+
+All 20 v3 admitted records pass a fresh revalidation of their hash-bound publisher bodies, source-consensus annotations and matching successful live-RPC transactions/receipts. Chains: Ethereum 10, BSC 4, Base 2, Polygon 2, Fantom 1, Gnosis 1. Annotation author is Codex; two independent publishers supply the mechanism support. No independent human reviewers are claimed. The paper-wide claim remains UNVERIFIABLE: 226 additional rows and four additional chains are missing. Earlier quarantined SwapX/Level/Orion BSC snapshots remain historical evidence; later successful public-BSC captures support their admission. Evidence: reports/cohort_rebuild_v3/PROVENANCE_REVALIDATION.json. No network calls, predictions, fixture evidence or heldout partition payload reads were used.

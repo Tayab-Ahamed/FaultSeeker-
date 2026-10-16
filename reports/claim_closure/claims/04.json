@@ -2,10 +2,10 @@
   "id": 4,
   "claim": "Real transactions, two independent sources, annotations",
   "status": "UNVERIFIABLE",
-  "reason": "The user explicitly approved Codex-authored adjudication based on two independent security publishers agreeing on vulnerability mechanism, with documented reasoning; independent human reviewer records do not exist and are not claimed. A fresh assembled cached-evidence admission recheck of1108 candidates confirms17 have complete recorded public-source consensus;14 also meet matching RPC transaction/receipt evidence and exactly match the admitted manifest. Three source-reviewed Arbitrum candidates still lack RPC identity/receipt verification. The full intended246-row cohort is not authenticated, so the paper-wide claim remains UNVERIFIABLE. No fixtures or mock responses support this decision. Additional cached-source review now adjudicates SwapX from the same exact transaction linked independently by BlockSec and PeckShield: insufficient authorization permits abuse of approved ERC-20 tokens. This is Codex source consensus, not a human reviewer claim. Its new BSC RPC probe stopped on RuntimeError during chain identification after one metered request, before transaction or receipt retrieval; the specific provider cause is not retained. The new annotated candidate remains quarantined and adds no admitted cohort row.",
-  "verification_scope": "Cached real publisher/RPC evidence and explicit Codex source-consensus annotation records; not independent human review or full paper cohort",
+  "reason": "All20 unique transactions in the published v3 cohort now pass a fresh full admission revalidation against hash-bound real source, annotation and matching successful live-RPC transaction/receipt evidence across6chains. This supersedes the earlier14-row count and source-only SwapX/Level/Orion-BSC quarantines: their successful official-public-BSC fallback evidence is retained alongside earlier failures. The user-authorized annotation standard is explicit Codex-authored source consensus from two independent security publishers agreeing on mechanism, with attributed excerpts and reasoning; independent human reviewers are not claimed. The intended246-row,10-chain cohort is still short by226 fully admitted rows and4chains. Therefore the full paper claim remains UNVERIFIABLE; the20-row accepted subset is genuinely supported, with no fixture or model-result substitutions. This audit opens public provenance records only, not the sealed heldout partition payload, and makes no performance inference.",
+  "verification_scope": "All20 admitted v3 records, full source/RPC integrity gate and explicit public-source-consensus annotations; not the intended246-row cohort or independent human review",
   "requirements_unmet": [
-    "Full intended cohort meeting two independent security-publisher mechanism accounts, documented public-source-consensus annotation and matching RPC transaction/receipt evidence"
+    "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains"
   ],
   "human_decision": "Existing user approval permits source-consensus adjudication; no further human-review approval or invented reviewer records are needed.",
   "acceptance_tests": [
@@ -87,10 +87,26 @@
     {
       "path": "reports/cohort_rebuild_v2/SWAPX_SOURCE_ADJUDICATION.json",
       "sha256": "3d09e5fdb634855f065154d8c4a670358f0b6efb2bcac9dab9b8cc9e7f3f0377"
+    },
+    {
+      "path": "reports/cohort_rebuild_v3/PROVENANCE_REVALIDATION.json",
+      "sha256": "35d07ed52a0e21d19a65de3650a246433076b16cafb9adaa545b4e67a9bdb42d"
+    },
+    {
+      "path": "reports/cohort_rebuild_v3/publication.json",
+      "sha256": "8674a0873b3646da13a566516bbd38ff85d7b5768c693b09e0ad8d50e3e36d7a"
+    },
+    {
+      "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+      "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/BSC_FALLBACK_ADMISSIONS.json",
+      "sha256": "4599266a5d00fda7a426ddf06c0fa6306e03003295f45324e698e93f096c7339"
     }
   ],
   "session_date": "2026-10-16",
-  "next_input_artifact": "Remaining intended cohort rows need two independent publisher mechanism accounts, source-linked adjudication and matching RPC transaction/receipt evidence; no fictional reviewer identities or signatures are required.",
+  "next_input_artifact": "226 additional fully admitted unique exploit transactions, covering4 additional chains; no invented reviewer records required.",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/04.json",
   "paper_verdict": "PARTIAL-PROVENANCE-RECOVERED",
