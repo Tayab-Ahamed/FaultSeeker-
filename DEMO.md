@@ -1,8 +1,10 @@
 # FaultSeeker++ local demo
 
-The live demo is intentionally no-LLM. It runs deterministic Stage 1 only,
-uses public/free explorer and RPC fallbacks, and never constructs or calls an
-LLM provider. The default pipeline behavior is unchanged.
+The judge demo is intentionally offline and no-LLM. It runs deterministic
+Stage 1 only, never constructs or calls an LLM provider, and does not require
+an RPC, explorer, or paid credential. The default pipeline behavior is
+unchanged. A separate live free-RPC command is documented below for optional
+network rehearsal.
 
 ## Clean setup
 
@@ -49,6 +51,7 @@ env -u DRPC_RPC_URL -u DRPC_API_KEY \
   -u XAI_API_KEY -u DASHSCOPE_API_KEY \
   PYTHON_DOTENV_DISABLED=true \
   PYTHONPATH=. .venv/bin/python -m faultseeker.main \
+    --offline \
     --no-llm \
     -txn_hash 0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb \
     -chain eth \
@@ -64,6 +67,7 @@ env -u DRPC_RPC_URL -u DRPC_API_KEY \
   -u XAI_API_KEY -u DASHSCOPE_API_KEY \
   PYTHON_DOTENV_DISABLED=true \
   PYTHONPATH=. .venv/Scripts/python.exe -m faultseeker.main \
+    --offline \
     --no-llm \
     -txn_hash 0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb \
     -chain eth \
@@ -88,24 +92,30 @@ PYTHONPATH=. .venv/bin/python -m faultseeker.main --no-llm \
   -chain bsc -output demo_outputs/bsc_0x13d19809.json
 ```
 
-The accepted-cohort source is `benchmark/benchmark_classification_fixed.csv`.
 The command writes one JSON file per successful run. Each result includes
-`analysis_mode=no-llm-free-rpc`, `stage_completed=stage1`,
-`stage2_bypassed=true`, `llm_cost=0.0`, and the observed trace coverage.
+`analysis_mode=offline-no-llm`, `stage_completed=stage1`,
+`stage2_bypassed=true`, `llm_cost=0.0`, and an explicit local-only limitation.
 
 ## Expected output
 
 The terminal output should include:
 
 ```text
-No-LLM mode: running real deterministic Stage 1 via free/public RPC
+Offline/no-LLM mode: running deterministic Stage 1 only
 Results saved to: demo_outputs/<name>.json
-Stage 2 skipped; no model/provider call was made
+Stage 2 skipped; no model, provider, RPC, or explorer call was made
 ```
 
 The verdict and signals depend on the transaction and on what the public RPC
 returns. This demo does not claim function localization or Stage 3 calibrated
 scores.
+
+## Optional live free-RPC rehearsal
+
+To exercise the real public-RPC path instead of the deterministic judge demo,
+remove `--offline` from the command. This may fail when public endpoints are
+pruned, rate-limited, blocked, or lack archive tracing; such a failure is not
+the offline demo failing.
 
 ## Free-RPC expectations and fallback
 
