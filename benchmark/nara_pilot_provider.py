@@ -5,7 +5,7 @@ import math
 from pathlib import Path
 import threading
 import time
-from benchmark.nara_http_transport import http_transport, TransportDeadlineExceeded, ENDPOINT
+from benchmark.nara_http_transport import http_transport, TransportDeadlineExceeded, TransportWorkerError, ENDPOINT, _sanitize_diagnostic
 from faultseeker.core.llm_router import RoutedAgent
 from faultseeker.utils.agent import AbstractAgent
 
@@ -144,6 +144,7 @@ class _Provider(AbstractAgent):
             return content
         except Exception as exc:
             record['status']='failed';record['error_type']=type(exc).__name__
+            if isinstance(exc,TransportWorkerError):record['transport_diagnostic']=_sanitize_diagnostic(exc.diagnostic)
             record.setdefault('duration_seconds',p.clock()-p.last_start)
             if isinstance(exc,TransportDeadlineExceeded):record['transport_deadline_exceeded']=True
             # Never persist arbitrary exception strings: they may contain headers.

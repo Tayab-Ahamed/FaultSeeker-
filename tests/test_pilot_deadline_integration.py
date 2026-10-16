@@ -16,6 +16,32 @@ def test_default_transport_uses_isolated_deadline_worker():
     assert transport is provider.http_transport
 
 
+def test_worker_diagnostics_survive_provider_boundary_without_secret_text(tmp_path, monkeypatch):
+    from benchmark.nara_http_transport import TransportWorkerError
+    rates = {'input': .1, 'output': .2}
+    monkeypatch.setitem(router_module.COST_RATES, provider.MODEL, rates)
+    guard = SpendGuard(tmp_path/'accounting.json', pricing={provider.MODEL: rates})
+    router = HybridLLMRouter(cloud_model=provider.MODEL, routing_strategy='cloud-only',
+                            remote_model_ids=[provider.MODEL], spend_guard=guard)
+
+    def fail(*args):
+        raise TransportWorkerError({'worker_error_type':'URLError','reason_type':'SSLError',
+                                    'phase':'open','errno':1,'message':'fixture-secret'})
+
+    pilot = provider.NaraPilot(api_key='fixture-secret', router=router,
+                               output_dir=tmp_path/'calls', transport=fail)
+    with pytest.raises(ValueError):
+        pilot.factory('system').query('public fixture')
+    with pytest.raises(provider.StudyStop):
+        pilot.factory('system').query('no retry')
+    record=json.loads((tmp_path/'calls/call-001.json').read_text(encoding='utf-8'))
+    assert record['transport_diagnostic']=={'worker_error_type':'URLError','reason_type':'SSLError',
+                                            'phase':'open','errno':1}
+    assert 'fixture-secret' not in json.dumps(record)
+    assert pilot.calls==1
+    assert [e['event'] for e in guard.report()['events']]==['reserve','settle']
+
+
 def test_failed_transport_records_elapsed_duration_and_settles_once(tmp_path, monkeypatch):
     pricing = {provider.MODEL: {'input': 0.1, 'output': 0.2}}
     monkeypatch.setitem(router_module.COST_RATES, provider.MODEL, pricing[provider.MODEL])

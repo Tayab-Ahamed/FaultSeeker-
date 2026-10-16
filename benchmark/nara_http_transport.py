@@ -18,6 +18,43 @@ from urllib.parse import urlsplit
 
 ENDPOINT='https://router.bynara.id/v1/chat/completions'
 
+
+_ERROR_TYPES=frozenset(('URLError','HTTPError','SSLError','SSLCertVerificationError','TimeoutError',
+    'ConnectionError','ConnectionResetError','ConnectionAbortedError','ConnectionRefusedError',
+    'BrokenPipeError','OSError','PermissionError','FileNotFoundError','gaierror','herror',
+    'ValueError','TypeError','KeyError','JSONDecodeError','UnicodeDecodeError','Error','UnknownError'))
+_PHASES=frozenset(('spawn','request','open','read','response','decode','worker','unknown'))
+
+def _sanitize_diagnostic(value):
+    value=value if isinstance(value,dict) else {}
+    name=value.get('worker_error_type');phase=value.get('phase')
+    out={'worker_error_type':name if isinstance(name,str) and name in _ERROR_TYPES else 'UnknownError',
+         'phase':phase if isinstance(phase,str) and phase in _PHASES else 'unknown'}
+    reason=value.get('reason_type')
+    if isinstance(reason,str) and reason in _ERROR_TYPES:out['reason_type']=reason
+    for key in ('errno','winerror','ssl_verify_code'):
+        number=value.get(key)
+        if type(number) is int and -(2**31)<=number<2**31:out[key]=number
+    status=value.get('http_status')
+    if type(status) is int and 100<=status<=599:out['http_status']=status
+    return out
+
+class TransportWorkerError(ValueError):
+    def __init__(self,diagnostic):
+        self.diagnostic=_sanitize_diagnostic(diagnostic)
+        super().__init__('HTTP transport worker failed safely')
+
+def _safe_error_details(exc,phase):
+    from urllib.error import URLError
+    data={'worker_error_type':type(exc).__name__,'phase':phase}
+    cause=exc
+    if isinstance(exc,URLError) and isinstance(exc.reason,BaseException):
+        cause=exc.reason;data['reason_type']=type(cause).__name__
+    for key,attribute in (('errno','errno'),('winerror','winerror'),('ssl_verify_code','verify_code')):
+        number=getattr(cause,attribute,None)
+        if type(number) is int:data[key]=number
+    return _sanitize_diagnostic(data)
+
 class TransportDeadlineExceeded(TimeoutError):
     pass
 
@@ -45,7 +82,7 @@ def _transport(url,headers,body,timeout,*,loopback=False):
     options={'stdin':subprocess.PIPE,'stdout':subprocess.PIPE,'stderr':subprocess.DEVNULL}
     if os.name=='nt':options['creationflags']=subprocess.CREATE_NO_WINDOW
     try:child=subprocess.Popen(args,**options)
-    except Exception:raise ValueError('HTTP transport worker could not start') from None
+    except Exception as exc:raise TransportWorkerError(_safe_error_details(exc,'spawn')) from None
     finished=threading.Event();expired=threading.Event();watchdog=None
     try:
         remaining=timeout-(time.monotonic()-started)
@@ -75,15 +112,17 @@ def _transport(url,headers,body,timeout,*,loopback=False):
         if watchdog is not None:watchdog.join()
     if expired.is_set() or time.monotonic()-started>=timeout:
         raise TransportDeadlineExceeded('HTTP transport total deadline exceeded; worker reaped')
-    if child.returncode!=0:raise ValueError('HTTP transport worker failed')
+    if child.returncode!=0:raise TransportWorkerError({'worker_error_type':'UnknownError','phase':'worker'})
     try:
         result=json.loads(stdout)
-        if not result.get('ok'):raise ValueError('Worker rejected request')
+        if not isinstance(result,dict):raise ValueError('Invalid worker packet')
+        if result.get('ok') is not True:raise TransportWorkerError(result.get('diagnostic'))
         response=base64.b64decode(result['body'],validate=True)
         returned=result['url'];status=result['status']
         _validate_url(returned,loopback)
         if returned!=url or type(status) is not int:raise ValueError('Invalid transport response identity')
-    except Exception:raise ValueError('HTTP transport failed safely') from None
+    except TransportWorkerError:raise
+    except Exception as exc:raise TransportWorkerError(_safe_error_details(exc,'decode')) from None
     if time.monotonic()-started>=timeout:
         raise TransportDeadlineExceeded('HTTP transport total deadline exceeded; worker reaped')
     return status,response,returned
@@ -101,6 +140,7 @@ def _worker(loopback=False):
     from urllib import request,error
     class NoRedirect(request.HTTPRedirectHandler):
         def redirect_request(self,*args,**kwargs):raise ValueError('Redirect refused')
+    phase='request';observed_status=None
     try:
         packet=json.loads(sys.stdin.buffer.read())
         url=packet['url'];_validate_url(url,loopback);_validate_timeout(packet['timeout'])
@@ -111,11 +151,15 @@ def _worker(loopback=False):
         if loopback:handlers.append(request.ProxyHandler({}))
         opener=request.build_opener(*handlers)
         req=request.Request(url,data=body,headers=headers,method='POST')
+        phase='open'
         try:
             response=opener.open(req,timeout=packet['timeout'])
         except error.HTTPError as exc:response=exc
+        observed_status=response.code
+        phase='read'
         with response:
             raw=response.read();status=response.code;returned=response.geturl()
+        phase='response'
         if returned!=url or 300<=status<400:raise ValueError('Redirect refused')
         authorization=next((v for k,v in headers.items() if k.lower()=='authorization'),'')
         secret=authorization[7:] if authorization.lower().startswith('bearer ') else authorization
@@ -127,7 +171,9 @@ def _worker(loopback=False):
                 raise ValueError('Credential echo refused')
         output={'ok':True,'status':status,'url':returned,'body':base64.b64encode(raw).decode('ascii')}
     except BaseException as exc:
-        output={'ok':False,'error_type':type(exc).__name__}
+        diagnostic=_safe_error_details(exc,phase)
+        if type(observed_status) is int and 100<=observed_status<=599:diagnostic['http_status']=observed_status
+        output={'ok':False,'diagnostic':diagnostic}
     sys.stdout.buffer.write(json.dumps(output).encode('utf-8'));sys.stdout.buffer.flush()
 
 if __name__=='__main__':
