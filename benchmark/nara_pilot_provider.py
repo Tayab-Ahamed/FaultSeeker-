@@ -4,30 +4,14 @@ import json
 from pathlib import Path
 import threading
 import time
-from urllib import request,error
+from benchmark.nara_http_transport import http_transport, TransportDeadlineExceeded, ENDPOINT
 from faultseeker.core.llm_router import RoutedAgent
 from faultseeker.utils.agent import AbstractAgent
 
 MODEL='agnes-2.5-flash'
-ENDPOINT='https://router.bynara.id/v1/chat/completions'
 
 class StudyStop(BaseException):
     """Study boundary must escape broad pipeline Exception handlers."""
-
-class _NoRedirect(request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        raise ValueError('Gateway redirects are prohibited')
-
-def http_transport(url,headers,body,timeout):
-    """TLS verification uses Python's default trust store; never follows redirects."""
-    if url!=ENDPOINT:raise ValueError('Unexpected gateway endpoint')
-    opener=request.build_opener(_NoRedirect())
-    req=request.Request(url,data=body,headers=headers,method='POST')
-    try:
-        with opener.open(req,timeout=timeout) as response:
-            return response.status,response.read(),response.geturl()
-    except error.HTTPError as exc:
-        return exc.code,exc.read(),exc.geturl()
 
 class NaraPilot:
     def __init__(self, *, api_key, router, output_dir, transport=http_transport,
@@ -121,6 +105,7 @@ class _Provider(AbstractAgent):
         record={'call_number':p.calls,'role':self.role,'endpoint':ENDPOINT,'requested_alias':MODEL,
                 'request':payload,'request_sha256':hashlib.sha256(body).hexdigest(),
                 'request_bytes':len(body),'timeout_seconds':60,'history_policy':'system_plus_last_two_completed_turns',
+                'timeout_scope':('total_transport_deadline' if p.transport is http_transport else 'injected_transport'),
                 'billing_confirmed':False,'status':'dispatch_started'}
         try:
             status,raw,url=p.transport(ENDPOINT,{'Authorization':'Bearer '+p._key,'Content-Type':'application/json'},body,60)
@@ -149,6 +134,8 @@ class _Provider(AbstractAgent):
             return content
         except Exception as exc:
             record['status']='failed';record['error_type']=type(exc).__name__
+            record.setdefault('duration_seconds',p.clock()-p.last_start)
+            if isinstance(exc,TransportDeadlineExceeded):record['transport_deadline_exceeded']=True
             # Never persist arbitrary exception strings: they may contain headers.
             raise ValueError('Nara pilot transport failed: '+type(exc).__name__) from None
         finally:
