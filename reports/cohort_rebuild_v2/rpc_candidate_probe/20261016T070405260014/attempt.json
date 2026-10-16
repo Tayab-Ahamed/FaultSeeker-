@@ -1,0 +1,30 @@
+{
+  "identity": "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+  "provider": "official-public-avalanche",
+  "provider_documentation": "https://build.avax.network/docs/rpcs/c-chain",
+  "prior_failed_attempt": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T070316370885/attempt.json",
+    "sha256": "7d4cf597e5e80dc39bd546fc70a6127da5a146d9229778a6e6064ac8b227eff3"
+  },
+  "observed_chain_id": 43114,
+  "observation": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T070405260014/observation.json",
+    "sha256": "58bd4831eb3c1ffcd14d597d5be4d92ec8d9d98458a7e139eb96c5de25ab1788"
+  },
+  "identity_receipt_match": true,
+  "receipt_status": "0x1",
+  "accounting": {
+    "outbound_rpc_requests": 3,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1
+    },
+    "estimated_cost_usd": 1.8e-05,
+    "cumulative_ledger_estimate_usd": 1.9740689999998888,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "scope": "One additional real exploit admitted after two independent source analyses and matching successful public-RPC transaction/receipt; not a prediction or metric",
+  "frozen_population": {
+    "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+    "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+  },
+  "frozen_count": 20,
+  "new_accepted_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/platypus_feb_2023/accepted_record.json",
+    "sha256": "9ad479ff7620de06bad9bbc8ed9e10fcc651cecc7c89814df162e4e1e871c892"
+  },
+  "admission": {
+    "txn_hash": "0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+    "chain": "avalanche",
+    "accepted": true,
+    "reasons": [],
+    "rpc_identity_verified": true,
+    "independent_security_publishers": 2,
+    "annotation_verified": true,
+    "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+  },
+  "public_rpc_attempt": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T070405260014/attempt.json",
+    "sha256": "646bb62807e13bbb1ed7f0ffa8cf2a47bfa76d2299ad7eb02592dbe4190b218c"
+  },
+  "prior_drpc_failure": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T070316370885/attempt.json",
+    "sha256": "7d4cf597e5e80dc39bd546fc70a6127da5a146d9229778a6e6064ac8b227eff3"
+  },
+  "source_complete_unique_available": 21,
+  "available_chain_count": 7,
+  "available_chains": [
+    "avalanche",
+    "base",
+    "bsc",
+    "eth",
+    "fantom",
+    "gnosis",
+    "polygon"
+  ],
+  "unassigned_additions": 1,
+  "frozen_split_changed": false,
+  "heldout_partition_payload_opened": false,
+  "prediction_dispatched": false,
+  "fixture_evidence_used": false,
+  "new_rpc_requests": 5,
+  "incremental_conservative_usd": 3e-05,
+  "cumulative_conservative_usd": 1.9740689999998888,
+  "billing_confirmed": false,
+  "localization_limit": "Only publisher-supported emergencyWithdraw name and MasterPlatypusV4 address; no deployed-source full signature/line target established.",
+  "drpc_failure_limit": "Confirmed chain43114 then eth_getTransactionByHash raised RuntimeError; RPC code was not retained. No receipt dispatch followed."
+}

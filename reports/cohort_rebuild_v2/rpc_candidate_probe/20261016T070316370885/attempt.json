@@ -1,0 +1,29 @@
+{
+  "identity": "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+  "provider": "authorized-dRPC-avalanche",
+  "source_artifacts": [
+    {
+      "path": "reports/provenance_hunt/http/2c5689774f0f0bb9b9b009e4077cc0a765faaef966c5897bf891f0f7f591a264.gz",
+      "sha256": "a31a5cd2fd95f37c0e58e5e126f8499c0e5fd21dab56520d27cd6a863cf0460f"
+    },
+    {
+      "path": "reports/provenance_hunt/http/d515bdddeb0df0b81d0c8fa7d2412469d9c4dae6371bc72b87a5b36702846586.gz",
+      "sha256": "0b046e7678184f56271cd7d5adb811c31f363858dc0ed44770dcd658ccbe34da"
+    }
+  ],
+  "observed_chain_id": 43114,
+  "error_type": "RuntimeError",
+  "accounting": {
+    "outbound_rpc_requests": 2,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1
+    },
+    "estimated_cost_usd": 1.2e-05,
+    "cumulative_ledger_estimate_usd": 1.974050999999889,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

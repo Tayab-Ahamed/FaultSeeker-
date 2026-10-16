@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+  "chain": "avalanche",
+  "is_exploit": true,
+  "vuln_type": "Business logic - collateral withdrawal with outstanding debt",
+  "adjudication_basis": "Both independent security publishers explicitly label the same Avalanche transaction as the attack and explain emergencyWithdraw allowing collateral withdrawal despite outstanding borrowed debt. BlockApex discusses the improper solvency check; Numen Cyber gives its own technical analysis and linked reproduction. Neither article attributes its account to the other. Successful matching historical transaction and receipt are separately recorded through the official public Avalanche RPC. This is source-consensus adjudication by Codex, not human reviewer attestation.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockApex",
+      "source_url": "https://blockapex.io/platypus-finance-hack-analysis/",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/2c5689774f0f0bb9b9b009e4077cc0a765faaef966c5897bf891f0f7f591a264.gz",
+        "sha256": "a31a5cd2fd95f37c0e58e5e126f8499c0e5fd21dab56520d27cd6a863cf0460f"
+      },
+      "vulnerability_class": "Business logic - collateral withdrawal with outstanding debt",
+      "mechanism_excerpt": "an improper solvency check that allows an attacker to withdraw their collateral without fully paying back their debt."
+    },
+    {
+      "publisher_id": "Numen Cyber",
+      "source_url": "https://www.numencyber.com/platypus-finance-project-hit-by-8-5m-flash-loan-attack/",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/d515bdddeb0df0b81d0c8fa7d2412469d9c4dae6371bc72b87a5b36702846586.gz",
+        "sha256": "0b046e7678184f56271cd7d5adb811c31f363858dc0ed44770dcd658ccbe34da"
+      },
+      "vulnerability_class": "Business logic - collateral withdrawal with outstanding debt",
+      "mechanism_excerpt": "the function does not check the user\u2019s status in repaying their borrowed funds, allowing the hacker to directly withdraw the stake."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true,
+  "taxonomy_rationale": "Collateral/debt accounting inconsistency is established; no sufficiently specific common SWC/DASP category is established by the evidence, so both remain unmapped.",
+  "transaction_role": "Exploit execution explicitly identified by both publishers, not proxy deployment, minter configuration or recovery.",
+  "localization_targets": "Publisher-supported function name emergencyWithdraw and MasterPlatypusV4 address; exact deployed-source signature and line targets unavailable."
+}

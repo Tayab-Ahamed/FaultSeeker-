@@ -1,0 +1,31 @@
+{
+  "schema": 2,
+  "name": "Platypus February 2023",
+  "transaction_hash": [
+    "0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430"
+  ],
+  "chain": "avalanche",
+  "cause": "Business logic - collateral withdrawal with outstanding debt",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/platypus_feb_2023/annotation.json",
+    "sha256": "d48bd81f017064b6af13673e6fc02fd5d23687dcc2ea3d7819da86a19eda9c3d"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "address": "0xc007f27b757a782c833c568f5851ae1dfe0e6ec7",
+      "function_name": "emergencyWithdraw",
+      "source": {
+        "path": "reports/provenance_hunt/http/d515bdddeb0df0b81d0c8fa7d2412469d9c4dae6371bc72b87a5b36702846586.gz",
+        "sha256": "0b046e7678184f56271cd7d5adb811c31f363858dc0ed44770dcd658ccbe34da"
+      },
+      "scope": "Publisher-supported name/address only; no source-bound full signature or exact line"
+    }
+  ],
+  "localization_status": "PARTIAL: function name/address supported by publisher; exact deployed-source signature/lines unavailable, not scored"
+}
