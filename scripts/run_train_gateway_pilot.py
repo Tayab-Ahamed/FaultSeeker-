@@ -119,9 +119,11 @@ def import_historical_tokens(guard,root):
                     usage=record.get('usage') or {}
                     if type(usage.get('prompt_tokens')) is int and type(usage.get('completion_tokens')) is int:
                         guard.import_usage_once(binding['path'],run_day,usage['prompt_tokens'],usage['completion_tokens'],binding)
-                    else:
+                    elif type(record.get('request_bytes')) is int:
                         bound=2*record['request_bytes']+1024+4096
                         guard.import_allocation_once(binding['path'],run_day,bound,binding)
+                    else:
+                        raise ValueError('Existing daily token settlement is missing or inconsistent')
                     continue
                 if len(settled)!=1 or ('charged_tokens' in accounting and settled[0]['tokens']!=accounting['charged_tokens']):
                     raise ValueError('Existing daily token settlement is missing or inconsistent')
