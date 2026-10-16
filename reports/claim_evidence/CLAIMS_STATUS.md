@@ -1,5 +1,8 @@
 # 18-Claim Evidence Status
 
+> **Superseded:** use `reports/claim_evidence/CLAIMS_FINAL.md` for the
+> post-run disposition. This file records the pre-run audit snapshot.
+
 This review uses the numbering and scope requested for the current paper audit.
 It is deliberately separate from the historical 31-claim registry in
 `reports/claim_closure/claims/`, whose numbering is different.
