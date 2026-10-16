@@ -68,7 +68,7 @@ ledger is `PAPER_FIXES.md`.
 | Trace-present labeled rows | 2 | Trace presence does not verify incident labels. |
 | Trace-absent labeled rows | 15 | No qualifying local call-trace artifact. |
 | Independently verified reentrant incidents | 0 | No incident label was promoted. |
-| Local alternate-source resolutions | 0/70 rows | DeFiHackLabs/rekt absent; one DeFiLlama file scanned; zero network requests. |
+| Local alternate-source resolutions | 0/70 committed rows | DeFiHackLabs/rekt absent; one DeFiLlama file scanned; zero network requests. A later dirty HTTP audit snapshot classified 73 rows as unresolved; it was preserved and not staged. |
 | Local model/API workload | Not run | No local model executable; free-tier availability intentionally unverified. |
 | Cost saving | 35.0% modeled | $0.039 hybrid vs $0.060 cloud-only under retained assumptions. |
 
@@ -78,17 +78,20 @@ The current branch was checked with the offline environment and no provider
 credentials:
 
 ```text
-focused evidence tests: 11 passed
-full pytest:             972 passed, 7 skipped
+focused evidence tests: 35 passed
+full pytest:             987 passed, 7 skipped
 offline judge:           exit 0; Stage 1 only; Stage 2 skipped; llm_cost=0.0
 five-line reproduction:  7/7 PASS
 evidence upgrade:        4 synthetic + 3 compiled; 2 valid real; 0 eligible
 ```
 
-The clean archive rehearsal also documented two reproducibility gaps: the
-repository has lower-bound requirements rather than a dependency lockfile, and
-Docker was not built offline. These are environment/build gaps, not evidence
-for any paper claim.
+The clean archive rehearsal used the pinned lockfile and the new Dockerfile.
+The isolated offline install was blocked because
+`aiohappyeyeballs==2.6.1` was unavailable from the local package cache. The
+host has no `make` command, so equivalent direct commands were used; Docker is
+installed but was not built because dependency installation would require
+network access. These are environment/build gaps, not evidence for any paper
+claim.
 
 ## Commits in this work
 
@@ -99,6 +102,8 @@ for any paper claim.
 726b50f audit zero-spend replay and local sources
 6155a79 fix: keep evidence report line endings portable
 75afeed feat: add evidence-separated evaluation lane
+9ef9078 docs: add final strict audit report
+c8575a7 chore: pin reproducible test and container entrypoints
 ```
 
 Existing unrelated modified trace/forensics artifacts remain untouched in the
