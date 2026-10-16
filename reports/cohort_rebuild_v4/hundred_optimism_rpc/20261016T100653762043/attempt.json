@@ -1,0 +1,36 @@
+{
+  "identity": "optimism:0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+  "provider": "authorized-dRPC-optimism",
+  "source_artifacts": [
+    {
+      "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/1da2ddef1e995ad657f2d4dab7eb88a613b6311c0e16e795a95280d8caa9a9f6.gz",
+      "sha256": "505d81154e44569359a409282a9007a72e1b91022741e2ad52e3abedfedd0f4b"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/e23ed305be27b336fc0c723e41e3d02944b6ad7720649c2438b6f661a0a20e30.gz",
+      "sha256": "bbf89703d2f29e3133a83f4a23ed44847cbefec168088802b08289b27b1f786a"
+    }
+  ],
+  "phase": "eth_getTransactionReceipt",
+  "observed_chain_id": 10,
+  "observation": {
+    "path": "reports/cohort_rebuild_v4/hundred_optimism_rpc/20261016T100653762043/observation.json",
+    "sha256": "e5ee98f9062aa536ee47ace938d1c9533d0721ccc72ffabee49aa500608e3af2"
+  },
+  "identity_receipt_match": true,
+  "receipt_status": "0x1",
+  "accounting": {
+    "outbound_rpc_requests": 3,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1
+    },
+    "estimated_cost_usd": 1.8e-05,
+    "cumulative_ledger_estimate_usd": 1.9760061999998848,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

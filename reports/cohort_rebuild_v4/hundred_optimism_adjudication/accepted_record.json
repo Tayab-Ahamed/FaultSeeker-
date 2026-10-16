@@ -1,0 +1,56 @@
+{
+  "txn_hash": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+  "chain": "optimism",
+  "incident_id": "reviewed:Hundred-Finance-Optimism-April-2023",
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://blocksec.com/blog/6-hundred-finance-incident-catalyzing-the-wave-of-precision-related-exploits-in-vulnerable-forked-protocols",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/1da2ddef1e995ad657f2d4dab7eb88a613b6311c0e16e795a95280d8caa9a9f6.gz",
+        "sha256": "505d81154e44569359a409282a9007a72e1b91022741e2ad52e3abedfedd0f4b"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Distinct security research organizations provide original technical descriptions of the same exploit; no attribution to each other appears in either reviewed body. SolidityScan is the CredShields security publication, separate from BlockSec.",
+      "identity_basis": {
+        "transaction": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+        "chain": "optimism",
+        "review": "BlockSec explicitly identifies the attack transaction on Phalcon with optimism in the URL; SolidityScan explicitly labels the identical optimistic.etherscan.io transaction as attacker transaction. Other linked siblings are not admitted under this pair."
+      }
+    },
+    {
+      "publisher_id": "SolidityScan",
+      "independence_group": "SolidityScan",
+      "url": "https://blog.solidityscan.com/hundred-finance-hack-analysis-improper-business-logic-addfd862d077/",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/e23ed305be27b336fc0c723e41e3d02944b6ad7720649c2438b6f661a0a20e30.gz",
+        "sha256": "bbf89703d2f29e3133a83f4a23ed44847cbefec168088802b08289b27b1f786a"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Distinct security research organizations provide original technical descriptions of the same exploit; no attribution to each other appears in either reviewed body. SolidityScan is the CredShields security publication, separate from BlockSec.",
+      "identity_basis": {
+        "transaction": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+        "chain": "optimism",
+        "review": "BlockSec explicitly identifies the attack transaction on Phalcon with optimism in the URL; SolidityScan explicitly labels the identical optimistic.etherscan.io transaction as attacker transaction. Other linked siblings are not admitted under this pair."
+      }
+    }
+  ],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v4/hundred_optimism_adjudication/annotation.json",
+    "sha256": "dc093399a3edc56c73f8b7af8d8c7d3e9bd1814c53cec171499fc1ff6de14efa"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v4/hundred_optimism_rpc/20261016T100653762043/observation.json",
+    "sha256": "e5ee98f9062aa536ee47ace938d1c9533d0721ccc72ffabee49aa500608e3af2"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "vulnerability_class": "Business logic - empty-market exchange-rate and redemption accounting flaw",
+  "complexity_class": "UNRECOVERED",
+  "membership": "ACCEPTED-OUTSIDE-FROZEN-V3",
+  "ground_truth": {
+    "path": "reports/cohort_rebuild_v4/hundred_optimism_adjudication/ground_truth.json",
+    "sha256": "03b1a8eb36ccc65e7b50abb7b98e3dade300b77e2be482a27b8ece84cb973d8e"
+  }
+}

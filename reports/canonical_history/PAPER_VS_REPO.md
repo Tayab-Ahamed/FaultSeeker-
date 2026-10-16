@@ -214,3 +214,8 @@ Fresh actual admission checks on every exact fca6b99 frozen identity yield6accep
 ### Actual full-pipeline Revest TRAIN attempt (2026-10-16)
 
 The new actual production-pipeline experiment completed deterministic Stage1, then stopped after one Agnes2.5Flash ranking response: HTTP200, finish_reason=stop, but invalid JSON set-like content with mostly unqualified selectors. Parser rejection was retained;0completecases,0Stage3 confidence observations, no localization/overall-F1/TableVI number. Actual usage11742input+1325outputtokens; conservative increment$0.0014392, cumulative at batch end$1.9759882, actual billing unconfirmed. No retry, repair or owner guessing; no heldout or expectedlabels entered the request. Evidence: reports/cohort_rebuild_v4/REVEST_FULL_PIPELINE_BATCH_STATUS.json. Prompt-contract hardening may be tested offline but cannot count as empirical completion.
+
+
+### Genuine eighth-chain admission (2026-10-16)
+
+The independently source-corroborated April2023HundredFinance Optimism exploit passed dRPC chain10/transaction/successful-receipt verification. All22available identities revalidate:8chains,6accepted fromthe original231 plus16additionalrealtransactions. Frozen v3 remains20; Platypus Avalanche and Hundred Optimism are2unassigned additions. Target246/10 is short224rows and2chains. No new prediction, fixture evidence or localization/line target is inferred. Three RPC reads added conservative$0.000018; cumulative estimate$1.9760062, billing unconfirmed. Evidence: reports/cohort_rebuild_v4/HUNDRED_OPTIMISM_ADMISSION.json. The original21-rowv4protocol remains unchanged and requires superseding before publication ofbothadditions.
