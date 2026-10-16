@@ -1,0 +1,57 @@
+{
+  "scope": "Real TRAIN model-response schema failure, no invented repair or localization result",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T050541-198e808b/summary.json",
+    "sha256": "b28980298c51b1fcacdf9642286113c3f2485b6105619218d00c0625fa4f853d"
+  },
+  "last_response": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T050541-198e808b/calls/call-007.json",
+    "sha256": "359b9800457766abde9a4a8d024092fd26479f1b232305888083426aca1b41c5"
+  },
+  "requests": 7,
+  "all_http_statuses": [
+    200,
+    200,
+    200,
+    200,
+    200,
+    200,
+    200
+  ],
+  "complete_cases": 0,
+  "terminal_reason": "Pilot stopped after analysis error: AdditionalInfoSchemaError",
+  "automatic_retries": 0,
+  "offline_actual_response_failure": "Additional-info request must contain only supported fields",
+  "observed_schema_defects": [
+    "Unsupported plural field function_calls instead of function_call",
+    "Four children_calls.address values are four-byte selectors, not 20-byte addresses"
+  ],
+  "observed_input_caveat": "The saved request labels incoming function selectors as address_calls. Production prompt input now separately supplies observed_entry_functions_at_address with full owners and observed_child_calls with exact requested-parent child identities and paths. This removes demonstrated ambiguity; causation and improved live completion remain unproven.",
+  "conservative_incremental_usd": 0.020891500000000063,
+  "cumulative_conservative_usd": 1.9526416999998901,
+  "billing_confirmed": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 532655,
+      "reserved": 0,
+      "remaining": 6467345
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 734452,
+      "reserved": 0,
+      "remaining": 6265548
+    }
+  },
+  "heldout_used": false,
+  "labels_sent": false,
+  "paper_env_files_sent": false,
+  "metrics": null,
+  "software_fixture_evidence_used": false,
+  "next_action": "Run a new authorized TRAIN batch on the corrected input and trailing strict schema instructions; stop on any error. Never repair or score the rejected historical response."
+}

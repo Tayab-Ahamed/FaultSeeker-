@@ -113,19 +113,7 @@ Children calls:
 {children_calls}"""
 
     # ── Retrieve additional info ───────────────────────────────────────
-    retrieve_additional_info: str = '''\
-Convert the requested information into this JSON format.
-Only include keys that are needed. Use full 0x-prefixed 20-byte addresses from the available information. Never guess an owner or use a variable name as an address. Omit unresolved references; return {} if none can be resolved.
-
-{
-  "function_call": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
-  "children_calls": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
-  "source_code": [{"address": "<full_20_byte_address>", "function": "<function_name>"}],
-  "balance_change": ["<address>"]
-}
-
-Available data: {0}
-Request: {1}'''
+    retrieve_additional_info: str = '''Return only a JSON object with these optional keys: function_call (singular), children_calls, source_code, balance_change. Never use function_calls. The first three fields must be lists of objects with exactly address and function keys; balance_change must be a list of full addresses. Address means a 0x-prefixed 20-byte contract address (42 characters). A four-byte function selector is not an address: it belongs in function. observed_entry_functions_at_address explicitly lists functions entering their owner contract; observed_child_calls contains actual outgoing child identities and paths. Use only full owners present in the available call information. Never guess an owner, reinterpret a selector as an address, substitute an unresolved variable alias, or copy a schema illustration as evidence. Omit unresolved references and return {} if no supported request resolves.'''
 
     # ── Analysis init ─────────────────────────────────────────────────
     function_analysis_init_prompt: str = """\

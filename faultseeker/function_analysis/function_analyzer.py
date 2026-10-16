@@ -20,6 +20,7 @@ from faultseeker.research.cost_tracker import CostTracker
 from contextlib import nullcontext
 from typing import Optional
 from faultseeker.function_analysis.additional_info_schema import normalize_additional_info
+from faultseeker.function_analysis.prompt_call_identity import observed_call_references
 from faultseeker.function_analysis.finding_schema import normalize_findings,validate_finding_order
 
 
@@ -231,6 +232,9 @@ class FunctionAnalyzer:
         prompt = self.function_prompts.retrieve_additional_info
         prompt += f"Current available information:{self.function_call_info_summary}\n"
         prompt += f"Additional information to be reorganized:{additional_info}"
+        # Keep the exact response schema next to the requested output, after
+        # potentially large public compilation-source context.
+        prompt += '\nResponse requirements:\n' + self.function_prompts.retrieve_additional_info
         # Validate the entire model request before any evidence lookup. A later
         # malformed field must not trigger earlier partial lookups or source I/O.
         formatted_additional_info = normalize_additional_info(self.generation_agent.query(prompt))
@@ -486,11 +490,8 @@ class FunctionAnalyzer:
                 related_balance_change[key] = deepcopy(value)
         if related_balance_change:
             output['related_balance_change'] = related_balance_change
-        address_calls = []
-        if address in self.txn_seq['address_calls']:
-            address_calls = self.txn_seq['address_calls'][address]
-        if address_calls:
-            output['address_calls'] = address_calls
+        output.update(observed_call_references(
+            address, function_name, self.txn_seq['address_calls'], self.trace))
         relations_with_other_addresses = []
         if address in self.address_relation.nodes():
             relations_with_other_addresses.extend(list(self.address_relation.out_edges(address, data=True)))

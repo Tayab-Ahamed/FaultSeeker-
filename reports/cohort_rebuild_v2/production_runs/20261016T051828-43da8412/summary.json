@@ -1,0 +1,71 @@
+{
+  "run_id": "20261016T051828-43da8412",
+  "scope": "Production Stage 1 and deterministic function ranker only",
+  "config": {
+    "experiment": "recorded-production-stage1-v1",
+    "system_sha256": "4f178aabfc92071b8d903384023e34f608c8613b4433c2f04e0067044f934f73",
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261016T051828-43da8412/system_sources.json.gz",
+      "sha256": "cb25d43ea0de2f4bb2e7532c0ca653dc5355087a9675cca6b6fe21d8b545d687"
+    },
+    "split": {
+      "path": "benchmark/eval_split.json",
+      "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+    },
+    "algorithms": "Actual ForensicsOrchestrator, TraceAnalyzer, SignalExtractor, rule classifier, address/fund-flow classifiers and FunctionRanker",
+    "network_policy": "Every socket connect refused; no provider or RPC dispatch permitted",
+    "population": "Frozen train only; incomplete cases excluded explicitly, not classified negative",
+    "stage2_not_executed": true,
+    "paper_weights_and_thresholds": "unchanged"
+  },
+  "coverage": {
+    "observed": 1,
+    "requested_train": 1
+  },
+  "metrics": {
+    "reentrancy_component": {
+      "n": 1,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "tn": 1,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "accuracy": 1.0
+    },
+    "rule_verdict_counts": {
+      "EXPLOIT": 1
+    }
+  },
+  "missing": [],
+  "observations": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "rule_verdict": "EXPLOIT",
+      "reentrancy_component_prediction": false,
+      "trace_coverage": {
+        "trace_complete": true,
+        "storage_trace_complete": true,
+        "token_flow_complete": false,
+        "multi_tx_context_complete": false
+      },
+      "coverage": {
+        "trace_complete": true,
+        "token_flow_complete": false,
+        "multi_tx_context_complete": false
+      },
+      "ranked_address_count": 28
+    }
+  ],
+  "unmeasured": {
+    "full_system_f1": "Stage2/3 not executed; no negative general-exploit population in this train cohort",
+    "localization": "No independently sourced complete address/signature function target records or source-linked line targets",
+    "hybrid_cost_savings": "No reachable installed Ollama model established; no paired billed production queries",
+    "table_vi": "No production Stage3 per-function confidence component records",
+    "guidance": "No complete 20-case source-targeted paired guidance population"
+  },
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "network_requests": 0
+}
