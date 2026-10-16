@@ -1,0 +1,37 @@
+{
+  "source_csv": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/benchmark_classification_fixed.csv",
+  "rows": 231,
+  "chains": 8,
+  "ethereum_rows": 132,
+  "ethereum_share_percent": 57.1429,
+  "class_counts": {
+    "Complex": 91,
+    "Exceptionally Complex": 59,
+    "Moderate": 62,
+    "Simple": 19
+  },
+  "reentrancy_label_string_count": 17,
+  "distinct_vulnerability_label_strings": 82,
+  "rows_missing_source_or_hash": 0,
+  "labels_with_existing_swc_mapping": 36,
+  "labels_without_existing_swc_mapping": 46,
+  "baseline_rows_saved": 8,
+  "localization_metrics": {
+    "ground_truth_transactions": 115,
+    "evaluated": 115,
+    "missing_predictions": 0,
+    "excluded_unavailable_traces": 0,
+    "excluded_error_traces": 0,
+    "usable_trace_ratio": 1.0,
+    "match_mode": "function",
+    "mrr": 0.173,
+    "top_1_accuracy": 0.0609,
+    "top_1_hits": 7,
+    "top_3_accuracy": 0.2,
+    "top_3_hits": 23,
+    "top_5_accuracy": 0.313,
+    "top_5_hits": 36,
+    "top_10_accuracy": 0.4174,
+    "top_10_hits": 48
+  }
+}

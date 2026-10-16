@@ -1,0 +1,11 @@
+chain,free_endpoint,free_endpoint_trace_support_observed,evidence_status,notes
+eth,https://eth.llamarpc.com,NO,NOT_ESTABLISHED_AS_FREE_ENDPOINT,"Configured Ethereum callTracer response exists in reports/claim_closure/rpc_capabilities.json; that observation used a configured endpoint, not a verified built-in free fallback."
+bsc,https://bsc-dataseed1.binance.org,NO,NOT_OBSERVED,rpc_provider.py comments say public BSC nodes do not support debug_traceTransaction; no free trace success is recorded.
+polygon,https://polygon-rpc.com,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+arbitrum,https://arb1.arbitrum.io/rpc,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+optimism,https://mainnet.optimism.io,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+avalanche,https://api.avax.network/ext/bc/C/rpc,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+base,https://mainnet.base.org,NO,NOT_OBSERVED,The recorded demo attempt failed with HTTP 403/auth failure and no trace support.
+fantom,https://rpc.ftm.tools,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+gnosis,https://rpc.gnosischain.com,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.
+zksync,https://mainnet.era.zksync.io,NO,NOT_OBSERVED,No free-endpoint trace result is recorded in the repository.

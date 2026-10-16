@@ -25,6 +25,27 @@ The runner executes every direct reproduction script except `common.py` and
 itself. It compares the reproduced values with the expected values in
 `reports/reproducibility/FINAL_REPORT.md`.
 
+Build the offline claim-audit artifacts with:
+
+```bash
+.venv/bin/python scripts/reproduce/claim_evidence.py
+```
+
+This writes `reports/claim_evidence/`, including:
+
+- `CLAIMS_STATUS.md` — the 18-row `VERIFIED` / `REWORD` / `DROP` review;
+- `summary.json` — cohort counts, label counts, and saved localization values;
+- `chain_shares.csv` and `class_proportions.csv`;
+- `vulnerability_swc_mapping.csv` — all distinct label strings and the SWC
+  classification already present in the frozen CSV, without inventing mappings;
+- `cohort_provenance_gaps.csv` and `reentrancy_rows.csv`;
+- `chain_capability_matrix.csv` — free-endpoint observations and their limits;
+- `table_v_saved_results.csv` and `localization_summary.json`.
+
+The claim-audit command is also offline: it reads only the frozen cohort and
+saved result artifacts. It does not replay transactions, call RPC providers,
+call models, or access paid services.
+
 ## Exact inputs
 
 | Number | Input |
