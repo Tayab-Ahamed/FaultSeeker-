@@ -194,3 +194,8 @@ All 20 v3 admitted records pass a fresh revalidation of their hash-bound publish
 ### Genuine Ethereum TRAIN capture extension (2026-10-16)
 
 XCarnival and TeamFinance acquired actual callTracer trees and historical code in74metered RPC reads, conservative incremental estimate $0.000444; cumulative estimate $1.974513, actual billing unconfirmed. On11of14 frozen TRAIN cases, structural reentrancy TP5/FP1/FN0/TN5 gives F1=0.9090909091; repeated-call F1=0.625. Five-case storage F1=1.0 remains availability-selected. Fortress/SwapX/Level BSC traces remain missing. No model-assisted localization, full-system F1 or paired billed savings is inferred; no thresholds, weights or heldout outcomes changed. Evidence: reports/cohort_rebuild_v3/ETH_TRAIN_CAPTURE_AND_MEASUREMENT.json. Separately, Platypus Avalanche admission makes21 authentic unique identities across7chains,20 frozen plus1unassigned; evidence: reports/cohort_rebuild_v3/PLATYPUS_AVALANCHE_ADMISSION.json.
+
+
+### BSC historical tracing capability check (2026-10-16)
+
+Official-public-BSC returned chainID56, then rejected the selected Fortress TRAIN callTracer request with RPC code -32000. Two metered reads, conservative incremental $0.000012; cumulative $1.974525, actual billing unconfirmed. No trace accepted; no retry or subsequent dispatch. Provider error text was not retained, so no universal unsupported-method or missing-archive inference is made. Claim25 remains UNVERIFIABLE for broad live/archive/outage capability. Evidence: reports/cohort_rebuild_v3/bsc_trace_capability/20261016T092502292158/summary.json.

@@ -1,0 +1,29 @@
+{
+  "scope": "Single real selected TRAIN historical callTracer capability check; no model or opcode inference",
+  "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+  "split": {
+    "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+  },
+  "provider": "official-public-bsc",
+  "provider_documentation": "https://docs.bnbchain.org/bnb-smart-chain/developers/json_rpc/bsc-api-endpoints/",
+  "status": "UNAVAILABLE",
+  "heldout_used": false,
+  "phase": "debug_traceTransaction",
+  "observed_chain_id": 56,
+  "rpc_error_code": -32000,
+  "error_type": "RuntimeError",
+  "accounting": {
+    "outbound_rpc_requests": 2,
+    "methods": {
+      "eth_chainId": 1,
+      "debug_traceTransaction": 1
+    },
+    "estimated_cost_usd": 1.2e-05,
+    "cumulative_ledger_estimate_usd": 1.974524999999885,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}
