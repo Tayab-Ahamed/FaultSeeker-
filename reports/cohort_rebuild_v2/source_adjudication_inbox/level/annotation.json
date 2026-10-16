@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+  "chain": "bsc",
+  "is_exploit": true,
+  "vuln_type": "Business logic - duplicate-epoch reward claims",
+  "adjudication_basis": "BlockSec explains unchecked duplicate array items; PeckShield independently explains repeated referral claims for the same epoch and explicitly links this exact transaction as an example hack. The public PoC independently locates the hash and repeated epoch array passed to claimMultiple; it supplies contextual identity only, not a third independent security publisher or historical execution proof.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1653267431127920641",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/3f906315a5515aef4fb4d60a9b3f9625b2008358b37494d5d80aad39a1481b4b.gz",
+        "sha256": "68a26b0f33f872ffc80a204e49a75d6483561a2b6934a7d3aba4aee4b72931db"
+      },
+      "vulnerability_class": "Business logic - duplicate-epoch reward claims",
+      "mechanism_excerpt": "lack of checks of repeated items for the array argument of the vulnerable function"
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1653149493133729794",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/61b69eebdb807235f1e99b808f0d76876ca272010828a454d46942dc2cba7c21.gz",
+        "sha256": "b8559b6dd45d6a169c4e989e950e2e53276e9f01979f79520b360f61e94853be"
+      },
+      "vulnerability_class": "Business logic - duplicate-epoch reward claims",
+      "mechanism_excerpt": "has a bug that allows for repeated referral claims from the same epoch"
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true,
+  "taxonomy_rationale": "The two accounts establish a business-logic mechanism but no sufficiently specific SWC or DASP mapping; leave both unmapped rather than force a category.",
+  "transaction_role": "Exploit execution explicitly linked by PeckShield; separate sibling6aef8b remains unresolved.",
+  "excluded_siblings": [
+    {
+      "hash": "0x6aef8bb501a53e290837d4398b34d5d4d881267512cfe78eb9ba7e59f41dad04",
+      "reason": "Undifferentiated PoC @TX entry; exact exploit role not independently established."
+    }
+  ],
+  "localization_targets": "Unavailable: no historically source-bound address/signature/line target established; PoC functions are not deployed-source proof."
+}

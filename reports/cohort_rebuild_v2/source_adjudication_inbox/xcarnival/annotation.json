@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Business logic - borrowing against withdrawn NFT collateral",
+  "adjudication_basis": "BlockSec explains the fake xToken/NFT-transfer/continued-borrow mechanism and explicitly links this attack transaction. PeckShield independently explains withdrawn pledged NFTs remaining usable as collateral in the same incident, while linking a different incident transaction. The public PoC explicitly labels this hash the first Start call, distinguishing it from preparation and NFT transfer; this is contextual corroboration, not executed fixture evidence.",
+  "independent_observations": [
+    {
+      "publisher_id": "BlockSec",
+      "source_url": "https://twitter.com/BlockSecTeam/status/1541070850505723905",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/9b025742bd40a71f3eb05e17e776eec63b27079e0a728d351a5ba0650e045324.gz",
+        "sha256": "4f651684755c15e2fa9d4ebcb502e76904f251d9516cb1465e497e1238a5e20b"
+      },
+      "vulnerability_class": "Business logic - borrowing against withdrawn NFT collateral",
+      "mechanism_excerpt": "an attacker can transfer the NFT with a fake xToken and borrow all the assets later."
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1541047171453034501",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/c73b17e53275d49ad3ca1f96eaf90598be2d35cef463b3c93c43c5422547aa97.gz",
+        "sha256": "a1df04b284f030545d4a5bed1cd018490d9bf0ce5fa112dac07d31d144d79b01"
+      },
+      "vulnerability_class": "Business logic - borrowing against withdrawn NFT collateral",
+      "mechanism_excerpt": "allowing a withdrawn pledged NFT to be still used as the collateral"
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true,
+  "taxonomy_rationale": "The two accounts establish a business-logic mechanism but no sufficiently specific SWC or DASP mapping; leave both unmapped rather than force a category.",
+  "transaction_role": "Asset-borrow exploit execution: BlockSec exact attack link and contextual PoC first Start call.",
+  "excluded_siblings": [
+    {
+      "hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+      "reason": "Exploit preparation/collateral-record manipulation; not established as asset-draining execution."
+    },
+    {
+      "hash": "0x7cd094bc34c6700090f88950ab0095a95eb0d54c8e5012f1f46266c8871027ff",
+      "reason": "PoC identifies NFT transfer into attacker contract; exclude from exploit-execution annotation."
+    }
+  ],
+  "localization_targets": "Unavailable: no historically source-bound address/signature/line target established; PoC functions are not deployed-source proof."
+}

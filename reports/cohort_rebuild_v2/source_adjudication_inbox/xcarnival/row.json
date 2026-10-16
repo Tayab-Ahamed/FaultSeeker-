@@ -1,0 +1,61 @@
+{
+  "txn_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+  "chain": "eth",
+  "incident_title": "Xcarnival Exp",
+  "incident_id": "reviewed:Xcarnival",
+  "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2022-06/XCarnival_exp.sol",
+  "reference_links": [],
+  "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+  "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://twitter.com/BlockSecTeam/status/1541070850505723905",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/9b025742bd40a71f3eb05e17e776eec63b27079e0a728d351a5ba0650e045324.gz",
+        "sha256": "4f651684755c15e2fa9d4ebcb502e76904f251d9516cb1465e497e1238a5e20b"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations publish original technical mechanism descriptions of the same incident without visible attribution to each other; public PoC is contextual corroboration, not a third security publisher.",
+      "identity_basis": {
+        "transaction": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+        "chain": "eth",
+        "review": "BlockSec explains the fake xToken/NFT-transfer/continued-borrow mechanism and explicitly links this attack transaction. PeckShield independently explains withdrawn pledged NFTs remaining usable as collateral in the same incident, while linking a different incident transaction. The public PoC explicitly labels this hash the first Start call, distinguishing it from preparation and NFT transfer; this is contextual corroboration, not executed fixture evidence.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/c97a818933e0139d772bce823d7bb2d3f22ab0275b255655978bb38a5bf92993.gz",
+          "sha256": "e8a83c8c5f72cc00588cb7cd66812f0a670fd2cafdc0fafcd16693aff5368ba9"
+        }
+      }
+    },
+    {
+      "publisher_id": "PeckShield",
+      "independence_group": "PeckShield",
+      "url": "https://twitter.com/peckshield/status/1541047171453034501",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/c73b17e53275d49ad3ca1f96eaf90598be2d35cef463b3c93c43c5422547aa97.gz",
+        "sha256": "a1df04b284f030545d4a5bed1cd018490d9bf0ce5fa112dac07d31d144d79b01"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations publish original technical mechanism descriptions of the same incident without visible attribution to each other; public PoC is contextual corroboration, not a third security publisher.",
+      "identity_basis": {
+        "transaction": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+        "chain": "eth",
+        "review": "BlockSec explains the fake xToken/NFT-transfer/continued-borrow mechanism and explicitly links this attack transaction. PeckShield independently explains withdrawn pledged NFTs remaining usable as collateral in the same incident, while linking a different incident transaction. The public PoC explicitly labels this hash the first Start call, distinguishing it from preparation and NFT transfer; this is contextual corroboration, not executed fixture evidence.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/c97a818933e0139d772bce823d7bb2d3f22ab0275b255655978bb38a5bf92993.gz",
+          "sha256": "e8a83c8c5f72cc00588cb7cd66812f0a670fd2cafdc0fafcd16693aff5368ba9"
+        }
+      }
+    }
+  ],
+  "legacy_ground_truth": [],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/annotation.json",
+    "sha256": "7cdb3396781057527fcb77864ad6812ae900ab73f5762d6b9fcf31aaf9379845"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T060742/observation.json",
+    "sha256": "bc1243d385dac46019bf2aa04d93a68fe468edf66b9a3f8ccdb8a2447d2d82a4"
+  }
+}

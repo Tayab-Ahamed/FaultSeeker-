@@ -1,0 +1,93 @@
+{
+  "scope": "Additional real incident source adjudication and exact on-chain identity evidence; not an evaluation or paper-performance result",
+  "records": [
+    {
+      "identity": "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+      "row": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level/row.json",
+        "sha256": "139191057ef2f0bc4a5512873948f1aa20e173e7f496f5e5a216c26536634942"
+      },
+      "decision": {
+        "txn_hash": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+        "chain": "bsc",
+        "accepted": false,
+        "reasons": [
+          "MISSING_OR_INVALID_RPC_EVIDENCE"
+        ],
+        "rpc_identity_verified": false,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      "poc": {
+        "path": "reports/cohort_rebuild_v2/http/72b5c398104db850693dab70ef586891e675734b2dbad8b217f998c73bcefbf7.gz",
+        "sha256": "152f5eb932e07e36bcc62feb08e14ee6a88685ee539c9406e818cf95fe7665a4"
+      },
+      "original_case_index": {
+        "path": "reports/cohort_rebuild_v2/consensus_cases.json",
+        "sha256": "097b94422a61cee11bc10ceabbbfa89b7d4e9ad053f64c3d92e3b18faee65c9b"
+      }
+    },
+    {
+      "identity": "eth:0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "row": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/row.json",
+        "sha256": "ce52f5d42ccaf8beb7ee4e8b634ad5a753adbc5af1dbacb7abb81b5ef1145f78"
+      },
+      "decision": {
+        "txn_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      "poc": {
+        "path": "reports/cohort_rebuild_v2/http/c97a818933e0139d772bce823d7bb2d3f22ab0275b255655978bb38a5bf92993.gz",
+        "sha256": "e8a83c8c5f72cc00588cb7cd66812f0a670fd2cafdc0fafcd16693aff5368ba9"
+      },
+      "original_case_index": {
+        "path": "reports/cohort_rebuild_v2/consensus_cases.json",
+        "sha256": "097b94422a61cee11bc10ceabbbfa89b7d4e9ad053f64c3d92e3b18faee65c9b"
+      },
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/accepted_record.json",
+        "sha256": "880689860e6da7c1ac75cdfd2a56024db4b3f1cb0465038a6a021105c53e7402"
+      },
+      "csv": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/benchmark_row.csv",
+        "sha256": "52a56f61f9d2fe397eb8671a3acc64ddaa645923c4d3c574f93defb69195275c"
+      }
+    }
+  ],
+  "additional_accepted_count": 1,
+  "existing_frozen_cohort": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "existing_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "original_cohort_count": 14,
+  "provenance_complete_unique_available_including_addition": 15,
+  "existing_cohort_split_mutated": false,
+  "additional_rows_assigned_for_training_or_heldout": false,
+  "protocol_decision_pending": "Expanded-cohort preregistration must preserve original held-out seal and prevent previously trained identities moving to held-out. Do not silently refreeze or feed unassigned additions into existing TRAIN/final-exam runners.",
+  "heldout_used": false,
+  "model_requests": 0,
+  "fixture_results_used": false,
+  "rpc_probe": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T060742/summary.json",
+    "sha256": "2aaeeead5856b8b9e0a3ea71d434f261071cdf788c84364a2472b575f892261c"
+  },
+  "cumulative_conservative_usd": 1.9739669999998897,
+  "billing_confirmed": false,
+  "admission_implementation": {
+    "path": "benchmark/research_protocol.py",
+    "sha256": "23209cf6fb285dadd5c88fb0f2b491aacdaa7fc062a6ab6c800212a57c5a4577"
+  },
+  "reproduce_additional_admission_command": "python -c \"import json; from pathlib import Path; from benchmark.research_protocol import admit; print(admit(json.loads(Path('reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/row.json').read_text()), Path.cwd()))\""
+}
