@@ -239,3 +239,8 @@ EraLend zkSync execution99efebac...ab0ef passes full real admission: distinct Be
 ### Optional-field intervention: earlier-stage model rejection (2026-10-16)
 
 Run20261016T112421-02f4bcc2 stoppedafter1HTTP200/finish-stop response. Actualparser accepts31uniqueJSONstrings, but productionexact-keyvalidator rejects1inventedselector/ownerpair absentfrom34offeredkeys.0completecases/noStage3metrics; optional-fieldstage neverreached, so its softwarecontractfix isnotlivecompletionevidence. Usage11803prompt+3515completion=15318tokens. Boundmodelsettlement$0.0018833; sharedwindowdelta$0.0018893includesoneconcurrentRPCread$0.000006. Cumulativeconservativeestimate$1.9904877, billingunconfirmed. No ownerrepair/retry/heldoutaccess. Evidence: reports/cohort_rebuild_v4/REVEST_OPTIONAL_FIELD_INTERVENTION_BATCH_STATUS.json.
+
+
+### Additional Arbitrum provenance checks: no admission (2026-10-16)
+
+GMXJuly2025execution03182d...626ef has reviewedCertiK/Verichains sourceconsensus but no matchingRPCtransaction/receipt: dRPCconfirmed42161thenreturnednulltransaction(2reads), PublicNodefailedatfirstHTTPrequest(1read,statusnotretained). No receiptrequested, fixture/substitution/absenceinference. Anyfutureadmission must remainaJuly2025newrebuildrow, notMay2025cohortproof. SentimentApril2023a9ff2b...f74d heldonindependenceuncertainty betweenparallelBeosin/SolidityScanaccounts; Halbornlacks exactexecutionlink. NocopyingallegationandnoSentimentRPCspend. Available23/9andfrozen22/8remainunchanged.3meteredRPCattemptsconservative$0.000018; modelbatchwindowoverlapisreconciledseparately. Evidence: reports/cohort_rebuild_v4/GMX_ARBITRUM_PROVENANCE_DECISION.json and SENTIMENT_ARBITRUM_SOURCE_REVIEW.json.

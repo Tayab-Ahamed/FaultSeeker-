@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "decision_author": "Codex",
+  "scope": "Cached source-independence review only; no RPC dispatch, admission or empirical claim",
+  "identity": "arbitrum:0xa9ff2b587e2741575daf893864710a5cbb44bb64ccdc487a100fa20741e0f74d",
+  "source_acquisition": {
+    "path": "reports/cohort_rebuild_v4/sentiment_arbitrum_sources/acquisition.json",
+    "sha256": "145d82ebabd6eebbba91f4e6337012c3729ff9a8b5f94bd68edf707c99b5ddb2"
+  },
+  "sources": [
+    {
+      "publisher_id": "Beosin",
+      "url": "https://threadreaderapp.com/thread/1643476343886327808.html",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/sentiment_arbitrum_sources/http/9e00f581415698d96e8f601ae40829713ef2b48ce47aa55f247f010892391969.gz",
+        "sha256": "64d4b839d5d846a7c79c23c1f4a8c6acf95ec0bcdb07988b7b285699a1d0946d"
+      },
+      "exact_execution_hash_present": true,
+      "review_limit": "ThreadReader is an attributed mirror of Beosin, not another independent publisher."
+    },
+    {
+      "publisher_id": "SolidityScan",
+      "url": "https://blog.solidityscan.com/sentiment-hack-analysis-reentrancy-attack-8d1b2b6a1691/",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/sentiment_arbitrum_sources/http/9518ea5ff11969c73eee8646813b6fb192a4cab22c4e0c8cf915eda166873554.gz",
+        "sha256": "a6ab26a1777b6b4e8cf6f6dff18fc3c00929041b317e0e05aee474b9fa6873ee"
+      },
+      "exact_execution_hash_present": true,
+      "review_limit": "Article has near-parallel mechanism sequence to Beosin; independent investigative provenance remains uncertain."
+    },
+    {
+      "publisher_id": "Halborn",
+      "url": "https://www.halborn.com/blog/post/explained-the-sentiment-hack-march-2023",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/sentiment_arbitrum_sources/http/55c12ea843550f6dbebbf1b20390e11045e8616bb45c8720e03e0ae2c59ae983.gz",
+        "sha256": "151bb9955307191a56ebac53d22750f4a002131a366c130d963879b5b154a807"
+      },
+      "exact_execution_hash_present": false,
+      "review_limit": "Own mechanism discussion but no exact exploit execution link; March title conflicts with April incident timing."
+    }
+  ],
+  "decision": "HOLD_INDEPENDENCE_UNCERTAIN",
+  "mechanism_supported": "Balancer exitPool ETH fallback reaches a borrow path that reads getPoolTokens while supply and balances are inconsistent; read-only reentrancy affects collateral valuation.",
+  "identity_supported": "Beosin and SolidityScan both link the identical Arbiscan execution. Identity and mechanism agreement alone do not resolve independence.",
+  "independence_analysis": {
+    "observed_parallel": "Both explanations follow joinPool deposit, exitPool ETH fallback, proxy borrow priced from Vault.getPoolTokens, then reduced supply with unupdated data.",
+    "additional_SolidityScan_material": "Flash-loan amount, contract/source-code links, screenshots and mitigation recommendations distinguish the presentation.",
+    "negative_evidence": "No explicit attribution to Beosin or identical image URL was observed in SolidityScan. Images were not fetched or compared.",
+    "conclusion": "The text does not prove copying, but separate domain names and absence of attribution do not establish independent corroboration where the central explanation is closely parallel. Do not certify this pair as independent on current evidence.",
+    "copying_allegation": false
+  },
+  "Halborn_limit": "No exact execution link; March title issue is recorded rather than silently corrected.",
+  "single_missing_input": "One independently attributable security-publisher technical account tied to the same exact Sentiment execution, or evidence resolving independence of the existing mechanism accounts.",
+  "next_source_lead": "A separately sourced Neptune Mutual/CertiK/PeckShield technical account may help; none is asserted verified by this review.",
+  "rpc_dispatched_for_this_pair": false,
+  "requests_by_this_task": 0,
+  "available_authentic_count_unchanged": 23,
+  "available_chain_count_unchanged": 9,
+  "frozen_v4_count_unchanged": 22,
+  "frozen_v4_chain_count_unchanged": 8,
+  "heldout_accessed": false,
+  "research_metrics_produced": false
+}

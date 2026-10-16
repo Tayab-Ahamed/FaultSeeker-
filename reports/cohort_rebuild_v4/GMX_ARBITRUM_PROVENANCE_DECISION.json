@@ -1,0 +1,156 @@
+{
+  "schema": 1,
+  "decision_author": "Codex",
+  "not_independent_human_review": true,
+  "scope": "Actual cached primary-source review plus terminal RPC attempts; no admission, prediction, metrics, or study publication",
+  "identity": "arbitrum:0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef",
+  "chain": "arbitrum",
+  "txn_hash": "0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef",
+  "source_acquisition": {
+    "path": "reports/cohort_rebuild_v4/gmx_arbitrum_sources/acquisition.json",
+    "sha256": "647784248d019ee0ea561b61470fabc4562312896419c65c7c46da1d7486a72c"
+  },
+  "source_review": {
+    "decision": "SOURCE_CONSENSUS_CONFIRMED_RPC_INCOMPLETE",
+    "selected_publishers": [
+      "CertiK",
+      "Verichains"
+    ],
+    "reason": "Both separately attributed security publishers identify the same exact attack execution and provide distinct technical analyses. CertiK traces the 2022 bug-bounty redesign, split-level Vault/ShortsTracker updates and detailed arithmetic; Verichains separately dissects fallback control, order/position loops and low initial short interest. Their common mechanism is reentrant direct Vault entry during keeper execution causing inconsistent short-price accounting and inflated GLP redemption. This is more than domain separation or title agreement; no cross-attribution to each other appears. Public evidence does not prove separate investigative tooling or human reviewer independence.",
+    "sources": [
+      {
+        "publisher_id": "Verichains",
+        "url": "https://blog.verichains.io/p/gmx-42m-exploit-root-cause-analysis",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v4/gmx_arbitrum_sources/http/dd131f60e6210798f2ced5ad36077591677f524e587ee2c6af5a8a4d0212c726.gz",
+          "sha256": "9281cdcfee329542bf424197c783f9ebcf59afdaed5f64de5bd82bbf60f9353b"
+        },
+        "mechanism_excerpt": "The attacker deployed a smart contract as the position owner and customized its fallback logic.",
+        "identity_evidence": "Exact execution printed as Attack Transaction and incident explicitly Arbitrum",
+        "selected_for_consensus": true,
+        "reference_caveat": "No attribution to the other selected publisher found in reviewed full visible body."
+      },
+      {
+        "publisher_id": "CertiK",
+        "url": "https://www.certik.com/zh-CN/blog/gmx-incident-analysis",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v4/gmx_arbitrum_sources/http/b162c600aa49654adfa3bf44df7fa29b6877c486a66c48c6667677dc2a648e69.gz",
+          "sha256": "eb84c8cf2a01e6d4424c46ccef47c10fa4df3290d547d5c0b7e0bc7b3dbe71e6"
+        },
+        "mechanism_excerpt": "the white-hat could use reentrancy to bypass the short avgp update at the PositionManager level",
+        "identity_evidence": "Exact Arbiscan execution link in Key Transactions",
+        "selected_for_consensus": true,
+        "reference_caveat": "No attribution to the other selected publisher found in reviewed full visible body."
+      },
+      {
+        "publisher_id": "QuillAudits",
+        "url": "https://www.quillaudits.com/blog/hack-analysis/how-gmx-lost-42m",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v4/gmx_arbitrum_sources/http/af2d0e07639d5c467d7ab5aef195302bb435e2be41e7cb37dd45cb0d691b218d.gz",
+          "sha256": "c1615bd07f0617a0471aa9e342f716d2b13f6b1c985fb1a92860874f26c319c5"
+        },
+        "mechanism_excerpt": "The malicious smart contract took over the execution flow, leading to a reentrancy vulnerability.",
+        "identity_evidence": "Exact Arbiscan execution hyperlink labeled Attack Transaction",
+        "selected_for_consensus": false,
+        "reference_caveat": "Explicitly links official GMX post-mortem; retained as supplementary account, not selected independent pair."
+      }
+    ],
+    "vulnerability_class": "Cross-contract reentrancy with short-accounting desynchronization",
+    "reentrancy_label": true,
+    "taxonomy": "No exact SWC/DASP assignment made in this source-only decision.",
+    "limits": [
+      "Verichains contains an imprecise statement that the Vault updates both size and average price; CertiK distinguishes Vault size from ShortsTracker average. The consensus is limited to the shared reentrant-bypass/accounting mechanism, not every publisher implementation sentence.",
+      "Loss, price, recovered-fund and bounty figures are publisher reports, not project measurements.",
+      "No deployed-source signatures, exact lines, new localization targets or model outcomes are inferred."
+    ]
+  },
+  "rpc_attempts": [
+    {
+      "attempt": {
+        "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/20261016T112355336366/attempt.json",
+        "sha256": "1c5fdb05d501495825dc01141b1023e7e1a6b97e958fcc61d77f89e794b081d5"
+      },
+      "provider": "authorized-dRPC-arbitrum",
+      "terminal_phase": "eth_getTransactionByHash",
+      "error_type": "RuntimeError",
+      "accounting": {
+        "outbound_rpc_requests": 2,
+        "methods": {
+          "eth_chainId": 1,
+          "eth_getTransactionByHash": 1
+        },
+        "estimated_cost_usd": 1.2e-05,
+        "cumulative_ledger_estimate_usd": 1.9885983999998846,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      },
+      "response_artifacts": [
+        {
+          "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/20261016T112355336366/1-eth_chainId.json",
+          "sha256": "dd0171e7bd248f15394b68cfde0d0c0de12a6b25c14415824834c25bf31b666e"
+        },
+        {
+          "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/20261016T112355336366/2-eth_getTransactionByHash.json",
+          "sha256": "ddbfff413642403019b275861d7adb7bdbbba15f96ff8b53bac2092ae1af3710"
+        }
+      ]
+    },
+    {
+      "attempt": {
+        "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/publicnode-20261016T112445251039/attempt.json",
+        "sha256": "86e1ab98d7c5a77492f7eb88fa20e743921fb2fc8fc947764a7d22c28c8a2c47"
+      },
+      "provider": "PublicNode-Arbitrum-One",
+      "terminal_phase": "eth_chainId",
+      "error_type": "UpstreamHTTPError",
+      "accounting": {
+        "outbound_rpc_requests": 1,
+        "methods": {
+          "eth_chainId": 1
+        },
+        "estimated_cost_usd": 6e-06,
+        "cumulative_ledger_estimate_usd": 1.9886043999998846,
+        "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+        "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+        "billing_confirmed": false,
+        "proxy_errors": []
+      },
+      "response_artifacts": []
+    }
+  ],
+  "rpc_outcome": {
+    "dRPC": "eth_chainId returned42161; eth_getTransactionByHash returned null. Receipt was not requested.",
+    "PublicNode": "One outbound eth_chainId request failed with UpstreamHTTPError before any retained response; HTTP status was not retained. Transaction and receipt were not requested.",
+    "outbound_requests_total": 3,
+    "estimated_incremental_usd": 1.8e-05,
+    "billing_confirmed": false,
+    "observation_created": false
+  },
+  "admission": {
+    "accepted": false,
+    "status": "PENDING_RPC_EVIDENCE",
+    "single_missing_input": "A live historical RPC verification record binding chain42161, this exact transaction, and its matching successful receipt.",
+    "non_inferences": [
+      "A null transaction from one endpoint does not prove the hash is nonexistent.",
+      "An HTTP failure before chain verification does not prove universal Arbitrum or provider incapability."
+    ]
+  },
+  "date_compatibility": {
+    "incident_date": "2025-07-09",
+    "Verichains_publisher_date": "2025-07-14",
+    "CertiK_publisher_date": "2025-07-16",
+    "scope": "Eligible only as a newly documented rebuild candidate; cannot validate an earlier May2025 paper cohort or be backdated."
+  },
+  "study_boundary": {
+    "available_authentic_count_unchanged": 23,
+    "available_chain_count_unchanged": 9,
+    "frozen_v4_count_unchanged": 22,
+    "frozen_v4_chain_count_unchanged": 8,
+    "admitted_or_assigned": false,
+    "heldout_accessed": false
+  },
+  "requests_by_this_task": 0,
+  "research_metrics_produced": false
+}

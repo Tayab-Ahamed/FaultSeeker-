@@ -1,0 +1,40 @@
+{
+  "identity": "arbitrum:0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef",
+  "provider": "authorized-dRPC-arbitrum",
+  "requests": [
+    {
+      "method": "eth_chainId",
+      "response": {
+        "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/20261016T112355336366/1-eth_chainId.json",
+        "sha256": "dd0171e7bd248f15394b68cfde0d0c0de12a6b25c14415824834c25bf31b666e"
+      },
+      "result_is_null": false,
+      "rpc_error_code": null
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "response": {
+        "path": "reports/cohort_rebuild_v4/gmx_arbitrum_rpc/20261016T112355336366/2-eth_getTransactionByHash.json",
+        "sha256": "ddbfff413642403019b275861d7adb7bdbbba15f96ff8b53bac2092ae1af3710"
+      },
+      "result_is_null": true,
+      "rpc_error_code": null
+    }
+  ],
+  "phase": "eth_getTransactionByHash",
+  "observed_chain_id": 42161,
+  "error_type": "RuntimeError",
+  "accounting": {
+    "outbound_rpc_requests": 2,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1
+    },
+    "estimated_cost_usd": 1.2e-05,
+    "cumulative_ledger_estimate_usd": 1.9885983999998846,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}
