@@ -1,0 +1,9 @@
+chain,free_endpoint,eth_chainId,debug_traceTransaction,final_trace_capability,evidence
+eth,https://ethereum.publicnode.com,OK,RPC_ERROR:the method debug_traceTransaction does not exist/is not available,NO,replayed free endpoint probe; no trace support
+bsc,https://bsc-dataseed1.binance.org,OK,RPC_ERROR:missing trie node,NO,free endpoint responded but selected historical trace lacked archive state
+base,https://mainnet.base.org,OK,HTTP_401,NO,free endpoint rejected trace request
+arbitrum,https://arb1.arbitrum.io/rpc,OK,RPC_ERROR:the method debug_traceTransaction does not exist/is not available,NO,free endpoint lacks method
+optimism,https://mainnet.optimism.io,OK,HTTP_403,NO,free endpoint rejected trace request
+polygon,https://polygon-rpc.com,HTTP_401,HTTP_401,NO,free endpoint rejected both requests
+avalanche,https://api.avax.network/ext/bc/C/rpc,OK,RPC_ERROR:the method debug_traceTransaction does not exist,NO,free endpoint lacks method
+zksync,https://mainnet.era.zksync.io,OK,result=null,NO,JSON-RPC accepted method but returned no trace result
