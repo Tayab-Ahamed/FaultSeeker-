@@ -1,0 +1,39 @@
+{
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/protocol.json",
+    "sha256": "6bcd70040436bc14c8b27d9eac6a595ead5aa062ec7797c866b1413b7d22e8b0"
+  },
+  "observations": [
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af.json",
+      "sha256": "0d4337d2fcb5d25de8bc842747a6e8619bbafe0ff701ddb9d83550834986daa2"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd.json",
+      "sha256": "51313b82511bf245325f2bda000c66c402b548c56638e88d811baee1971265f2"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8.json",
+      "sha256": "f92488d5c6ccb45b5d25dd8e666427996e95ac6268e5962c26bc07d5e32051b7"
+    }
+  ],
+  "stop_error_type": null,
+  "accounting": {
+    "outbound_rpc_requests": 7,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 3,
+      "eth_getTransactionReceipt": 3
+    },
+    "estimated_cost_usd": 4.2e-05,
+    "cumulative_ledger_estimate_usd": 1.9739429999998899,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  },
+  "heldout_used": false,
+  "model_requests": 0,
+  "cohort_modified": false,
+  "acceptance": "A null response is missing evidence, never acceptance or proof that transaction does not exist."
+}

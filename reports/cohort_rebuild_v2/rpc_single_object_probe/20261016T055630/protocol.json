@@ -1,0 +1,23 @@
+{
+  "hypothesis": "Prior null transaction/receipt observations might depend on batch requests. Check identical hashes through single-object requests without substituting identity.",
+  "chain": "arbitrum",
+  "expected_chain_id": 42161,
+  "hashes": [
+    "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
+    "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+    "0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8"
+  ],
+  "max_rpc_requests": 7,
+  "provider": "authorized-dRPC",
+  "no_automatic_retries": true,
+  "scope": "Admission evidence only; frozen eval split and prediction outputs unchanged",
+  "method_order": [
+    "eth_chainId",
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt",
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt",
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt"
+  ]
+}

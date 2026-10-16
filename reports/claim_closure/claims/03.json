@@ -2,8 +2,8 @@
   "id": 3,
   "claim": "Authentic 246-row cohort",
   "status": "UNVERIFIABLE",
-  "reason": "Early 246 unique records existed (15 malformed hashes), then231/213/183. Original115 files cover114 unique tx; reconstructions48 are separate. No fully authenticated 246-row adjudicated cohort.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "Early 246 unique records existed (15 malformed hashes), then231/213/183. Original115 files cover114 unique tx; reconstructions48 are separate. No fully authenticated 246-row adjudicated cohort. The provenance-complete rebuilt manifest currently admits14 unique transactions across6 chains, not246. A new seven-request single-object Arbitrum probe tested three otherwise source-reviewed candidates: all exact hashes still returned null transaction and receipt after confirming chain ID42161. Batch representation is not supported as the explanation for those prior null observations. These candidates remain quarantined; source consensus alone cannot replace on-chain identity/receipt verification. No frozen split, label, paper or model result was changed.",
+  "verification_scope": "Recovered canonical history plus provenance-complete rebuilt cohort and three exact-hash live RPC checks; not full paper cohort or empirical replication",
   "requirements_unmet": [
     "Frozen cohort with complete independent provenance and qualified annotation records"
   ],
@@ -64,10 +64,22 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "benchmark/cohort_manifest.json",
+      "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/ARBITRUM_SINGLE_OBJECT_FINDING.json",
+      "sha256": "3b06846f79cdd1fb8647729241d2420dea8a46d39422f35e0c3be2854d75ee3c"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/summary.json",
+      "sha256": "2445faf484a9a2d60dad470995ab0240b6abfaf435a4cdce017ebd303e044a1e"
     }
   ],
-  "session_date": "2026-10-15",
-  "next_input_artifact": "Frozen cohort with complete independent provenance and qualified annotation records",
+  "session_date": "2026-10-16",
+  "next_input_artifact": "232 additional fully admitted unique exploit rows to reach246, including a matching RPC transaction and receipt for each of the three source-reviewed Arbitrum candidates before any admission.",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/03.json",
   "paper_verdict": "COUNT-EXISTS-AUTHENTICITY-UNVERIFIED",

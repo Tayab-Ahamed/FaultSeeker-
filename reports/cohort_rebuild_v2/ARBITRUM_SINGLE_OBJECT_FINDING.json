@@ -1,0 +1,109 @@
+{
+  "scope": "Three source-reviewed candidate identity checks; no new cohort rows or empirical model outcomes",
+  "hypothesis_tested": "Single-object versus batch request representation explains prior null results",
+  "outcome": "NOT_SUPPORTED: all three exact hashes still return null transaction and receipt from the configured chain-ID42161 endpoint. No claim that hashes are nonexistent or that other providers fail.",
+  "probe": {
+    "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/summary.json",
+    "sha256": "2445faf484a9a2d60dad470995ab0240b6abfaf435a4cdce017ebd303e044a1e"
+  },
+  "candidates": [
+    {
+      "txn_hash": "0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af",
+      "chain": "arbitrum",
+      "source_annotation": {
+        "path": "reports/cohort_rebuild_v2/annotations/0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af.json",
+        "sha256": "ef7f8b2d85530b8a1283451a45d2aaaecd6bb679a1c2250748fa0e3439a8331c"
+      },
+      "publisher_artifacts": [
+        {
+          "path": "reports/cohort_rebuild_v2/http/16eb333a35642d0594812be6a1238b85dc8b32d86df777bf4948c3a0054d83dd.gz",
+          "sha256": "61b7c0d14965b41b7db269198fdda99796fe3942368761a04460e9cdc470bc07"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/http/a76d74293d04cf16c68248a93f6d84c51a2ac643951376a2553df07fd983ad35.gz",
+          "sha256": "282b4ab826f1c6f22e7c03c149e4b781a3e6e8d2b9117f0ec1591a43e7561f05"
+        }
+      ],
+      "single_object_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0x0e29dcf4e9b211a811caf00fc8294024867bffe4ab2819cc1625d2e9d62390af.json",
+        "sha256": "0d4337d2fcb5d25de8bc842747a6e8619bbafe0ff701ddb9d83550834986daa2"
+      },
+      "transaction_present": false,
+      "receipt_present": false,
+      "admitted": false,
+      "specific_gap": "No RPC-resolvable transaction and matching receipt obtained from the configured Arbitrum provider; both returned null with single-object as well as earlier batch requests.",
+      "missing_input": "Matching historical Arbitrum transaction and receipt from a reachable node for this exact hash."
+    },
+    {
+      "txn_hash": "0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd",
+      "chain": "arbitrum",
+      "source_annotation": {
+        "path": "reports/cohort_rebuild_v2/annotations/0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd.json",
+        "sha256": "d2bbcdea9f0ee330cef4b686e15514f139ec413b03d30c22493914e87802bd66"
+      },
+      "publisher_artifacts": [
+        {
+          "path": "reports/cohort_rebuild_v2/http/19f81e13c77209189988b015103f62b61b0e4f5ca8d78a0e0573603d66f8b4e2.gz",
+          "sha256": "07541eca2559ac68edf1b9e3a87fbd61e1fa58ead4f4d5a66e81eef642d034ac"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/http/f3d14c003cf3570ec9843ee650b8ba628ff2a37198c7586456c5e00519a3ff91.gz",
+          "sha256": "f7349c90c5e70fd3aa0d02ea4cede3aa6c28978db71564b5d68cc140b932ebdc"
+        }
+      ],
+      "single_object_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0x5db5c2400ab56db697b3cc9aa02a05deab658e1438ce2f8692ca009cc45171dd.json",
+        "sha256": "51313b82511bf245325f2bda000c66c402b548c56638e88d811baee1971265f2"
+      },
+      "transaction_present": false,
+      "receipt_present": false,
+      "admitted": false,
+      "specific_gap": "No RPC-resolvable transaction and matching receipt obtained from the configured Arbitrum provider; both returned null with single-object as well as earlier batch requests.",
+      "missing_input": "Matching historical Arbitrum transaction and receipt from a reachable node for this exact hash."
+    },
+    {
+      "txn_hash": "0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8",
+      "chain": "arbitrum",
+      "source_annotation": {
+        "path": "reports/cohort_rebuild_v2/annotations/0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8.json",
+        "sha256": "e8e65acf08a890bf40ceca9f149e20881f6d268811e6822094825f5a7fdab5a6"
+      },
+      "publisher_artifacts": [
+        {
+          "path": "reports/cohort_rebuild_v2/http/8dcff8919c921b3d4644c83e09e4dfcac97b864ccee21fff2c70156a06142f2e.gz",
+          "sha256": "20576a0c84e49e8667acd20757c1a38c6f630f31a8fb82a3566ff85c20942d7e"
+        },
+        {
+          "path": "reports/cohort_rebuild_v2/http/8453c5d28b9c438f6781e86772a2ec776d609451dad4f15127c2e02be169dd94.gz",
+          "sha256": "3f639419682267db3d3c59faa978b5a34281b59895a25bed4bb2b667dd605715"
+        }
+      ],
+      "single_object_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/0xff368294ccb3cd6e7e263526b5c820b22dea2b2fd8617119ba5c3ab8417403d8.json",
+        "sha256": "f92488d5c6ccb45b5d25dd8e666427996e95ac6268e5962c26bc07d5e32051b7"
+      },
+      "transaction_present": false,
+      "receipt_present": false,
+      "admitted": false,
+      "specific_gap": "No RPC-resolvable transaction and matching receipt obtained from the configured Arbitrum provider; both returned null with single-object as well as earlier batch requests.",
+      "missing_input": "Matching historical Arbitrum transaction and receipt from a reachable node for this exact hash."
+    }
+  ],
+  "accepted_count_unchanged": 14,
+  "cohort": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "frozen_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "heldout_used": false,
+  "model_requests": 0,
+  "rpc_requests": 7,
+  "conservative_incremental_usd": 4.2e-05,
+  "cumulative_conservative_usd": 1.9739429999998899,
+  "billing_confirmed": false,
+  "no_automatic_retries": true,
+  "new_source_research": false
+}
