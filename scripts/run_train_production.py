@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.modules.setdefault('readline', None)
 from benchmark.captured_inputs import load_train_inputs, load_train_split
-from benchmark.research_protocol import append_experiment, bind, identity, load_train, write_json
+from benchmark.research_protocol import append_experiment, bind, identity, load_train, write_json, load_acquisition_indexes
 from benchmark.paper_experiments import confusion_metrics
 from faultseeker.function_analysis.function_ranker import FunctionRanker
 from scripts.run_authentic_research import snapshot_system, system_identity
@@ -92,6 +92,7 @@ def run_train(root=ROOT, requested_ids=None, split_file=None):
     config = {'experiment': 'recorded-production-stage1-v1', 'system_sha256': system['sha256'],
         'system_snapshot': bind(snapshot_system(system, out), root), 'split': bind(split_path, root),
         'manifest': split.get('manifest') or bind(root / 'benchmark/cohort_manifest.json', root),
+        'acquisition_indexes': load_acquisition_indexes(root, split_file)[1],
         'algorithms': 'Actual ForensicsOrchestrator, TraceAnalyzer, SignalExtractor, rule classifier, address/fund-flow classifiers and FunctionRanker',
         'network_policy': 'Every socket connect refused; no provider or RPC dispatch permitted',
         'population': 'Frozen train only; incomplete cases excluded explicitly, not classified negative',

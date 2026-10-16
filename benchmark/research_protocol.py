@@ -269,9 +269,107 @@ def load_train(split, root):
     return rows
 
 
-def acquisition_records(root, admitted_path):
+def load_train_split(root, split_file=None):
+    """Validate the selected freeze without opening its held-out partition."""
+    root = Path(root).resolve()
+    if split_file is not None and not str(split_file):
+        raise ValueError('Explicit train split path is empty')
+    split_path = (root / ('benchmark/eval_split.json' if split_file is None else split_file)).resolve()
+    if (not split_path.is_relative_to(root) or '.git' in split_path.relative_to(root).parts
+            or split_path.name.startswith('.env')):
+        raise ValueError('Unsafe train split path')
+    split = json.loads(split_path.read_text())
+    manifest = split.get('manifest')
+    if manifest is None:
+        if split_file is not None:
+            raise ValueError('Selected split requires a bound manifest')
+        raw = (root / 'benchmark/cohort_manifest.json').read_bytes()
+    else:
+        raw = read_bound(manifest, root)
+    if sha(raw) != split['manifest_sha256']:
+        raise ValueError('Frozen manifest digest mismatch')
+    train_ids, heldout_ids = split['train_ids'], split.get('heldout_ids', [])
+    if set(train_ids) & set(heldout_ids):
+        raise ValueError('Train and held-out memberships overlap')
+    if split_file is not None:
+        records = json.loads(raw)['records']
+        manifest_ids = [identity(row) for row in records]
+        if (len(set(manifest_ids)) != len(manifest_ids)
+                or len(set(train_ids)) != len(train_ids)
+                or len(set(heldout_ids)) != len(heldout_ids)
+                or set(manifest_ids) != set(train_ids) | set(heldout_ids)):
+            raise ValueError('Selected manifest and split membership mismatch or duplicate')
+        # Manifest records are public provenance. Only the TRAIN partition body
+        # is opened; its full records must match the pinned public manifest.
+        by_identity = {identity(row): row for row in records}
+        for row in load_train(split, root):
+            if row != by_identity[identity(row)]:
+                raise ValueError('Selected train record differs from pinned manifest')
+    return split_path, split
+
+
+
+def acquisition_directory(root, split_file):
+    """An explicit split gets an isolated namespace keyed by its exact bytes."""
+    root = Path(root).resolve()
+    split_path, _ = load_train_split(root, split_file)
+    return root / 'reports/cohort_rebuild_v2/acquisitions' / sha(split_path.read_bytes())
+
+
+def load_acquisition_indexes(root, split_file=None):
+    """Merge selected TRAIN metadata; excluded capture bodies are never read.
+
+    Version indexes point at immutable snapshots. Existing legacy index bytes
+    and their artifact bindings remain untouched and usable by the old freeze.
+    """
+    root = Path(root).resolve()
+    split_path, split = load_train_split(root, split_file)
+    split_binding = bind(split_path, root)
+    legacy = root / 'reports/cohort_rebuild_v2'
+    version = acquisition_directory(root, split_file) if split_file is not None else None
+    merged, bindings = {}, []
+    for kind in ('opcode', 'trace'):
+        merged[kind] = {}
+        paths = [legacy / (kind + '_acquisition_train.json')]
+        if version is not None:
+            paths.append(version / (kind + '_acquisition_train.json'))
+        for path in paths:
+            if not path.exists():
+                continue
+            data = json.loads(path.read_text())
+            index_binding = bind(path, root)
+            if version is not None and path.parent == version:
+                if data.get('split') != split_binding or 'snapshot' not in data:
+                    raise ValueError('Version acquisition index is not bound to selected split')
+                index_binding = data['snapshot']
+                data = json.loads(read_bound(index_binding, root))
+                if data.get('split') != split_binding:
+                    raise ValueError('Acquisition snapshot split mismatch')
+            records = data.get('attempts', []) if isinstance(data, dict) else data
+            keys = [r['identity'] for r in records]
+            if len(set(keys)) != len(keys):
+                raise ValueError('Duplicate identity in acquisition index')
+            if split_file is None and not set(keys) <= set(split['train_ids']):
+                raise ValueError('Non-train identity in acquisition index')
+            if version is not None and path.parent == version and not set(keys) <= set(split['train_ids']):
+                raise ValueError('Version acquisition index contains non-train identities')
+            for record in records:
+                if record['identity'] in split['train_ids']:
+                    # A failed version attempt must not erase usable legacy
+                    # evidence. Captured artifact integrity is checked on load.
+                    key = record['identity']
+                    if key not in merged[kind] or record.get('artifact'):
+                        merged[kind][key] = record
+            bindings.append(index_binding)
+    return merged, bindings
+
+
+def acquisition_records(root, admitted_path, split_file=None):
     """After freezing, acquisition may open only the bound train population."""
     root=Path(root).resolve()
+    if split_file is not None:
+        _, split = load_train_split(root, split_file)
+        return load_train(split, root)
     split_path=root/'benchmark/eval_split.json'
     if split_path.exists():
         return load_train(json.loads(split_path.read_text()),root)

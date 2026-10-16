@@ -21,6 +21,7 @@ from benchmark.detector_experiments import detector_observation
 from benchmark.paper_experiments import confusion_metrics
 from benchmark.research_protocol import (
     admit, append_experiment, bind, canonical, identity, load_train, read_bound, sha, write_json,
+    load_acquisition_indexes,
 )
 from scripts.capture_authentic_traces import validate_call_identity
 from scripts.replay_historical_opcodes import validate_recorded_capture
@@ -81,18 +82,8 @@ def run_train(root=ROOT, split_file=None):
     for row in rows:
         if not admit(row, root)['accepted'] or type(row.get('reentrancy_label')) is not bool:
             raise ValueError('Invalid train admission or reentrancy annotation')
-    index_path = root / BASE / 'trace_acquisition_train.json'
-    trace_index = json.loads(index_path.read_text()) if index_path.exists() else []
-    by_id = {record['identity']: record for record in trace_index}
-    if len(by_id) != len(trace_index) or (split_file is None and not set(by_id) <= set(split['train_ids'])):
-        raise ValueError('Acquisition index contains duplicate or non-train identities')
-    opcode_path = root / BASE / 'opcode_acquisition_train.json'
-    opcode_index = json.loads(opcode_path.read_text()).get('attempts', []) if opcode_path.exists() else []
-    opcodes = {record['identity']: record for record in opcode_index}
-    if len(opcodes) != len(opcode_index) or (split_file is None and not set(opcodes) <= set(split['train_ids'])):
-        raise ValueError('Opcode index contains duplicate or non-train identities')
-    by_id = {key: value for key, value in by_id.items() if key in split['train_ids']}
-    opcodes = {key: value for key, value in opcodes.items() if key in split['train_ids']}
+    indexes, index_bindings = load_acquisition_indexes(root, split_file)
+    by_id, opcodes = indexes['trace'], indexes['opcode']
     system = system_identity()
     config = {'experiment': 'reentrancy-components-v1', 'variants': list(VARIANTS),
               'positive_rule': 'HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full',
@@ -100,6 +91,7 @@ def run_train(root=ROOT, split_file=None):
               'thresholds': 'unchanged production paper-mode values',
               'system_sha256': system['sha256'], 'split': bind(split_path, root),
               'manifest': split.get('manifest') or bind(root / 'benchmark/cohort_manifest.json', root),
+              'acquisition_indexes': index_bindings,
               'population': 'all frozen train identities; only available evidence is scored',
               'no_overall_f1_inference': True}
     run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + '-' + uuid.uuid4().hex[:8]
