@@ -209,3 +209,8 @@ Verichains and MetaTrust independently link the same January2024Arbitrum exploit
 ### Exact original231-row admission re-audit (2026-10-16)
 
 Fresh actual admission checks on every exact fca6b99 frozen identity yield6accepted and225quarantined. Available authentic population21consists of those6originals plus15additionalrealtransactions across7chains. Do not describe21as the pass count of the original231. Missing reasons overlap:224lack qualifying independent annotation,224lack two qualifying independent publishers,45lack valid bound RPC artifacts,76have present RPC evidence failing identity/receipt validation. Exact rows, source bindings and executable reproduction source: reports/cohort_rebuild_v4/FROZEN_231_REAUDIT.json. New v4 publication method is preregistered, preserves all20v3 memberships, and has not yet published or predicted the Avalanche addition. No new network/model call, label/threshold tuning, fixture evidence or heldout payload access.
+
+
+### Actual full-pipeline Revest TRAIN attempt (2026-10-16)
+
+The new actual production-pipeline experiment completed deterministic Stage1, then stopped after one Agnes2.5Flash ranking response: HTTP200, finish_reason=stop, but invalid JSON set-like content with mostly unqualified selectors. Parser rejection was retained;0completecases,0Stage3 confidence observations, no localization/overall-F1/TableVI number. Actual usage11742input+1325outputtokens; conservative increment$0.0014392, cumulative at batch end$1.9759882, actual billing unconfirmed. No retry, repair or owner guessing; no heldout or expectedlabels entered the request. Evidence: reports/cohort_rebuild_v4/REVEST_FULL_PIPELINE_BATCH_STATUS.json. Prompt-contract hardening may be tested offline but cannot count as empirical completion.

@@ -1,0 +1,86 @@
+{
+  "run_id": "20261016T100027-0ae94f84",
+  "scope": "Real cloud-only TRAIN full production pipeline; no native vendor/local/hybrid claim",
+  "execution_mode": "full-production-pipeline",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/system.json",
+      "sha256": "3adf3cb427bfe8f23bd4fb935f97f8169a615acdcd4c8e47f8afd003563742f4"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/system_sources.json.gz",
+      "sha256": "8fddfed9c8c225ca12b9b49625cee9f5328a53c47b765fc4e15874ac11dccd28"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false,
+    "incremental_estimated_usd_cap": null,
+    "cumulative_dispatch_limit_usd": 10.0,
+    "requested_train_identities": [
+      "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+    ],
+    "requested_train_cases": 1,
+    "execution_mode": "full-production-pipeline"
+  },
+  "observations": [],
+  "stop_reason": "Production pilot failed: ValueError",
+  "completion_requests": 1,
+  "complete_cases": 0,
+  "requested_train_cases": 1,
+  "requested_train_identities": [
+    "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+  ],
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.9745489999998849,
+  "budget_estimate_after_usd": 1.975988199999885,
+  "incremental_conservative_estimate_usd": 0.0014392000000000849,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "Pilot stopped after ValueError",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/standing_train_approval.json",
+    "sha256": "faf4a11cbd9f1b6a4f39d31a06711586268d5e7b6916e44be8a30dded37ce875"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/calls/ledger/call-001.json",
+      "sha256": "8afb85dc15c5ec6ea89b4f07d908adacf1dac1deb643c753c959efde9c2c13b5"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/calls/call-001.json",
+      "sha256": "8c7d80c884a517091204076b8852a3f02230839a2fd5a1aac8ec11c614fcee05"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 936536,
+      "reserved": 0,
+      "remaining": 6063464
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 949603,
+      "reserved": 0,
+      "remaining": 6050397
+    }
+  }
+}

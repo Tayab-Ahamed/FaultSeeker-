@@ -1,0 +1,43 @@
+{
+  "scope": "Actual stopped Revest TRAIN full-pipeline attempt, not a scored empirical outcome",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/summary.json",
+    "sha256": "d7a5a2007aca3165d0b0f4f8c1acfeac21d4ba42f677f424a4130f38a5cb01c0"
+  },
+  "response": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/calls/call-001.json",
+    "sha256": "8c7d80c884a517091204076b8852a3f02230839a2fd5a1aac8ec11c614fcee05"
+  },
+  "system": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T100027-0ae94f84/system.json",
+    "sha256": "3adf3cb427bfe8f23bd4fb935f97f8169a615acdcd4c8e47f8afd003563742f4"
+  },
+  "requests": 1,
+  "successful_http_responses": 1,
+  "complete_cases": 0,
+  "stage1_completed": true,
+  "stage2_completed": false,
+  "stage3_confidence_observations": 0,
+  "failure_role": "ranking_agent",
+  "failure_type": "INVALID_JSON_AND_NONQUALIFIED_FUNCTION_KEYS",
+  "finish_reason": "stop",
+  "duration_seconds": 48.375,
+  "usage": {
+    "completion_tokens": 1325,
+    "prompt_tokens": 11742,
+    "prompt_tokens_details": {
+      "cached_tokens": 256
+    },
+    "total_tokens": 13067
+  },
+  "interpretation": "Gateway returned an invalid JSON set-like expression, mainly bare selectors rather than complete offered function/contract keys. Parser rejected it. No truncation, refusal or timeout is inferred. No output was repaired, no owner guessed, no retry dispatched.",
+  "automatic_retries": 0,
+  "incremental_conservative_usd": 0.0014392000000000849,
+  "cumulative_conservative_usd_at_batch_end": 1.975988199999885,
+  "billing_confirmed": false,
+  "metrics": null,
+  "heldout_used": false,
+  "labels_sent": false,
+  "fixtures_used_as_evidence": false,
+  "next_local_step": "Harden the declared output prompt to strict JSON arrays of copied full offered keys; retain exact-key validation and rejection. Prompt hardening alone does not prove completion."
+}

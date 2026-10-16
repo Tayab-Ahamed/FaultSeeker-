@@ -1,0 +1,377 @@
+{
+  "sha256": "ba5546463625d2de96f893a26813937ef0db458fb12fce1b1309edc50be7cfd1",
+  "files": [
+    {
+      "path": "benchmark/captured_inputs.py",
+      "sha256": "f164c9abfe67f12653838314a2c2fbcec275d66323158653f2ca8256c3cf8e6b"
+    },
+    {
+      "path": "benchmark/detector_experiments.py",
+      "sha256": "6aec74d82a4ec6f1b311300a9efcdbb9d79e2230830886748119a39bb8d9cc7c"
+    },
+    {
+      "path": "benchmark/execution_source_inputs.py",
+      "sha256": "9453a3e789e618aac96a33a2f864224095f16d5854c596a530d9ed6d81447527"
+    },
+    {
+      "path": "benchmark/nara_http_transport.py",
+      "sha256": "02845a30e79359fc7a0fddc7b135cb9e0667820b594f41bace284b8c35425ac8"
+    },
+    {
+      "path": "benchmark/nara_pilot_provider.py",
+      "sha256": "9e4329cb786033425c9aec20f666327a3ad287cd26fb4e489b2da179618b0cef"
+    },
+    {
+      "path": "benchmark/paper_experiments.py",
+      "sha256": "82a0b26d2fc54baab5460dfd0606652da08227bc5829b6754169209f6d3198f1"
+    },
+    {
+      "path": "benchmark/pilot_token_guard.py",
+      "sha256": "83eb9a06443c17623c68f76828b31e29e2eb0c2a880f0881187f70beec973ec8"
+    },
+    {
+      "path": "benchmark/research_protocol.py",
+      "sha256": "0c1c267132726f70dd843a275854f038caaded89c9705f69a828818e518746ab"
+    },
+    {
+      "path": "benchmark/verified_source_inputs.py",
+      "sha256": "4b96b612adcf08f5630a6e73b06c9096c07aef2bbc623bee1300315da67c40ea"
+    },
+    {
+      "path": "faultseeker/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "faultseeker/__main__.py",
+      "sha256": "6b6857c8b6dbf0c6f45ad153bef1c94c7cd25c3ee36e20a90d35e137aa358311"
+    },
+    {
+      "path": "faultseeker/core/__init__.py",
+      "sha256": "8a5dcf060d0e7ddb31ca57bc22fdda4501eedad064354a11bec47502a3f69d6e"
+    },
+    {
+      "path": "faultseeker/core/auto_model_selector.py",
+      "sha256": "796fd5a6898cd1827abb88630dd6c7181efd9a95b239ae5dfc763d0a1e519e21"
+    },
+    {
+      "path": "faultseeker/core/base_agent.py",
+      "sha256": "e9580b60c99b187dfde9882358d89889dea413d26ee945c74625d44aaf6ba65f"
+    },
+    {
+      "path": "faultseeker/core/confidence_scorer.py",
+      "sha256": "5cd2e2b013a199518851fe60248bec135632f3e756bf4f24f363a0c4ef11fcb5"
+    },
+    {
+      "path": "faultseeker/core/config.py",
+      "sha256": "e6cef068e500c7fab3eb004019c68a9fe5e35352607f16d8b307eaeb214461bb"
+    },
+    {
+      "path": "faultseeker/core/cross_chain_runner.py",
+      "sha256": "da63c41565e3c9491fc964148d0e7f0c074ece3425d441fa70df08a81437fbfc"
+    },
+    {
+      "path": "faultseeker/core/human_interface.py",
+      "sha256": "eb1d63cb98ee0fa29e8bfe8d78d8cf41b92596d6dc81e7c9b822ccf2a600b6c3"
+    },
+    {
+      "path": "faultseeker/core/llm_router.py",
+      "sha256": "db37a615c5a9924bb54c78daf6fed83535968af8a060918cabc09730b77a20ef"
+    },
+    {
+      "path": "faultseeker/core/paper_profile.py",
+      "sha256": "57b93108f982080c73c9d0f87217347222b9abf2ac9f1410d63037634d658078"
+    },
+    {
+      "path": "faultseeker/core/pipeline.py",
+      "sha256": "7ed6f63ad6e055defdc3733eb9f7cae37af0d7883aba7a257ad7b950213a8382"
+    },
+    {
+      "path": "faultseeker/core/spend_guard.py",
+      "sha256": "95ecc8f57a277021d576c3600d16ce1b349c58e0082b50d5f97ef10c9b621519"
+    },
+    {
+      "path": "faultseeker/data_collection/__init__.py",
+      "sha256": "74b476d3098b5faafefe68aceff5048e65bcc91669ebd7363e07c50f42e5116e"
+    },
+    {
+      "path": "faultseeker/data_collection/contract_downloader.py",
+      "sha256": "efd05614b603257fda56d04040a689f4a30e468cc37caad31fe203fe0ab2be4a"
+    },
+    {
+      "path": "faultseeker/data_collection/contract_info_collector.py",
+      "sha256": "0ea0d18fadef93031b02daa8773931f182f094e29fdac0d03d2e24051ed09c26"
+    },
+    {
+      "path": "faultseeker/data_collection/storage_trace.py",
+      "sha256": "d4bbbb58f42835d01f6e81dc5e45afbf8769b7e8ef60bff1cdd48f32f3e57944"
+    },
+    {
+      "path": "faultseeker/data_collection/trace_parser.py",
+      "sha256": "c3d6695178d6d7ccaa609b151814a13b3e34bf0c582491fab616bf7d80b2ce8f"
+    },
+    {
+      "path": "faultseeker/data_collection/trace_visualizer.py",
+      "sha256": "7b90da322de6e33527930a7c56253ab9613ab65d9d5df3c056d25f5486a9754c"
+    },
+    {
+      "path": "faultseeker/data_collection/txn_info_collector.py",
+      "sha256": "14cc97e8354c1205df58706db2653e45e6ae2d0a187d9176d0cf241a6d8936e4"
+    },
+    {
+      "path": "faultseeker/data_collection/txn_replayer.py",
+      "sha256": "440b80e382ca0d48fb711152ecc9ccf99ed1aaac5b2dd138b6080878aba1f1d2"
+    },
+    {
+      "path": "faultseeker/data_collection/txn_sequencer.py",
+      "sha256": "66d56dbb594acdb242e3d5baa20c4984451e86b810d22efca103f6851d6af2e5"
+    },
+    {
+      "path": "faultseeker/forensics/__init__.py",
+      "sha256": "8a62f32d557130c9939b726c284dc4e06541d93484e716e9acfc00f5eac3fe69"
+    },
+    {
+      "path": "faultseeker/forensics/adaptive_controller.py",
+      "sha256": "b9149f606db72a6021324acf33e85958334a6c40e4f66245683bf1719ec33f98"
+    },
+    {
+      "path": "faultseeker/forensics/address_classifier.py",
+      "sha256": "05eb5094f7204f1b1e5ccb729726fb7f02a8f8fbc418cc5d4daaa88a43925475"
+    },
+    {
+      "path": "faultseeker/forensics/fund_flow_analyzer.py",
+      "sha256": "1bc9aa06c10f087e91dbfcd4250cb6dfacaefeea85e7a1ac5918052bb692808a"
+    },
+    {
+      "path": "faultseeker/forensics/interaction_graph.py",
+      "sha256": "e64922f29052164e8f76400e8c925a6c4694d3c6e50dd555e2ae065501a7599f"
+    },
+    {
+      "path": "faultseeker/forensics/orchestrator.py",
+      "sha256": "00e8b1a1db685086a21467e824827fcb7805981dbf393d77109594d15cbf934d"
+    },
+    {
+      "path": "faultseeker/forensics/result.py",
+      "sha256": "c6040023de7a3a16d744e4c2b175edf88b9c851936726cb125108fcaec1b7eca"
+    },
+    {
+      "path": "faultseeker/forensics/rule_classifier.py",
+      "sha256": "fc374e02c1a7a3612c6658c02f43046432439f3308fcb38612afedaae46febde"
+    },
+    {
+      "path": "faultseeker/forensics/signal_extractor.py",
+      "sha256": "343530529a01835ac8870ab19e8850d79a71938e73e5c35ae8f42b35a9e179fa"
+    },
+    {
+      "path": "faultseeker/forensics/trace_analyzer.py",
+      "sha256": "358381ef69b468d76c7f63aee09b522d5695b2ed303ca5946dfc2f2096e79613"
+    },
+    {
+      "path": "faultseeker/function_analysis/__init__.py",
+      "sha256": "caf3bbeb44598c568b14b10e395f0a5e13d97f0435e3ae7fa1327f4f71bc510c"
+    },
+    {
+      "path": "faultseeker/function_analysis/additional_info_schema.py",
+      "sha256": "850e793251481624f9956f7cd89461022be6f53af717d202167251f272371d67"
+    },
+    {
+      "path": "faultseeker/function_analysis/execution_source_map.py",
+      "sha256": "1fb8e5ecfc19839772c1c9668662f31583c8a245989e1e9b1f21cb923ed57b93"
+    },
+    {
+      "path": "faultseeker/function_analysis/finding_schema.py",
+      "sha256": "c187cce93b687a777494dfe52f1350b6889f6295f882e0d91c08582f4be0e643"
+    },
+    {
+      "path": "faultseeker/function_analysis/function_analyzer.py",
+      "sha256": "132bb5c417a44069fded7c2e7733aa7c5d3b4b0a5ef9074b5a040d795fb4fff1"
+    },
+    {
+      "path": "faultseeker/function_analysis/function_ranker.py",
+      "sha256": "33e936eb117290b5f0cee61fd82d96e50d1b4ea7accc6e27deb010fe15e0b829"
+    },
+    {
+      "path": "faultseeker/function_analysis/prompt_call_identity.py",
+      "sha256": "e964fa381c22ed4094e1e8da0957d9205f3e4515980258ec0bec0e9072642b35"
+    },
+    {
+      "path": "faultseeker/main.py",
+      "sha256": "956131332ed1fdfa345ae932598120fe0214489f6e02b3819491815e014ce33e"
+    },
+    {
+      "path": "faultseeker/prompts/__init__.py",
+      "sha256": "4779715c7707ecc62823218c8ee1cbf69f5809e622a5abf1a1c0989b4c21de2e"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/__init__.py",
+      "sha256": "0c510ec467042bdada6c30fdc39639679425f46ae937c61e53004a88b3955081"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/address_classification_prompts.py",
+      "sha256": "b5e779f35060f9f645338dd5806cd3b6cef3a2dfda545268f4dba622e2ff0e1a"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/fund_flow_prompts.py",
+      "sha256": "e4df4f51a67ebeeb9eadf78b96d337665976fe4ca7daeaff6944fb03e771a595"
+    },
+    {
+      "path": "faultseeker/prompts/forensics/trace_analysis_prompts.py",
+      "sha256": "ed13b4c591cc73d6a85ed4cd889109251d7d0313d6b2644487d02deb8b695267"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/__init__.py",
+      "sha256": "66f00675ba66291bc42c3678bd8dc3e1f960ec9f6ac5591f650397414158731b"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/local_task_prompts.py",
+      "sha256": "81afb60879d35d92208769775d720596d51cb3c0287525ec8756bf9e3d12559d"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/orchestration_session_prompts.py",
+      "sha256": "58123166a99321e6fea0ecf101f29e4aa9a05d2e6b4932f8207ece4487bec524"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/task_coordinator_prompts.py",
+      "sha256": "f86dfd62dbf4fcbfadc5bb629cf49b07a42be2b4b999690c1e160902ddec7088"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/vulnerability_analysis_prompts.py",
+      "sha256": "bcd25220c7e23165cb702fadd61026eed1c1849e65cadf8695bad9248dd90acf"
+    },
+    {
+      "path": "faultseeker/prompts/function_analysis/worker_prompts.py",
+      "sha256": "4ef2c9fdc7060492d4f6a7ea34092e12f3278af893f9e6df5cbba91d5021ab6f"
+    },
+    {
+      "path": "faultseeker/prompts/local_model_prompts.py",
+      "sha256": "1e5d0bf52e964bca4e17231f2e6cd9279d4c9f3430ec8325571a55e3d3970253"
+    },
+    {
+      "path": "faultseeker/research/__init__.py",
+      "sha256": "82fbd4d2f57dc13da573d09092fe564676ad0bba0053113f769c5cff155f7c02"
+    },
+    {
+      "path": "faultseeker/research/ablation.py",
+      "sha256": "529f2fc62edf91d0a6be9f20eb519db95a99cfa7bd423af26f69406510ff37b4"
+    },
+    {
+      "path": "faultseeker/research/adversarial.py",
+      "sha256": "4f57ca41ac15e4ec887347057275f628e673348a7368d8b9ded99d7ba740dfef"
+    },
+    {
+      "path": "faultseeker/research/calibration.py",
+      "sha256": "d79b3bf99b0d75e484fa69ccda854db8c0f90df1936a6182475f5bc97a99162c"
+    },
+    {
+      "path": "faultseeker/research/chain_profiles.py",
+      "sha256": "f68f7cda28a93860e775f3fa818801ac4d1166de04d9d3c260bd0690bf950b59"
+    },
+    {
+      "path": "faultseeker/research/cost_tracker.py",
+      "sha256": "0da7c83f39cff6836242ccc23ce8c99b003775918762caa32704e8a8cb889a13"
+    },
+    {
+      "path": "faultseeker/research/failure_aware_localization.py",
+      "sha256": "eba3d05d00fe8860d616c11ac01e31908fc199bcec709a3e2761e3b856b66b15"
+    },
+    {
+      "path": "faultseeker/research/mempool.py",
+      "sha256": "1cf748f7d577235aa0f9545dc72027dd8824ac6a1fbc53f4edc2b6e32853c0f9"
+    },
+    {
+      "path": "faultseeker/research/remediation.py",
+      "sha256": "0d26de187748efb18aa0b3bdcb0a176dfd600bc1c04b69a04e46f104fafbb877"
+    },
+    {
+      "path": "faultseeker/research/statistics.py",
+      "sha256": "e1dbc5b6c0771f108e9838d093ea679555004d6bf83763e146aa29b5f043a148"
+    },
+    {
+      "path": "faultseeker/research/temporal.py",
+      "sha256": "47215d5651515039672a8b363aadc6e917775e126aac6dafe55eaf5989cc4c15"
+    },
+    {
+      "path": "faultseeker/utils/agent.py",
+      "sha256": "75c71cf1ab1d6a42fcea9197988ef8dcbe98ae5f27a369b534d13925c9b58788"
+    },
+    {
+      "path": "faultseeker/utils/chunk_splitter.py",
+      "sha256": "60978a3e0bb0990ddb26145bcff9408cac2a37aba92d7ebcd914d9bd0452df03"
+    },
+    {
+      "path": "faultseeker/utils/explorer_provider.py",
+      "sha256": "4b4b44518a91bfb606c625106b6756d0e50d40769541b9d628a1ecb98af25570"
+    },
+    {
+      "path": "faultseeker/utils/rpc_provider.py",
+      "sha256": "4bd1945d842554b77006f648eaa08c263b70a6edd231f98e6f1114723e50056a"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/antlrGenerated/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/antlrGenerated/SolidityLexer.py",
+      "sha256": "8559f75a53568dd6414a17a8783096362d91887361346c6961f4f632e0d94580"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/antlrGenerated/SolidityListener.py",
+      "sha256": "8936afdb354bde24c8de9bad2f3a59e8aecf979c5eea3f346826749949b41880"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/antlrGenerated/SolidityParser.py",
+      "sha256": "9053bacaa50c9a66f4d65271de0286eac46ac35c6624d89280751422c0e0a28c"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/constantTokenId.py",
+      "sha256": "b1e1a0251ced1781e11fbef8af6489b3c0ab1635a7a0b6d2deb3098e792d0778"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/constraintExtractor.py",
+      "sha256": "a51cd47eb42170a4b7a6376c7a184d628fa9abeee31c9414b614126d851b4c78"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/hash_parser.py",
+      "sha256": "d2bc3d3a7b890d4a1defd12f80fc13901feed5661d0763e3dfbe2f25a7380b0b"
+    },
+    {
+      "path": "faultseeker/utils/solidityParser/loc_parser.py",
+      "sha256": "326364ee2ad9e3a28963a86dd72c3cb89281307b43e83e8cd3461ec59e900605"
+    },
+    {
+      "path": "faultseeker/utils/utils.py",
+      "sha256": "e567cedb6416c7cf3da6f778183adae060d0660a5f8e29e13a3609088126bb81"
+    },
+    {
+      "path": "faultseeker/utils/waf_recovery.py",
+      "sha256": "d19b7d632c00ed7331a890becfb43c8c7b1733324d052499985b33af1fb1618e"
+    },
+    {
+      "path": "scripts/capture_authentic_traces.py",
+      "sha256": "3ce01144bd98ac182e123e49701e68af9866260ae832f1e1b01c76e965a0bd3b"
+    },
+    {
+      "path": "scripts/pinned_prestate_rpc.py",
+      "sha256": "ef84d91d512672d484d0cd853d2d7768c3d2da27db20e359cbe91d5804068eb4"
+    },
+    {
+      "path": "scripts/probe_train_native_opcodes.py",
+      "sha256": "d56d502312e803ffc83e4d6a941d2fc9fc69e02283592c0eb872d914a48e948d"
+    },
+    {
+      "path": "scripts/replay_historical_opcodes.py",
+      "sha256": "cb3eb0c74c796efd51675a0f3cbd61fe581ec093c59a38e09743df5367bc6632"
+    },
+    {
+      "path": "scripts/run_authentic_research.py",
+      "sha256": "28d0959c5158e9828a6bee752b656bf77da979da91089ff28fb25ba8a28aaa79"
+    },
+    {
+      "path": "scripts/run_train_gateway_pilot.py",
+      "sha256": "223a621866ff22b097aabc668c166975287bfda63b3b36fc5585ae9364927504"
+    }
+  ]
+}
