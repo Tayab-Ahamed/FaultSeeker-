@@ -482,9 +482,15 @@ class FunctionAnalyzer:
                 source_code_list = contract_info[address][function_name]
                 for source_code in source_code_list:
                     if source_code.get('content'):
-                        if source_code['content'] not in output_memo:
-                            output_memo.append(source_code['content'])
-                            output.append({'path':source_code['path'],'source_code':source_code['content']})
+                        source_identity=(source_code['path'],source_code['content'])
+                        if source_identity not in output_memo:
+                            output_memo.append(source_identity)
+                            record={'path':source_code['path'],'source_code':source_code['content']}
+                            # Executed source spans are evidence sent to the
+                            # processing role, not unused downloader metadata.
+                            for key in ('executed_source_spans','execution_scope','execution_unavailable_counts','execution_capture'):
+                                if key in source_code:record[key]=deepcopy(source_code[key])
+                            output.append(record)
         return output
 
     def _retrieve_related_info(self, address, function_name):

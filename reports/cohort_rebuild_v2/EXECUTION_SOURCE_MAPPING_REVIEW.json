@@ -1,0 +1,65 @@
+{
+  "scope": "Observed real TRAIN storage-PC source evidence and production prompt integration; no quality score",
+  "source_map_reference": "https://docs.soliditylang.org/en/latest/internals/source_mappings.html",
+  "proofs": [
+    "Instruction PCs skip PUSH operands; compressed compiler map uses instruction indexes and UTF8 byte offsets",
+    "Historical runtime/source digests validated before map; immutable/link changes restricted to declared PUSH immediates",
+    "Actual normalized call frame supplies executing code and inherited delegate storage owner separately",
+    "Grouped storage events retain opcode, slot, reverted status, event indexes, source hash, runtime proof and response binding",
+    "VerifiedSourceDownloader opt-in consumes hash-bound TRAIN capture; actual FunctionAnalyzer processing prompt receives spans and capture binding",
+    "Identical content at distinct compiler source paths remains distinct"
+  ],
+  "focused_acceptance": {
+    "passed": 41,
+    "tests": [
+      "tests/test_execution_source_map.py",
+      "tests/test_execution_source_inputs.py",
+      "tests/test_execution_source_adapter.py",
+      "tests/test_source_fallback_factories.py",
+      "tests/test_verified_source_inputs.py"
+    ]
+  },
+  "actual_exports": [
+    {
+      "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001043-c1a48cb1/summary.json",
+      "sha256": "b3196a7cf6186023e8387791fd1da0dbcc19fba3e06e5dcc1d2502f1afa0f750"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/summary.json",
+      "sha256": "c2bd9536f6bb2fe2705fc1cad540bcfdf1c17cf2e7d983e32e25fa15e79321cf"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001414-e8718971/summary.json",
+      "sha256": "d6e55afbbbe95816682b668ae6c723a50c0690d888d446b22ac0382a6227def6"
+    }
+  ],
+  "latest": {
+    "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001414-e8718971/summary.json",
+    "sha256": "d6e55afbbbe95816682b668ae6c723a50c0690d888d446b22ac0382a6227def6"
+  },
+  "observed_counts": {
+    "Euler": {
+      "storage_operations": 543,
+      "mapped": 232,
+      "runtime_source_unavailable": 311,
+      "code_address_ABI_selector_pairs_with_spans": 8
+    },
+    "Revest": {
+      "storage_operations": 439,
+      "mapped": 227,
+      "runtime_source_unavailable": 212,
+      "code_address_ABI_selector_pairs_with_spans": 18
+    }
+  },
+  "limitations": [
+    "No AST function body ownership or fault causality inferred",
+    "Generated/unmapped/unreliable verbatim source remains explicit",
+    "Source coverage is partial; no localization gain, full-model outcome or held-out metric observed"
+  ],
+  "independent_local_review": "Read-only subagent review found no blocking flaw; its observation that capture binding remained outside the prompt was addressed test-first",
+  "new_network_requests": 0,
+  "new_model_requests": 0,
+  "ledger_unchanged": true,
+  "heldout_used": false,
+  "claim_status": "UNVERIFIABLE"
+}

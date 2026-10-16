@@ -1,0 +1,68 @@
+{
+  "scope": "Executed source spans are not AST function slices or vulnerability attribution",
+  "config": {
+    "experiment": "observed-storage-PC-source-evidence-v1",
+    "input_sources": {
+      "path": "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+      "sha256": "f48e1d00258c92ccfb6f0375c2c2b48135ec79dc2e1358e29d58cf599ce5bb57"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/system.json",
+      "sha256": "1ac45c91d6051d50540cef1d67efa44b7a936d6664d943ac8c68c1bfa5f9e270"
+    },
+    "source_snapshot": {
+      "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/system_sources.json.gz",
+      "sha256": "0e2f88629a878dd6cf1c65521f0e02bcb4d5d02bcc224121606337e53dc6a0a1"
+    },
+    "scope": "Executed source spans are not AST function slices or vulnerability attribution"
+  },
+  "records": [
+    {
+      "identity": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/eth-0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "sha256": "53dcc5ea624f16a3abdcbc128b772c2fc2b68dbc863b0bdfe0f79169f9f99b47"
+      },
+      "summary": {
+        "input_events": 543,
+        "mapped_occurrences": 232,
+        "unavailable_counts": {
+          "RUNTIME_UNAVAILABLE": 311
+        },
+        "source_scope": "Observed storage opcode source spans for executing code and frame entry selector; not AST function slices or fault attribution",
+        "vulnerability_inferred": false
+      },
+      "ABI_selectors_with_executed_spans": 8
+    },
+    {
+      "identity": "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+        "sha256": "56f056ce68e2534959bed87dbd5db44002b462068fa43d81bc21504f0d02e299"
+      },
+      "summary": {
+        "input_events": 439,
+        "mapped_occurrences": 227,
+        "unavailable_counts": {
+          "RUNTIME_UNAVAILABLE": 212
+        },
+        "source_scope": "Observed storage opcode source spans for executing code and frame entry selector; not AST function slices or fault attribution",
+        "vulnerability_inferred": false
+      },
+      "ABI_selectors_with_executed_spans": 18
+    }
+  ],
+  "metrics": null,
+  "quality_experiment": false,
+  "new_network_requests": 0,
+  "network_attempts": 0,
+  "real_spend_ledger_unchanged": true,
+  "heldout_used": false,
+  "source_map_reference": "https://docs.soliditylang.org/en/latest/internals/source_mappings.html",
+  "limitations": [
+    "Entry selector groups observed execution, not AST function ownership",
+    "Generated/unmapped/missing runtime source remains explicit",
+    "Known verbatim builtin maps are unreliable and excluded",
+    "No fault causality or ranking improvement is inferred"
+  ]
+}

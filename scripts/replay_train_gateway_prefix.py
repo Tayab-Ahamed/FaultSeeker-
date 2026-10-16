@@ -103,7 +103,7 @@ def run(root=ROOT,summary_binding=None,output=None):
     real_ledger_before=ledger.read_bytes()
     out=Path(output) if output else root/'reports/cohort_rebuild_v2/gateway_prefix_replay'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+uuid.uuid4().hex[:8])
     out.mkdir(parents=True,exist_ok=False)
-    system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/captured_inputs.py'])
+    system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/execution_source_inputs.py',root/'benchmark/captured_inputs.py'])
     write_json(out/'system.json',system);snapshot=snapshot_system(system,out)
     previous_rate=COST_RATES.get(MODEL);had_rate=MODEL in COST_RATES
     previous_ledger=os.environ.get('FAULTSEEKER_SPEND_LEDGER')
@@ -125,7 +125,7 @@ def run(root=ROOT,summary_binding=None,output=None):
                         stage_one,sequence,info=inputs.orchestrator(out/'forensics').run(inputs.structured['transaction_hash'],'eth')
                         if stage_one is None:raise ValueError('Recorded production Stage1 unavailable')
                         ranking=FunctionRanker().rank(stage_one,{'repeated_patterns':stage_one.repeated_patterns,'function_call_loc_memo':stage_one.function_call_loc_memo})
-                        downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity)
+                        downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity,include_execution_spans=True)
                         analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader,analysis_error_handler=pilot.stop_after_analysis_error)
                         production=analyzer.run(stage_one,sequence,info,ranking)
                         path=out/(identity.replace(':','-')+'.json');write_json(path,{'identity':identity,'production_output':production,'inputs':inputs.evidence,'diagnostic_only':True})

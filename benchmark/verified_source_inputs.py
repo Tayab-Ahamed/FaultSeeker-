@@ -30,7 +30,10 @@ class VerifiedSourceDownloader:
     Source provenance is separate from the analyzer-facing ``run`` mapping.
     """
     def __init__(self, chain, address, output_dir='./temp2', cache_dir='./data/cache/contracts',
-                 *, root, evidence_binding, train_identity):
+                 *, root, evidence_binding, train_identity, include_execution_spans=False, _execution_cache=None):
+        self.include_execution_spans=include_execution_spans
+        self._execution_cache={} if _execution_cache is None else _execution_cache
+        self.execution_evidence=None
         self.root=Path(root).resolve()
         self.chain=chain.lower()
         self.address=[address] if isinstance(address,str) else list(address)
@@ -60,11 +63,13 @@ class VerifiedSourceDownloader:
         self.provenance={}
 
     @classmethod
-    def factory(cls, *, root, evidence_binding, train_identity):
+    def factory(cls, *, root, evidence_binding, train_identity, include_execution_spans=False):
         """Return the production constructor shape with frozen inputs bound."""
+        execution_cache={}
         def create(chain,address,output_dir='./temp2',cache_dir='./data/cache/contracts'):
             return cls(chain,address,output_dir,cache_dir,root=root,
-                       evidence_binding=evidence_binding,train_identity=train_identity)
+                       evidence_binding=evidence_binding,train_identity=train_identity,
+                       include_execution_spans=include_execution_spans,_execution_cache=execution_cache)
         return create
 
     def run(self):
@@ -75,6 +80,7 @@ class VerifiedSourceDownloader:
         codes=prestate['response']['result']
         verified={}
         provenance={}
+        validated_contracts={}
         # Validate every admitted response, not just the requested addresses.
         for contract in self.contracts:
             address=contract['address']
@@ -110,11 +116,36 @@ class VerifiedSourceDownloader:
                 # A collision retains the whole bundle and all signature provenance.
                 functions[selector]=bundle
                 signatures.setdefault(selector,[]).append(signature)
+            validated_contracts[address]={'response':data,'evidence':deepcopy(contract['response'])}
             verified[address]=functions
             provenance[address]={'response':deepcopy(contract['response']),
                 'prestate':deepcopy(self.prestate_binding),'evidence':deepcopy(self.evidence_binding),
                 'historical_runtime_sha256':hashlib.sha256(bytes.fromhex(historical[2:])).hexdigest(),
                 'sources':source_bindings,'abi_signatures':signatures,
                 'source_scope':'full_compilation_source_bundle_not_function_slice'}
+        if self.include_execution_spans:
+            # Acquisition is from the existing hash-bound TRAIN capture, never
+            # model-provided PCs, outcome annotations or an unmetered live RPC.
+            if 'report' not in self._execution_cache:
+                from benchmark.captured_inputs import load_train_inputs
+                from benchmark.execution_source_inputs import build_execution_evidence
+                inputs=load_train_inputs(self.root,self.chain+':'+self.txn_hash,require_opcodes=True)
+                execution=build_execution_evidence(inputs.structured,validated_contracts)
+                execution['capture']=deepcopy(inputs.evidence['capture'])
+                self._execution_cache['report']=execution
+            execution=self._execution_cache['report']
+            self.execution_evidence=deepcopy(execution)
+            for address,functions in verified.items():
+                for selector,bundle in list(functions.items()):
+                    evidence=execution['by_function'].get(address,{}).get(selector,{})
+                    records=[]
+                    for source in bundle:
+                        record=deepcopy(source)
+                        record['executed_source_spans']=[deepcopy(span) for span in evidence.get('mapped_spans',[]) if span.get('source',{}).get('path')==source['path']]
+                        record['execution_scope']='storage_instruction_source_spans_not_function_slice'
+                        record['execution_capture']=deepcopy(execution['capture'])
+                        record['execution_unavailable_counts']=deepcopy(evidence.get('unavailable_counts',{}))
+                        records.append(record)
+                    functions[selector]=records
         self.provenance={a:provenance[a] for a in self.address if a in provenance}
         return {a:deepcopy(verified.get(a,{})) for a in self.address}

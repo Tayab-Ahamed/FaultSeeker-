@@ -93,7 +93,7 @@ def run(root=ROOT,live=False,approval_file=None):
     key=values.get('BYNARA_API_KEY')
     if not key:raise ValueError('BYNARA_API_KEY missing')
     out=base/'gateway_runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+uuid.uuid4().hex[:8]);out.mkdir(parents=True,exist_ok=False)
-    system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/captured_inputs.py'])
+    system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/execution_source_inputs.py',root/'benchmark/captured_inputs.py'])
     write_json(out/'system.json',system);source_snapshot=snapshot_system(system,out)
     config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
@@ -113,7 +113,7 @@ def run(root=ROOT,live=False,approval_file=None):
                 result,sequence,info=inputs.orchestrator(out/'forensics').run(inputs.structured['transaction_hash'],'eth')
                 if result is None:raise ValueError('Production Stage1 failed')
                 ranking=FunctionRanker().rank(result,{'repeated_patterns':result.repeated_patterns,'function_call_loc_memo':result.function_call_loc_memo})
-            downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity)
+            downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity,include_execution_spans=True)
             analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader,analysis_error_handler=pilot.stop_after_analysis_error)
             with redirect_stdout(stream):output=analyzer.run(result,sequence,info,ranking)
             path=out/(identity.replace(':','-')+'.json');write_json(path,{'identity':identity,'production_output':output,'inputs':inputs.evidence,'source_scope':'All cached verified ABI functions; missing contract sources remain unavailable'})
