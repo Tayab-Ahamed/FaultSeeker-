@@ -1,4 +1,4 @@
-"""Draft regression tests: synthetic provider/clock boundaries, no empirical claims."""
+"""Regression tests: synthetic provider/clock boundaries, no empirical claims."""
 import sys
 sys.modules['readline']=None
 from collections import Counter
@@ -32,6 +32,7 @@ def make_analyzer(monkeypatch,exit_kind,callback=None,cloud=True,adequacy='yes')
         analysis_error_handler=callback)
     a.function_call_info_summary={'function':'foo','address':A,'calls':[]}
     a.cheatsheet=[]
+    a.tx_analysis={'function_call_loc_memo':{'foo::'+A:[{'depth':[0]}]}}
     # The real loops and real task selection run unchanged. A deterministic
     # clock expires after fn_start, never by sleeping or altering thresholds.
     ticking={'armed':False,'reads':0}

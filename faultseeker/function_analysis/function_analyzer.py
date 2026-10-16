@@ -20,6 +20,7 @@ from faultseeker.research.cost_tracker import CostTracker
 from contextlib import nullcontext
 from typing import Optional
 from faultseeker.function_analysis.additional_info_schema import normalize_additional_info
+from faultseeker.function_analysis.finding_schema import normalize_findings,validate_finding_order
 
 
 class FunctionAnalyzer:
@@ -80,6 +81,7 @@ class FunctionAnalyzer:
         self.children_call_memo = {}
         self.repeated_patterns = []
         self.analysis_errors = []
+        self.ranked_result = []
 
     def _uses_cloud_model(self):
         if self.router is not None:
@@ -103,18 +105,6 @@ class FunctionAnalyzer:
             return nullcontext()
         return self.cost_tracker.stage(name)
 
-    def _get_function_call_depth(self, function_call):
-        temp = function_call.rsplit('_',1)
-        function_name = temp[0].lower()
-        address = temp[1].lower()
-        key = f"{function_name}::{address}"
-        current_depth = 0
-        if key in self.tx_analysis['function_call_loc_memo']:
-            for call in self.tx_analysis['function_call_loc_memo'][key]:
-                if len(call['depth']) > current_depth:
-                    current_depth = len(call['depth'])
-        return current_depth
-        
     def _retrieve_function_call_by_depth(self, depth , function_name, get_children=False):
         depth_temp = depth[:-1]
         current = deepcopy(self.trace)
@@ -337,31 +327,21 @@ class FunctionAnalyzer:
         prompt += "Current task:" + json.dumps(self.current_task)
         prompt += 'Analysis result of current task:' + json.dumps(self.processing_result)
         prompt += 'The following function calls have been confirmed to be vulnerable, if it is in the provided information, please add it to the returned JSON with the predefined format: ' + str(self.cheatsheet)
-        result = self.organization_agent.query(prompt)
-        logging.info(f"Vulnerable function: {result}")
-        for key in result:
-            try:
-                evidence = ''
-                confidence_score = ''
-                if isinstance(result[key],list) or isinstance(result[key],tuple):
-                    evidence = result[key][0]
-                    confidence_score = result[key][1]
-                elif isinstance(result[key],dict):
-                    evidence = result[key]['evidence']
-                    confidence_score = result[key]['confidence_score']
-                if evidence and confidence_score:
-                    if key not in self.potentially_vulnerable_functions:
-                        self.potentially_vulnerable_functions[key] = {
-                            'confidence_score': [confidence_score],
-                            'evidence': [evidence],
-                            'depth': self._get_function_call_depth(key),
-                        }
-                    else:
-                        self.potentially_vulnerable_functions[key]['confidence_score'].append(confidence_score)
-                        self.potentially_vulnerable_functions[key]['evidence'].append(evidence)
-            except Exception:
-                pass
-    
+        observed=self.tx_analysis['function_call_loc_memo']
+        prompt += '\nUse only these exact observed function_address identifiers: ' + json.dumps([
+            key.replace('::','_',1) for key,calls in observed.items() if calls])
+        result = normalize_findings(self.organization_agent.query(prompt), observed)
+        # Validate the whole reply before merging any finding. Unknown identities
+        # and invalid confidence cannot be swallowed as a completed analysis.
+        for key,finding in result.items():
+            if key not in self.potentially_vulnerable_functions:
+                self.potentially_vulnerable_functions[key] = {
+                    'confidence_score':[finding['confidence_score']],
+                    'evidence':[finding['evidence']], 'depth':finding['depth']}
+            else:
+                self.potentially_vulnerable_functions[key]['confidence_score'].append(finding['confidence_score'])
+                self.potentially_vulnerable_functions[key]['evidence'].append(finding['evidence'])
+
     def _update_children_call_memo(self, function_call, function_name=''):
         for i in function_call:
             if (i['function'] == function_name) and (i['call_type'] == 'delegatecall'):
@@ -523,28 +503,17 @@ class FunctionAnalyzer:
         return output
     
     def _finalize_potentially_vulnerable_functions(self):
-        current_depth = 0
-        finalized_potentially_vulnerable_functions = []
-        for key in self.potentially_vulnerable_functions:
-            if self.potentially_vulnerable_functions[key]['depth'] > current_depth:
-                current_depth = self.potentially_vulnerable_functions[key]['depth']
-                potentially_vulnerable_functions = deepcopy(self.potentially_vulnerable_functions[key])
-                temp = key.rsplit('_',1)
-                function_name = temp[0]
-                address = temp[1].lower()
-                potentially_vulnerable_functions['function'] = function_name
-                potentially_vulnerable_functions['address'] = address
-                finalized_potentially_vulnerable_functions = [potentially_vulnerable_functions]
-            elif self.potentially_vulnerable_functions[key]['depth'] == current_depth:
-                potentially_vulnerable_functions = deepcopy(self.potentially_vulnerable_functions[key])
-                temp = key.rsplit('_',1)
-                function_name = temp[0]
-                address = temp[1].lower()
-                potentially_vulnerable_functions['function'] = function_name
-                potentially_vulnerable_functions['address'] = address
-                finalized_potentially_vulnerable_functions.append(potentially_vulnerable_functions)
-        return finalized_potentially_vulnerable_functions
-        
+        # The model's validated ordering must reach Stage 3. A deeper call is
+        # not proof that a shallower observed candidate cannot be the root cause.
+        order=validate_finding_order(self.ranked_result,self.potentially_vulnerable_functions)
+        finalized=[]
+        for rank,key in enumerate(order,1):
+            finding=deepcopy(self.potentially_vulnerable_functions[key])
+            function,address=key.rsplit('_',1)
+            finding.update(function=function,address=address.lower(),model_rank=rank)
+            finalized.append(finding)
+        return finalized
+
     def _process_potentially_vulnerable_functions(self):
         potentially_vulnerable_functions = {}
         for func in self.potentially_vulnerable_functions:
@@ -563,7 +532,8 @@ class FunctionAnalyzer:
             current_understanding=json.dumps(self.understanding_result),
             potentially_vulnerable_functions=json.dumps(self.potentially_vulnerable_functions)
         )
-        self.ranked_result = self.agent.query(prompt_text)
+        self.ranked_result = validate_finding_order(
+            self.agent.query(prompt_text), self.potentially_vulnerable_functions)
 
     @staticmethod
     def _validate_function_selection(selection, offered):
@@ -810,6 +780,7 @@ class FunctionAnalyzer:
         self.task_tree = ''
         self.potentially_vulnerable_functions = {}
         self.analysis_errors = []
+        self.ranked_result = []
         self.function_call_info_summary = {}
         self.children_call_memo_single = {}
         self.children_call_memo = {}

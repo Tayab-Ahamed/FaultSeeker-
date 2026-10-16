@@ -211,7 +211,7 @@ Rank these functions from most to least likely to contain the vulnerability.
 Downrank: callbacks, ERC20 wrappers, read-only getters.
 Prioritize: price calculation, state updates, access control.
 
-Return ONLY a JSON list, highest likelihood first:
+Return ONLY a JSON list containing every provided finding identity exactly once, highest likelihood first:
 ["funcA_0xabc", "funcB_0xdef"]
 
 Transaction understanding: {current_understanding}

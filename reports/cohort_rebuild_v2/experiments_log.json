@@ -2819,5 +2819,31 @@
     "sequence": 54,
     "previous_sha256": "a3a54ded670aa2e727f22d8858e5a3dd00c982886083f21b7798783d9ff3aec7",
     "timestamp": "2026-10-16T01:44:24.240073+00:00"
+  },
+  {
+    "run_id": "20261016T020106-df5e4ce8",
+    "seed": 1729,
+    "kind": "offline-prefix-replay",
+    "metrics": null,
+    "sample_ids": [],
+    "config": {
+      "experiment": "exact-prefix-after-observed-finding-and-final-rank-guards",
+      "system": {
+        "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/system.json",
+        "sha256": "6d0bc51cbe68bfff3fceb933e411edf5c92e4ae7951d198cd5f4688337481845"
+      },
+      "source_snapshot": {
+        "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/system_sources.json.gz",
+        "sha256": "7a35d00ac4b23cdfa8217aeafb8e15ba06adfa94d9caf1bcc287608b4f6688dc"
+      },
+      "timing_reproduced": false
+    },
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/summary.json",
+      "sha256": "f52d8f2d56b90c0da434a401a367e421b1c31b0e7ffe0529f3982df988962964"
+    },
+    "sequence": 55,
+    "previous_sha256": "6be3530b0563524629af8db0d55ca2c70808acf6aa04916afe02ba137942656b",
+    "timestamp": "2026-10-16T02:02:42.879572+00:00"
   }
 ]

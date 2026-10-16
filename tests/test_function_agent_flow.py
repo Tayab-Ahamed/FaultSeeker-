@@ -25,6 +25,8 @@ def test_real_function_analysis_executes_every_role_including_child_filter(monke
                 raise RuntimeError('fixture provider unavailable')
             if self.role == 'children':
                 return [0]
+            if self.role == 'ranking':
+                return [function_key]
             if self.role == 'generation':
                 if 'Additional information to be reorganized:' in prompt:
                     return {'children_calls':[{'function':function_name,'address':owner}]}

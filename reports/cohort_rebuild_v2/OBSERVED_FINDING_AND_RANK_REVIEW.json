@@ -1,0 +1,62 @@
+{
+  "scope": "Real production finding ingestion, finalization and Stage3 handoff tested offline; no empirical localization score",
+  "defects": [
+    "Unobserved model identities were accepted at depth zero and could become finalized findings",
+    "Invalid confidence values were ingested, while zero confidence was silently discarded",
+    "Model finding order was assigned but finalization ignored it and discarded every shallower candidate solely by depth"
+  ],
+  "repairs": [
+    "Whole reply validated against actual nonempty observed function/address memo before any merge; no inferred ABI aliases",
+    "Finite numeric confidence score within [0,1] including zero; depth derives only from observed call paths",
+    "Finding order must be a complete exact permutation; all observed candidates reach finalization in that order with model_rank, then actual Stage3 relative scoring"
+  ],
+  "test_first": {
+    "flow_before": {
+      "failed": 14
+    },
+    "schema_before": "Missing module; later malformed numeric/container cases failed before validator repair",
+    "focused_after": {
+      "passed": 79,
+      "tests": [
+        "tests/test_finding_schema.py",
+        "tests/test_finding_flow.py",
+        "tests/test_function_agent_flow.py",
+        "tests/test_function_timeout_state.py"
+      ]
+    }
+  },
+  "test_fixture_adjustments": "Two tests added during this work now supply valid rank-list/model-memo boundaries. Unauthorized changes to the 201 original test sources: none (existing explicitly approved assertion exception retained).",
+  "weights_thresholds_changed": false,
+  "current_code_replay": {
+    "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/summary.json",
+    "sha256": "f52d8f2d56b90c0da434a401a367e421b1c31b0e7ffe0529f3982df988962964"
+  },
+  "proposal": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/proposal.json",
+    "sha256": "904af3d420a01485cef2b4cb57b5131ac9675dfe0264b47c301dcdc2bce86de6"
+  },
+  "proposal_preview_checks": [
+    {
+      "preview": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/first_payload_preview.json",
+        "sha256": "f9dd5af53145adb9a8b4e06088c3657766dbe2c3cafed9d02066211a1ee9a25d"
+      },
+      "current_request_sha256": "f9dd5af53145adb9a8b4e06088c3657766dbe2c3cafed9d02066211a1ee9a25d",
+      "matches_current_bytes": true
+    },
+    {
+      "preview": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/second_payload_after_saved_response_preview.json",
+        "sha256": "e07cdf22d596f8abac266666f4f871d0083e329bb17c2eacfb5fc7c91639105d"
+      },
+      "current_request_sha256": "e07cdf22d596f8abac266666f4f871d0083e329bb17c2eacfb5fc7c91639105d",
+      "matches_current_bytes": true
+    }
+  ],
+  "proposal_still_unapproved": true,
+  "new_model_requests": 0,
+  "heldout_used": false,
+  "metrics": null,
+  "claim22_status": "UNVERIFIABLE",
+  "remaining_input": "Complete genuine model-assisted outputs and independent scoring; local regressions are not accuracy proof"
+}
