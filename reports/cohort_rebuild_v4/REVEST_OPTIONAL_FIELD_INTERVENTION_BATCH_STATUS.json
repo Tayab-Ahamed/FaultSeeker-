@@ -1,0 +1,63 @@
+{
+  "scope": "Actual terminal TRAIN full-pipeline batch; optional-field contract stage not reached; no performance metric",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T112421-02f4bcc2/summary.json",
+    "sha256": "20ab8f1ea8d5b5b588e76a144e77be28173843bb64e793badcac083b9ed5a147"
+  },
+  "system": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T112421-02f4bcc2/system.json",
+    "sha256": "dfe0206d932310ea0d683efce1f151ba67868382ae096023bacc7d1162873627"
+  },
+  "response": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T112421-02f4bcc2/calls/call-001.json",
+    "sha256": "c88a214abb0e114bdd8a092de705ab39822bc85eac0be7e204c5edaf2d99c5da"
+  },
+  "settlement": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T112421-02f4bcc2/calls/ledger/call-001.json",
+    "sha256": "f8e2e8cbe3c0c58e5e201cb7b49d6d150976cd35252d700147259fd165b061f9"
+  },
+  "requests": 1,
+  "http_status": 200,
+  "finish_reason": "stop",
+  "complete_cases": 0,
+  "stage1_completed": true,
+  "stage2_completed": false,
+  "stage3_confidence_observations": 0,
+  "json_parsed": true,
+  "offered_count": 34,
+  "selected_count": 31,
+  "duplicate_count": 0,
+  "unknown_keys": [
+    "0x70a08231_0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4"
+  ],
+  "offered_owners_for_selector_0x70a08231": [
+    "0x70a08231_0x56de8bc61346321d4f2211e3ac3c0a7f00db9b76",
+    "0x70a08231_0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  ],
+  "failure": {
+    "type": "ValueError",
+    "message": "Function narrowing selection contains duplicate or unknown keys"
+  },
+  "offline_reproduction": "Parse offered JSON with JSONDecoder.raw_decode after exact prompt marker; AbstractAgent._extract_json(None, saved content); FunctionAnalyzer._validate_function_selection(selected, offered)",
+  "optional_field_stage_reached": false,
+  "usage": {
+    "completion_tokens": 3515,
+    "prompt_tokens": 11803,
+    "prompt_tokens_details": {
+      "cached_tokens": 11776
+    },
+    "total_tokens": 15318
+  },
+  "model_only_conservative_increment_usd": 0.0018832999999999999,
+  "shared_ledger_window_delta_usd": 0.0018892999999999827,
+  "other_ledger_activity_in_window_usd": 5.999999999982799e-06,
+  "accounting_note": "Shared ledger delta includes one PublicNode request; model amount sums only this call settlement. Estimates are not confirmed billing.",
+  "cumulative_conservative_usd_at_end": 1.9904876999998846,
+  "billing_confirmed": false,
+  "automatic_retries": 0,
+  "owner_guess_or_repair": false,
+  "heldout_used": false,
+  "labels_sent": false,
+  "fixtures_used_as_evidence": false,
+  "metrics": null
+}

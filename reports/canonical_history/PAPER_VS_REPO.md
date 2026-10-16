@@ -234,3 +234,8 @@ Revest full-pipeline run20261016T105155-5f843897 progressed beyond the prior nar
 ### Genuine ninth-chain admission (2026-10-16)
 
 EraLend zkSync execution99efebac...ab0ef passes full real admission: distinct Beosin/Olympix accounts, Codex mechanism consensus and officialchain324 matching successfultransaction/receipt. Fresh gate revalidation gives23availableuniqueidentities across9chains; frozenv4 remains22/8, theadditionUNASSIGNED. The target246/10 isshort223rows/1chain. Olympus captcha heuristic was a reviewed reCAPTCHA-script falsepositive alongside fullincidentbody; publisherdate/CMS caveats remain. No deployed-source localization target, prediction or benchmarkmetric is inferred.2dRPCrequests stopped onlookupfailure;3officialpublicrequests succeeded. ConservativeRPCincrement$0.000030; authoritativecumulative$1.9885864, billingunconfirmed. Evidence: reports/cohort_rebuild_v4/ERALEND_ZKSYNC_ADMISSION.json.
+
+
+### Optional-field intervention: earlier-stage model rejection (2026-10-16)
+
+Run20261016T112421-02f4bcc2 stoppedafter1HTTP200/finish-stop response. Actualparser accepts31uniqueJSONstrings, but productionexact-keyvalidator rejects1inventedselector/ownerpair absentfrom34offeredkeys.0completecases/noStage3metrics; optional-fieldstage neverreached, so its softwarecontractfix isnotlivecompletionevidence. Usage11803prompt+3515completion=15318tokens. Boundmodelsettlement$0.0018833; sharedwindowdelta$0.0018893includesoneconcurrentRPCread$0.000006. Cumulativeconservativeestimate$1.9904877, billingunconfirmed. No ownerrepair/retry/heldoutaccess. Evidence: reports/cohort_rebuild_v4/REVEST_OPTIONAL_FIELD_INTERVENTION_BATCH_STATUS.json.
