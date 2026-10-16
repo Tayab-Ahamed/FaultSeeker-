@@ -229,3 +229,8 @@ The authentic22-record population is now published in benchmark/versions/cohort_
 ### Actual strict-prompt TRAIN batch (2026-10-16)
 
 Revest full-pipeline run20261016T105155-5f843897 progressed beyond the prior narrowing JSON failure but stopped after7HTTP200 responses on call7 source_code empty-string schema nonconformance.0completecases, noStage3confidenceobservations or performance metric. Bound settlements sum$0.0125502model-only conservative spend; the sharedwindowdelta$0.0125622includes2concurrentRPCreads($0.000012).117045actualusage tokens (108588prompt+8457completion). No retry, output repair, heldout access or fixture evidence. Claim22 remains UNVERIFIABLE for full empirical pipeline/replay scope. Evidence: reports/cohort_rebuild_v4/REVEST_STRICT_PROMPT_BATCH_STATUS.json.
+
+
+### Genuine ninth-chain admission (2026-10-16)
+
+EraLend zkSync execution99efebac...ab0ef passes full real admission: distinct Beosin/Olympix accounts, Codex mechanism consensus and officialchain324 matching successfultransaction/receipt. Fresh gate revalidation gives23availableuniqueidentities across9chains; frozenv4 remains22/8, theadditionUNASSIGNED. The target246/10 isshort223rows/1chain. Olympus captcha heuristic was a reviewed reCAPTCHA-script falsepositive alongside fullincidentbody; publisherdate/CMS caveats remain. No deployed-source localization target, prediction or benchmarkmetric is inferred.2dRPCrequests stopped onlookupfailure;3officialpublicrequests succeeded. ConservativeRPCincrement$0.000030; authoritativecumulative$1.9885864, billingunconfirmed. Evidence: reports/cohort_rebuild_v4/ERALEND_ZKSYNC_ADMISSION.json.

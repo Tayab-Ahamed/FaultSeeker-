@@ -1,0 +1,30 @@
+{
+  "identity": "zksync:0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+  "provider": "authorized-dRPC-zksync",
+  "phase": "eth_getTransactionByHash",
+  "source_artifacts": [
+    {
+      "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+      "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/d300ffe89e90ddc2d640910d83ccf6f283253f31055950f5f0b545c01b7555fb.gz",
+      "sha256": "e0ea3c5770053001f7ee9a5e18304a83cdbcce23df7c565baad69fa8641be626"
+    }
+  ],
+  "observed_chain_id": 324,
+  "error_type": "RuntimeError",
+  "accounting": {
+    "outbound_rpc_requests": 2,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1
+    },
+    "estimated_cost_usd": 1.2e-05,
+    "cumulative_ledger_estimate_usd": 1.9861959999998848,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

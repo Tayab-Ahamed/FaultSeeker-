@@ -1,0 +1,336 @@
+{
+  "scope": "Actual EraLend zkSync source/RPC admission only; no prediction/evaluation or study publication",
+  "accepted_record": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/accepted_record.json",
+    "sha256": "2a7830d58b2088e9f7eb740d63fa75424e715007803c1f7209083703ad110474"
+  },
+  "admission": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/admission.json",
+    "sha256": "fbf46aca6b81e71e387510c6bcde12f03097a39f7ad636711adaee078e8642ed"
+  },
+  "benchmark_row": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/benchmark_row.csv",
+    "sha256": "9bd8ef2f721c4576eeb7b05eebc6ddff01c27fcd9d5a1639acbeb64121f83601"
+  },
+  "annotation": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/annotation.json",
+    "sha256": "fbb2ee2d1c013b86245db800060dc7508699b78beda6ec14ee327ad8bb1b0628"
+  },
+  "ground_truth": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/ground_truth.json",
+    "sha256": "6c351c02a882df78a6b273831f313c01c30bc064c171541cc2cd4d0e81b538d9"
+  },
+  "source_artifacts": [
+    {
+      "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+      "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/d300ffe89e90ddc2d640910d83ccf6f283253f31055950f5f0b545c01b7555fb.gz",
+      "sha256": "e0ea3c5770053001f7ee9a5e18304a83cdbcce23df7c565baad69fa8641be626"
+    }
+  ],
+  "rpc": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_rpc/official-20261016T110943166792/observation.json",
+    "sha256": "048154d487581be61701eb85788b41b9784831934f9e7c18ce62d45de9212a81"
+  },
+  "decision": {
+    "txn_hash": "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+    "chain": "zksync",
+    "accepted": true,
+    "reasons": [],
+    "rpc_identity_verified": true,
+    "independent_security_publishers": 2,
+    "annotation_verified": true,
+    "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+  },
+  "publisher_independence_review": "Separate security organizations publish distinct technical accounts of the same July2023 zkSync EraLend exploit. Both reviewed bodies identify this exact execution and explain stale-reserve read reentrancy; neither attributes its mechanism account to the other. This is Codex public-source consensus, not independent human review or proof of independent investigative methods.",
+  "source_content_review": {
+    "method": "Full cached raw HTML was SHA-validated and the complete visible article bodies were read offline; attributed excerpts additionally checked against research_protocol.source_text.",
+    "Olympix_captcha_heuristic": "FALSE_POSITIVE: cached body contains a google.com/recaptcha/api.js script for the website, alongside the full EraLend technical section, exact transaction hash and normal site forms. It is not a challenge-only body.",
+    "Olympix_cms_and_dates": "The page has generic rich-text/form/footer material. The visible publisher date is August15,2023; a separately observed Medium mirror reports June28,2025. Neither date is treated as independently authenticated. This discrepancy does not change the explicit execution identity or mechanism.",
+    "loss_estimates": "Beosin and Olympix report different loss estimates. Neither estimate is used as a measured result or adjudicated loss amount.",
+    "no_inferred_localization": true
+  },
+  "available_count_context": {
+    "baseline_reported_count": 22,
+    "count_after_this_accepted_unique_addition": 23,
+    "chain_count_after_addition": 9,
+    "new_chain": "zksync",
+    "scope": "Fresh aggregate real admission revalidation of22frozenv4records plus this unique unassigned addition."
+  },
+  "study_boundary": {
+    "frozen_v4_count": 22,
+    "frozen_v4_chain_count": 8,
+    "new_identity_assignment": "UNASSIGNED",
+    "registry_changed": false,
+    "split_changed": false,
+    "heldout_accessed": false,
+    "requires_new_versioned_preregistration_before_train_use": true
+  },
+  "requests_by_this_task": 0,
+  "research_metrics_produced": false,
+  "aggregate_revalidation": {
+    "frozen_manifest": {
+      "path": "benchmark/versions/cohort_v4_20261016/cohort_manifest.json",
+      "sha256": "33ff25ba84163c842ac5c9311a2ccf870056ae0e166884b45cf599c5612cd63c"
+    },
+    "accepted_count": 23,
+    "chain_count": 9,
+    "identities_unique": true,
+    "decisions": [
+      {
+        "txn_hash": "0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+        "chain": "avalanche",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+        "chain": "base",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+        "chain": "base",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428",
+        "chain": "eth",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+        "chain": "fantom",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+        "chain": "gnosis",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+        "chain": "optimism",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+        "chain": "polygon",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+        "chain": "polygon",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      {
+        "txn_hash": "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+        "chain": "zksync",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      }
+    ],
+    "heldout_partition_payload_opened": false,
+    "network_requests": 0,
+    "model_requests": 0
+  },
+  "root_acquisition_accounting": {
+    "public_source_http_attempts": 2,
+    "drpc_requests": 2,
+    "official_public_zksync_requests": 3,
+    "conservative_rpc_increment_usd": 3e-05,
+    "cumulative_conservative_usd": 1.9885863999998847,
+    "billing_confirmed": false,
+    "rpc_attempts": [
+      {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_rpc/20261016T105459385919/attempt.json",
+        "sha256": "e408367a1969bfeca21f1e55e49dfa909e2d8270dc575dab062b09ada3af327e"
+      },
+      {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_rpc/official-20261016T110943166792/attempt.json",
+        "sha256": "0d1236f180db251ad7c00970fdf9db25f4bf6e1e7e0a3008e58a596a2ce699cd"
+      }
+    ],
+    "initial_network_routing_preflight": "First local endpoint construction rejected before dispatch; existing vetted network router used for actual2requestdRPCattempt. dRPClookupfailure retains only error_type, no absent-history/universal-support inference."
+  }
+}

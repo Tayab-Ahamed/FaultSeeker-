@@ -1,0 +1,54 @@
+{
+  "schema": 2,
+  "name": "EraLend zkSync July2023",
+  "transaction_hash": [
+    "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef"
+  ],
+  "chain": "zksync",
+  "cause": "Read-only reentrancy - stale-reserve price-oracle accounting",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/annotation.json",
+    "sha256": "fbb2ee2d1c013b86245db800060dc7508699b78beda6ec14ee327ad8bb1b0628"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "function_name": "burn",
+      "source": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+        "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+      },
+      "scope": "Incident-level publisher function name only; worked example is a sibling transaction. No selected-execution address/full signature/source line target and no localization score."
+    },
+    {
+      "function_name": "_callback",
+      "source": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+        "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+      },
+      "scope": "Incident-level publisher function name only; worked example is a sibling transaction. No selected-execution address/full signature/source line target and no localization score."
+    },
+    {
+      "function_name": "borrow",
+      "source": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+        "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+      },
+      "scope": "Incident-level publisher function name only; worked example is a sibling transaction. No selected-execution address/full signature/source line target and no localization score."
+    },
+    {
+      "function_name": "repayBorrow",
+      "source": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+        "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+      },
+      "scope": "Incident-level publisher function name only; worked example is a sibling transaction. No selected-execution address/full signature/source line target and no localization score."
+    }
+  ],
+  "localization_status": "PARTIAL: incident-level function names only; selected-execution deployed-source address/full signature/line targets unavailable and not scored"
+}

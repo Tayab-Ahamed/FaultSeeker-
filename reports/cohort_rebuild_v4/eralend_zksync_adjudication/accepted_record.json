@@ -1,0 +1,57 @@
+{
+  "txn_hash": "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+  "chain": "zksync",
+  "incident_id": "reviewed:EraLend-zkSync-July-2023",
+  "sources": [
+    {
+      "publisher_id": "Beosin",
+      "independence_group": "Beosin",
+      "url": "https://www.beosin.com/resources/eralend-suffers-34-million-in-losses-from-attack-will-hac",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/31ddb34834e5400fade38ce52970a39b87f2e662aaf1c982de60103da76be898.gz",
+        "sha256": "5f26d9d9411b96ece6fde4220461f1023d90222dd890769fe2793dc2ead560e2"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations publish distinct technical accounts of the same July2023 zkSync EraLend exploit. Both reviewed bodies identify this exact execution and explain stale-reserve read reentrancy; neither attributes its mechanism account to the other. This is Codex public-source consensus, not independent human review or proof of independent investigative methods.",
+      "identity_basis": {
+        "transaction": "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+        "chain": "zksync",
+        "review": "Beosin explicitly lists this hash under Attacking Transactions in its zkSync EraLend analysis; Olympix explicitly prints the identical Transaction Hash within its zkSync EraLend section. Beosin lists the matching attacker and destination attack contract; the official chain324 transaction and receipt independently bind execution identity. No other roundup transaction is included."
+      }
+    },
+    {
+      "publisher_id": "Olympix",
+      "independence_group": "Olympix",
+      "url": "https://www.olympix.security/biweekly-exploits/uwerx-eralend-bno-from-burn-loops-to-broken-withdrawals",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v4/eralend_zksync_sources/http/d300ffe89e90ddc2d640910d83ccf6f283253f31055950f5f0b545c01b7555fb.gz",
+        "sha256": "e0ea3c5770053001f7ee9a5e18304a83cdbcce23df7c565baad69fa8641be626"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations publish distinct technical accounts of the same July2023 zkSync EraLend exploit. Both reviewed bodies identify this exact execution and explain stale-reserve read reentrancy; neither attributes its mechanism account to the other. This is Codex public-source consensus, not independent human review or proof of independent investigative methods.",
+      "identity_basis": {
+        "transaction": "0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef",
+        "chain": "zksync",
+        "review": "Beosin explicitly lists this hash under Attacking Transactions in its zkSync EraLend analysis; Olympix explicitly prints the identical Transaction Hash within its zkSync EraLend section. Beosin lists the matching attacker and destination attack contract; the official chain324 transaction and receipt independently bind execution identity. No other roundup transaction is included."
+      }
+    }
+  ],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/annotation.json",
+    "sha256": "fbb2ee2d1c013b86245db800060dc7508699b78beda6ec14ee327ad8bb1b0628"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_rpc/official-20261016T110943166792/observation.json",
+    "sha256": "048154d487581be61701eb85788b41b9784831934f9e7c18ce62d45de9212a81"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "vulnerability_class": "Read-only reentrancy - stale-reserve price-oracle accounting",
+  "complexity_class": "UNRECOVERED",
+  "membership": "ACCEPTED-OUTSIDE-FROZEN-V4",
+  "ground_truth": {
+    "path": "reports/cohort_rebuild_v4/eralend_zksync_adjudication/ground_truth.json",
+    "sha256": "6c351c02a882df78a6b273831f313c01c30bc064c171541cc2cd4d0e81b538d9"
+  },
+  "split_assignment": "UNASSIGNED"
+}
