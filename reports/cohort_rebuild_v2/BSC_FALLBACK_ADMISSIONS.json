@@ -1,0 +1,100 @@
+{
+  "scope": "Actual full source/RPC admission for SwapX,Level,corrected Orion BSC via previously successful official public fallback",
+  "new_admissions": [
+    {
+      "identity": "bsc:0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+      "row": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/swapx_rpc_20261016/row.json",
+        "sha256": "ddd6a650d510e5c9d2502f7c88cd247c24eb3b0554183f9b62dd9fb6a70ca51b"
+      },
+      "decision": {
+        "txn_hash": "0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/swapx_rpc_20261016/accepted_record.json",
+        "sha256": "19676eb433d8130a39a7f23df71c3804b49266499d3eebd63c05cde3e8b1d46d"
+      },
+      "csv": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/swapx_rpc_20261016/benchmark_row.csv",
+        "sha256": "ef47dada3c00f7918ba94dd4220d8f3f2616f169ba4f4fffef32800c02e6235e"
+      }
+    },
+    {
+      "identity": "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+      "row": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level_rpc_20261016/row.json",
+        "sha256": "a25ac950a8c5a3b837adcd6014f902594a54eebd59810c984b6951525cec4fca"
+      },
+      "decision": {
+        "txn_hash": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level_rpc_20261016/accepted_record.json",
+        "sha256": "bcda1f28ae398f3da2342e0458301ceceea4141a552e6e624e82b8d10f0c65c3"
+      },
+      "csv": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level_rpc_20261016/benchmark_row.csv",
+        "sha256": "9ed4601a99d0f9365f288e3e1610f20cb8295927752ebfb0b932982d8f2c19a1"
+      }
+    },
+    {
+      "identity": "bsc:0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+      "row": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/row.json",
+        "sha256": "b04a229ca5b836191c176564dc1ac3d4564b457ea05900661d36011b58898422"
+      },
+      "decision": {
+        "txn_hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+        "chain": "bsc",
+        "accepted": true,
+        "reasons": [],
+        "rpc_identity_verified": true,
+        "independent_security_publishers": 2,
+        "annotation_verified": true,
+        "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+      },
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/accepted_record.json",
+        "sha256": "bb02ba5363a9920b9821509d664d3214b1b68b131928496175b2634f4fa7f08a"
+      },
+      "csv": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/benchmark_row.csv",
+        "sha256": "ff1da97128fcb7d2cf950b741c64ddc52b57e72fec905b4db7615940582fa813"
+      }
+    }
+  ],
+  "rpc_probe": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/summary.json",
+    "sha256": "af3c23f1eb109b74e8d02973044ff9cd9cbe0a46eb055f0834d3ed8fd209ecd1"
+  },
+  "additional_manifest": {
+    "path": "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T063056.json",
+    "sha256": "4289f504c37e4eaf16fb57ae3879ae79eab624bac496cc7a46f0b8f980a099b3"
+  },
+  "original_frozen_study_count": 14,
+  "additional_accepted_count": 6,
+  "provenance_complete_unique_available": 20,
+  "previous_failed_drpcs_are_not_repaired": true,
+  "previous_quarantined_records_preserved": true,
+  "legacy_chain_defect_preserved_separately": true,
+  "heldout_used": false,
+  "model_requests": 0,
+  "software_fixture_results_used": false,
+  "cumulative_conservative_usd": 1.974038999999889,
+  "billing_confirmed": false,
+  "cost_note": "Official public fallback has no established invoice; shared meter retains conservative per-request estimate."
+}

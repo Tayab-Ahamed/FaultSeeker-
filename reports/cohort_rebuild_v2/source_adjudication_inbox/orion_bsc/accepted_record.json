@@ -1,0 +1,56 @@
+{
+  "txn_hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+  "chain": "bsc",
+  "incident_id": "reviewed:Orion-BSC",
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104.json",
+    "sha256": "3f23d198f23dd89c9a5c952815a014f4c12eaff60cd671a585133817e8511a8b"
+  },
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+      "artifact": {
+        "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+        "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+      "identity_basis": {
+        "transaction": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+        "chain": "bsc",
+        "review": "The original publisher transaction link explicitly identifies this hash as BSC."
+      }
+    },
+    {
+      "publisher_id": "PeckShield",
+      "independence_group": "PeckShield",
+      "url": "https://twitter.com/peckshield/status/1621337925228306433",
+      "artifact": {
+        "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+        "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+      "identity_basis": {
+        "transaction": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+        "chain": "bsc",
+        "review": "The original publisher transaction link explicitly identifies this hash as BSC."
+      }
+    }
+  ],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/annotation.json",
+    "sha256": "3635e1624ba73aa637b8d35a43d863ba8dac5066f2e0087f8c4c722da5f65316"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "vulnerability_class": "Reentrancy",
+  "complexity_class": "UNRECOVERED",
+  "membership": "CORRECTED-CHAIN-SOURCE-REVIEWED-CANDIDATE",
+  "ground_truth": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/ground_truth.json",
+    "sha256": "179472371a9aad678c5c38937bee8a443944a1b321383ce49c09d1fe3f3c0032"
+  }
+}

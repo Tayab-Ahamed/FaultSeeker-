@@ -1,0 +1,61 @@
+{
+  "scope": "Evidence-complete additions unassigned to any experiment",
+  "frozen_study": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "frozen_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "original_count": 14,
+  "additional_count": 6,
+  "provenance_complete_unique_available": 20,
+  "additional_records": [
+    {
+      "identity": "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level_rpc_20261016/accepted_record.json",
+        "sha256": "bcda1f28ae398f3da2342e0458301ceceea4141a552e6e624e82b8d10f0c65c3"
+      }
+    },
+    {
+      "identity": "eth:0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/nomadbridge/accepted_record.json",
+        "sha256": "68d9dea2f47ab9df060c0131564d832b234b2c675deef5b24947cda82ad50456"
+      }
+    },
+    {
+      "identity": "bsc:0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/accepted_record.json",
+        "sha256": "bb02ba5363a9920b9821509d664d3214b1b68b131928496175b2634f4fa7f08a"
+      }
+    },
+    {
+      "identity": "bsc:0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/swapx_rpc_20261016/accepted_record.json",
+        "sha256": "19676eb433d8130a39a7f23df71c3804b49266499d3eebd63c05cde3e8b1d46d"
+      }
+    },
+    {
+      "identity": "eth:0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/teamfinance/accepted_record.json",
+        "sha256": "7a7e6f742908d5e869e3a5342ba705bc0f08a0fa92daaa371ac251d83ae7bbba"
+      }
+    },
+    {
+      "identity": "eth:0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/accepted_record.json",
+        "sha256": "880689860e6da7c1ac75cdfd2a56024db4b3f1cb0465038a6a021105c53e7402"
+      }
+    }
+  ],
+  "train_or_heldout_assigned": false,
+  "pending_protocol": "Preregister a versioned expansion preserving original heldout sealing and avoiding transfer of previously trained rows into heldout.",
+  "fixtures_used": false
+}

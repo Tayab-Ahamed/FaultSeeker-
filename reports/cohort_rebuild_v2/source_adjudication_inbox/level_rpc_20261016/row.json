@@ -1,0 +1,61 @@
+{
+  "txn_hash": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+  "chain": "bsc",
+  "incident_title": "Level Exp",
+  "incident_id": "reviewed:Level",
+  "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-05/Level_exp.sol",
+  "reference_links": [],
+  "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+  "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://twitter.com/BlockSecTeam/status/1653267431127920641",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/3f906315a5515aef4fb4d60a9b3f9625b2008358b37494d5d80aad39a1481b4b.gz",
+        "sha256": "68a26b0f33f872ffc80a204e49a75d6483561a2b6934a7d3aba4aee4b72931db"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations publish original technical mechanism descriptions of the same incident without visible attribution to each other; public PoC is contextual corroboration, not a third security publisher.",
+      "identity_basis": {
+        "transaction": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+        "chain": "bsc",
+        "review": "BlockSec explains unchecked duplicate array items; PeckShield independently explains repeated referral claims for the same epoch and explicitly links this exact transaction as an example hack. The public PoC independently locates the hash and repeated epoch array passed to claimMultiple; it supplies contextual identity only, not a third independent security publisher or historical execution proof.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/72b5c398104db850693dab70ef586891e675734b2dbad8b217f998c73bcefbf7.gz",
+          "sha256": "152f5eb932e07e36bcc62feb08e14ee6a88685ee539c9406e818cf95fe7665a4"
+        }
+      }
+    },
+    {
+      "publisher_id": "PeckShield",
+      "independence_group": "PeckShield",
+      "url": "https://twitter.com/peckshield/status/1653149493133729794",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/61b69eebdb807235f1e99b808f0d76876ca272010828a454d46942dc2cba7c21.gz",
+        "sha256": "b8559b6dd45d6a169c4e989e950e2e53276e9f01979f79520b360f61e94853be"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations publish original technical mechanism descriptions of the same incident without visible attribution to each other; public PoC is contextual corroboration, not a third security publisher.",
+      "identity_basis": {
+        "transaction": "0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+        "chain": "bsc",
+        "review": "BlockSec explains unchecked duplicate array items; PeckShield independently explains repeated referral claims for the same epoch and explicitly links this exact transaction as an example hack. The public PoC independently locates the hash and repeated epoch array passed to claimMultiple; it supplies contextual identity only, not a third independent security publisher or historical execution proof.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/72b5c398104db850693dab70ef586891e675734b2dbad8b217f998c73bcefbf7.gz",
+          "sha256": "152f5eb932e07e36bcc62feb08e14ee6a88685ee539c9406e818cf95fe7665a4"
+        }
+      }
+    }
+  ],
+  "legacy_ground_truth": [],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/level/annotation.json",
+    "sha256": "80357f18e6b0fc7edc3cd9c79d7ef41f54bb9e585bf440819c70b6354493b810"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165.json",
+    "sha256": "d3ea4a6cf44529ea5b1724d4665f4965db9dc917ebf3a31c212a8b8d26d4089a"
+  }
+}

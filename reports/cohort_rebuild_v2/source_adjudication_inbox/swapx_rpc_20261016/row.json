@@ -1,0 +1,53 @@
+{
+  "txn_hash": "0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+  "chain": "bsc",
+  "incident_title": "Swapx Exp",
+  "incident_id": "DeFiHackLabs:swapx-exp",
+  "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2023-02/SwapX_exp.sol",
+  "reference_links": [],
+  "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+  "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://twitter.com/BlockSecTeam/status/1630111965942018049",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/5b03f70a9ee30efd22657f7369659d9d32682f4775f8c710b0b1b149810d1ca7.gz",
+        "sha256": "fdfcc871d4e271bd2d4507932cf7180f769d9962841a3ed48ad37bb64cde5bf8"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations provide original technical explanations and link the same transaction. Neither selected account attributes its mechanism account to the other; same-organization alert accounts count once.",
+      "identity_basis": {
+        "transaction": "0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+        "chain": "bsc",
+        "review": "Exact hash occurs in each cached publisher artifact via its own transaction link."
+      }
+    },
+    {
+      "publisher_id": "PeckShield",
+      "independence_group": "PeckShield",
+      "url": "https://twitter.com/peckshield/status/1630100506319413250",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/0e9c153695362ef61beaf6e66e805d51b86aa444d56b57bcd28375018d1e4bf0.gz",
+        "sha256": "4a0245fd0187387b4987834bdaf7f4b9dc72b1f0b81c4d37084deb93b357e495"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security research organizations provide original technical explanations and link the same transaction. Neither selected account attributes its mechanism account to the other; same-organization alert accounts count once.",
+      "identity_basis": {
+        "transaction": "0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+        "chain": "bsc",
+        "review": "Exact hash occurs in each cached publisher artifact via its own transaction link."
+      }
+    }
+  ],
+  "legacy_ground_truth": [],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/swapx/annotation.json",
+    "sha256": "f9eb7d63e82c569fcd1ed94ed7ecd6acf52ed0ac5230953078324b7862def4d9"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160.json",
+    "sha256": "5dffa1e3a33a5d0cec18c366d079456ef979003670bff13d687a26a3fce93393"
+  }
+}

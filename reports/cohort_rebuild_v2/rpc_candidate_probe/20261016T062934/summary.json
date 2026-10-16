@@ -1,0 +1,39 @@
+{
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/protocol.json",
+    "sha256": "6e8fc45e4b22f5335e0c48da9b628713beea7d9016c1eb15080a30645bce16f5"
+  },
+  "observations": [
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160.json",
+      "sha256": "5dffa1e3a33a5d0cec18c366d079456ef979003670bff13d687a26a3fce93393"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165.json",
+      "sha256": "d3ea4a6cf44529ea5b1724d4665f4965db9dc917ebf3a31c212a8b8d26d4089a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104.json",
+      "sha256": "3f23d198f23dd89c9a5c952815a014f4c12eaff60cd671a585133817e8511a8b"
+    }
+  ],
+  "error_type": null,
+  "accounting": {
+    "outbound_rpc_requests": 7,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 3,
+      "eth_getTransactionReceipt": 3
+    },
+    "estimated_cost_usd": 4.2e-05,
+    "cumulative_ledger_estimate_usd": 1.974038999999889,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  },
+  "cost_note": "Shared meter charges conservative request estimate even on public fallback; no actual provider billing is asserted.",
+  "heldout_used": false,
+  "model_requests": 0,
+  "cohort_modified": false
+}
