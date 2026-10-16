@@ -112,6 +112,8 @@ def import_historical_tokens(guard,root):
             record=json.loads(read_bound(binding,root))
             if record.get('requested_alias')!=MODEL:continue
             if record.get('daily_token_accounting') or record.get('daily_token_reservation_id'):
+                if binding['path'] in guard.report()['imports']:
+                    continue
                 accounting=record.get('daily_token_accounting') or {'reservation_id':record['daily_token_reservation_id']}
                 settled=[e for e in guard.report()['events'] if e.get('event')=='settle'
                          and e.get('id')==accounting['reservation_id']]
