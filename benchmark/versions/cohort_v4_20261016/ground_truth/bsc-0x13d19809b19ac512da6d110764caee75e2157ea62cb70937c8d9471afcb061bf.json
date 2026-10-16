@@ -1,0 +1,46 @@
+{
+  "schema": 2,
+  "name": "Fortress Loans",
+  "transaction_hash": [
+    "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+  ],
+  "chain": "bsc",
+  "cause": "Unrestricted oracle update",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json",
+    "sha256": "c7c33714ff713472a282cd9a50e2cb9b007d380fa92fbe33623e331896e720b6"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "submit",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/a5dac7564c1886e14e2d4f0288e9b6ae26b3c1f234fb61fbe2db979bf39bee47.gz",
+        "sha256": "2aaf983bf994a1547d74f184e26489ae403b82850b551355ae3164f98bcc6f12"
+      },
+      "evidence_excerpt": "The `submit` function of the Chain oracle can be called by anyone and doesn\u2019t have a power verification.",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    },
+    {
+      "name": "submit",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/13140ad4f4fc935949b7fc12d6d167d3a51fa5a1c27488e176925ada1227ddb2.gz",
+        "sha256": "9186cc53e1727a6318becf882dfd98f765790292297a0392eb4ab7db2277914a"
+      },
+      "evidence_excerpt": "Attacker also manipulated the oracle by calling submit() function in the chain smart contract, where the requiredSignatures can be bypassed and power check is disabled in the deployment.",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}

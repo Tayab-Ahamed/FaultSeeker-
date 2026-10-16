@@ -1,0 +1,30 @@
+{
+  "schema": 2,
+  "name": "Hundred Finance Optimism April2023",
+  "transaction_hash": [
+    "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451"
+  ],
+  "chain": "optimism",
+  "cause": "Business logic - empty-market exchange-rate and redemption accounting flaw",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v4/hundred_optimism_adjudication/annotation.json",
+    "sha256": "dc093399a3edc56c73f8b7af8d8c7d3e9bd1814c53cec171499fc1ff6de14efa"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "function_name": "redeem",
+      "source": {
+        "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/1da2ddef1e995ad657f2d4dab7eb88a613b6311c0e16e795a95280d8caa9a9f6.gz",
+        "sha256": "505d81154e44569359a409282a9007a72e1b91022741e2ad52e3abedfedd0f4b"
+      },
+      "scope": "Publisher-supported hToken function name only; no source-bound full signature/address/line target"
+    }
+  ],
+  "localization_status": "PARTIAL: publisher describes redeem; deployed-source address/signature/line target unavailable and not scored"
+}

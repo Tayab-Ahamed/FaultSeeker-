@@ -1,0 +1,34 @@
+{
+  "schema": 2,
+  "name": "Orion-BSC",
+  "transaction_hash": [
+    "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104"
+  ],
+  "chain": "bsc",
+  "cause": "Reentrancy",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/annotation.json",
+    "sha256": "3635e1624ba73aa637b8d35a43d863ba8dac5066f2e0087f8c4c722da5f65316"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "_doSwapTokens",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+        "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+      },
+      "evidence_excerpt": "The root cause is due to a reentrancy issue exists in the PoolFunctionality._doSwapTokens function",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}
