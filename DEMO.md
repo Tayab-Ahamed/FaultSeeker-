@@ -4,6 +4,25 @@ The live demo is intentionally no-LLM. It runs deterministic Stage 1 only,
 uses public/free explorer and RPC fallbacks, and never constructs or calls an
 LLM provider. The default pipeline behavior is unchanged.
 
+## Clean setup
+
+The supported runtime is **Python 3.11.9** (`.python-version`). From a fresh
+checkout, run these commands from the repository root:
+
+```bash
+python --version
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+```
+
+The requirements file includes the local test and demo dependencies used by
+the rehearsal: `pytest`, `networkx`, `ollama`, `matplotlib`, `eth-utils`,
+`openai`, `pandas`, `eth-hash[pycryptodome]`, `rlp`, and `eth-account`. The
+same `requirements.txt` is used by `Dockerfile.benchmark`; no global install
+or paid provider is required. On Windows PowerShell, use
+`.venv\Scripts\python.exe` in place of `.venv/bin/python`; the commands below
+use the POSIX/Git-Bash form.
+
 ## Run on an accepted-cohort transaction
 
 From the repository root:
