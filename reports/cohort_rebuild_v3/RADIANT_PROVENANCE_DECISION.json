@@ -1,0 +1,54 @@
+{
+  "scope": "New real independent source consensus plus failed live RPC admission; no dataset entry or prediction",
+  "candidate": {
+    "path": "reports/cohort_rebuild_v3/radiant_source_adjudication/row.json",
+    "sha256": "03c08d04fbf4223f755e98785229de2cc0c394923564fb4dc0c12e76beccc7ac"
+  },
+  "annotation": {
+    "path": "reports/cohort_rebuild_v3/radiant_source_adjudication/annotation.json",
+    "sha256": "54b38baa462d695c4d75f880fd6b8476292a6f818478513bd84dce972ab14a8d"
+  },
+  "decision": {
+    "txn_hash": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+    "chain": "arbitrum",
+    "accepted": false,
+    "reasons": [
+      "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED"
+    ],
+    "rpc_identity_verified": false,
+    "independent_security_publishers": 2,
+    "annotation_verified": true,
+    "scope": "Evidence integrity plus attributed review records, not automated historical truth adjudication"
+  },
+  "attempts": [
+    {
+      "path": "reports/cohort_rebuild_v3/radiant_rpc/20261016T092930554653/attempt.json",
+      "sha256": "6a5913d77724c81026c2617b412550bfc727f0a8856ad274dc3e7f11631b99c5"
+    },
+    {
+      "path": "reports/cohort_rebuild_v3/radiant_rpc/20261016T093010563775/attempt.json",
+      "sha256": "1be1d5ca30879e3c6861705288a1fea259db73b09217b68451f485d43ce9cd9c"
+    }
+  ],
+  "status": "QUARANTINED-MISSING-RPC-IDENTITY-RECEIPT",
+  "source_complete": true,
+  "accepted": false,
+  "available_authentic_count_unchanged": 21,
+  "available_chains_unchanged": 7,
+  "provider_findings": [
+    "dRPC confirmed chain42161 then returned null transaction and receipt for the exact source-linked hash.",
+    "Official-public-Arbitrum returned HTTP403 at eth_chainId; no transaction/receipt call dispatched."
+  ],
+  "missing_input": "Matching historical RPC transaction and successful receipt for arbitrum:0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+  "outbound_rpc_requests": 4,
+  "incremental_conservative_usd": 2.4e-05,
+  "cumulative_conservative_usd": 1.9745489999998849,
+  "billing_confirmed": false,
+  "public_source_http_requests": 1,
+  "public_source_paid_calls": 0,
+  "model_requests": 0,
+  "heldout_partition_payload_opened": false,
+  "fixtures_used": false,
+  "split_changed": false,
+  "no_universal_nonexistence_or_provider_capability_inference": true
+}

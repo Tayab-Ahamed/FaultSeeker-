@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+  "chain": "arbitrum",
+  "is_exploit": true,
+  "vuln_type": "Business logic - precision/rounding accounting flaw",
+  "adjudication_basis": "MetaTrust and Verichains independently describe liquidity-index inflation amplifying scaled-balance rounding in AToken burn, allowing excess withdrawal from a newly initialized market. Both link this exact exploit execution. This is Codex-authored public-source consensus, not independent human review.",
+  "independent_observations": [
+    {
+      "publisher_id": "MetaTrust Labs",
+      "source_url": "https://www.metatrust.io/blogs/post/radiant-protocol-on-arbitrum-suffers-flashloan-attack-resulting-in-45m-loss-indepth-analysis-reveals-exploit-details",
+      "source_artifact": {
+        "path": "reports/provenance_hunt/http/cdf84dcbd3332f20437994a1a186be610715a033ca43dd45dfa7364abcf94060.gz",
+        "sha256": "7044615d5fb244b17b09386a37433e6bdb468d37f0fea053cb3c0bd83f84c424"
+      },
+      "vulnerability_class": "Business logic - precision/rounding accounting flaw",
+      "mechanism_excerpt": "The root cause is the mathematical rounding issue in the burn function"
+    },
+    {
+      "publisher_id": "Verichains",
+      "source_url": "https://blog.verichains.io/p/radiant-lending-pool-hack-analysis",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v3/radiant_source_acquisition/http/f6d1213cb5ab9a359d47f28e1ae4221ef89d9f81692e627a153fbfe874e208f3.gz",
+        "sha256": "21486dedc744e82dc9bc5f01279eb758db5487e81d287f589a9d41bd9d88a209"
+      },
+      "vulnerability_class": "Business logic - precision/rounding accounting flaw",
+      "mechanism_excerpt": "rounding error within the calculation of the scaled amount in the burn function of the AToken contract."
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "",
+  "uncategorized": true,
+  "taxonomy_rationale": "Precision/rounding accounting flaw established; do not conflate with integer overflow/underflow or force unsupported SWC/DASP mapping.",
+  "transaction_role": "Exploit execution, not pool initialization or deployment.",
+  "localization_targets": "Publisher-supported AToken burn function name only; no exact deployed-source address/signature/line established."
+}

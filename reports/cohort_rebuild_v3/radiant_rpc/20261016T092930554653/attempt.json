@@ -1,0 +1,30 @@
+{
+  "provider": "authorized-dRPC-arbitrum",
+  "identity": "arbitrum:0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+  "source_review": {
+    "path": "reports/cohort_rebuild_v3/radiant_source_adjudication/row.json",
+    "sha256": "03c08d04fbf4223f755e98785229de2cc0c394923564fb4dc0c12e76beccc7ac"
+  },
+  "phase": "eth_getTransactionReceipt",
+  "observed_chain_id": 42161,
+  "observation": {
+    "path": "reports/cohort_rebuild_v3/radiant_rpc/20261016T092930554653/observation.json",
+    "sha256": "0a27294a9bba3ffb457ca300a4d09c35b597556192ba18eb44da99ac69651a77"
+  },
+  "identity_receipt_match": false,
+  "receipt_status": null,
+  "accounting": {
+    "outbound_rpc_requests": 3,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 1,
+      "eth_getTransactionReceipt": 1
+    },
+    "estimated_cost_usd": 1.8e-05,
+    "cumulative_ledger_estimate_usd": 1.974542999999885,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}

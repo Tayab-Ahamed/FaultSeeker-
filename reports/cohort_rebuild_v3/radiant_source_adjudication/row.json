@@ -1,0 +1,48 @@
+{
+  "txn_hash": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+  "chain": "arbitrum",
+  "incident_id": "reviewed:Radiant-Jan-2024",
+  "sources": [
+    {
+      "publisher_id": "MetaTrust Labs",
+      "independence_group": "MetaTrust Labs",
+      "url": "https://www.metatrust.io/blogs/post/radiant-protocol-on-arbitrum-suffers-flashloan-attack-resulting-in-45m-loss-indepth-analysis-reveals-exploit-details",
+      "artifact": {
+        "path": "reports/provenance_hunt/http/cdf84dcbd3332f20437994a1a186be610715a033ca43dd45dfa7364abcf94060.gz",
+        "sha256": "7044615d5fb244b17b09386a37433e6bdb468d37f0fea053cb3c0bd83f84c424"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Distinct security research organizations provide original technical accounts with different explanatory detail; neither reviewed body attributes its analysis to the other.",
+      "identity_basis": {
+        "transaction": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+        "chain": "arbitrum",
+        "review": "Both security articles directly link the exact Arbiscan attack execution; Verichains describes deposit/withdraw exploitation at block166405687. Pool initialization transaction0x0e5330ad77b9b806cb9f6ea595d58552f341dbad0691e0599ab5f1caf214c247 is explicitly excluded."
+      }
+    },
+    {
+      "publisher_id": "Verichains",
+      "independence_group": "Verichains",
+      "url": "https://blog.verichains.io/p/radiant-lending-pool-hack-analysis",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v3/radiant_source_acquisition/http/f6d1213cb5ab9a359d47f28e1ae4221ef89d9f81692e627a153fbfe874e208f3.gz",
+        "sha256": "21486dedc744e82dc9bc5f01279eb758db5487e81d287f589a9d41bd9d88a209"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Distinct security research organizations provide original technical accounts with different explanatory detail; neither reviewed body attributes its analysis to the other.",
+      "identity_basis": {
+        "transaction": "0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b",
+        "chain": "arbitrum",
+        "review": "Both security articles directly link the exact Arbiscan attack execution; Verichains describes deposit/withdraw exploitation at block166405687. Pool initialization transaction0x0e5330ad77b9b806cb9f6ea595d58552f341dbad0691e0599ab5f1caf214c247 is explicitly excluded."
+      }
+    }
+  ],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v3/radiant_source_adjudication/annotation.json",
+    "sha256": "54b38baa462d695c4d75f880fd6b8476292a6f818478513bd84dce972ab14a8d"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "vulnerability_class": "Business logic - precision/rounding accounting flaw",
+  "complexity_class": "UNRECOVERED",
+  "membership": "SOURCE-COMPLETE-PENDING-RPC"
+}

@@ -199,3 +199,8 @@ XCarnival and TeamFinance acquired actual callTracer trees and historical code i
 ### BSC historical tracing capability check (2026-10-16)
 
 Official-public-BSC returned chainID56, then rejected the selected Fortress TRAIN callTracer request with RPC code -32000. Two metered reads, conservative incremental $0.000012; cumulative $1.974525, actual billing unconfirmed. No trace accepted; no retry or subsequent dispatch. Provider error text was not retained, so no universal unsupported-method or missing-archive inference is made. Claim25 remains UNVERIFIABLE for broad live/archive/outage capability. Evidence: reports/cohort_rebuild_v3/bsc_trace_capability/20261016T092502292158/summary.json.
+
+
+### Radiant independent-source recovery, admission still rejected (2026-10-16)
+
+Verichains and MetaTrust independently link the same January2024Arbitrum exploit execution and explain amplified scaled-balance rounding in AToken burn. Their cached bodies and Codex consensus annotation pass source checks. dRPC confirms chain42161 but returns null transaction/receipt; official public RPC returns HTTP403 before lookup. The row is quarantined, not an eighth accepted chain. Authentic available count remains21 across7chains; the246/10 target is still short225rows and3chains. Four metered RPC attempts, conservative $0.000024 incremental; cumulative $1.974549, billing unconfirmed. Evidence: reports/cohort_rebuild_v3/RADIANT_PROVENANCE_DECISION.json.
