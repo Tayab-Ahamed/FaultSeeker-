@@ -2,12 +2,12 @@
   "id": 4,
   "claim": "Real transactions, two independent sources, annotations",
   "status": "UNVERIFIABLE",
-  "reason": "Original April3 GT and source catalog/disclosure links are recovered, not manufactured in October. They do not contain two qualified annotator attestations or a complete independent evidence chain per row.",
-  "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication",
+  "reason": "The user explicitly approved Codex-authored adjudication based on two independent security publishers agreeing on vulnerability mechanism, with documented reasoning; independent human reviewer records do not exist and are not claimed. A fresh assembled cached-evidence admission recheck of1108 candidates confirms17 have complete recorded public-source consensus;14 also meet matching RPC transaction/receipt evidence and exactly match the admitted manifest. Three source-reviewed Arbitrum candidates still lack RPC identity/receipt verification. The full intended246-row cohort is not authenticated, so the paper-wide claim remains UNVERIFIABLE. No fixtures or mock responses support this decision. Additional cached-source review now adjudicates SwapX from the same exact transaction linked independently by BlockSec and PeckShield: insufficient authorization permits abuse of approved ERC-20 tokens. This is Codex source consensus, not a human reviewer claim. Its new BSC RPC probe stopped on RuntimeError during chain identification after one metered request, before transaction or receipt retrieval; the specific provider cause is not retained. The new annotated candidate remains quarantined and adds no admitted cohort row.",
+  "verification_scope": "Cached real publisher/RPC evidence and explicit Codex source-consensus annotation records; not independent human review or full paper cohort",
   "requirements_unmet": [
-    "Per-row independent corroboration plus signed independent annotation/consensus ledger"
+    "Full intended cohort meeting two independent security-publisher mechanism accounts, documented public-source-consensus annotation and matching RPC transaction/receipt evidence"
   ],
-  "human_decision": "Next evidence input: Per-row independent corroboration plus signed independent annotation/consensus ledger",
+  "human_decision": "Existing user approval permits source-consensus adjudication; no further human-review approval or invented reviewer records are needed.",
   "acceptance_tests": [
     "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
   ],
@@ -71,10 +71,26 @@
     {
       "path": "reports/canonical_history/accounting.json",
       "sha256": "9c4c6b83a06e7c1d752315cfc48cf121c0a063f14f59430c1aeff1d8160c27cb"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/ADJUDICATION_STANDARD_RECONCILIATION.json",
+      "sha256": "f76fac50f5d34c830235be53aa0978eb48ea011483f99cd5237659686f9beead"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/admission_rechecks/20261016T060152/summary.json",
+      "sha256": "101e0c2a0253c1733812a53741056c74f1b1d780f92b5bc4e98a0819c1114afd"
+    },
+    {
+      "path": "benchmark/cohort_manifest.json",
+      "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/SWAPX_SOURCE_ADJUDICATION.json",
+      "sha256": "3d09e5fdb634855f065154d8c4a670358f0b6efb2bcac9dab9b8cc9e7f3f0377"
     }
   ],
-  "session_date": "2026-10-15",
-  "next_input_artifact": "Per-row independent corroboration plus signed independent annotation/consensus ledger",
+  "session_date": "2026-10-16",
+  "next_input_artifact": "Remaining intended cohort rows need two independent publisher mechanism accounts, source-linked adjudication and matching RPC transaction/receipt evidence; no fictional reviewer identities or signatures are required.",
   "reopen_review_run": "provenance-hunt-2026-10-15",
   "previous_decision": "reports/canonical_history/previous_decisions/04.json",
   "paper_verdict": "PARTIAL-PROVENANCE-RECOVERED",
