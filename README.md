@@ -137,6 +137,32 @@ FaultSeeker++ emits **structured forensic data** at the transaction level, ready
 pip install -r requirements.txt
 ```
 
+For a reproducible pinned install, use `requirements.lock` instead:
+
+```bash
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements.lock
+```
+
+Run the offline test and evidence commands from the repository root:
+
+```bash
+make test
+make judge
+make evidence-demo
+```
+
+The container build uses the pinned Python 3.11.9 runtime and
+`requirements.lock`:
+
+```bash
+docker build -t faultseeker .
+docker run --rm faultseeker
+```
+
+The image runs the offline test suite by default. It does not receive `.env`
+files or provider credentials.
+
 Optional for the Hugging Face benign activity importer:
 
 ```bash
