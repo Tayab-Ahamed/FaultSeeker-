@@ -1,0 +1,134 @@
+{
+  "run_id": "20261016T105155-5f843897",
+  "scope": "Real cloud-only TRAIN full production pipeline; no native vendor/local/hybrid claim",
+  "execution_mode": "full-production-pipeline",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/system.json",
+      "sha256": "c400d4d4ac5b0712f336c681600f476a29119613993466c74adac946b77c4cb4"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/system_sources.json.gz",
+      "sha256": "9594fdf2993e3765fe4749e315e05cb9a6cf9bf19f155b79e63f0554bc540c83"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false,
+    "incremental_estimated_usd_cap": null,
+    "cumulative_dispatch_limit_usd": 10.0,
+    "requested_train_identities": [
+      "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+    ],
+    "requested_train_cases": 1,
+    "execution_mode": "full-production-pipeline"
+  },
+  "observations": [],
+  "stop_reason": "Pilot stopped after analysis error: AdditionalInfoSchemaError",
+  "completion_requests": 7,
+  "complete_cases": 0,
+  "requested_train_cases": 1,
+  "requested_train_identities": [
+    "eth:0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+  ],
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.9760061999998848,
+  "budget_estimate_after_usd": 1.9885683999998849,
+  "incremental_conservative_estimate_usd": 0.012562200000000079,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "Pilot stopped after analysis error: AdditionalInfoSchemaError",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/standing_train_approval.json",
+    "sha256": "faf4a11cbd9f1b6a4f39d31a06711586268d5e7b6916e44be8a30dded37ce875"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-001.json",
+      "sha256": "884bc0b278a8de26889dbab3d7997b303ee36ffb041c34f22b28fe37a99363de"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-002.json",
+      "sha256": "c8be408a47fd546c86d068ebcf9603d68bc0570b6a4de8739b1ad170c35e2ad3"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-003.json",
+      "sha256": "c5c6cf70c8260cc42f602f135d5db58ad97efec7120c032f2983b00c63da5cc9"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-004.json",
+      "sha256": "786d24f1797780c4248387872a6a2f5f1433f832beff607add5161c3b48e6c1f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-005.json",
+      "sha256": "155cdc22fbd94a2b4124b17613f07a47a64663a90695506721531efb21227f22"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-006.json",
+      "sha256": "e76fc63183b4f8b9b24b42ff799b65b2c36aaa99f710dfa1ce28661cd1cda4fd"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-007.json",
+      "sha256": "b315963ef2929ab527df434d603373d73a81e4e1d24d45147fdbbdf172407aa5"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-001.json",
+      "sha256": "5c3e1859fde9481915dd0ec5dd659f0412e1d0c1eb5061d2434309a6a96cb603"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-002.json",
+      "sha256": "f469e59c7d568fc5fade4395a899f737956cd0378c76fed578dea5213ecf5b89"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-003.json",
+      "sha256": "56ba62fdc92e9f149533ea21e72df4eb9cf9937da76f2fd633fd42808e608878"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-004.json",
+      "sha256": "3e40a59dec07e14ae8a0e027fc05e1c68f7a5f58fe863a8e51465463a90d4a1f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-005.json",
+      "sha256": "fa1d7f7082e5d6b4a64e51a572ce99a05440d985ed010847f2b8e301fa8cefd1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-006.json",
+      "sha256": "932080561df23f834c7a4a9713123b45ad3f7c99faeb4fef1022c6814ea798ad"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-007.json",
+      "sha256": "ff4362831d5d861ab8bc04d04d33ab1d3c427b2c0c6d3639dccd88716bf51e92"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 949603,
+      "reserved": 0,
+      "remaining": 6050397
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 1066648,
+      "reserved": 0,
+      "remaining": 5933352
+    }
+  }
+}

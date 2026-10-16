@@ -1,0 +1,106 @@
+{
+  "scope": "Actual closed Revest TRAIN full-pipeline batch after strict exact-key narrowing prompt intervention; not a scored outcome",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/summary.json",
+    "sha256": "55e425988bf8858a09865cf43fcd952e78cbda1ca90f693066cce326f398489f"
+  },
+  "system": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/system.json",
+    "sha256": "c400d4d4ac5b0712f336c681600f476a29119613993466c74adac946b77c4cb4"
+  },
+  "request_count": 7,
+  "complete_cases": 0,
+  "stage1_completed": true,
+  "stage2_completed": false,
+  "stage3_confidence_observations": 0,
+  "failure": {
+    "error_type": "AdditionalInfoSchemaError",
+    "message": "source_code: function reference list required",
+    "reproduction": "json.loads(saved_call.response.choices[0].message.content) -> normalize_additional_info(parsed_content)"
+  },
+  "root_cause": "Call7 contains valid JSON but source_code is an empty string; schema requires a list. Exact response stays rejected; no normalization or evidence owner guessing.",
+  "failure_counts": {
+    "transport": 0,
+    "http": 0,
+    "json_syntax": 0,
+    "domain_schema": 1
+  },
+  "http200_responses": 7,
+  "finish_stop_responses": 7,
+  "usage": {
+    "prompt_tokens": 108588,
+    "completion_tokens": 8457,
+    "total_tokens": 117045
+  },
+  "call_evidence": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-001.json",
+      "sha256": "5c3e1859fde9481915dd0ec5dd659f0412e1d0c1eb5061d2434309a6a96cb603"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-002.json",
+      "sha256": "f469e59c7d568fc5fade4395a899f737956cd0378c76fed578dea5213ecf5b89"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-003.json",
+      "sha256": "56ba62fdc92e9f149533ea21e72df4eb9cf9937da76f2fd633fd42808e608878"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-004.json",
+      "sha256": "3e40a59dec07e14ae8a0e027fc05e1c68f7a5f58fe863a8e51465463a90d4a1f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-005.json",
+      "sha256": "fa1d7f7082e5d6b4a64e51a572ce99a05440d985ed010847f2b8e301fa8cefd1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-006.json",
+      "sha256": "932080561df23f834c7a4a9713123b45ad3f7c99faeb4fef1022c6814ea798ad"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/call-007.json",
+      "sha256": "ff4362831d5d861ab8bc04d04d33ab1d3c427b2c0c6d3639dccd88716bf51e92"
+    }
+  ],
+  "ledger_evidence": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-001.json",
+      "sha256": "884bc0b278a8de26889dbab3d7997b303ee36ffb041c34f22b28fe37a99363de"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-002.json",
+      "sha256": "c8be408a47fd546c86d068ebcf9603d68bc0570b6a4de8739b1ad170c35e2ad3"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-003.json",
+      "sha256": "c5c6cf70c8260cc42f602f135d5db58ad97efec7120c032f2983b00c63da5cc9"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-004.json",
+      "sha256": "786d24f1797780c4248387872a6a2f5f1433f832beff607add5161c3b48e6c1f"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-005.json",
+      "sha256": "155cdc22fbd94a2b4124b17613f07a47a64663a90695506721531efb21227f22"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-006.json",
+      "sha256": "e76fc63183b4f8b9b24b42ff799b65b2c36aaa99f710dfa1ce28661cd1cda4fd"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T105155-5f843897/calls/ledger/call-007.json",
+      "sha256": "b315963ef2929ab527df434d603373d73a81e4e1d24d45147fdbbdf172407aa5"
+    }
+  ],
+  "model_only_conservative_increment_usd": 0.0125502,
+  "shared_ledger_batch_window_delta_usd": 0.012562200000000079,
+  "concurrent_rpc_window_cost_usd": 1.2e-05,
+  "accounting_reconciliation": "Per-model cost is the sum of seven bound settlement events; shared before/after delta also includes two separate zkSync RPC reads. Neither number is an invoice.",
+  "cumulative_conservative_usd_after_subsequent_official_rpc": 1.9885863999998847,
+  "billing_confirmed": false,
+  "automatic_retries": 0,
+  "heldout_used": false,
+  "labels_sent": false,
+  "fixtures_used_as_evidence": false,
+  "metrics": null
+}
