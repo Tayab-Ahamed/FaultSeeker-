@@ -4,6 +4,9 @@ These commands are offline and use only files already in this repository. They
 do not replay transactions, call RPC providers, call models, or read the
 held-out split.
 
+On Windows, keep `core.autocrlf=false` when cloning because several
+digest-bound JSON inputs must retain LF bytes exactly.
+
 Run from the repository root:
 
 ```bash

@@ -9,6 +9,13 @@ LLM provider. The default pipeline behavior is unchanged.
 The supported runtime is **Python 3.11.9** (`.python-version`). From a fresh
 checkout, run these commands from the repository root:
 
+On Windows, clone with autocrlf disabled because the repository contains
+digest-bound JSON research fixtures:
+
+```bash
+git -c core.longpaths=true -c core.autocrlf=false clone --branch demo-ready <repo-url> FaultSeeker
+```
+
 ```bash
 python --version
 python -m venv .venv
