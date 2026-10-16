@@ -103,6 +103,8 @@ def import_historical_tokens(guard,root):
     inputs only initialize accounting and never enter any prediction prompt.
     """
     root=Path(root);base=root/BASE;day=guard.report()['bucket']
+    initial_state=guard.report()
+    ledger_empty=not initial_state['events'] and not initial_state['imports']
     for summary_path in sorted((base/'gateway_runs').glob('*/summary.json')):
         summary=json.loads(summary_path.read_text(encoding='utf-8'))
         run_day=datetime.strptime(summary['run_id'][:8],'%Y%m%d').date().isoformat()
@@ -113,6 +115,14 @@ def import_historical_tokens(guard,root):
                 accounting=record.get('daily_token_accounting') or {'reservation_id':record['daily_token_reservation_id']}
                 settled=[e for e in guard.report()['events'] if e.get('event')=='settle'
                          and e.get('id')==accounting['reservation_id']]
+                if not settled and ledger_empty:
+                    usage=record.get('usage') or {}
+                    if type(usage.get('prompt_tokens')) is int and type(usage.get('completion_tokens')) is int:
+                        guard.import_usage_once(binding['path'],run_day,usage['prompt_tokens'],usage['completion_tokens'],binding)
+                    else:
+                        bound=2*record['request_bytes']+1024+4096
+                        guard.import_allocation_once(binding['path'],run_day,bound,binding)
+                    continue
                 if len(settled)!=1 or ('charged_tokens' in accounting and settled[0]['tokens']!=accounting['charged_tokens']):
                     raise ValueError('Existing daily token settlement is missing or inconsistent')
                 continue
