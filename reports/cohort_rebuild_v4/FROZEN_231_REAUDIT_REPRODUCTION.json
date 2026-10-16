@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "scope": "Exact original frozen231 admission re-audit reproduction with archived trusted own Git evaluator; historical 21-record population snapshot only, not current population availability",
+  "original_audit": {
+    "path": "reports/cohort_rebuild_v4/FROZEN_231_REAUDIT.json",
+    "sha256": "7b68d56b11de97708cebc3fa3494441251150e8f7d442556394b1485d2bd386d"
+  },
+  "frozen_csv": {
+    "path": "reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8f/benchmark/benchmark_classification_fixed.csv",
+    "sha256": "9de48282363d44373459ea3253a99c5548e0ef51e2c0db3ed16dad71adaf8032"
+  },
+  "trusted_git_snapshot": "5503030",
+  "original_evaluator": {
+    "path": "benchmark/research_protocol.py",
+    "sha256": "0c1c267132726f70dd843a275854f038caaded89c9705f69a828818e518746ab"
+  },
+  "archived_runtime_files": [
+    {
+      "path": "reports/cohort_rebuild_v4/frozen_audit_runtime/benchmark/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/frozen_audit_runtime/benchmark/evidence_manifest.py",
+      "sha256": "2eacb9bd04df52b065da7ac83e8ad0c9bd1653796d39b4470dc6a7aef9e50274"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/frozen_audit_runtime/benchmark/research_protocol.py",
+      "sha256": "0c1c267132726f70dd843a275854f038caaded89c9705f69a828818e518746ab"
+    },
+    {
+      "path": "reports/cohort_rebuild_v4/frozen_audit_runtime/verify.py",
+      "sha256": "cdff95346a8d3145a516a1f8522d044cb09d96845db1f081f7f71ae30f81461a"
+    }
+  ],
+  "execution": {
+    "command": "python -B reports/cohort_rebuild_v4/frozen_audit_runtime/verify.py",
+    "actual_argv": [
+      "C:\\Program Files\\Python311\\python.exe",
+      "-B",
+      "reports/cohort_rebuild_v4/frozen_audit_runtime/verify.py"
+    ],
+    "working_directory": "C:\\Users\\91701\\Downloads\\FaultSeeker--main\\FaultSeeker--main",
+    "completed_at_utc": "2026-10-16T10:31:19.087825+00:00",
+    "exit_code": 0,
+    "stdout": "{\"accepted_count\": 6, \"all_original_decisions_match\": true, \"heldout_partition_payload_opened\": false, \"historical_available_authentic_population_snapshot\": 21, \"input_rows\": 231, \"missing_reason_counts\": {\"MISSING_INDEPENDENT_ANNOTATION_EVIDENCE\": 224, \"MISSING_OR_INVALID_RPC_EVIDENCE\": 45, \"MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS\": 224, \"RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED\": 76}, \"model_requests\": 0, \"network_requests\": 0, \"quarantined_count\": 225, \"scope\": \"Historical 21-record population snapshot; no claim about current population\"}\n",
+    "stderr": ""
+  },
+  "result": {
+    "accepted_count": 6,
+    "all_original_decisions_match": true,
+    "heldout_partition_payload_opened": false,
+    "historical_available_authentic_population_snapshot": 21,
+    "input_rows": 231,
+    "missing_reason_counts": {
+      "MISSING_INDEPENDENT_ANNOTATION_EVIDENCE": 224,
+      "MISSING_OR_INVALID_RPC_EVIDENCE": 45,
+      "MISSING_TWO_INDEPENDENT_SECURITY_PUBLISHERS": 224,
+      "RPC_IDENTITY_OR_RECEIPT_NOT_VERIFIED": 76
+    },
+    "model_requests": 0,
+    "network_requests": 0,
+    "quarantined_count": 225,
+    "scope": "Historical 21-record population snapshot; no claim about current population"
+  },
+  "original_report_preserved": true,
+  "original_embedded_reproduction_python_executed": false,
+  "fixture_results_used": false
+}

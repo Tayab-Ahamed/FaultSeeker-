@@ -1,0 +1,32 @@
+{
+  "scope": "Two genuine admitted additions, separately preregistered before publication or new prediction",
+  "frozen_study": {
+    "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+    "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+  },
+  "frozen_split": {
+    "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+  },
+  "original_count": 20,
+  "additional_count": 2,
+  "provenance_complete_unique_available": 22,
+  "additional_records": [
+    {
+      "identity": "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/platypus_feb_2023/accepted_record.json",
+        "sha256": "9ad479ff7620de06bad9bbc8ed9e10fcc651cecc7c89814df162e4e1e871c892"
+      }
+    },
+    {
+      "identity": "optimism:0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v4/hundred_optimism_adjudication/accepted_record.json",
+        "sha256": "5d83b05b33533d76d793093b06da3bed272a5726f2e59f11212cb70406da252a"
+      }
+    }
+  ],
+  "train_or_heldout_assigned": false,
+  "fixtures_used": false
+}
