@@ -15,6 +15,15 @@ Run from the repository root:
 .venv/bin/python scripts/reproduce/cohort.py
 ```
 
+Clean-clone prerequisite: `.venv/` is intentionally not committed. The six
+direct helper scripts above and `reports/reproducibility/FINAL_REPORT.md` must
+also be present in the checkout used for this historical reproduction. A
+clean Git clone of `demo-ready` currently contains `run_all.py` and
+`claim_evidence.py`, but not those earlier working-tree helper files or the
+local virtual environment; the commands consequently fail with exit 127 until
+the environment and those files are provisioned. This is a packaging blocker,
+not a hidden runtime step, and no live or paid dependency is implied.
+
 Run the complete check and summary table with:
 
 ```bash

@@ -21,6 +21,12 @@ env -u DRPC_RPC_URL -u DRPC_API_KEY \
     -output demo_outputs/eth_0x0788ba22.json
 ```
 
+Clean-clone prerequisite: `.venv/` is intentionally not committed. The
+command therefore requires the project environment to have been provisioned
+before rehearsal; it is not a hidden runtime step performed by the demo.
+Without `.venv/bin/python`, the exact command fails before application code
+starts.
+
 Use another accepted-cohort row if needed:
 
 ```bash
