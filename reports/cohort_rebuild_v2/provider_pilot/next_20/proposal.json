@@ -1,0 +1,42 @@
+{
+  "approved": false,
+  "approval_origin": "Awaiting explicit human approval; no dispatch permit created",
+  "max_completion_requests": 20,
+  "max_incremental_estimated_usd": 0.2,
+  "destination": "https://router.bynara.id/v1/chat/completions",
+  "model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+    "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+  },
+  "previous_terminal_pilot_requests": 20,
+  "previous_pilots_remain_terminal": true,
+  "proposed_lifetime_gateway_request_ceiling": 40,
+  "stop_on_any_error": true,
+  "data_scope": "Only project prompts, frozen TRAIN public transaction traces/receipts, verified public compilation source, executed storage source spans and public-derived model responses. Expected labels, ground-truth targets, held-out data, paper and environment files are excluded.",
+  "first_payload": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/first_payload_preview.json",
+    "sha256": "f9dd5af53145adb9a8b4e06088c3657766dbe2c3cafed9d02066211a1ee9a25d"
+  },
+  "first_changed_payload_illustration": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/second_payload_after_saved_response_preview.json",
+    "sha256": "e07cdf22d596f8abac266666f4f871d0083e329bb17c2eacfb5fc7c91639105d"
+  },
+  "preview_limitation": "First payload was matched exactly by the current offline replay. The second preview depends on one saved historical model response and is illustrative; a new live reply may change subsequent payloads.",
+  "diagnostic": {
+    "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T013725-27741c28/summary.json",
+    "sha256": "2923b0e28e48370e07bbfd6d451917b365c3cf8bc75bdec6a1954c4515062e8d"
+  },
+  "conditions": [
+    "Fresh exclusive permit, never reset or reuse consumed old permits",
+    "Stop at 20 new attempts or approved incremental estimated-spend ceiling, whichever occurs first",
+    "Shared $10 cumulative dispatch ledger remains authoritative, all attempts and usage logged",
+    "Stop on transport, HTTP, parser, schema, domain errors or rate limits; no automatic retries",
+    "Report actual returned model alias, actual usage and observed completions, no inferred quality metrics",
+    "No held-out access or final exam dispatch"
+  ],
+  "current_cumulative_estimated_usd": 1.92620079999989,
+  "billing_confirmed": false,
+  "execution_approval_file": "reports/cohort_rebuild_v2/provider_pilot/next_20_approval.json",
+  "proposed_live_command": "python scripts/run_train_gateway_pilot.py --live --approval-file reports/cohort_rebuild_v2/provider_pilot/next_20_approval.json"
+}

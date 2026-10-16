@@ -157,3 +157,7 @@ The verified-source adapter now maps bound historical storage-operation PCs thro
 ## BSC live structured HTTP diagnostic (claim 25)
 
 A new bounded PublicNode probe on 2026-10-16 stopped at eth_chainId with HTTP 403 after one metered request; no trace or receipt dispatch followed. Old artifacts are preserved unchanged. Chain identity and archive/tracer support remain unknown; no acquisition/index admission is made. Request estimate $0.000006; cumulative conservative ledger $1.9262008, billing unconfirmed. Evidence: bsc_trace_publicnode_http_diagnostic/20261016T013315/decision.json. Claim 25 remains UNVERIFIABLE, held-out untouched.
+
+## Abort completion-state and proposed bounded follow-up (claim 22)
+
+Both analysis-loop paths now record TimeoutError on detected time-budget expiry or two empty tasks, so aborted work cannot report analysis_complete=True. Existing loop time/iteration/adequacy policies remain; this does not establish a hard socket wall-time deadline. Test-first: 10 failed/6 passed before timeout fix; 47 focused tests pass after fixes including a shared-ledger incremental-cap check. A further at-most-20 TRAIN request proposal with a $0.20 incremental conservative estimate ceiling is prepared under provider_pilot/next_20; approved=False and no dispatch permit exists. The original twenty-call allowance remains consumed. Current-code offline replay matches one saved request then diverges before returning response two; it made zero network/inference calls and left the real ledger unchanged. Claim 22 remains UNVERIFIABLE; held-out sealed.

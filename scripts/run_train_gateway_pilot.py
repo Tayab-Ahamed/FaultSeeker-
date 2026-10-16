@@ -60,6 +60,22 @@ def approved_call_cap(approval,protocol_binding):
     return cap
 
 
+def approved_budget_limit(approval,budget_before):
+    """Apply an optional approved batch ceiling to the existing shared ledger.
+
+    This computes a conservative estimated-spend limit, not a billed-price claim.
+    Pending reservations remain accounted for by SpendGuard before dispatch.
+    """
+    spent=budget_before.get('spent_usd')
+    if type(spent) not in (int,float) or not math.isfinite(spent) or not 0<=spent<=10:
+        raise ValueError('Invalid cumulative budget state')
+    if 'max_incremental_estimated_usd' not in approval:return 10.0
+    amount=approval['max_incremental_estimated_usd']
+    if type(amount) not in (int,float) or not math.isfinite(amount) or not 0<amount<=10:
+        raise ValueError('Invalid approved incremental estimated-spend cap')
+    return min(10.0,spent+amount)
+
+
 def claim_dispatch(path,approval,run_id,max_calls=20):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     with path.open('x',encoding='utf-8') as handle:
@@ -86,6 +102,9 @@ def run(root=ROOT,live=False,approval_file=None):
     permit_path=(base/'provider_pilot/dispatch_permit.json' if approval_path.name=='approval.json'
                  else approval_path.with_name(approval_path.stem+'.dispatch_permit.json'))
     if permit_path.exists():raise ValueError('Approved dispatch permit already consumed')
+    guard=SpendGuard(root/'data/research/spend_ledger.json',limit_usd=10,pricing={MODEL:rates})
+    budget_before=guard.report()
+    guard.limit_usd=approved_budget_limit(approval,budget_before)
     from dotenv import dotenv_values
     values={}
     for path in (Path(r'C:\Users\91701\Downloads\Wingman-main\Wingman-main\.env'),root/'.env'):
@@ -95,13 +114,12 @@ def run(root=ROOT,live=False,approval_file=None):
     out=base/'gateway_runs'/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+uuid.uuid4().hex[:8]);out.mkdir(parents=True,exist_ok=False)
     system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/execution_source_inputs.py',root/'benchmark/captured_inputs.py'])
     write_json(out/'system.json',system);source_snapshot=snapshot_system(system,out)
-    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False}
+    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False,'incremental_estimated_usd_cap':approval.get('max_incremental_estimated_usd'),'cumulative_dispatch_limit_usd':guard.limit_usd}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
     common={'run_id':out.name,'seed':protocol['seed'],'config':config}
     claim_dispatch(permit_path,bind(approval_path,root),out.name,max_calls)
     append_experiment(log,split,dict(common,kind='dispatch-train',metrics=None,sample_ids=[]))
-    guard=SpendGuard(root/'data/research/spend_ledger.json',limit_usd=10,pricing={MODEL:rates})
-    budget_before=guard.report();COST_RATES[MODEL]=rates
+    COST_RATES[MODEL]=rates
     router=HybridLLMRouter(cloud_model=MODEL,routing_strategy='cloud-only',spend_guard=guard,remote_model_ids={MODEL})
     pilot=NaraPilot(api_key=key,router=router,output_dir=out/'calls',max_calls=max_calls)
     observations=[];stop='';stream=io.StringIO()

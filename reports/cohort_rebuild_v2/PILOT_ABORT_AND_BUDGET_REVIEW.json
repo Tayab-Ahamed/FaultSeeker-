@@ -1,0 +1,35 @@
+{
+  "scope": "Offline production completion-state and future batch budget controls; no new inference or quality experiment",
+  "completion_bug": "Both function/transaction sub-analysis loops silently broke on detected time-budget expiry or repeated empty tasks, leaving run analysis_complete true if no other errors.",
+  "repair": "All four abort branches now record sanitized TimeoutError and invoke the existing optional stop policy. Current per-function loop-boundary budget and iteration/adequacy policies remain unchanged. This is not a hard network wall-clock deadline.",
+  "test_first": {
+    "timeout_before": {
+      "failed": 10,
+      "passed": 6
+    },
+    "budget_before": "ImportError: missing approved_budget_limit helper",
+    "focused_after": {
+      "passed": 47,
+      "tests": [
+        "tests/test_function_timeout_state.py",
+        "tests/test_pilot_incremental_budget.py",
+        "tests/test_nara_pilot_provider.py"
+      ]
+    }
+  },
+  "budget_control": "Optional explicitly approved incremental conservative estimate cap is applied to the existing shared SpendGuard before permit/dispatch; cumulative limit never exceeds $10. Existing terminal permits and the 20-call pilot limit are unchanged.",
+  "proposal": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/next_20/proposal.json",
+    "sha256": "904af3d420a01485cef2b4cb57b5131ac9675dfe0264b47c301dcdc2bce86de6"
+  },
+  "proposal_status": "NOT_APPROVED; no new approval or live dispatch permit created",
+  "replay": {
+    "path": "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T013725-27741c28/summary.json",
+    "sha256": "2923b0e28e48370e07bbfd6d451917b365c3cf8bc75bdec6a1954c4515062e8d"
+  },
+  "replay_scope": "One matched current-code request; divergence before saved response two. No response is reused for a different request. No empirical quality metric or timing result.",
+  "new_inference_requests": 0,
+  "cumulative_estimated_usd": 1.92620079999989,
+  "heldout_used": false,
+  "metrics": null
+}

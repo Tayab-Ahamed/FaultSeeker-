@@ -425,7 +425,7 @@ class FunctionAnalyzer:
         # Cloud models need fewer iterations than local; 3 passes is plenty.
         is_cloud = self._uses_cloud_model()
         max_iterations = 3 if is_cloud else 8
-        MAX_FUNCTION_SECS = 480   # 8-min hard wall-clock cap per function
+        MAX_FUNCTION_SECS = 480   # Time budget checked between analysis iterations
 
         import time as _time
         fn_start = _time.time()
@@ -437,12 +437,14 @@ class FunctionAnalyzer:
             print(f"         [Info] Iteration {i}/{max_iterations}  ({elapsed}s elapsed)", flush=True)
             if _time.time() - fn_start > MAX_FUNCTION_SECS:
                 print(f"   [Time] Function analysis exceeded {MAX_FUNCTION_SECS}s wall-clock limit -- moving on.")
+                self._record_analysis_error(TimeoutError("Function analysis time budget exceeded"))
                 break
             task = self._select_task()
             if not task or not str(task).strip():
                 consecutive_timeouts += 1
                 if consecutive_timeouts >= 2:
                     print("   [!] Model timed out repeatedly -- skipping this function.")
+                    self._record_analysis_error(TimeoutError("Analysis received two consecutive empty tasks"))
                     break
                 continue
             consecutive_timeouts = 0
@@ -764,12 +766,14 @@ class FunctionAnalyzer:
             print(f"         [Info] Sub-iteration {i+1}/{txn_iters}  ({elapsed}s elapsed)", flush=True)
             if _time.time() - fn_start > MAX_FUNCTION_SECS:
                 print(f"   [Time] Sub-analysis exceeded wall-clock limit -- moving on.")
+                self._record_analysis_error(TimeoutError("Transaction sub-analysis time budget exceeded"))
                 break
             task = self._select_task()
             if not task or not str(task).strip():
                 consecutive_timeouts += 1
                 if consecutive_timeouts >= 2:
                     print("   [!] Model timed out repeatedly -- skipping this function.")
+                    self._record_analysis_error(TimeoutError("Analysis received two consecutive empty tasks"))
                     break
                 continue
             consecutive_timeouts = 0
