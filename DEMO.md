@@ -15,13 +15,21 @@ python -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
+On Windows Git Bash, use the Windows venv path for the same setup:
+
+```bash
+python --version
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+```
+
 The requirements file includes the local test and demo dependencies used by
 the rehearsal: `pytest`, `networkx`, `ollama`, `matplotlib`, `eth-utils`,
 `openai`, `pandas`, `eth-hash[pycryptodome]`, `rlp`, and `eth-account`. The
 same `requirements.txt` is used by `Dockerfile.benchmark`; no global install
 or paid provider is required. On Windows PowerShell, use
-`.venv\Scripts\python.exe` in place of `.venv/bin/python`; the commands below
-use the POSIX/Git-Bash form.
+`.venv\Scripts\python.exe` in place of `.venv/bin/python`. The main demo
+command below is the POSIX form; its Windows Git Bash equivalent follows it.
 
 ## Run on an accepted-cohort transaction
 
@@ -40,11 +48,26 @@ env -u DRPC_RPC_URL -u DRPC_API_KEY \
     -output demo_outputs/eth_0x0788ba22.json
 ```
 
+Windows Git Bash equivalent:
+
+```bash
+env -u DRPC_RPC_URL -u DRPC_API_KEY \
+  -u ETH_RPC_URL -u BSC_RPC_URL -u BASE_RPC_URL \
+  -u OPENAI_API_KEY -u ANTHROPIC_API_KEY -u GOOGLE_API_KEY \
+  -u XAI_API_KEY -u DASHSCOPE_API_KEY \
+  PYTHON_DOTENV_DISABLED=true \
+  PYTHONPATH=. .venv/Scripts/python.exe -m faultseeker.main \
+    --no-llm \
+    -txn_hash 0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb \
+    -chain eth \
+    -output demo_outputs/eth_0x0788ba22.json
+```
+
 Clean-clone prerequisite: `.venv/` is intentionally not committed. The
 command therefore requires the project environment to have been provisioned
 before rehearsal; it is not a hidden runtime step performed by the demo.
-Without `.venv/bin/python`, the exact command fails before application code
-starts.
+Without the platform-specific venv interpreter, the exact command fails
+before application code starts.
 
 Use another accepted-cohort row if needed:
 

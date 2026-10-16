@@ -15,6 +15,9 @@ Run from the repository root:
 .venv/bin/python scripts/reproduce/cohort.py
 ```
 
+On Windows Git Bash, replace `.venv/bin/python` with
+`.venv/Scripts/python.exe`. In PowerShell, use `.venv\Scripts\python.exe`.
+
 Clean-clone prerequisite: the six direct helper scripts above,
 `scripts/reproduce/common.py`, and `reports/reproducibility/FINAL_REPORT.md`
 are tracked in this branch. `.venv/` is intentionally not committed, so a
