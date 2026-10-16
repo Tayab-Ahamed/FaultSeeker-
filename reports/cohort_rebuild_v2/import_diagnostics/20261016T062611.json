@@ -1,0 +1,66 @@
+{
+  "scope": "Direct production token/URL-reference processing of actual SHA-bound cached public source artifacts only; not full archive import, new adjudication, RPC acceptance or a research quality metric",
+  "source_code": [
+    {
+      "path": "benchmark/import_defihacklabs_github.py",
+      "sha256": "f8e7c8f73e3382f52ede980df5ee19f2bcb21bcba17c582b57935fbfca230bf9"
+    },
+    {
+      "path": "benchmark/import_public_incidents.py",
+      "sha256": "c26fe1796dfa3db337de702268b44f3b30c471818e93641f417713cfdef82b22"
+    }
+  ],
+  "actual_sushi_poc": {
+    "path": "reports/cohort_rebuild_v2/http/57b8f74c990575c9c6bb0b0d684a9d0577935cd49cec8a64a429109606f21e6c.gz",
+    "sha256": "7cfcc4cb53eb1f454a8a5cf42d6d87c256cbb3d6170e16c63ebb247e247f47cf"
+  },
+  "recovered_exact_width_tokens": [
+    "0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32"
+  ],
+  "known_calldata_prefixes_excluded": [
+    "0x01514910771af9ca656af840dff83e8264ecf986ca010000017fa9385be102ac",
+    "0x01514910771af9ca656af840dff83e8264ecf986ca01000001f9a001d5b2c7c5"
+  ],
+  "orion_actual_publisher_url_associations": [
+    {
+      "publisher": "BlockSec",
+      "artifact": {
+        "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+        "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+      },
+      "hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+      "explicit_url_chains": [
+        "bsc"
+      ]
+    },
+    {
+      "publisher": "PeckShield",
+      "artifact": {
+        "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+        "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+      },
+      "hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+      "explicit_url_chains": [
+        "bsc"
+      ]
+    }
+  ],
+  "frozen_cohort": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "frozen_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "additional_admissions": 0,
+  "fixtures_or_mock_responses_used": false,
+  "network_requests": 0,
+  "model_requests": 0,
+  "heldout_used": false,
+  "limitations": [
+    "Exact-width hexadecimal values remain unverified leads.",
+    "URL chain association does not establish transaction existence, success or exploit role.",
+    "Legacy files are preserved, not silently rewritten."
+  ]
+}

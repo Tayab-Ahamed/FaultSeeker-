@@ -13,7 +13,7 @@ HF_DATASET = "akshaynexus/DeFiHackLabs-Dataset"
 HF_CONFIG = "incidents"
 HF_SPLIT = "train"
 HF_ROWS_URL = "https://datasets-server.huggingface.co/rows"
-TX_HASH_RE = re.compile(r"0x[a-fA-F0-9]{64}")
+TX_HASH_RE = re.compile(r"(?<![A-Za-z0-9_])0x[a-fA-F0-9]{64}(?![A-Za-z0-9_])")
 
 
 def fetch_hf_rows(
@@ -63,9 +63,22 @@ def query_hf_rows(dataset: str, config: str, split: str, offset: int, length: in
         return json.loads(response.read().decode("utf-8"))
 
 
+def _candidate_hashes(value: Any) -> Iterable[str]:
+    # Search decoded strings: JSON escaping turns a newline before a hash
+    # into the identifier-like sequence "n0x...", breaking token boundaries.
+    if isinstance(value, str):
+        yield from TX_HASH_RE.findall(value)
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            yield from _candidate_hashes(key)
+            yield from _candidate_hashes(item)
+    elif isinstance(value, (list, tuple)):
+        for item in value:
+            yield from _candidate_hashes(item)
+
+
 def normalize_incident(row: Dict[str, Any]) -> Dict[str, Any]:
-    text_blob = json.dumps(row, sort_keys=True)
-    tx_hashes = sorted(set(TX_HASH_RE.findall(text_blob)))
+    tx_hashes = sorted(set(_candidate_hashes(row)))
     contracts = _coerce_contracts(row.get("contracts"))
     chains = sorted(
         {

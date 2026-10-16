@@ -6,13 +6,14 @@ import os
 import re
 import urllib.request
 import zipfile
+from urllib.parse import urlsplit
 
 
 REPO_ZIP_URL = "https://github.com/SunWeb3Sec/DeFiHackLabs/archive/refs/heads/main.zip"
 DEFAULT_OUTPUT = "benchmark/imported/defihacklabs_github_candidates.csv"
 DEFAULT_SUMMARY = "benchmark/imported/defihacklabs_github_candidates_summary.json"
 
-TX_HASH_RE = re.compile(r"0x[a-fA-F0-9]{64}")
+TX_HASH_RE = re.compile(r"(?<![A-Za-z0-9_])0x[a-fA-F0-9]{64}(?![A-Za-z0-9_])")
 
 SUPPORTED_CHAINS = {
     "eth",
@@ -85,14 +86,18 @@ def import_github_candidates(zip_url: str = REPO_ZIP_URL) -> tuple[list[dict], d
             tx_hashes = sorted({match.lower() for match in TX_HASH_RE.findall(text)})
             if not tx_hashes:
                 continue
-            chain = infer_chain(name, text)
-            supported = chain in SUPPORTED_CHAINS
-            blocker = "" if supported else "Unsupported or unresolved chain; inspect PoC manually."
+            default_chain = infer_chain(name, text)
+            references = transaction_chain_references(text)
             incident_id = incident_id_from_path(name)
             title = title_from_incident_id(incident_id)
             vulnerability = infer_vulnerability(name, text)
             source = github_blob_url(name)
-            for tx_hash in tx_hashes:
+            for tx_hash, chain in (
+                (tx, chain) for tx in tx_hashes
+                for chain in sorted(references.get(tx) or {default_chain})
+            ):
+                supported = chain in SUPPORTED_CHAINS
+                blocker = "" if supported else "Unsupported or unresolved chain; inspect PoC manually."
                 rows.append(
                     {
                         "candidate_tx_hash": tx_hash,
@@ -132,18 +137,46 @@ def read_text(zf: zipfile.ZipFile, name: str) -> str:
         return ""
 
 
+def transaction_chain_references(text: str) -> dict[str, set[str]]:
+    """Resolve only explicit transaction URLs on exact known explorer hosts.
+
+    A multi-chain PoC does not assign one chain to all its hashes. References
+    remain unverified leads; neither URL extraction nor a valid hex width
+    establishes an exploit role or RPC acceptance.
+    """
+    explorer_hosts = {hint.split('/')[0]: chain for hint, chain in EXPLORER_CHAIN_HINTS.items()}
+    references: dict[str, set[str]] = {}
+    for url in re.findall(r"https?://[^\s<>\"'\)\]]+", text):
+        try:
+            parsed = urlsplit(url.rstrip('.,;'))
+        except ValueError:
+            continue
+        host = (parsed.hostname or '').lower().removeprefix('www.')
+        chain = explorer_hosts.get(host)
+        match = re.fullmatch(r'/tx/(0x[a-fA-F0-9]{64})/?', parsed.path)
+        if host in {'phalcon.blocksec.com', 'explorer.phalcon.xyz'}:
+            match = re.fullmatch(r'/tx/([a-z]+)/(?P<tx>0x[a-fA-F0-9]{64})/?', parsed.path)
+            if match:
+                chain = match[1] if match[1] in SUPPORTED_CHAINS else None
+        if not match or not chain:
+            continue
+        tx_hash = (match['tx'] if host in {'phalcon.blocksec.com', 'explorer.phalcon.xyz'} else match[1]).lower()
+        references.setdefault(tx_hash, set()).add(chain)
+    return references
+
+
 def infer_chain(path: str, text: str) -> str:
     lowered = f"{path}\n{text}".lower()
-    for needle, chain in EXPLORER_CHAIN_HINTS.items():
-        if needle in lowered:
-            return chain
-    for needle, chain in RPC_CHAIN_HINTS.items():
-        if needle.lower() in lowered:
-            return chain
+    explicit = {chain for chains in transaction_chain_references(text).values() for chain in chains}
+    if explicit:
+        return next(iter(explicit)) if len(explicit) == 1 else 'unknown'
+    rpc_chains = {chain for needle, chain in RPC_CHAIN_HINTS.items() if needle.lower() in lowered}
+    if rpc_chains:
+        return next(iter(rpc_chains)) if len(rpc_chains) == 1 else 'unknown'
     path_parts = {part.lower() for part in path.replace("\\", "/").split("/")}
-    for chain in SUPPORTED_CHAINS:
-        if chain in path_parts:
-            return chain
+    path_chains = SUPPORTED_CHAINS & path_parts
+    if path_chains:
+        return next(iter(path_chains)) if len(path_chains) == 1 else 'unknown'
     if "ethereum" in lowered or "mainnet" in lowered:
         return "eth"
     return "unknown"
