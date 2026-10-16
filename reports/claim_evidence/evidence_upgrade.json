@@ -1,0 +1,204 @@
+{
+  "claim_gate": {
+    "real_population_metrics": "BLOCKED",
+    "reason": "retained captures lack independent incident adjudication",
+    "synthetic_results_are_not_empirical": true
+  },
+  "evaluation_contract": {
+    "paper_files_modified": false,
+    "real_metric_requires_independent_adjudication": true,
+    "synthetic_metric_eligible": false
+  },
+  "real_replay": {
+    "captures": [
+      {
+        "artifact_error": null,
+        "artifact_present": true,
+        "artifact_sha256": "7b8c169f0a57533e4fb0963ee54268bb122034605e92672d7c0b300c9fc6cc5a",
+        "artifact_valid": true,
+        "chain": "eth",
+        "duplicate": false,
+        "identity": "eth:0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "independent_incident_adjudication_absent",
+        "normalization_complete": true,
+        "opcode_count": 21300,
+        "receipt_matches": true,
+        "sload_count": 80,
+        "source_kind": "recorded_historical",
+        "sstore_count": 29,
+        "status": "CAPTURED",
+        "storage_owners_verified": true,
+        "synthetic": false,
+        "transaction_hash": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6"
+      },
+      {
+        "artifact_error": null,
+        "artifact_present": true,
+        "artifact_sha256": "095fc43ce6901aad0a83a9d82823319bf970b55000f1f8e3c8fe7eabfa44c43a",
+        "artifact_valid": true,
+        "chain": "eth",
+        "duplicate": false,
+        "identity": "eth:0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "independent_incident_adjudication_absent",
+        "normalization_complete": true,
+        "opcode_count": 5351,
+        "receipt_matches": true,
+        "sload_count": 8,
+        "source_kind": "recorded_historical",
+        "sstore_count": 2,
+        "status": "CAPTURED",
+        "storage_owners_verified": true,
+        "synthetic": false,
+        "transaction_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b"
+      }
+    ],
+    "runs": [
+      {
+        "billing_confirmed": false,
+        "estimated_cost_usd": 0.002478,
+        "rpc_requests": 413,
+        "scope": "historical opcode capture, not incident adjudication",
+        "status": "BLOCKED",
+        "summary_path": "reports/historical_replay/historical_replay_summary.json"
+      },
+      {
+        "billing_confirmed": false,
+        "estimated_cost_usd": 0.002724,
+        "rpc_requests": 454,
+        "scope": "historical opcode capture, not incident adjudication",
+        "status": "CAPTURED",
+        "summary_path": "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json"
+      }
+    ],
+    "scope": "recorded historical opcode captures, not incident adjudication",
+    "summary": {
+      "captures_seen": 2,
+      "chains": [
+        "eth"
+      ],
+      "metric_eligible_captures": 0,
+      "runs": 2,
+      "valid_captures": 2
+    }
+  },
+  "schema_version": 1,
+  "synthetic": {
+    "case_count": 7,
+    "cases": [
+      {
+        "case_id": "recursive_same_function",
+        "detector_variant": "structural",
+        "fallback_mode": true,
+        "ground_truth_origin": "hand-authored-mechanism",
+        "input_sha256": "8893b68d656c0bce283189123ab8f48d747c9eee4461243920fb486effca4809",
+        "label": true,
+        "mechanism": "external_callback_then_same_selector",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "synthetic_mechanism_case",
+        "predicted_exploit": true,
+        "result_sha256": "7ae8069d40312949a2b8bc4124c97c97fa7cefbfe0ad66459a8d6182981e414c",
+        "score": 0.6,
+        "source_kind": "synthetic_fixture",
+        "synthetic": true,
+        "tier": "HIGH_RISK_REENTRANCY"
+      },
+      {
+        "case_id": "recursive_cross_function",
+        "detector_variant": "structural",
+        "fallback_mode": true,
+        "ground_truth_origin": "hand-authored-mechanism",
+        "input_sha256": "6bea97da8f75470fc528a873bbc22ee8d507d665e29845c1eef7d99473b50f09",
+        "label": true,
+        "mechanism": "external_callback_then_different_selector",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "synthetic_mechanism_case",
+        "predicted_exploit": false,
+        "result_sha256": "9867cd6fcd86f36ae0762c106fca54ad36dd1e724d69faeebe1c165d76382f00",
+        "score": 0.525,
+        "source_kind": "synthetic_fixture",
+        "synthetic": true,
+        "tier": "POSSIBLE_REENTRANCY"
+      },
+      {
+        "case_id": "guarded_callback",
+        "detector_variant": "structural",
+        "fallback_mode": true,
+        "ground_truth_origin": "hand-authored-mechanism",
+        "input_sha256": "5d50fac19ee08d9f8be9bcca9a8f91a9d5cc3af8a68e84ee1b599bc57282c122",
+        "label": false,
+        "mechanism": "callback_without_same_contract_reentry",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "synthetic_mechanism_case",
+        "predicted_exploit": false,
+        "result_sha256": "ec4e82e714e5f6ce7cb116578cca2c4083b6a4f17d27a301728c516acfaa2ac7",
+        "score": 0.0,
+        "source_kind": "synthetic_fixture",
+        "synthetic": true,
+        "tier": "NOT_REENTRANCY"
+      },
+      {
+        "case_id": "plain_external_call",
+        "detector_variant": "structural",
+        "fallback_mode": true,
+        "ground_truth_origin": "hand-authored-mechanism",
+        "input_sha256": "505875000936dd693425e5dc106600b288bf5aa334393888d0137008ec32c5b1",
+        "label": false,
+        "mechanism": "single_external_call_no_reentry",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "synthetic_mechanism_case",
+        "predicted_exploit": false,
+        "result_sha256": "f795cf27b77c805db149350625df0498d6c2b470e774302745cb664b83597293",
+        "score": 0.0,
+        "source_kind": "synthetic_fixture",
+        "synthetic": true,
+        "tier": "NOT_REENTRANCY"
+      }
+    ],
+    "compiled_evm_cases": [
+      {
+        "artifact_sha256": "92c963d9e276f27d62f752cbdbf5cce6a23da4ae450e78999891da49b412f367",
+        "case_id": "delegatecall",
+        "detector_variant": "full",
+        "ground_truth_origin": "compiled-local-contract",
+        "input_sha256": "114f00925ee0072ed8a6c21f87de5bdc4e4faec167516ffc1be259d7d56e8391",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "compiled_fixture_not_population_data",
+        "predicted_exploit": false,
+        "score": 0.0,
+        "source_kind": "compiled_evm_fixture",
+        "synthetic": true,
+        "tier": "NOT_REENTRANCY"
+      },
+      {
+        "artifact_sha256": "b9d7f18792e2148bb415a12d7cb31a9bf4c63f99aa6731faec74b20cbb335acc",
+        "case_id": "guarded",
+        "detector_variant": "full",
+        "ground_truth_origin": "compiled-local-contract",
+        "input_sha256": "2dfd2e717cba39bc13d07f1c708db3b4ea43a00d89a208f53aae81286d5164f6",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "compiled_fixture_not_population_data",
+        "predicted_exploit": false,
+        "score": 0.35,
+        "source_kind": "compiled_evm_fixture",
+        "synthetic": true,
+        "tier": "POSSIBLE_REENTRANCY"
+      },
+      {
+        "artifact_sha256": "90e50f4b746e36607944b00ec1e1545ded45088732bda06e687b31d31a33a596",
+        "case_id": "reentrant",
+        "detector_variant": "full",
+        "ground_truth_origin": "compiled-local-contract",
+        "input_sha256": "ef7bf6128ff6db1ed68c5c64059b0b02b7eb8974552916654596867b1a28dac7",
+        "metric_eligible": false,
+        "metric_ineligibility_reason": "compiled_fixture_not_population_data",
+        "predicted_exploit": true,
+        "score": 1.0,
+        "source_kind": "compiled_evm_fixture",
+        "synthetic": true,
+        "tier": "CONFIRMED_REENTRANCY"
+      }
+    ]
+  }
+}

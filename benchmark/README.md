@@ -152,6 +152,37 @@ python benchmark/run_eval.py --signals-only --limit 50
 
 Saved evaluation outputs are generated under `benchmark/eval_results/` only when `--save` is used.
 
+## Evidence-separated upgrade
+
+Run the offline upgrade report from the repository root:
+
+```bash
+python scripts/run_evidence_upgrade.py
+```
+
+The command writes `reports/claim_evidence/evidence_upgrade.json` and keeps
+three evidence classes separate:
+
+- `synthetic_fixture`: deterministic hand-authored call-graph mechanisms;
+- `compiled_evm_fixture`: checked-in compiler/Anvil executions;
+- `recorded_historical`: retained historical opcode captures.
+
+Synthetic and compiled-local cases are mechanism tests only and always have
+`metric_eligible=false`. Historical captures must have a matching artifact,
+receipt, complete storage normalization, and verified storage ownership before
+they are counted as captures. They still require independent incident
+adjudication before entering a population metric. The current retained replay
+artifacts therefore report valid captures but zero metric-eligible real rows.
+
+The evidence contract is tested offline with:
+
+```bash
+python -m pytest -q tests/test_evidence_upgrade.py
+```
+
+This lane does not edit paper sources, merge synthetic data into the verified
+cohort, or claim the paper's unsupported F1/cost/cohort results.
+
 ## Files
 
 | File or folder | Purpose |
