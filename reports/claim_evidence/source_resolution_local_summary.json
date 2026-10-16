@@ -1,0 +1,24 @@
+{
+  "input": "reports/claim_evidence/source_resolution_audit.csv",
+  "unresolved_rows_attempted": 70,
+  "unresolved_urls_attempted": 72,
+  "unresolved_source_url_rows": 70,
+  "local_resolutions": 0,
+  "incident_adjudications": 0,
+  "network_requests": 0,
+  "source_roots": {
+    "DeFiHackLabs": {
+      "present": false,
+      "files_scanned": 0
+    },
+    "rekt": {
+      "present": false,
+      "files_scanned": 0
+    },
+    "DeFiLlama": {
+      "present": true,
+      "files_scanned": 1
+    }
+  },
+  "scope": "local DeFiHackLabs, rekt, and already-present DeFiLlama files only"
+}

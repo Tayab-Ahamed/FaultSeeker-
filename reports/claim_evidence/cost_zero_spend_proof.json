@@ -1,0 +1,29 @@
+{
+  "audit": "cost_zero_spend",
+  "dotenv_loaded": false,
+  "dotenv_paths_read": [],
+  "wingman_secrets_loaded": false,
+  "provider_api_calls": 0,
+  "model_dispatches": 0,
+  "local_model_executables": {
+    "ollama": false,
+    "llama-server": false,
+    "llama-cli": false,
+    "llamafile": false,
+    "lmstudio": false
+  },
+  "project_local_model_files": [],
+  "free_tier_api": {
+    "availability_verified": false,
+    "reason": "No credential or API request was used; free-tier availability remains unverified.",
+    "credentials_inspected": false
+  },
+  "modeled_cost": {
+    "hybrid_cost_per_query_usd": 0.039,
+    "cloud_only_cost_per_query_usd": 0.06,
+    "modeled_cost_saving_pct": 35.0,
+    "status": "MODELED_ONLY_NOT_MEASURED",
+    "source": "reports/canonical_history/snapshots/b96f53ce1d6634a1e1cc11659eb37ab15fcf29a6/reports/research_results/runtime_cost.json"
+  },
+  "conclusion": "No local model or verified free-tier API was used; zero-spend is preserved and 35% remains modeled arithmetic only."
+}

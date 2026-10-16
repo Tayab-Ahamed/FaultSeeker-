@@ -1,18 +1,18 @@
-row_number,chain,txn_hash,label_string,saved_evidence,saved_replay_status,verified_reentrant_count
-40,eth,0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6,Insufficient Validation Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-41,eth,0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-60,eth,0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4,Reentrancy && Business Logic Flaw,rpc transaction+receipt only,NO_CALL_TRACE,0
-62,eth,0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa,Reentrancy,rpc transaction+receipt+prestate only,NO_CALL_TRACE,0
-78,eth,0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-80,eth,0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-92,eth,0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-117,arbitrum,0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-131,arbitrum,0xb7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b5c2d3e4f5a6b7c8,Reentrancy && Price Manipulation,rpc transaction+receipt only,NO_CALL_TRACE,0
-158,eth,0x56e09abb35ff12271fdb38ff8a23e4d4a7396844426a94c4d3af2e8b7a0a2813,Reentrancy && Reward Manipulation,rpc transaction+receipt only,NO_CALL_TRACE,0
-166,eth,0x8e3bc4d0ef1a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-173,polygon,0xe5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-186,avalanche,0xd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-196,arbitrum,0xc7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8,Reentrancy,rpc transaction+receipt only,NO_CALL_TRACE,0
-203,optimism,0xd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d444,Reentrancy,no saved RPC artifact,NO_SAVED_ARTIFACT,0
-209,optimism,0xd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9daaa,Reentrancy,no saved RPC artifact,NO_SAVED_ARTIFACT,0
-218,base,0xa9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a333,Reentrancy,saved RPC error artifact,NO_CALL_TRACE,0
+row_number,chain,txn_hash,label_string,saved_evidence,saved_replay_status,trace_artifact_paths,trace_sha256,label_verification_status,verified_reentrant_count,verification_basis
+40,eth,0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6,Insufficient Validation Reentrancy,local trace artifact,TRACE_PRESENT,reports/historical_replay/0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6.json.gz,7b8c169f0a57533e4fb0963ee54268bb122034605e92672d7c0b300c9fc6cc5a,UNVERIFIED_TRACE_PRESENT,0,trace presence is not incident adjudication; no label was verified
+41,eth,0x6bfd9e286e37061ed279e4f139fbc03c8bd707a2cdd15f7260549052cbba79b7,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+60,eth,0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4,Reentrancy && Business Logic Flaw,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+62,eth,0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa,Reentrancy,local trace artifact,TRACE_PRESENT,reports/cohort_rebuild_v2/traces/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json.gz,51be30930260b17c391485eb0aea2581278c775cef9ad157436a8d9bf41338ea,UNVERIFIED_TRACE_PRESENT,0,trace presence is not incident adjudication; no label was verified
+78,eth,0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+80,eth,0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+92,eth,0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+117,arbitrum,0x03182d3f0956a91c4e4c8f225bbc7975f9434fab042228c7acdc5ec9a32626ef,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+131,arbitrum,0xb7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b5c2d3e4f5a6b7c8,Reentrancy && Price Manipulation,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+158,eth,0x56e09abb35ff12271fdb38ff8a23e4d4a7396844426a94c4d3af2e8b7a0a2813,Reentrancy && Reward Manipulation,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+166,eth,0x8e3bc4d0ef1a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+173,polygon,0xe5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+186,avalanche,0xd6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+196,arbitrum,0xc7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+203,optimism,0xd4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d444,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+209,optimism,0xd0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9daaa,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
+218,base,0xa9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a333,Reentrancy,no qualifying local trace artifact,TRACE_ABSENT,,,UNVERIFIED_TRACE_ABSENT,0,trace presence is not incident adjudication; no label was verified
