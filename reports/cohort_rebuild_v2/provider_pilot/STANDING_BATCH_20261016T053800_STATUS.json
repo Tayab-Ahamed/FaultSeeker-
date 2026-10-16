@@ -1,0 +1,47 @@
+{
+  "scope": "Genuine TRAIN transport outcome; no localization metric or fixture result",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/summary.json",
+    "sha256": "1b267e87bec1fe5ae6337c11a767c7f1b5c2818744c14b87a3a66fbdaebdd4a7"
+  },
+  "failed_request": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/call-004.json",
+    "sha256": "ef9846eb32ef6374c3ba31f9b16d505ef90708f422be85208811523826aa38bd"
+  },
+  "requests": 4,
+  "successful_http_200_responses": 3,
+  "complete_cases": 0,
+  "terminal_error_type": "TransportDeadlineExceeded",
+  "terminal_role": "reasoning_agent",
+  "observed_duration_seconds": 301.5,
+  "configured_total_deadline_seconds": 300,
+  "http_response_for_failed_request": false,
+  "automatic_retries": 0,
+  "incremental_conservative_usd": 0.021259300000000092,
+  "cumulative_conservative_usd": 1.9739009999998902,
+  "billing_confirmed": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 734452,
+      "reserved": 0,
+      "remaining": 6265548
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 936536,
+      "reserved": 0,
+      "remaining": 6063464
+    }
+  },
+  "heldout_used": false,
+  "labels_sent": false,
+  "paper_env_files_sent": false,
+  "metrics": null,
+  "interpretation": "Parent total deadline fired and worker was reaped. No HTTP response for request4 was captured. This does not prove a provider rate limit, refusal, model quality or that remote inference stopped. Missing usage charged the full conservative reservation. The corrected additional-info prompt was not reached, so this batch cannot evaluate that fix.",
+  "next_action": "Batch is terminal: no automatic redispatch. Preserve evidence and pursue independent local research work; do not infer a complete case."
+}

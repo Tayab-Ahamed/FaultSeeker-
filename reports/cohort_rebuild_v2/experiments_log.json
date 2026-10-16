@@ -3372,5 +3372,75 @@
     "sequence": 70,
     "previous_sha256": "73702b5540abcb31fc70e116725f61cd30b2c0d331c8a9a2f4889a74e96a3d99",
     "timestamp": "2026-10-16T05:18:32.031290+00:00"
+  },
+  {
+    "run_id": "20261016T053800-c8aba919",
+    "seed": 1729,
+    "config": {
+      "experiment": "verified-source-cloud-only-train-pilot-v1",
+      "protocol": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+        "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+      },
+      "system": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system.json",
+        "sha256": "3231449cb4d47dcb0bedc0d0afdbf80ab77288dd1c35d3c15893d0b90de10f25"
+      },
+      "system_snapshot": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system_sources.json.gz",
+        "sha256": "091283ba8ff418c2050839fbb1d16c7c5e34a9e3b20b61b5a86f291c64d1f5c4"
+      },
+      "conservative_usd_rates_per_million": {
+        "input": 0.1,
+        "output": 0.2
+      },
+      "billing_confirmed": false,
+      "local_model_used": false,
+      "incremental_estimated_usd_cap": null,
+      "cumulative_dispatch_limit_usd": 10.0
+    },
+    "kind": "dispatch-train",
+    "metrics": null,
+    "sample_ids": [],
+    "sequence": 71,
+    "previous_sha256": "c88108e091eaad30094f27bbd909ae08565102fcc9f1ed478362d7c60722f23c",
+    "timestamp": "2026-10-16T05:38:01.195512+00:00"
+  },
+  {
+    "run_id": "20261016T053800-c8aba919",
+    "seed": 1729,
+    "config": {
+      "experiment": "verified-source-cloud-only-train-pilot-v1",
+      "protocol": {
+        "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+        "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+      },
+      "system": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system.json",
+        "sha256": "3231449cb4d47dcb0bedc0d0afdbf80ab77288dd1c35d3c15893d0b90de10f25"
+      },
+      "system_snapshot": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system_sources.json.gz",
+        "sha256": "091283ba8ff418c2050839fbb1d16c7c5e34a9e3b20b61b5a86f291c64d1f5c4"
+      },
+      "conservative_usd_rates_per_million": {
+        "input": 0.1,
+        "output": 0.2
+      },
+      "billing_confirmed": false,
+      "local_model_used": false,
+      "incremental_estimated_usd_cap": null,
+      "cumulative_dispatch_limit_usd": 10.0
+    },
+    "kind": "recorded-train-pilot",
+    "metrics": null,
+    "sample_ids": [],
+    "evidence": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/summary.json",
+      "sha256": "1b267e87bec1fe5ae6337c11a767c7f1b5c2818744c14b87a3a66fbdaebdd4a7"
+    },
+    "sequence": 72,
+    "previous_sha256": "882929579672f64bfe3b1785ff11ef83e67be9e849f66dd8646666ac2314aab7",
+    "timestamp": "2026-10-16T05:45:42.262220+00:00"
   }
 ]

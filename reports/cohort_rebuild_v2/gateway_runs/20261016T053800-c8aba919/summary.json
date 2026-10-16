@@ -1,0 +1,101 @@
+{
+  "run_id": "20261016T053800-c8aba919",
+  "scope": "Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system.json",
+      "sha256": "3231449cb4d47dcb0bedc0d0afdbf80ab77288dd1c35d3c15893d0b90de10f25"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/system_sources.json.gz",
+      "sha256": "091283ba8ff418c2050839fbb1d16c7c5e34a9e3b20b61b5a86f291c64d1f5c4"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false,
+    "incremental_estimated_usd_cap": null,
+    "cumulative_dispatch_limit_usd": 10.0
+  },
+  "observations": [],
+  "stop_reason": "Production pilot failed: ValueError",
+  "completion_requests": 4,
+  "complete_cases": 0,
+  "requested_train_cases": 2,
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.9526416999998901,
+  "budget_estimate_after_usd": 1.9739009999998902,
+  "incremental_conservative_estimate_usd": 0.021259300000000092,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "Pilot stopped after ValueError",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/standing_train_approval.json",
+    "sha256": "faf4a11cbd9f1b6a4f39d31a06711586268d5e7b6916e44be8a30dded37ce875"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/ledger/call-001.json",
+      "sha256": "c471e622391efe8bab125e2ed175420ee8c29cdbce2c73e856f627ec9fccdd04"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/ledger/call-002.json",
+      "sha256": "60376eb4cd7966e01274b98fe932035c1c6fd3307a01a2f17bdd1ea67db69d2a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/ledger/call-003.json",
+      "sha256": "7b7b141c98425d8120a12ae97c67cfac5ffb7513bc3a5095ef52440855c69b20"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/ledger/call-004.json",
+      "sha256": "8ce8a48114325b72917ad51d635916868442807ef4512be16878dd37bb2eadb5"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/call-001.json",
+      "sha256": "dfc8bb03ff4a78e58d59318b4535d030d9ce9a47a8bd6d1c07c56959aa0b37c1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/call-002.json",
+      "sha256": "27418bc3ab50008b994b4d87378247b2b424759740c7092979a3dca19e06831a"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/call-003.json",
+      "sha256": "16e0f3c62f435fc57fbeca6599f85f6a741cbf94c842ca92491a667c14c823a1"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/calls/call-004.json",
+      "sha256": "ef9846eb32ef6374c3ba31f9b16d505ef90708f422be85208811523826aa38bd"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 734452,
+      "reserved": 0,
+      "remaining": 6265548
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 936536,
+      "reserved": 0,
+      "remaining": 6063464
+    }
+  }
+}
