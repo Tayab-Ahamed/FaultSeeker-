@@ -1,0 +1,34 @@
+{
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/protocol.json",
+    "sha256": "2bf2582dce1b78ff0c23bb53b7d9ba2a9167008a288132c5f09fbb1fa0db0e4d"
+  },
+  "observations": [
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460.json",
+      "sha256": "feb38daa7d566431ea909bdd6d96bc8d1dfc2dc953d16fd8b1b7d5d0bda6f427"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce.json",
+      "sha256": "38a58fd3015f341586863474e1af7e56b7910f5ae46b6a1b549876db8551635d"
+    }
+  ],
+  "error_type": null,
+  "accounting": {
+    "outbound_rpc_requests": 5,
+    "methods": {
+      "eth_chainId": 1,
+      "eth_getTransactionByHash": 2,
+      "eth_getTransactionReceipt": 2
+    },
+    "estimated_cost_usd": 3e-05,
+    "cumulative_ledger_estimate_usd": 1.9739969999998894,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  },
+  "heldout_used": false,
+  "model_requests": 0,
+  "cohort_modified": false
+}

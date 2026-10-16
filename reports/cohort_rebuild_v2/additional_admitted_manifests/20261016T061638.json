@@ -1,0 +1,40 @@
+{
+  "scope": "Evidence-complete additions, unassigned to any experiment",
+  "frozen_study": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "frozen_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "original_count": 14,
+  "additional_count": 3,
+  "provenance_complete_unique_available": 17,
+  "additional_records": [
+    {
+      "identity": "eth:0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/nomadbridge/accepted_record.json",
+        "sha256": "68d9dea2f47ab9df060c0131564d832b234b2c675deef5b24947cda82ad50456"
+      }
+    },
+    {
+      "identity": "eth:0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/teamfinance/accepted_record.json",
+        "sha256": "7a7e6f742908d5e869e3a5342ba705bc0f08a0fa92daaa371ac251d83ae7bbba"
+      }
+    },
+    {
+      "identity": "eth:0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "accepted_record": {
+        "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/xcarnival/accepted_record.json",
+        "sha256": "880689860e6da7c1ac75cdfd2a56024db4b3f1cb0465038a6a021105c53e7402"
+      }
+    }
+  ],
+  "train_or_heldout_assigned": false,
+  "pending_protocol": "Versioned expansion must be preregistered before these rows enter prediction. Preserve original heldout seal and do not move trained identities into heldout.",
+  "fixture_evidence_used": false
+}

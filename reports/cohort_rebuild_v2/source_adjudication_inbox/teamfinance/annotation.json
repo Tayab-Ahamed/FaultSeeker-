@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "mode": "public-source-consensus-v1",
+  "adjudication_author": "Codex",
+  "not_independent_human_review": true,
+  "txn_hash": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+  "chain": "eth",
+  "is_exploit": true,
+  "vuln_type": "Migration position validation failure enabling unauthorized liquidity migration and refunds",
+  "adjudication_basis": "PeckShield explicitly links this exploit transaction and describes unauthorized migration/refunds; Beosin independently explains mismatched _id/params allowing attacker token positions to migrate unrelated liquidity. The PoC labels this exact hash Attack Tx and distinguishes deployment/locking/lock-extension preparation; contextual reproduction is not historical execution proof.",
+  "independent_observations": [
+    {
+      "publisher_id": "Beosin",
+      "source_url": "https://twitter.com/BeosinAlert/status/1585578499125178369",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/98ceada022e355897511b908526017a8b498caf0393a1a4b5aeac095b9f4469d.gz",
+        "sha256": "63ce06e9065344f84435efdad4f419f0eb8f9e8c15e0473b5a964f5279eabe10"
+      },
+      "vulnerability_class": "Migration position validation failure enabling unauthorized liquidity migration and refunds",
+      "mechanism_excerpt": "migrate function of the LockToken contract does not properly validate _id and params"
+    },
+    {
+      "publisher_id": "PeckShield",
+      "source_url": "https://twitter.com/peckshield/status/1585587858978623491",
+      "source_artifact": {
+        "path": "reports/cohort_rebuild_v2/http/489f44288e5cd76160869b65c041bc1110db3ef11b7db4e5dd21a5bf29ba028f.gz",
+        "sha256": "b332fd040940d6ae3f20528aa8e56318a6dd8dab68cacfff6066640270152336"
+      },
+      "vulnerability_class": "Migration position validation failure enabling unauthorized liquidity migration and refunds",
+      "mechanism_excerpt": "transfer real UniswapV2 liquidity to an attacker-controlled new V3 pair with skewed price"
+    }
+  ],
+  "reentrancy_label": false,
+  "swc_registry_classification": "",
+  "dasp_classification": "Access Control",
+  "uncategorized": false,
+  "taxonomy_rationale": "SWC remains unmapped; DASP Access Control where present is an adjudicator mapping from independently described authorization bypass.",
+  "excluded_siblings": [
+    {
+      "role": "PoC token deployment, lockToken and extendLockDuration siblings are not admitted as exploit executions."
+    }
+  ],
+  "localization_targets": "Unavailable: contextual PoC functions are not historically verified deployed-source address/signature/line targets.",
+  "cache_text_caveat": "Exact source_text excerpts retained, including replacement characters present in cached article decoding; no article text silently repaired."
+}

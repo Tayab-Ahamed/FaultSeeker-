@@ -1,0 +1,61 @@
+{
+  "txn_hash": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+  "chain": "eth",
+  "incident_title": "Teamfinance Exp",
+  "incident_id": "reviewed:Teamfinance",
+  "index_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/main/src/test/2022-10/TeamFinance_exp.sol",
+  "reference_links": [],
+  "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+  "role": "IMPORTED-POC-LEAD-NOT-ADJUDICATED",
+  "sources": [
+    {
+      "publisher_id": "Beosin",
+      "independence_group": "Beosin",
+      "url": "https://twitter.com/BeosinAlert/status/1585578499125178369",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/98ceada022e355897511b908526017a8b498caf0393a1a4b5aeac095b9f4469d.gz",
+        "sha256": "63ce06e9065344f84435efdad4f419f0eb8f9e8c15e0473b5a964f5279eabe10"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+      "identity_basis": {
+        "transaction": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+        "chain": "eth",
+        "review": "PeckShield explicitly links this exploit transaction and describes unauthorized migration/refunds; Beosin independently explains mismatched _id/params allowing attacker token positions to migrate unrelated liquidity. The PoC labels this exact hash Attack Tx and distinguishes deployment/locking/lock-extension preparation; contextual reproduction is not historical execution proof.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/7f70ff1edfe63b386366aa70ebc3a5a993e19d2373a736e02e29c9a1c5d29a74.gz",
+          "sha256": "82f3bfb662f68265348a8af86f742c8fb56d3e5606ef71a3bf51e1d59ea7d196"
+        }
+      }
+    },
+    {
+      "publisher_id": "PeckShield",
+      "independence_group": "PeckShield",
+      "url": "https://twitter.com/peckshield/status/1585587858978623491",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/489f44288e5cd76160869b65c041bc1110db3ef11b7db4e5dd21a5bf29ba028f.gz",
+        "sha256": "b332fd040940d6ae3f20528aa8e56318a6dd8dab68cacfff6066640270152336"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+      "identity_basis": {
+        "transaction": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+        "chain": "eth",
+        "review": "PeckShield explicitly links this exploit transaction and describes unauthorized migration/refunds; Beosin independently explains mismatched _id/params allowing attacker token positions to migrate unrelated liquidity. The PoC labels this exact hash Attack Tx and distinguishes deployment/locking/lock-extension preparation; contextual reproduction is not historical execution proof.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/7f70ff1edfe63b386366aa70ebc3a5a993e19d2373a736e02e29c9a1c5d29a74.gz",
+          "sha256": "82f3bfb662f68265348a8af86f742c8fb56d3e5606ef71a3bf51e1d59ea7d196"
+        }
+      }
+    }
+  ],
+  "legacy_ground_truth": [],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/teamfinance/annotation.json",
+    "sha256": "31368ec238a6156e595e05512ebeb50d2f0f89fc8e495632531e9f9b85457772"
+  },
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce.json",
+    "sha256": "38a58fd3015f341586863474e1af7e56b7910f5ae46b6a1b549876db8551635d"
+  }
+}

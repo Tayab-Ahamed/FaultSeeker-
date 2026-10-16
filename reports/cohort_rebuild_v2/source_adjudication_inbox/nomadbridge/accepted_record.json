@@ -1,0 +1,64 @@
+{
+  "txn_hash": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+  "chain": "eth",
+  "incident_id": "reviewed:Nomadbridge",
+  "rpc": {
+    "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460.json",
+    "sha256": "feb38daa7d566431ea909bdd6d96bc8d1dfc2dc953d16fd8b1b7d5d0bda6f427"
+  },
+  "sources": [
+    {
+      "publisher_id": "BlockSec",
+      "independence_group": "BlockSec",
+      "url": "https://twitter.com/BlockSecTeam/status/1554335271964987395",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/ea62118fa4a014d1b8a821846c7a220697562e8e2b78692d17721947ebaca0c7.gz",
+        "sha256": "fad674ca3456362a2e5e9d6c4c55c8e5a21120926ce7fbfc085d59a08b4ea7f2"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+      "identity_basis": {
+        "transaction": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+        "chain": "eth",
+        "review": "CertiK links this exact attack-flow transaction; BlockSec independently explains uninitialized messages resolving to accepted zero root/confirmAt state. The PoC labels this hash the100WBTC payout; it corroborates identity only. No first-attacker or later-recovery attribution is established.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/8581f219f2872ef1270eb8effe905e03e8edcf2da0d124333c52c0eb167d9a8f.gz",
+          "sha256": "4fbe1e0b715224b15f3a7eaccab3b42ca0b51c582aa8e6119b6117f54d305cd7"
+        }
+      }
+    },
+    {
+      "publisher_id": "CertiK",
+      "independence_group": "CertiK",
+      "url": "https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis",
+      "artifact": {
+        "path": "reports/cohort_rebuild_v2/http/00d025dd202388338feee5f0b9f13f352439d645540ca046d0d0eb7ddb4f0919.gz",
+        "sha256": "19c6faf653539095be7d45ec732a1d8fc6347b64059e2fae7dcbb661423ed732"
+      },
+      "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+      "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+      "identity_basis": {
+        "transaction": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+        "chain": "eth",
+        "review": "CertiK links this exact attack-flow transaction; BlockSec independently explains uninitialized messages resolving to accepted zero root/confirmAt state. The PoC labels this hash the100WBTC payout; it corroborates identity only. No first-attacker or later-recovery attribution is established.",
+        "public_poc": {
+          "path": "reports/cohort_rebuild_v2/http/8581f219f2872ef1270eb8effe905e03e8edcf2da0d124333c52c0eb167d9a8f.gz",
+          "sha256": "4fbe1e0b715224b15f3a7eaccab3b42ca0b51c582aa8e6119b6117f54d305cd7"
+        }
+      }
+    }
+  ],
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/nomadbridge/annotation.json",
+    "sha256": "305cdb874e9c60716cee287c0bc3d9bc0432db70bc65e37b2470bc04658e32cd"
+  },
+  "is_exploit": true,
+  "reentrancy_label": false,
+  "vulnerability_class": "Bridge message-verification bypass caused by zero-root initialization",
+  "complexity_class": "UNRECOVERED",
+  "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+  "ground_truth": {
+    "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/nomadbridge/ground_truth.json",
+    "sha256": "b405433eaf7cf6c1c94c2f0cbe581a9aa8da8f96d5e9f1a7cc68ffa77f324184"
+  }
+}
