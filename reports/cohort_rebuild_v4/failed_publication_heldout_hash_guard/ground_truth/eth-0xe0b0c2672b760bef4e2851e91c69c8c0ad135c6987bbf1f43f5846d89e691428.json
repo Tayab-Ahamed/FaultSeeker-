@@ -1,0 +1,34 @@
+{
+  "schema": 2,
+  "name": "Revest Finance",
+  "transaction_hash": [
+    "0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428"
+  ],
+  "chain": "eth",
+  "cause": "Reentrancy",
+  "annotation_mode": "public-source-consensus-v1",
+  "independent_human_review": false,
+  "annotation_record": {
+    "path": "reports/cohort_rebuild_v2/annotations/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+    "sha256": "ef05b1c1ece3a4f2c8f73b81c28d6ab6bdf8b51d5d23e206c153661ad5d4b4cb"
+  },
+  "is_exploit": true,
+  "reentrancy_label": true,
+  "location": {},
+  "findings": [],
+  "source_supported_functions": [
+    {
+      "name": "depositAdditionalToFNFT",
+      "address": null,
+      "signature": null,
+      "line": null,
+      "source": {
+        "path": "reports/cohort_rebuild_v2/http/54d303c1cac544d567aff7844706b39e4a7caf83d9823a207de82dbff7e39c4b.gz",
+        "sha256": "dbc6316bb7ea941b8ec2ffaa6b77d57fa0e6f19c16561d8355b4403def1d0ef1"
+      },
+      "evidence_excerpt": "the attacker re-enters the Revest contract's depositAdditionalToFNFT function via the FNFTHandler 's call-back mechanism inherited from the ERC-1155 token standard",
+      "status": "SOURCE_SUPPORTED_NAME; ADDRESS_SIGNATURE_AND_LINE_NOT_VERIFIED"
+    }
+  ],
+  "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately"
+}

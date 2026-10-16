@@ -193,8 +193,11 @@ def publish_extension(root, version_dir, parent_split_binding, addition_manifest
     def put(name,raw):
         path=destination/name;path.parent.mkdir(parents=True,exist_ok=True)
         with path.open('xb') as handle:
-            handle.write(raw)
-        return bind(path,root)
+            written=handle.write(raw)
+            if written!=len(raw):
+                raise OSError('Incomplete publication write')
+        # Bind the exact bytes written without reopening a sealed partition.
+        return {'path':path.relative_to(root).as_posix(),'sha256':sha(raw)}
     def js(name,value):
         return put(name,(json.dumps(value,indent=2,ensure_ascii=True)+'\n').encode())
     output=[]

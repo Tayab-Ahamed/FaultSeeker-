@@ -1,0 +1,122 @@
+{
+  "scope": "Terminal local publication attempt; not a published split or evaluation",
+  "failure": "Publication guard forbade reopening newly written heldout.json when put() called bind() to hash the file",
+  "traceback_location": "benchmark/cohort_versions.py:197 put -> benchmark/research_protocol.py:48 bind -> Path.read_bytes",
+  "old_heldout_partition_opened": false,
+  "new_heldout_read_attempt_blocked_before_open": true,
+  "prediction_or_evaluation_dispatched": false,
+  "network_requests": 0,
+  "model_requests": 0,
+  "original_protocol": {
+    "path": "reports/cohort_rebuild_v4/protocol_revision2.json",
+    "sha256": "a91a6f5570ef6982a330f7c8b4e3e5c5c7eb639e6077b89a2d2f83b7ab91566b"
+  },
+  "partial_archive_directory": "reports/cohort_rebuild_v4/failed_publication_heldout_hash_guard",
+  "partial_file_sizes_not_payload_reads": [
+    {
+      "path": "benchmark_classification_fixed.csv",
+      "bytes": 8193
+    },
+    {
+      "path": "cohort_manifest.json",
+      "bytes": 97760
+    },
+    {
+      "path": "ground_truth/avalanche-0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430.json",
+      "bytes": 1274
+    },
+    {
+      "path": "ground_truth/base-0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+      "bytes": 1344
+    },
+    {
+      "path": "ground_truth/base-0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+      "bytes": 2001
+    },
+    {
+      "path": "ground_truth/bsc-0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json",
+      "bytes": 1995
+    },
+    {
+      "path": "ground_truth/bsc-0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160.json",
+      "bytes": 811
+    },
+    {
+      "path": "ground_truth/bsc-0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165.json",
+      "bytes": 781
+    },
+    {
+      "path": "ground_truth/bsc-0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104.json",
+      "bytes": 1303
+    },
+    {
+      "path": "ground_truth/eth-0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "bytes": 806
+    },
+    {
+      "path": "ground_truth/eth-0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+      "bytes": 806
+    },
+    {
+      "path": "ground_truth/eth-0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+      "bytes": 825
+    },
+    {
+      "path": "ground_truth/eth-0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460.json",
+      "bytes": 816
+    },
+    {
+      "path": "ground_truth/eth-0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "bytes": 1340
+    },
+    {
+      "path": "ground_truth/eth-0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d.json",
+      "bytes": 802
+    },
+    {
+      "path": "ground_truth/eth-0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce.json",
+      "bytes": 838
+    },
+    {
+      "path": "ground_truth/eth-0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+      "bytes": 1899
+    },
+    {
+      "path": "ground_truth/eth-0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json",
+      "bytes": 804
+    },
+    {
+      "path": "ground_truth/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+      "bytes": 1417
+    },
+    {
+      "path": "ground_truth/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+      "bytes": 790
+    },
+    {
+      "path": "ground_truth/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+      "bytes": 1327
+    },
+    {
+      "path": "ground_truth/optimism-0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451.json",
+      "bytes": 1245
+    },
+    {
+      "path": "ground_truth/polygon-0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+      "bytes": 802
+    },
+    {
+      "path": "ground_truth/polygon-0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json",
+      "bytes": 814
+    },
+    {
+      "path": "research/heldout.json",
+      "bytes": 26219
+    },
+    {
+      "path": "research/train.json",
+      "bytes": 59592
+    }
+  ],
+  "recovery": "Preserve incomplete publication; test-first writer hashes exact written raw bytes without reopening; fresh registered publication uses original destination and unchanged assignment algorithm."
+}

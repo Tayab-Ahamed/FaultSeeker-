@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "registered_at": "2026-10-16T10:44:09.959877+00:00",
+  "purpose": "Publish22admitted unique identities across8chains in an immutable version preserving all20v3 memberships before any prediction on either addition",
+  "parent_split": {
+    "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+  },
+  "parent_manifest": {
+    "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+    "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+  },
+  "additional_admitted_manifest": {
+    "path": "reports/cohort_rebuild_v4/additions_manifest_revision2.json",
+    "sha256": "9c9a4b72fc53d4bcc59fa505f8ec086b591737fe34cace29e6625b1bb2b47134"
+  },
+  "incident_aliases": {
+    "path": "reports/cohort_rebuild_v4/incident_aliases.json",
+    "sha256": "332f5cebfe230e28360833afa496bda6ecf1e56a5acde3a92726e4b044b1519e"
+  },
+  "version_directory": "benchmark/versions/cohort_v4_20261016",
+  "seed": 1729,
+  "train_fraction": 0.7,
+  "heldout_fraction": 0.3,
+  "stratification": [
+    "chain",
+    "complexity_class"
+  ],
+  "algorithm": "Same tested extend_split: pin every parent identity and source-supported incident alias; new whole incident groups minimize integer global70/30 distance then stratum distance then seeded SHA256 tie-break. No labels or predictions determine assignment.",
+  "parent_train_count": 14,
+  "parent_heldout_count": 6,
+  "additional_count": 2,
+  "unavailable_complexity": "UNRECOVERED stays explicit; no inferred or padded call counts",
+  "guardrails": [
+    "Never open parent heldout partition payload",
+    "Preserve every previous TRAIN and heldout identity assignment",
+    "No new prediction before version publication",
+    "No target labels, model output, scores or paper numbers used for split assignment",
+    "No overwrite of parent CSV, GT, manifest or split",
+    "No final exam dispatch during publication",
+    "Source-supported function name alone does not become deployed-source signature/line ground truth",
+    "Do not publish until ancestor acquisition-index inheritance preserves prior real captures."
+  ],
+  "source_code": [
+    {
+      "path": "benchmark/cohort_versions.py",
+      "sha256": "a5c54c343b49ebba9ee2e478ec4b99695c10d4ffa7b2b8ebb48152f6622548c3"
+    },
+    {
+      "path": "scripts/extend_authentic_cohort.py",
+      "sha256": "fb30a635d883676d30c843a88e5c01a5058bc9c20408d0c1dfe7bbcac91b9945"
+    }
+  ],
+  "model_requests": 0,
+  "network_requests": 0,
+  "heldout_outcomes_read": false,
+  "status": "PREREGISTERED_BEFORE_PUBLICATION_AND_NEW_PREDICTION",
+  "supersedes": {
+    "path": "reports/cohort_rebuild_v4/protocol_revision2.json",
+    "sha256": "a91a6f5570ef6982a330f7c8b4e3e5c5c7eb639e6077b89a2d2f83b7ab91566b"
+  },
+  "supersession_reason": "The first local publication stopped on forbidden newly written heldout.json hash reread before eval_split existed. Preserve partial outputs separately. Only writer hashing is hardened; same22 records, seed, aliases and split assignment rules, no predictions or outcomes.",
+  "new_identities": [
+    "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+    "optimism:0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451"
+  ],
+  "prior_failed_publication": {
+    "path": "reports/cohort_rebuild_v4/publication_guard_failure.json",
+    "sha256": "a8008960ed8561be82b5a9c15c19d64cb09b96e16740f8f06a83187480e3203d"
+  }
+}

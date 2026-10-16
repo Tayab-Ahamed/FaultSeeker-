@@ -1,0 +1,446 @@
+[
+  {
+    "txn_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+    "chain": "base",
+    "incident_id": "reviewed:LeetSwap",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+      "sha256": "d6ff15a30675b990e4af80a3ffe5175c99a96a9b5348dd7c4755487af1accce9"
+    },
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1686217464051539968",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/98ffca832a19aacaf8c3a835ca4aead1e21ac029654a168894b908df84c8c052.gz",
+          "sha256": "69d155d5549a7f3a93f08faa69681502058622b2d0d89e94f2964acc1ab6e1c4"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+        "identity_basis": {
+          "transaction": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+          "incident": "LeetSwap",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/f2e3679d50e2eb97463b89713a8d657f14072b0b418746791945116e9c02339c.gz",
+            "sha256": "5bdffa5e229df99d857e82cba9ed31df982121c664f8a583dc582ca4a22cf582"
+          },
+          "review": "Both independent technical accounts identify the exposed pair function, not merely a price drop or flash loan. The public PoC explicitly identifies this Base exploit transaction."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1686209024587710464",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/9555abe4f3c388fd95d4ad2f2fc2bcd4ec4a6b14db2950ce92de8df9f7a505d2.gz",
+          "sha256": "0c75cd5fe33b53092c32539c4dc14ce8e782ca0349522f8015336fe397f799c2"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+        "identity_basis": {
+          "transaction": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+          "incident": "LeetSwap",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/f2e3679d50e2eb97463b89713a8d657f14072b0b418746791945116e9c02339c.gz",
+            "sha256": "5bdffa5e229df99d857e82cba9ed31df982121c664f8a583dc582ca4a22cf582"
+          },
+          "review": "Both independent technical accounts identify the exposed pair function, not merely a price drop or flash loan. The public PoC explicitly identifies this Base exploit transaction."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+      "sha256": "22b7c4cb9d5388c11fb2ee87be7a5274e7db10fa83398e34a3395f40c6a8287d"
+    },
+    "is_exploit": true,
+    "reentrancy_label": false,
+    "vulnerability_class": "Exposed pool fee-transfer function",
+    "complexity_class": "Moderate",
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "trace": {
+      "path": "reports/cohort_rebuild_v2/traces/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json.gz",
+      "sha256": "086f8de144b00196ab06eedcda506af08028e8c0fad5044025eea6f5c09e75d7"
+    },
+    "prestate": {
+      "path": "reports/cohort_rebuild_v2/prestate/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json.gz",
+      "sha256": "3c9cefa0f9d96df550292026e8de73b295d7e9064f07ab4d10bd00e8341223c8"
+    },
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/base-0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+      "sha256": "5169a150f3a5ef248c79c46470172c2d01e2b96d6f06c9570c821b9f3f28ef6b"
+    }
+  },
+  {
+    "txn_hash": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+    "chain": "bsc",
+    "incident_id": "reviewed:Orion-BSC",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T062934/0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104.json",
+      "sha256": "3f23d198f23dd89c9a5c952815a014f4c12eaff60cd671a585133817e8511a8b"
+    },
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+          "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": {
+          "transaction": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+          "chain": "bsc",
+          "review": "The original publisher transaction link explicitly identifies this hash as BSC."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1621337925228306433",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+          "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": {
+          "transaction": "0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+          "chain": "bsc",
+          "review": "The original publisher transaction link explicitly identifies this hash as BSC."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/annotation.json",
+      "sha256": "3635e1624ba73aa637b8d35a43d863ba8dac5066f2e0087f8c4c722da5f65316"
+    },
+    "is_exploit": true,
+    "reentrancy_label": true,
+    "vulnerability_class": "Reentrancy",
+    "complexity_class": "UNRECOVERED",
+    "membership": "CORRECTED-CHAIN-SOURCE-REVIEWED-CANDIDATE",
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/bsc-0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104.json",
+      "sha256": "179472371a9aad678c5c38937bee8a443944a1b321383ce49c09d1fe3f3c0032"
+    }
+  },
+  {
+    "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+    "chain": "eth",
+    "incident_id": "reviewed:Zunami Protocol",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "sha256": "e285e25bd2fa5e443210c42f781a9f00a72a7fbec5d4ab4719af72f8a6858c1f"
+    },
+    "sources": [
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/zh-CN/blog/zunami-protocol-incident-analysis",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/102147617b5aafc54cfe2babb5e24b989a5bc48133c7fad032daadc362620da4.gz",
+          "sha256": "30562661ea5b16b68c67da95782ae3652d95a52f87bc7bf6ad19b5159d749af0"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1690877589005778945",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/60cfb617bc87c5ca737a8bd72e88f554b819ec90f866274218b493b8c47fe78c.gz",
+          "sha256": "d7507fdc5ca73f36d48d7720b6363eed7efd55dfaf6d9ecfc0fd22152ac7d6b0"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+          "https://etherscan.io/tx/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "sha256": "63edecad80c237fab25eab39b1a80769e59eb8fd26d818cfe4a174f9f7867f03"
+    },
+    "is_exploit": true,
+    "reentrancy_label": false,
+    "vulnerability_class": "Oracle price manipulation",
+    "complexity_class": "Complex",
+    "membership": "FROZEN-231",
+    "trace": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json.gz",
+      "sha256": "5161d8fb178a28e9719308bd2c771c06d4301b081d8d4338bc81db26077ed10d"
+    },
+    "prestate": {
+      "path": "reports/cohort_rebuild_v2/prestate/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json.gz",
+      "sha256": "6ab5d65bf3a921c1f50498745f4524e056d6134516242f6be854351ca751ce4f"
+    },
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/eth-0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+      "sha256": "63e9633b89c72165accb96431d24ec876be29a798fdbd65c8c7d06eb56b60d2f"
+    }
+  },
+  {
+    "txn_hash": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+    "chain": "eth",
+    "incident_id": "reviewed:Nomadbridge",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc_candidate_probe/20261016T061358/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460.json",
+      "sha256": "feb38daa7d566431ea909bdd6d96bc8d1dfc2dc953d16fd8b1b7d5d0bda6f427"
+    },
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1554335271964987395",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/ea62118fa4a014d1b8a821846c7a220697562e8e2b78692d17721947ebaca0c7.gz",
+          "sha256": "fad674ca3456362a2e5e9d6c4c55c8e5a21120926ce7fbfc085d59a08b4ea7f2"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+        "identity_basis": {
+          "transaction": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+          "chain": "eth",
+          "review": "CertiK links this exact attack-flow transaction; BlockSec independently explains uninitialized messages resolving to accepted zero root/confirmAt state. The PoC labels this hash the100WBTC payout; it corroborates identity only. No first-attacker or later-recovery attribution is established.",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/8581f219f2872ef1270eb8effe905e03e8edcf2da0d124333c52c0eb167d9a8f.gz",
+            "sha256": "4fbe1e0b715224b15f3a7eaccab3b42ca0b51c582aa8e6119b6117f54d305cd7"
+          }
+        }
+      },
+      {
+        "publisher_id": "CertiK",
+        "independence_group": "CertiK",
+        "url": "https://www.certik.com/resources/blog/28fMavD63CpZJOKOjb9DX3-nomad-bridge-exploit-incident-analysis",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/00d025dd202388338feee5f0b9f13f352439d645540ca046d0d0eb7ddb4f0919.gz",
+          "sha256": "19c6faf653539095be7d45ec732a1d8fc6347b64059e2fae7dcbb661423ed732"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security organizations provide original technical accounts without visible attribution to each other; public PoC is contextual corroboration and not counted as a publisher.",
+        "identity_basis": {
+          "transaction": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+          "chain": "eth",
+          "review": "CertiK links this exact attack-flow transaction; BlockSec independently explains uninitialized messages resolving to accepted zero root/confirmAt state. The PoC labels this hash the100WBTC payout; it corroborates identity only. No first-attacker or later-recovery attribution is established.",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/8581f219f2872ef1270eb8effe905e03e8edcf2da0d124333c52c0eb167d9a8f.gz",
+            "sha256": "4fbe1e0b715224b15f3a7eaccab3b42ca0b51c582aa8e6119b6117f54d305cd7"
+          }
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/nomadbridge/annotation.json",
+      "sha256": "305cdb874e9c60716cee287c0bc3d9bc0432db70bc65e37b2470bc04658e32cd"
+    },
+    "is_exploit": true,
+    "reentrancy_label": false,
+    "vulnerability_class": "Bridge message-verification bypass caused by zero-root initialization",
+    "complexity_class": "UNRECOVERED",
+    "membership": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/eth-0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460.json",
+      "sha256": "b405433eaf7cf6c1c94c2f0cbe581a9aa8da8f96d5e9f1a7cc68ffa77f324184"
+    }
+  },
+  {
+    "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+    "chain": "eth",
+    "incident_id": "reviewed:Orion Protocol",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "sha256": "23fba2e59b12bc530fbd5519edb47acd5759323f192f08d20861fc73480f11bd"
+    },
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1621263393054420992",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/2b811c1b34fd1c395c773b27ecfacf3fc730e5bb21f662bc867238147669350a.gz",
+          "sha256": "5e2a0490c547f704f655206a88f7c98bf7083eccc613743eeb99a22b6b8f44e6"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://phalcon.blocksec.com/tx/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ]
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1621337925228306433",
+        "artifact": {
+          "path": "reports/provenance_hunt/http/c5d4a9bff78e877e35fc757620dde6b820b4e467465a9d72dde9779b2117e778.gz",
+          "sha256": "3b31afb481efe1bc8acf5310e44f18f7c72f38426300b768d6c6bf944e405019"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Separate security research organizations, each presenting its own technical incident account and exact transaction link, not a mirror or translated reprint. Does not attest independent human labels.",
+        "identity_basis": [
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+          "https://etherscan.io/tx/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        ]
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "sha256": "54480eab830be274d5e8d61560bf9d85d921c5fbf67f74bdeebb32274ed7f01e"
+    },
+    "is_exploit": true,
+    "reentrancy_label": true,
+    "vulnerability_class": "Reentrancy",
+    "complexity_class": "Moderate",
+    "membership": "FROZEN-231",
+    "trace": {
+      "path": "reports/cohort_rebuild_v2/traces/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json.gz",
+      "sha256": "51be30930260b17c391485eb0aea2581278c775cef9ad157436a8d9bf41338ea"
+    },
+    "prestate": {
+      "path": "reports/cohort_rebuild_v2/prestate/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json.gz",
+      "sha256": "00ee3ff20862ad47adb5956008b3ef2e46fe55bcae0528f0da09a9af838c4db5"
+    },
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/eth-0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+      "sha256": "b469feb8154a604eaf6e79e5e2193399d350a24ccfb22f0ba571a330131531f2"
+    }
+  },
+  {
+    "txn_hash": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+    "chain": "optimism",
+    "incident_id": "reviewed:Hundred-Finance-Optimism-April-2023",
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://blocksec.com/blog/6-hundred-finance-incident-catalyzing-the-wave-of-precision-related-exploits-in-vulnerable-forked-protocols",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/1da2ddef1e995ad657f2d4dab7eb88a613b6311c0e16e795a95280d8caa9a9f6.gz",
+          "sha256": "505d81154e44569359a409282a9007a72e1b91022741e2ad52e3abedfedd0f4b"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Distinct security research organizations provide original technical descriptions of the same exploit; no attribution to each other appears in either reviewed body. SolidityScan is the CredShields security publication, separate from BlockSec.",
+        "identity_basis": {
+          "transaction": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+          "chain": "optimism",
+          "review": "BlockSec explicitly identifies the attack transaction on Phalcon with optimism in the URL; SolidityScan explicitly labels the identical optimistic.etherscan.io transaction as attacker transaction. Other linked siblings are not admitted under this pair."
+        }
+      },
+      {
+        "publisher_id": "SolidityScan",
+        "independence_group": "SolidityScan",
+        "url": "https://blog.solidityscan.com/hundred-finance-hack-analysis-improper-business-logic-addfd862d077/",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v4/hundred_optimism_sources/http/e23ed305be27b336fc0c723e41e3d02944b6ad7720649c2438b6f661a0a20e30.gz",
+          "sha256": "bbf89703d2f29e3133a83f4a23ed44847cbefec168088802b08289b27b1f786a"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Distinct security research organizations provide original technical descriptions of the same exploit; no attribution to each other appears in either reviewed body. SolidityScan is the CredShields security publication, separate from BlockSec.",
+        "identity_basis": {
+          "transaction": "0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451",
+          "chain": "optimism",
+          "review": "BlockSec explicitly identifies the attack transaction on Phalcon with optimism in the URL; SolidityScan explicitly labels the identical optimistic.etherscan.io transaction as attacker transaction. Other linked siblings are not admitted under this pair."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v4/hundred_optimism_adjudication/annotation.json",
+      "sha256": "dc093399a3edc56c73f8b7af8d8c7d3e9bd1814c53cec171499fc1ff6de14efa"
+    },
+    "rpc": {
+      "path": "reports/cohort_rebuild_v4/hundred_optimism_rpc/20261016T100653762043/observation.json",
+      "sha256": "e5ee98f9062aa536ee47ace938d1c9533d0721ccc72ffabee49aa500608e3af2"
+    },
+    "is_exploit": true,
+    "reentrancy_label": false,
+    "vulnerability_class": "Business logic - empty-market exchange-rate and redemption accounting flaw",
+    "complexity_class": "UNRECOVERED",
+    "membership": "ACCEPTED-OUTSIDE-FROZEN-V3",
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/optimism-0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451.json",
+      "sha256": "03b1a8eb36ccc65e7b50abb7b98e3dade300b77e2be482a27b8ece84cb973d8e"
+    }
+  },
+  {
+    "txn_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+    "chain": "polygon",
+    "incident_id": "reviewed:0vix",
+    "rpc": {
+      "path": "reports/cohort_rebuild_v2/rpc/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json",
+      "sha256": "54a76601a46e7b5ade2da6f6280673a4c6c8d6f8cdac2c7cd31b46066456cefe"
+    },
+    "sources": [
+      {
+        "publisher_id": "BlockSec",
+        "independence_group": "BlockSec",
+        "url": "https://twitter.com/BlockSecTeam/status/1651932529874853888",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/194796e8a77ec66a74d3d483d4d41253c185196aeab5c86a9cd1d0b5f570828c.gz",
+          "sha256": "dacbf019c1c62b6db2531f9d9d419fae2bdb5ae3998eb3aa3686e8407c32f894"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+        "identity_basis": {
+          "transaction": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+          "incident": "0vix",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/45988539d0e765b3006bc0b0e056c8df850d85b040cdba4056eb881c1bff193e.gz",
+            "sha256": "b92aa4e17e58f8638049ed5867793818fc01fbed76ae5f0cd40b7b6489951eb3"
+          },
+          "review": "Use BlockSec's corrected investigation, which explicitly retracts the original deflationary-token explanation. Both organizations identify donation-driven oracle distortion. Other 32-byte PoC values are pool IDs, not attack transactions."
+        }
+      },
+      {
+        "publisher_id": "PeckShield",
+        "independence_group": "PeckShield",
+        "url": "https://twitter.com/peckshield/status/1651923235603361793",
+        "artifact": {
+          "path": "reports/cohort_rebuild_v2/http/44ef56066c1664b98a999b3461c6442e9fda0ba7c9d405e3b48760a25de8e5cc.gz",
+          "sha256": "fa484c48ce18860af75689204eb1229d57050e85fecb200b0467efb360c916b6"
+        },
+        "review_status": "INDEPENDENT_SECURITY_PUBLISHER_CONFIRMED",
+        "independence_basis": "Different original security research organizations; each technical observation describes its own mechanism analysis rather than citing the other publisher.",
+        "identity_basis": {
+          "transaction": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+          "incident": "0vix",
+          "public_poc": {
+            "path": "reports/cohort_rebuild_v2/http/45988539d0e765b3006bc0b0e056c8df850d85b040cdba4056eb881c1bff193e.gz",
+            "sha256": "b92aa4e17e58f8638049ed5867793818fc01fbed76ae5f0cd40b7b6489951eb3"
+          },
+          "review": "Use BlockSec's corrected investigation, which explicitly retracts the original deflationary-token explanation. Both organizations identify donation-driven oracle distortion. Other 32-byte PoC values are pool IDs, not attack transactions."
+        }
+      }
+    ],
+    "annotation_record": {
+      "path": "reports/cohort_rebuild_v2/annotations/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json",
+      "sha256": "9e82e0df09a38b084c18f95e0e2fe2f1fbc00a3b5279a641af1b507a95031cc7"
+    },
+    "is_exploit": true,
+    "reentrancy_label": false,
+    "vulnerability_class": "Donation-based oracle price manipulation",
+    "complexity_class": "Complex",
+    "membership": "FROZEN-231",
+    "trace": {
+      "path": "reports/cohort_rebuild_v2/traces/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json.gz",
+      "sha256": "5913e8ff49b36eebf9152a37abe6c9d0d74d4e486adf7fd25a0115c7f2666352"
+    },
+    "prestate": {
+      "path": "reports/cohort_rebuild_v2/prestate/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json.gz",
+      "sha256": "f6c2901e03756b4927fde43807a0a88df5e70050f5316a8f4dd0fac54880c7c6"
+    },
+    "ground_truth": {
+      "path": "benchmark/versions/cohort_v4_20261016/ground_truth/polygon-0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json",
+      "sha256": "5ee3b6435fa0aee70ab39a95facb5b6f603ecb269c0b422df1d9221e58db46db"
+    }
+  }
+]
