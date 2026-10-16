@@ -1,0 +1,405 @@
+{
+  "scope": "Read-only saved-pilot failure analysis and ledger reconciliation; no inference, RPC or held-out evaluation",
+  "response_counts": {
+    "responses": 20,
+    "http_200": 20,
+    "finish_stop": 20,
+    "provider_truncation": 0,
+    "nonempty_refusal_field": 0,
+    "empty_response": 0,
+    "over_configured_io_timeout": 9
+  },
+  "responses": [
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-001.json",
+        "sha256": "eba49c1544c24bcbd6e68219e2a647c2c025bd5a91845507bcf0c89570708044"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 1,
+      "role": "ranking_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 64.92200000000594,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-002.json",
+        "sha256": "a1e9b4ced6d58e5dbf480b94d3d69f34d37fcdb77e9695b9a249c31f269b269f"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 2,
+      "role": "ranking_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 65.73500000000058,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-003.json",
+        "sha256": "9a92096ece118cee7a0827e363c863c2ee52941f2a707ebabf9945b83ee6ee02"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 3,
+      "role": "ranking_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 69.78100000000268,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-004.json",
+        "sha256": "538c394bd03776772a3927ebb9ec99ac0737d4e45fbea345b1e4fbbfea0082fb"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 4,
+      "role": "organization_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 24.156000000002678,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-005.json",
+        "sha256": "880bd6c0ef6da441d4023730fbb66ea14ac1883fd3e820ea97ff49dd72ef765a"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 5,
+      "role": "reasoning_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 36.95299999999406,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/calls/call-006.json",
+        "sha256": "561079a807501c5e02e393c5eb53c16ba1bdbc3c9eb89487a36de5125e743c75"
+      },
+      "run_id": "20261015T172438-be45711f",
+      "call_number": 6,
+      "role": "generation_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 27.297000000005937,
+      "adapter_terminal_parse_error": true
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-001.json",
+        "sha256": "c6b63a3e6e551b1bc15e737a8d4378f0bcc0154bd4646e5179611c0fde7d6334"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 1,
+      "role": "ranking_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 67.01600000000326,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-002.json",
+        "sha256": "03a2b56deb48fa4421c1dc6b43487ae9f6e0ffa8271b5cf40e53135de79b16f5"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 2,
+      "role": "organization_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 198.51499999999942,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-003.json",
+        "sha256": "66510ee0741596245dd0fc8686ee1b1e22ac7848199e5720469aae689d018899"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 3,
+      "role": "reasoning_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 47.875,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-004.json",
+        "sha256": "c1cb1e90191b2ff236741650fb30d4a58032adf7cf6d65341b35f80925b8229f"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 4,
+      "role": "generation_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 53.21899999999732,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-005.json",
+        "sha256": "d6a5172b2a6b28931bd673dbcceea3a4fffe3211011adca2da37e92be8209752"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 5,
+      "role": "generation_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 52.53100000000268,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-006.json",
+        "sha256": "99bff8b0512ea263f773dbd82a3f0ac9ddc7e55f3401d0c75eb4e4fb7790798f"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 6,
+      "role": "processing_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 42.53100000000268,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-007.json",
+        "sha256": "739daca17f549eb76fd0c44b933601cad1016b26d5df0e171f42be49a33108a6"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 7,
+      "role": "organization_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 138.68799999999464,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-008.json",
+        "sha256": "a3efe68b252b4b69a9596ea6dae3d46c77db7b7846ee48d06954043f66466287"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 8,
+      "role": "reasoning_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 48.1880000000092,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-009.json",
+        "sha256": "90828d14974e5d3c53b3aa1f1808d1c9036ddcc3105f34d65806a603bd60f136"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 9,
+      "role": "organization_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 96.96899999999732,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-010.json",
+        "sha256": "7069111c0abffd712b1860ff7f92d10b14ec1f4ef6a2f5a1b6e3ef5670a39fa8"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 10,
+      "role": "generation_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 78.42200000000594,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-011.json",
+        "sha256": "5370522ba870b626f8adbe0f991c077d2a9ff8b4659c7e0efb64a002d2bea979"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 11,
+      "role": "generation_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 45.10899999999674,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-012.json",
+        "sha256": "b622cf2dd9e992636b809ce991054a28caa56f3edd25b7a0da4365075f782218"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 12,
+      "role": "processing_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 48.01499999999942,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-013.json",
+        "sha256": "37c9ff5d95cc7ff38def43d98a7cfca981257ed1990e4467e91b5661e6200236"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 13,
+      "role": "organization_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 182.95300000000861,
+      "adapter_terminal_parse_error": false
+    },
+    {
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/calls/call-014.json",
+        "sha256": "355d9cfb59135113ed15433904bde6da21ae80649ad444b34ba8298427709251"
+      },
+      "run_id": "20261015T180644-7cc259e6",
+      "call_number": 14,
+      "role": "reasoning_agent",
+      "http_status": 200,
+      "finish_reason": "stop",
+      "nonempty_refusal_field": false,
+      "duration_seconds": 26.5,
+      "adapter_terminal_parse_error": false
+    }
+  ],
+  "terminal_batch_outcomes": [
+    {
+      "run_id": "20261015T172438-be45711f",
+      "requests": 6,
+      "complete_cases": 0,
+      "cause": "ADAPTER_JSON_PARSE_ERROR",
+      "trigger_response": 6
+    },
+    {
+      "run_id": "20261015T180644-7cc259e6",
+      "requests": 14,
+      "complete_cases": 0,
+      "cause": "REQUEST_CAP",
+      "trigger_response": null,
+      "note": "Stopped before dispatching another request; intermediate responses are not failed or completed cases."
+    }
+  ],
+  "transport_timeout_errors_recorded": 0,
+  "manual_response_review": "No safety refusal found in saved content. HTTP success and finish_reason=stop do not prove semantic correctness. Nine completed requests exceeded the configured I/O timeout; it is not a total wall-clock deadline.",
+  "ledger": {
+    "private_local_evidence": {
+      "path": "data/research/spend_ledger.json",
+      "sha256": "0545d9a00819b8280f781ff697ad26bb99a582bf8c76553f9b51a38ef33b2f58"
+    },
+    "event_count": 7757,
+    "old_snapshot_usd": "0.8091680",
+    "old_snapshot_event_prefix_length": 2757,
+    "post_snapshot_groups": [
+      {
+        "event": "settle",
+        "model": "drpc-request",
+        "usage_source": "reservation",
+        "settlements": 2463,
+        "amount_usd": "0.0161520"
+      },
+      {
+        "event": "settle",
+        "model": "source-consensus-proposal",
+        "usage_source": "reservation",
+        "settlements": 10,
+        "amount_usd": "1.0000000"
+      },
+      {
+        "event": "settle",
+        "model": "agnes-2.5-flash",
+        "usage_source": "provider",
+        "settlements": 20,
+        "amount_usd": "0.1008808"
+      }
+    ],
+    "pilot_end_cumulative_usd": "1.9261888",
+    "post_pilot_two_failed_bsc_probes_usd": "0.0000120",
+    "current_cumulative_estimate_usd": "1.9262008",
+    "outstanding_reservations": 14,
+    "outstanding_reserved_usd": "0.0000900",
+    "budget_accounted_usd": "1.9262908",
+    "billing_confirmed": false,
+    "arithmetic": "Sum settle and external-estimate events only; reserve events are not counted again. USD strings rounded to seven decimal places; stored floats contain sub-cent numerical residue.",
+    "allocation_caveat": "The ten source-consensus settlements charge their full $0.10 reservation each, including seven failed attempts; they are conservative allocations, not token-measured invoices."
+  },
+  "repairs_and_limits": [
+    {
+      "repair": "Safe fenced-JSON parser inherited by gateway adapter",
+      "proof": "tests/test_nara_pilot_provider.py::NaraPilotTests::test_actual_pilot_fenced_generation_response_parses_without_redispatch",
+      "live_scope": "Subsequent 14-call batch accepted fenced JSON; no completed case."
+    },
+    {
+      "repair": "Whole reference requests validated before lookup; requested source owner retained; verified downloader factory used",
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/ADDITIONAL_INFO_BOUNDARY_REVIEW.json",
+        "sha256": "15493bb6c5c0e7a1fbb5c1f77300e93e624cf51307b3f3c0750533c5c0425c2c"
+      }
+    },
+    {
+      "repair": "Only observed identities accepted as findings; confidence and complete ranking validated; ranking applied to final candidates",
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/OBSERVED_FINDING_AND_RANK_REVIEW.json",
+        "sha256": "cd97b57a205d8b516451ad90e756091dfaa6b1f577d27db8d8f96a70d6005716"
+      }
+    },
+    {
+      "repair": "Detected analysis timeout/empty-task exits explicitly incomplete and stop pilot",
+      "evidence": {
+        "path": "reports/cohort_rebuild_v2/PILOT_ABORT_AND_BUDGET_REVIEW.json",
+        "sha256": "df383b86160b9594fd45a42de42de488753a729fe4db228ec7bf82fd70fa2bed"
+      },
+      "limit": "No hard network total-duration deadline added."
+    }
+  ],
+  "remaining_limitations": [
+    "Zero complete live model-assisted cases; no quality or localization metric.",
+    "Request cap remains; fixes do not guarantee another batch completes.",
+    "Executed-source coverage remains partial.",
+    "No permission remains for live model dispatch."
+  ],
+  "new_external_requests": 0,
+  "new_spend_usd": "0",
+  "heldout_used": false,
+  "claim_status_promotions": [],
+  "offline_validation": {
+    "full_suite": {
+      "passed": 752,
+      "skipped": 1,
+      "scope": "All tests with explicit bundled solc/Anvil/cast paths; external socket connections prohibited; counted live historical replay disabled",
+      "local_junit_path": "build/pilot-reconciliation-precommit-with-tools.xml",
+      "junit_sha256": "6e01138bede24c6c11862a0b661307c25adde5394da353961d10b1be2f8e0eaf"
+    },
+    "all_twenty_response_sha256_verified": true,
+    "real_ledger_unchanged_during_suite": true,
+    "unauthorized_original_test_edits": []
+  }
+}

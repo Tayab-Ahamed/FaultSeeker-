@@ -44,7 +44,7 @@ Detailed numbers and scope: [paper versus repository map](PAPER_VS_REPO.md). Exa
 - 367 passed, 1 skipped at each completed gate. The single skip is the explicitly opt-in live historical replay; the recorded historical replay and local compiled execution checks pass.
 - All 201 original tests pass, their source digests unchanged. Strict closure verifies every evidence digest and all 31 terminal decisions; it does not mean all paper claims are true.
 - Uploaded paper hash unchanged. No model weights, thresholds, current benchmark rows or paper text modified in this review.
-- New paid API/RPC requests:0; new paid spend:$0. Cumulative conservative booked spend:$0.809168/$10; ledger unchanged.
+- New paid API/RPC requests:0; new paid spend:$0. Historical audit snapshot: cumulative conservative booked estimate/allocation $0.809168/$10; ledger unchanged during that audit. Later accounting is reconciled in ../cohort_rebuild_v2/provider_pilot/FAILURE_AND_LEDGER_RECONCILIATION.json.
 - Canonical remote fetched; no merge, checkout of upstream, push or PR. Kluster local waiver continues; full AGENTS.md review must resume before any push/PR.
 
 ## Principal corrections

@@ -105,7 +105,7 @@ No paper edits. No empirical promotion from fixture results, source declarations
 
 ## Accounting and review
 
-New paid/model/RPC calls:0. New paid spend:$0. Cumulative conservative ledger:$0.809168 / $10; no change to ledger. Fetch and offline arithmetic incur no provider charges.
+New paid/model/RPC calls:0. New paid spend:$0. Historical canonical-audit snapshot only: cumulative conservative ledger $0.809168 / $10 at that audit; subsequent work changed the ledger. See ../cohort_rebuild_v2/provider_pilot/FAILURE_AND_LEDGER_RECONCILIATION.json for the later accounting reconciliation. Fetch and offline arithmetic incur no provider charges.
 
 Kluster waived for local development only; before any PR or push, repository AGENTS.md rules apply in full and Kluster review is re-enabled. No push performed.
 
