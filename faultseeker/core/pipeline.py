@@ -2,6 +2,8 @@ import os
 import json
 import time
 import re
+import math
+from copy import deepcopy
 from datetime import datetime
 from typing import Optional, Dict, Any, Tuple
 from faultseeker.core.config import FaultSeekerConfig
@@ -130,6 +132,40 @@ class FaultSeekerPipeline:
         calibrator.require_schema('production-confidence-v1')
         return calibrator
 
+    def _attach_transaction_cost(self, result, baseline):
+        """Isolate this call's append-only router observations from batch history."""
+        cumulative=deepcopy(self.router.get_cost_summary()) if self.router else {}
+        prior=baseline.get('records',[])
+        records=cumulative.get('records',[])
+        if len(records)<len(prior) or records[:len(prior)]!=prior:
+            raise ValueError('Router accounting history changed during transaction')
+        current=deepcopy(cumulative)
+        current['records']=deepcopy(records[len(prior):])
+        for name in ('total_queries','local_queries','cloud_queries','fallback_count',
+                     'total_cost_usd','estimated_cloud_only_cost'):
+            if name not in cumulative:
+                continue
+            before,after=baseline.get(name,0),cumulative[name]
+            if (type(before) not in (int,float) or type(after) not in (int,float)
+                    or not math.isfinite(before) or not math.isfinite(after)
+                    or before<0 or after<before):
+                raise ValueError('Invalid router accounting delta')
+            current[name]=after-before
+        current['accounting_scope']='this transaction only; appended router observations'
+        if 'estimated_cloud_only_cost' in current:
+            estimated=current['estimated_cloud_only_cost']
+            savings=estimated-current.get('total_cost_usd',0)
+            current['savings_usd']=savings
+            current['savings_percent']=round(100*savings/estimated,1) if estimated else 0.0
+            current['savings_scope']='modeled cloud-only counterfactual; not measured savings'
+        result['llm_cost']=float(current.get('total_cost_usd',0))
+        result['query_records']=deepcopy(current['records'])
+        if self.router and getattr(self.config,'track_cost',False):
+            result['cost_summary']=current
+            cumulative['accounting_scope']='router lifetime cumulative; do not sum across transaction reports'
+            result['router_cumulative_cost_summary']=cumulative
+        return result
+
     def analyze_transaction(self,
                           txn_link: Optional[str] = None,
                           txn_hash: Optional[str] = None,
@@ -152,6 +188,7 @@ class FaultSeekerPipeline:
             RuntimeError: If analysis stages fail
         """
         start_time = time.time()
+        cost_baseline=deepcopy(self.router.get_cost_summary()) if self.router else {}
 
         # Validate and parse input
         if not txn_link and not (txn_hash and chain):
@@ -212,7 +249,7 @@ class FaultSeekerPipeline:
                 and self.config.enable_benign_prefilter):
             signals = getattr(forensics_result, 'signals', {}) or {}
             priority = compute_priority_breakdown(signals, exploitability_score=0.0)
-            return {
+            bypass_result = {
                 'transaction_hash': forensics_result.transaction_hash,
                 'chain': forensics_result.chain,
                 'verdict': 'BENIGN', 'rule_verdict': rule_verdict,
@@ -233,6 +270,8 @@ class FaultSeekerPipeline:
                 'duration': time.time() - start_time,
                 'timestamp': datetime.now().isoformat(),
             }
+
+            return self._attach_transaction_cost(bypass_result,cost_baseline)
 
         self._initialize_stage2_agents()
 
@@ -388,16 +427,9 @@ class FaultSeekerPipeline:
             }
         }
 
-        # Gap 1+6: Append cost summary and print report if tracking is enabled
-        if self.router and getattr(self.config, 'track_cost', False):
-            result['cost_summary'] = self.router.get_cost_summary()
-            self.router.print_cost_report()
-
-        cost_summary = self.router.get_cost_summary() if self.router else {}
-        result['llm_cost'] = float(cost_summary.get('total_cost_usd', 0.0))
-        result['query_records'] = cost_summary.get('records', [])
-
-        return result
+        # Keep each transaction's observed calls separate from shared-router
+        # history. The cumulative batch view is explicitly named in the result.
+        return self._attach_transaction_cost(result,cost_baseline)
 
     def save_results(self, result: Dict[str, Any], output_path: Optional[str] = None) -> str:
         """

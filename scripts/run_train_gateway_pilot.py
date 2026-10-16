@@ -148,10 +148,33 @@ def select_train_identities(protocol, requested_ids=None):
     return list(selected)
 
 
-def run(root=ROOT,live=False,approval_file=None,requested_ids=None):
+def execute_full_pipeline(inputs, analyzer, router, output_dir):
+    """Execute the actual pipeline with only recorded input/provider seams."""
+    from faultseeker.core.config import FaultSeekerConfig
+    from faultseeker.core.pipeline import FaultSeekerPipeline
+    output_dir=Path(output_dir)
+    pipeline=FaultSeekerPipeline(FaultSeekerConfig(
+        function_analysis_model=MODEL, human_in_loop=False, auto_route=False,
+        calibration_model_path='', track_cost=True, output_dir=str(output_dir/'pipeline')),
+        forensics_orchestrator=inputs.orchestrator(output_dir/'forensics'),
+        function_ranker=FunctionRanker(), function_analyzer=analyzer)
+    # Injection bypasses the pipeline's router construction. Retain the same
+    # metered provider router for genuine usage records and cost reporting.
+    pipeline.router=router
+    with no_network() as attempts:
+        output=pipeline.analyze_transaction(txn_hash=inputs.structured['transaction_hash'],
+                                            chain=inputs.structured['chain'])
+    if attempts[0]:
+        raise RuntimeError('Unexpected parent network attempted during captured full pipeline')
+    return output
+
+
+def run(root=ROOT,live=False,approval_file=None,requested_ids=None,full_pipeline=False):
     if not live:raise ValueError('Explicit --live required before credentials or dispatch')
     root=Path(root);base=root/BASE;protocol,rates=configuration(root)
     selected_identities=select_train_identities(protocol,requested_ids)
+    if type(full_pipeline) is not bool:raise ValueError('Full pipeline mode must be boolean')
+    execution_mode='full-production-pipeline' if full_pipeline else 'function-analysis-pilot'
     approval_path=Path(approval_file).resolve() if approval_file else base/'provider_pilot/approval.json'
     if approval_path.parent.resolve()!=(base/'provider_pilot').resolve():
         raise ValueError('Approval must be a reviewed provider_pilot artifact')
@@ -189,7 +212,7 @@ def run(root=ROOT,live=False,approval_file=None,requested_ids=None):
         permit_path=out/'dispatch_permit.json'
     system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/nara_http_transport.py',root/'benchmark/pilot_token_guard.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/execution_source_inputs.py',root/'benchmark/captured_inputs.py'])
     write_json(out/'system.json',system);source_snapshot=snapshot_system(system,out)
-    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False,'incremental_estimated_usd_cap':approval.get('max_incremental_estimated_usd'),'cumulative_dispatch_limit_usd':guard.limit_usd,'requested_train_identities':selected_identities,'requested_train_cases':len(selected_identities)}
+    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False,'incremental_estimated_usd_cap':approval.get('max_incremental_estimated_usd'),'cumulative_dispatch_limit_usd':guard.limit_usd,'requested_train_identities':selected_identities,'requested_train_cases':len(selected_identities),'execution_mode':execution_mode}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
     common={'run_id':out.name,'seed':protocol['seed'],'config':config}
     claim_dispatch(permit_path,bind(approval_path,root),out.name,max_calls)
@@ -203,15 +226,31 @@ def run(root=ROOT,live=False,approval_file=None,requested_ids=None):
         for identity in selected_identities:
             print('Starting real cloud-only TRAIN analysis',identity[:20],flush=True)
             inputs=load_train_inputs(root,identity,require_opcodes=True)
-            with redirect_stdout(stream),no_network():
-                result,sequence,info=inputs.orchestrator(out/'forensics').run(inputs.structured['transaction_hash'],'eth')
-                if result is None:raise ValueError('Production Stage1 failed')
-                ranking=FunctionRanker().rank(result,{'repeated_patterns':result.repeated_patterns,'function_call_loc_memo':result.function_call_loc_memo})
             downloader=VerifiedSourceDownloader.factory(root=root,evidence_binding=protocol['source_inputs'],train_identity=identity,include_execution_spans=True)
             analyzer=FunctionAnalyzer(model=MODEL,router=router,agent_factory=pilot.factory,contract_downloader_factory=downloader,analysis_error_handler=pilot.stop_after_analysis_error)
-            with redirect_stdout(stream):output=analyzer.run(result,sequence,info,ranking)
+            if full_pipeline:
+                with redirect_stdout(stream):
+                    output=execute_full_pipeline(inputs,analyzer,router,out/identity.replace(':','-'))
+            else:
+                with redirect_stdout(stream),no_network():
+                    result,sequence,info=inputs.orchestrator(out/'forensics').run(inputs.structured['transaction_hash'],'eth')
+                    if result is None:raise ValueError('Production Stage1 failed')
+                    ranking=FunctionRanker().rank(result,{'repeated_patterns':result.repeated_patterns,'function_call_loc_memo':result.function_call_loc_memo})
+                with redirect_stdout(stream):output=analyzer.run(result,sequence,info,ranking)
             path=out/(identity.replace(':','-')+'.json');write_json(path,{'identity':identity,'production_output':output,'inputs':inputs.evidence,'source_scope':'All cached verified ABI functions; missing contract sources remain unavailable'})
-            observations.append({'identity':identity,'complete':bool(output and output.get('analysis_complete')),'artifact':bind(path,root)})
+            observation={'identity':identity,'complete':bool(output and output.get('analysis_complete')),'artifact':bind(path,root)}
+            if full_pipeline:
+                bypassed=output.get('stage2_bypassed') is True
+                errors=output.get('analysis_errors',[])
+                observation.update(execution_mode=execution_mode,stage2_bypassed=bypassed,
+                    analysis_errors=errors,stage3_score_count=len(output.get('scored_functions',[])),
+                    stage3_observation_scope='actual scored functions only; empty output supplies no confidence measurement',
+                    complete=bool((output.get('analysis_complete') is True or
+                        (bypassed and output.get('verdict')=='BENIGN')) and not errors))
+            observations.append(observation)
+            if full_pipeline and not observation['complete']:
+                stop='INCOMPLETE_FULL_PIPELINE_STOPPED'
+                break
     except StudyStop as error:stop=str(error)
     except BudgetApprovalRequired:stop='CUMULATIVE_BUDGET_DISPATCH_STOPPED'
     except DailyTokenLimitReached:stop='DAILY_TOKEN_DISPATCH_STOPPED'
@@ -221,7 +260,7 @@ def run(root=ROOT,live=False,approval_file=None,requested_ids=None):
         if key in stdout:stdout='Output withheld: credential echo detected'
         (out/'stdout.txt').write_bytes(stdout.encode('utf-8'))
         budget_after=guard.report()
-        report={'run_id':out.name,'scope':'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim','config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':len(selected_identities),'requested_train_identities':selected_identities,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'requested_model_identity':'Agnes 2.5 Flash (agnes-2.5-flash)','pilot_stop_reason':pilot.stop_reason,'approval':bind(approval_path,root),'ledger_records':[bind(p,root) for p in sorted((out/'calls/ledger').glob('*.json'))],'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
+        report={'run_id':out.name,'scope':('Real cloud-only TRAIN full production pipeline; no native vendor/local/hybrid claim' if full_pipeline else 'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim'),'execution_mode':execution_mode,'config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':len(selected_identities),'requested_train_identities':selected_identities,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'requested_model_identity':'Agnes 2.5 Flash (agnes-2.5-flash)','pilot_stop_reason':pilot.stop_reason,'approval':bind(approval_path,root),'ledger_records':[bind(p,root) for p in sorted((out/'calls/ledger').glob('*.json'))],'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
         report['standing_allowance']={'enabled':standing,'request_cap':max_calls,'daily_token_limit':7_000_000 if standing else None,
             'time_zone':'UTC' if standing else None,'before':{k:daily_before[k] for k in ('bucket','used','reserved','remaining')} if daily_before else None,
             'after':{k:daily_guard.report()[k] for k in ('bucket','used','reserved','remaining')} if daily_guard else None}
@@ -235,8 +274,11 @@ def main(argv=None):
     parser.add_argument('--live',action='store_true')
     parser.add_argument('--approval-file',type=Path)
     parser.add_argument('--identity',action='append',help='Nonempty unique subset of existing protocol TRAIN identities')
+    parser.add_argument('--full-pipeline',action='store_true',help='Execute actual production pipeline including confidence scoring')
     args=parser.parse_args(argv)
-    return run(live=args.live,approval_file=args.approval_file,requested_ids=args.identity)
+    options={'live':args.live,'approval_file':args.approval_file,'requested_ids':args.identity}
+    if args.full_pipeline:options['full_pipeline']=True
+    return run(**options)
 
 
 if __name__=='__main__':
