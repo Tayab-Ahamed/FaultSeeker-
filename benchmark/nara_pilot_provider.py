@@ -1,6 +1,7 @@
 """Bounded real NaraRouter cloud transport; no local or vendor-identity claim."""
 import hashlib
 import json
+import math
 from pathlib import Path
 import threading
 import time
@@ -15,18 +16,24 @@ class StudyStop(BaseException):
 
 class NaraPilot:
     def __init__(self, *, api_key, router, output_dir, transport=http_transport,
-                 clock=time.monotonic, sleep=time.sleep,max_calls=20):
+                 clock=time.monotonic, sleep=time.sleep,max_calls=20,daily_token_guard=None,transport_timeout=60):
         if not isinstance(api_key,str) or not api_key.strip():raise ValueError('BYNARA_API_KEY unavailable')
-        if not 1<=max_calls<=20:raise ValueError('Pilot call cap must be between 1 and 20')
+        if max_calls is None:
+            if daily_token_guard is None:raise ValueError('Uncapped pilot requires a daily token guard')
+        elif type(max_calls) is not int or not 1<=max_calls<=20:raise ValueError('Pilot call cap must be between 1 and 20')
+        if type(transport_timeout) not in (int,float) or not math.isfinite(transport_timeout) or not 0<transport_timeout<=600:
+            raise ValueError('Transport deadline must be within 0..600 seconds')
         if (router.cloud_model!=MODEL or router.routing_strategy!='cloud-only'
                 or router._is_local_model(MODEL) or router.spend_guard is None):
             raise ValueError('Pilot requires explicit cloud identity and shared priced spend guard')
         self._key=api_key;self.router=router;self.output_dir=Path(output_dir)
         self.transport=transport;self.clock=clock;self.sleep=sleep;self.max_calls=max_calls
+        self.daily_token_guard=daily_token_guard
+        self.transport_timeout=transport_timeout
         self.calls=0;self.last_start=None;self.stop_reason='';self.lock=threading.RLock()
     def _precheck(self):
         if self.stop_reason:raise StudyStop(self.stop_reason)
-        if self.calls>=self.max_calls:raise StudyStop('Pilot request cap reached')
+        if self.max_calls is not None and self.calls>=self.max_calls:raise StudyStop('Pilot request cap reached')
     def stop_after_analysis_error(self,error):
         """Domain errors are terminal too; never dispatch a recovery request.
 
@@ -101,14 +108,17 @@ class _Provider(AbstractAgent):
         if p.last_start is not None:
             wait=5-(p.clock()-p.last_start)
             if wait>0:p.sleep(wait)
+        daily_reservation=None
+        if p.daily_token_guard is not None:
+            daily_reservation=p.daily_token_guard.reserve(2*len(body)+1024,4096)
         p.last_start=p.clock();p.calls+=1;self.last_usage=None
         record={'call_number':p.calls,'role':self.role,'endpoint':ENDPOINT,'requested_alias':MODEL,
                 'request':payload,'request_sha256':hashlib.sha256(body).hexdigest(),
-                'request_bytes':len(body),'timeout_seconds':60,'history_policy':'system_plus_last_two_completed_turns',
+                'request_bytes':len(body),'timeout_seconds':p.transport_timeout,'history_policy':'system_plus_last_two_completed_turns',
                 'timeout_scope':('total_transport_deadline' if p.transport is http_transport else 'injected_transport'),
                 'billing_confirmed':False,'status':'dispatch_started'}
         try:
-            status,raw,url=p.transport(ENDPOINT,{'Authorization':'Bearer '+p._key,'Content-Type':'application/json'},body,60)
+            status,raw,url=p.transport(ENDPOINT,{'Authorization':'Bearer '+p._key,'Content-Type':'application/json'},body,p.transport_timeout)
             record.update(http_status=status,response_sha256=hashlib.sha256(raw).hexdigest(),response_bytes=len(raw),duration_seconds=p.clock()-p.last_start)
             if p._key.encode('utf-8') in raw:
                 p.stop_reason='Credential echo detected in response';raise ValueError(p.stop_reason)
@@ -139,4 +149,18 @@ class _Provider(AbstractAgent):
             # Never persist arbitrary exception strings: they may contain headers.
             raise ValueError('Nara pilot transport failed: '+type(exc).__name__) from None
         finally:
-            p._record(record)
+            try:
+                if daily_reservation is not None:
+                    usage=self.last_usage or {}
+                    try:
+                        charged=p.daily_token_guard.settle(daily_reservation,
+                            usage.get('prompt_tokens'),usage.get('completion_tokens'),
+                            failed=record['status']!='response_received')
+                        state=p.daily_token_guard.report()
+                        record['daily_token_accounting']={'reservation_id':daily_reservation,'charged_tokens':charged,
+                            'state':{k:state[k] for k in ('bucket','time_zone','limit_tokens','used','reserved','remaining')}}
+                    except Exception as exc:
+                        record['status']='failed';record['daily_token_accounting_error']=type(exc).__name__
+                        record['daily_token_reservation_id']=daily_reservation
+                        raise ValueError('Daily token accounting failed safely') from None
+            finally:p._record(record)

@@ -1,0 +1,26 @@
+{
+  "approved": true,
+  "mode": "standing-train-daily-allowance",
+  "approval_origin": "Explicit user authorization in chat: agnes-2.5-flash via router.bynara.id within 7M tokens/day; no request cap or per-batch dollar ceiling; stop on any error/rate limit, no retry storms, TRAIN public inputs only, no labels/held-out/paper/env. Existing $10 cumulative cap retained.",
+  "model": "agnes-2.5-flash",
+  "destination": "https://router.bynara.id/v1/chat/completions",
+  "max_completion_requests": null,
+  "daily_token_limit": 7000000,
+  "daily_accounting_time_zone": "UTC",
+  "daily_accounting_limit": "Conservative local raw-token guard; not an attestation of gateway balance/reset timezone. Provider rate limit/error is terminal.",
+  "protocol": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+    "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+  },
+  "stop_on_any_error": true,
+  "train_only": true,
+  "labels_excluded": true,
+  "heldout_excluded": true,
+  "paper_env_excluded": true,
+  "no_automatic_retry": true,
+  "cumulative_conservative_usd_cap": 10,
+  "legacy_protocol_override": "Only the historical 20-request cap is superseded by this explicit standing approval. Full public prompt/source scope, model alias, 4096 output cap and source bindings remain.",
+  "batch_reporting": "Per-run completion status, observed cases, token usage, conservative spend and terminal error are recorded; complete outputs require separate independent scoring.",
+  "implementation_transport_deadline_seconds": 300,
+  "implementation_transport_deadline_reason": "Real prior responses took up to198.515 seconds; the new total deadline allows five minutes per single attempt, with no retries. This implementation setting is not a research result."
+}

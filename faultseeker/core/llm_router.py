@@ -18,6 +18,7 @@ import time
 from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, Optional, List
 from faultseeker.utils.agent import OllmaAgent, GPTAgent
+from faultseeker.core.spend_guard import DispatchNotStarted
 
 
 # Cost rates per 1M tokens (USD)
@@ -467,7 +468,10 @@ class RoutedAgent:
         input_tokens = usage.get('prompt_tokens')
         output_tokens = usage.get('completion_tokens')
         settled_cost = None
-        if reservation is not None:
+        undispatched=isinstance(failure,DispatchNotStarted)
+        if reservation is not None and undispatched:
+            settled_cost=guard.cancel_undispatched(reservation)
+        elif reservation is not None:
             try:
                 settled_cost = guard.settle(reservation, input_tokens, output_tokens,
                                             failed=failure is not None)
@@ -483,7 +487,7 @@ class RoutedAgent:
             fallback_used=fallback, agent_role=self.agent_role,
             input_tokens=input_tokens, output_tokens=output_tokens,
             status='failed' if failure else 'success',
-            usage_source=('provider' if input_tokens is not None and output_tokens is not None
+            usage_source=('not-dispatched' if undispatched else 'provider' if input_tokens is not None and output_tokens is not None
                           else 'reservation' if reservation is not None else 'estimate'),
             error=str(failure) if failure else '',
             cost_usd_override=settled_cost,

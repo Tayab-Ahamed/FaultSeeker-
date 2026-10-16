@@ -44,3 +44,11 @@ These check delayed and trickled headers/bodies, HTTP error handling, blocked
 stdin, worker cleanup, endpoint/redirect restrictions, credential handling and
 pilot reservation/settlement behavior. Loopback process tests require local
 socket access. The complete existing test suite remains the commit gate.
+
+## Standing TRAIN allowance
+
+The explicit standing user approval allows Agnes 2.5 Flash without a request cap or per-batch dollar ceiling. It retains the shared $10 cumulative conservative spend cap, a durable 7M raw-token UTC-day guard, TRAIN-only public inputs and immediate stop on any error/rate limit without retries. The local UTC accounting bucket is not an attestation of the provider's reset timezone or balance. Gateway allowance enforcement remains authoritative; any rejection stops the batch.
+
+Every request reserves twice its UTF8 payload byte count plus 1024 input-framing tokens and the 4096 output cap. Valid provider usage settles the token allocation; missing/invalid usage charges the reservation. Historic pilot usage is imported once by UTC run date. Undated old source-consensus records are conservatively carried into the current bucket once, with real usage where available and full bounds otherwise. Previously settled standing requests are reconciled by their reservation IDs instead of imported again. The separate dollar ledger still records every attempted request; a typed refusal before dispatch cancels its dollar reservation rather than booking nonexistent spend.
+
+Standing runs use a 300-second total transport deadline because genuine earlier successful responses took up to 198.515 seconds. This permits slower single attempts; it introduces no retries. A run-specific permit and hash-bound summary report requests, complete cases, token state, conservative dollar state and the terminal reason. The historical bounded-pilot approval artifacts and results remain unchanged. Fixtures validate these controls only and provide no research results or claim promotions.

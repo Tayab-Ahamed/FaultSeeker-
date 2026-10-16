@@ -16,6 +16,10 @@ class BudgetApprovalRequired(RuntimeError):
     """A cloud call requires explicit approval to raise the cumulative cap."""
 
 
+class DispatchNotStarted(RuntimeError):
+    """Trusted pre-dispatch guard refusal; no remote request was attempted."""
+
+
 class SpendGuard:
     def __init__(self, ledger_path=None, limit_usd=10.0, pricing=None):
         default_ledger = Path(__file__).resolve().parents[2] / 'data/research/spend_ledger.json'
@@ -141,6 +145,15 @@ class SpendGuard:
                                     'amount_usd': estimate})
             self._write(state)
             return reservation
+
+    def cancel_undispatched(self, reservation):
+        """Release only a reservation whose provider refused before dispatch."""
+        with self._locked():
+            state=self._read();item=state['reservations'].pop(reservation)
+            state['events'].append({'event':'cancel-undispatched','id':reservation,
+                'model':item['model'],'amount_usd':0.0,'usage_source':'not-dispatched'})
+            self._write(state)
+        return 0.0
 
     def settle(self, reservation, prompt_tokens=None, completion_tokens=None, failed=False):
         with self._locked():
