@@ -51,6 +51,12 @@ def write_csv(name, fieldnames, rows):
         writer.writerows(rows)
 
 
+def write_utf8(path, text):
+    """Write stable LF-delimited UTF-8 output on Windows and Linux."""
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text)
+
+
 def build(rows):
     url_gaps = []
     reentrancy = []
@@ -159,10 +165,10 @@ def build(rows):
     )
 
     localization = json.loads((ROOT / "reports/honest_results/localization_metrics.json").read_text())
-    (OUT / "localization_summary.json").write_text(json.dumps(localization["metrics"], indent=2) + "\n", encoding="utf-8")
+    write_utf8(OUT / "localization_summary.json", json.dumps(localization["metrics"], indent=2) + "\n")
 
     summary = {
-        "source_csv": str(COHORT.relative_to(ROOT)),
+        "source_csv": COHORT.relative_to(ROOT).as_posix(),
         "rows": len(rows),
         "chains": len(chain_counts),
         "ethereum_rows": chain_counts.get("eth", 0),
@@ -176,7 +182,7 @@ def build(rows):
         "baseline_rows_saved": len(baseline),
         "localization_metrics": localization["metrics"],
     }
-    (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    write_utf8(OUT / "summary.json", json.dumps(summary, indent=2) + "\n")
     return summary
 
 

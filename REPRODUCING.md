@@ -28,8 +28,8 @@ Run the complete check and summary table with:
 .venv/bin/python scripts/reproduce/run_all.py
 ```
 
-The runner executes every direct reproduction script except `common.py` and
-itself. It compares the reproduced values with the expected values in
+The runner executes every direct metric reproduction script except `common.py`,
+`claim_evidence.py`, and itself. It compares the reproduced values with the expected values in
 `reports/reproducibility/FINAL_REPORT.md`.
 
 Build the offline claim-audit artifacts with:

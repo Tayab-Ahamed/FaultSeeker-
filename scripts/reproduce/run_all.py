@@ -34,7 +34,7 @@ def reproduction_scripts():
     return sorted(
         path
         for path in SCRIPT_DIR.glob("*.py")
-        if path.name not in {"common.py", Path(__file__).name}
+        if path.name not in {"common.py", Path(__file__).name, "claim_evidence.py"}
     )
 
 
