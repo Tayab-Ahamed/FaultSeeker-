@@ -46,7 +46,7 @@ def read_rows():
 def write_csv(name, fieldnames, rows):
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / name).open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
