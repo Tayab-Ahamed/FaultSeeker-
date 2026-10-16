@@ -2,7 +2,7 @@
   "id": 13,
   "claim": "Detector precision/recall/F1 and baselines",
   "status": "UNVERIFIABLE",
-  "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval. A genuine accepted TRAIN Beanstalk failure review reproduces the structural score 0.80 from successful attacker-contract callback nesting. CertiK/Halborn independently support governance capture as the vulnerability root cause; the reentrancy label remains false. Current relevant detector source files match the recorded experiment snapshot. No storage-complete observation exists for this case in that experiment. This documents a causal-attribution false positive without changing weights, labels or interpreting missing evidence as a negative. All nine stored structural observations were then reproduced on their accepted real TRAIN captures. The three-bit all-true vector occurs in five root-cause reentrancy positives and the Beanstalk negative, so a decision depending only on those bits cannot distinguish them by changing weights or cutoffs. This does not bound the richer full detector/system; negative here means a different exploit root cause, not a benign transaction. All annotation authorship is Codex public-source consensus under the approved two-independent-publisher policy; no independent human review is asserted.",
+  "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval. A genuine accepted TRAIN Beanstalk failure review reproduces the structural score 0.80 from successful attacker-contract callback nesting. CertiK/Halborn independently support governance capture as the vulnerability root cause; the reentrancy label remains false. Current relevant detector source files match the recorded experiment snapshot. No storage-complete observation exists for this case in that experiment. This documents a causal-attribution false positive without changing weights, labels or interpreting missing evidence as a negative. All nine stored structural observations were then reproduced on their accepted real TRAIN captures. The three-bit all-true vector occurs in five root-cause reentrancy positives and the Beanstalk negative, so a decision depending only on those bits cannot distinguish them by changing weights or cutoffs. This does not bound the richer full detector/system; negative here means a different exploit root cause, not a benign transaction. All annotation authorship is Codex public-source consensus under the approved two-independent-publisher policy; no independent human review is asserted. The first actual baselines on frozen cohort_v3_20261016 run only its14TRAIN identities. Structural/component and production Stage1 each score9 available cases:TP5,FP1,FN0,TN3,precision0.8333333333333334,recall1,F1=0.9090909090909091. Repeated-address F1=0.7142857142857143 on the same9. Full-storage F1=1.0 on only5 availability-selected cases (TP2,TN3). Five missing TRAIN captures are listed and never counted as negative. These are real component results, not the paper overall-system F1/CI or a held-out exam. No weight/threshold changes, model requests, RPC dispatch or held-out observations occurred.",
   "verification_scope": "Frozen TRAIN-only real traces; native historical node and canonical Anvil proof paths verified separately; no held-out or overall F1 inference; selected Beanstalk semantic failure reproduced from authenticated real capture and source-consensus annotation, not a new population metric",
   "requirements_unmet": [
     "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
@@ -200,6 +200,18 @@
     {
       "path": "reports/cohort_rebuild_v2/REAL_TRAIN_FAILURE_ANALYSIS_REVIEW.json",
       "sha256": "af33dcfc46b24887664cc89059b095b22f08e789d30d6b5ec6dc34b34591c547"
+    },
+    {
+      "path": "reports/cohort_rebuild_v3/BASELINE_REAL_TRAIN.json",
+      "sha256": "df526bd6e15468e9a9e911b0c9497cf69d0d6eef0002ba96df42dc1c91dec6ee"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/experiments/20261016T065140-2078a15b/summary.json",
+      "sha256": "7559890d881e49e00760dea07b4ea681db8f1fa6cdc8f6e6049b6c19ff824b19"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/production_runs/20261016T065217-37a769fe/summary.json",
+      "sha256": "fec5f65edac20c91eded153c4ed472a95adfbd95a647362320cb19b2398c2a9d"
     }
   ],
   "session_date": "2026-10-15",

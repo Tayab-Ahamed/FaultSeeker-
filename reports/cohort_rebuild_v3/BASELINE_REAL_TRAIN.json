@@ -1,0 +1,137 @@
+{
+  "scope": "First actual cached-input TRAIN baselines on preregistered20-row version; no full-system/paper-metric inference",
+  "publication": {
+    "path": "reports/cohort_rebuild_v3/publication.json",
+    "sha256": "8674a0873b3646da13a566516bbd38ff85d7b5768c693b09e0ad8d50e3e36d7a"
+  },
+  "component_run": {
+    "path": "reports/cohort_rebuild_v2/experiments/20261016T065140-2078a15b/summary.json",
+    "sha256": "7559890d881e49e00760dea07b4ea681db8f1fa6cdc8f6e6049b6c19ff824b19"
+  },
+  "production_stage1_run": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261016T065217-37a769fe/summary.json",
+    "sha256": "fec5f65edac20c91eded153c4ed472a95adfbd95a647362320cb19b2398c2a9d"
+  },
+  "commands": [
+    "python scripts/run_authentic_research.py --split-file benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "python scripts/run_train_production.py --split-file benchmark/versions/cohort_v3_20261016/eval_split.json"
+  ],
+  "variants": {
+    "structural": {
+      "coverage": {
+        "scored": 9,
+        "eligible_train": 14
+      },
+      "metrics": {
+        "n": 9,
+        "tp": 5,
+        "fp": 1,
+        "fn": 0,
+        "tn": 3,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "accuracy": 0.8888888888888888
+      },
+      "status": "SCORED_COMPONENT"
+    },
+    "repeated": {
+      "coverage": {
+        "scored": 9,
+        "eligible_train": 14
+      },
+      "metrics": {
+        "n": 9,
+        "tp": 5,
+        "fp": 4,
+        "fn": 0,
+        "tn": 0,
+        "precision": 0.5555555555555556,
+        "recall": 1.0,
+        "f1": 0.7142857142857143,
+        "accuracy": 0.5555555555555556
+      },
+      "status": "SCORED_COMPONENT"
+    },
+    "full": {
+      "coverage": {
+        "scored": 5,
+        "eligible_train": 14
+      },
+      "metrics": {
+        "n": 5,
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "tn": 3,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0
+      },
+      "status": "SCORED_COMPONENT"
+    }
+  },
+  "production_coverage": {
+    "observed": 9,
+    "requested_train": 14
+  },
+  "production_metrics": {
+    "reentrancy_component": {
+      "n": 9,
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "tn": 3,
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "f1": 0.9090909090909091,
+      "accuracy": 0.8888888888888888
+    },
+    "rule_verdict_counts": {
+      "EXPLOIT": 9
+    }
+  },
+  "missing_train_inputs": [
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "bsc:0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "eth:0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "eth:0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    }
+  ],
+  "network_requests": 0,
+  "model_requests": 0,
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "software_fixture_results_used": false,
+  "source_scope": "Actual admitted historical transaction/receipt/source evidence and cached authentic execution captures only",
+  "limitations": [
+    "Missing captures are not negative predictions.",
+    "Five-case full-detector accuracy/F1 is availability-selected and does not establish the14-case TRAIN population or whole-system performance.",
+    "Deterministic Stage1 rule verdicts are not completed multi-agent analysis.",
+    "No billed inference-savings or localization improvement is established."
+  ],
+  "cumulative_conservative_usd": 1.974038999999889,
+  "incremental_conservative_usd": 0,
+  "billing_confirmed": false
+}
