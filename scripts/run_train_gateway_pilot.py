@@ -136,9 +136,22 @@ def import_historical_tokens(guard,root):
             payload=record['request'];bound=2*len(json.dumps(payload,ensure_ascii=False).encode('utf-8'))+1024+payload['max_tokens']
             guard.import_allocation_once(source,bucket,bound,binding)
 
-def run(root=ROOT,live=False,approval_file=None):
+def select_train_identities(protocol, requested_ids=None):
+    """Select only an explicit nonempty unique subset of preregistered TRAIN."""
+    available = protocol['train_identities']
+    selected = list(available) if requested_ids is None else requested_ids
+    if (not isinstance(selected, (list, tuple)) or not selected
+            or any(not isinstance(key, str) for key in selected)
+            or len(set(selected)) != len(selected)
+            or not set(selected) <= set(available)):
+        raise ValueError('TRAIN identity selector requires a nonempty unique protocol subset')
+    return list(selected)
+
+
+def run(root=ROOT,live=False,approval_file=None,requested_ids=None):
     if not live:raise ValueError('Explicit --live required before credentials or dispatch')
     root=Path(root);base=root/BASE;protocol,rates=configuration(root)
+    selected_identities=select_train_identities(protocol,requested_ids)
     approval_path=Path(approval_file).resolve() if approval_file else base/'provider_pilot/approval.json'
     if approval_path.parent.resolve()!=(base/'provider_pilot').resolve():
         raise ValueError('Approval must be a reviewed provider_pilot artifact')
@@ -176,7 +189,7 @@ def run(root=ROOT,live=False,approval_file=None):
         permit_path=out/'dispatch_permit.json'
     system=system_identity([Path(__file__),root/'benchmark/nara_pilot_provider.py',root/'benchmark/nara_http_transport.py',root/'benchmark/pilot_token_guard.py',root/'benchmark/verified_source_inputs.py',root/'benchmark/execution_source_inputs.py',root/'benchmark/captured_inputs.py'])
     write_json(out/'system.json',system);source_snapshot=snapshot_system(system,out)
-    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False,'incremental_estimated_usd_cap':approval.get('max_incremental_estimated_usd'),'cumulative_dispatch_limit_usd':guard.limit_usd}
+    config={'experiment':protocol['experiment'],'protocol':bind(base/'provider_pilot/protocol.json',root),'system':bind(out/'system.json',root),'system_snapshot':bind(source_snapshot,root),'conservative_usd_rates_per_million':rates,'billing_confirmed':False,'local_model_used':False,'incremental_estimated_usd_cap':approval.get('max_incremental_estimated_usd'),'cumulative_dispatch_limit_usd':guard.limit_usd,'requested_train_identities':selected_identities,'requested_train_cases':len(selected_identities)}
     split=json.loads((root/'benchmark/eval_split.json').read_text(encoding='utf-8'));log=base/'experiments_log.json'
     common={'run_id':out.name,'seed':protocol['seed'],'config':config}
     claim_dispatch(permit_path,bind(approval_path,root),out.name,max_calls)
@@ -187,7 +200,7 @@ def run(root=ROOT,live=False,approval_file=None):
                     transport_timeout=300 if standing else 60)
     observations=[];stop='';stream=io.StringIO()
     try:
-        for identity in protocol['train_identities']:
+        for identity in selected_identities:
             print('Starting real cloud-only TRAIN analysis',identity[:20],flush=True)
             inputs=load_train_inputs(root,identity,require_opcodes=True)
             with redirect_stdout(stream),no_network():
@@ -208,7 +221,7 @@ def run(root=ROOT,live=False,approval_file=None):
         if key in stdout:stdout='Output withheld: credential echo detected'
         (out/'stdout.txt').write_bytes(stdout.encode('utf-8'))
         budget_after=guard.report()
-        report={'run_id':out.name,'scope':'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim','config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':2,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'requested_model_identity':'Agnes 2.5 Flash (agnes-2.5-flash)','pilot_stop_reason':pilot.stop_reason,'approval':bind(approval_path,root),'ledger_records':[bind(p,root) for p in sorted((out/'calls/ledger').glob('*.json'))],'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
+        report={'run_id':out.name,'scope':'Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim','config':config,'observations':observations,'stop_reason':stop or pilot.stop_reason,'completion_requests':pilot.calls,'complete_cases':sum(r['complete'] for r in observations),'requested_train_cases':len(selected_identities),'requested_train_identities':selected_identities,'metrics':None,'metric_status':'UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction','budget_estimate_before_usd':budget_before['spent_usd'],'budget_estimate_after_usd':budget_after['spent_usd'],'incremental_conservative_estimate_usd':budget_after['spent_usd']-budget_before['spent_usd'],'billing_confirmed':False,'requested_model_identity':'Agnes 2.5 Flash (agnes-2.5-flash)','pilot_stop_reason':pilot.stop_reason,'approval':bind(approval_path,root),'ledger_records':[bind(p,root) for p in sorted((out/'calls/ledger').glob('*.json'))],'calls':[bind(p,root) for p in sorted((out/'calls').glob('*.json'))],'heldout_used':False,'final_exam_dispatched':False,'local_model_used':False}
         report['standing_allowance']={'enabled':standing,'request_cap':max_calls,'daily_token_limit':7_000_000 if standing else None,
             'time_zone':'UTC' if standing else None,'before':{k:daily_before[k] for k in ('bucket','used','reserved','remaining')} if daily_before else None,
             'after':{k:daily_guard.report()[k] for k in ('bucket','used','reserved','remaining')} if daily_guard else None}
@@ -217,5 +230,14 @@ def run(root=ROOT,live=False,approval_file=None):
         print(json.dumps({'run_id':out.name,'requests':pilot.calls,'complete_cases':report['complete_cases'],'stop_reason':report['stop_reason'],'cumulative_conservative_estimate_usd':budget_after['spent_usd']}),flush=True)
     return report
 
+def main(argv=None):
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--live',action='store_true')
+    parser.add_argument('--approval-file',type=Path)
+    parser.add_argument('--identity',action='append',help='Nonempty unique subset of existing protocol TRAIN identities')
+    args=parser.parse_args(argv)
+    return run(live=args.live,approval_file=args.approval_file,requested_ids=args.identity)
+
+
 if __name__=='__main__':
-    parser=argparse.ArgumentParser();parser.add_argument('--live',action='store_true');parser.add_argument('--approval-file',type=Path);args=parser.parse_args();run(live=args.live,approval_file=args.approval_file)
+    main()
