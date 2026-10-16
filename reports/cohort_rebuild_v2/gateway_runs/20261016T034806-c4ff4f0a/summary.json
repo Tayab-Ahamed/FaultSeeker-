@@ -1,0 +1,77 @@
+{
+  "run_id": "20261016T034806-c4ff4f0a",
+  "scope": "Real cloud-only TRAIN production function-analysis pilot; no native vendor/local/hybrid claim",
+  "config": {
+    "experiment": "verified-source-cloud-only-train-pilot-v1",
+    "protocol": {
+      "path": "reports/cohort_rebuild_v2/provider_pilot/protocol.json",
+      "sha256": "eb6bab1ddcee29af5bb0cc18b03aefb4ad17818dbe9a4edc1ff6eafebfe09b31"
+    },
+    "system": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/system.json",
+      "sha256": "01982b6fe34d8e67cf8def916aed621b88282360ea4846300912eb0738560933"
+    },
+    "system_snapshot": {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/system_sources.json.gz",
+      "sha256": "7c147d2f28a69109a527a53c88d03674d44c4e180fe6d336178656d5d1c4118f"
+    },
+    "conservative_usd_rates_per_million": {
+      "input": 0.1,
+      "output": 0.2
+    },
+    "billing_confirmed": false,
+    "local_model_used": false,
+    "incremental_estimated_usd_cap": null,
+    "cumulative_dispatch_limit_usd": 10.0
+  },
+  "observations": [],
+  "stop_reason": "Production pilot failed: ValueError",
+  "completion_requests": 1,
+  "complete_cases": 0,
+  "requested_train_cases": 2,
+  "metrics": null,
+  "metric_status": "UNSCORED: complete output and independent rank-schema validation required; no target labels entered prediction",
+  "budget_estimate_before_usd": 1.92620079999989,
+  "budget_estimate_after_usd": 1.93175019999989,
+  "incremental_conservative_estimate_usd": 0.005549400000000038,
+  "billing_confirmed": false,
+  "requested_model_identity": "Agnes 2.5 Flash (agnes-2.5-flash)",
+  "pilot_stop_reason": "Pilot stopped after ValueError",
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/standing_train_approval.json",
+    "sha256": "faf4a11cbd9f1b6a4f39d31a06711586268d5e7b6916e44be8a30dded37ce875"
+  },
+  "ledger_records": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/calls/ledger/call-001.json",
+      "sha256": "8c7c18183ad87aa43c4d0121635a9472d4a766442287b89bd29ed6ced5c333d3"
+    }
+  ],
+  "calls": [
+    {
+      "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/calls/call-001.json",
+      "sha256": "08de2f345562d1a47863e359606be0ebc5b37d130d7a102f8b60f43c49cc09b8"
+    }
+  ],
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "local_model_used": false,
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 481001,
+      "reserved": 0,
+      "remaining": 6518999
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 532655,
+      "reserved": 0,
+      "remaining": 6467345
+    }
+  }
+}

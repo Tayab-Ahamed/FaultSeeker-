@@ -1,0 +1,71 @@
+{
+  "scope": "Actual standing-allowance TRAIN batch; genuine attempted remote request, no inferred provider result",
+  "batch": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/summary.json",
+    "sha256": "585f2ad0661db2594411198299fecd959575335f1c29ac1909419963f8a9ed34"
+  },
+  "request_record": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/calls/call-001.json",
+    "sha256": "08de2f345562d1a47863e359606be0ebc5b37d130d7a102f8b60f43c49cc09b8"
+  },
+  "approval": {
+    "path": "reports/cohort_rebuild_v2/provider_pilot/standing_train_approval.json",
+    "sha256": "faf4a11cbd9f1b6a4f39d31a06711586268d5e7b6916e44be8a30dded37ce875"
+  },
+  "request_sha256": "f9dd5af53145adb9a8b4e06088c3657766dbe2c3cafed9d02066211a1ee9a25d",
+  "request_bytes": 23267,
+  "requests": 1,
+  "complete_cases": 0,
+  "terminal": true,
+  "automatic_retries": 0,
+  "stop_reason": "Production pilot failed: ValueError",
+  "transport_seconds": 106.31299999999464,
+  "http_status": null,
+  "response_captured": false,
+  "known_failure": "Transport surfaced ValueError before an HTTP response was returned to the pilot. The worker-specific failure classification was not preserved; its underlying cause cannot be recovered from this artifact.",
+  "not_inferred": [
+    "No gateway HTTP status, rate-limit verdict, refusal, TLS cause or quota exhaustion inferred",
+    "No model completion, parsed answer, localization or accuracy outcome inferred",
+    "No assertion that the whole system or paper target is impossible"
+  ],
+  "conservative_incremental_usd": 0.005549400000000038,
+  "cumulative_conservative_usd": 1.93175019999989,
+  "billing_confirmed": false,
+  "token_accounting": {
+    "charged_tokens": 51654,
+    "reservation_id": "dedf48939f9f4ea18356f63a132e5071",
+    "state": {
+      "bucket": "2026-10-16",
+      "limit_tokens": 7000000,
+      "remaining": 6467345,
+      "reserved": 0,
+      "time_zone": "UTC",
+      "used": 532655
+    }
+  },
+  "usage_source": "Full conservative reservation: no usable provider token receipt",
+  "standing_allowance": {
+    "enabled": true,
+    "request_cap": null,
+    "daily_token_limit": 7000000,
+    "time_zone": "UTC",
+    "before": {
+      "bucket": "2026-10-16",
+      "used": 481001,
+      "reserved": 0,
+      "remaining": 6518999
+    },
+    "after": {
+      "bucket": "2026-10-16",
+      "used": 532655,
+      "reserved": 0,
+      "remaining": 6467345
+    }
+  },
+  "heldout_used": false,
+  "labels_sent": false,
+  "paper_env_files_sent": false,
+  "metrics": null,
+  "software_fixture_evidence_used": false,
+  "next_action": "Improve sanitized worker error classification offline. This run is terminal; do not automatically retry the failed request."
+}
