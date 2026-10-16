@@ -80,11 +80,48 @@ class CapturedInputs:
                 self.structured['transaction_hash'], self.structured['chain']))
 
 
-def load_train_inputs(root, requested_identity, require_opcodes=True):
+def load_train_split(root, split_file=None):
+    """Validate the selected freeze without opening its held-out partition."""
     root = Path(root).resolve()
-    split = json.loads((root / 'benchmark/eval_split.json').read_text())
-    if sha((root / 'benchmark/cohort_manifest.json').read_bytes()) != split['manifest_sha256']:
+    if split_file is not None and not str(split_file):
+        raise ValueError('Explicit train split path is empty')
+    split_path = (root / ('benchmark/eval_split.json' if split_file is None else split_file)).resolve()
+    if (not split_path.is_relative_to(root) or '.git' in split_path.relative_to(root).parts
+            or split_path.name.startswith('.env')):
+        raise ValueError('Unsafe train split path')
+    split = json.loads(split_path.read_text())
+    manifest = split.get('manifest')
+    if manifest is None:
+        if split_file is not None:
+            raise ValueError('Selected split requires a bound manifest')
+        raw = (root / 'benchmark/cohort_manifest.json').read_bytes()
+    else:
+        raw = read_bound(manifest, root)
+    if sha(raw) != split['manifest_sha256']:
         raise ValueError('Frozen manifest digest mismatch')
+    train_ids, heldout_ids = split['train_ids'], split.get('heldout_ids', [])
+    if set(train_ids) & set(heldout_ids):
+        raise ValueError('Train and held-out memberships overlap')
+    if split_file is not None:
+        records = json.loads(raw)['records']
+        manifest_ids = [identity(row) for row in records]
+        if (len(set(manifest_ids)) != len(manifest_ids)
+                or len(set(train_ids)) != len(train_ids)
+                or len(set(heldout_ids)) != len(heldout_ids)
+                or set(manifest_ids) != set(train_ids) | set(heldout_ids)):
+            raise ValueError('Selected manifest and split membership mismatch or duplicate')
+        # Manifest records are public provenance. Only the TRAIN partition body
+        # is opened; its full records must match the pinned public manifest.
+        by_identity = {identity(row): row for row in records}
+        for row in load_train(split, root):
+            if row != by_identity[identity(row)]:
+                raise ValueError('Selected train record differs from pinned manifest')
+    return split_path, split
+
+
+def load_train_inputs(root, requested_identity, require_opcodes=True, split_file=None):
+    root = Path(root).resolve()
+    _, split = load_train_split(root, split_file)
     if requested_identity not in split['train_ids']:
         raise ValueError('Requested identity is outside frozen train')
     rows = load_train(split, root)
@@ -96,8 +133,13 @@ def load_train_inputs(root, requested_identity, require_opcodes=True):
             continue
         data = json.loads(path.read_text())
         records = data.get('attempts', []) if isinstance(data, dict) else data
-        if any(r['identity'] not in split['train_ids'] for r in records):
+        if len({r['identity'] for r in records}) != len(records):
+            raise ValueError('Duplicate identity in acquisition index')
+        if split_file is None and any(r['identity'] not in split['train_ids'] for r in records):
             raise ValueError('Non-train identity in acquisition index')
+        # Historical index metadata can outlive a cohort version. Only selected
+        # TRAIN identities may select capture bodies; never open excluded ones.
+        records = [r for r in records if r['identity'] in split['train_ids']]
         selected = next((r for r in records if r['identity'] == requested_identity and r.get('artifact')), None)
         if selected:
             binding = selected['artifact']

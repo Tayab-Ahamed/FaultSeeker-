@@ -20,8 +20,8 @@ import uuid
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.modules.setdefault('readline', None)
-from benchmark.captured_inputs import load_train_inputs
-from benchmark.research_protocol import append_experiment, bind, identity, load_train, sha, write_json
+from benchmark.captured_inputs import load_train_inputs, load_train_split
+from benchmark.research_protocol import append_experiment, bind, identity, load_train, write_json
 from benchmark.paper_experiments import confusion_metrics
 from faultseeker.function_analysis.function_ranker import FunctionRanker
 from scripts.run_authentic_research import snapshot_system, system_identity
@@ -43,11 +43,11 @@ def no_network():
         socket.socket.connect = original
 
 
-def observe_stage_one(root, requested_identity, cache_dir):
+def observe_stage_one(root, requested_identity, cache_dir, split_file=None):
     started = time.perf_counter()
     stream = io.StringIO()
     with no_network() as attempts, redirect_stdout(stream):
-        inputs = load_train_inputs(root, requested_identity, require_opcodes=False)
+        inputs = load_train_inputs(root, requested_identity, require_opcodes=False, split_file=split_file)
         orchestrator = inputs.orchestrator(cache_dir)
         tx, chain = inputs.structured['transaction_hash'], inputs.structured['chain']
         result, sequence, info = orchestrator.run(tx, chain)
@@ -74,12 +74,9 @@ def observe_stage_one(root, requested_identity, cache_dir):
         'stdout': stream.getvalue()}
 
 
-def run_train(root=ROOT, requested_ids=None):
+def run_train(root=ROOT, requested_ids=None, split_file=None):
     root = Path(root).resolve()
-    split_path = root / 'benchmark/eval_split.json'
-    split = json.loads(split_path.read_text())
-    if sha((root / 'benchmark/cohort_manifest.json').read_bytes()) != split['manifest_sha256']:
-        raise ValueError('Frozen manifest digest mismatch')
+    split_path, split = load_train_split(root, split_file)
     if requested_ids and not set(requested_ids) <= set(split['train_ids']):
         raise ValueError('Only train identities may enter production preflight')
     rows = load_train(split, root)
@@ -94,6 +91,7 @@ def run_train(root=ROOT, requested_ids=None):
     write_json(out / 'system.json', system)
     config = {'experiment': 'recorded-production-stage1-v1', 'system_sha256': system['sha256'],
         'system_snapshot': bind(snapshot_system(system, out), root), 'split': bind(split_path, root),
+        'manifest': split.get('manifest') or bind(root / 'benchmark/cohort_manifest.json', root),
         'algorithms': 'Actual ForensicsOrchestrator, TraceAnalyzer, SignalExtractor, rule classifier, address/fund-flow classifiers and FunctionRanker',
         'network_policy': 'Every socket connect refused; no provider or RPC dispatch permitted',
         'population': 'Frozen train only; incomplete cases excluded explicitly, not classified negative',
@@ -105,7 +103,7 @@ def run_train(root=ROOT, requested_ids=None):
     for row in rows:
         key = identity(row)
         try:
-            record = observe_stage_one(root, key, out / 'forensics')
+            record = observe_stage_one(root, key, out / 'forensics', split_file=split_path if split_file is not None else None)
             # The outcome is joined only after production analysis returns.
             record['reentrancy_label'] = row['reentrancy_label']
             observed.append(record)
@@ -140,8 +138,13 @@ def run_train(root=ROOT, requested_ids=None):
     return summary
 
 
-if __name__ == '__main__':
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--identity', action='append', help='Optional frozen chain:transaction identity')
-    args = parser.parse_args()
-    run_train(requested_ids=args.identity)
+    parser.add_argument('--split-file', help='Explicit workspace-relative frozen split; default benchmark/eval_split.json')
+    args = parser.parse_args(argv)
+    return run_train(requested_ids=args.identity, split_file=args.split_file)
+
+
+if __name__ == '__main__':
+    main()

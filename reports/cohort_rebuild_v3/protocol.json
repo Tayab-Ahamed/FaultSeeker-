@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "purpose": "Versioned cohort expansion before any new TRAIN prediction, preserving original sealed study and trained identity history",
+  "parent_split": {
+    "path": "benchmark/eval_split.json",
+    "sha256": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f"
+  },
+  "parent_manifest": {
+    "path": "benchmark/cohort_manifest.json",
+    "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a"
+  },
+  "additional_admitted_manifest": {
+    "path": "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T063056.json",
+    "sha256": "4289f504c37e4eaf16fb57ae3879ae79eab624bac496cc7a46f0b8f980a099b3"
+  },
+  "incident_aliases": {
+    "path": "reports/cohort_rebuild_v3/incident_aliases.json",
+    "sha256": "332f5cebfe230e28360833afa496bda6ecf1e56a5acde3a92726e4b044b1519e"
+  },
+  "incident_alias_evidence": [
+    {
+      "path": "reports/cohort_rebuild_v2/source_adjudication_inbox/orion_bsc/row.json",
+      "sha256": "b04a229ca5b836191c176564dc1ac3d4564b457ea05900661d36011b58898422"
+    },
+    {
+      "path": "reports/cohort_rebuild_v2/NOMAD_TEAMFINANCE_ADMISSIONS.json",
+      "sha256": "a33704e2d768f50eb1f335aca546e651628f3f2298163f8f32766b62fb50000f"
+    }
+  ],
+  "version_directory": "benchmark/versions/cohort_v3_20261016",
+  "seed": 1729,
+  "target_train_fraction": 0.7,
+  "target_heldout_fraction": 0.3,
+  "stratification": [
+    "chain",
+    "complexity_class"
+  ],
+  "known_missing_stratum": "UNRECOVERED remains explicit; no inferred complexity is inserted",
+  "immutable_parent_assignments": {
+    "train_count": 10,
+    "heldout_count": 4
+  },
+  "additional_count": 6,
+  "algorithm": "Pin every parent identity. Alias only source-supported incident identity. New members of parent incident inherit its partition. Enumerate remaining addition incident-group assignments, minimizing total70/30 distance then sum absolute chain/complexity stratum distance, with seeded SHA256 tie-break. Never use vulnerability labels, detector/model outputs, paper metrics or scores.",
+  "guardrails": [
+    "Do not open parent heldout partition payload.",
+    "Do not reassign or drop any original identity.",
+    "Do not split a canonical incident across TRAIN and heldout.",
+    "Do not overwrite the parent cohort, split, CSV, GT or partitions.",
+    "Do not claim or consume final exam during publication.",
+    "No network/model dispatch during publication; real accepted data only.",
+    "New TRAIN runners require explicit split path and may not fallback to original membership."
+  ],
+  "phase_status": "PREREGISTERED_METHOD_PENDING_CODE_TESTS_AND_PUBLICATION",
+  "labels_used_for_assignment": false,
+  "heldout_outcomes_read": false,
+  "model_requests": 0,
+  "network_requests": 0
+}

@@ -16,6 +16,7 @@ import uuid
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 sys.modules.setdefault('readline', None)
+from benchmark.captured_inputs import load_train_split
 from benchmark.detector_experiments import detector_observation
 from benchmark.paper_experiments import confusion_metrics
 from benchmark.research_protocol import (
@@ -71,12 +72,9 @@ def _capture(binding, row, root, full=False):
     return {'raw_trace': capture['raw_trace']}
 
 
-def run_train(root=ROOT):
+def run_train(root=ROOT, split_file=None):
     root = Path(root).resolve()
-    split_path = root / 'benchmark/eval_split.json'
-    split = json.loads(split_path.read_text())
-    if sha((root / 'benchmark/cohort_manifest.json').read_bytes()) != split['manifest_sha256']:
-        raise ValueError('Frozen manifest digest mismatch')
+    split_path, split = load_train_split(root, split_file)
     rows = load_train(split, root)
     if not rows:
         raise ValueError('No accepted training records')
@@ -86,19 +84,22 @@ def run_train(root=ROOT):
     index_path = root / BASE / 'trace_acquisition_train.json'
     trace_index = json.loads(index_path.read_text()) if index_path.exists() else []
     by_id = {record['identity']: record for record in trace_index}
-    if len(by_id) != len(trace_index) or not set(by_id) <= set(split['train_ids']):
+    if len(by_id) != len(trace_index) or (split_file is None and not set(by_id) <= set(split['train_ids'])):
         raise ValueError('Acquisition index contains duplicate or non-train identities')
     opcode_path = root / BASE / 'opcode_acquisition_train.json'
     opcode_index = json.loads(opcode_path.read_text()).get('attempts', []) if opcode_path.exists() else []
     opcodes = {record['identity']: record for record in opcode_index}
-    if len(opcodes) != len(opcode_index) or not set(opcodes) <= set(split['train_ids']):
+    if len(opcodes) != len(opcode_index) or (split_file is None and not set(opcodes) <= set(split['train_ids'])):
         raise ValueError('Opcode index contains duplicate or non-train identities')
+    by_id = {key: value for key, value in by_id.items() if key in split['train_ids']}
+    opcodes = {key: value for key, value in opcodes.items() if key in split['train_ids']}
     system = system_identity()
     config = {'experiment': 'reentrancy-components-v1', 'variants': list(VARIANTS),
               'positive_rule': 'HIGH_RISK_REENTRANCY or CONFIRMED_REENTRANCY for structural/full',
               'repeated_rule': 'address appears more than once outside STATICCALL frames',
               'thresholds': 'unchanged production paper-mode values',
               'system_sha256': system['sha256'], 'split': bind(split_path, root),
+              'manifest': split.get('manifest') or bind(root / 'benchmark/cohort_manifest.json', root),
               'population': 'all frozen train identities; only available evidence is scored',
               'no_overall_f1_inference': True}
     run_id = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + '-' + uuid.uuid4().hex[:8]
@@ -158,7 +159,12 @@ def run_train(root=ROOT):
     return result
 
 
-if __name__ == '__main__':
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.parse_args()
-    run_train()
+    parser.add_argument('--split-file', help='Explicit workspace-relative frozen split; default benchmark/eval_split.json')
+    args = parser.parse_args(argv)
+    return run_train(split_file=args.split_file)
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,51 @@
+{
+  "scope": "Actual authenticated20-row publication and preregistration only, no prediction or evaluation",
+  "protocol": {
+    "path": "reports/cohort_rebuild_v3/protocol.json",
+    "sha256": "eaa610e8caac6a0492f7808ed8c96efa4d4611ecbe26e4db9ddc85b3d3a5fc12"
+  },
+  "publication": {
+    "manifest": {
+      "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+      "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+    },
+    "split": {
+      "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+      "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+    }
+  },
+  "accepted_count": 20,
+  "chain_count": 6,
+  "train_count": 14,
+  "heldout_count": 6,
+  "parent_assignments_preserved": true,
+  "parent_protected_artifact_digests": {
+    "benchmark/eval_split.json": "6194d5ad3e06463af32b7a88aa8e57b2de45083432aada0133552944c0ff246f",
+    "benchmark/cohort_manifest.json": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a",
+    "benchmark/benchmark_classification_fixed.csv": "d78e4941fd369a9237d8d900bdc38ff7fe1afeccb76f621ac02687d55033253f",
+    "benchmark/research/train.json": "1df9f2d3d1e5d7433c4c0c73b4df41862e7033fe6c14b9ae4494878b1da7c95c",
+    "benchmark/ground_truth/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json": "275be8a1f3120c30434e09b68ac71f4b5b72dbe1cd14dfd0edca0a2c26f1b19f",
+    "benchmark/ground_truth/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json": "5169a150f3a5ef248c79c46470172c2d01e2b96d6f06c9570c821b9f3f28ef6b",
+    "benchmark/ground_truth/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json": "886f45bdfd178192a9cf6a375eb972a9d8f7153d111aac2a08a9d1bf1f222f27",
+    "benchmark/ground_truth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json": "63e9633b89c72165accb96431d24ec876be29a798fdbd65c8c7d06eb56b60d2f",
+    "benchmark/ground_truth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json": "b8245a1bab791bd9565e2bf09d6f405667b07925fa57befbfce3db5b21582564",
+    "benchmark/ground_truth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json": "2ef9a809376ab9c04627e2e17946bc513ef1e01f16995ab83cbac48125a3190a",
+    "benchmark/ground_truth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json": "b469feb8154a604eaf6e79e5e2193399d350a24ccfb22f0ba571a330131531f2",
+    "benchmark/ground_truth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json": "259d957891adf7d07ae4af73b6b8dad54e5b1d2030fa759690841a727172d7f6",
+    "benchmark/ground_truth/0xcd314668aaa9bbfebaf1a0bd2b6553d01dd58899c508d4729fa7311dc5d33ad7.json": "fb450cceafc7723cf33ffd0a2eecdb0bf614dcbb6056053af5692946f4cafe42",
+    "benchmark/ground_truth/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json": "b07397a78b9be2520284aacbc4f6d37f59ea58925d23108129f010b2360ccb36",
+    "benchmark/ground_truth/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json": "d5c381de989467d58b67035370fadb7e62fa3fdf55d627cc821b68f2d2f76ec3",
+    "benchmark/ground_truth/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json": "857fc94df2c5c0bf51c7bd2bedcafe1f015f9f42915f22e6d564f68ac262cd7b",
+    "benchmark/ground_truth/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json": "6d8d5427bccce17087a22df5d6f9ea40a23c534dcb224bc533fc4de3e18052ef",
+    "benchmark/ground_truth/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json": "5ee3b6435fa0aee70ab39a95facb5b6f603ecb269c0b422df1d9221e58db46db"
+  },
+  "parent_artifacts_unchanged": true,
+  "parent_heldout_payload_read_attempts": [],
+  "cross_chain_orion_group_sealed": true,
+  "assignment_uses_labels_or_scores": false,
+  "model_requests": 0,
+  "network_requests": 0,
+  "final_exam_dispatched": false,
+  "software_fixture_results_used": false,
+  "status": "FROZEN_BEFORE_NEW_TRAIN_RUNS"
+}

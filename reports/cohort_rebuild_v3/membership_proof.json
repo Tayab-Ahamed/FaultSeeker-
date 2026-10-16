@@ -1,0 +1,55 @@
+{
+  "scope": "Frozen actual20-row membership and parent isolation proof, not performance evaluation",
+  "publication": {
+    "path": "reports/cohort_rebuild_v3/publication.json",
+    "sha256": "8674a0873b3646da13a566516bbd38ff85d7b5768c693b09e0ad8d50e3e36d7a"
+  },
+  "protocol": {
+    "path": "reports/cohort_rebuild_v3/protocol.json",
+    "sha256": "eaa610e8caac6a0492f7808ed8c96efa4d4611ecbe26e4db9ddc85b3d3a5fc12"
+  },
+  "manifest": {
+    "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+    "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+  },
+  "split": {
+    "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+  },
+  "train_count": 14,
+  "heldout_count": 6,
+  "parent_train_preserved": true,
+  "parent_heldout_preserved": true,
+  "cross_partition_id_overlap": [],
+  "new_train_ids": [
+    "bsc:0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+    "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+    "eth:0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+    "eth:0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce"
+  ],
+  "new_heldout_ids": [
+    "bsc:0xfb153c572e304093023b4f9694ef39135b6ed5b2515453173e81ec02df2e2104",
+    "eth:0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460"
+  ],
+  "assignment_inputs": [
+    "transaction identity",
+    "chain",
+    "complexity_class",
+    "reviewed incident identity alias"
+  ],
+  "expected_labels_or_scores_used_for_assignment": false,
+  "source_code": [
+    {
+      "path": "benchmark/cohort_versions.py",
+      "sha256": "993db6796fd0d0434946f49e349697e3d0755edf57f6b731a2ba2150f332bef8"
+    },
+    {
+      "path": "scripts/extend_authentic_cohort.py",
+      "sha256": "fb30a635d883676d30c843a88e5c01a5058bc9c20408d0c1dfe7bbcac91b9945"
+    }
+  ],
+  "heldout_prediction_dispatched": false,
+  "network_requests": 0,
+  "model_requests": 0,
+  "fixture_results_used": false
+}
