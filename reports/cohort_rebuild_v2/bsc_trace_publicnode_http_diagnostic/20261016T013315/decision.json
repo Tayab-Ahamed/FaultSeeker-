@@ -1,0 +1,23 @@
+{
+  "scope": "One bounded PublicNode BSC capability observation with live structured HTTP diagnostics",
+  "probe": {
+    "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/probe.json",
+    "sha256": "7f9835231b3c5fba2cf08c04d7d3b2f770ff365127d43275661f11b0dacb14f7"
+  },
+  "raw": {
+    "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/raw/1-eth_chainId.json",
+    "sha256": "2df6a34b5ff8118b83cb0c4558959cd23a25588646707cc06d3c8246009bb21b"
+  },
+  "observed_method": "eth_chainId",
+  "http_status": 403,
+  "requests": 1,
+  "trace_requests": 0,
+  "retry_count": 0,
+  "verdict": "Access denied before chain identity verification; chain/archive/trace capability unknown",
+  "estimated_incremental_usd": 6e-06,
+  "cumulative_estimated_usd": 1.92620079999989,
+  "billing_confirmed": false,
+  "claim25_status": "UNVERIFIABLE",
+  "legacy_artifacts_unchanged": true,
+  "heldout_used": false
+}

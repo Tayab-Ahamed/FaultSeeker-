@@ -1,0 +1,36 @@
+{
+  "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+  "endpoint": "https://bsc-rpc.publicnode.com",
+  "endpoint_source": "https://bsc.publicnode.com/",
+  "created_at": "2026-10-16T01:33:15.028387+00:00",
+  "requests": 1,
+  "maximum_requests": 4,
+  "attempts": [],
+  "raw_requests": [
+    {
+      "path": "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/raw/1-eth_chainId.json",
+      "sha256": "2df6a34b5ff8118b83cb0c4558959cd23a25588646707cc06d3c8246009bb21b"
+    }
+  ],
+  "status": "CHAIN_ID_UNVERIFIED",
+  "rpc_identity": {
+    "path": "reports/cohort_rebuild_v2/rpc/bsc/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json",
+    "sha256": "63cf08475a12991207f103cd4a97c54877b6716dc3aefdabb3a5eb16f854eee2"
+  },
+  "record_format": "Parsed RPC JSON response envelopes; transport exception type only",
+  "storage_trace_complete": false,
+  "heldout_used": false,
+  "no_automatic_retries": true,
+  "accounting": {
+    "outbound_rpc_requests": 1,
+    "methods": {
+      "eth_chainId": 1
+    },
+    "estimated_cost_usd": 6e-06,
+    "cumulative_ledger_estimate_usd": 1.92620079999989,
+    "prior_unmetered_estimate_now_in_ledger_usd": 4.2e-05,
+    "pricing_source": "https://drpc.org/docs/pricing/compute-units",
+    "billing_confirmed": false,
+    "proxy_errors": []
+  }
+}
