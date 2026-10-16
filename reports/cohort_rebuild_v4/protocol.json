@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "registered_at": "2026-10-16T09:40:57.242508+00:00",
+  "purpose": "Publish accepted Platypus Avalanche addition in separate immutable cohort preserving all20 v3 and earlier14 memberships before any prediction on the addition",
+  "parent_split": {
+    "path": "benchmark/versions/cohort_v3_20261016/eval_split.json",
+    "sha256": "91d2bbe09d6e6637f46661a7ef8e0a2dd21779b2867520eb6fb6970679bca234"
+  },
+  "parent_manifest": {
+    "path": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+    "sha256": "6e7234278e61644c4336df1c967ce6c1aa4304eed356f726b5b990e3e7e8b96b"
+  },
+  "additional_admitted_manifest": {
+    "path": "reports/cohort_rebuild_v4/additions_manifest.json",
+    "sha256": "cf3d5a85c163da863b8e506a7f9d217a3108013f97b15764b49ca387a57c1aac"
+  },
+  "incident_aliases": {
+    "path": "reports/cohort_rebuild_v4/incident_aliases.json",
+    "sha256": "332f5cebfe230e28360833afa496bda6ecf1e56a5acde3a92726e4b044b1519e"
+  },
+  "version_directory": "benchmark/versions/cohort_v4_20261016",
+  "seed": 1729,
+  "train_fraction": 0.7,
+  "heldout_fraction": 0.3,
+  "stratification": [
+    "chain",
+    "complexity_class"
+  ],
+  "algorithm": "Same tested extend_split: pin every parent identity and source-supported incident alias; new whole incident groups minimize integer global70/30 distance then stratum distance then seeded SHA256 tie-break. No labels or predictions determine assignment.",
+  "parent_train_count": 14,
+  "parent_heldout_count": 6,
+  "additional_count": 1,
+  "new_identity": "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+  "unavailable_complexity": "UNRECOVERED stays explicit; no inferred or padded call counts",
+  "guardrails": [
+    "Never open parent heldout partition payload",
+    "Preserve every previous TRAIN and heldout identity assignment",
+    "No new prediction before version publication",
+    "No target labels, model output, scores or paper numbers used for split assignment",
+    "No overwrite of parent CSV, GT, manifest or split",
+    "No final exam dispatch during publication",
+    "Source-supported function name alone does not become deployed-source signature/line ground truth"
+  ],
+  "source_code": [
+    {
+      "path": "benchmark/cohort_versions.py",
+      "sha256": "993db6796fd0d0434946f49e349697e3d0755edf57f6b731a2ba2150f332bef8"
+    },
+    {
+      "path": "scripts/extend_authentic_cohort.py",
+      "sha256": "fb30a635d883676d30c843a88e5c01a5058bc9c20408d0c1dfe7bbcac91b9945"
+    }
+  ],
+  "model_requests": 0,
+  "network_requests": 0,
+  "heldout_outcomes_read": false,
+  "status": "PREREGISTERED_BEFORE_PUBLICATION_AND_NEW_PREDICTION"
+}

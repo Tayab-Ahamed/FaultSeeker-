@@ -204,3 +204,8 @@ Official-public-BSC returned chainID56, then rejected the selected Fortress TRAI
 ### Radiant independent-source recovery, admission still rejected (2026-10-16)
 
 Verichains and MetaTrust independently link the same January2024Arbitrum exploit execution and explain amplified scaled-balance rounding in AToken burn. Their cached bodies and Codex consensus annotation pass source checks. dRPC confirms chain42161 but returns null transaction/receipt; official public RPC returns HTTP403 before lookup. The row is quarantined, not an eighth accepted chain. Authentic available count remains21 across7chains; the246/10 target is still short225rows and3chains. Four metered RPC attempts, conservative $0.000024 incremental; cumulative $1.974549, billing unconfirmed. Evidence: reports/cohort_rebuild_v3/RADIANT_PROVENANCE_DECISION.json.
+
+
+### Exact original231-row admission re-audit (2026-10-16)
+
+Fresh actual admission checks on every exact fca6b99 frozen identity yield6accepted and225quarantined. Available authentic population21consists of those6originals plus15additionalrealtransactions across7chains. Do not describe21as the pass count of the original231. Missing reasons overlap:224lack qualifying independent annotation,224lack two qualifying independent publishers,45lack valid bound RPC artifacts,76have present RPC evidence failing identity/receipt validation. Exact rows, source bindings and executable reproduction source: reports/cohort_rebuild_v4/FROZEN_231_REAUDIT.json. New v4 publication method is preregistered, preserves all20v3 memberships, and has not yet published or predicted the Avalanche addition. No new network/model call, label/threshold tuning, fixture evidence or heldout payload access.
