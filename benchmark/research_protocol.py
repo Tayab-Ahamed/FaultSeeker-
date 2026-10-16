@@ -316,6 +316,33 @@ def acquisition_directory(root, split_file):
     return root / 'reports/cohort_rebuild_v2/acquisitions' / sha(split_path.read_bytes())
 
 
+def _acquisition_ancestry(root, split_path, split):
+    """Validate ancestry without ever opening a held-out partition body."""
+    chain=[]
+    seen_paths,seen_digests=set(),set()
+    while True:
+        binding=bind(split_path,root)
+        if split_path in seen_paths or binding['sha256'] in seen_digests:
+            raise ValueError('Acquisition split ancestry cycle')
+        seen_paths.add(split_path);seen_digests.add(binding['sha256'])
+        chain.append((binding,split))
+        parent_binding=split.get('parent_split')
+        if parent_binding is None:
+            break
+        parent_path=_path(parent_binding['path'],root)
+        if parent_path in seen_paths or parent_binding['sha256'] in seen_digests:
+            raise ValueError('Acquisition split ancestry cycle')
+        read_bound(parent_binding,root)
+        _,parent=load_train_split(root,parent_path)
+        if bind(parent_path,root)!=parent_binding:
+            raise ValueError('Parent split changed during validation')
+        if (not set(parent['train_ids'])<=set(split['train_ids'])
+                or not set(parent['heldout_ids'])<=set(split['heldout_ids'])):
+            raise ValueError('Parent TRAIN and held-out memberships must be preserved')
+        split_path,split=parent_path,parent
+    return list(reversed(chain))
+
+
 def load_acquisition_indexes(root, split_file=None):
     """Merge selected TRAIN metadata; excluded capture bodies are never read.
 
@@ -324,26 +351,26 @@ def load_acquisition_indexes(root, split_file=None):
     """
     root = Path(root).resolve()
     split_path, split = load_train_split(root, split_file)
-    split_binding = bind(split_path, root)
+    ancestry=_acquisition_ancestry(root,split_path,split) if split_file is not None else []
     legacy = root / 'reports/cohort_rebuild_v2'
-    version = acquisition_directory(root, split_file) if split_file is not None else None
     merged, bindings = {}, []
     for kind in ('opcode', 'trace'):
         merged[kind] = {}
-        paths = [legacy / (kind + '_acquisition_train.json')]
-        if version is not None:
-            paths.append(version / (kind + '_acquisition_train.json'))
-        for path in paths:
+        paths = [(legacy / (kind + '_acquisition_train.json'),None,None)]
+        for owner_binding,owner_split in ancestry:
+            directory=root/'reports/cohort_rebuild_v2/acquisitions'/owner_binding['sha256']
+            paths.append((directory/(kind+'_acquisition_train.json'),owner_binding,owner_split))
+        for path,owner_binding,owner_split in paths:
             if not path.exists():
                 continue
             data = json.loads(path.read_text())
             index_binding = bind(path, root)
-            if version is not None and path.parent == version:
-                if data.get('split') != split_binding or 'snapshot' not in data:
+            if owner_binding is not None:
+                if data.get('split') != owner_binding or 'snapshot' not in data:
                     raise ValueError('Version acquisition index is not bound to selected split')
                 index_binding = data['snapshot']
                 data = json.loads(read_bound(index_binding, root))
-                if data.get('split') != split_binding:
+                if data.get('split') != owner_binding:
                     raise ValueError('Acquisition snapshot split mismatch')
             records = data.get('attempts', []) if isinstance(data, dict) else data
             keys = [r['identity'] for r in records]
@@ -351,7 +378,7 @@ def load_acquisition_indexes(root, split_file=None):
                 raise ValueError('Duplicate identity in acquisition index')
             if split_file is None and not set(keys) <= set(split['train_ids']):
                 raise ValueError('Non-train identity in acquisition index')
-            if version is not None and path.parent == version and not set(keys) <= set(split['train_ids']):
+            if owner_binding is not None and not set(keys)<=set(owner_split['train_ids']):
                 raise ValueError('Version acquisition index contains non-train identities')
             for record in records:
                 if record['identity'] in split['train_ids']:
