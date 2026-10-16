@@ -1,0 +1,93 @@
+{
+  "scope": "Actual cached TRAIN production Stage1 run after removing unsupported authorization conclusions; not full-system evaluation",
+  "command": "python scripts/run_train_production.py --split-file benchmark/versions/cohort_v4_20261016/eval_split.json",
+  "summary": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261016T114130-a7ece832/summary.json",
+    "sha256": "fad677563a1653c5986a9f7eac8e4a66ff217b8e136a38c3c7593d5b70984d47"
+  },
+  "system": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261016T114130-a7ece832/system.json",
+    "sha256": "b4716f5979c35afeba45f07a605d51bd4ec3b608d9e895d215227469e732aac3"
+  },
+  "system_sources": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261016T114130-a7ece832/system_sources.json.gz",
+    "sha256": "3635bd95cf7bb76c6869df603f8a8fb02f5ecb09da813972445f4906352d7b6f"
+  },
+  "before_real_revest_report": {
+    "path": "reports/cohort_rebuild_v2/gateway_runs/20261016T112421-02f4bcc2/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428/forensics/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+    "sha256": "c26e8bc68f1b95600d7575bc8d50fa2eb0d3b27738229a774f1efb707f4f75b1"
+  },
+  "after_real_revest_observation": {
+    "path": "reports/cohort_rebuild_v2/production_runs/20261016T114130-a7ece832/eth-0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json",
+    "sha256": "4958207896328e5acdc52942a3ec8a2d65a92ca578e6af364a46de22ec5e202c"
+  },
+  "revest_before": {
+    "rule_verdict": "EXPLOIT",
+    "rule_confidence": 0.85,
+    "matched_rule": "closed_source_access_control",
+    "vuln_type_hint": "Improper Access Control Of Close-Source Contract"
+  },
+  "revest_after": {
+    "rule_verdict": "EXPLOIT",
+    "rule_confidence": 0.75,
+    "matched_rule": "reentrancy_pattern",
+    "vuln_type_hint": "Reentrancy"
+  },
+  "observed_mechanism": "All six actual reentry/storage flags and storage trace availability were already present; opaque selectors supplied no authorization-policy/caller proof. Existing reentrancy rule now executes without opacity masking.",
+  "coverage": {
+    "observed": 11,
+    "requested_train": 15
+  },
+  "measured_metrics": {
+    "reentrancy_component": {
+      "n": 11,
+      "tp": 5,
+      "fp": 1,
+      "fn": 0,
+      "tn": 5,
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "f1": 0.9090909090909091,
+      "accuracy": 0.9090909090909091
+    },
+    "rule_verdict_counts": {
+      "EXPLOIT": 11
+    }
+  },
+  "missing": [
+    {
+      "identity": "avalanche:0x1266a937c2ccd970e5d7929021eed3ec593a95c68a99b4920c2efa226679b430",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "bsc:0x3ee23c1585474eaa4f976313cafbc09461abb781d263547c8397788c68a00160",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    },
+    {
+      "identity": "bsc:0xe1f257041872c075cbe6a1212827bc346df3def6d01a07914e4006ec43027165",
+      "error_type": "ValueError",
+      "reason": "No recorded trace for train identity"
+    }
+  ],
+  "limitations": [
+    "Reentrancy component F1 remains0.9090909091 on11available TRAIN observations; no measured component-score gain claimed.",
+    "No complete model-assisted case, localization metric, TableVI average or full-system F1 produced.",
+    "No genuine authorization-policy/caller evidence is available; weak call shapes route UNCERTAIN and cannot verify access-control detector recall.",
+    "Opaque-owner SSTORE association is contract-level metadata, not same-call causality or source-availability/authorization proof.",
+    "4missingTRAINcaptures are excluded, never treated as negative outcomes."
+  ],
+  "weights_and_thresholds_changed": false,
+  "heldout_used": false,
+  "final_exam_dispatched": false,
+  "model_requests": 0,
+  "network_requests": 0,
+  "fixture_results_used": false,
+  "metrics_from_fixture_results": false
+}

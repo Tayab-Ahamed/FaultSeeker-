@@ -92,15 +92,15 @@ class SignalBundle:
     privileged_calls: list = field(default_factory=list)
     created_contract_in_privileged_call: bool = False
 
-    # Hashed function name: closed-source contract, unknown function selector
+    # Undecoded selector observations; opacity does not establish source availability
     hashed_fn_calls: list = field(default_factory=list)   # 0xABCD1234-style calls
     hashed_fn_count: int = 0                               # total count
-    closed_source_state_change: bool = False               # hashed fn + token transfer
+    closed_source_state_change: bool = False               # opaque owner with observed SSTORE; not authorization proof
 
     # Profit Extraction / Arbitrary External Call
     profit_extraction_eth: float = 0.0     # attacker net gain (ETH)
     large_transfer_to_eoa: bool = False    # big Transfer to plain wallet at end of tx
-    arbitrary_external_call: bool = False  # delegatecall into newly created contract
+    arbitrary_external_call: bool = False  # legacy metadata: delegatecall into tx-created contract, not exploit proof
 
     # Arithmetic / Inflation
     inflation_attack: bool = False  # donate→mint→borrow share manipulation pattern
@@ -722,68 +722,41 @@ class SignalExtractor:
         elif sequences == 1 and self.signals.flash_loan_detected:
             self.signals.price_delta_ratio = 0.10
 
-    # ── signal: Hashed Function (closed-source access control) ──────────────
+    # ── signal: Undecoded selector observations ────────────────────────────
 
     def _check_hashed_functions(self) -> None:
-        """
-        Closed-source contracts invoke privileged functions via 4-byte selectors
-        (e.g. 0xa9059cbb). When we see hashed function names AND a token transfer
-        or value movement, it's a strong access control / backdoor signal.
+        """Preserve undecoded calls; associate state changes only with real writes.
 
-        The 'Improper Access Control Of Close-Source Contract' class maps here.
+        Neither an undecoded selector nor an observed write proves that the caller
+        was unauthorized. STATICCALLs remain useful opacity metadata only.
         """
         hashed_calls = []
-        has_transfer_after = False
-        saw_hash = False
-
-        for i, item in enumerate(self.flat):
-            fn = self._fn(item)
-            call_type = (item.get('call_type') or '').lower()
-            if call_type == 'staticcall':
-                continue
-
-            if _HASH_FN_RE.match(fn):
-                saw_hash = True
-                hashed_calls.append({'fn': fn, 'addr': self._addr(item)})
-                # Check if a transfer follows within next 5 calls
-                for j in range(i + 1, min(i + 6, len(self.flat))):
-                    next_fn = self._fn(self.flat[j])
-                    if next_fn in _STATE_WRITE:
-                        has_transfer_after = True
-                        break
-
-            # Also catch: privileged call into the tx-from address' contract
-            if fn in _PRIVILEGED and self._val(item) > 0:
-                hashed_calls.append({'fn': fn, 'addr': self._addr(item), 'value_eth': self._val(item)})
-
-        self.signals.hashed_fn_calls  = hashed_calls[:10]
-        self.signals.hashed_fn_count  = len(hashed_calls)
-        # OR-assign: preserve True values already set by _analyze_cast_trace_text
-        self.signals.closed_source_state_change = (
-            self.signals.closed_source_state_change or (saw_hash and has_transfer_after)
-        )
-
-        # Also use TraceAnalyzer's pre-computed list
+        opaque_write_owners = set()
+        for item in self.flat:
+            if _HASH_FN_RE.match(self._fn(item)):
+                address = self._addr(item)
+                hashed_calls.append({'fn': self._fn(item), 'addr': address})
+                if (item.get('call_type') or '').lower() != 'staticcall':
+                    opaque_write_owners.add(address)
+        self.signals.hashed_fn_calls = hashed_calls[:10]
         expand = self.tx_analysis.get('function_calls_to_expand_loc', {})
-        if expand.get('name_in_hash'):
-            self.signals.hashed_fn_count = max(
-                self.signals.hashed_fn_count, len(expand['name_in_hash'])
-            )
-            if self.signals.hashed_fn_count > 0:
-                self.signals.closed_source_state_change = True
+        self.signals.hashed_fn_count = max(self.signals.hashed_fn_count,
+            len(hashed_calls), len(expand.get('name_in_hash', [])))
+        written_owners = {str(event.get('address') or '').lower()
+            for event in self.storage_events if isinstance(event, dict)
+            and event.get('reverted') is not True
+            and self._normalize_storage_value(event.get('slot'))}
+        self.signals.closed_source_state_change = bool(opaque_write_owners & written_owners)
 
     # ── signal: Access Control Bypass ────────────────────────────────────────
 
     def _check_access_control(self) -> None:
+        """Collect proxy/deployment/privileged-call observations for review.
+
+        Call names, recipient creation and delegatecall do not reveal the caller's
+        authorization. Preserve their metadata without asserting a bypass.
         """
-        Detect:
-        - delegatecall into a contract created in this tx
-        - calls to privileged functions (transferOwnership, initialize, etc.)
-        - created-contract address appears as recipient of privileged call
-        - hashed function selector calling state-changing operations (closed-source)
-        - single caller interacting with 3+ contracts in rapid sequence
-        """
-        priv_calls = []
+        priv_calls = list(self.signals.raw.get('cast_proxy_observations', []))
         arb_ext = False
         caller_contracts: set = set()
 
@@ -797,14 +770,9 @@ class SignalExtractor:
                 arb_ext = True
                 priv_calls.append({'type': 'delegatecall_into_created', 'fn': fn, 'addr': addr})
 
-            # delegatecall into ANY external contract (proxy pattern exploitation)
-            # Even without a freshly created contract, a delegatecall is suspicious
-            # when we can't verify the callee — closed-source or unverified proxy
+            # Ordinary proxy routing is an observation, not exploitation proof.
             elif call_type == 'delegatecall':
                 priv_calls.append({'type': 'delegatecall_into_external', 'fn': fn, 'addr': addr})
-                # Also mark access_control_bypass since delegatecall lets callee
-                # manipulate the caller's storage arbitrarily
-                self.signals.access_control_bypass = True
 
 
             # privileged function call
@@ -823,8 +791,7 @@ class SignalExtractor:
             if fn in _STATE_WRITE and call_type not in ('staticcall', ''):
                 caller_contracts.add(addr)
 
-        # Heuristic: one caller driving state changes across 3+ distinct contracts
-        # without flash loan → likely access control exploit
+        # Preserve multi-contract call shape without inferring authorization.
         if len(caller_contracts) >= 3 and not self.signals.flash_loan_detected:
             priv_calls.append({
                 'type': 'multi_contract_state_change',
@@ -837,15 +804,8 @@ class SignalExtractor:
 
         self.signals.privileged_calls = priv_calls[:10]
         self.signals.arbitrary_external_call = arb_ext
-        # OR-assign: preserve any True already set earlier (e.g. by cast text parser)
-        self.signals.access_control_bypass = (
-            self.signals.access_control_bypass
-            or arb_ext
-            or self.signals.created_contract_in_privileged_call
-            or self.signals.closed_source_state_change          # ← closed-source
-            or len(caller_contracts) >= 3                       # ← multi-contract
-            or len([p for p in priv_calls if p.get('type') == 'privileged_fn']) >= 1
-        )
+        # No authorization policy/caller proof is available in these heuristics.
+        self.signals.access_control_bypass = False
 
     # ── signal: Profit Extraction ─────────────────────────────────────────────
 
@@ -917,11 +877,11 @@ class SignalExtractor:
         if self.signals.arbitrary_external_call:
             ac_weight += 5.0
         if ac_weight:
-            hints.append((ac_weight, 'Access Control'))
+            hints.append((ac_weight, 'Authorization review (unverified)'))
 
         # Arbitrary External Call (subset of AC)
         if self.signals.arbitrary_external_call and not self.signals.access_control_bypass:
-            hints.append((5.0, 'Arbitrary External Call'))
+            hints.append((5.0, 'Delegatecall review (unverified)'))
 
         # Sort descending by weight
         hints.sort(key=lambda x: x[0], reverse=True)
@@ -950,8 +910,8 @@ class SignalExtractor:
         """
         Parse the human-readable cast run output from the replay cache and
         extract signals that the RPC-based structured trace may miss:
-          - [delegatecall] markers → access_control_bypass
-          - raw 0xABCD1234 hex selectors → closed_source_state_change
+          - [delegatecall] markers → proxy review metadata
+          - raw 0xABCD1234 hex selectors → undecoded selector metadata
           - flash loan keywords in function names
           - inflation-attack pattern: mint + deposit/donate in same trace
         """
@@ -991,16 +951,10 @@ class SignalExtractor:
             if fn_m:
                 fns_seen.append(fn_m.group(1).lower())
 
-        # ── apply findings ────────────────────────────────────────────────────
+        # Text does not prove storage writes or a caller authorization failure.
         if has_delegatecall:
-            self.signals.access_control_bypass = True
-            # Any delegatecall is semantically "closed-source" — the callee controls
-            # the caller's storage. Whether the selector was decoded or not, this
-            # matches the 'Improper Access Control Of Close-Source Contract' pattern.
-            self.signals.closed_source_state_change = True
-
-        if has_hex_selector:
-            self.signals.closed_source_state_change = True
+            self.signals.raw['cast_proxy_observations'] = [
+                {'type': 'cast_delegatecall_observed', 'authorization': 'unverified'}]
 
         # Flash loan keywords in cast text
         for fn in fns_seen:

@@ -28,10 +28,6 @@ VULN_TYPE_MAP = {
     'flash_loan_price_manipulation':    'Price Manipulation',
     'price_manipulation':               'Price Manipulation',
     'compoundv2_inflation':             'Compoundv2 Inflation Attack',
-    'closed_source_access_control':     'Improper Access Control Of Close-Source Contract',
-    'access_control_bypass':            'Access Control',
-    'delegatecall_created_contract':    'Arbitrary External Call',
-    'privileged_call_with_creation':    'Access Control',
     'no_signals':                       'Benign',
     'ambiguous':                        'Unknown',
 }
@@ -41,20 +37,9 @@ def classify(signals: SignalBundle) -> tuple[str, float, str, str]:
     """
     Returns (verdict, confidence, matched_rule, vuln_type_hint).
 
-    Rule priority (highest confidence first):
-     1. Reentrancy + profit
-     2. Flash Loan + profit
-     3. Flash Loan + price manipulation
-     4. Closed-source access control (hex selectors OR delegatecall)
-     4b. Compoundv2 inflation attack
-     5. Price manipulation alone
-     6. Privileged call using created-contract address
-     7. Generic delegatecall into tx-created contract
-     8. Generic access control bypass
-     9. Reentrancy pattern alone
-    10. Weak flash-loan signal
-    11. No signals → UNCERTAIN
-    12. Ambiguous → UNCERTAIN
+    Mechanism-specific rules run before generic review observations. Undecoded
+    selectors, proxy/deployment shapes and privileged names do not establish an
+    unauthorized operation; they require review and cannot prove clean coverage.
     """
 
     # ── Rule 1: Reentrancy + confirmed profit ─────────────────────────────────
@@ -74,12 +59,6 @@ def classify(signals: SignalBundle) -> tuple[str, float, str, str]:
         return ('EXPLOIT', 0.87, 'flash_loan_price_manipulation',
                 VULN_TYPE_MAP['flash_loan_price_manipulation'])
 
-    # ── Rule 4: Closed-source contract access control ─────────────────────────
-    # Catches: hex-selector calls, delegatecall with unknown function, proxy abuse
-    if signals.closed_source_state_change:
-        return ('EXPLOIT', 0.85, 'closed_source_access_control',
-                VULN_TYPE_MAP['closed_source_access_control'])
-
     # ── Rule 4b: Compoundv2-style inflation attack ────────────────────────────
     if signals.inflation_attack:
         return ('EXPLOIT', 0.82, 'compoundv2_inflation',
@@ -89,21 +68,6 @@ def classify(signals: SignalBundle) -> tuple[str, float, str, str]:
     if signals.price_read_write_sequences >= 2 and signals.price_delta_ratio >= 0.15:
         return ('EXPLOIT', 0.83, 'price_manipulation',
                 VULN_TYPE_MAP['price_manipulation'])
-
-    # ── Rule 6: Privileged call with created-contract address in params ────────
-    if signals.created_contract_in_privileged_call:
-        return ('EXPLOIT', 0.82, 'privileged_call_with_creation',
-                VULN_TYPE_MAP['privileged_call_with_creation'])
-
-    # ── Rule 7: delegatecall into tx-created contract ─────────────────────────
-    if signals.arbitrary_external_call:
-        return ('EXPLOIT', 0.82, 'delegatecall_created_contract',
-                VULN_TYPE_MAP['delegatecall_created_contract'])
-
-    # ── Rule 8: Generic access control bypass ─────────────────────────────────
-    if signals.access_control_bypass:
-        return ('EXPLOIT', 0.80, 'access_control_bypass',
-                VULN_TYPE_MAP['access_control_bypass'])
 
     # ── Rule 9: Reentrancy pattern alone (no confirmed profit) ────────────────
     if signals.reentrancy_score >= signals.reentrancy_detection_threshold:
@@ -125,6 +89,14 @@ def classify(signals: SignalBundle) -> tuple[str, float, str, str]:
     if signals.single_transfer_only:
         return ('UNCERTAIN', 0.60, 'multi_tx_context_required',
                 'Multi-Transaction Exploit (context required)')
+
+    # Generic call shapes lack caller authorization/state-policy evidence.
+    # This also handles historical bundles whose weak heuristics set bypass=True.
+    if (signals.hashed_fn_count or signals.hashed_fn_calls
+            or signals.closed_source_state_change or signals.access_control_bypass
+            or signals.privileged_calls or signals.created_contract_in_privileged_call
+            or signals.arbitrary_external_call):
+        return ('UNCERTAIN', 0.45, 'authorization_review_required', 'Unknown')
 
     # ── Rule 13: No signals at all → UNCERTAIN ────────────────────────────────
     no_signals = (
