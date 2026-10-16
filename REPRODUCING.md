@@ -1,0 +1,41 @@
+# Reproducing the audited headline numbers
+
+These commands are offline and use only files already in this repository. They
+do not replay transactions, call RPC providers, call models, or read the
+held-out split.
+
+Run from the repository root:
+
+```bash
+.venv/bin/python scripts/reproduce/honest_f1.py
+.venv/bin/python scripts/reproduce/modeled_cost.py
+.venv/bin/python scripts/reproduce/localization.py
+.venv/bin/python scripts/reproduce/reentrancy_count.py
+.venv/bin/python scripts/reproduce/vulnerability_count.py
+.venv/bin/python scripts/reproduce/cohort.py
+```
+
+Run the complete check and summary table with:
+
+```bash
+.venv/bin/python scripts/reproduce/run_all.py
+```
+
+The runner executes every direct reproduction script except `common.py` and
+itself. It compares the reproduced values with the expected values in
+`reports/reproducibility/FINAL_REPORT.md`.
+
+## Exact inputs
+
+| Number | Input |
+|---|---|
+| F1 | `reports/honest_results/baseline_comparison.csv` |
+| Modeled cost saving | `reports/canonical_history/snapshots/b96f53ce1d6634a1e1cc11659eb37ab15fcf29a6/reports/research_results/runtime_cost.json` |
+| Top-1 localization | `reports/honest_results/localization_metrics.json` |
+| Reentrancy label count | `reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8/benchmark/benchmark_classification_fixed.csv` |
+| Vulnerability label count | `reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8/benchmark/benchmark_classification_fixed.csv` |
+| Cohort rows and chain count | `reports/canonical_history/snapshots/fca6b998fa0a01f3832be6a0f1aa1d768306da8/benchmark/benchmark_classification_fixed.csv` |
+
+The scripts print the input path, row count where applicable, SHA-256 digest,
+expected value, reproduced value, and pass/fail status. The values are scoped
+historical reproductions; they do not authenticate the paper's empirical study.
