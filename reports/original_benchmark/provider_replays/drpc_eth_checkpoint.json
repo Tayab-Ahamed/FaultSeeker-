@@ -1,0 +1,23 @@
+{
+  "provider": "dRPC",
+  "chain": "ethereum",
+  "transaction_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+  "completed": true,
+  "replay_succeeded": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "success",
+      "exit_code": 0,
+      "compute_units_per_second": 20,
+      "backoff_before_seconds": 0,
+      "source": "observed prior sequential cast run"
+    }
+  ],
+  "request_count_log": {
+    "provider": "dRPC",
+    "cast_process_invocations": 1,
+    "internal_rpc_request_count": "not exposed by cast"
+  },
+  "secrets_stored": false
+}

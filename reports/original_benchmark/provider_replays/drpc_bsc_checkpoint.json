@@ -1,0 +1,34 @@
+{
+  "provider": "dRPC",
+  "chain": "bsc",
+  "transaction_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+  "completed": true,
+  "replay_succeeded": false,
+  "attempts": [
+    {
+      "attempt": 1,
+      "started_at": "2026-10-17T03:24:18Z",
+      "exit_code": 1,
+      "status": "rate_limited_or_unavailable",
+      "compute_units_per_second": 20,
+      "backoff_before_seconds": 0,
+      "message": "- Max retries exceeded HTTP error 429 with body: {\"id\":0,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+    },
+    {
+      "attempt": 2,
+      "started_at": "2026-10-17T03:24:55Z",
+      "exit_code": 1,
+      "status": "failed",
+      "compute_units_per_second": 20,
+      "backoff_before_seconds": 30,
+      "message": "Error: tx not found: 0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba"
+    }
+  ],
+  "consecutive_rate_limit_failures": 0,
+  "request_count_log": {
+    "provider": "dRPC",
+    "cast_process_invocations": 2,
+    "internal_rpc_request_count": "not exposed by cast"
+  },
+  "secrets_stored": false
+}
