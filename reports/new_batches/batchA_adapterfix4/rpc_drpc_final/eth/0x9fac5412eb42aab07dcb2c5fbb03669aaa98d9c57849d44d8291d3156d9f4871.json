@@ -1,0 +1,88 @@
+{
+  "receipt_response": {
+    "http_status": 200,
+    "response": {
+      "id": 10027,
+      "jsonrpc": "2.0",
+      "result": {
+        "blockHash": "0x9327f4f37b00061315e41b37c553146c4418f43b4e61af132a8c84de5fe3413c",
+        "blockNumber": "0xeff007",
+        "contractAddress": null,
+        "cumulativeGasUsed": "0xc4a18",
+        "effectiveGasPrice": "0x6e2acabc8",
+        "from": "0xb687550842a24d7fbc6aad238fd7e0687ed59d55",
+        "gasUsed": "0x20bda",
+        "logs": [
+          {
+            "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "blockHash": "0x9327f4f37b00061315e41b37c553146c4418f43b4e61af132a8c84de5fe3413c",
+            "blockNumber": "0xeff007",
+            "blockTimestamp": "0x63455267",
+            "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+            "logIndex": "0xc",
+            "removed": false,
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x0000000000000000000000009682f31b3f572988f93c2b8382586ca26a866475",
+              "0x0000000000000000000000006eb211caf6d304a76efe37d9abdfaddc2d4363d1"
+            ],
+            "transactionHash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+            "transactionIndex": "0x6"
+          },
+          {
+            "address": "0xb6ee9668771a79be7967ee29a63d4184f8097143",
+            "blockHash": "0x9327f4f37b00061315e41b37c553146c4418f43b4e61af132a8c84de5fe3413c",
+            "blockNumber": "0xeff007",
+            "blockTimestamp": "0x63455267",
+            "data": "0x00000000000000000000000000000000000000000000014542ba12a337c00000",
+            "logIndex": "0xd",
+            "removed": false,
+            "topics": [
+              "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+              "0x000000000000000000000000fb7c128acb6c8ac3581013cee8e91f0c8d7c677a",
+              "0x000000000000000000000000b687550842a24d7fbc6aad238fd7e0687ed59d55"
+            ],
+            "transactionHash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+            "transactionIndex": "0x6"
+          }
+        ],
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000010000000000000000000000000000000000400000010000000000000000000000000800000020000000000000000000000008004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000400000000200000000000000000000000000200000000000000000000000100000000000000080000000000080000000000000000000000000000000000000000000000002000800000000000000200000000000000000000000000000000400000080000000000000000000000000000400000080000000000000000000000000",
+        "status": "0x1",
+        "to": "0x9682f31b3f572988f93c2b8382586ca26a866475",
+        "transactionHash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+        "transactionIndex": "0x6",
+        "type": "0x2"
+      }
+    }
+  },
+  "transaction_response": {
+    "http_status": 200,
+    "response": {
+      "id": 10026,
+      "jsonrpc": "2.0",
+      "result": {
+        "accessList": [],
+        "blockHash": "0x9327f4f37b00061315e41b37c553146c4418f43b4e61af132a8c84de5fe3413c",
+        "blockNumber": "0xeff007",
+        "blockTimestamp": "0x63455267",
+        "chainId": "0x1",
+        "from": "0xb687550842a24d7fbc6aad238fd7e0687ed59d55",
+        "gas": "0x11cde8",
+        "gasPrice": "0x6e2acabc8",
+        "hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+        "input": "0x8f965d0e0000000000000000000000000000000000000000000000000000000000000040000000000000000000000000b6ee9668771a79be7967ee29a63d4184f80971430000000000000000000000000000000000000000000000000000000000000001000000000000000000000000fb7c128acb6c8ac3581013cee8e91f0c8d7c677a",
+        "maxFeePerGas": "0xc33c3d260",
+        "maxPriorityFeePerGas": "0x2540be400",
+        "nonce": "0x11",
+        "r": "0x1b1f03a850266e718fd4b17511c456639bbebdce2cc839dbace95a38162c117d",
+        "s": "0x3bbf43087d5c47e4490f6482fcbdf278d3b15a66a9c449a1f9a81ae05d07aa05",
+        "to": "0x9682f31b3f572988f93c2b8382586ca26a866475",
+        "transactionIndex": "0x6",
+        "type": "0x2",
+        "v": "0x1",
+        "value": "0x0",
+        "yParity": "0x1"
+      }
+    }
+  }
+}
