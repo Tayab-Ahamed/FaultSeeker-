@@ -1,0 +1,85 @@
+{
+  "label": "post-diagnostic, exploratory",
+  "decision": "b_original_entrypoint_does_not_reproduce_saved_ranks",
+  "producer": {
+    "entrypoint": "scripts/reproduce/run_original_provider_pinned.py",
+    "entrypoint_lines": "438-452",
+    "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+    "model": "llm-free-function-ranker",
+    "variant": "llm-free",
+    "protocol": "benchmark/protocols/original_benchmark_function_localization_v1.md",
+    "run_id": "original-v1-pinned-sequential-20261017",
+    "provider_policy": {
+      "eth": "BlockPI",
+      "bsc": "BlockPI",
+      "spare": "dRPC-not-used"
+    },
+    "seed": 20261017,
+    "ground_truth_file_count": 115,
+    "rank_path": "ForensicsOrchestrator.run -> FunctionRanker().rank(result, {repeated_patterns, function_call_loc_memo})",
+    "score_path": "scripts/reproduce/run_original_provider_pinned.py:_score"
+  },
+  "working_tree_comparison": {
+    "comparison_base": "1b1c7395771663622dd14b9731b4b8b471221960",
+    "unchanged_files": [
+      "scripts/reproduce/run_original_provider_pinned.py",
+      "benchmark/original_benchmark_eval.py",
+      "benchmark/captured_inputs.py",
+      "faultseeker/forensics/orchestrator.py",
+      "faultseeker/data_collection/txn_sequencer.py",
+      "faultseeker/data_collection/txn_info_collector.py",
+      "faultseeker/forensics/trace_analyzer.py"
+    ],
+    "changed_in_current_worktree": [
+      {
+        "path": "faultseeker/function_analysis/function_ranker.py",
+        "producer_sha256": "33e936eb117290b5f0cee61fd82d96e50d1b4ea7accc6e27deb010fe15e0b829",
+        "current_sha256": "acf6e1874aad2817ce9576a109a5acd922f2d7cb1d2b8c6e283672d926bd32f2",
+        "difference_commit": "b54a1b3c8465f9ec1752854e1856801cd5a9b74b",
+        "note": "Not changed for this task; the producer worktree used the producer-era ranker."
+      }
+    ],
+    "entrypoint_producer_sha256": "b57877418dcf48d1667d87948c76efbebccd7e3a97d166bc402425de7e7fc0c9",
+    "entrypoint_current_sha256": "b57877418dcf48d1667d87948c76efbebccd7e3a97d166bc402425de7e7fc0c9"
+  },
+  "saved_rank_history_evidence": {
+    "offline_rescore_commit": "70d1b099c0b1dad524bc89ba4e707ea94b7038b9",
+    "raw_artifact_history": {
+      "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c": {
+        "at_240fd9f": {"candidate_count": 100, "rank": null},
+        "at_70d1b09": {"candidate_count": 100, "rank": 19}
+      },
+      "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa": {
+        "at_240fd9f": {"candidate_count": 7, "rank": null},
+        "at_70d1b09": {"candidate_count": 7, "rank": 7}
+      },
+      "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d": {
+        "at_240fd9f": {"candidate_count": 20, "rank": null},
+        "at_70d1b09": {"candidate_count": 20, "rank": null}
+      }
+    }
+  },
+  "local_inputs": {
+    "network_calls": false,
+    "controls": {
+      "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c": {
+        "trace_sha256": "10b82a7f90d86983d4af821b3206d5d17c7b009a3d7f434ed9eff330f518d196",
+        "rpc_sha256": "d467523bdbe1ad15d178c844f725e0a7ee9d578d5abe48e349cf38020155caf5",
+        "ground_truth_sha256": "eda7d482e15d53d4dfcd0b438739646e1331c16df32773af515985c71fc01714",
+        "saved_artifact_sha256": "d245d279ce9237ce394d06dd55b31abdff5223db903d8d96541fa8d79181187e"
+      },
+      "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa": {
+        "trace_sha256": "51be30930260b17c391485eb0aea2581278c775cef9ad157436a8d9bf41338ea",
+        "rpc_sha256": "23fba2e59b12bc530fbd5519edb47acd5759323f192f08d20861fc73480f11bd",
+        "ground_truth_sha256": "c20d25ebf972e7009e7ab3e2445502b9055a51112e4b84de48b5f62a3951d0d0",
+        "saved_artifact_sha256": "f51b604b43283cc12064f1cc936fbfff410e39c12b30e7aa26d0ba1f58c601c5"
+      },
+      "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d": {
+        "trace_sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a",
+        "rpc_sha256": "4caea532b5d230d597e6f0e7816a2352dda68f3038609204cb7a099975281ae1",
+        "ground_truth_sha256": "296beb24a9b15aae602249943a7f66422c0674ea19d5870c02e057654c3386cc",
+        "saved_artifact_sha256": "bbd93f07020935eb79c709e2091d1ba4e4ca0c18a95c03da06041055a2417120"
+      }
+    }
+  }
+}
