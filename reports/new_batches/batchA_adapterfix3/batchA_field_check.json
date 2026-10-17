@@ -1,0 +1,14 @@
+{
+  "batch_a_replay_executed": false,
+  "label": "producer-era replay, exploratory",
+  "missing_fields_for_existing_captured_info_path": [
+    "transaction",
+    "receipt"
+  ],
+  "missing_identity_or_trace_fields": [],
+  "reason": "The 23 valid-set records contain transaction_hash, chain, and a callTracer trace, but no per-record transaction/receipt payload. The producer-era ForensicsOrchestrator path requires those RPC-normalized inputs through TransactionInfoCollector.",
+  "record_count": 23,
+  "required_identity_and_trace_fields_present": true,
+  "rpc_transaction_and_receipt_fields_present": false,
+  "valid_set": "reports/new_batches/batchA_mining/run_20261017T115038Z_b545d3e1e0/valid_set.json"
+}
