@@ -120,3 +120,44 @@ Traceback (most recent call last):
   File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 344, in run
     raise RuntimeError("five consecutive 429/503 responses; run paused") from exc
 RuntimeError: five consecutive 429/503 responses; run paused
+      [+] Collecting transaction sequence...
+rate-limit provider=BlockPI tx=0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4 wait=30s
+      [+] Collecting transaction sequence...
+rate-limit provider=BlockPI tx=0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4 wait=60s
+      [+] Collecting transaction sequence...
+rate-limit provider=BlockPI tx=0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4 wait=120s
+      [+] Collecting transaction sequence...
+rate-limit provider=BlockPI tx=0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4 wait=240s
+      [+] Collecting transaction sequence...
+Traceback (most recent call last):
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 301, in run
+    result = ForensicsOrchestrator(model=args.model).run(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\faultseeker\forensics\orchestrator.py", line 201, in run
+    self.txn_seq = self.txn_sequencer.run(txn_hash, chain)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\faultseeker\data_collection\txn_sequencer.py", line 118, in run
+    trace_text = self.replayer.run(txn_hash, chain)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\faultseeker\data_collection\txn_replayer.py", line 356, in run
+    invocation_flow = self.transaction_replay(txn_hash, chain)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\faultseeker\data_collection\txn_replayer.py", line 280, in transaction_replay
+    result = TransactionReplayer._run_cast(txn_hash, primary_rpc)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 224, in pinned_cast
+    raise RateLimitAbort(provider, "429/503")
+RateLimitAbort: BlockPI returned 429/503
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 460, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 453, in main
+    result = run(args)
+             ^^^^^^^^^
+  File "C:\Users\91701\Downloads\FaultSeeker--main\FaultSeeker--main\scripts\reproduce\run_original_provider_pinned.py", line 358, in run
+    raise RuntimeError("five consecutive 429/503 responses; run paused") from exc
+RuntimeError: five consecutive 429/503 responses; run paused
