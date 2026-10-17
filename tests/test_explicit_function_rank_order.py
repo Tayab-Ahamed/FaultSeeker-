@@ -12,4 +12,4 @@ def test_actual_revest_ranker_exports_function_identity_and_stable_count_order(t
     assert len({(r['code_address'],r['function']) for r in ordered})==len(ordered)
     assert [r['count'] for r in ordered]==sorted([r['count'] for r in ordered],reverse=True)
     assert any(r['code_address']=='0x2320a28f52334d62622cc2eafa15de55f9987ed9' and r['function']=='0x5dcb7ab2' for r in ordered)
-    assert all(r['tie_policy']=='stable candidate encounter order' for r in ordered)
+    assert all(r['tie_policy']=='count desc; max depth desc; stable candidate encounter order' for r in ordered)

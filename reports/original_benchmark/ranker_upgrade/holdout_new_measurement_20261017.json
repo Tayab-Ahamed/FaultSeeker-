@@ -1,0 +1,33 @@
+{
+  "holdout_id_list_sha256": "5d7c4fffaa99348a2fa63ba05d9236acba29563ede6c09b957beb9adf6c3f2a7",
+  "holdout_manifest": "reports/original_benchmark/ranker_upgrade/holdout_20261017.json",
+  "interpretation": "Exploratory only: all 110 source rows were inspected earlier; this is not a clean generalization claim.",
+  "label": "new measurement",
+  "metrics": {
+    "function_only_sensitivity": {
+      "hits_at_1": 8,
+      "hits_at_3": 11,
+      "hits_at_5": 11,
+      "n": 20,
+      "recall_at_1": 0.4,
+      "recall_at_3": 0.55,
+      "recall_at_5": 0.55
+    },
+    "primary_address_function": {
+      "hits_at_1": 7,
+      "hits_at_3": 10,
+      "hits_at_5": 10,
+      "n": 20,
+      "recall_at_1": 0.35,
+      "recall_at_3": 0.5,
+      "recall_at_5": 0.5
+    }
+  },
+  "n": 20,
+  "network_calls": false,
+  "ranker_sha256": "acf6e1874aad2817ce9576a109a5acd922f2d7cb1d2b8c6e283672d926bd32f2",
+  "retuning_after_holdout": false,
+  "scope": "one-shot frozen 20-transaction holdout",
+  "seed": 20261017,
+  "synthetic": false
+}

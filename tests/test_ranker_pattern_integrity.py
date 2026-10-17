@@ -1,7 +1,7 @@
 """Distinct repeated call evidence survives ranking without caller mutation."""
 from copy import deepcopy
 from types import SimpleNamespace
-from faultseeker.function_analysis.function_ranker import FunctionRanker
+from faultseeker.function_analysis.function_ranker import FunctionRanker, rerank_saved_predictions
 A='0x'+'11'*20
 B='0x'+'22'*20
 
@@ -37,3 +37,24 @@ def test_different_occurrence_depths_and_repeat_counts_are_preserved():
 def test_existing_filtered_none_and_single_staticcall_policy_is_unchanged():
  inputs=[pattern([call('balanceof')]),pattern([call(None)]),pattern([dict(call('foo'),call_type='staticcall')])]
  assert run(inputs).repeated_patterns==[]
+
+def test_renderer_value_annotations_merge_into_one_function_candidate():
+ ranked=rerank_saved_predictions([
+  {'rank':1,'code_address':A,'function':'makeBid{value: 1}','count':1,
+   'supporting_call_depths':[[0,1]]},
+  {'rank':2,'code_address':A,'function':'makeBid{value: 2}','count':1,
+   'supporting_call_depths':[[0,2,3]]},
+ ])
+ assert len(ranked)==1
+ assert ranked[0]['function_name']=='makeBid'
+ assert ranked[0]['count']==2
+ assert ranked[0]['rank']==1
+
+def test_depth_is_deterministic_tiebreak_after_count():
+ ranked=rerank_saved_predictions([
+  {'rank':1,'code_address':A,'function':'shallow','count':2,
+   'supporting_call_depths':[[0,1]]},
+  {'rank':2,'code_address':B,'function':'deep','count':2,
+   'supporting_call_depths':[[0,1,2,3]]},
+ ])
+ assert [item['function_name'] for item in ranked]==['deep','shallow']

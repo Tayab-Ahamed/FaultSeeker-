@@ -1,6 +1,7 @@
 from copy import deepcopy
 import json
 from dataclasses import dataclass, field
+import re
 from typing import Dict, List
 
 
@@ -11,6 +12,72 @@ class RankingResult:
     functions_to_be_inspected: Dict[str, Dict] = field(default_factory=dict)
     address_list: List[str] = field(default_factory=list)
     ranked_functions: List[Dict] = field(default_factory=list)
+
+
+_CALL_ANNOTATION = re.compile(r"\s*\{[^{}]*\}\s*$")
+
+
+def canonical_call_label(value: str) -> str:
+    """Remove renderer-only call annotations while preserving ABI syntax."""
+    return _CALL_ANNOTATION.sub("", str(value or "")).strip()
+
+
+def _depth_measure(calls: list[dict]) -> int:
+    depths = [call.get("depth") for call in calls]
+    return max((len(depth) for depth in depths if isinstance(depth, (list, tuple))), default=0)
+
+
+def _prediction_depth_measure(prediction: dict) -> int:
+    return max(
+        (len(depth) for depth in prediction.get("supporting_call_depths", [])
+         if isinstance(depth, (list, tuple))),
+        default=0,
+    )
+
+
+def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
+    """Apply the production label/grouping and depth tie rules offline.
+
+    This adapter is deliberately limited to already-produced candidates. It
+    cannot create evidence absent from a saved trace and is used only for the
+    frozen offline comparison.
+    """
+    grouped = {}
+    encounter = 0
+    for prediction in predictions:
+        item = deepcopy(prediction)
+        address = str(item.get("code_address") or item.get("address") or "").lower()
+        raw_function = item.get("function_name") or item.get("function") or ""
+        function = canonical_call_label(raw_function)
+        key = (address, function)
+        if key not in grouped:
+            item["code_address"] = address
+            item["function_name"] = function
+            item["_encounter"] = encounter
+            item["_max_depth"] = _prediction_depth_measure(item)
+            item["count"] = int(item.get("count") or 0)
+            item["supporting_call_depths"] = list(item.get("supporting_call_depths") or [])
+            grouped[key] = item
+            encounter += 1
+        else:
+            current = grouped[key]
+            current["count"] += int(item.get("count") or 0)
+            for depth in list(item.get("supporting_call_depths") or []):
+                if depth not in current["supporting_call_depths"]:
+                    current["supporting_call_depths"].append(depth)
+            current["_max_depth"] = max(current["_max_depth"], _prediction_depth_measure(item))
+    ordered = sorted(
+        grouped.values(),
+        key=lambda item: (-item["count"], -item["_max_depth"], item["_encounter"]),
+    )
+    output = []
+    for rank, item in enumerate(ordered, start=1):
+        item["rank"] = rank
+        item["tie_policy"] = "count desc; max depth desc; stable candidate encounter order"
+        item.pop("_encounter", None)
+        item.pop("_max_depth", None)
+        output.append(item)
+    return output
 
 
 class FunctionRanker:
@@ -78,7 +145,7 @@ class FunctionRanker:
                     # Check if pattern contains only filtered functions
                     check = sum([1 for i in pattern['pattern']
                                if (i['function'] is None) or
-                               (i['function'].lower() in self.filtered_functions)])
+                               (canonical_call_label(i['function']).lower() in self.filtered_functions)])
 
                     if check == 0:
                         # Deduplicate only identical evidence records. Different
@@ -91,10 +158,11 @@ class FunctionRanker:
 
         # Process calls with created contracts in params
         for call in forensics_result.address_calls_with_created_contract:
-            if call['function'].lower() in self.extended_filtered_functions:
+            function_label = canonical_call_label(call['function'])
+            if function_label.lower() in self.extended_filtered_functions:
                 continue
 
-            key = call['function']
+            key = function_label
             if key not in address_calls_with_created_contract_in_params:
                 address_calls_with_created_contract_in_params[key] = {
                     'count': 0,
@@ -122,10 +190,11 @@ class FunctionRanker:
         for _, value in forensics_result.functions_to_be_inspected.items():
             if value:
                 for call in value:
-                    if call['function'].lower() in self.extended_filtered_functions:
+                    function_label = canonical_call_label(call['function'])
+                    if function_label.lower() in self.extended_filtered_functions:
                         continue
 
-                    key = call['function'] + '_' + call['address']
+                    key = function_label + '_' + call['address']
                     if key not in functions_to_be_inspected:
                         functions_to_be_inspected[key] = {
                             'count': 0,
@@ -148,7 +217,8 @@ class FunctionRanker:
         # Fallback: if no functions found, use function_call_loc_memo
         if len(functions_to_be_inspected) == 0:
             for function_call in tx_analysis['function_call_loc_memo']:
-                function_call_key = function_call.replace('::', '_')
+                raw_function, address = function_call.rsplit('::', 1)
+                function_call_key = canonical_call_label(raw_function) + '_' + address
                 function_call_value = {
                     'count': len(tx_analysis['function_call_loc_memo'][function_call]),
                     'calls': [
@@ -165,8 +235,7 @@ class FunctionRanker:
         # Sort functions by count (descending)
         functions_to_be_inspected = sorted(
             functions_to_be_inspected.items(),
-            key=lambda x: x[1]['count'],
-            reverse=True
+            key=lambda x: (-x[1]['count'], -_depth_measure(x[1]['calls'])),
         )
         functions_to_be_inspected = {
             k: {'count': v['count'], 'calls': v['calls']}
@@ -185,7 +254,7 @@ class FunctionRanker:
                 'selector': function.lower() if (function.startswith('0x') and len(function) == 10) else None,
                 'count': candidate['count'],
                 'supporting_call_depths': [call['depth'] for call in candidate['calls']],
-                'tie_policy': 'stable candidate encounter order',
+                'tie_policy': 'count desc; max depth desc; stable candidate encounter order',
             })
 
         return RankingResult(
