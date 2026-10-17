@@ -77,3 +77,25 @@ trace acquisition returned authentication/no-trace/missing-trie failures and
 bounded timeouts. This is a new measurement on the original benchmark, not a
 reproduction of the paper's Table II values. No API-backed model measurement
 was dispatched; see the separate `api_run_status.json` blocker record.
+
+## New measurement versus the paper's original localization headline
+
+The following is a **new measurement, same benchmark, our pipeline**. It is not
+a paper edit, a reproduction of the paper's original model, or evidence that
+the paper's headline values are correct. The run used the imported 115-file
+benchmark, the deterministic LLM-free FunctionRanker/orchestrator, and pinned
+BlockPI endpoints for the resumed ETH and BSC cases. A labelled second pass
+retried only primary-pass failures at `--compute-units-per-second 2`.
+
+| Metric | Original reported value | New measurement, same benchmark, our pipeline — all 115 denominator | New measurement, valid-trace subset (n=110) |
+|---|---:|---:|---:|
+| Recall@1 | 50.43% | 0.00% | 0.00% |
+| Recall@3 | 73.91% | 0.00% | 0.00% |
+| Recall@5 | 76.52% | 0.00% | 0.00% |
+
+The final run retained all 115 cases: 110 completed results, 5 bounded
+timeouts, and 14 replay-mismatch warnings. Replay mismatches are valid trace
+results, not failures. The primary pass had 95 completed results and 20
+failures; its retry pass recovered 15 of those failures. Per-transaction raw
+rows, the final manifest, and the diagnosis table are retained under
+`reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/`.

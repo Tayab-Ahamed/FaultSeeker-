@@ -1,0 +1,62 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "compute_units_per_second": 2,
+      "status": "retry_pass"
+    }
+  ],
+  "case_id": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83",
+  "cast": {
+    "compute_units_per_second": 2,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "09eEEe7, param2: 11407 [1.14e4])\n    \u2502   \u251c\u2500 emit Transfer(param0: 0x0000000000000000000000000000000000000000, param1: 0x4E8D918118e00F049712BB8DA2B42088909eEEe7, param2: 11408 [1.14e4])\n    \u2502   \u251c\u2500 emit Transfer(param0: 0x0000000000000000000000000000000000000000, param1: 0x4E8D918118e00F049712BB8DA2B42088909eEEe7, param2: 11409 [1.14e4])\n    \u2502   \u251c\u2500 emit Transfer(param0: 0x0000000000000000000000000000000000000000, param1: 0x4E8D918118e00F049712BB8DA2B42088909eEEe7, param2: 11410 [1.141e4])\n    \u2502   \u251c\u2500 emit Transfer(param0: 0x0000000000000000000000000000000000000000, param1: 0x4E8D918118e00F049712BB8DA2B42088909eEEe7, param2: 11411 [1.141e4])\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 emit batchWhitelistMint(param0: 448458360408202589784928675999057448885441982183 [4.484e47], param1: 0x0000000000000000000000000000000000000045)\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 11557454\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83.json",
+  "latency_seconds": 89.193478,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x9b8b9c7c02be0bd0aa4d669bf6a1f6003424c6dc",
+      "count": 1,
+      "function": "mintCards",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "retry_pass": true,
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83",
+  "variant": "llm-free"
+}

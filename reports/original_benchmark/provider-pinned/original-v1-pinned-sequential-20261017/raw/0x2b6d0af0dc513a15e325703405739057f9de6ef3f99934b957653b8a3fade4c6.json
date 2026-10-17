@@ -1,0 +1,83 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 51230922249526167342751 [5.123e22]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0x4Bc691601B50B3e107B89d5EA172B40a9dbC6251, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 500000000000000000 [5e17], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [1315] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::balanceOf(0x4Bc691601B50B3e107B89d5EA172B40a9dbC6251) [staticcall]\n    \u2502   \u251c\u2500 [529] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::balanceOf(0x4Bc691601B50B3e107B89d5EA172B40a9dbC6251) [delegatecall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 1597512305 [1.597e9]\n    \u2502   \u2514\u2500 \u2190 [Return] 1597512305 [1.597e9]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x4Bc691601B50B3e107B89d5EA172B40a9dbC6251) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 654886372151164260 [6.548e17]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 5474235\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6.json",
+  "latency_seconds": 54.330755,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x44d1c6b94b282c678c95b7f4b18de5a53ea4fa9f",
+      "count": 1,
+      "function": "deposit",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          6,
+          0,
+          1,
+          9,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x44d1c6b94b282c678c95b7f4b18de5a53ea4fa9f",
+      "count": 1,
+      "function": "emergencyWithdraw",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          6,
+          0,
+          1,
+          14,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6",
+  "variant": "llm-free"
+}

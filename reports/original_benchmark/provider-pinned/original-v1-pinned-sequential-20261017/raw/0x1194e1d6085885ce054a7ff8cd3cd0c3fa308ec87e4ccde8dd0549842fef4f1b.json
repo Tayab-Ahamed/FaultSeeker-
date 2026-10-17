@@ -1,0 +1,72 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "transfer(0x27b27842771DF79AF6A69795f6fCA0948C8333c0, 27349000000000000000 [2.734e19])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x452E253EeB3Bb16e40337D647c01b6c910Aa84B3, to: 0x27b27842771DF79AF6A69795f6fCA0948C8333c0, amount: 27349000000000000000 [2.734e19])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2514\u2500 \u2190 [Return]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x27b27842771DF79AF6A69795f6fCA0948C8333c0) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 27349000000000000000 [2.734e19]\n    \u251c\u2500 [25162] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::transfer(0xabee16E74DD268105f166C27a847eDC2b8e7cc4e, 27349000000000000000 [2.734e19])\n    \u2502   \u251c\u2500 emit Transfer(from: 0x27b27842771DF79AF6A69795f6fCA0948C8333c0, to: 0xabee16E74DD268105f166C27a847eDC2b8e7cc4e, amount: 27349000000000000000 [2.734e19])\n    \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 114880\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b.json",
+  "latency_seconds": 8.009496,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x27b27842771df79af6a69795f6fca0948c8333c0",
+      "count": 1,
+      "function": "978f3f36",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x452e253eeb3bb16e40337d647c01b6c910aa84b3",
+      "count": 1,
+      "function": "uniswapV3SwapCallback",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b",
+  "variant": "llm-free"
+}

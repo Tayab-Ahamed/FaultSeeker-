@@ -1,0 +1,74 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "F0FA6e92a81066b3fbFEe2) [delegatecall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 6596359286 [6.596e9]\n    \u2502   \u2514\u2500 \u2190 [Return] 6596359286 [6.596e9]\n    \u251c\u2500 [11617] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::transfer(0x7d9bC45a9ABDA926A7Ce63f78759dBFA9Ed72e26, 6596359286 [6.596e9])\n    \u2502   \u251c\u2500 [10828] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::transfer(0x7d9bC45a9ABDA926A7Ce63f78759dBFA9Ed72e26, 6596359286 [6.596e9]) [delegatecall]\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0xE897C0f9443785F8D4F0FA6e92a81066b3fbFEe2, to: 0x7d9bC45a9ABDA926A7Ce63f78759dBFA9Ed72e26, amount: 6596359286 [6.596e9])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2514\u2500 \u2190 [Return] true\n    \u251c\u2500 [5396] 0xA8c6E7352b13815f6bFA87c7FFaaA6e3a7BfA849::killMe()\n    \u2502   \u2514\u2500 \u2190 [SelfDestruct]\n    \u251c\u2500 [5466] 0xE897C0f9443785F8D4F0FA6e92a81066b3fbFEe2::killMe()\n    \u2502   \u2514\u2500 \u2190 [SelfDestruct]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 831620\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e.json",
+  "latency_seconds": 15.606901,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xa8c6e7352b13815f6bfa87c7ffaaa6e3a7bfa849",
+      "count": 4,
+      "function": "42c59677",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

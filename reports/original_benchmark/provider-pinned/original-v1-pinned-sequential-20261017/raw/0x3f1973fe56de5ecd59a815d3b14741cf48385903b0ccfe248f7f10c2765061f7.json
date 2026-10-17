@@ -1,0 +1,77 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": " Sync(: 1814309180744788417728 [1.814e21], : 149905218206233750424275776 [1.499e26])\n    \u2502   \u2502   \u251c\u2500 emit Swap(param0: 0x10ED43C718714eb63d5aA57B78B54704E256024E, param1: 0, param2: 146965900202189951396348800 [1.469e26], param3: 90488670389646322334139 [9.048e22], param4: 0, param5: 0x9bf2c7C21f3C488A1855Dcd49158841C23e5c35b)\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0x9bf2c7C21f3C488A1855Dcd49158841C23e5c35b) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 90488670389646322334139 [9.048e22]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return] 2654 bytes of code\n\n\nTransaction successfully executed.\nGas used: 896752\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 913452 gas on-chain but 896752 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 913452 gas on-chain but 896752 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 1,
+    "eth": 0
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7.json",
+  "latency_seconds": 15.122753,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x9a1aef8c9ada4224ad774afdac07c24955c92a54",
+      "count": 1,
+      "function": "mint",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6a8c4448763c08adeb80adebf7a29b9477fa0628",
+      "count": 1,
+      "function": "swap",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 2,
+    "eth": 0
+  },
+  "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

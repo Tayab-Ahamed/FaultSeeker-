@@ -1,0 +1,58 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "Traces:\n  [26697] 0x4308D314096878D3bf16C9d8DB86101F70BBebF1::simpleToken()\n    \u251c\u2500 emit Transfer(from: 0x0000000000000000000000000000000000000000, to: 0x835B45D38cbDccf99E609436FF38E31Ac05bc502, amount: 120000000000000000000000000 [1.2e26])\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 47761\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI"
+  },
+  "cast_process_delta": {
+    "bsc": 1,
+    "eth": 0
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a.json",
+  "latency_seconds": 9.549991,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x4308d314096878d3bf16c9d8db86101f70bbebf1",
+      "count": 1,
+      "function": "simpleToken",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 2,
+    "eth": 0
+  },
+  "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a",
+  "variant": "llm-free"
+}

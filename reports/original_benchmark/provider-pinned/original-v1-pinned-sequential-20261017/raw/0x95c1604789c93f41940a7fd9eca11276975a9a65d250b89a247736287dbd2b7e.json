@@ -1,0 +1,195 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": ", param3: -271213146291349328788 [-2.712e20], param4: 261364418472192455454749034908 [2.613e29], param5: 888676406687942698645921 [8.886e23], param6: 23872 [2.387e4])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x0000000000000000000000000000000000000000000000015d5197188a08c933fffffffffffffffffffffffffffffffffffffffffffffff14c29586598126c6c\n    \u2502   \u2514\u2500 \u2190 [Return] 0x00000000000000000000000000000000000000000000000eb3d6a79a67ed9394\n    \u251c\u2500 [602] 0x6B175474E89094C44Da98b954EedeAC495271d0F::balanceOf(0xbED4fbF7C3e36727cCDAB4C6706c3C0e17b10397)\n    \u2502   \u2514\u2500 \u2190 [Return] 281213146291349328788 [2.812e20]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 2180635\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 2163064 gas on-chain but 2180635 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 2163064 gas on-chain but 2180635 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e.json",
+  "latency_seconds": 16.817008,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+      "count": 20,
+      "function": "flash",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          18
+        ],
+        [
+          0,
+          21
+        ],
+        [
+          0,
+          24
+        ],
+        [
+          0,
+          27
+        ],
+        [
+          0,
+          30
+        ],
+        [
+          0,
+          33
+        ],
+        [
+          0,
+          36
+        ],
+        [
+          0,
+          39
+        ],
+        [
+          0,
+          42
+        ],
+        [
+          0,
+          45
+        ],
+        [
+          0,
+          48
+        ],
+        [
+          0,
+          51
+        ],
+        [
+          0,
+          54
+        ],
+        [
+          0,
+          57
+        ],
+        [
+          0,
+          60
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 1,
+      "function": "uniswapV3SwapCallback",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          66,
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbed4fbf7c3e36727ccdab4c6706c3c0e17b10397",
+      "count": 1,
+      "function": "717108b6",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+      "count": 1,
+      "function": "debond",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          62
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 1,
+      "function": "exactInputSingle",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          66
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

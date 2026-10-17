@@ -1,0 +1,1140 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "000000000000000000000000000000c46601fe8f508bce\n    \u2502   \u251c\u2500 [562] 0x4d224452801ACEd8B2F0aebE155379bb5D594381::balanceOf(0x7797A99a2e91646aBdc9DC30e838A149CCB3013B) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 60564000000000000000000 [6.056e22]\n    \u2502   \u251c\u2500 [25153] 0x4d224452801ACEd8B2F0aebE155379bb5D594381::transfer(0x6703741e913a30D6604481472b6d81F3da45e6E8, 60564000000000000000000 [6.056e22])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x7797A99a2e91646aBdc9DC30e838A149CCB3013B, to: 0x6703741e913a30D6604481472b6d81F3da45e6E8, amount: 60564000000000000000000 [6.056e22])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u251c\u2500 [562] 0x4d224452801ACEd8B2F0aebE155379bb5D594381::balanceOf(0x6703741e913a30D6604481472b6d81F3da45e6E8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 60564000000000000000000 [6.056e22]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return] 1248 bytes of code\n\n\nTransaction successfully executed.\nGas used: 3483846\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098.json",
+  "latency_seconds": 59.101734,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 38,
+      "function": "childImplementation",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          5,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          10,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          8,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          5,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          10,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          3,
+          2,
+          2,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 6,
+      "function": "feeDistributor",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          3,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          15,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          10,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+      "count": 6,
+      "function": "onERC721Received",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          4,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          6,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          8,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          10,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          12,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 4,
+      "function": "vault",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          10,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          10,
+          0,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 3,
+      "function": "isLocked",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 2,
+      "function": "vaultFees",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          13,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+      "count": 2,
+      "function": "excludedFromFees",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          14,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0ef372b6a2f8bb030760261b858b6c50e92d1680",
+      "count": 2,
+      "function": "distribute",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf7a232044c586d658f826e1932c37cad770b0687",
+      "count": 2,
+      "function": "receiveRewards",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          5,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc90b47731f9cd4db0df36c1e59fdca1fe9806475",
+      "count": 2,
+      "function": "distributeRewards",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          5,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          5,
+          0,
+          3,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x72012ada1d0a9e9cba22b3f13f3bc52b57ed6b66",
+      "count": 2,
+      "function": "receiveRewards",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          10,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x72012ada1d0a9e9cba22b3f13f3bc52b57ed6b66",
+      "count": 2,
+      "function": "childImplementation",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1,
+          4,
+          0,
+          10,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1,
+          16,
+          0,
+          10,
+          0,
+          2,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+      "count": 1,
+      "function": "flashLoan",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+      "count": 1,
+      "function": "redeem",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+      "count": 1,
+      "function": "mint",
+      "rank": 15,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0,
+          1,
+          1,
+          5,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd829de54877e0b66a2c3890b702fa5df2245203e",
+      "count": 1,
+      "function": "swap",
+      "rank": 16,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          3,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

@@ -1,0 +1,75 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "77A4DE8f::expiry() [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x0000000000000000000000000000000000000000000000000000000000000539\n    \u2502   \u251c\u2500 [151] 0xa29E4fe451CCFa5e7DEF35188919ad7077A4DE8f::burn(0xa29E4fe451CCFa5e7DEF35188919ad7077A4DE8f, 30437077948152 [3.043e13])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [364] 0xa29E4fe451CCFa5e7DEF35188919ad7077A4DE8f::underlying() [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x00000000000000000000000064aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5\n    \u2502   \u251c\u2500 [27996] 0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5::transfer(0xa29E4fe451CCFa5e7DEF35188919ad7077A4DE8f, 30437077948152 [3.043e13])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x007FE7c498A2Cf30971ad8f2cbC36bd14Ac51156, to: 0xa29E4fe451CCFa5e7DEF35188919ad7077A4DE8f, amount: 30437077948152 [3.043e13])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 64853\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf.json",
+  "latency_seconds": 8.386954,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xa29e4fe451ccfa5e7def35188919ad7077a4de8f",
+      "count": 1,
+      "function": "9c587698",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x007fe7c498a2cf30971ad8f2cbc36bd14ac51156",
+      "count": 1,
+      "function": "redeem",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

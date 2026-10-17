@@ -1,0 +1,328 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "000000000 [1.86e19])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u251c\u2500 [3262] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::transfer(0xBA12222222228d8Ba445958a75a0704d566BF2C8, 18600000000000000000 [1.86e19])\n    \u2502   \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x2ffdCe5F0C09A8EE3a568BC01F35894b2d77A6D6, to: 0xBA12222222228d8Ba445958a75a0704d566BF2C8, amount: 18600000000000000000 [1.86e19])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 56422893166741160421542 [5.642e22]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0x2ffdCe5F0C09A8EE3a568BC01F35894b2d77A6D6, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 18600000000000000000 [1.86e19], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 1128042\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db.json",
+  "latency_seconds": 24.832778,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xd357e4940b34eb1406ef6a1af53954e641273a3b",
+      "count": 2,
+      "function": "distroy",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          2,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xae2c7af5fc2ddf45e6250a4c5495e61afc7acf50",
+      "count": 2,
+      "function": "calDeductionADC",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          1,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 1,
+      "function": "deposit{value: 18600000000000000000}",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2ffdce5f0c09a8ee3a568bc01f35894b2d77a6d6",
+      "count": 1,
+      "function": "receive{value: 36099999999999999900}",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x72052f124841a8158d3d5b6d3d54c9fe0e25e929",
+      "count": 1,
+      "function": "receive{value: 36099999999999999900}",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+      "count": 1,
+      "function": "withdraw",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x72052f124841a8158d3d5b6d3d54c9fe0e25e929",
+      "count": 1,
+      "function": "startWithdraw",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+      "count": 1,
+      "function": "calcStepIncome",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+      "count": 1,
+      "function": "joinGame{value: 15000000000000000000}",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1d13502cfb73fca360d1af7703cd3f47aba809b5",
+      "count": 1,
+      "function": "receive{value: 3600000000000000000}",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xae2c7af5fc2ddf45e6250a4c5495e61afc7acf50",
+      "count": 1,
+      "function": "buyADC{value: 3600000000000000000}",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2ffdce5f0c09a8ee3a568bc01f35894b2d77a6d6",
+      "count": 1,
+      "function": "receive{value: 18600000000000000000}",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 1,
+      "function": "withdraw",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2ffdce5f0c09a8ee3a568bc01f35894b2d77a6d6",
+      "count": 1,
+      "function": "receiveFlashLoan",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+      "count": 1,
+      "function": "flashLoan",
+      "rank": 15,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2ffdce5f0c09a8ee3a568bc01f35894b2d77a6d6",
+      "count": 1,
+      "function": "execute",
+      "rank": 16,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

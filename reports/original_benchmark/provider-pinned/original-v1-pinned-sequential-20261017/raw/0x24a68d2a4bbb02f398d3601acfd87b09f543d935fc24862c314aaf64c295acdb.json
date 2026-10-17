@@ -1,0 +1,69 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "0000000000 [5.2e19])\n    \u2502   \u2502   \u251c\u2500 [222] 0x5090906Fe938Ce8F0746eC46D482658bEBcb82D1::receive{value: 52000000000000000000}()\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u251c\u2500 emit Withdrawal(param0: 0x5090906Fe938Ce8F0746eC46D482658bEBcb82D1, param1: 52000000000000000000 [5.2e19])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [0] 0x731049AC78C13e1Bf8e10F993Ce7f1bA45AE9a44::receive{value: 52000000000000000000}()\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [SelfDestruct]\n    \u251c\u2500 [0] 0xE2512f5a3714F473AB2bc3D95E3459FDe7Cc4B28::receive{value: 52000000000000000000}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return] 0 bytes of code\n\n\nTransaction successfully executed.\nGas used: 838528\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 1012928 gas on-chain but 838528 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI"
+  },
+  "cast_process_delta": {
+    "bsc": 1,
+    "eth": 0
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb.json",
+  "latency_seconds": 20.799013,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xc54aaecf5fa1b6c007d019a9d14dfb4a77cc3039",
+      "count": 2,
+      "function": "deliver",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 0
+  },
+  "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x24a68d2a4bbb02f398d3601acfd87b09f543d935fc24862c314aaf64c295acdb",
+  "variant": "llm-free"
+}

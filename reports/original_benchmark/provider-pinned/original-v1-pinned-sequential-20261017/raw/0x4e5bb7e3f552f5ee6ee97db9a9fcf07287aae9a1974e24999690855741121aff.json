@@ -1,0 +1,394 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "compute_units_per_second": 2,
+      "status": "retry_pass"
+    }
+  ],
+  "case_id": "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff",
+  "cast": {
+    "compute_units_per_second": 2,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "580d::balanceOf(0x92b7807bF19b7DDdf89b706143896d05228f3121) [staticcall]\n    \u2502   \u2502   \u251c\u2500 [553] 0xBA5Fe23f8a3a24BEd3236F05F2FcF35fd0BF0B5C::balanceOf(0x92b7807bF19b7DDdf89b706143896d05228f3121) [delegatecall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 4583852424446402108678012 [4.583e24]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 4583852424446402108678012 [4.583e24]\n    \u2502   \u251c\u2500 emit Flash(param0: 0x851288dcFb39330291015C82A5a93721CC92507A, param1: 0x851288dcFb39330291015C82A5a93721CC92507A, param2: 0, param3: 1000000000000000000000 [1e21], param4: 0, param5: 100000000000000000 [1e17])\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 3989680\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 3981292 gas on-chain but 3989680 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 3981292 gas on-chain but 3989680 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 1,
+    "eth": 0
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff.json",
+  "latency_seconds": 31.169283,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x1962b3356122d6a56f978e112d14f5e23a25037d",
+      "count": 22,
+      "function": "join",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          3,
+          3
+        ],
+        [
+          0,
+          2,
+          3,
+          6
+        ],
+        [
+          0,
+          2,
+          3,
+          9
+        ],
+        [
+          0,
+          2,
+          3,
+          12
+        ],
+        [
+          0,
+          2,
+          3,
+          15
+        ],
+        [
+          0,
+          2,
+          3,
+          18
+        ],
+        [
+          0,
+          2,
+          3,
+          21
+        ],
+        [
+          0,
+          2,
+          3,
+          24
+        ],
+        [
+          0,
+          2,
+          3,
+          27
+        ],
+        [
+          0,
+          2,
+          3,
+          30
+        ],
+        [
+          0,
+          2,
+          3,
+          33
+        ],
+        [
+          0,
+          2,
+          3,
+          36
+        ],
+        [
+          0,
+          2,
+          3,
+          40
+        ],
+        [
+          0,
+          2,
+          3,
+          44
+        ],
+        [
+          0,
+          2,
+          3,
+          48
+        ],
+        [
+          0,
+          2,
+          3,
+          52
+        ],
+        [
+          0,
+          2,
+          3,
+          56
+        ],
+        [
+          0,
+          2,
+          3,
+          60
+        ],
+        [
+          0,
+          2,
+          3,
+          64
+        ],
+        [
+          0,
+          2,
+          3,
+          68
+        ],
+        [
+          0,
+          2,
+          3,
+          72
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1962b3356122d6a56f978e112d14f5e23a25037d",
+      "count": 22,
+      "function": "exitProgram",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          3,
+          2
+        ],
+        [
+          0,
+          2,
+          3,
+          5
+        ],
+        [
+          0,
+          2,
+          3,
+          8
+        ],
+        [
+          0,
+          2,
+          3,
+          11
+        ],
+        [
+          0,
+          2,
+          3,
+          14
+        ],
+        [
+          0,
+          2,
+          3,
+          17
+        ],
+        [
+          0,
+          2,
+          3,
+          20
+        ],
+        [
+          0,
+          2,
+          3,
+          23
+        ],
+        [
+          0,
+          2,
+          3,
+          26
+        ],
+        [
+          0,
+          2,
+          3,
+          29
+        ],
+        [
+          0,
+          2,
+          3,
+          32
+        ],
+        [
+          0,
+          2,
+          3,
+          35
+        ],
+        [
+          0,
+          2,
+          3,
+          39
+        ],
+        [
+          0,
+          2,
+          3,
+          43
+        ],
+        [
+          0,
+          2,
+          3,
+          47
+        ],
+        [
+          0,
+          2,
+          3,
+          51
+        ],
+        [
+          0,
+          2,
+          3,
+          55
+        ],
+        [
+          0,
+          2,
+          3,
+          59
+        ],
+        [
+          0,
+          2,
+          3,
+          63
+        ],
+        [
+          0,
+          2,
+          3,
+          67
+        ],
+        [
+          0,
+          2,
+          3,
+          71
+        ],
+        [
+          0,
+          2,
+          3,
+          75
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1962b3356122d6a56f978e112d14f5e23a25037d",
+      "count": 1,
+      "function": "buy",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          3,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x92b7807bf19b7dddf89b706143896d05228f3121",
+      "count": 1,
+      "function": "flash",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd99c7f6c65857ac913a8f880a4cb84032ab2fc5b",
+      "count": 1,
+      "function": "swap",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          3,
+          79,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae",
+      "count": 1,
+      "function": "swap",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          3,
+          83,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 2,
+    "eth": 0
+  },
+  "retry_pass": true,
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x4e5bb7e3f552f5ee6ee97db9a9fcf07287aae9a1974e24999690855741121aff",
+  "variant": "llm-free"
+}

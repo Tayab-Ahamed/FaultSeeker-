@@ -1,0 +1,1087 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "compute_units_per_second": 2,
+      "status": "retry_pass"
+    }
+  ],
+  "case_id": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1",
+  "cast": {
+    "compute_units_per_second": 2,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 0x0000000000000000000000000000000000000000, param3: 872112621070585723329131097776519862922772527250 [8.721e47], param4: 18000000000000000000 [1.8e19], param5: 0, param6: 9000000000000000 [9e15])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Return]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x98C2e1E85F8bF737D9c1450dd26D4A4bf880B892) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 9320314393658547376 [9.32e18]\n    \u251c\u2500 [25162] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::transfer(0x0195448a9c4ADEaF27002C6051C949f3C3234bb5, 9320314393658547376 [9.32e18])\n    \u2502   \u251c\u2500 emit Transfer(from: 0x98C2e1E85F8bF737D9c1450dd26D4A4bf880B892, to: 0x0195448a9c4ADEaF27002C6051C949f3C3234bb5, amount: 9320314393658547376 [9.32e18])\n    \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 6253092\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1.json",
+  "latency_seconds": 74.457077,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xe7d9a93541fa79d6ecf3dc5997632177146dcb84",
+      "count": 56,
+      "function": "contractList",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          5
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          9
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          14
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          15
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          19
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          20
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          24
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          25
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          29
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          30
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          34
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          35
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          39
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          40
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          44
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          45
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          49
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          50
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          54
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          55
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          59
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          60
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          64
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          65
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          69
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          70
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          74
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          75
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          79
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          80
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          84
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          85
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          89
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          90
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          94
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          95
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          99
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          100
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          104
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          105
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          109
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          110
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          114
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          115
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          119
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          120
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          124
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          125
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          129
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          130
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          134
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          135
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          139
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          140
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          142
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xae851769593ac6048d36bc123700649827659a82",
+      "count": 2,
+      "function": "swap",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          149
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x457cad33261e3b159d27ffcc2ca661702ef5e1ae",
+      "count": 1,
+      "function": "unstake",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          11
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xa8c828e3358f5107828cdef6353ecdc417baef18",
+      "count": 1,
+      "function": "unstake",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          16
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0e655cd0a99a5d56c5d7aadb22dc3f9111edd92d",
+      "count": 1,
+      "function": "unstake",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          21
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x29def65e0e5115336931f781345860e1b8639d7d",
+      "count": 1,
+      "function": "unstake",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          26
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7917e7b49d62d74e92b9beb5a780150aac3f30b1",
+      "count": 1,
+      "function": "unstake",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          31
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7bf89e5ba13d8933ca6257402e56e20e6b887c32",
+      "count": 1,
+      "function": "unstake",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          36
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x10b32928abf1b10f565937e590c1b8c14e06c3f5",
+      "count": 1,
+      "function": "unstake",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          41
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfa3905c63a13cefb983edd6413281af58eeed1c9",
+      "count": 1,
+      "function": "unstake",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          46
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xad1566378f3271e1adb3dda13691ca5457c1d6c9",
+      "count": 1,
+      "function": "unstake",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          51
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x69ee17ac154c9d34d45d9f17d91797b1b08558f2",
+      "count": 1,
+      "function": "unstake",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          56
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbc94de954ff3fbe08e472b5c8b7c50988778d9bf",
+      "count": 1,
+      "function": "unstake",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          61
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbbfc930fe0b13fc31ebd8c7c83ff0d3f4610cf3f",
+      "count": 1,
+      "function": "unstake",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          66
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8b1b002127b23af04a86639b5132e9b5f4ef6b61",
+      "count": 1,
+      "function": "unstake",
+      "rank": 15,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          71
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x895124a10518f02daa8b06deba9d23cabec234af",
+      "count": 1,
+      "function": "unstake",
+      "rank": 16,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          76
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xa68cc78f183384d2c016505b16efb32a48c6efe4",
+      "count": 1,
+      "function": "unstake",
+      "rank": 17,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          81
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xec7438dffde09cf681e1dc5711ae193e29ba63b0",
+      "count": 1,
+      "function": "unstake",
+      "rank": 18,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          86
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x01ae79ded1a2c110758799194e813f7fd805f08d",
+      "count": 1,
+      "function": "unstake",
+      "rank": 19,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          91
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x198e09c90a5380d119095b3bfa053df78c36db21",
+      "count": 1,
+      "function": "unstake",
+      "rank": 20,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          96
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb4d3145fab724ca84a0ecff3784d97646b7490f9",
+      "count": 1,
+      "function": "unstake",
+      "rank": 21,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          101
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1e6a95fce7e92536c91c8e3d9fa75c90a5d5a6ea",
+      "count": 1,
+      "function": "unstake",
+      "rank": 22,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          106
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x96359d24847fea8a3a80897cee0cdab45d11d2ac",
+      "count": 1,
+      "function": "unstake",
+      "rank": 23,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          111
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x26f1762274b2702eb346b67dc5a52e329bb7597e",
+      "count": 1,
+      "function": "unstake",
+      "rank": 24,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          116
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x36a7caa67695508af05e9eccf90264d2bf24d96a",
+      "count": 1,
+      "function": "unstake",
+      "rank": 25,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          121
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x21ac3d0783000d80a2f4f582f4a77b9b0e23076a",
+      "count": 1,
+      "function": "unstake",
+      "rank": 26,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          126
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd4919b3ec880f4bd077251abd83072a4317571f8",
+      "count": 1,
+      "function": "unstake",
+      "rank": 27,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          131
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8632b0d18fb584966f4a226595d2b27b119f6c2d",
+      "count": 1,
+      "function": "unstake",
+      "rank": 28,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          136
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb36a9ea10f2b07228897153766265d46dcf42b77",
+      "count": 1,
+      "function": "unstake",
+      "rank": 29,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          141
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x997b505c5f0bf9c65795b3b5e3fc5749908c8f8a",
+      "count": 1,
+      "function": "unstake",
+      "rank": 30,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          143
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0a62276bfbf1ad8443f37da8630d407408085c8b",
+      "count": 1,
+      "function": "a1fe0e8d",
+      "rank": 31,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+      "count": 1,
+      "function": "handleRepayment",
+      "rank": 32,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+      "count": 1,
+      "function": "handleRepayment",
+      "rank": 33,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "retry_pass": true,
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1",
+  "variant": "llm-free"
+}

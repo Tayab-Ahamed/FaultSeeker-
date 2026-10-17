@@ -1,0 +1,61 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "b223FE8D0A0e5C4F27eAD9083C756Cc2::transfer(0xFcE19F8f823759b5867ef9a5055A376f20c5E454, 108744009594558929771 [1.087e20])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x47c4b3144de2C87a458D510C0c0911d1903d1686, to: 0xFcE19F8f823759b5867ef9a5055A376f20c5E454, amount: 108744009594558929771 [1.087e20])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xFcE19F8f823759b5867ef9a5055A376f20c5E454) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 108751505495197067327 [1.087e20]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xFcE19F8f823759b5867ef9a5055A376f20c5E454) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 108751505495197067327 [1.087e20]\n    \u251c\u2500 [0] 0x0899529af5A64125d000bc36f503De012463f094::receive{value: 8943354253693861759}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 1272734\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc.json",
+  "latency_seconds": 30.186698,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x92ee0df7f6b0674cabc9bfc64873786fa7be82d0",
+      "count": 1,
+      "function": "swap",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          5,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 0
+  },
+  "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc",
+  "variant": "llm-free"
+}

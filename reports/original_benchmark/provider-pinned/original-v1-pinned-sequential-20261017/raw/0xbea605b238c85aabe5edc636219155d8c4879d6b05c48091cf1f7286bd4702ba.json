@@ -1,0 +1,75 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "Traces:\n  [12456] 0x303554d4D8Bd01f18C6fA4A8df3FF57A96071a41::925d400c(0000000000000000000000000000000000000000000000000000000000000001)\n    \u251c\u2500 [5139] 0x312DC37075646c7e0DBA21DF5BdFe69E76475fdc::925d400c(0000000000000000000000000000000000000000000000000000000000000001) [delegatecall]\n    \u2502   \u2514\u2500 \u2190 [OutOfGas] EvmError: OutOfGas\n    \u2514\u2500 \u2190 [Revert] EvmError: Revert\n\n\nGas used: 33660\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nError: Transaction failed.\nWarning: the replay does not match the transaction's receipt: it succeeded on-chain but reverted in the replay, and it used 30576 gas on-chain but 33660 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nError: Transaction failed.\nWarning: the replay does not match the transaction's receipt: it succeeded on-chain but reverted in the replay, and it used 30576 gas on-chain but 33660 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 1,
+    "eth": 0
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba.json",
+  "latency_seconds": 8.026718,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x303554d4d8bd01f18c6fa4a8df3ff57a96071a41",
+      "count": 1,
+      "function": "925d400c",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+      "count": 1,
+      "function": "925d400c",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 2,
+    "eth": 0
+  },
+  "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

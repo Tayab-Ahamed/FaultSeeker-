@@ -1,0 +1,152 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "\n    \u2502   \u2502   \u251c\u2500 [9180] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::withdraw(4372869914943298279 [4.372e18])\n    \u2502   \u2502   \u2502   \u251c\u2500 [40] 0xfadDF57D079B01E53d1FE3476cc83e9Bcc705854::receive{value: 4372869914943298279}()\n    \u2502   \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2502   \u251c\u2500 emit Withdrawal(param0: 0xfadDF57D079B01E53d1FE3476cc83e9Bcc705854, param1: 4372869914943298279 [4.372e18])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2514\u2500 \u2190 [SelfDestruct]\n    \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 34771491129323396567859 [3.477e22]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0xfadDF57D079B01E53d1FE3476cc83e9Bcc705854, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 100000000000000000000 [1e20], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 594352\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6.json",
+  "latency_seconds": 15.018118,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x09a80172ed7335660327cd664876b5df6fe06108",
+      "count": 7,
+      "function": "purchase{value: 100000000000000000000}",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          6
+        ],
+        [
+          0,
+          0,
+          3,
+          10
+        ],
+        [
+          0,
+          0,
+          3,
+          14
+        ],
+        [
+          0,
+          0,
+          3,
+          18
+        ],
+        [
+          0,
+          0,
+          3,
+          22
+        ],
+        [
+          0,
+          0,
+          3,
+          26
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x09a80172ed7335660327cd664876b5df6fe06108",
+      "count": 7,
+      "function": "buyBack",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4
+        ],
+        [
+          0,
+          0,
+          3,
+          8
+        ],
+        [
+          0,
+          0,
+          3,
+          12
+        ],
+        [
+          0,
+          0,
+          3,
+          16
+        ],
+        [
+          0,
+          0,
+          3,
+          20
+        ],
+        [
+          0,
+          0,
+          3,
+          24
+        ],
+        [
+          0,
+          0,
+          3,
+          28
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xd927843e30c6b2bf43103d83bca6abead648eac3cad0d05b1b0eb84cd87de9b6",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

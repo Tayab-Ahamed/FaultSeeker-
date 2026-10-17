@@ -1,0 +1,283 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "nsfer(from: 0x90744C976F69c7d112E8Fe85c750ACe2a2c16f15, to: 0x5D5acc816a41fB59B043Bc1028425C9645C0C336, amount: 4901048652799303712 [4.901e18])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [467] 0x5F0E628B693018f639D10e4A4F59BD4d8B2B6B44::balanceOf(0xC5c134A1f112efA96003f8559Dba6fAC0BA77692) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 2857940958550351828128 [2.857e21]\n    \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xC5c134A1f112efA96003f8559Dba6fAC0BA77692) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 8783201251326246893244 [8.783e21]\n    \u2502   \u251c\u2500 emit Flash(param0: 0x90744C976F69c7d112E8Fe85c750ACe2a2c16f15, param1: 0x90744C976F69c7d112E8Fe85c750ACe2a2c16f15, param2: 85000000000000000000 [8.5e19], param3: 0, param4: 8500000000000000 [8.5e15], param5: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 612296\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598.json",
+  "latency_seconds": 27.294748,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xc5c134a1f112efa96003f8559dba6fac0ba77692",
+      "count": 1,
+      "function": "flash",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+      "count": 1,
+      "function": "enterMarkets",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+      "count": 1,
+      "function": "mintAllowed",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+      "count": 1,
+      "function": "mintVerify",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+      "count": 1,
+      "function": "borrowAllowed",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          10,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+      "count": 1,
+      "function": "borrowVerify",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          10,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+      "count": 1,
+      "function": "enterMarkets",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+      "count": 1,
+      "function": "mintAllowed",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+      "count": 1,
+      "function": "mintVerify",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+      "count": 1,
+      "function": "borrowAllowed",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          10,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+      "count": 1,
+      "function": "borrowVerify",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          10,
+          3,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dd6d5d861edcd361455b330fa28c4c9817da687",
+      "count": 1,
+      "function": "mint",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+      "count": 1,
+      "function": "accrueInterest",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+      "count": 1,
+      "function": "borrow",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          10
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

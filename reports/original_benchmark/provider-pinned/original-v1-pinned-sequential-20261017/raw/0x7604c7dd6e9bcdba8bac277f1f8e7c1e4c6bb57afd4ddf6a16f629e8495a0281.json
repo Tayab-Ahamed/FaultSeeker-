@@ -1,0 +1,233 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "AC495271d0F)\n    \u2502   \u251c\u2500 [602] 0x6B175474E89094C44Da98b954EedeAC495271d0F::balanceOf(0x1695CE70DA4521Cb94DEA036e6ebCf1E8a073ee6) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 2954191574433326586855319 [2.954e24]\n    \u2502   \u251c\u2500 [25374] 0x6B175474E89094C44Da98b954EedeAC495271d0F::transfer(0x1D5a56402425C1099497C1AD715A6b56aACcB72B, 2954191574433326586855319 [2.954e24])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x1695CE70DA4521Cb94DEA036e6ebCf1E8a073ee6, to: 0x1D5a56402425C1099497C1AD715A6b56aACcB72B, amount: 2954191574433326586855319 [2.954e24])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 871020\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 753984 gas on-chain but 871020 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 753984 gas on-chain but 871020 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281.json",
+  "latency_seconds": 9.759377,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x1695ce70da4521cb94dea036e6ebcf1e8a073ee6",
+      "count": 3,
+      "function": "a89d5513",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3bc6aa2d25313ad794b2d67f83f21d341cc3f5fb",
+      "count": 2,
+      "function": "initialize",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1f3b04c8c96a31c7920372ffa95371c80a4bfb0d",
+      "count": 2,
+      "function": "initialize",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x929cb86046e421abf7e1e02de7836742654d49d6",
+      "count": 2,
+      "function": "initialize",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1695ce70da4521cb94dea036e6ebcf1e8a073ee6",
+      "count": 1,
+      "function": "19b96697",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3bc6aa2d25313ad794b2d67f83f21d341cc3f5fb",
+      "count": 1,
+      "function": "invest",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3bc6aa2d25313ad794b2d67f83f21d341cc3f5fb",
+      "count": 1,
+      "function": "withdrawToForge",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1f3b04c8c96a31c7920372ffa95371c80a4bfb0d",
+      "count": 1,
+      "function": "invest",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1f3b04c8c96a31c7920372ffa95371c80a4bfb0d",
+      "count": 1,
+      "function": "withdrawToForge",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x929cb86046e421abf7e1e02de7836742654d49d6",
+      "count": 1,
+      "function": "invest",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x929cb86046e421abf7e1e02de7836742654d49d6",
+      "count": 1,
+      "function": "withdrawToForge",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x7604c7dd6e9bcdba8bac277f1f8e7c1e4c6bb57afd4ddf6a16f629e8495a0281",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

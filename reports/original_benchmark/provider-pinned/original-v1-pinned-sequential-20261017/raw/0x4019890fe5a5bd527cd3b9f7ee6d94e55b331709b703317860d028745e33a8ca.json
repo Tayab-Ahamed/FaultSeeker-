@@ -1,0 +1,85 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "\u2502   \u251c\u2500 emit Withdrawal(param0: 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D, param1: 3114548664449539463 [3.114e18])\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u251c\u2500 [1912] 0xF5610Cf8C27454b6d7C86FccF1830734501425C5::receive{value: 3114548664449539463}()\n    \u2502   \u2502   \u2502   \u251c\u2500 [935] 0xF5610Cf8C27454b6d7C86FccF1830734501425C5::318f5bfb()\n    \u2502   \u2502   \u2502   \u2502   \u251c\u2500  emit topic 0: 0x6538092e2ef2217dabac2f572b7bf780552de0e8f08c2ea2f75b5dcbc63a8c1d\n    \u2502   \u2502   \u2502   \u2502   \u2502           data: 0x\n    \u2502   \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Return] 0 bytes of code\n    \u251c\u2500 [0] 0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5::receive{value: 3204669401909293440}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [0] 0xc9A5643eD8E4CD68d16FE779D378C0E8e7225A54::receive{value: 1859188665726154811}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 712167\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca.json",
+  "latency_seconds": 27.144802,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xf5610cf8c27454b6d7c86fccf1830734501425c5",
+      "count": 2,
+      "function": "318f5bfb",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          4,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          5,
+          12,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf5610cf8c27454b6d7c86fccf1830734501425c5",
+      "count": 1,
+      "function": "81348ab9",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca",
+  "variant": "llm-free",
+  "worker_exit_code": 0,
+  "worker_stderr_tail": ""
+}

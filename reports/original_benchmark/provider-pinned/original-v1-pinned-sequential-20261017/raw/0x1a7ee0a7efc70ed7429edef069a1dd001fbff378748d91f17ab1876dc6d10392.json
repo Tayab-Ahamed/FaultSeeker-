@@ -1,0 +1,47 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "error_text": "cast timeout after 90s: 0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+      "status": "retry_failed"
+    }
+  ],
+  "case_id": "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+  "cast": {
+    "compute_units_per_second": 2,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": " \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 [788] 0xc00e94Cb662C3520282E6f5717214004A7f26888::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 894410483325707881040 [8.944e20]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0x2D89fB83c66B6C7c35818382517959E33A655B13, param1: 0xc00e94Cb662C3520282E6f5717214004A7f26888, param2: 894410483325707881040 [8.944e20], param3: 0)\n    \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 55693783410001174957472 [5.569e22]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0x2D89fB83c66B6C7c35818382517959E33A655B13, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 55693783410001174957472 [5.569e22], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 2801096\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": "TimeoutError",
+  "failure_message": "cast timeout after 90s: 0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+  "filename": "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392.json",
+  "latency_seconds": 90.154866,
+  "model": "llm-free-function-ranker",
+  "predictions": [],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 0
+  },
+  "retry_pass": true,
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": null
+  },
+  "status": "failed",
+  "txn_hash": "0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392",
+  "variant": "llm-free"
+}

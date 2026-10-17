@@ -1,0 +1,842 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "compute_units_per_second": 2,
+      "status": "retry_pass"
+    }
+  ],
+  "case_id": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3",
+  "cast": {
+    "compute_units_per_second": 2,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "bDCF::balanceOf(0x36240069ff26cEcbdE04D9e49a2af8d39146263E) [delegatecall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 560074 [5.6e5]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 560074 [5.6e5]\n    \u2502   \u251c\u2500 emit log_named_uint(key: \"Pool token1\", val: 560074 [5.6e5])\n    \u2502   \u251c\u2500 [1315] 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48::balanceOf(0xC9B826BAD20872EB29f9b1D8af4BefE8460b50c6) [staticcall]\n    \u2502   \u2502   \u251c\u2500 [529] 0xa2327a938Febf5FEC13baCFb16Ae10EcBc4cbDCF::balanceOf(0xC9B826BAD20872EB29f9b1D8af4BefE8460b50c6) [delegatecall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 4806811056 [4.806e9]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 4806811056 [4.806e9]\n    \u2502   \u251c\u2500 emit log_named_uint(key: \"     token1\", val: 4806811056 [4.806e9])\n    \u2502   \u251c\u2500 emit log_string(val: \"--------\")\n    \u2502   \u251c\u2500 emit log_string(val: \"DONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!\")\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 13298675\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3.json",
+  "latency_seconds": 47.366491,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xd8ac7f696ae99cd7b689726cf03c5711dd8dcdb4",
+      "count": 15,
+      "function": "write",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          19,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          19,
+          1
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          19,
+          1
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          19,
+          1
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          2,
+          1
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          17,
+          0
+        ],
+        [
+          0,
+          4,
+          2,
+          3,
+          19,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xaf2acf3d4ab78e4c702256d214a3189a874cdc13",
+      "count": 5,
+      "function": "7b408b03",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe222fbe074a436145b255442d919e4e3a6c6a480",
+      "count": 4,
+      "function": "mint",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          13
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          13
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          13
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          13
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe222fbe074a436145b255442d919e4e3a6c6a480",
+      "count": 4,
+      "function": "removeLiquidity",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          15
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          15
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          15
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          15
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0a62276bfbf1ad8443f37da8630d407408085c8b",
+      "count": 4,
+      "function": "a1fe0e8d",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x87870bca3f3fd6335c3f4ce8392d69350b4fa4e2",
+      "count": 4,
+      "function": "flashLoanSimple",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          3,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf1cd4193bbc1ad4a23e833170f49d60f3d35a621",
+      "count": 4,
+      "function": "flashLoanSimple",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          3,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+      "count": 4,
+      "function": "handleRepayment",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          7
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          7
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          7
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+      "count": 4,
+      "function": "handleRepayment",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+      "count": 3,
+      "function": "swap",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          17
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          19
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfbc887823dd414edf76c5da88ffcd9eef2ba87cc",
+      "count": 3,
+      "function": "swap",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          17
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          19
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x93fc0acf77edd68e611f8a776c9995f350f84274",
+      "count": 3,
+      "function": "swap",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          17
+        ],
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          19
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x35e6f409565a98500001783ea090e6f669744c83",
+      "count": 3,
+      "function": "swap",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          17
+        ],
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          19
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+      "count": 1,
+      "function": "tickDistance",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+      "count": 1,
+      "function": "swapFeeUnits",
+      "rank": 15,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          1,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfbc887823dd414edf76c5da88ffcd9eef2ba87cc",
+      "count": 1,
+      "function": "tickDistance",
+      "rank": 16,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfbc887823dd414edf76c5da88ffcd9eef2ba87cc",
+      "count": 1,
+      "function": "swapFeeUnits",
+      "rank": 17,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          2,
+          0,
+          0,
+          1,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x93fc0acf77edd68e611f8a776c9995f350f84274",
+      "count": 1,
+      "function": "tickDistance",
+      "rank": 18,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x93fc0acf77edd68e611f8a776c9995f350f84274",
+      "count": 1,
+      "function": "swapFeeUnits",
+      "rank": 19,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          2,
+          0,
+          0,
+          1,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x35e6f409565a98500001783ea090e6f669744c83",
+      "count": 1,
+      "function": "tickDistance",
+      "rank": 20,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x35e6f409565a98500001783ea090e6f669744c83",
+      "count": 1,
+      "function": "swapFeeUnits",
+      "rank": 21,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          2,
+          0,
+          0,
+          1,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xaf2acf3d4ab78e4c702256d214a3189a874cdc13",
+      "count": 1,
+      "function": "38f39e5c",
+      "rank": 22,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc63b0708e2f7e69cb8a1df0e1389a98c35a76d52",
+      "count": 1,
+      "function": "flash",
+      "rank": 23,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "retry_pass": true,
+  "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3",
+  "variant": "llm-free"
+}
