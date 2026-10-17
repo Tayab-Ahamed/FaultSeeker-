@@ -1,0 +1,79 @@
+{
+  "artifact_path": "reports/new_batches/batchA_candidates.json",
+  "artifact_sha256": "4a971c4576173b9b67f51a42d4c99583a7dad704fec4492cc6ee937eb227aa21",
+  "attempt_artifact_directory": "attempts",
+  "checkpoint_directory": "checkpoints",
+  "diagnostics_directory": "diagnostics",
+  "finished_at": "2026-10-17T11:51:01.198223+00:00",
+  "method": "debug_traceTransaction",
+  "network_requests": 40,
+  "per_chain": {
+    "base": {
+      "attempted": 3,
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "failure_causes": {
+        "rpc_error:-32000:transaction not found": 3
+      },
+      "failures": 3,
+      "provider": "drpc",
+      "successes": 0
+    },
+    "bsc": {
+      "attempted": 11,
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "failure_causes": {
+        "rpc_error:-32000:transaction not found": 11
+      },
+      "failures": 11,
+      "provider": "drpc",
+      "successes": 0
+    },
+    "eth": {
+      "attempted": 24,
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "failure_causes": {},
+      "failures": 0,
+      "provider": "drpc",
+      "successes": 24
+    },
+    "polygon": {
+      "attempted": 2,
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "failure_causes": {
+        "rpc_error:-32000:transaction not found": 2
+      },
+      "failures": 2,
+      "provider": "drpc",
+      "successes": 0
+    }
+  },
+  "processed_rows": 40,
+  "providers": {
+    "base": {
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "provider": "drpc"
+    },
+    "bsc": {
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "provider": "drpc"
+    },
+    "eth": {
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "provider": "drpc"
+    },
+    "polygon": {
+      "endpoint": "https://lb.drpc.live/\u2026#06fe29ca67",
+      "provider": "drpc"
+    }
+  },
+  "rate_limit_requests_per_second": 2.0,
+  "raw_file_sha256": "c710302558b76b8658eb8c608c75fffe09dac14a12be6d4f1ad28da7eb0ff97e",
+  "raw_response_directory": "raw",
+  "started_at": "2026-10-17T11:50:38.204050+00:00",
+  "status": "COMPLETE",
+  "stop_reason": null,
+  "target_rows": 40,
+  "trace_config": {
+    "tracer": "callTracer"
+  }
+}
