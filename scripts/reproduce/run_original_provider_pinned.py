@@ -370,8 +370,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     raise RuntimeError(f"fatal provider warning: {error_text[:500]}") from exc
                 if attempt_number < RATE_LIMIT_MAX_ATTEMPTS_PER_CASE:
                     wait = min(RETRY_WAIT_BASE * (2 ** (attempt_number - 1)), RETRY_WAIT_MAX)
+                    safe_error = error_text.encode("ascii", "backslashreplace").decode("ascii")
                     print(f"rate-limit provider={provider} tx={metadata['txn_hash']} "
-                          f"code={exc.code} wait={wait}s error={error_text[-500:]}", flush=True)
+                          f"code={exc.code} wait={wait}s error={safe_error[-500:]}", flush=True)
                     time.sleep(wait)
                     continue
                 row = {
