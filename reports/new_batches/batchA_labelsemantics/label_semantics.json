@@ -1,0 +1,36 @@
+{
+  "label": "label semantics, offline",
+  "network_calls": false,
+  "original_benchmark": {
+    "ground_truth_files": 115,
+    "successful_rows": 110,
+    "successful_rows_with_function": 110,
+    "local_full_trace_rows": 4,
+    "local_full_trace_missing_rows": 106,
+    "external_call_appears": 2,
+    "external_call_does_not_appear": 2,
+    "checked_rows": [
+      {"transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb", "function": "cacheAssetPrice", "appears_as_external_call": false},
+      {"transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c", "function": "latestAnswer", "appears_as_external_call": true},
+      {"transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa", "function": "doSwapThroughOrionPool", "appears_as_external_call": false},
+      {"transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d", "function": "donateToReserves", "appears_as_external_call": true}
+    ]
+  },
+  "batch_a": {
+    "valid_eth_rows": 23,
+    "usable_full_argument_typed_signatures": 0,
+    "bare_or_empty_parenthesis_labels": 23,
+    "argument_type_guesses": 0,
+    "selector_checks_performed": 0
+  },
+  "evidence": [
+    "benchmark/protocols/original_benchmark_function_localization_v1.md",
+    "benchmark/original_faultseeker/ATTRIBUTION.md",
+    "benchmark/original_faultseeker/ground_truth/*.json",
+    "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/manifest.json",
+    "reports/cohort_rebuild_v2/traces/",
+    "reports/new_batches/batchA_candidates.json",
+    "reports/new_batches/batchA_mining/run_20261017T115038Z_b545d3e1e0/valid_set.json",
+    "benchmark/honest_eval/localization.py"
+  ]
+}
