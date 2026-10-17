@@ -10,6 +10,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import multiprocessing as mp
 from pathlib import Path
 import random
 import time
@@ -118,6 +119,62 @@ def _run_one(path: Path, variant: str, model: str) -> dict[str, Any]:
     return row
 
 
+def _run_one_worker(queue: Any, path_text: str, variant: str, model: str) -> None:
+    try:
+        queue.put(_run_one(Path(path_text), variant, model))
+    except BaseException as exc:
+        queue.put({
+            "txn_hash": Path(path_text).stem,
+            "variant": variant,
+            "model": model,
+            "provider": "none" if variant == "llm-free" else "configured-runtime",
+            "status": "failed",
+            "failure_kind": type(exc).__name__,
+            "failure_message": str(exc)[:400],
+            "predictions": [],
+            "token_usage": {"input": 0, "output": 0, "source": "not-dispatched"},
+            "actual_cost_usd": 0.0,
+            "list_price_equivalent_usd": None,
+            "score": {"target_function_count": None, "first_hit_rank": None,
+                      "recall_at_1": False, "recall_at_3": False, "recall_at_5": False},
+            "latency_seconds": None,
+        })
+
+
+def _run_one_bounded(path: Path, variant: str, model: str,
+                     timeout_seconds: int | None) -> dict[str, Any]:
+    if timeout_seconds is None:
+        return _run_one(path, variant, model)
+    queue = mp.Queue()
+    process = mp.Process(target=_run_one_worker,
+                         args=(queue, str(path), variant, model))
+    process.start()
+    process.join(timeout_seconds)
+    if process.is_alive():
+        process.terminate()
+        process.join(5)
+        metadata = _metadata(path)
+        return {
+            **metadata,
+            "variant": variant,
+            "model": model,
+            "provider": "none" if variant == "llm-free" else "configured-runtime",
+            "status": "failed",
+            "failure_kind": "TimeoutError",
+            "failure_message": f"per-transaction timeout after {timeout_seconds}s",
+            "predictions": [],
+            "token_usage": {"input": 0, "output": 0, "source": "not-dispatched"},
+            "actual_cost_usd": 0.0,
+            "list_price_equivalent_usd": None,
+            "score": {"target_function_count": None, "first_hit_rank": None,
+                      "recall_at_1": False, "recall_at_3": False, "recall_at_5": False},
+            "latency_seconds": timeout_seconds,
+        }
+    if not queue.empty():
+        return queue.get()
+    return _run_one(path, variant, model)
+
+
 def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(rows)
     ok = sum(row["status"] == "ok" for row in rows)
@@ -140,7 +197,8 @@ def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
 def run(gt_dir: Path = DEFAULT_GT, output_dir: Path = DEFAULT_OUT,
         variant: str = "llm-free", model: str = "llm-free-function-ranker",
-        limit: int | None = None, run_id: str = DEFAULT_RUN_ID) -> dict[str, Any]:
+        limit: int | None = None, run_id: str = DEFAULT_RUN_ID,
+        timeout_seconds: int | None = None) -> dict[str, Any]:
     random.seed(SEED)
     paths = sorted(gt_dir.glob("*.json"))
     if limit is not None:
@@ -162,7 +220,7 @@ def run(gt_dir: Path = DEFAULT_GT, output_dir: Path = DEFAULT_OUT,
                     continue
             except (OSError, ValueError):
                 pass
-        row = _run_one(path, variant, model)
+        row = _run_one_bounded(path, variant, model, timeout_seconds)
         rows.append(row)
         raw_path = raw_dir / f"{row['txn_hash']}.json"
         raw_path.write_text(
@@ -207,9 +265,11 @@ def main() -> int:
     parser.add_argument("--limit", type=int)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--run-id", default=DEFAULT_RUN_ID)
+    parser.add_argument("--per-tx-timeout", type=int, default=90)
     args = parser.parse_args()
     result = run(output_dir=args.output_dir, variant=args.variant,
-                 model=args.model, limit=args.limit, run_id=args.run_id)
+                 model=args.model, limit=args.limit, run_id=args.run_id,
+                 timeout_seconds=args.per_tx_timeout)
     aggregate = result["aggregate"]
     print(f"variant={result['variant']}")
     print(f"n_total={aggregate['n_total']}")
