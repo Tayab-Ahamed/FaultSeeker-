@@ -14,7 +14,6 @@ import json
 from collections import Counter
 from pathlib import Path
 import sys
-from types import SimpleNamespace
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -29,6 +28,8 @@ from benchmark.honest_eval.localization import (  # noqa: E402
 )
 from faultseeker.data_collection.txn_sequencer import TransactionSequencer  # noqa: E402
 from faultseeker.forensics.trace_analyzer import TraceAnalyzer  # noqa: E402
+from faultseeker.forensics.orchestrator import ForensicsOrchestrator  # noqa: E402
+from faultseeker.forensics.result import ForensicsResult  # noqa: E402
 from faultseeker.function_analysis.function_ranker import FunctionRanker  # noqa: E402
 
 
@@ -76,7 +77,75 @@ def _canonical_node(node: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _rank_one(record: dict[str, Any]) -> list[dict[str, Any]]:
+def _txn_info_from_trace(record: dict[str, Any]) -> dict[str, Any]:
+    """Build the normalized transaction-info shape from observed trace roots."""
+    trace = record["trace"]
+    return {
+        "status": "Success",
+        "gas_consumption": None,
+        "block_number": {"block_number": -1, "confirmations": -1},
+        "address_info": {
+            "from_address": str(trace.get("from") or "").lower(),
+            "to_address": [str(trace.get("to") or "").lower()] if trace.get("to") else [],
+        },
+        "transaction_hash": record["transaction_hash"],
+        "transaction_date": "",
+        "token_transfer": {},
+        "_source": "frozen_calltrace_root",
+        "receipt_identity_verified": False,
+        "receipt_logs": [],
+    }
+
+
+def _production_rank(record: dict[str, Any], txn_seq: dict[str, Any], analysis: dict[str, Any], txn_info: dict[str, Any]) -> list[dict[str, Any]]:
+    """Reuse the original benchmark's deterministic Stage-1 candidate path."""
+    orchestrator = ForensicsOrchestrator(model="llm-free")
+    orchestrator.txn_hash = record["transaction_hash"]
+    orchestrator.txn_seq = txn_seq
+    orchestrator.txn_info = txn_info
+    orchestrator.tx_analysis = analysis
+    orchestrator.trace = [analysis["trace"]]
+    token_filter_result = orchestrator.address_classifier.run(
+        record["transaction_hash"], record["chain"], txn_seq=txn_seq,
+        txn_info=txn_info, tx_analysis=analysis,
+    )
+    if not token_filter_result:
+        raise ValueError("original AddressClassifier returned no result")
+    orchestrator.token_filter_result = token_filter_result
+    orchestrator.check_flashloan_fallback_execution()
+    orchestrator.check_function_name_with_hash()
+    orchestrator.check_call_with_created_contract()
+    orchestrator.get_other_functions_to_be_inspected()
+    orchestrator.adaptive_fallback = orchestrator.adaptive_controller.apply(
+        orchestrator.functions_to_be_inspected, analysis, token_filter_result,
+    )
+    result = ForensicsResult(
+        transaction_hash=orchestrator.txn_hash,
+        chain=txn_seq["chain"], trace=analysis["trace"],
+        repeated_patterns=analysis.get("repeated_patterns", {}),
+        function_calls_to_expand_loc=analysis.get("function_calls_to_expand_loc", {}),
+        address_calls_with_created_contract=analysis.get("address_calls_with_created_contract_in_params", []),
+        flatten_trace=analysis.get("flatten_trace", []),
+        function_call_loc_memo=analysis.get("function_call_loc_memo", {}),
+        address_to_be_inspected=token_filter_result.get("address_to_be_inspected", {}),
+        inspected_address=token_filter_result.get("inspected_address", {}),
+        same_function_calls=token_filter_result.get("same_function_calls", {}),
+        potential_attacker=token_filter_result.get("potential_attacker", []),
+        potential_victim=token_filter_result.get("potential_victim", []),
+        balance_change=token_filter_result.get("balance_change", {}),
+        address_memo=token_filter_result.get("address_memo", {}),
+        functions_to_be_inspected=orchestrator.functions_to_be_inspected,
+        adaptive_fallback=orchestrator.adaptive_fallback,
+    )
+    ranking = FunctionRanker().rank(
+        result,
+        {"repeated_patterns": analysis.get("repeated_patterns", {}),
+         "function_call_loc_memo": analysis.get("function_call_loc_memo", {})},
+    )
+    return [dict(item) for item in ranking.ranked_functions]
+
+
+def _rank_one(record: dict[str, Any], txn_info: dict[str, Any] | None = None) -> list[dict[str, Any]]:
     canonical = _canonical_node(record["trace"])
     structured = {
         "transaction_hash": record["transaction_hash"],
@@ -88,24 +157,7 @@ def _rank_one(record: dict[str, Any]) -> list[dict[str, Any]]:
     if not analysis:
         raise ValueError("TraceAnalyzer returned no analysis")
 
-    # The production ranker consumes classifier-selected candidates when they
-    # exist and otherwise uses its existing function_call_loc_memo fallback.
-    # This local, deterministic adapter has no classifier/provider output, so
-    # it intentionally leaves that candidate map empty and does not add data.
-    forensics_result = SimpleNamespace(
-        address_calls_with_created_contract=analysis.get(
-            "address_calls_with_created_contract_in_params", []
-        ),
-        functions_to_be_inspected={},
-    )
-    ranking = FunctionRanker().rank(
-        forensics_result,
-        {
-            "repeated_patterns": analysis.get("repeated_patterns", {}),
-            "function_call_loc_memo": analysis.get("function_call_loc_memo", {}),
-        },
-    )
-    return [dict(item) for item in ranking.ranked_functions]
+    return _production_rank(record, txn_seq, analysis, txn_info or _txn_info_from_trace(record))
 
 
 def _first_rank(predictions: list[dict[str, Any]], address: str, function: str, *, address_sensitive: bool) -> int | None:

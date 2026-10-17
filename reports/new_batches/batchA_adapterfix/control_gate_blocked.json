@@ -1,0 +1,15 @@
+{
+  "status": "BLOCKED_BEFORE_CONTROL_GATE",
+  "label": "post-diagnostic adapter fix, exploratory",
+  "controls_requested": 4,
+  "controls_executed": 0,
+  "batch_a_measurement_executed": false,
+  "network_calls": false,
+  "ranker_or_scorer_changed": false,
+  "error": {
+    "type": "AttributeError",
+    "message": "ForensicsOrchestrator state typo reached before any control completed: tx_hash was referenced instead of txn_hash.",
+    "fixed_after_stop": true
+  },
+  "instruction_result": "The one permitted run stopped before the hard gate. No retry was performed, and no Batch A measurement was attempted."
+}
