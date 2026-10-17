@@ -89,9 +89,9 @@ retried only primary-pass failures at `--compute-units-per-second 2`.
 
 | Metric | Original reported value | New measurement, same benchmark, our pipeline — all 115 denominator | New measurement, valid-trace subset (n=110) |
 |---|---:|---:|---:|
-| Recall@1 | 50.43% | 0.00% | 0.00% |
-| Recall@3 | 73.91% | 0.00% | 0.00% |
-| Recall@5 | 76.52% | 0.00% | 0.00% |
+| Recall@1 | 50.43% | 21.74% | 22.73% |
+| Recall@3 | 73.91% | 42.61% | 44.55% |
+| Recall@5 | 76.52% | 45.22% | 47.27% |
 
 The final run retained all 115 cases: 110 completed results, 5 bounded
 timeouts, and 14 replay-mismatch warnings. Replay mismatches are valid trace
@@ -99,3 +99,7 @@ results, not failures. The primary pass had 95 completed results and 20
 failures; its retry pass recovered 15 of those failures. Per-transaction raw
 rows, the final manifest, and the diagnosis table are retained under
 `reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/`.
+
+The corrected values were obtained by re-scoring the saved rows offline after
+fixing the scorer to read their `code_address` field. No trace acquisition or
+`cast` execution was repeated.

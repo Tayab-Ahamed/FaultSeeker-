@@ -275,6 +275,20 @@ def test_rank_of_first_hit_returns_none_when_absent():
     assert rank_of_first_hit(_target(), predictions) is None
 
 
+def test_rank_of_first_hit_accepts_provider_pinned_code_address():
+    target = LocalizationTarget(
+        txn_hash="0xprovider-pinned",
+        functions={("0x9ab6b21cdf116f611110b048987e58894786c244", "manageposition")},
+    )
+    predictions = [{
+        "code_address": "0x9AB6B21CDF116F611110B048987E58894786C244",
+        "function": "managePosition",
+        "rank": 1,
+        "selector": None,
+    }]
+    assert rank_of_first_hit(target, predictions) == 1
+
+
 def test_rank_of_first_hit_line_match():
     predictions = [{"address": "0xd286", "line": "241"}]
     assert rank_of_first_hit(_target(), predictions, match="line") == 1

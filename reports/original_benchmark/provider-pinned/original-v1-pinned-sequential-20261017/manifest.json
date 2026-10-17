@@ -1,16 +1,12 @@
 {
   "aggregate": {
-    "denominator_includes_failures": true,
-    "failure_kinds": {
-      "TimeoutError": 5
-    },
-    "mismatch_count": 14,
     "n_failed": 5,
     "n_ok": 110,
     "n_total": 115,
-    "recall_at_1": 0.0,
-    "recall_at_3": 0.0,
-    "recall_at_5": 0.0
+    "recall_at_1": 0.21739130434782608,
+    "recall_at_3": 0.4260869565217391,
+    "recall_at_5": 0.45217391304347826,
+    "replay_mismatch": 14
   },
   "cast_process_counts": {
     "bsc": 11,
@@ -42,13 +38,13 @@
       ]
     },
     "ranker_miss": {
-      "count": 96,
+      "count": 52,
       "examples": [
         "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300",
         "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
         "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04",
         "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
-        "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308"
+        "0x0eb8f8d148508e752d9643ccf49ac4cb0c21cbad346b5bbcf2d06974d31bd5c4"
       ]
     },
     "wrong_chain": {
@@ -61,9 +57,9 @@
       "n_failed": 5,
       "n_ok": 110,
       "n_total": 115,
-      "recall_at_1": 0.0,
-      "recall_at_3": 0.0,
-      "recall_at_5": 0.0,
+      "recall_at_1": 0.21739130434782608,
+      "recall_at_3": 0.4260869565217391,
+      "recall_at_5": 0.45217391304347826,
       "replay_mismatch": 14
     },
     "failure_details": [
@@ -122,9 +118,9 @@
         "n_failed": 0,
         "n_ok": 110,
         "n_total": 110,
-        "recall_at_1": 0.0,
-        "recall_at_3": 0.0,
-        "recall_at_5": 0.0,
+        "recall_at_1": 0.22727272727272727,
+        "recall_at_3": 0.44545454545454544,
+        "recall_at_5": 0.4727272727272727,
         "replay_mismatch": 14
       },
       "n_total": 110
@@ -269,18 +265,18 @@
       "n_failed": 20,
       "n_ok": 95,
       "n_total": 115,
-      "recall_at_1": 0.0,
-      "recall_at_3": 0.0,
-      "recall_at_5": 0.0,
+      "recall_at_1": 0.19130434782608696,
+      "recall_at_3": 0.3826086956521739,
+      "recall_at_5": 0.4,
       "replay_mismatch": 12
     },
     "metrics_valid_trace_subset": {
       "n_failed": 0,
       "n_ok": 95,
       "n_total": 95,
-      "recall_at_1": 0.0,
-      "recall_at_3": 0.0,
-      "recall_at_5": 0.0,
+      "recall_at_1": 0.23157894736842105,
+      "recall_at_3": 0.4631578947368421,
+      "recall_at_5": 0.4842105263157895,
       "replay_mismatch": 12
     },
     "mismatch_count": 12
@@ -316,18 +312,18 @@
       "n_failed": 5,
       "n_ok": 110,
       "n_total": 115,
-      "recall_at_1": 0.0,
-      "recall_at_3": 0.0,
-      "recall_at_5": 0.0,
+      "recall_at_1": 0.21739130434782608,
+      "recall_at_3": 0.4260869565217391,
+      "recall_at_5": 0.45217391304347826,
       "replay_mismatch": 14
     },
     "metrics_valid_trace_subset": {
       "n_failed": 0,
       "n_ok": 110,
       "n_total": 110,
-      "recall_at_1": 0.0,
-      "recall_at_3": 0.0,
-      "recall_at_5": 0.0,
+      "recall_at_1": 0.22727272727272727,
+      "recall_at_3": 0.44545454545454544,
+      "recall_at_5": 0.4727272727272727,
       "replay_mismatch": 14
     },
     "recovered": 15,
@@ -23577,10 +23573,10 @@
       "replay_mismatch": false,
       "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -23719,10 +23715,10 @@
       "replay_mismatch": true,
       "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -23846,10 +23842,10 @@
       "replay_mismatch": false,
       "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -25940,10 +25936,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -26253,7 +26249,7 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 7,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -26325,10 +26321,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -26473,10 +26469,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 4
       },
       "status": "ok",
@@ -27131,10 +27127,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -27291,10 +27287,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -27946,10 +27942,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -28018,10 +28014,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -28077,10 +28073,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -28146,10 +28142,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -28295,10 +28291,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 5,
         "recall_at_1": false,
         "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -28411,10 +28407,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 4,
         "recall_at_1": false,
         "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_5": true,
         "target_function_count": 3
       },
       "status": "ok",
@@ -34600,7 +34596,7 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 6,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -35595,10 +35591,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -35682,10 +35678,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 3,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -36234,10 +36230,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 4,
         "recall_at_1": false,
         "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -36321,10 +36317,10 @@
       },
       "run_config_hash": "1a865e022e076330573ae89fd5efbae5ef75e411749e07536f1a303dac7c1e51",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 3,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -37382,7 +37378,7 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 18,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -37457,10 +37453,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -37534,10 +37530,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -37915,7 +37911,7 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 12,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -37975,10 +37971,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -38819,7 +38815,7 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 10,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -38958,10 +38954,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -39048,10 +39044,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 3,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -39554,10 +39550,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -39891,10 +39887,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -40034,10 +40030,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -46324,10 +46320,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -46544,10 +46540,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -53430,10 +53426,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -53663,10 +53659,10 @@
       },
       "run_config_hash": "e924c2f6f2671715d5a044b689aa9910b9233640cb019f7e2ad1cf492a64f55e",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -53785,10 +53781,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 3
       },
       "status": "ok",
@@ -54217,10 +54213,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -54672,10 +54668,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -54734,10 +54730,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -55234,7 +55230,7 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 10,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -58199,7 +58195,7 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 19,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -58821,10 +58817,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -59058,7 +59054,7 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 9,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -59225,7 +59221,7 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 7,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -59364,10 +59360,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 3,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -59457,10 +59453,10 @@
       },
       "run_config_hash": "0d8d2d88521287a1b116bd18fffbd737ee9dd3b8225eea3bdba903473bb1fac5",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 3,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -61094,10 +61090,10 @@
       },
       "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -61305,10 +61301,10 @@
       },
       "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -61511,10 +61507,10 @@
       },
       "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -62573,10 +62569,10 @@
       },
       "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -63163,7 +63159,7 @@
       },
       "run_config_hash": "b3b9392239dfaf92c782c76e785e05c00214a3466bec77b2f0374c0afeaf334c",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 6,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -63891,7 +63887,7 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 14,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -65146,10 +65142,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 2
       },
       "status": "ok",
@@ -65437,10 +65433,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -65589,10 +65585,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -65942,7 +65938,7 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 11,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -66012,10 +66008,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -66302,10 +66298,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -66433,10 +66429,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -67573,7 +67569,7 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 13,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -67648,10 +67644,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 3
       },
       "status": "ok",
@@ -67869,7 +67865,7 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 8,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -67990,10 +67986,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -69423,10 +69419,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -69498,10 +69494,10 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 2,
         "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -69781,7 +69777,7 @@
       },
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
+        "first_hit_rank": 13,
         "recall_at_1": false,
         "recall_at_3": false,
         "recall_at_5": false,
@@ -70718,10 +70714,10 @@
       "retry_pass": true,
       "run_config_hash": "7f543eee5f1c1d0aa4d25cc295e9d0c0195952c52577aeab0bcdd26e2b59ffc2",
       "score": {
-        "first_hit_rank": null,
-        "recall_at_1": false,
-        "recall_at_3": false,
-        "recall_at_5": false,
+        "first_hit_rank": 1,
+        "recall_at_1": true,
+        "recall_at_3": true,
+        "recall_at_5": true,
         "target_function_count": 1
       },
       "status": "ok",
@@ -70730,6 +70726,322 @@
     }
   ],
   "run_id": "original-v1-pinned-sequential-20261017",
+  "scoring_audit": {
+    "diagnostics_examples": [
+      {
+        "chain": "eth",
+        "corrected_first_hit_rank": 2,
+        "ground_truth_labels": [
+          "0x164315ac326d7d4caf71067f7b2de45f95c03f8c#WETHCalculator#collectDebt"
+        ],
+        "pre_fix_first_hit_rank": null,
+        "replay_mismatch": false,
+        "scorer_comparison": [
+          {
+            "function_key": [
+              "0x7afb39837fd244a651e4f0c5660b4037214d4adf",
+              "mint"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 1
+          },
+          {
+            "function_key": [
+              "0x164315ac326d7d4caf71067f7b2de45f95c03f8c",
+              "collectdebt"
+            ],
+            "line_key": null,
+            "matches": true,
+            "rank": 2
+          },
+          {
+            "function_key": [
+              "0x9f1d057d1140cb32653779c7719310d431d49861",
+              "burnfrom"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 3
+          },
+          {
+            "function_key": [
+              "0x8d5d838db2522c187a3062cad0c7d55158f31ebf",
+              "unlockbybank"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 4
+          },
+          {
+            "function_key": [
+              "0x8d5d838db2522c187a3062cad0c7d55158f31ebf",
+              "transferbybank"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 5
+          }
+        ],
+        "top_five_saved_candidates": [
+          {
+            "code_address": "0x7afb39837fd244a651e4f0c5660b4037214d4adf",
+            "count": 2,
+            "function": "mint",
+            "rank": 1,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                10,
+                1,
+                4
+              ],
+              [
+                0,
+                10,
+                1,
+                6
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x164315ac326d7d4caf71067f7b2de45f95c03f8c",
+            "count": 1,
+            "function": "collectDebt",
+            "rank": 2,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                8
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x9f1d057d1140cb32653779c7719310d431d49861",
+            "count": 1,
+            "function": "burnFrom",
+            "rank": 3,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                5
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x8d5d838db2522c187a3062cad0c7d55158f31ebf",
+            "count": 1,
+            "function": "unlockByBank",
+            "rank": 4,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                9
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x8d5d838db2522c187a3062cad0c7d55158f31ebf",
+            "count": 1,
+            "function": "transferByBank",
+            "rank": 5,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                10
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          }
+        ],
+        "txn_hash": "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308"
+      },
+      {
+        "chain": "bsc",
+        "corrected_first_hit_rank": 1,
+        "ground_truth_labels": [
+          "0x4308d314096878d3bf16c9d8db86101f70bbebf1##:",
+          "0x4308d314096878d3bf16c9d8db86101f70bbebf1#PHIL#simpleToken",
+          "0x4308d314096878d3bf16c9d8db86101f70bbebf1#PHIL#:"
+        ],
+        "pre_fix_first_hit_rank": null,
+        "replay_mismatch": false,
+        "scorer_comparison": [
+          {
+            "function_key": [
+              "0x4308d314096878d3bf16c9d8db86101f70bbebf1",
+              "simpletoken"
+            ],
+            "line_key": null,
+            "matches": true,
+            "rank": 1
+          }
+        ],
+        "top_five_saved_candidates": [
+          {
+            "code_address": "0x4308d314096878d3bf16c9d8db86101f70bbebf1",
+            "count": 1,
+            "function": "simpleToken",
+            "rank": 1,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          }
+        ],
+        "txn_hash": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a"
+      },
+      {
+        "chain": "bsc",
+        "corrected_first_hit_rank": 1,
+        "ground_truth_labels": [
+          "0x1954b6bd198c29c3ecf2d6f6bc70a4d41ea1cc07#FDP#deliver"
+        ],
+        "pre_fix_first_hit_rank": null,
+        "replay_mismatch": true,
+        "scorer_comparison": [
+          {
+            "function_key": [
+              "0x1954b6bd198c29c3ecf2d6f6bc70a4d41ea1cc07",
+              "deliver"
+            ],
+            "line_key": null,
+            "matches": true,
+            "rank": 1
+          },
+          {
+            "function_key": [
+              "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+              "5365f1be"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 2
+          },
+          {
+            "function_key": [
+              "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+              "e9bf54a2"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 3
+          },
+          {
+            "function_key": [
+              "0xe02970bd38b283c3079720c1e71001abe001bc83",
+              "292e8e54"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 4
+          },
+          {
+            "function_key": [
+              "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+              "aaa94bfa"
+            ],
+            "line_key": null,
+            "matches": false,
+            "rank": 5
+          }
+        ],
+        "top_five_saved_candidates": [
+          {
+            "code_address": "0x1954b6bd198c29c3ecf2d6f6bc70a4d41ea1cc07",
+            "count": 1,
+            "function": "deliver",
+            "rank": 1,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                4,
+                1,
+                3
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+            "count": 1,
+            "function": "5365f1be",
+            "rank": 2,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                4,
+                1,
+                7
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+            "count": 1,
+            "function": "e9bf54a2",
+            "rank": 3,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                4,
+                1,
+                9
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0xe02970bd38b283c3079720c1e71001abe001bc83",
+            "count": 1,
+            "function": "292e8e54",
+            "rank": 4,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          },
+          {
+            "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+            "count": 1,
+            "function": "aaa94bfa",
+            "rank": 5,
+            "selector": null,
+            "supporting_call_depths": [
+              [
+                0,
+                0
+              ]
+            ],
+            "tie_policy": "stable candidate encounter order"
+          }
+        ],
+        "txn_hash": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b"
+      }
+    ],
+    "mode": "offline_saved_rows_only",
+    "prediction_address_field": "code_address",
+    "rpc_or_cast_rerun": false
+  },
   "seed": 20261017,
   "variant": "llm-free"
 }

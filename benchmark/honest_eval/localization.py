@@ -216,6 +216,7 @@ def load_ground_truth(directory: str = GROUND_TRUTH_DIR) -> List[LocalizationTar
 def _prediction_keys(prediction: Dict[str, Any]) -> Tuple[Optional[Tuple[str, str]], Optional[Tuple[str, str]]]:
     address = _norm_addr(
         prediction.get("address")
+        or prediction.get("code_address")
         or prediction.get("contract")
         or prediction.get("callee")
         or ""
