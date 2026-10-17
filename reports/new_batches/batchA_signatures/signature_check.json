@@ -1,350 +1,2288 @@
 {
   "counts": {
-    "absent": 0,
-    "appears_in_candidates": 0,
+    "absent": 2,
+    "in_candidates": 21,
     "in_trace_only": 0,
-    "resolved_full_signatures": 0,
+    "resolved_full_signatures": 23,
     "rows": 23,
-    "unresolved_signatures": 23
+    "unresolved_signatures": 0
   },
   "evidence": [
     "reports/new_batches/batchA_candidates.json",
-    "reports/new_batches/batchA_mining/run_20261017T115038Z_b545d3e1e0/valid_set.json"
+    "reports/new_batches/batchA_mining/run_20261017T115038Z_b545d3e1e0/valid_set.json",
+    "reports/new_batches/batchA_functiondiag/function_diagnosis.json",
+    "reports/new_batches/batchA_mining/run_20261017T115038Z_b545d3e1e0/raw/"
   ],
-  "label": "Batch A signature check, offline",
-  "needed_source_files": [
-    "src/test/2021-09/DaoMaker_exp.sol",
-    "src/test/2022-06/XCarnival_exp.sol",
-    "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-    "src/test/2023-06/MIMSpell_exp.sol",
-    "src/test/2024-09/Shezmu_exp.sol"
-  ],
-  "network_calls": false,
-  "reason": "The DeFiHackLabs PoC source files named by the frozen Batch A labels are not present in the workspace. The frozen labels contain bare or empty-parenthesis function forms and source quotes, but no locally available full argument-typed declarations or call signatures. No types were inferred.",
+  "label": "Batch A full argument-typed signature check",
+  "network_calls_for_audit": false,
   "rows": [
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 31,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0xa5d4096b"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0xa5d4096b",
+      "full_signature": "swap(address,address,address,uint256,uint256,bytes)",
+      "labeled_address": "0xa5564a2d1190a141cac438c9fde686ac48a18a79",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 103,
+            "text": "        ZeroXStargateLPSwapper.swap(address(this), address(this), address(this), 0, 1_920_000, data);"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 27,
+            "text": "    function swap("
+          },
+          {
+            "line": 28,
+            "text": "        address from,"
+          },
+          {
+            "line": 29,
+            "text": "        address to,"
+          },
+          {
+            "line": 30,
+            "text": "        address recipient,"
+          },
+          {
+            "line": 31,
+            "text": "        uint256 shareToMin,"
+          },
+          {
+            "line": 32,
+            "text": "        uint256 shareFrom,"
+          },
+          {
+            "line": 33,
+            "text": "        bytes calldata swapData"
+          },
+          {
+            "line": 34,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2023-06/MIMSpell_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 11,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-06/MIMSpell_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[6]"
+      ],
       "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 86,
       "vulnerable_function_quote": "        // Creating swapData which will be used for calling proxy contract inside vulnerable swap() function."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 17,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 19,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[7]",
+        "result.calls[10]",
+        "result.calls[15]"
+      ],
       "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x095ea7b3",
+        "0x23b872dd",
+        "0x313ce567",
+        "0x40c10f19"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x40c10f19",
+      "full_signature": "mint(address,uint256)",
+      "labeled_address": "0x641249db01d5c9a04d1a223765ffd15f95167924",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 53,
+            "text": "        IShezmuCollateralToken(COLLATERAL_TOKEN).mint(address(this), amount);"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 69,
+            "text": "    function mint(address to, uint256 amount) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2024-09/Shezmu_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 11,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-09/Shezmu_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[1]",
+        "result.calls[3].calls[0].calls[1]"
+      ],
       "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
       "vulnerable_function_label": "mint()",
       "vulnerable_function_line_from_label": 50,
       "vulnerable_function_quote": "        // Root cause: The Shezmu Vault collateral token contract mint() function "
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x023245d7",
+        "0x150b7a02",
+        "0x61bc221a",
+        "0xe3333ae9"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0xe3333ae9",
+      "full_signature": "pledgeAndBorrow(address,uint256,uint256,address,uint256)",
+      "labeled_address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 85,
+            "text": "        XNFT.pledgeAndBorrow(address(BAYC), 5110, 721, address(doNothing), 0);"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 43,
+            "text": "    function pledgeAndBorrow("
+          },
+          {
+            "line": 44,
+            "text": "        address _collection,"
+          },
+          {
+            "line": 45,
+            "text": "        uint256 _tokenId,"
+          },
+          {
+            "line": 46,
+            "text": "        uint256 _nftType,"
+          },
+          {
+            "line": 47,
+            "text": "        address xToken,"
+          },
+          {
+            "line": 48,
+            "text": "        uint256 borrowAmount"
+          },
+          {
+            "line": 49,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-06/XCarnival_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 27,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-06/XCarnival_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2].calls[7]",
+        "result.calls[2].calls[7].calls[0]",
+        "result.calls[5].calls[7]",
+        "result.calls[5].calls[7].calls[0]",
+        "result.calls[8].calls[7]",
+        "result.calls[8].calls[7].calls[0]",
+        "result.calls[11].calls[7]",
+        "result.calls[11].calls[7].calls[0]"
+      ],
       "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
       "vulnerable_function_label": "pledgeAndBorrow()",
       "vulnerable_function_line_from_label": 84,
       "vulnerable_function_quote": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 16,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 29,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 30,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 27,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[5]"
+      ],
       "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 24,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 22,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 25,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 12,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[7]",
+        "result.calls[10]",
+        "result.calls[13]",
+        "result.calls[16]",
+        "result.calls[19]",
+        "result.calls[22]",
+        "result.calls[27]",
+        "result.calls[30]",
+        "result.calls[35]",
+        "result.calls[38]",
+        "result.calls[41]",
+        "result.calls[44]",
+        "result.calls[47]",
+        "result.calls[50]",
+        "result.calls[53]",
+        "result.calls[56]",
+        "result.calls[59]",
+        "result.calls[62]",
+        "result.calls[65]",
+        "result.calls[68]",
+        "result.calls[71]",
+        "result.calls[74]",
+        "result.calls[77]",
+        "result.calls[80]",
+        "result.calls[83]",
+        "result.calls[86]",
+        "result.calls[89]",
+        "result.calls[92]"
+      ],
       "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [],
+      "classification": "absent",
+      "computed_selector": "0x84304ad7",
+      "full_signature": "init(uint256,uint256[],uint256[],address)",
+      "labeled_address": "0x6e70c88be1d5c2a4c0c8205764d01abe6a3d2e22",
+      "selector_in_candidates_at_labeled_address": false,
+      "selector_in_trace_any_call_input_prefix": false,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 42,
+            "text": "        daomaker.init(1_640_984_401, releasePeriods, releasePercents, 0x9fa69536d1cda4A04cFB50688294de75B505a9aE);"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 19,
+            "text": "    function init(uint256, uint256[] calldata, uint256[] calldata, address) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2021-09/DaoMaker_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 9,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-09/DaoMaker_exp.sol",
+      "trace_matching_call_paths": [],
       "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
       "vulnerable_function_label": "init()",
       "vulnerable_function_line_from_label": 15,
       "vulnerable_function_quote": "    Root cause: They left the `init` function unprotected. The attacker re-initialized the contract with "
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 20,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 13,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[5]"
+      ],
       "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0xe4c79a4a",
+        "0xfe1b7ed5"
+      ],
+      "classification": "absent",
+      "computed_selector": "0xe3333ae9",
+      "full_signature": "pledgeAndBorrow(address,uint256,uint256,address,uint256)",
+      "labeled_address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+      "selector_in_candidates_at_labeled_address": false,
+      "selector_in_trace_any_call_input_prefix": false,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 85,
+            "text": "        XNFT.pledgeAndBorrow(address(BAYC), 5110, 721, address(doNothing), 0);"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 43,
+            "text": "    function pledgeAndBorrow("
+          },
+          {
+            "line": 44,
+            "text": "        address _collection,"
+          },
+          {
+            "line": 45,
+            "text": "        uint256 _tokenId,"
+          },
+          {
+            "line": 46,
+            "text": "        uint256 _nftType,"
+          },
+          {
+            "line": 47,
+            "text": "        address xToken,"
+          },
+          {
+            "line": 48,
+            "text": "        uint256 borrowAmount"
+          },
+          {
+            "line": 49,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-06/XCarnival_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 28,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-06/XCarnival_exp.sol",
+      "trace_matching_call_paths": [],
       "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
       "vulnerable_function_label": "pledgeAndBorrow()",
       "vulnerable_function_line_from_label": 84,
       "vulnerable_function_quote": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 26,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[5]",
+        "result.calls[8]",
+        "result.calls[11]",
+        "result.calls[14]"
+      ],
       "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 23,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]",
+        "result.calls[5]"
+      ],
       "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 28,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 18,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     },
     {
-      "computed_selector": null,
-      "full_signature": null,
-      "selector_candidate_match": null,
-      "selector_trace_match": null,
-      "signature_status": "unresolved_source_file_not_cached",
+      "candidate_selectors_at_labeled_address": [
+        "0x0779afe6",
+        "0x32854cc2"
+      ],
+      "classification": "in_candidates",
+      "computed_selector": "0x32854cc2",
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "selector_in_candidates_at_labeled_address": true,
+      "selector_in_trace_any_call_input_prefix": true,
+      "signature_source": {
+        "call_lines": [
+          {
+            "line": 104,
+            "text": "                RABBYSWAP_ROUTER.swap("
+          },
+          {
+            "line": 105,
+            "text": "                    address(USDT_TOKEN),"
+          },
+          {
+            "line": 106,
+            "text": "                    0,"
+          },
+          {
+            "line": 107,
+            "text": "                    address(this),"
+          },
+          {
+            "line": 108,
+            "text": "                    4660,"
+          },
+          {
+            "line": 109,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 110,
+            "text": "                    address(USDC_TOKEN),"
+          },
+          {
+            "line": 111,
+            "text": "                    usdc_callbackData,"
+          },
+          {
+            "line": 112,
+            "text": "                    block.timestamp"
+          },
+          {
+            "line": 113,
+            "text": "                );"
+          }
+        ],
+        "declaration_lines": [
+          {
+            "line": 137,
+            "text": "    function swap("
+          },
+          {
+            "line": 138,
+            "text": "        address srcToken,"
+          },
+          {
+            "line": 139,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 140,
+            "text": "        address dstToken,"
+          },
+          {
+            "line": 141,
+            "text": "        uint256 minReturn,"
+          },
+          {
+            "line": 142,
+            "text": "        address dexRouter,"
+          },
+          {
+            "line": 143,
+            "text": "        address dexSpender,"
+          },
+          {
+            "line": 144,
+            "text": "        bytes memory data,"
+          },
+          {
+            "line": 145,
+            "text": "        uint256 deadline"
+          },
+          {
+            "line": 146,
+            "text": "    ) external;"
+          }
+        ]
+      },
       "source_file": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
-      "source_file_cached_locally": false,
       "source_transaction_line_from_label": 21,
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "trace_matching_call_paths": [
+        "result.calls[2]"
+      ],
       "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
       "vulnerable_function_label": "swap()",
       "vulnerable_function_line_from_label": 100,
       "vulnerable_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
     }
   ],
-  "source_fetch_performed": false,
-  "source_files_cached": false
+  "scope": "source-backed signature and selector presence check only; no rescoring, fixes, or tuning",
+  "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+  "source_fetch_date_utc": "2026-10-17T17:26:14Z",
+  "source_fetch_performed": true,
+  "source_files": [
+    {
+      "path": "src/test/2021-09/DaoMaker_exp.sol",
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-09/DaoMaker_exp.sol"
+    },
+    {
+      "path": "src/test/2022-06/XCarnival_exp.sol",
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-06/XCarnival_exp.sol"
+    },
+    {
+      "path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol"
+    },
+    {
+      "path": "src/test/2023-06/MIMSpell_exp.sol",
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-06/MIMSpell_exp.sol"
+    },
+    {
+      "path": "src/test/2024-09/Shezmu_exp.sol",
+      "url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-09/Shezmu_exp.sol"
+    }
+  ]
 }
