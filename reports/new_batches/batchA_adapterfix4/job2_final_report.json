@@ -1,0 +1,536 @@
+{
+  "label": "producer-era replay, exploratory",
+  "measurement": {
+    "candidate_counts": {
+      "max": 32,
+      "mean": 21.0,
+      "min": 10,
+      "n": 2,
+      "rows": [
+        {
+          "address_only_rank": 1,
+          "candidate_count": 10,
+          "function_only_rank": null,
+          "primary_rank": null,
+          "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41"
+        },
+        {
+          "address_only_rank": 15,
+          "candidate_count": 32,
+          "function_only_rank": null,
+          "primary_rank": null,
+          "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3"
+        }
+      ]
+    },
+    "label": "producer-era replay, exploratory",
+    "metrics": {
+      "address_only_sensitivity": {
+        "r_at_1": {
+          "hits": 1,
+          "n": 2,
+          "recall": 0.5
+        },
+        "r_at_3": {
+          "hits": 1,
+          "n": 2,
+          "recall": 0.5
+        },
+        "r_at_5": {
+          "hits": 1,
+          "n": 2,
+          "recall": 0.5
+        }
+      },
+      "function_only_sensitivity": {
+        "r_at_1": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        },
+        "r_at_3": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        },
+        "r_at_5": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        }
+      },
+      "primary_address_function": {
+        "r_at_1": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        },
+        "r_at_3": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        },
+        "r_at_5": {
+          "hits": 0,
+          "n": 2,
+          "recall": 0.0
+        }
+      }
+    },
+    "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+    "sample_too_small": true,
+    "status": "COMPLETE",
+    "verified_count": 2
+  },
+  "network_calls": true,
+  "refetch": {
+    "cause_before_refetch": {
+      "error": 0,
+      "missing_file": 0,
+      "null": 21,
+      "ok": 2
+    },
+    "endpoint": "https://ethereum.publicnode.com",
+    "label": "producer-era replay, exploratory",
+    "method": "eth_getTransactionReceipt",
+    "missing_before_refetch": 21,
+    "rate_target_requests_per_second": 1,
+    "rows": [
+      {
+        "attempts": 0,
+        "response_sha256": "62d40616c7f129b252877d2d97a05ac3875a8b6a9da56672a05d3408798cc569",
+        "status": "null",
+        "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "2f9360328df9320d2b72cf7985d88291d60a311b5b4342090988ecc2c15f1174",
+        "status": "null",
+        "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "5a95fda373921649ca66f9a3ef39807495c3d94035c635cc47b1afbe243503e8",
+        "status": "null",
+        "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "c6a9754891cab8072db918757ddef1b8c23a859a1ab9959f5b1b356149bc9ecf",
+        "status": "null",
+        "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "7a00f7d5eab7c96b09def3d2aacdd7877c352d40f7ab7e3a4709a9d62d912a17",
+        "status": "null",
+        "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "12b5592b49909f1a25459d6abae158d9150868f230e6d3d8e20d4e5f2d378bb7",
+        "status": "null",
+        "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "a7b3f993b483070f471bd800d9764240e0a3a13903da9a76ce550b20c130575c",
+        "status": "null",
+        "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "2e48bb45e78cdc6a32827c0e1b16e351453b18bf3962a0ba661e280bf25ff69f",
+        "status": "null",
+        "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "b6919e7b547230244940d961df1fce20c8be9fc4de3eb218333fdaa75d1fcbbf",
+        "status": "null",
+        "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "e117bf7953136d2c72257e1cb5afde41981dd1046cccf7c8b542f0fdada0a8e4",
+        "status": "null",
+        "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "e3dc013f4c27a101106fbb5a398c511768ea628c8992cff883ccbc209c50a7de",
+        "status": "null",
+        "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "b5d07c01b7ddb741253fbf773530a6f87e94dae48a871d784172d5e0b13a2975",
+        "status": "null",
+        "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "ef53c9507158cd1cecbb9b37ac6c2295dd0b76a78e1617a4c572f90420954991",
+        "status": "null",
+        "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "57f4a64b0dcfbac07697cf24c52836e2adcc67cbedfbce5e81918ea5fa6ae93e",
+        "status": "null",
+        "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "3b3f532ead1115ab143c14e1bb1efa6b257ff97e041ae92dc992c886b895708d",
+        "status": "null",
+        "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "f020f36bf300d50a53778ca7a649c3d901dd3c0096724d32b6d1114fd8a8f912",
+        "status": "null",
+        "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "5001d591ed343feeb8b6e0288dead220ce8f4cd490a3e7e02e6c028e17df2d1e",
+        "status": "null",
+        "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "f94462ccbf5ae95fcd03cd875c5669bf2b4bc1e27756af9dd52997ef90c884af",
+        "status": "null",
+        "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "d7b7c9c83683d0da6ee13cf12c10535d5f7b239fca59243d655325a1a111aa96",
+        "status": "null",
+        "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "4846230447232defa81439daf0b6d0acb1b5ab8f2be57b2c886af72a4c3ebfe5",
+        "status": "null",
+        "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2"
+      },
+      {
+        "attempts": 0,
+        "response_sha256": "beb7518c50cf4e1ce979f5c7d6a56ba7813fc64e621b53f74da4593efde8797d",
+        "status": "null",
+        "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da"
+      }
+    ]
+  },
+  "verification": {
+    "excluded_by_reason": {
+      "receipt.transactionHash_mismatch": 21,
+      "transaction.hash_mismatch": 3,
+      "transaction.pending": 3,
+      "transaction_receipt.blockNumber_mismatch": 18
+    },
+    "excluded_count": 21,
+    "label": "producer-era replay, exploratory",
+    "rows": [
+      {
+        "excluded": false,
+        "exclusion_reasons": [],
+        "receipt_block_number": "0xeff07d",
+        "receipt_transaction_hash_returned": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+        "transaction_block_number": "0xeff07d",
+        "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+        "transaction_hash_returned": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+        "verified": true
+      },
+      {
+        "excluded": false,
+        "exclusion_reasons": [],
+        "receipt_block_number": "0x10b5be7",
+        "receipt_transaction_hash_returned": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+        "transaction_block_number": "0x10b5be7",
+        "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+        "transaction_hash_returned": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+        "verified": true
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefefc4",
+        "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
+        "transaction_hash_returned": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefefef",
+        "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
+        "transaction_hash_returned": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0x13d4df1",
+        "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
+        "transaction_hash_returned": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "transaction.hash_mismatch",
+          "receipt.transactionHash_mismatch",
+          "transaction.pending"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": null,
+        "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+        "transaction_hash_returned": "",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefefbd",
+        "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
+        "transaction_hash_returned": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff060",
+        "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
+        "transaction_hash_returned": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff066",
+        "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
+        "transaction_hash_returned": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff033",
+        "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
+        "transaction_hash_returned": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff028",
+        "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
+        "transaction_hash_returned": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff012",
+        "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
+        "transaction_hash_returned": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff02c",
+        "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
+        "transaction_hash_returned": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefefa4",
+        "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
+        "transaction_hash_returned": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "transaction.hash_mismatch",
+          "receipt.transactionHash_mismatch",
+          "transaction.pending"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": null,
+        "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
+        "transaction_hash_returned": "",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff007",
+        "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+        "transaction_hash_returned": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefef8c",
+        "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
+        "transaction_hash_returned": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "transaction.hash_mismatch",
+          "receipt.transactionHash_mismatch",
+          "transaction.pending"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": null,
+        "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+        "transaction_hash_returned": "",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff030",
+        "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
+        "transaction_hash_returned": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff023",
+        "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
+        "transaction_hash_returned": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff04b",
+        "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
+        "transaction_hash_returned": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xefefd1",
+        "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
+        "transaction_hash_returned": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
+        "verified": false
+      },
+      {
+        "excluded": true,
+        "exclusion_reasons": [
+          "receipt.transactionHash_mismatch",
+          "transaction_receipt.blockNumber_mismatch"
+        ],
+        "receipt_block_number": null,
+        "receipt_transaction_hash_returned": "",
+        "transaction_block_number": "0xeff00a",
+        "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
+        "transaction_hash_returned": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
+        "verified": false
+      }
+    ],
+    "verified_count": 2
+  }
+}
