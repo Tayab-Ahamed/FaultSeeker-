@@ -1,0 +1,35 @@
+{
+  "exclusion_reasons": [
+    "transaction.hash_mismatch",
+    "receipt.transactionHash_mismatch",
+    "transaction.pending",
+    "trace.invalid_or_missing_callTracer_result",
+    "trace.rpc_error",
+    "request.failed:debug_traceTransaction"
+  ],
+  "incident_name": "Li.Fi",
+  "receipt_block_number": null,
+  "receipt_transaction_hash_returned": "",
+  "request_failed_methods": [
+    "debug_traceTransaction"
+  ],
+  "responses": {
+    "debug_traceTransaction": {
+      "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/057_debug_traceTransaction_attempt01.json",
+      "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/057_debug_traceTransaction_attempt01.stderr"
+    },
+    "eth_getTransactionByHash": {
+      "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/055_eth_getTransactionByHash_attempt01.json",
+      "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/055_eth_getTransactionByHash_attempt01.stderr"
+    },
+    "eth_getTransactionReceipt": {
+      "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/056_eth_getTransactionReceipt_attempt01.json",
+      "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/056_eth_getTransactionReceipt_attempt01.stderr"
+    }
+  },
+  "trace_valid": false,
+  "transaction_block_number": null,
+  "transaction_hash": "0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605",
+  "transaction_hash_returned": "",
+  "verified": false
+}

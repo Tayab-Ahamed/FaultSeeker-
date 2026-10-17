@@ -1,0 +1,551 @@
+{
+  "endpoint": "configured dRPC endpoint (URL/key withheld)",
+  "excluded_count": 1,
+  "frozen_batch_sha256": "5b66ae6d8c2b6bc23fbdb03f82738ada4684865846f2792d5111edc92cee942a",
+  "label": "Batch B, pre-registered, one-shot, ETH only, DeFiHackLabs-sourced",
+  "methods": [
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt",
+    "debug_traceTransaction"
+  ],
+  "network_calls": true,
+  "paid_plan_stop": null,
+  "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+  "request_pacing_seconds": 0.5,
+  "rows_attempted": 20,
+  "rows_remaining_after_stop": 0,
+  "run_directory": "run_20261017T180610Z",
+  "scoring_allowed": true,
+  "verification_rows": [
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Lendf.Me",
+      "receipt_block_number": "0x970eda",
+      "receipt_transaction_hash_returned": "0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/003_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/003_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/001_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/001_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/002_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b/002_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x970eda",
+      "transaction_hash": "0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b",
+      "transaction_hash_returned": "0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Bancor",
+      "receipt_block_number": "0x9d47ec",
+      "receipt_transaction_hash_returned": "0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/006_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/006_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/004_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/004_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/005_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f/005_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x9d47ec",
+      "transaction_hash": "0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f",
+      "transaction_hash_returned": "0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Popsicle Finance",
+      "receipt_block_number": "0xc5adb7",
+      "receipt_transaction_hash_returned": "0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/009_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/009_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/007_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/007_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/008_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc/008_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0xc5adb7",
+      "transaction_hash": "0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc",
+      "transaction_hash_returned": "0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Audius governance takeover",
+      "receipt_block_number": "0xe7f607",
+      "receipt_transaction_hash_returned": "0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/012_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/012_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/010_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/010_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/011_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9/011_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0xe7f607",
+      "transaction_hash": "0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9",
+      "transaction_hash_returned": "0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Nomad Bridge",
+      "receipt_block_number": "0xe8d5dd",
+      "receipt_transaction_hash_returned": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/015_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/015_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/013_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/013_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/014_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460/014_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0xe8d5dd",
+      "transaction_hash": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+      "transaction_hash_returned": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Sushi RouteProcessor2",
+      "receipt_block_number": "0x10384e2",
+      "receipt_transaction_hash_returned": "0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/018_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/018_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/016_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/016_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/017_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32/017_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x10384e2",
+      "transaction_hash": "0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32",
+      "transaction_hash_returned": "0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Sturdy Finance",
+      "receipt_block_number": "0x10a6d82",
+      "receipt_transaction_hash_returned": "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/021_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/021_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/019_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/019_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/020_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7/020_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x10a6d82",
+      "transaction_hash": "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7",
+      "transaction_hash_returned": "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Compounder Finance",
+      "receipt_block_number": "0x109e691",
+      "receipt_transaction_hash_returned": "0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/024_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/024_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/022_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/022_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/023_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1/023_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x109e691",
+      "transaction_hash": "0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1",
+      "transaction_hash_returned": "0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Curve Vyper reentrancy 1",
+      "receipt_block_number": "0x10fb2e8",
+      "receipt_transaction_hash_returned": "0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/027_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/027_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/025_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/025_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/026_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c/026_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x10fb2e8",
+      "transaction_hash": "0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c",
+      "transaction_hash_returned": "0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Curve Vyper reentrancy 2",
+      "receipt_block_number": "0x10fb9d6",
+      "receipt_transaction_hash_returned": "0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/030_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/030_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/028_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/028_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/029_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c/029_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x10fb9d6",
+      "transaction_hash": "0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c",
+      "transaction_hash_returned": "0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "0x0 Privacy DEX",
+      "receipt_block_number": "0x1146c7c",
+      "receipt_transaction_hash_returned": "0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/033_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/033_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/031_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/031_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/032_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec/032_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x1146c7c",
+      "transaction_hash": "0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec",
+      "transaction_hash_returned": "0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "CEXISWAP",
+      "receipt_block_number": "0x11571ce",
+      "receipt_transaction_hash_returned": "0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/036_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/036_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/034_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/034_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/035_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e/035_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x11571ce",
+      "transaction_hash": "0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e",
+      "transaction_hash_returned": "0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "GoodDollar",
+      "receipt_block_number": "0x11ee55f",
+      "receipt_transaction_hash_returned": "0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/039_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/039_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/037_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/037_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/038_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0/038_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x11ee55f",
+      "transaction_hash": "0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0",
+      "transaction_hash_returned": "0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Orbit Chain",
+      "receipt_block_number": "0x1208392",
+      "receipt_transaction_hash_returned": "0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/042_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/042_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/040_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/040_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/041_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9/041_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x1208392",
+      "transaction_hash": "0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9",
+      "transaction_hash_returned": "0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "XBridge",
+      "receipt_block_number": "0x12cf5ba",
+      "receipt_transaction_hash_returned": "0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/045_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/045_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/043_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/043_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/044_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92/044_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x12cf5ba",
+      "transaction_hash": "0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92",
+      "transaction_hash_returned": "0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Conic Finance",
+      "receipt_block_number": "0x10eb49b",
+      "receipt_transaction_hash_returned": "0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/048_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/048_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/046_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/046_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/047_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146/047_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x10eb49b",
+      "transaction_hash": "0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146",
+      "transaction_hash_returned": "0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "SASHA token",
+      "receipt_block_number": "0x13efd56",
+      "receipt_transaction_hash_returned": "0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/051_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/051_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/049_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/049_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/050_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e/050_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x13efd56",
+      "transaction_hash": "0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e",
+      "transaction_hash_returned": "0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "0xf340",
+      "receipt_block_number": "0x1628065",
+      "receipt_transaction_hash_returned": "0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/054_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/054_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/052_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/052_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/053_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c/053_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x1628065",
+      "transaction_hash": "0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c",
+      "transaction_hash_returned": "0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [
+        "transaction.hash_mismatch",
+        "receipt.transactionHash_mismatch",
+        "transaction.pending",
+        "trace.invalid_or_missing_callTracer_result",
+        "trace.rpc_error",
+        "request.failed:debug_traceTransaction"
+      ],
+      "incident_name": "Li.Fi",
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "request_failed_methods": [
+        "debug_traceTransaction"
+      ],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/057_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/057_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/055_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/055_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/056_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605/056_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": false,
+      "transaction_block_number": null,
+      "transaction_hash": "0x1438ff9dd1cf9c70002c3b3cbec9c4c1b3f9eb02e29bcac90289ab3ba360e605",
+      "transaction_hash_returned": "",
+      "verified": false
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Wise Lending",
+      "receipt_block_number": "0x117e0e9",
+      "receipt_transaction_hash_returned": "0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555",
+      "request_failed_methods": [],
+      "responses": {
+        "debug_traceTransaction": {
+          "raw_path": "raw/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/060_debug_traceTransaction_attempt01.json",
+          "stderr_path": "stderr/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/060_debug_traceTransaction_attempt01.stderr"
+        },
+        "eth_getTransactionByHash": {
+          "raw_path": "raw/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/058_eth_getTransactionByHash_attempt01.json",
+          "stderr_path": "stderr/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/058_eth_getTransactionByHash_attempt01.stderr"
+        },
+        "eth_getTransactionReceipt": {
+          "raw_path": "raw/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/059_eth_getTransactionReceipt_attempt01.json",
+          "stderr_path": "stderr/0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555/059_eth_getTransactionReceipt_attempt01.stderr"
+        }
+      },
+      "trace_valid": true,
+      "transaction_block_number": "0x117e0e9",
+      "transaction_hash": "0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555",
+      "transaction_hash_returned": "0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555",
+      "verified": true
+    }
+  ],
+  "verified_count": 19
+}

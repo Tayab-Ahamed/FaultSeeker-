@@ -1,0 +1,261 @@
+{
+  "candidate_counts": {
+    "max": 290,
+    "mean": 73.57894736842105,
+    "min": 2,
+    "n": 19
+  },
+  "frozen_batch_sha256": "5b66ae6d8c2b6bc23fbdb03f82738ada4684865846f2792d5111edc92cee942a",
+  "label": "Batch B, pre-registered, one-shot, ETH only, DeFiHackLabs-sourced",
+  "metrics": {
+    "address_only_sensitivity": {
+      "R@1": {
+        "hits": 3,
+        "n": 19,
+        "recall": 0.15789473684210525
+      },
+      "R@3": {
+        "hits": 8,
+        "n": 19,
+        "recall": 0.42105263157894735
+      },
+      "R@5": {
+        "hits": 11,
+        "n": 19,
+        "recall": 0.5789473684210527
+      }
+    },
+    "address_selector_primary": {
+      "R@1": {
+        "hits": 3,
+        "n": 19,
+        "recall": 0.15789473684210525
+      },
+      "R@3": {
+        "hits": 4,
+        "n": 19,
+        "recall": 0.21052631578947367
+      },
+      "R@5": {
+        "hits": 5,
+        "n": 19,
+        "recall": 0.2631578947368421
+      }
+    },
+    "selector_only_sensitivity": {
+      "R@1": {
+        "hits": 3,
+        "n": 19,
+        "recall": 0.15789473684210525
+      },
+      "R@3": {
+        "hits": 4,
+        "n": 19,
+        "recall": 0.21052631578947367
+      },
+      "R@5": {
+        "hits": 5,
+        "n": 19,
+        "recall": 0.2631578947368421
+      }
+    }
+  },
+  "partial_result_peeking": false,
+  "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+  "ranker_invocations": 19,
+  "rows": [
+    {
+      "address_only_rank": 5,
+      "address_selector_rank": 18,
+      "candidate_count": 19,
+      "incident_name": "Lendf.Me",
+      "selector_only_rank": 18,
+      "target_address": "0x0eee3e3828a45f7601d5f54bf49bb01d1a9df5ea",
+      "target_selector": "0xf3fef3a3",
+      "transaction_hash": "0xae7d664bdfcc54220df4f18d339005c6faf6e62c9ca79c56387bc0389274363b"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 2,
+      "incident_name": "Bancor",
+      "selector_only_rank": 1,
+      "target_address": "0x5f58058c0ec971492166763c8c22632b583f667f",
+      "target_selector": "0xd9fc4b61",
+      "transaction_hash": "0x4643b63dcbfc385b8ab8c86cbc46da18c2e43d277de3e5bc3b4516d3c0fdeb9f"
+    },
+    {
+      "address_only_rank": 65,
+      "address_selector_rank": 65,
+      "candidate_count": 290,
+      "incident_name": "Popsicle Finance",
+      "selector_only_rank": 65,
+      "target_address": "0xc4ff55a4329f84f9bf0f5619998ab570481ebb48",
+      "target_selector": "0x6cae7bf7",
+      "transaction_hash": "0xcd7dae143a4c0223349c16237ce4cd7696b1638d116a72755231ede872ab70fc"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 2,
+      "candidate_count": 8,
+      "incident_name": "Audius governance takeover",
+      "selector_only_rank": 2,
+      "target_address": "0x4deca517d6817b6510798b7328f2314d3003abac",
+      "target_selector": "0x7476f748",
+      "transaction_hash": "0x4227bca8ed4b8915c7eec0e14ad3748a88c4371d4176e716e8007249b9980dc9"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 14,
+      "incident_name": "Nomad Bridge",
+      "selector_only_rank": 1,
+      "target_address": "0x5d94309e5a0090b165fa4181519701637b6daeba",
+      "target_selector": "0x928bc4b2",
+      "transaction_hash": "0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 9,
+      "incident_name": "Sushi RouteProcessor2",
+      "selector_only_rank": 1,
+      "target_address": "0x044b75f554b886a065b9567891e45c79542d7357",
+      "target_selector": "0x2646478b",
+      "transaction_hash": "0x04b166e7b4ab5105a8e9c85f08f6346de1c66368687215b0e0b58d6e5002bc32"
+    },
+    {
+      "address_only_rank": 48,
+      "address_selector_rank": 176,
+      "candidate_count": 285,
+      "incident_name": "Sturdy Finance",
+      "selector_only_rank": 176,
+      "target_address": "0x9f72dc67cec672bb99e3d02cbea0a21536a2b657",
+      "target_selector": "0xa415bcad",
+      "transaction_hash": "0xeb87ebc0a18aca7d2a9ffcabf61aa69c9e8d3c6efade9e2303f8857717fb9eb7"
+    },
+    {
+      "address_only_rank": 42,
+      "address_selector_rank": 67,
+      "candidate_count": 78,
+      "incident_name": "Compounder Finance",
+      "selector_only_rank": 67,
+      "target_address": "0xaf274e912243b19b882f02d731dacd7cd13072d0",
+      "target_selector": "0xd0e30db0",
+      "transaction_hash": "0xcff84cc137c92e427f720ca1f2b36fbad793f34ec5117eed127060686e6797b1"
+    },
+    {
+      "address_only_rank": 6,
+      "address_selector_rank": 10,
+      "candidate_count": 25,
+      "incident_name": "Curve Vyper reentrancy 1",
+      "selector_only_rank": 9,
+      "target_address": "0x6326debbaa15bcfe603d831e7d75f4fc10d9b43e",
+      "target_selector": "0x5b36389c",
+      "transaction_hash": "0xa84aa065ce61dbb1eb50ab6ae67fc31a9da50dd2c74eefd561661bfce2f1620c"
+    },
+    {
+      "address_only_rank": 3,
+      "address_selector_rank": 9,
+      "candidate_count": 21,
+      "incident_name": "Curve Vyper reentrancy 2",
+      "selector_only_rank": 9,
+      "target_address": "0x8301ae4fc9c624d1d396cbdaa1ed877821d7c511",
+      "target_selector": "0x269b5581",
+      "transaction_hash": "0x2e7dc8b2fb7e25fd00ed9565dcc0ad4546363171d5e00f196d48103983ae477c"
+    },
+    {
+      "address_only_rank": null,
+      "address_selector_rank": null,
+      "candidate_count": 71,
+      "incident_name": "0x0 Privacy DEX",
+      "selector_only_rank": 37,
+      "target_address": "0x29d2bcf0d70f95ce16697e645e2b76d218d66109",
+      "target_selector": "0x79319fbb",
+      "transaction_hash": "0x00b375f8e90fc54c1345b33c686977ebec26877e2c8cac165429927a6c9bdbec"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": null,
+      "candidate_count": 8,
+      "incident_name": "CEXISWAP",
+      "selector_only_rank": null,
+      "target_address": "0xb8a5890d53df78dee6182a6c0968696e827e3305",
+      "target_selector": "0x8182e707",
+      "transaction_hash": "0xede72a74d8398875b42d92c550539d72c830d3c3271a7641ee1843dc105de59e"
+    },
+    {
+      "address_only_rank": 68,
+      "address_selector_rank": 68,
+      "candidate_count": 117,
+      "incident_name": "GoodDollar",
+      "selector_only_rank": 68,
+      "target_address": "0x0c6c80d2061afa35e160f3799411d83bdeea0a5a",
+      "target_selector": "0xb6eee2c9",
+      "transaction_hash": "0x726459a46839c915ee2fb3d8de7f986e3c7391c605b7a622112161a84c7384d0"
+    },
+    {
+      "address_only_rank": 4,
+      "address_selector_rank": 4,
+      "candidate_count": 7,
+      "incident_name": "Orbit Chain",
+      "selector_only_rank": 4,
+      "target_address": "0x1bf68a9d1eaee7826b3593c20a0ca93293cb489a",
+      "target_selector": "0x2ac5ab1b",
+      "transaction_hash": "0xe0bada18fdc56dec125c31b1636490f85ba66016318060a066ed7050ff7271f9"
+    },
+    {
+      "address_only_rank": 5,
+      "address_selector_rank": 7,
+      "candidate_count": 8,
+      "incident_name": "XBridge",
+      "selector_only_rank": 6,
+      "target_address": "0x354cca2f55dde182d36fe34d673430e226a3cb8c",
+      "target_selector": "0x5e35359e",
+      "transaction_hash": "0x903d88a92cbc0165a7f662305ac1bff97430dbcccaa0fe71e101e18aa9109c92"
+    },
+    {
+      "address_only_rank": 114,
+      "address_selector_rank": 175,
+      "candidate_count": 248,
+      "incident_name": "Conic Finance",
+      "selector_only_rank": 175,
+      "target_address": "0xbb787d6243a8d450659e09ea6fd82f1c859691e9",
+      "target_selector": "0x36797aec",
+      "transaction_hash": "0x8b74995d1d61d3d7547575649136b8765acb22882960f0636941c44ec7bbe146"
+    },
+    {
+      "address_only_rank": 15,
+      "address_selector_rank": 15,
+      "candidate_count": 21,
+      "incident_name": "SASHA token",
+      "selector_only_rank": 15,
+      "target_address": "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+      "target_selector": "0x04e45aaf",
+      "transaction_hash": "0xd9fdc7d03eec28fc2453c5fa68eff82d4c297f436a6a5470c54ca3aecd2db17e"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 6,
+      "candidate_count": 15,
+      "incident_name": "0xf340",
+      "selector_only_rank": 6,
+      "target_address": "0xf340bd3eb3e82994cff5b8c3493245edbce63436",
+      "target_selector": "0xd73f349b",
+      "transaction_hash": "0x103b4550a1a2bdb73e3cb5ea484880cd8bed7e4842ecdd18ed81bf67ed19e03c"
+    },
+    {
+      "address_only_rank": 3,
+      "address_selector_rank": 28,
+      "candidate_count": 152,
+      "incident_name": "Wise Lending",
+      "selector_only_rank": 28,
+      "target_address": "0x84524baa1951247b3a2617a843e6ece915bb9674",
+      "target_selector": "0x77cfd4a5",
+      "transaction_hash": "0x7ac4a98599596adbf12fffa2bd23e2a2d2ac7e8989b6ea043fcc412a29126555"
+    }
+  ],
+  "scoring_passes": 1,
+  "tuning": false,
+  "verified_n": 19
+}
