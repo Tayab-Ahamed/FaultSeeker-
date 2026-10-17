@@ -1,0 +1,1036 @@
+{
+  "classification_counts": {
+    "a": 0,
+    "b": 20,
+    "c": 2,
+    "d": 1
+  },
+  "classification_examples": {
+    "a": [],
+    "b": [
+      "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+      "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+      "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870"
+    ],
+    "c": [
+      "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+      "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d"
+    ],
+    "d": [
+      "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71"
+    ]
+  },
+  "label": "function-level diagnosis, read-only",
+  "network_calls": false,
+  "notes": [
+    "The frozen Batch A function labels contain names/signatures, not selectors.",
+    "Selector equality to a labeled selector is therefore reported as not stored rather than inferred from an ABI.",
+    "Candidate lists were generated offline from the saved raw inputs; no RPC or new result file was read or modified."
+  ],
+  "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+  "producer_replay_source": "reports/new_batches/batchA_adapterfix4/rpc_drpc_final/eth/",
+  "rescoring_or_tuning": false,
+  "rows": [
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41"
+    },
+    {
+      "candidate_count": 32,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0xa5d4096b"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0xa5564a2d1190a141cac438c9fde686ac48a18a79",
+        "function": "swap()",
+        "source_function_quote": "        // Creating swapData which will be used for calling proxy contract inside vulnerable swap() function.",
+        "source_path": "src/test/2023-06/MIMSpell_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-06/MIMSpell_exp.sol",
+        "source_transaction_quote": "// Attack Tx : https://etherscan.io/tx/0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "        // Creating swapData which will be used for calling proxy contract inside vulnerable swap() function."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 31,
+          "resolved_to_name": false,
+          "selector": "0xa5d4096b"
+        }
+      ],
+      "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038"
+    },
+    {
+      "candidate_count": 18,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x095ea7b3",
+          "0x23b872dd",
+          "0x313ce567",
+          "0x40c10f19"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "d",
+      "function_key_comparison": {
+        "basis": "name vs name",
+        "candidate_resolved_names_at_address": [
+          "approve",
+          "decimals",
+          "mint",
+          "transferfrom"
+        ],
+        "label_key": "mint"
+      },
+      "label": {
+        "address": "0x641249db01d5c9a04d1a223765ffd15f95167924",
+        "function": "mint()",
+        "source_function_quote": "        // Root cause: The Shezmu Vault collateral token contract mint() function ",
+        "source_path": "src/test/2024-09/Shezmu_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-09/Shezmu_exp.sol",
+        "source_transaction_quote": "// Attack Tx : https://etherscan.io/tx/0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "        // Root cause: The Shezmu Vault collateral token contract mint() function "
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": "decimals",
+          "rank": 5,
+          "resolved_to_name": true,
+          "selector": "0x313ce567"
+        },
+        {
+          "function_name": "transferfrom",
+          "rank": 7,
+          "resolved_to_name": true,
+          "selector": "0x23b872dd"
+        },
+        {
+          "function_name": "approve",
+          "rank": 12,
+          "resolved_to_name": true,
+          "selector": "0x095ea7b3"
+        },
+        {
+          "function_name": "mint",
+          "rank": 13,
+          "resolved_to_name": true,
+          "selector": "0x40c10f19"
+        }
+      ],
+      "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71"
+    },
+    {
+      "candidate_count": 31,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x023245d7",
+          "0x150b7a02",
+          "0x61bc221a",
+          "0xe3333ae9"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "c",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [
+          "onerc721received"
+        ],
+        "label_key": "pledgeandborrow"
+      },
+      "label": {
+        "address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+        "function": "pledgeAndBorrow()",
+        "source_function_quote": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable.",
+        "source_path": "src/test/2022-06/XCarnival_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-06/XCarnival_exp.sol",
+        "source_transaction_quote": "    First `0xadf6a75d` call : https://etherscan.io/tx/0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433"
+      },
+      "semantic_location": {
+        "category": "exploit_entry_call",
+        "evidence": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": "onerc721received",
+          "rank": 7,
+          "resolved_to_name": true,
+          "selector": "0x150b7a02"
+        },
+        {
+          "function_name": null,
+          "rank": 12,
+          "resolved_to_name": false,
+          "selector": "0xe3333ae9"
+        },
+        {
+          "function_name": null,
+          "rank": 13,
+          "resolved_to_name": false,
+          "selector": "0x61bc221a"
+        },
+        {
+          "function_name": null,
+          "rank": 14,
+          "resolved_to_name": false,
+          "selector": "0x023245d7"
+        }
+      ],
+      "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec"
+    },
+    {
+      "candidate_count": 13,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 12,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717"
+    },
+    {
+      "candidate_count": 13,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 12,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26"
+    },
+    {
+      "candidate_count": 4,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "no candidate key at labeled address",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "init"
+      },
+      "label": {
+        "address": "0x6e70c88be1d5c2a4c0c8205764d01abe6a3d2e22",
+        "function": "init()",
+        "source_function_quote": "    Root cause: They left the `init` function unprotected. The attacker re-initialized the contract with ",
+        "source_path": "src/test/2021-09/DaoMaker_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-09/DaoMaker_exp.sol",
+        "source_transaction_quote": "    Attack tx: https://etherscan.io/tx/0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "    Root cause: They left the `init` function unprotected. The attacker re-initialized the contract with "
+      },
+      "top5_at_labeled_address": [],
+      "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017"
+    },
+    {
+      "candidate_count": 88,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0xe4c79a4a",
+          "0xfe1b7ed5"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "c",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "pledgeandborrow"
+      },
+      "label": {
+        "address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+        "function": "pledgeAndBorrow()",
+        "source_function_quote": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable.",
+        "source_path": "src/test/2022-06/XCarnival_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-06/XCarnival_exp.sol",
+        "source_transaction_quote": "    First `Start` call : https://etherscan.io/tx/0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d*/"
+      },
+      "semantic_location": {
+        "category": "exploit_entry_call",
+        "evidence": "        // Attacker was call `pledgeAndBorrow()`, But `pledge()` also vulnerable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 1,
+          "resolved_to_name": false,
+          "selector": "0xe4c79a4a"
+        },
+        {
+          "function_name": null,
+          "rank": 3,
+          "resolved_to_name": false,
+          "selector": "0xfe1b7ed5"
+        }
+      ],
+      "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375"
+    },
+    {
+      "candidate_count": 15,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 4,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 14,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2"
+    },
+    {
+      "candidate_count": 10,
+      "candidate_selector_equal_to_label_selector": {
+        "selectors_at_address": [
+          "0x0779afe6",
+          "0x32854cc2"
+        ],
+        "status": "not_stored_in_frozen_label"
+      },
+      "classification": "b",
+      "function_key_comparison": {
+        "basis": "selector vs name",
+        "candidate_resolved_names_at_address": [],
+        "label_key": "swap"
+      },
+      "label": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "function": "swap()",
+        "source_function_quote": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable.",
+        "source_path": "src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_poc_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/blob/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-10/RabbyWallet_SwapRouter_exp.sol",
+        "source_transaction_quote": "//      0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da"
+      },
+      "semantic_location": {
+        "category": "internal_vulnerable_function",
+        "evidence": "                // Classic arbitrary external calls `swap()` vulnerability, and the parameter `address dexRouter` is controllable."
+      },
+      "top5_at_labeled_address": [
+        {
+          "function_name": null,
+          "rank": 2,
+          "resolved_to_name": false,
+          "selector": "0x0779afe6"
+        },
+        {
+          "function_name": null,
+          "rank": 9,
+          "resolved_to_name": false,
+          "selector": "0x32854cc2"
+        }
+      ],
+      "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da"
+    }
+  ]
+}
