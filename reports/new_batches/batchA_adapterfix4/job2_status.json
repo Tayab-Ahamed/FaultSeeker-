@@ -1,0 +1,23 @@
+{
+  "label": "producer-era replay, exploratory",
+  "status": "ABORTED_BEFORE_REPLAY",
+  "valid_set_records_checked": 23,
+  "all_records_eth": true,
+  "required_trace_fields_present": true,
+  "rpc_methods_allowed": [
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt"
+  ],
+  "rate_target_requests_per_second": 2,
+  "rpc_response_files_saved": 5,
+  "complete_transaction_receipt_pairs": 2,
+  "partial_third_transaction_response": true,
+  "paid_plan_billing_or_card_prompt_detected": true,
+  "stopped_immediately_on_prompt": true,
+  "producer_replay_executed": false,
+  "batchA_metrics": null,
+  "raw_response_directory": "reports/new_batches/batchA_adapterfix4/rpc_raw/eth",
+  "frozen_valid_set_modified": false,
+  "frozen_batch_artifact_modified": false,
+  "api_key_printed_or_saved": false
+}

@@ -1,0 +1,27 @@
+{
+  "label": "scope audit, read-only",
+  "commit": "70d1b099c0b1dad524bc89ba4e707ea94b7038b9",
+  "parent": "240fd9fae9cb56a96f45f37d21a90cf094abc467",
+  "commit_message": "fix: rescore provider-pinned benchmark offline",
+  "diff_summary": {
+    "files_changed": 76,
+    "insertions": 1135,
+    "deletions": 444
+  },
+  "affected_rows": 67,
+  "prediction_hashes_unchanged": "67/67",
+  "changed_field_counts": {
+    "first_hit_rank": 67,
+    "recall_at_1": 25,
+    "recall_at_3": 49,
+    "recall_at_5": 52,
+    "target_function_count": 0
+  },
+  "scoring_rule_changed": "benchmark/honest_eval/localization.py::_prediction_keys now falls back to prediction['code_address'] when prediction['address'] is absent; finalize_provider_pinned_report.py::rescore_rows then recomputed first_hit_rank and recall_at_1/3/5 offline from the unchanged saved predictions and ground truth.",
+  "saved_prediction_source": {
+    "script": "scripts/reproduce/run_original_provider_pinned.py",
+    "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+    "run_id": "original-v1-pinned-sequential-20261017",
+    "archival_path": "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/raw/"
+  }
+}
