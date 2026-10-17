@@ -28,14 +28,17 @@ RETRY_WAIT_BASE = 30
 RETRY_WAIT_MAX = 600
 BETWEEN_TX_SECONDS = 4.0
 RATE_LIMIT_MAX_CONSECUTIVE = 5
+RATE_LIMIT_MAX_ATTEMPTS_PER_CASE = 5
+RETRY_PASS_CUPS = 2
 
 
 class RateLimitAbort(BaseException):
     """Abort the current case without allowing provider failover."""
 
-    def __init__(self, provider: str, code: str):
+    def __init__(self, provider: str, code: str, error_text: str = ""):
         self.provider = provider
         self.code = code
+        self.error_text = error_text[:1200]
         super().__init__(f"{provider} returned {code}")
 
 
@@ -138,6 +141,12 @@ def _failure_score() -> dict[str, Any]:
     }
 
 
+def _fatal_provider_text(text: str) -> bool:
+    return bool(re.search(
+        r"\b(?:ban(?:ned)?|block(?:ed)?|billing|payment|quota|upgrade|plan required|suspend(?:ed)?)\b",
+        text or "", re.IGNORECASE))
+
+
 def _aggregate(rows: list[dict[str, Any]]) -> dict[str, Any]:
     total = len(rows)
     ok = sum(row.get("status") == "ok" for row in rows)
@@ -194,9 +203,9 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
         except Exception as exc:
             message = str(exc)
             if isinstance(exc, rpc._RateLimitError) or "429" in message:
-                raise RateLimitAbort("BlockPI", "429")
+                raise RateLimitAbort("BlockPI", "429", message)
             if "503" in message:
-                raise RateLimitAbort("BlockPI", "503")
+                raise RateLimitAbort("BlockPI", "503", message)
             raise
 
     rpc._http_post = paced_post
@@ -208,10 +217,11 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
         provider = "BlockPI"
         cast_counts[chain] += 1
         binary = os.path.join(os.environ["FOUNDRY_BIN"], "cast.exe")
+        cups = int(cast_context.get("compute_units_per_second", 5))
         command = [
             binary, "run", "--quick", txn_hash, "--rpc-url", rpc_url,
             "--rpc-timeout", "45", "--compute-units-per-second",
-            "20" if chain == "eth" else "5", "--threads", "1",
+            str(cups), "--threads", "1",
         ]
         try:
             result = subprocess.run(command, capture_output=True, text=False, timeout=90)
@@ -219,12 +229,15 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
             raise TimeoutError(f"cast timeout after 90s: {txn_hash}") from exc
         stdout = (result.stdout or b"").decode("utf-8", errors="replace")
         stderr = (result.stderr or b"").decode("utf-8", errors="replace")
-        combined = stdout + "\n" + stderr
-        if re.search(r"(?:HTTP\s*)?(?:429|503)\b|rate limit|too many requests", combined, re.I):
-            raise RateLimitAbort(provider, "429/503")
+        combined = (stdout + "\n" + stderr).replace(rpc_url, "[RPC_REDACTED]")
+        if re.search(r"(?:HTTP\s*)?429\b|rate limit|too many requests", combined, re.I):
+            raise RateLimitAbort(provider, "429", combined)
+        if re.search(r"(?:HTTP\s*)?503\b|service unavailable", combined, re.I):
+            raise RateLimitAbort(provider, "503", combined)
         cast_context["last"] = {
             "provider": provider,
             "exit_code": result.returncode,
+            "compute_units_per_second": cups,
             "mismatch": "replay does not match" in combined.lower(),
             "output_tail": combined[-1200:],
         }
@@ -266,7 +279,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             pass
     mismatch_path = run_dir / "mismatches.jsonl"
     rows: list[dict[str, Any]] = []
-    consecutive_limited = 0
+    retry_queue: list[int] = []
+    consecutive_failures = 0
     last_network_tx = False
 
     for index, path in enumerate(paths):
@@ -279,6 +293,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 if (existing.get("txn_hash") == metadata["txn_hash"]
                         and (can_reuse_prefix or existing.get("run_config_hash") == args.run_config_hash)):
                     rows.append(existing)
+                    if existing.get("status") != "ok":
+                        retry_queue.append(index)
                     last_network_tx = True
                     continue
             except (OSError, ValueError):
@@ -288,9 +304,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             time.sleep(BETWEEN_TX_SECONDS)
         provider = "BlockPI"
         attempts: list[dict[str, Any]] = []
+        rate_limit_errors: list[str] = []
         started = time.perf_counter()
         request_counts_before = dict(request_counts)
         cast_counts_before = dict(cast_counts)
+        cast_context["compute_units_per_second"] = 5
         while True:
             attempt_started = time.time()
             cast_context["last"] = {}
@@ -334,33 +352,57 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "failure_message": None,
                     "latency_seconds": round(time.perf_counter() - started, 6),
                 }
-                consecutive_limited = 0
+                consecutive_failures = 0
                 break
             except RateLimitAbort as exc:
-                consecutive_limited += 1
+                error_text = exc.error_text or str(exc)
+                rate_limit_errors.append(error_text)
+                attempt_number = len(attempts) + 1
                 attempts.append({
-                    "attempt": len(attempts) + 1,
+                    "attempt": attempt_number,
                     "status": "rate_limited_or_unavailable",
                     "provider": exc.provider,
                     "code": exc.code,
-                    "backoff_seconds": min(RETRY_WAIT_BASE * (2 ** (consecutive_limited - 1)), RETRY_WAIT_MAX),
+                    "error_text": error_text,
+                    "backoff_seconds": min(RETRY_WAIT_BASE * (2 ** (attempt_number - 1)), RETRY_WAIT_MAX),
                 })
-                if consecutive_limited >= RATE_LIMIT_MAX_CONSECUTIVE:
-                    state = {
-                        "run_id": args.run_id, "state": "PAUSED_RATE_LIMIT",
-                        "next_transaction_index": index, "completed_n": len(rows),
-                        "target_n": len(paths), "consecutive_rate_limit_failures": consecutive_limited,
-                        "request_counts": request_counts,
-                        "cast_process_counts": cast_counts,
-                        "mismatch_count": sum(bool(item.get("replay_mismatch")) for item in rows),
-                    }
-                    _atomic_json(run_dir / "state.json", state)
-                    raise RuntimeError("five consecutive 429/503 responses; run paused") from exc
-                wait = min(RETRY_WAIT_BASE * (2 ** (consecutive_limited - 1)), RETRY_WAIT_MAX)
-                print(f"rate-limit provider={provider} tx={metadata['txn_hash']} wait={wait}s", flush=True)
-                time.sleep(wait)
-                continue
+                if _fatal_provider_text(error_text):
+                    raise RuntimeError(f"fatal provider warning: {error_text[:500]}") from exc
+                if attempt_number < RATE_LIMIT_MAX_ATTEMPTS_PER_CASE:
+                    wait = min(RETRY_WAIT_BASE * (2 ** (attempt_number - 1)), RETRY_WAIT_MAX)
+                    print(f"rate-limit provider={provider} tx={metadata['txn_hash']} "
+                          f"code={exc.code} wait={wait}s error={error_text[-500:]}", flush=True)
+                    time.sleep(wait)
+                    continue
+                row = {
+                    **metadata,
+                    "run_config_hash": args.run_config_hash,
+                    "provider": provider,
+                    "variant": "llm-free",
+                    "model": args.model,
+                    "status": "failed",
+                    "predictions": [],
+                    "score": _failure_score(),
+                    "replay_mismatch": False,
+                    "cast": cast_context.get("last", {}),
+                    "request_count_delta": {
+                        chain: request_counts[chain] - request_counts_before[chain]
+                        for chain in request_counts
+                    },
+                    "cast_process_delta": {
+                        chain: cast_counts[chain] - cast_counts_before[chain]
+                        for chain in cast_counts
+                    },
+                    "attempts": attempts,
+                    "failure_kind": "ProviderRateLimited",
+                    "failure_message": "\n---\n".join(rate_limit_errors)[-2000:],
+                    "latency_seconds": round(time.perf_counter() - started, 6),
+                }
+                break
             except BaseException as exc:
+                error_text = str(exc)[:1200]
+                if _fatal_provider_text(error_text):
+                    raise RuntimeError(f"fatal provider warning: {error_text[:500]}") from exc
                 row = {
                     **metadata,
                     "run_config_hash": args.run_config_hash,
@@ -380,14 +422,20 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                         chain: cast_counts[chain] - cast_counts_before[chain]
                         for chain in cast_counts
                     },
-                    "attempts": attempts + [{"attempt": len(attempts) + 1, "status": "failed"}],
+                    "attempts": attempts + [{"attempt": len(attempts) + 1, "status": "failed",
+                                               "error_text": error_text}],
                     "failure_kind": type(exc).__name__,
-                    "failure_message": str(exc)[:500],
+                    "failure_message": error_text[:500],
                     "latency_seconds": round(time.perf_counter() - started, 6),
                 }
                 break
 
         rows.append(row)
+        if row.get("status") == "ok":
+            consecutive_failures = 0
+        else:
+            consecutive_failures += 1
+            retry_queue.append(index)
         _atomic_json(raw_path, row)
         if row.get("replay_mismatch"):
             with mismatch_path.open("a", encoding="utf-8") as handle:
@@ -406,6 +454,135 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         print(f"case={index + 1}/{len(paths)} chain={metadata['chain']} provider={provider} "
               f"status={row['status']} mismatch={row.get('replay_mismatch', False)}", flush=True)
         last_network_tx = True
+        if consecutive_failures >= 10:
+            _atomic_json(run_dir / "state.json", {
+                "run_id": args.run_id, "state": "PAUSED_CONSECUTIVE_FAILURES",
+                "next_transaction_index": index + 1, "completed_n": len(rows),
+                "target_n": len(paths), "consecutive_failures": consecutive_failures,
+                "request_counts": request_counts, "cast_process_counts": cast_counts,
+                "mismatch_count": sum(bool(item.get("replay_mismatch")) for item in rows),
+            })
+            raise RuntimeError("ten consecutive failed cases; run paused")
+
+    # One retry pass for every failed case, at the lower Foundry rate setting.
+    retry_results: list[dict[str, Any]] = []
+    retry_consecutive_failures = 0
+    for index in retry_queue:
+        path = paths[index]
+        metadata = _metadata(path)
+        provider = "BlockPI"
+        started = time.perf_counter()
+        request_counts_before = dict(request_counts)
+        cast_counts_before = dict(cast_counts)
+        cast_context["compute_units_per_second"] = RETRY_PASS_CUPS
+        try:
+            from faultseeker.forensics.orchestrator import ForensicsOrchestrator
+            from faultseeker.function_analysis.function_ranker import FunctionRanker
+
+            result = ForensicsOrchestrator(model=args.model).run(
+                metadata["txn_hash"], metadata["chain"])
+            if isinstance(result, tuple):
+                result = result[0]
+            if not result:
+                raise RuntimeError("orchestrator returned no result on retry pass")
+            tx_analysis = {
+                "repeated_patterns": result.repeated_patterns,
+                "function_call_loc_memo": result.function_call_loc_memo,
+            }
+            predictions = [dict(item) for item in FunctionRanker().rank(
+                result, tx_analysis).ranked_functions]
+            retry_row = {
+                **metadata,
+                "run_config_hash": args.run_config_hash,
+                "provider": provider,
+                "variant": "llm-free",
+                "model": args.model,
+                "status": "ok",
+                "predictions": predictions,
+                "score": _score(path, predictions),
+                "replay_mismatch": bool(cast_context.get("last", {}).get("mismatch")),
+                "cast": cast_context.get("last", {}),
+                "request_count_delta": {
+                    chain: request_counts[chain] - request_counts_before[chain]
+                    for chain in request_counts
+                },
+                "cast_process_delta": {
+                    chain: cast_counts[chain] - cast_counts_before[chain]
+                    for chain in cast_counts
+                },
+                "attempts": [{"attempt": 1, "status": "retry_pass", "compute_units_per_second": 2}],
+                "failure_kind": None,
+                "failure_message": None,
+                "retry_pass": True,
+                "latency_seconds": round(time.perf_counter() - started, 6),
+            }
+        except RateLimitAbort as exc:
+            retry_row = {
+                **metadata, "run_config_hash": args.run_config_hash,
+                "provider": provider, "variant": "llm-free", "model": args.model,
+                "status": "failed", "predictions": [], "score": _failure_score(),
+                "replay_mismatch": False, "cast": cast_context.get("last", {}),
+                "request_count_delta": {
+                    chain: request_counts[chain] - request_counts_before[chain]
+                    for chain in request_counts
+                },
+                "cast_process_delta": {
+                    chain: cast_counts[chain] - cast_counts_before[chain]
+                    for chain in cast_counts
+                },
+                "attempts": [{"attempt": 1, "status": "retry_rate_limited",
+                               "code": exc.code, "error_text": exc.error_text}],
+                "failure_kind": "ProviderRateLimitedRetryPass",
+                "failure_message": exc.error_text,
+                "retry_pass": True,
+                "latency_seconds": round(time.perf_counter() - started, 6),
+            }
+        except BaseException as exc:
+            error_text = str(exc)[:1200]
+            if _fatal_provider_text(error_text):
+                raise RuntimeError(f"fatal provider warning during retry pass: {error_text[:500]}") from exc
+            retry_row = {
+                **metadata, "run_config_hash": args.run_config_hash,
+                "provider": provider, "variant": "llm-free", "model": args.model,
+                "status": "failed", "predictions": [], "score": _failure_score(),
+                "replay_mismatch": False, "cast": cast_context.get("last", {}),
+                "request_count_delta": {
+                    chain: request_counts[chain] - request_counts_before[chain]
+                    for chain in request_counts
+                },
+                "cast_process_delta": {
+                    chain: cast_counts[chain] - cast_counts_before[chain]
+                    for chain in cast_counts
+                },
+                "attempts": [{"attempt": 1, "status": "retry_failed", "error_text": error_text}],
+                "failure_kind": type(exc).__name__, "failure_message": error_text,
+                "retry_pass": True,
+                "latency_seconds": round(time.perf_counter() - started, 6),
+            }
+        rows[index] = retry_row
+        _atomic_json(args.output_dir / args.run_id / "raw" / f"{metadata['case_id']}.json", retry_row)
+        if retry_row.get("replay_mismatch"):
+            with mismatch_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps({
+                    "index": index, "case_id": metadata["case_id"],
+                    "txn_hash": metadata["txn_hash"], "chain": metadata["chain"],
+                    "provider": provider, "retry_pass": True,
+                    "cast": retry_row.get("cast", {}),
+                }, sort_keys=True) + "\n")
+        retry_results.append(retry_row)
+        retry_consecutive_failures = retry_consecutive_failures + 1 if retry_row["status"] != "ok" else 0
+        _atomic_json(args.output_dir / args.run_id / "state.json", {
+            "run_id": args.run_id, "state": "RETRY_PASS_RUNNING",
+            "next_transaction_index": len(paths), "completed_n": len(rows),
+            "target_n": len(paths), "retry_index": len(retry_results),
+            "retry_total": len(retry_queue), "request_counts": request_counts,
+            "cast_process_counts": cast_counts,
+            "mismatch_count": sum(bool(item.get("replay_mismatch")) for item in rows),
+        })
+        print(f"retry case={index + 1}/{len(paths)} provider={provider} "
+              f"status={retry_row['status']} cups=2", flush=True)
+        if retry_consecutive_failures >= 10:
+            raise RuntimeError("ten consecutive failed retry cases; run paused")
 
     manifest = {
         "protocol": "benchmark/protocols/original_benchmark_function_localization_v1.md",
