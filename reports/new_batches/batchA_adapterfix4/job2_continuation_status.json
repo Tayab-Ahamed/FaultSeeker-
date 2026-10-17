@@ -1,0 +1,665 @@
+{
+  "endpoint": "https://ethereum.publicnode.com",
+  "excluded_rows": 23,
+  "label": "producer-era replay, exploratory",
+  "methods": [
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt"
+  ],
+  "new_transactions_fetched": 21,
+  "producer_replay_executed": false,
+  "rate_target_requests_per_second": 1,
+  "reason": "Every frozen Batch A record lacks an expected block number field, so every row is excluded rather than adapting the verification rule.",
+  "replayed_rows": 0,
+  "reused_complete_pairs": 2,
+  "rows": [
+    {
+      "excluded": true,
+      "exclusion_reason": "batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": "0xeff07d",
+      "receipt_transaction_hash_returned": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+      "source": "reused_drpc_pair",
+      "transaction_block_number": "0xeff07d",
+      "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+      "transaction_hash_returned": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": "0x10b5be7",
+      "receipt_transaction_hash_returned": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+      "source": "reused_drpc_pair",
+      "transaction_block_number": "0x10b5be7",
+      "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+      "transaction_hash_returned": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefefc4",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefefc4",
+      "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
+      "transaction_hash_returned": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefefef",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefefef",
+      "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
+      "transaction_hash_returned": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0x13d4df1",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0x13d4df1",
+      "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
+      "transaction_hash_returned": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "transaction.hash; receipt.transactionHash; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+          "field": "transaction.hash"
+        },
+        {
+          "actual": "",
+          "expected": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": null,
+      "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+      "transaction_hash_returned": ""
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefefbd",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefefbd",
+      "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
+      "transaction_hash_returned": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff060",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff060",
+      "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
+      "transaction_hash_returned": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff066",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff066",
+      "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
+      "transaction_hash_returned": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff033",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff033",
+      "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
+      "transaction_hash_returned": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff028",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff028",
+      "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
+      "transaction_hash_returned": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff012",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff012",
+      "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
+      "transaction_hash_returned": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff02c",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff02c",
+      "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
+      "transaction_hash_returned": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefefa4",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefefa4",
+      "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
+      "transaction_hash_returned": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "transaction.hash; receipt.transactionHash; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
+          "field": "transaction.hash"
+        },
+        {
+          "actual": "",
+          "expected": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": null,
+      "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
+      "transaction_hash_returned": ""
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff007",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff007",
+      "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+      "transaction_hash_returned": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefef8c",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefef8c",
+      "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
+      "transaction_hash_returned": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "transaction.hash; receipt.transactionHash; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+          "field": "transaction.hash"
+        },
+        {
+          "actual": "",
+          "expected": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": null,
+      "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "transaction_hash_returned": ""
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff030",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff030",
+      "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
+      "transaction_hash_returned": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff023",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff023",
+      "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
+      "transaction_hash_returned": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff04b",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff04b",
+      "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
+      "transaction_hash_returned": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xefefd1",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xefefd1",
+      "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
+      "transaction_hash_returned": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2"
+    },
+    {
+      "excluded": true,
+      "exclusion_reason": "receipt.transactionHash; transaction/receipt.blockNumber; batch_record.blockNumber",
+      "expected_block_number": null,
+      "label_present": true,
+      "mismatches": [
+        {
+          "actual": "",
+          "expected": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
+          "field": "receipt.transactionHash"
+        },
+        {
+          "actual": null,
+          "expected": "0xeff00a",
+          "field": "transaction/receipt.blockNumber"
+        },
+        {
+          "actual": "missing from frozen Batch A record",
+          "expected": "present",
+          "field": "batch_record.blockNumber"
+        }
+      ],
+      "receipt_block_number": null,
+      "receipt_transaction_hash_returned": "",
+      "source": "publicnode_fetch",
+      "transaction_block_number": "0xeff00a",
+      "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
+      "transaction_hash_returned": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da"
+    }
+  ],
+  "status": "COMPLETE"
+}
