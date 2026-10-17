@@ -1,0 +1,2617 @@
+{
+  "artifact_sha256": "3ab15ab445e00613b1fb7a48e32c94f22f7a03f451182ff2fac5912b3aaa2dc2",
+  "batch_id": "batchC",
+  "chain": "eth",
+  "exclusion_policy": {
+    "batch_a_row_count": 40,
+    "batch_b_row_count": 20,
+    "benchmark_row_count": 110,
+    "ground_truth_json_count": 115,
+    "one_transaction_per_incident": true,
+    "selected_tx_intersections": 0,
+    "unresolved_or_internal_targets_excluded": true
+  },
+  "phase": "phase_1_dataset_and_protocol_only",
+  "row_count": 30,
+  "rows": [
+    {
+      "chain": "eth",
+      "full_signature": "initWallet(address[],uint256,uint256)",
+      "incident_date": "2017-07",
+      "incident_name": "Parity multisig wallet first hack",
+      "selector": "0xe46dcfeb",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 9,
+            "text": "// Vulnerable Contract : 0xBEc591De75b8699A3Ba52F073428822d0Bfc0D7e"
+          },
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 28,
+            "text": "    IParityWallet internal constant VICTIM_WALLET = IParityWallet(0xBEc591De75b8699A3Ba52F073428822d0Bfc0D7e);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 46,
+            "text": "        vm.startPrank(ATTACKER);"
+          },
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 47,
+            "text": "        VICTIM_WALLET.initWallet(owners, 0, STOLEN_AMOUNT);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 20,
+            "text": "interface IParityWallet {"
+          },
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 21,
+            "text": "    function initWallet(address[] memory _owners, uint256 _required, uint256 _daylimit) external;"
+          },
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 22,
+            "text": "    function execute(address _to, uint256 _value, bytes calldata _data) external;"
+          },
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 23,
+            "text": "    function isOwner(address _addr) external view returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2017-07/Parity_first_hack_exp.sol",
+            "line": 10,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2017-07/Parity_first_hack_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2017-07/Parity_first_hack_exp.sol",
+      "transaction_hash": "0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec",
+      "vulnerability_category": "Access Control",
+      "vulnerable_contract_address": "0xbec591de75b8699a3ba52f073428822d0bfc0d7e"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "batchTransfer(address[],uint256)",
+      "incident_date": "2018-04",
+      "incident_name": "BEC batch transfer overflow",
+      "selector": "0x83f12fec",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 16,
+            "text": "// https://etherscan.io/address/0xc5d105e63711398af9bbff092d4b6769c82f793d#code  Line261"
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 21,
+            "text": "    BECToken bec = BECToken(0xC5d105E63711398aF9bbff092d4B6769C82F793D);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 32,
+            "text": "        address[] memory receivers = new address[](2);"
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 35,
+            "text": "        bec.batchTransfer(receivers, type(uint256).max / 2 + 1);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 8,
+            "text": "interface BECToken {"
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 9,
+            "text": "    function balanceOf("
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 10,
+            "text": "        address account"
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 11,
+            "text": "    ) external view returns (uint256);"
+          },
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 12,
+            "text": "    function batchTransfer(address[] calldata _receivers, uint256 _value) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2018-04/BEC_exp.sol",
+            "line": 15,
+            "text": "// https://etherscan.io/tx/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2018-04/BEC_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2018-04/BEC_exp.sol",
+      "transaction_hash": "0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f",
+      "vulnerability_category": "Token / Integer Overflow",
+      "vulnerable_contract_address": "0xc5d105e63711398af9bbff092d4b6769c82f793d"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "createChannel(bytes32,address,uint256,address,uint256[2])",
+      "incident_date": "2018-10",
+      "incident_name": "SpankChain payment-channel reentrancy",
+      "selector": "0xaeba142c",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 9,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xf91546835f756DA0c10cFa0CDA95b15577b84aA7"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 65,
+            "text": "    ISpankChain spankChain = ISpankChain(0xf91546835f756DA0c10cFa0CDA95b15577b84aA7);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 76,
+            "text": "        spankChain.createChannel{value: 5 ether}("
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 77,
+            "text": "            hex\"4e03657aea45a94fc7d47ba826c8d667c0d1e6e33a64a036ec44f58fa12d6c45\","
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 78,
+            "text": "            msg.sender,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 79,
+            "text": "            type(uint256).max - block.timestamp + 1,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 80,
+            "text": "            address(this),"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 81,
+            "text": "            balances"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 21,
+            "text": "interface ISpankChain {"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 22,
+            "text": "    function createChannel("
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 23,
+            "text": "        bytes32 _lcID,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 24,
+            "text": "        address _partyI,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 25,
+            "text": "        uint256 _confirmTime,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 26,
+            "text": "        address _token,"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 27,
+            "text": "        uint256[2] memory _balances // [eth, token]"
+          },
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 28,
+            "text": "    ) external payable;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2018-10/SpankChain_exp.sol",
+            "line": 10,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2018-10/SpankChain_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2018-10/SpankChain_exp.sol",
+      "transaction_hash": "0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88",
+      "vulnerability_category": "Reentrancy / State Accounting",
+      "vulnerable_contract_address": "0xf91546835f756da0c10cfa0cda95b15577b84aa7"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "swapExactJarForJar(address,address,uint256,uint256,address[],bytes[])",
+      "incident_date": "2020-11",
+      "incident_name": "Pickle Finance evil jar",
+      "selector": "0xff3f1869",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 15,
+            "text": "ControllerLike constant CONTROLLER = ControllerLike(0x6847259b2B3A4c17e7c43C54409810aF48bA5210);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 34,
+            "text": "        address[] memory targets = new address[](earns + 2);"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 37,
+            "text": "            targets[i] = address(CURVE_LOGIC);"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 41,
+            "text": "            datas[i + 1] = arbitraryCall(address(PDAI), \"earn()\");"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 43,
+            "text": "        datas[earns + 1] = arbitraryCall(STRAT, \"withdraw(address)\", address(CDAI));"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 49,
+            "text": "        CONTROLLER.swapExactJarForJar(address(new FakeJar(CDAI)), address(new FakeJar(CDAI)), 0, 0, targets, datas);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 69,
+            "text": "abstract contract ControllerLike {"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 70,
+            "text": "    function swapExactJarForJar("
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 71,
+            "text": "        address _fromJar, // From which Jar"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 72,
+            "text": "        address _toJar, // To which Jar"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 73,
+            "text": "        uint256 _fromJarAmount, // How much jar tokens to swap"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 74,
+            "text": "        uint256 _toJarMinAmount, // How much jar tokens you'd like at a minimum"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 75,
+            "text": "        address[] calldata _targets,"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 76,
+            "text": "        bytes[] calldata _data"
+          },
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 77,
+            "text": "    ) external virtual;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2020-11/Pickle_exp.sol",
+            "line": 10,
+            "text": "// Attack TX: https://etherscan.io/tx/0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2020-11/Pickle_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2020-11/Pickle_exp.sol",
+      "transaction_hash": "0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0",
+      "vulnerability_category": "Arbitrary Call / Vault Accounting",
+      "vulnerable_contract_address": "0x6847259b2b3a4c17e7c43c54409810af48ba5210"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "deposit(uint256)",
+      "incident_date": "2021-02",
+      "incident_name": "Yearn yDAI vault manipulation",
+      "selector": "0xb6b55f25",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 12,
+            "text": "// Vulnerable Contract : 0xACd43E627e64355f1861cEC6d3a6688B31a6F952"
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 49,
+            "text": "    IYVDai yvdai = IYVDai(0xACd43E627e64355f1861cEC6d3a6688B31a6F952);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 107,
+            "text": "            yvdai.deposit(earn_amt[i]);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 31,
+            "text": "interface IYVDai {"
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 32,
+            "text": "    function balanceOf("
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 33,
+            "text": "        address"
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 34,
+            "text": "    ) external view returns (uint256);"
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 35,
+            "text": "    function deposit("
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 36,
+            "text": "        uint256 _amount"
+          },
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 37,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2021-02/Yearn_ydai_exp.sol",
+            "line": 13,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2021-02/Yearn_ydai_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-02/Yearn_ydai_exp.sol",
+      "transaction_hash": "0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b",
+      "vulnerability_category": "Price Manipulation / Vault Accounting",
+      "vulnerable_contract_address": "0xacd43e627e64355f1861cec6d3a6688b31a6f952"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "mint(address,uint256)",
+      "incident_date": "2021-03",
+      "incident_name": "PAID token unauthorized mint",
+      "selector": "0x40c10f19",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 23,
+            "text": "    IPaid PAID = IPaid(0x8c8687fC965593DFb2F0b4EAeFD55E9D8df348df);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 30,
+            "text": "    function testExploit() public {"
+          },
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 31,
+            "text": "        cheats.prank(0x18738290AF1Aaf96f0AcfA945C9C31aB21cd65bE);"
+          },
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 32,
+            "text": "        PAID.mint(address(this), 59_471_745_571_000_000_000_000_000); //key compromised or rugged"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 14,
+            "text": "interface IPaid {"
+          },
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 15,
+            "text": "    function mint(address _owner, uint256 _amount) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2021-03/PAID_exp.sol",
+            "line": 12,
+            "text": "// https://etherscan.io/tx/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2021-03/PAID_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-03/PAID_exp.sol",
+      "transaction_hash": "0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0",
+      "vulnerability_category": "Access Control / Unlimited Mint",
+      "vulnerable_contract_address": "0x8c8687fc965593dfb2f0b4eaefd55e9d8df348df"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "work(uint256,address,uint256,uint256,bytes)",
+      "incident_date": "2021-05",
+      "incident_name": "Rari Capital fake-token lending",
+      "selector": "0x2118c75c",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 18,
+            "text": "    Bank vault = Bank(0x67B66C99D3Eb37Fa76Aa3Ed1ff33E8e39F0b9c7A);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 38,
+            "text": "        vault.work{value: 100_000_000}("
+          },
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 39,
+            "text": "            0, 0x9EED7274Ea4b614ACC217e46727d377f7e6F9b24, 0, 100_000_000_000_000_000_000_000, data"
+          },
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 40,
+            "text": "        );"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 13,
+            "text": "interface Bank {"
+          },
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 14,
+            "text": "    function work(uint256 id, address goblin, uint256 loan, uint256 maxReturn, bytes calldata data) external payable;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2021-05/RariCapital_exp.sol",
+            "line": 8,
+            "text": "    Attack tx: https://etherscan.com/tx/0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2021-05/RariCapital_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-05/RariCapital_exp.sol",
+      "transaction_hash": "0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be",
+      "vulnerability_category": "Lending / Fake Token",
+      "vulnerable_contract_address": "0x67b66c99d3eb37fa76aa3ed1ff33e8e39f0b9c7a"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "verifyHeaderAndExecuteTx(bytes,bytes,bytes,bytes,bytes)",
+      "incident_date": "2021-08",
+      "incident_name": "Poly Network cross-chain manager",
+      "selector": "0xd450e04c",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 79,
+            "text": "    address EthCrossChainManager = 0x838bf9E95CB12Dd76a54C9f9D2E3082EAF928270;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 163,
+            "text": "        IEthCrossChainManager(EthCrossChainManager).verifyHeaderAndExecuteTx({ // 0xd450e04c"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 164,
+            "text": "            proof: proof,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 165,
+            "text": "            rawHeader: rawHeader,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 166,
+            "text": "            headerProof: hex\"\","
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 167,
+            "text": "            curRawHeader: hex\"\","
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 168,
+            "text": "            headerSig: hex\"7e3359dec445d7d49b80d9999ef2e34f01b6526f2a0b848fcb223201b21ced0e51bece6815510bf7283e98175c0bdfde8b5b1bdc38beef5e7b8ab1b8e8d1b2c900428e40826b3606e0b684d66e9406a5c0d69c16a5cbda8fefe176716f3286e872361ed29bd945b56d5af3a8c581d2b627f679061282f11a6e9b021fe3426faece00e09479bd3581f9eb27be273a761c509f6f20bde1c6a4187fa082c4e55b2f07684034b50075441c51cfc3061879bcf04e5a256b21379f67a2dc0643843bf6438000\""
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 169,
+            "text": "        });"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 8,
+            "text": "interface IEthCrossChainManager {"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 9,
+            "text": "    function verifyHeaderAndExecuteTx("
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 10,
+            "text": "        bytes memory proof,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 11,
+            "text": "        bytes memory rawHeader,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 12,
+            "text": "        bytes memory headerProof,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 13,
+            "text": "        bytes memory curRawHeader,"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 14,
+            "text": "        bytes memory headerSig"
+          },
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 15,
+            "text": "    ) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2021-08/PolyNetwork_exp.sol",
+            "line": 99,
+            "text": "        // https://etherscan.io/tx/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581/advanced"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2021-08/PolyNetwork_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-08/PolyNetwork_exp.sol",
+      "transaction_hash": "0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581",
+      "vulnerability_category": "Bridge / Access Control",
+      "vulnerable_contract_address": "0x838bf9e95cb12dd76a54c9f9d2e3082eaf928270"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(uint256)",
+      "incident_date": "2021-10",
+      "incident_name": "Cream Finance crYUSD collateral inflation",
+      "selector": "0xc5ebeaec",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 76,
+            "text": "    address constant crYUSD = 0x4BAa77013ccD6705ab0522853cB0E9d453579Dd4;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 119,
+            "text": "        IERC20(yUSD).approve(crYUSD, type(uint256).max);"
+          },
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 120,
+            "text": "        ICrToken(crYUSD).borrow(IERC20(yUSD).balanceOf(crYUSD));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 53,
+            "text": "interface ICrToken {"
+          },
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 54,
+            "text": "    function borrow("
+          },
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 55,
+            "text": "        uint256 borrowAmount"
+          },
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 56,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2021-10/Cream_2_exp.sol",
+            "line": 10,
+            "text": "// https://etherscan.io/tx/0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2021-10/Cream_2_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2021-10/Cream_2_exp.sol",
+      "transaction_hash": "0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92",
+      "vulnerability_category": "Lending / Oracle Manipulation",
+      "vulnerable_contract_address": "0x4baa77013ccd6705ab0522853cb0e9d453579dd4"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "mint(address,uint256)",
+      "incident_date": "2023-04",
+      "incident_name": "Yearn yUSDT share-price manipulation",
+      "selector": "0x40c10f19",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 428,
+            "text": "    IbZxiUSDC bZxiUSDC = IbZxiUSDC(0xF013406A0B1d544238083DF0B93ad0d2cBE0f65f);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 482,
+            "text": "        uint256 amount = yUSDT.balanceAave() * bZxiUSDC.tokenPrice() / 1e18 * 114 / 100;"
+          },
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 483,
+            "text": "        uint256 mintAmount = bZxiUSDC.mint(address(this), amount);"
+          },
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 484,
+            "text": ""
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 42,
+            "text": "interface IbZxiUSDC {"
+          },
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 43,
+            "text": "    function mint(address receiver, uint256 depositAmount) external returns (uint256 mintAmount);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2023-04/YearnFinance_exp.sol",
+            "line": 11,
+            "text": "// https://etherscan.io/tx/0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2023-04/YearnFinance_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-04/YearnFinance_exp.sol",
+      "transaction_hash": "0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328",
+      "vulnerability_category": "Lending / Share Price Manipulation",
+      "vulnerable_contract_address": "0xf013406a0b1d544238083df0b93ad0d2cbe0f65f"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "repay(uint256,uint256,address)",
+      "incident_date": "2023-12",
+      "incident_name": "Pine Protocol NFT lending repayment",
+      "selector": "0xb1e8f8ef",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contracts : https://etherscan.io/address/0x2405913d54fc46eeaf3fb092bfb099f46803872f"
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 47,
+            "text": "    IERC721LendingPool private constant ERC721LendingPool02New ="
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 48,
+            "text": "        IERC721LendingPool(0xC3f4659588b13f23E09Ec54783A3c407e39ad589);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 105,
+            "text": "    function executeOperation(address _reserve, uint256 _amount, uint256 _fee, bytes memory _params) external {"
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 108,
+            "text": "        console.log(\"2. Using flashloaned WETH amount from old lending pool to repay loan in new lending pool\");"
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 109,
+            "text": "        ERC721LendingPool02New.repay(collateralTokenId, _amount, address(0));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 20,
+            "text": "interface IERC721LendingPool {"
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 21,
+            "text": "    function flashLoan(address _receiver, address _reserve, uint256 _amount, bytes memory _params) external;"
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 22,
+            "text": ""
+          },
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 23,
+            "text": "    function repay(uint256 nftID, uint256 repayAmount, address pineWallet) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2023-12/PineProtocol_exp.sol",
+            "line": 14,
+            "text": "// Attack Tx : https://explorer.phalcon.xyz/tx/eth/0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2023-12/PineProtocol_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-12/PineProtocol_exp.sol",
+      "transaction_hash": "0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d",
+      "vulnerability_category": "NFT Lending / Repayment Accounting",
+      "vulnerable_contract_address": "0xc3f4659588b13f23e09ec54783a3c407e39ad589"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "claimMultipleStaking(address[],address,uint256,bool,uint256)",
+      "incident_date": "2023-12",
+      "incident_name": "Convergence reward distributor",
+      "selector": "0x23446652",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 41,
+            "text": "    ICvxRewardDistributor cvxRewardDistributor = ICvxRewardDistributor(0x2b083beaaC310CC5E190B1d2507038CcB03E7606);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 51,
+            "text": "        Mock mock = new Mock();"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 53,
+            "text": "        ICvxStakingPositionService[] memory claimContracts = new ICvxStakingPositionService[](1);"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 54,
+            "text": "        claimContracts[0] = ICvxStakingPositionService(address(mock));"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 58,
+            "text": "        cvxRewardDistributor.claimMultipleStaking(claimContracts, address(this), 1, true, 1);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 26,
+            "text": "interface ICvxRewardDistributor {"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 27,
+            "text": "    function claimMultipleStaking("
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 28,
+            "text": "        ICvxStakingPositionService[] calldata claimContracts,"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 29,
+            "text": "        address _account,"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 30,
+            "text": "        uint256 _minCvgCvxAmountOut,"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 31,
+            "text": "        bool _isConvert,"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 32,
+            "text": "        uint256 cvxRewardCount"
+          },
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 33,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2023-12/Convergence_exp.sol",
+            "line": 8,
+            "text": "// TX : https://etherscan.io/tx/0x636be30e58acce0629b2bf975b5c3133840cd7d41ffc3b903720c528f01c65d9"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2023-12/Convergence_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-12/Convergence_exp.sol",
+      "transaction_hash": "0x636be30e58acce0629b2bf975b5c3133840cd7d41ffc3b903720c528f01c65d9",
+      "vulnerability_category": "Reward Accounting / Token Inflation",
+      "vulnerable_contract_address": "0x2b083beaac310cc5e190b1d2507038ccb03e7606"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "performAction(address,address,uint256,address,bytes32,bytes)",
+      "incident_date": "2024-01",
+      "incident_name": "Socket vulnerable route arbitrary call",
+      "selector": "0x7899f9ed",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 26,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x3a23F943181408EAC424116Af7b7790c94Cb97a5 (the faulty route is vulnerable not the gateway itself)"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 30,
+            "text": "// Vulnerable Contract Code : https://etherscan.io/address/0xCC5fDA5e3cA925bd0bb428C8b2669496eE43067e#code"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 61,
+            "text": "    function getRouteData(address token, address user) internal view returns (bytes memory callDataX2) {"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 62,
+            "text": "        callDataX2 = abi.encodeWithSelector("
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 63,
+            "text": "            ISocketVulnRoute.performAction.selector,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 64,
+            "text": "            token,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 65,
+            "text": "            token,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 66,
+            "text": "            0,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 67,
+            "text": "            address(this),"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 68,
+            "text": "            bytes32(\"\"),"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 69,
+            "text": "            getCallData(_usdc, user)"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 70,
+            "text": "        );"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 74,
+            "text": "        gateway.executeRoute(routeId, getRouteData(_usdc, targetUser));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 11,
+            "text": "interface ISocketVulnRoute {"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 12,
+            "text": "    function performAction("
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 13,
+            "text": "        address fromToken,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 14,
+            "text": "        address toToken,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 15,
+            "text": "        uint256 amount,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 16,
+            "text": "        address receiverAddress,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 17,
+            "text": "        bytes32 metadata,"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 18,
+            "text": "        bytes calldata swapExtraData"
+          },
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 19,
+            "text": "    ) external payable returns (uint256);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2024-01/SocketGateway_exp.sol",
+            "line": 27,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2024-01/SocketGateway_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-01/SocketGateway_exp.sol",
+      "transaction_hash": "0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6",
+      "vulnerability_category": "Bridge / Arbitrary Call",
+      "vulnerable_contract_address": "0xcc5fda5e3ca925bd0bb428c8b2669496ee43067e"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "upgradeToAndCall(address,bytes)",
+      "incident_date": "2024-01",
+      "incident_name": "Pike Finance proxy initialization",
+      "selector": "0x4f1ef286",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 9,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xfc7599cffea9de127a9f9c748ccb451a34d2f063"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 27,
+            "text": "    address constant PikeFinanceProxy = 0xFC7599cfFea9De127a9f9C748CCb451a34d2F063;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 48,
+            "text": "        // Upgrade proxy contract"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 49,
+            "text": "        address newImplementation = address(this);"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 50,
+            "text": "        bytes memory data = abi.encodeWithSignature(\"withdraw(address)\", address(this));"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 51,
+            "text": "        IPikeFinanceProxy(PikeFinanceProxy).upgradeToAndCall(newImplementation, data);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 20,
+            "text": "interface IPikeFinanceProxy {"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 21,
+            "text": "    function initialize(address, address, address, address, uint16, uint16) external;"
+          },
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 22,
+            "text": "    function upgradeToAndCall(address, bytes memory) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2024-01/PikeFinance_exp.sol",
+            "line": 10,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xe2912b8bf34d561983f2ae95f34e33ecc7792a2905a3e317fcc98052bce66431"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2024-01/PikeFinance_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-01/PikeFinance_exp.sol",
+      "transaction_hash": "0xe2912b8bf34d561983f2ae95f34e33ecc7792a2905a3e317fcc98052bce66431",
+      "vulnerability_category": "Proxy / Access Control",
+      "vulnerable_contract_address": "0xfc7599cffea9de127a9f9c748ccb451a34d2f063"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "setDelegateApproval(address,bool)",
+      "incident_date": "2024-03",
+      "incident_name": "Prisma delegate approval abuse",
+      "selector": "0xc3c854b6",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 93,
+            "text": "    address public immutable BorrowerOperations = 0x72c590349535AD52e6953744cb2A36B409542719;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 169,
+            "text": ""
+          },
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 170,
+            "text": "        // set delegate approval"
+          },
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 171,
+            "text": "        IBorrowerOperations(BorrowerOperations).setDelegateApproval(address(MigrateTroveZap), true);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 55,
+            "text": "interface IBorrowerOperations {"
+          },
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 56,
+            "text": "    function setDelegateApproval(address _delegate, bool _isApproved) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2024-03/Prisma_exp.sol",
+            "line": 10,
+            "text": "// Attack Tx: https://etherscan.io/tx/0x00c503b595946bccaea3d58025b5f9b3726177bbdc9674e634244135282116c7"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2024-03/Prisma_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-03/Prisma_exp.sol",
+      "transaction_hash": "0x00c503b595946bccaea3d58025b5f9b3726177bbdc9674e634244135282116c7",
+      "vulnerability_category": "Lending / Delegate Approval",
+      "vulnerable_contract_address": "0x72c590349535ad52e6953744cb2a36b409542719"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(uint256,uint256,address)",
+      "incident_date": "2025-05",
+      "incident_name": "Resupply reUSD oracle manipulation",
+      "selector": "0xd6bda0c0",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x6e90c85a495d54c6d7E1f3400FEF1f6e59f86bd6"
+          },
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 78,
+            "text": "    IResupplyVault private constant resupplyVault = IResupplyVault(0x6e90c85a495d54c6d7E1f3400FEF1f6e59f86bd6);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 125,
+            "text": "        sCrvUsdContract.approve(address(resupplyVault), type(uint256).max);"
+          },
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 126,
+            "text": "        resupplyVault.addCollateralVault(sCrvUsdMintAmount, address(this));"
+          },
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 127,
+            "text": "        resupplyVault.borrow(borrowAmount, 0, address(this));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 44,
+            "text": "interface IResupplyVault {"
+          },
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 45,
+            "text": "    function addCollateralVault(uint256, address) external;"
+          },
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 46,
+            "text": "    function borrow(uint256, uint256, address) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-05/ResupplyFi_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-05/ResupplyFi_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-05/ResupplyFi_exp.sol",
+      "transaction_hash": "0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3",
+      "vulnerability_category": "Lending / Oracle Manipulation",
+      "vulnerable_contract_address": "0x6e90c85a495d54c6d7e1f3400fef1f6e59f86bd6"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "redeem(uint256,address,address)",
+      "incident_date": "2025-07",
+      "incident_name": "LlamaLend Convex strategy share accounting",
+      "selector": "0xba087652",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : 0x75b7DB3e11138134fe4744553b5e5e3D6546d289"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 28,
+            "text": "address constant STRATEGY = 0x75b7DB3e11138134fe4744553b5e5e3D6546d289;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 86,
+            "text": "        // step 2: deposit the crvUSD into the strategy; the minted shares are derived here."
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 87,
+            "text": "        IERC20(CRVUSD_TOKEN).approve(STRATEGY, crvUsdSeed);"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 88,
+            "text": "        uint256 strategyShares = ITokenizedStrategy(STRATEGY).deposit(crvUsdSeed, address(this));"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 90,
+            "text": "        // step 3: redeem the just-minted strategy shares and receive the inflated crvUSD output."
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 91,
+            "text": "        uint256 crvUsdBeforeRedeem = IERC20(CRVUSD_TOKEN).balanceOf(address(this));"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 92,
+            "text": "        ITokenizedStrategy(STRATEGY).redeem(strategyShares, address(this), address(this));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 37,
+            "text": "interface ITokenizedStrategy {"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 38,
+            "text": "    function deposit(uint256 assets, address receiver) external returns (uint256 shares);"
+          },
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 39,
+            "text": "    function redeem(uint256 shares, address receiver, address owner) external returns (uint256 assets);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x2ff7c23dca7e9a86c70004696802cbd37d6a77fc4f3e02522b16617045b764f6"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-07/StrategyLlamaLendConvex_exp.sol",
+      "transaction_hash": "0x2ff7c23dca7e9a86c70004696802cbd37d6a77fc4f3e02522b16617045b764f6",
+      "vulnerability_category": "Vault / Share Accounting",
+      "vulnerable_contract_address": "0x75b7db3e11138134fe4744553b5e5e3d6546d289"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "transferProxy(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+      "incident_date": "2018-04",
+      "incident_name": "SmartMesh transferProxy signature bypass",
+      "selector": "0xeb502d45",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 8,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x55f93985431fc9304077687a35a1ba103dc1e081"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 35,
+            "text": "    address internal Victim = 0x55F93985431Fc9304077687a35A1BA103dC1e081;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 43,
+            "text": "    function testExploit() public balanceLog {"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 44,
+            "text": "        address _from = 0xDF31A499A5A8358b74564f1e2214B31bB34Eb46F;"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 45,
+            "text": "        address _to = 0xDF31A499A5A8358b74564f1e2214B31bB34Eb46F;"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 46,
+            "text": "        uint256 _value = uint256(0x8fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 47,
+            "text": "        uint256 _feeSmt = uint256(0x7000000000000000000000000000000000000000000000000000000000000001);"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 48,
+            "text": "        uint8 _v = uint8(0x000000000000000000000000000000000000000000000000000000000000001b);"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 49,
+            "text": "        bytes32 _r = 0x87790587c256045860b8fe624e5807a658424fad18c2348460e40ecf10fc8799;"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 50,
+            "text": "        bytes32 _s = 0x6c879b1e8a0a62f23b47aa57a3369d416dd783966bd1dda0394c04163a98d8d8;"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 51,
+            "text": "        ISmartMesh(Victim).transferProxy(_from, _to, _value, _feeSmt, _v, _r, _s);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 20,
+            "text": "interface ISmartMesh {"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 21,
+            "text": "    function transferProxy("
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 22,
+            "text": "        address _from,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 23,
+            "text": "        address _to,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 24,
+            "text": "        uint256 _value,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 25,
+            "text": "        uint256 _feeSmt,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 26,
+            "text": "        uint8 _v,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 27,
+            "text": "        bytes32 _r,"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 28,
+            "text": "        bytes32 _s"
+          },
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 29,
+            "text": "    ) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2018-04/SmartMesh_exp.sol",
+            "line": 9,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2018-04/SmartMesh_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2018-04/SmartMesh_exp.sol",
+      "transaction_hash": "0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f",
+      "vulnerability_category": "Token / Signature Validation",
+      "vulnerable_contract_address": "0x55f93985431fc9304077687a35a1ba103dc1e081"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "routerCallNative((address,uint256,uint256,address,uint256,address,address,address),bytes)",
+      "incident_date": "2022-12",
+      "incident_name": "Rubic cross-chain router arbitrary call",
+      "selector": "0x0b6b2d42",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 49,
+            "text": "    RubicProxy1 Rubic1 = RubicProxy1(0x3335A88bb18fD3b6824b59Af62b50CE494143333);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 88,
+            "text": "        RubicProxy1.BaseCrossChainParams memory _params1 = RubicProxy1.BaseCrossChainParams({"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 89,
+            "text": "            srcInputToken: address(0),"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 90,
+            "text": "            srcInputAmount: 0,"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 91,
+            "text": "            dstChainID: 0,"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 92,
+            "text": "            dstOutputToken: address(0),"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 93,
+            "text": "            dstMinOutputAmount: 0,"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 94,
+            "text": "            recipient: address(0),"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 95,
+            "text": "            integrator: integrators,"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 96,
+            "text": "            router: address(USDC)"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 116,
+            "text": "            bytes memory data ="
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 117,
+            "text": "                abi.encodeWithSignature(\"transferFrom(address,address,uint256)\", victims[i], address(this), amount);"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 118,
+            "text": "            Rubic1.routerCallNative(_params1, data);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 13,
+            "text": "interface RubicProxy1 {"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 14,
+            "text": "    struct BaseCrossChainParams {"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 15,
+            "text": "        address srcInputToken;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 16,
+            "text": "        uint256 srcInputAmount;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 17,
+            "text": "        uint256 dstChainID;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 18,
+            "text": "        address dstOutputToken;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 19,
+            "text": "        uint256 dstMinOutputAmount;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 20,
+            "text": "        address recipient;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 21,
+            "text": "        address integrator;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 22,
+            "text": "        address router;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 23,
+            "text": "    }"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 25,
+            "text": "    function routerCallNative(BaseCrossChainParams calldata _params, bytes calldata _data) external;"
+          },
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 26,
+            "text": "}"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2022-12/Rubic_exp.sol",
+            "line": 11,
+            "text": "// https://etherscan.io/tx/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2022-12/Rubic_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2022-12/Rubic_exp.sol",
+      "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "vulnerability_category": "Bridge / Arbitrary Call",
+      "vulnerable_contract_address": "0x3335a88bb18fd3b6824b59af62b50ce494143333"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "swapExactAmountIn(address,uint256,address,uint256,uint256)",
+      "incident_date": "2020-06",
+      "incident_name": "Balancer STA deflationary-token accounting",
+      "selector": "0x8201aa3f",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 121,
+            "text": "    BPool bpool = BPool(0x0e511Aa1a137AaD267dfe3a6bFCa0b856C1a3682);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 196,
+            "text": "        bpool.gulp(weth);"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 198,
+            "text": "        bpool.swapExactAmountIn(weth, MaxinRatio - 1e18, sta, 0, 9999 * 1e18);"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 199,
+            "text": "        bpool.swapExactAmountIn(sta, IERC20(sta).balanceOf(address(this)), weth, 0, 9999 * 1e18);"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 201,
+            "text": "        bpool.swapExactAmountIn(weth, (MaxinRatio * 50) / 100, sta, 0, 9999 * 1e18);"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 202,
+            "text": "        bpool.swapExactAmountIn(sta, IERC20(sta).balanceOf(address(this)), weth, 0, 9999 * 1e18);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 91,
+            "text": "interface BPool {"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 92,
+            "text": "    function swapExactAmountIn("
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 93,
+            "text": "        address tokenIn,"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 94,
+            "text": "        uint256 tokenAmountIn,"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 95,
+            "text": "        address tokenOut,"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 96,
+            "text": "        uint256 minAmountOut,"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 97,
+            "text": "        uint256 maxPrice"
+          },
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 98,
+            "text": "    ) external returns (uint256 tokenAmountOut, uint256 spotPriceAfter);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2020-06/Balancer_20200628_exp.sol",
+            "line": 22,
+            "text": "Attack Tx: https://etherscan.io/tx/0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2020-06/Balancer_20200628_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2020-06/Balancer_20200628_exp.sol",
+      "transaction_hash": "0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106",
+      "vulnerability_category": "DEX / Deflationary Token",
+      "vulnerable_contract_address": "0x0e511aa1a137aad267dfe3a6bfca0b856c1a3682"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(address,uint256,uint16,address)",
+      "incident_date": "2023-03",
+      "incident_name": "ParaSpace Ape collateral borrowing",
+      "selector": "0x1d5d7237",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 32,
+            "text": "    IParaProxy ParaProxy = IParaProxy(0x638a98BBB92a7582d07C52ff407D49664DC8b3Ee);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 95,
+            "text": "        APEStaking.depositApeCoin(APE.balanceOf(address(this)), address(cAPE));"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 97,
+            "text": "        ParaProxy.borrow(address(wstETH), 44_952_823_905_004_708_422_332, 0, address(this));"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 98,
+            "text": "        ParaProxy.borrow(address(USDC), 7_200_000_000_000, 0, address(this));"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 99,
+            "text": "        ParaProxy.borrow(address(WETH), 1_200_000_000_000_000_000_000, 0, address(this));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 16,
+            "text": "interface IParaProxy {"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 17,
+            "text": "    function supply(address asset, uint256 amount, address onBehalfOf, uint16 referralCode) external;"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 18,
+            "text": ""
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 19,
+            "text": "    function borrow(address asset, uint256 amount, uint16 referralCode, address onBehalfOf) external;"
+          },
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 20,
+            "text": "}"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2023-03/Paraspace_exp_2.sol",
+            "line": 10,
+            "text": "// https://etherscan.io/tx/0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2023-03/Paraspace_exp_2.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2023-03/Paraspace_exp_2.sol",
+      "transaction_hash": "0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a",
+      "vulnerability_category": "NFT Lending / Collateral Accounting",
+      "vulnerable_contract_address": "0x638a98bbb92a7582d07c52ff407d49664dc8b3ee"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "initialize((address,address,int8))",
+      "incident_date": "2025-03",
+      "incident_name": "Leverage SIR vault initialization",
+      "selector": "0x3aa88670",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 12,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xb91ae2c8365fd45030aba84a4666c4db074e53e7"
+          },
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 17,
+            "text": "address constant vault = 0xB91AE2c8365FD45030abA84a4666C4dB074E53E7;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 85,
+            "text": "        IFS(vault).initialize(IFS.VaultParameters("
+          },
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 86,
+            "text": "            address(attC_B),"
+          },
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 87,
+            "text": "            address(this),"
+          },
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 88,
+            "text": "            0"
+          },
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 89,
+            "text": "        ));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 241,
+            "text": "    function initialize(VaultParameters memory vaultParams) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-03/LeverageSIR_exp.sol",
+            "line": 13,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-03/LeverageSIR_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-03/LeverageSIR_exp.sol",
+      "transaction_hash": "0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f",
+      "vulnerability_category": "Vault / Price Manipulation",
+      "vulnerable_contract_address": "0xb91ae2c8365fd45030aba84a4666c4db074e53e7"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(uint256,address,address)",
+      "incident_date": "2025-06",
+      "incident_name": "Silo leverage helper arbitrary borrow",
+      "selector": "0xd5164184",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : 0x160287e2d3fdcde9e91317982fc1cc01c1f94085"
+          },
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 30,
+            "text": "address constant WETH_SILO = 0x160287E2D3fdCDE9E91317982fc1Cc01C1f94085;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 139,
+            "text": "            swapCallData: abi.encodeWithSelector("
+          },
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 140,
+            "text": "                ISilo1356.borrow.selector, BORROW_AMOUNT, profitReceiver, COLLATERAL_BORROWER"
+          },
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 141,
+            "text": "            )"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 37,
+            "text": "interface ISilo1356 {"
+          },
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 38,
+            "text": "    function borrow(uint256 assets, address receiver, address borrower) external returns (uint256 shares);"
+          },
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 39,
+            "text": "}"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-06/SiloFinance_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x1f15a193db3f44713d56c4be6679b194f78c2bcdd2ced5b0c7495b7406f5e87a"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-06/SiloFinance_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-06/SiloFinance_exp.sol",
+      "transaction_hash": "0x1f15a193db3f44713d56c4be6679b194f78c2bcdd2ced5b0c7495b7406f5e87a",
+      "vulnerability_category": "Lending / Arbitrary Call",
+      "vulnerable_contract_address": "0x160287e2d3fdcde9e91317982fc1cc01c1f94085"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(address,int256,uint256,address)",
+      "incident_date": "2025-01",
+      "incident_name": "UniLend health-factor accounting",
+      "selector": "0x8dee9460",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x4e34dd25dbd367b1bf82e1b5527dbbe799fad0d0"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 25,
+            "text": "address constant UNILEND_CORE = 0x7f2E24D2394f2bdabb464B888cb02EbA6d15B958;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 105,
+            "text": "            IUniLendV2Core unilendCore = IUniLendV2Core(UNILEND_CORE);"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 111,
+            "text": "            unilendCore.lend(UNILEND_POOL, -usdcAmount);"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 112,
+            "text": "            unilendCore.lend(UNILEND_POOL, int(stAmount));"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 114,
+            "text": "            unilendCore.borrow(UNILEND_POOL, borrowAmount, 0, address(this));"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 116,
+            "text": "            unilendCore.redeemUnderlying(UNILEND_POOL, int(stAmount), address(this));"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 117,
+            "text": "            unilendCore.redeemUnderlying(UNILEND_POOL, -usdcAmount, address(this));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 137,
+            "text": "interface IUniLendV2Core {"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 138,
+            "text": "    function lend(address _pool, int _amount) external returns(int mintedTokens);"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 139,
+            "text": "    function borrow(address _pool, int _amount, uint _collateral_ammount, address _recipient) external;"
+          },
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 140,
+            "text": "    function redeemUnderlying(address _pool, int _amount, address _receiver) external returns(int _token_amount);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-01/Unilend_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x44037ffc0993327176975e08789b71c1058318f48ddeff25890a577d6555b6ba"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-01/Unilend_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-01/Unilend_exp.sol",
+      "transaction_hash": "0x44037ffc0993327176975e08789b71c1058318f48ddeff25890a577d6555b6ba",
+      "vulnerability_category": "Lending / Health Factor",
+      "vulnerable_contract_address": "0x7f2e24d2394f2bdabb464b888cb02eba6d15b958"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "enterMarkets(address[])",
+      "incident_date": "2024-02",
+      "incident_name": "Blueberry market entry accounting",
+      "selector": "0xc2998238",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 8,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xffadb0bba4379dfabfb20ca6823f6ec439429ec2"
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 55,
+            "text": "    IMarketFacet BlueberryProtocol = IMarketFacet(0xfFadB0bbA4379dFAbFB20CA6823F6EC439429ec2);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 101,
+            "text": "        address[] memory tokenList = new address[](1);"
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 102,
+            "text": "        tokenList[0] = address(bWETH);"
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 103,
+            "text": "        BlueberryProtocol.enterMarkets(tokenList);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 17,
+            "text": "interface IMarketFacet {"
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 18,
+            "text": "    function enterMarkets("
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 19,
+            "text": "        address[] calldata vTokens"
+          },
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 20,
+            "text": "    ) external returns (uint256[] memory);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2024-02/BlueberryProtocol_exp.sol",
+            "line": 9,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xf0464b01d962f714eee9d4392b2494524d0e10ce3eb3723873afd1346b8b06e4"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2024-02/BlueberryProtocol_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2024-02/BlueberryProtocol_exp.sol",
+      "transaction_hash": "0xf0464b01d962f714eee9d4392b2494524d0e10ce3eb3723873afd1346b8b06e4",
+      "vulnerability_category": "Lending / Market Accounting",
+      "vulnerable_contract_address": "0xffadb0bba4379dfabfb20ca6823f6ec439429ec2"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "withdrawWithoutHedge(uint256)",
+      "incident_date": "2025-02",
+      "incident_name": "Hegic options repeated withdrawal",
+      "selector": "0x0af3f226",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x7094E706E75E13D1E0ea237f71A7C4511e9d270B"
+          },
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 26,
+            "text": "    address constant victim_contract_address = 0x7094E706E75E13D1E0ea237f71A7C4511e9d270B;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 48,
+            "text": "            Hegic_WBTC_ATM_Puts_Pool.withdrawWithoutHedge(2);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 67,
+            "text": "interface IHegic_WBTC_ATM_Puts_Pool {"
+          },
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 68,
+            "text": "    function withdrawWithoutHedge(uint256 trancheID) external returns (uint256 amount);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-02/HegicOptions_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx 1: 0x260d5eb9151c565efda80466de2e7eee9c6bd4973d54ff68c8e045a26f62ea73"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-02/HegicOptions_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-02/HegicOptions_exp.sol",
+      "transaction_hash": "0x260d5eb9151c565efda80466de2e7eee9c6bd4973d54ff68c8e045a26f62ea73",
+      "vulnerability_category": "Options / Accounting",
+      "vulnerable_contract_address": "0x7094e706e75e13d1e0ea237f71a7c4511e9d270b"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "settleOrders(bytes)",
+      "incident_date": "2025-03",
+      "incident_name": "1inch Fusion settlement calldata corruption",
+      "selector": "0x0965d04b",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 12,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xa88800cd213da5ae406ce248380802bd53b47647"
+          },
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 78,
+            "text": "    address SettlementAddr = 0xA88800CD213dA5Ae406ce248380802BD53b47647;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 317,
+            "text": "        ATTACK_CONTRACT.call(abi.encodeWithSignature(\"settle(bytes)\", orderData));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 46,
+            "text": "interface ISettlement {"
+          },
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 47,
+            "text": "    function settleOrders(bytes calldata order) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+            "line": 14,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x62734ce80311e64630a009dd101a967ea0a9c012fabbfce8eac90f0f4ca090d6"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-03/OneInchFusionV1SettlementHack.sol_exp.sol",
+      "transaction_hash": "0x62734ce80311e64630a009dd101a967ea0a9c012fabbfce8eac90f0f4ca090d6",
+      "vulnerability_category": "DEX / Calldata Validation",
+      "vulnerable_contract_address": "0xa88800cd213da5ae406ce248380802bd53b47647"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "transferFrom(address,address,uint256)",
+      "incident_date": "2025-04",
+      "incident_name": "tCDP allowance direction bug",
+      "selector": "0x23b872dd",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 10,
+            "text": "// Vulnerable Contract : 0xdA4c9Ee8373fd1095379a3Dd457A0c78968AaF03"
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 27,
+            "text": "address constant TCDP_TOKEN = 0xda4C9Ee8373Fd1095379a3Dd457A0c78968aAF03;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 119,
+            "text": "        _stealHolderBalance(HOLDER_ONE);"
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 121,
+            "text": "        _stealHolderBalance(HOLDER_THREE);"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 40,
+            "text": "    function transferFrom("
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 41,
+            "text": "        address from,"
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 42,
+            "text": "        address to,"
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 43,
+            "text": "        uint256 value"
+          },
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 44,
+            "text": "    ) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-04/tcdp_exp.sol",
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x9879031462b16dbf063377c4a8e5b043662576a9a3fb282c5a656953ad00684e"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-04/tcdp_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-04/tcdp_exp.sol",
+      "transaction_hash": "0x9879031462b16dbf063377c4a8e5b043662576a9a3fb282c5a656953ad00684e",
+      "vulnerability_category": "Token / Allowance Validation",
+      "vulnerable_contract_address": "0xda4c9ee8373fd1095379a3dd457a0c78968aaf03"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "simpleSwap((address,address,uint256,uint256,uint256,address[],bytes,uint256[],uint256[],address,address,uint256,bytes,uint256,bytes16))",
+      "incident_date": "2025-06",
+      "incident_name": "ParaSwap stale DAI approval drain",
+      "selector": "0x54e3f31b",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 15,
+            "text": "// ParaSwap AugustusSwapper : https://etherscan.io/address/0xdef171fe48cf0115b1d80b88dc8eab59176fee57#code"
+          },
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 34,
+            "text": "address constant PARASWAP_AUGUSTUS = address(uint160(0x00def171fe48cf0115b1d80b88dc8eab59176fee57));"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 171,
+            "text": "            abi.encodeWithSelector(IDAIMove1352.move.selector, DAI_SOURCE_ACCOUNT, PARASWAP_AUGUSTUS, uint256(1))"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 85,
+            "text": "    function simpleSwap("
+          },
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 86,
+            "text": "        SimpleData calldata data"
+          },
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 87,
+            "text": "    ) external payable returns (uint256 receivedAmount);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+            "line": 12,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xed5f932a136ef95b943951ce103b3edbe600bf2c2607edff7b6ea9ada35ca300"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-06/ParaSwapDAIApproval_exp.sol",
+      "transaction_hash": "0xed5f932a136ef95b943951ce103b3edbe600bf2c2607edff7b6ea9ada35ca300",
+      "vulnerability_category": "DEX Aggregator / Approval Abuse",
+      "vulnerable_contract_address": "0xdef171fe48cf0115b1d80b88dc8eab59176fee57"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "proxyDeposit(address,address,uint128)",
+      "incident_date": "2025-06",
+      "incident_name": "Aave Boost proxy deposit accounting",
+      "selector": "0x3cca991f",
+      "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "file": "src/test/2025-06/AAVEBoost_exp.sol",
+            "line": 22,
+            "text": "address constant AaveBoost = 0xd2933c86216dC0c938FfAFEca3C8a2D6e633e2cA;"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "file": "src/test/2025-06/AAVEBoost_exp.sol",
+            "line": 53,
+            "text": "                (bool ok, ) = AaveBoost.call(abi.encodeWithSelector(IAaveBoost.proxyDeposit.selector, InitializableAdminUpgradeabilityProxy, address(this), uint128(0)));"
+          }
+        ],
+        "signature_declaration_lines": [
+          {
+            "file": "src/test/2025-06/AAVEBoost_exp.sol",
+            "line": 76,
+            "text": "interface IAaveBoost {"
+          },
+          {
+            "file": "src/test/2025-06/AAVEBoost_exp.sol",
+            "line": 77,
+            "text": "\tfunction proxyDeposit(address, address, uint128) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "file": "src/test/2025-06/AAVEBoost_exp.sol",
+            "line": 10,
+            "text": "// Attack Tx : https://app.blocksec.com/explorer/tx/eth/0xc4ef3b5e39d862ffcb8ff591fbb587f89d9d4ab56aec70cfb15831782239c0ce"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "contract_address_present_in_source_lines": true,
+        "signature_types_source_resolved": true,
+        "target_externally_callable": true,
+        "transaction_hash_present_in_source_lines": true
+      },
+      "source_path": "src/test/2025-06/AAVEBoost_exp.sol",
+      "source_url": "https://github.com/SunWeb3Sec/DeFiHackLabs/7363f76db51f0fea97f8e659b20ee8bdc5fbca25/src/test/2025-06/AAVEBoost_exp.sol",
+      "transaction_hash": "0xc4ef3b5e39d862ffcb8ff591fbb587f89d9d4ab56aec70cfb15831782239c0ce",
+      "vulnerability_category": "Lending / Accounting",
+      "vulnerable_contract_address": "0xd2933c86216dc0c938ffafeca3c8a2d6e633e2ca"
+    }
+  ],
+  "selection_policy": "Source-backed incident diversity only: chronological coverage across years and vulnerability categories, one externally callable typed target per incident, explicit PoC evidence, and no ranker output, scoring output, Batch B result, or tracing output.",
+  "source_commit": "7363f76db51f0fea97f8e659b20ee8bdc5fbca25",
+  "source_repository": "https://github.com/SunWeb3Sec/DeFiHackLabs",
+  "status": "frozen"
+}
