@@ -1,0 +1,51 @@
+{
+  "batch_canonical_sha256": "4a971c4576173b9b67f51a42d4c99583a7dad704fec4492cc6ee937eb227aa21",
+  "control": {
+    "all_passed": false,
+    "executed": 4,
+    "requested": 4,
+    "rows": [
+      {
+        "adapter_prediction_count": 244,
+        "adapter_rank": null,
+        "known_prediction_count": 244,
+        "known_rank": null,
+        "rank_reproduced": true,
+        "trace_artifact": "reports/cohort_rebuild_v2/traces/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json.gz",
+        "transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+      },
+      {
+        "adapter_prediction_count": 100,
+        "adapter_rank": 27,
+        "known_prediction_count": 100,
+        "known_rank": 19,
+        "rank_reproduced": false,
+        "trace_artifact": "reports/cohort_rebuild_v2/traces/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+        "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+      },
+      {
+        "adapter_prediction_count": 51,
+        "adapter_rank": null,
+        "known_prediction_count": 7,
+        "known_rank": 7,
+        "rank_reproduced": false,
+        "trace_artifact": "reports/cohort_rebuild_v2/traces/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json.gz",
+        "transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+      },
+      {
+        "adapter_prediction_count": 55,
+        "adapter_rank": 33,
+        "known_prediction_count": 20,
+        "known_rank": null,
+        "rank_reproduced": false,
+        "trace_artifact": "reports/cohort_rebuild_v2/traces/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+      }
+    ]
+  },
+  "label": "post-diagnostic adapter fix, exploratory",
+  "network_calls": false,
+  "ranker_or_scorer_changed": false,
+  "status": "STOPPED_CONTROL_GATE_FAILED",
+  "valid_set_sha256": "fedcca0de8381a4fa67ab01d68d02c664261c07542de3aa76c09f9a66fc6d785"
+}
