@@ -1,8 +1,8 @@
 """Run the original 115-case benchmark with one pinned RPC per chain.
 
 This runner is deliberately separate from the production failover registry:
-Ethereum uses the dRPC endpoint supplied through RUN_ETH_RPC_URL and BSC uses
-the BlockPI endpoint supplied through RUN_BSC_RPC_URL.  It preserves every
+Ethereum and BSC use the BlockPI endpoints supplied through RUN_ETH_RPC_URL
+and RUN_BSC_RPC_URL. dRPC remains a spare and is not used by this run. It preserves every
 case, writes a raw row after each case, and stops after five consecutive
 rate-limit/server-unavailable responses.
 """
@@ -194,9 +194,9 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
         except Exception as exc:
             message = str(exc)
             if isinstance(exc, rpc._RateLimitError) or "429" in message:
-                raise RateLimitAbort("dRPC" if chain == "eth" else "BlockPI", "429")
+                raise RateLimitAbort("BlockPI", "429")
             if "503" in message:
-                raise RateLimitAbort("dRPC" if chain == "eth" else "BlockPI", "503")
+                raise RateLimitAbort("BlockPI", "503")
             raise
 
     rpc._http_post = paced_post
@@ -205,7 +205,7 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
 
     def pinned_cast(txn_hash: str, rpc_url: str) -> str | None:
         chain = "eth" if rpc_url == eth_url else "bsc"
-        provider = "dRPC" if chain == "eth" else "BlockPI"
+        provider = "BlockPI"
         cast_counts[chain] += 1
         binary = os.path.join(os.environ["FOUNDRY_BIN"], "cast.exe")
         command = [
@@ -275,19 +275,22 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         if raw_path.is_file():
             try:
                 existing = json.loads(raw_path.read_text(encoding="utf-8"))
+                can_reuse_prefix = index < args.resume_from
                 if (existing.get("txn_hash") == metadata["txn_hash"]
-                        and existing.get("run_config_hash") == args.run_config_hash):
+                        and (can_reuse_prefix or existing.get("run_config_hash") == args.run_config_hash)):
                     rows.append(existing)
-                    last_network_tx = False
+                    last_network_tx = True
                     continue
             except (OSError, ValueError):
                 pass
 
         if last_network_tx:
             time.sleep(BETWEEN_TX_SECONDS)
-        provider = "dRPC" if metadata["chain"] == "eth" else "BlockPI"
+        provider = "BlockPI"
         attempts: list[dict[str, Any]] = []
         started = time.perf_counter()
+        request_counts_before = dict(request_counts)
+        cast_counts_before = dict(cast_counts)
         while True:
             attempt_started = time.time()
             cast_context["last"] = {}
@@ -318,6 +321,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "score": _score(path, predictions),
                     "replay_mismatch": bool(cast_context.get("last", {}).get("mismatch")),
                     "cast": cast_context.get("last", {}),
+                    "request_count_delta": {
+                        chain: request_counts[chain] - request_counts_before[chain]
+                        for chain in request_counts
+                    },
+                    "cast_process_delta": {
+                        chain: cast_counts[chain] - cast_counts_before[chain]
+                        for chain in cast_counts
+                    },
                     "attempts": attempts + [{"attempt": len(attempts) + 1, "status": "ok"}],
                     "failure_kind": None,
                     "failure_message": None,
@@ -361,6 +372,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "score": _failure_score(),
                     "replay_mismatch": bool(cast_context.get("last", {}).get("mismatch")),
                     "cast": cast_context.get("last", {}),
+                    "request_count_delta": {
+                        chain: request_counts[chain] - request_counts_before[chain]
+                        for chain in request_counts
+                    },
+                    "cast_process_delta": {
+                        chain: cast_counts[chain] - cast_counts_before[chain]
+                        for chain in cast_counts
+                    },
                     "attempts": attempts + [{"attempt": len(attempts) + 1, "status": "failed"}],
                     "failure_kind": type(exc).__name__,
                     "failure_message": str(exc)[:500],
@@ -391,7 +410,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     manifest = {
         "protocol": "benchmark/protocols/original_benchmark_function_localization_v1.md",
         "seed": SEED, "run_id": args.run_id, "variant": "llm-free",
-        "model": args.model, "provider_policy": {"eth": "dRPC", "bsc": "BlockPI"},
+        "model": args.model,
+        "provider_policy": {"eth": "BlockPI", "bsc": "BlockPI", "spare": "dRPC-not-used"},
         "ground_truth_file_count": len(paths),
         "ground_truth_sha256": {path.name: _sha256(path) for path in paths},
         "request_counts": request_counts,
@@ -421,11 +441,14 @@ def main() -> int:
     parser.add_argument("--model", default="llm-free-function-ranker")
     parser.add_argument("--ground-truth", type=Path, default=DEFAULT_GT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--resume-from", type=int, default=0,
+                        help="Reuse verified raw rows before this zero-based case index")
     args = parser.parse_args()
     args.run_config_hash = hashlib.sha256(json.dumps({
         "run_id": args.run_id, "model": args.model,
-        "provider_policy": {"eth": "dRPC", "bsc": "BlockPI"},
+        "provider_policy": {"eth": "BlockPI", "bsc": "BlockPI", "spare": "dRPC-not-used"},
         "between_transactions_seconds": BETWEEN_TX_SECONDS,
+        "resume_from": args.resume_from,
     }, sort_keys=True).encode()).hexdigest()
     result = run(args)
     aggregate = result["aggregate"]
