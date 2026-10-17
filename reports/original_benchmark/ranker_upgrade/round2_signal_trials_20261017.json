@@ -1,0 +1,125 @@
+{
+  "available_prediction_fields": [
+    "code_address",
+    "count",
+    "function",
+    "rank",
+    "selector",
+    "supporting_call_depths",
+    "tie_policy"
+  ],
+  "development_rows": 90,
+  "holdout_excluded": true,
+  "label": "development, exploratory",
+  "scope": "offline one-at-a-time scoring-signal trials on 90 development rows",
+  "signals": {
+    "count_then_depth_span": {
+      "function_only": {
+        "hits_at_1": 31,
+        "hits_at_3": 45,
+        "hits_at_5": 46,
+        "n": 90,
+        "recall_at_1": 0.34444444444444444,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5111111111111111
+      },
+      "primary": {
+        "hits_at_1": 29,
+        "hits_at_3": 44,
+        "hits_at_5": 45,
+        "n": 90,
+        "recall_at_1": 0.32222222222222224,
+        "recall_at_3": 0.4888888888888889,
+        "recall_at_5": 0.5
+      }
+    },
+    "current_count_then_max_depth": {
+      "function_only": {
+        "hits_at_1": 31,
+        "hits_at_3": 45,
+        "hits_at_5": 46,
+        "n": 90,
+        "recall_at_1": 0.34444444444444444,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5111111111111111
+      },
+      "primary": {
+        "hits_at_1": 29,
+        "hits_at_3": 44,
+        "hits_at_5": 45,
+        "n": 90,
+        "recall_at_1": 0.32222222222222224,
+        "recall_at_3": 0.4888888888888889,
+        "recall_at_5": 0.5
+      }
+    },
+    "depth_span_then_count": {
+      "function_only": {
+        "hits_at_1": 29,
+        "hits_at_3": 42,
+        "hits_at_5": 44,
+        "n": 90,
+        "recall_at_1": 0.32222222222222224,
+        "recall_at_3": 0.4666666666666667,
+        "recall_at_5": 0.4888888888888889
+      },
+      "primary": {
+        "hits_at_1": 27,
+        "hits_at_3": 41,
+        "hits_at_5": 43,
+        "n": 90,
+        "recall_at_1": 0.3,
+        "recall_at_3": 0.45555555555555555,
+        "recall_at_5": 0.4777777777777778
+      }
+    },
+    "frequency_only": {
+      "function_only": {
+        "hits_at_1": 31,
+        "hits_at_3": 45,
+        "hits_at_5": 46,
+        "n": 90,
+        "recall_at_1": 0.34444444444444444,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5111111111111111
+      },
+      "primary": {
+        "hits_at_1": 29,
+        "hits_at_3": 44,
+        "hits_at_5": 45,
+        "n": 90,
+        "recall_at_1": 0.32222222222222224,
+        "recall_at_3": 0.4888888888888889,
+        "recall_at_5": 0.5
+      }
+    },
+    "max_depth_then_count": {
+      "function_only": {
+        "hits_at_1": 29,
+        "hits_at_3": 41,
+        "hits_at_5": 44,
+        "n": 90,
+        "recall_at_1": 0.32222222222222224,
+        "recall_at_3": 0.45555555555555555,
+        "recall_at_5": 0.4888888888888889
+      },
+      "primary": {
+        "hits_at_1": 27,
+        "hits_at_3": 39,
+        "hits_at_5": 42,
+        "n": 90,
+        "recall_at_1": 0.3,
+        "recall_at_3": 0.43333333333333335,
+        "recall_at_5": 0.4666666666666667
+      }
+    }
+  },
+  "storage_write_signal_available": false,
+  "trial_decision": {
+    "count_then_depth_span": "DROP unless it improves the current primary development Recall@5",
+    "depth_span_then_count": "DROP unless it improves the current primary development Recall@5",
+    "frequency_only": "DROP if it is not better than the current count-plus-depth ordering",
+    "max_depth_then_count": "DROP unless it improves the current primary development Recall@5"
+  },
+  "value_flow_signal_available": false
+}

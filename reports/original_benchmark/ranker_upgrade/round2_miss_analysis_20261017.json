@@ -1,0 +1,5281 @@
+{
+  "all_classifications": [
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "bsc",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "LPMine",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x6bbef6df8db12667ae88519090984e4f871e5feb",
+          "extractreward"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+          "function": "c45a0155",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x36696169c63e42cd08ce11f5deebbcebae652050",
+          "function": "flash",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x0557f67b2d5dc575fe3e433e7caf71ea523979fd",
+          "function": "c72af105",
+          "rank": 3,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "bsc",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "ChannelsFinance",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "normalized_function": "transfer",
+            "rank": 1,
+            "raw_function": "transfer"
+          }
+        ],
+        "target_names": [
+          "_transfer"
+        ],
+        "target_raw_names": [
+          "_transfer"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+          "_transfer"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+          "function": "transfer",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "Zoomer",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x9700204d77a67a18ea8f1b47275897b21e5efa97",
+          "0x72c4cff6"
+        ],
+        [
+          "0xc2c701110de2b9503e98619d9c9e3017877b0f72",
+          "swap"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xa4854022f4c16f0abc3fdec300427f6179a3043b",
+          "function": "a28a15e8",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04"
+    },
+    {
+      "address_candidate_rank": 46,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "ZunamiProtocol",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "normalized_function": "balanceof",
+            "rank": 46,
+            "raw_function": "0x70a08231"
+          },
+          {
+            "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "normalized_function": "transfer",
+            "rank": 114,
+            "raw_function": "0xa9059cbb"
+          },
+          {
+            "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "normalized_function": "transferfrom",
+            "rank": 118,
+            "raw_function": "0x23b872dd"
+          },
+          {
+            "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "normalized_function": "approve",
+            "rank": 122,
+            "raw_function": "0x095ea7b3"
+          },
+          {
+            "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "normalized_function": "0xd341ea79",
+            "rank": 234,
+            "raw_function": "0xd341ea79"
+          }
+        ],
+        "target_names": [
+          "cacheassetprice"
+        ],
+        "target_raw_names": [
+          "cacheassetprice"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+          "cacheassetprice"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+          "function": "0x70a08231",
+          "rank": 1,
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+          "function": "0x70a08231",
+          "rank": 2,
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+          "function": "0x70a08231",
+          "rank": 3,
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+          "function": "0x70a08231",
+          "rank": 4,
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+          "function": "0x70a08231",
+          "rank": 5,
+          "selector": "0x70a08231"
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "GFOX",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x11a4a5733237082a6c08772927ce0a2b5f8a86b6",
+          "setmerkleroot"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x92ee0df7f6b0674cabc9bfc64873786fa7be82d0",
+          "function": "swap",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc"
+    },
+    {
+      "address_candidate_rank": 16,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "EFLeverVault",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+            "normalized_function": "deposit",
+            "rank": 16,
+            "raw_function": "deposit{value: 100000000000000000}"
+          },
+          {
+            "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+            "normalized_function": "withdraw",
+            "rank": 18,
+            "raw_function": "withdraw"
+          }
+        ],
+        "target_names": [
+          "receiveflashloan"
+        ],
+        "target_raw_names": [
+          "receiveflashloan"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xe39fd820b58f83205db1d9225f28105971c3d309",
+          "receiveflashloan"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x071108ad85d7a766b41e0f5e5195537a8fc8e74d",
+          "function": "safeAdd",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
+          "function": "exchange",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xeae736e5d6560169f9285c62492f8a89fb4ab790",
+          "function": "e6170424",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+          "function": "fa0c2149",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+          "function": "d09db04a",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "EFVault",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x80cb73074a6965f60df59bf8fa3ce398ffa2702c",
+          "redeem"
+        ],
+        [
+          "0xbdb515028a6fa6cd1634b5a9651184494abfd336",
+          "redeem"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+          "function": "exchange",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914"
+    },
+    {
+      "address_candidate_rank": 4,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 6",
+      "function_only_rank": 6,
+      "incident": "MorphoBlue",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "normalized_function": "borrow",
+            "rank": 6,
+            "raw_function": "borrow"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "normalized_function": "supplycollateral",
+            "rank": 4,
+            "raw_function": "supplyCollateral"
+          },
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "normalized_function": "setauthorizationwithsig",
+            "rank": 5,
+            "raw_function": "setAuthorizationWithSig"
+          },
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "normalized_function": "borrow",
+            "rank": 6,
+            "raw_function": "borrow"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+        "count": 1,
+        "function": "borrow",
+        "rank": 6,
+        "supporting_call_depths": [
+          [
+            0,
+            4,
+            0
+          ]
+        ]
+      },
+      "primary_rank": 6,
+      "target_functions": [
+        [
+          "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+          "borrow"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xdd24f84d36bf92c65f92307595335bdfab5bbd21",
+          "function": "getPriceUnsafe",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x870ac11d48b15db9a138cf899d20f13f79ba00bc",
+          "function": "borrowRate",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x000000000022d473030f116ddee9f6b43ac78ba3",
+          "function": "permit",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+          "function": "supplyCollateral",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+          "function": "setAuthorizationWithSig",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b"
+    },
+    {
+      "address_candidate_rank": 2,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "MIMSpell",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+            "normalized_function": "addcollateral",
+            "rank": 2,
+            "raw_function": "addCollateral"
+          }
+        ],
+        "target_names": [
+          "repay"
+        ],
+        "target_raw_names": [
+          "repay"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x692887e8877c6dd31593cda44c382db5b289b684",
+          "repay"
+        ],
+        [
+          "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+          "repay"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xbe9b99d4dc860ac6fb97e56102815a8f973967c6",
+          "function": "get",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+          "function": "addCollateral",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe59b54a9e37ab69f6e9312a9b3f72539ee184e5a",
+          "function": "de3d67b2",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x193e045bee45c7573ff89b12601c745af739ce67",
+          "function": "5f4bd64b",
+          "rank": 4,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2"
+    },
+    {
+      "address_candidate_rank": 3,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 8",
+      "function_only_rank": 8,
+      "incident": "MahaLend",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "normalized_function": "flashloan",
+            "rank": 8,
+            "raw_function": "flashLoan"
+          },
+          {
+            "address": "0x76f0c94ced5b48020bf0d7f3d0ceabc877744cb5",
+            "normalized_function": "flashloan",
+            "rank": 9,
+            "raw_function": "flashLoan"
+          },
+          {
+            "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+            "normalized_function": "flashloan",
+            "rank": 19,
+            "raw_function": "flashLoan"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "normalized_function": "supply",
+            "rank": 3,
+            "raw_function": "supply"
+          },
+          {
+            "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "normalized_function": "flashloan",
+            "rank": 8,
+            "raw_function": "flashLoan"
+          },
+          {
+            "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "normalized_function": "borrow",
+            "rank": 16,
+            "raw_function": "borrow"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+        "count": 55,
+        "function": "flashLoan",
+        "rank": 8,
+        "supporting_call_depths": [
+          [
+            0,
+            2,
+            3,
+            3,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            4,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            5,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            6,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            7,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            8,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            9,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            10,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            11,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            12,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            13,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            14,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            15,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            16,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            17,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            18,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            19,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            20,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            21,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            22,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            23,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            24,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            25,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            26,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            27,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            28,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            29,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            30,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            31,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            32,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            33,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            34,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            35,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            36,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            37,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            38,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            39,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            40,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            41,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            42,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            43,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            44,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            45,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            46,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            47,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            48,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            49,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            50,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            51,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            52,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            53,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            54,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            55,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            56,
+            0
+          ],
+          [
+            0,
+            2,
+            3,
+            57,
+            0
+          ]
+        ]
+      },
+      "primary_rank": 8,
+      "target_functions": [
+        [
+          "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+          "flashloan"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x658b0f629b9e3753aa555c189d0cb19c1ed59632",
+          "function": "mint",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x4f7a43c603136c0970fe65df7c24ca17ef3ffe2e",
+          "function": "1913f161",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+          "function": "supply",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x76f0c94ced5b48020bf0d7f3d0ceabc877744cb5",
+          "function": "supply",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xac3418ce48dbd35fe213dcfdfb70f044a47f9b0f",
+          "function": "handleRepayment",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [
+        "flashloan"
+      ],
+      "txn_hash": "0x2881e839d4d562fad5356183e4f6a9d427ba6f475614ce8ef64dbfe557a4a2cc"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "Balancer",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x9210f1204b5a24742eba12f710636d76240df3d0",
+          "onswap"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+          "function": "swap",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xe39b5e3b6d74016b2f6a9673d7d7493b6df549d5",
+          "function": "querySwap",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe39b5e3b6d74016b2f6a9673d7d7493b6df549d5",
+          "function": "queryBatchSwap",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+          "function": "batchSwap",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+          "function": "handleRepayment",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x2a027c8b915c3737942f512fc5d26fd15752d0332353b3059de771a35a606c2d"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "NBA NFT",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xdd5a649fc076886dfd4b9ad6acfc9b5eb882e83c",
+          "mint_approved"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x9b8b9c7c02be0bd0aa4d669bf6a1f6003424c6dc",
+          "function": "mintCards",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x2e2d9f262dcaa4a6ccdb047092f837b0f65ae533b34332428674d3f36308ff83"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "Paraswap",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x6a7eff1e2c355ad6eb91bebb5ded49257f3fed98",
+          "transferfrom"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x00000000fdac7708d0d360bddc1bc7d097f47439",
+          "function": "uniswapV3SwapCallback",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x35a73969f582872c25c96c48d8bb31c23eab8a49c19282c67509b96186734e60"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "MEVBOTa47b",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x00000000000a47b1298f18cf67de547bbe0d723f",
+          "receiveflashloan"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x4b77c789fa35b54dacb5f6bb2daaa01554299d6c",
+          "function": "84f38334",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x96646936b91d6b9d7d0c47c496afbf3d6ec7b6f8",
+          "function": "onSwap",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x2d0037e6e417baef5adc0d521dd127e724279bfe",
+          "function": "uniswapV3SwapCallback",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x2d0037e6e417baef5adc0d521dd127e724279bfe",
+          "function": "getMetadata",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xfbc83fa919e6c83d9d9ccc1171df44d624da4c25",
+          "function": "getMetadata",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x35ecf595864400696853c53edf3e3d60096639b6071cadea6076c9c6ceb921c1"
+    },
+    {
+      "address_candidate_rank": 7,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 7",
+      "function_only_rank": 7,
+      "incident": "Burner",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+            "normalized_function": "convertandburn",
+            "rank": 7,
+            "raw_function": "convertAndBurn"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+            "normalized_function": "convertandburn",
+            "rank": 7,
+            "raw_function": "convertAndBurn"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+        "count": 1,
+        "function": "convertAndBurn",
+        "rank": 7,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            3,
+            3
+          ]
+        ]
+      },
+      "primary_rank": 7,
+      "target_functions": [
+        [
+          "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+          "convertandburn"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x198f52501db67283cec7e2cadb04b3a0bc823a3f",
+          "function": "b88b86a6",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x13a1f3f9a0b3b5335acb4c213da78c1548ec67d2",
+          "function": "cf8b69bf",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x2b2b325ffb8d0876afad4538569ada16db59ff87",
+          "function": "3d873a24",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xcbcdf9626bc03e24f779434178a73a0b4bad62ed",
+          "function": "1a686502",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+          "function": "1a686502",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714"
+    },
+    {
+      "address_candidate_rank": 4,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 19",
+      "function_only_rank": 19,
+      "incident": "Kashi",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "withdraw",
+            "rank": 19,
+            "raw_function": "withdraw"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "transfer",
+            "rank": 4,
+            "raw_function": "transfer"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "toshare",
+            "rank": 13,
+            "raw_function": "toshare"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "toamount",
+            "rank": 14,
+            "raw_function": "toamount"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "totals",
+            "rank": 16,
+            "raw_function": "totals"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "balanceof",
+            "rank": 18,
+            "raw_function": "balanceof"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "withdraw",
+            "rank": 19,
+            "raw_function": "withdraw"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "setmastercontractapproval",
+            "rank": 32,
+            "raw_function": "setmastercontractapproval"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "deposit",
+            "rank": 34,
+            "raw_function": "deposit"
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "normalized_function": "batchflashloan",
+            "rank": 43,
+            "raw_function": "batchflashloan"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+        "count": 2,
+        "function": "withdraw",
+        "rank": 19,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            2,
+            15
+          ],
+          [
+            0,
+            0,
+            2,
+            16
+          ]
+        ]
+      },
+      "primary_rank": 19,
+      "target_functions": [
+        [
+          "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+          "withdraw"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
+          "function": "balanceof",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+          "function": "balanceof",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
+          "function": "transfer",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+          "function": "transfer",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+          "function": "transfer",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "BBT",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x74463ed91bfa45bca06d59e8b383a89709842f69",
+          "setregistry"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xf5610cf8c27454b6d7c86fccf1830734501425c5",
+          "function": "318f5bfb",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xf5610cf8c27454b6d7c86fccf1830734501425c5",
+          "function": "81348ab9",
+          "rank": 2,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 10",
+      "function_only_rank": 10,
+      "incident": "Indexed Finance",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+            "normalized_function": "reindexpool",
+            "rank": 10,
+            "raw_function": "reindexPool"
+          },
+          {
+            "address": "0xf00a38376c8668fc1f3cd3daeef42e0e44a7fcdb",
+            "normalized_function": "reindexpool",
+            "rank": 11,
+            "raw_function": "reindexPool"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+            "normalized_function": "updateminimumbalance",
+            "rank": 1,
+            "raw_function": "updateMinimumBalance"
+          },
+          {
+            "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+            "normalized_function": "reindexpool",
+            "rank": 10,
+            "raw_function": "reindexPool"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+        "count": 1,
+        "function": "reindexPool",
+        "rank": 10,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "primary_rank": 10,
+      "target_functions": [
+        [
+          "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+          "reindexpool"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+          "function": "updateMinimumBalance",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xf00a38376c8668fc1f3cd3daeef42e0e44a7fcdb",
+          "function": "updateMinimumBalance",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x277e851587eb5da22b52a10f4788576e68150277",
+          "function": "uniswapV2Call",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xa1d7b2d891e3a1f9ef4bbc5be20630c2feb1c470",
+          "function": "swap",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xba13afecda9beb75de5c56bbaf696b880a5a50dd",
+          "function": "swap",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x44aad3b853866468161735496a5d9cc961ce5aa872924c5d78673076b1cd95aa"
+    },
+    {
+      "address_candidate_rank": 10,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 10",
+      "function_only_rank": 10,
+      "incident": "KyberSwap",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+            "normalized_function": "swap",
+            "rank": 10,
+            "raw_function": "swap"
+          },
+          {
+            "address": "0xfbc887823dd414edf76c5da88ffcd9eef2ba87cc",
+            "normalized_function": "swap",
+            "rank": 11,
+            "raw_function": "swap"
+          },
+          {
+            "address": "0x93fc0acf77edd68e611f8a776c9995f350f84274",
+            "normalized_function": "swap",
+            "rank": 12,
+            "raw_function": "swap"
+          },
+          {
+            "address": "0x35e6f409565a98500001783ea090e6f669744c83",
+            "normalized_function": "swap",
+            "rank": 13,
+            "raw_function": "swap"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+            "normalized_function": "swap",
+            "rank": 10,
+            "raw_function": "swap"
+          },
+          {
+            "address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+            "normalized_function": "tickdistance",
+            "rank": 14,
+            "raw_function": "tickDistance"
+          },
+          {
+            "address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+            "normalized_function": "swapfeeunits",
+            "rank": 15,
+            "raw_function": "swapFeeUnits"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+        "count": 3,
+        "function": "swap",
+        "rank": 10,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            17
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            0,
+            1,
+            19
+          ]
+        ]
+      },
+      "primary_rank": 10,
+      "target_functions": [
+        [
+          "0xfd7b111aa83b9b6f547e617c7601efd997f64703",
+          "swap"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xd8ac7f696ae99cd7b689726cf03c5711dd8dcdb4",
+          "function": "write",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xaf2acf3d4ab78e4c702256d214a3189a874cdc13",
+          "function": "7b408b03",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe222fbe074a436145b255442d919e4e3a6c6a480",
+          "function": "mint",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xe222fbe074a436145b255442d919e4e3a6c6a480",
+          "function": "removeLiquidity",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+          "function": "handleRepayment",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x485e08dc2b6a4b3aeadcb89c3d18a37666dc7d9424961a2091d6b3696792f0f3"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "MetaLend",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x5578f2e245e932a599c46215a0ca88707230f17b",
+          "redeemunderlying"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x6175ddec3b9b38c88157c10a01ed4a3fa8639cc6",
+          "function": "handleRepayment",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xcb0e499954ae4277d0db0e13a938b73745ebe9ba",
+          "function": "a1fe0e8d",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x8115366ca7cf280a760f0bc0f6db3026e2437115",
+          "function": "flashLoanSimple",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x80a6419cb8e7d1ef1af074368f7eace1ae2358ca",
+          "function": "de76fef5",
+          "rank": 4,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "MaestroRouter2",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+            "normalized_function": "9239127f",
+            "rank": 1,
+            "raw_function": "9239127f"
+          },
+          {
+            "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+            "normalized_function": "9239127f",
+            "rank": 2,
+            "raw_function": "9239127f"
+          }
+        ],
+        "target_names": [
+          "withdraw"
+        ],
+        "target_raw_names": [
+          "withdraw"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+          "withdraw"
+        ],
+        [
+          "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+          "withdraw"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+          "function": "9239127f",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+          "function": "9239127f",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe6c6e86e04de96c4e3a29ad480c94e7a471969ab",
+          "function": "30f5d90e",
+          "rank": 3,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [
+        "withdraw"
+      ],
+      "txn_hash": "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "bsc",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "Local Trade LCT",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+            "normalized_function": "storeconstructor",
+            "rank": 1,
+            "raw_function": "storeConstructor"
+          }
+        ],
+        "target_names": [
+          "0xb5863c10"
+        ],
+        "target_raw_names": [
+          "0xb5863c10"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+          "0xb5863c10"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+          "function": "storeConstructor",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "HoppyFrogERC",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xe5c6f5fef89b64f36bfccb063962820136bac42f",
+          "transferfrom"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xaa6f337f16e6658d9c9599c967d3126051b6c726",
+          "function": "flash",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xc976ed4b25e1e7019ff34fb54f4e63b1550b70c3",
+          "function": "5a2b490e",
+          "rank": 2,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x6fb7f8e9eb09d6ae17dbe82b2b42f46f64fb9c3197438b68ecf03e832d5fc791"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "XSTABLE Protocol",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x91383a15c391c142b80045d8b4730c1c37ac0378",
+          "transfer"
+        ],
+        [
+          "0xb276647e70cb3b81a1ca302cf8de280ff0ce5799",
+          "transfer"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x694f8f9e0ec188f528d6354fdd0e47dca79b6f2c",
+          "function": "skim",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x694f8f9e0ec188f528d6354fdd0e47dca79b6f2c",
+          "function": "swap",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x694f8f9e0ec188f528d6354fdd0e47dca79b6f2c",
+          "function": "sync",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+          "function": "swap",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x4fbb8840d37a21e38c8e438db27aae7bb91af052",
+          "function": "e4af1d59",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x873f7c77d5489c1990f701e9bb312c103c5ebcdcf0a472db726730814bfd55f3"
+    },
+    {
+      "address_candidate_rank": 26,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 26",
+      "function_only_rank": 26,
+      "incident": "SushiSwap",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50",
+            "normalized_function": "convert",
+            "rank": 26,
+            "raw_function": "convert"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50",
+            "normalized_function": "convert",
+            "rank": 26,
+            "raw_function": "convert"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50",
+        "count": 1,
+        "function": "convert",
+        "rank": 26,
+        "supporting_call_depths": [
+          [
+            0
+          ]
+        ]
+      },
+      "primary_rank": 26,
+      "target_functions": [
+        [
+          "0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50",
+          "convert"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac",
+          "function": "getpair",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xfabec03b04279c6e73f27aaf25866acc844448ae",
+          "function": "balanceof",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "function": "balanceof",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x798d1be841a82a273720ce31c822c61a67a601c3",
+          "function": "balanceof",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "function": "transfer",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [
+        "convert"
+      ],
+      "txn_hash": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9"
+    },
+    {
+      "address_candidate_rank": 27,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 18",
+      "function_only_rank": 18,
+      "incident": "InverseFinance",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xae74faa92cb67a95ebcab07358bc222e33a34da7",
+            "normalized_function": "latestanswer",
+            "rank": 18,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0x37bc7498f4ff12c19678ee8fe19d713b87f6a9e6",
+            "normalized_function": "latestanswer",
+            "rank": 19,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0xa964273552c1dba201f5f000215f5bd5576e8f93",
+            "normalized_function": "latestanswer",
+            "rank": 20,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0xf4030086522a5beea4988f8ca5b36dbc97bee88c",
+            "normalized_function": "latestanswer",
+            "rank": 22,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+            "normalized_function": "latestanswer",
+            "rank": 23,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+            "normalized_function": "latestanswer",
+            "rank": 25,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+            "normalized_function": "latestanswer",
+            "rank": 27,
+            "raw_function": "0x50d25bcd"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+            "normalized_function": "latestanswer",
+            "rank": 27,
+            "raw_function": "0x50d25bcd"
+          },
+          {
+            "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+            "normalized_function": "decimals",
+            "rank": 43,
+            "raw_function": "0x313ce567"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xae74faa92cb67a95ebcab07358bc222e33a34da7",
+        "count": 3,
+        "function": "0x50d25bcd",
+        "rank": 18,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            0,
+            1,
+            11,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            13,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            1,
+            15,
+            2,
+            0,
+            2,
+            1,
+            0,
+            0
+          ]
+        ]
+      },
+      "primary_rank": 27,
+      "target_functions": [
+        [
+          "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+          "latestanswer"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x0000000000000000000000000000000000000004",
+          "function": "0x00000000",
+          "rank": 1,
+          "selector": "0x00000000"
+        },
+        {
+          "address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+          "function": "0x18160ddd",
+          "rank": 2,
+          "selector": "0x18160ddd"
+        },
+        {
+          "address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+          "function": "0x70a08231",
+          "rank": 3,
+          "selector": "0x70a08231"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "function": "0xc7fab708",
+          "rank": 4,
+          "selector": "0xc7fab708"
+        },
+        {
+          "address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+          "function": "0xbad1dc26",
+          "rank": 5,
+          "selector": "0xbad1dc26"
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "PeapodsFinance",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+            "normalized_function": "flash",
+            "rank": 1,
+            "raw_function": "flash"
+          },
+          {
+            "address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+            "normalized_function": "debond",
+            "rank": 3,
+            "raw_function": "debond"
+          }
+        ],
+        "target_names": [
+          "bond"
+        ],
+        "target_raw_names": [
+          "bond"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+          "bond"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+          "function": "flash",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "uniswapV3SwapCallback",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xdbb20a979a92cccce15229e41c9b082d5b5d7e31",
+          "function": "debond",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "exactInputSingle",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xbed4fbf7c3e36727ccdab4c6706c3c0e17b10397",
+          "function": "717108b6",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x95c1604789c93f41940a7fd9eca11276975a9a65d250b89a247736287dbd2b7e"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "BarleyFinance",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+            "normalized_function": "flash",
+            "rank": 1,
+            "raw_function": "flash"
+          },
+          {
+            "address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+            "normalized_function": "debond",
+            "rank": 3,
+            "raw_function": "debond"
+          }
+        ],
+        "target_names": [
+          "bond"
+        ],
+        "target_raw_names": [
+          "bond"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+          "bond"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+          "function": "flash",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "uniswapV3SwapCallback",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+          "function": "debond",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "exactInput",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x356e7481b957be0165d6751a49b4b7194aef18d5",
+          "function": "7f3ad32c",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "MonoX",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x66e7d7839333f502df355f5bd87aea24bac2ee63",
+          "_removeliquidity"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xc36a7887786389405ea8da0b87602ae3902b88a1",
+          "function": "swapTokenForExactToken",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0x9f14d093a2349de08f02fc0fb018dadb449351d0cdb7d0738ff69cc6fef5f299"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "EHIVE",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x4ae2cd1f5b8806a973953b76f9ce6d5fab9cdcfd",
+          "stake"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xe7d9a93541fa79d6ecf3dc5997632177146dcb84",
+          "function": "contractList",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xae851769593ac6048d36bc123700649827659a82",
+          "function": "swap",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x457cad33261e3b159d27ffcc2ca661702ef5e1ae",
+          "function": "unstake",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xa8c828e3358f5107828cdef6353ecdc417baef18",
+          "function": "unstake",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x0e655cd0a99a5d56c5d7aadb22dc3f9111edd92d",
+          "function": "unstake",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xad818ec910def08c70ac519ab0fffa084b4178014a91cd8aa2f882d972a511c1"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "DAppSocial",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x319ec3ad98cf8b12a8be5719fec6e0a9bb1ad0d1",
+          "locktokens"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xa8c6e7352b13815f6bfa87c7ffaaa6e3a7bfa849",
+          "function": "42c59677",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xbd72bccec6dd824f8cac5d9a3a2364794c9272d7f7348d074b580e3c6e44312e"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "bsc",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "Local Trade LCT",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+            "normalized_function": "925d400c",
+            "rank": 1,
+            "raw_function": "925d400c"
+          }
+        ],
+        "target_names": [
+          "0x925d400c"
+        ],
+        "target_raw_names": [
+          "0x925d400c"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+          "0x925d400c"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x312dc37075646c7e0dba21df5bdfe69e76475fdc",
+          "function": "925d400c",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x303554d4d8bd01f18c6fa4a8df3ff57a96071a41",
+          "function": "925d400c",
+          "rank": 2,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba"
+    },
+    {
+      "address_candidate_rank": 3,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "EulerFinance",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+            "normalized_function": "03ddf252",
+            "rank": 3,
+            "raw_function": "03ddf252"
+          }
+        ],
+        "target_names": [
+          "donatetoreserves"
+        ],
+        "target_raw_names": [
+          "donatetoreserves"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "donatetoreserves"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x42ec0eb1d2746a9f2739d7501c5d5608bde9ee89",
+          "function": "computeInterestRate",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x27182842e098f60e3d576794a5bffb0777e025d3",
+          "function": "e9c4a3ac",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "function": "03ddf252",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x6085bc95f506c326dcbcd7a6dd6c79fbc18d4686",
+          "function": "03ddf252",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x3297c8db9360f87a7f7826f52a4fa143988931a6",
+          "function": "requireLiquidity",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+    },
+    {
+      "address_candidate_rank": 1,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "target address candidate exists but its function label did not match",
+      "function_only_rank": null,
+      "incident": "Civfund",
+      "label_audit": {
+        "classification": "true-miss-target-address-wrong-label",
+        "equivalent_candidates": [],
+        "target_address_candidates": [
+          {
+            "address": "0x7caec5e4a3906d0919895d113f7ed9b3a0cbf826",
+            "normalized_function": "5ffe72b7",
+            "rank": 1,
+            "raw_function": "5ffe72b7"
+          }
+        ],
+        "target_names": [
+          "uniswapv3mintcallback"
+        ],
+        "target_raw_names": [
+          "uniswapv3mintcallback"
+        ]
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0x7caec5e4a3906d0919895d113f7ed9b3a0cbf826",
+          "uniswapv3mintcallback"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x7caec5e4a3906d0919895d113f7ed9b3a0cbf826",
+          "function": "5ffe72b7",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xf466f9f431aea853040ef837626b1c59cc963ce2",
+          "function": "0a5fede2",
+          "rank": 2,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xc42fc0e22a0f60cc299be80eb0c0ddce83c21c14a3dddd8430628011c3e20d6b"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "UniBotRouter",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xf819d9cb1c2a819fd991781a822de3ca8607c3c9",
+          "transferfrom"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x126c9fbab3a2fca24edfd17322e71a5e36e91865",
+          "function": "b2bd16ab",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x2b326a17b5ef826fa4e17d3836364ae1f0231a6f",
+          "function": "5456a7bf",
+          "rank": 2,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xcbe521aea28911fe9983030748028e12541e347b8b6b974d026fa5065c22f0cf"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "BTC20",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xdb0618e0b850cab3f756d030398be22929226d5c",
+          "buywithethdynamic"
+        ],
+        [
+          "0xdb0618e0b850cab3f756d030398be22929226d5c",
+          "fetchprice"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "uniswapV3SwapCallback",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+          "function": "exactInputSingle",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+          "function": "flashLoan",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xb7fbf984a50cd7c66e6da3448d68d9f3b7f24f33",
+          "function": "2b774292",
+          "rank": 4,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe"
+    },
+    {
+      "address_candidate_rank": 6,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 6",
+      "function_only_rank": 6,
+      "incident": "ADC",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+            "normalized_function": "withdraw",
+            "rank": 6,
+            "raw_function": "withdraw"
+          },
+          {
+            "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+            "normalized_function": "withdraw",
+            "rank": 12,
+            "raw_function": "withdraw"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+            "normalized_function": "withdraw",
+            "rank": 6,
+            "raw_function": "withdraw"
+          },
+          {
+            "address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+            "normalized_function": "calcstepincome",
+            "rank": 7,
+            "raw_function": "calcStepIncome"
+          },
+          {
+            "address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+            "normalized_function": "joingame",
+            "rank": 8,
+            "raw_function": "joinGame{value: 15000000000000000000}"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+        "count": 1,
+        "function": "withdraw",
+        "rank": 6,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            3,
+            2,
+            0
+          ]
+        ]
+      },
+      "primary_rank": 6,
+      "target_functions": [
+        [
+          "0xde46fcf6ab7559e4355b8ee3d7fba0f2730cddd8",
+          "withdraw"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xd357e4940b34eb1406ef6a1af53954e641273a3b",
+          "function": "distroy",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xae2c7af5fc2ddf45e6250a4c5495e61afc7acf50",
+          "function": "calDeductionADC",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x2ffdce5f0c09a8ee3a568bc01f35894b2d77a6d6",
+          "function": "receive{value: 36099999999999999900}",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x72052f124841a8158d3d5b6d3d54c9fe0e25e929",
+          "function": "receive{value: 36099999999999999900}",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x1d13502cfb73fca360d1af7703cd3f47aba809b5",
+          "function": "receive{value: 3600000000000000000}",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xcf834aff4de9992f5da9c443600dad9c6277a8a00de5007842fece51564992db"
+    },
+    {
+      "address_candidate_rank": 30,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 30",
+      "function_only_rank": 30,
+      "incident": "CurveBurner",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0x786b374b5eef874279f4b7b4de16940e57301a58",
+            "normalized_function": "execute",
+            "rank": 30,
+            "raw_function": "execute"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0x786b374b5eef874279f4b7b4de16940e57301a58",
+            "normalized_function": "execute",
+            "rank": 30,
+            "raw_function": "execute"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0x786b374b5eef874279f4b7b4de16940e57301a58",
+        "count": 1,
+        "function": "execute",
+        "rank": 30,
+        "supporting_call_depths": [
+          [
+            0,
+            3,
+            9,
+            19
+          ]
+        ]
+      },
+      "primary_rank": 30,
+      "target_functions": [
+        [
+          "0x786b374b5eef874279f4b7b4de16940e57301a58",
+          "execute"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+          "function": "add_liquidity",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+          "function": "handleRepayment",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+          "function": "burn",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xeae736e5d6560169f9285c62492f8a89fb4ab790",
+          "function": "e6170424",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x0b925ed163218f6662a35e0f0371ac234f9e9371",
+          "function": "mint",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [
+        "execute"
+      ],
+      "txn_hash": "0xd493c73397952049644c531309df3dd4134bf3db1e64eb6f0b68b016ee0bffde"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "label/selector mismatch",
+      "chain": "eth",
+      "evidence": "function-only Top-5 hit but primary address+function did not hit",
+      "function_only_rank": 1,
+      "incident": "ParticleTrade",
+      "label_audit": {
+        "classification": "address-identity-mismatch-function-equivalent",
+        "equivalent_candidates": [
+          {
+            "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+            "normalized_function": "onerc721received",
+            "rank": 1,
+            "raw_function": "onERC721Received"
+          },
+          {
+            "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+            "normalized_function": "offerbid",
+            "rank": 2,
+            "raw_function": "offerBid"
+          }
+        ],
+        "target_address_candidates": [],
+        "target_names": [
+          "offerbid",
+          "onerc721received"
+        ],
+        "target_raw_names": [
+          "offerbid",
+          "onerc721received"
+        ]
+      },
+      "matched_prediction": {
+        "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+        "count": 2,
+        "function": "onERC721Received",
+        "rank": 1,
+        "supporting_call_depths": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xe4764f9cd8ecc9659d3abf35259638b20ac536e4",
+          "offerbid"
+        ],
+        [
+          "0xe4764f9cd8ecc9659d3abf35259638b20ac536e4",
+          "onerc721received"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+          "function": "onERC721Received",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+          "function": "offerBid",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xe55607b2967ddbe5fa9a6a921991545b8277ef8f",
+          "function": "980d3675",
+          "rank": 3,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6"
+    },
+    {
+      "address_candidate_rank": 11,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 11",
+      "function_only_rank": 11,
+      "incident": "WIFCOIN_ETH",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xa1ce40702e15d0417a6c74d0bab96772f36f4e99",
+            "normalized_function": "stake",
+            "rank": 11,
+            "raw_function": "stake"
+          },
+          {
+            "address": "0x93d4f6f84d242c7959f8d1f1917ddbc9fb925ada",
+            "normalized_function": "stake",
+            "rank": 12,
+            "raw_function": "stake{value: 300000000000000000}"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xa1ce40702e15d0417a6c74d0bab96772f36f4e99",
+            "normalized_function": "stake",
+            "rank": 11,
+            "raw_function": "stake"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xa1ce40702e15d0417a6c74d0bab96772f36f4e99",
+        "count": 1,
+        "function": "stake",
+        "rank": 11,
+        "supporting_call_depths": [
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "primary_rank": 11,
+      "target_functions": [
+        [
+          "0xa1ce40702e15d0417a6c74d0bab96772f36f4e99",
+          "stake"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+          "function": "balanceof",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "function": "balanceof",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+          "function": "transfer",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "function": "deposit{value: 300000000000000000}",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+          "function": "transfer",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "trace too shallow",
+      "chain": "eth",
+      "evidence": "no target function text retained in cast output tail or predictions",
+      "function_only_rank": null,
+      "incident": "UnizenIO",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xf411903cbc70a74d22900a5de66a2dda66507255",
+          "transferfrom"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0xa051fc7d38baa0ace811ad9de4e9f7024e5d8a30",
+          "function": "1ef29a02{value: 1}",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xdd0636e2598f4d7b74f364fedb38f334365fd956747a04a6dd597444af0bc1c0"
+    },
+    {
+      "address_candidate_rank": null,
+      "cause": "candidate never produced",
+      "chain": "eth",
+      "evidence": "target function text retained in cast output tail but absent from predictions",
+      "function_only_rank": null,
+      "incident": "JokInTheBox",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [],
+        "target_address_candidates": []
+      },
+      "matched_prediction": null,
+      "primary_rank": null,
+      "target_functions": [
+        [
+          "0xa6447f6156effd23ec3b57d5edd978349e4e192d",
+          "unstake"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x9d3425d45df30183fda059c586543dcdeb5993e6",
+          "function": "b61705a0",
+          "rank": 1,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [
+        "unstake"
+      ],
+      "txn_hash": "0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f"
+    },
+    {
+      "address_candidate_rank": 3,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 15",
+      "function_only_rank": 15,
+      "incident": "ApeCoin (APE)",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+            "normalized_function": "flashloan",
+            "rank": 15,
+            "raw_function": "flashLoan"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+            "normalized_function": "onerc721received",
+            "rank": 3,
+            "raw_function": "onERC721Received"
+          },
+          {
+            "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+            "normalized_function": "redeem",
+            "rank": 13,
+            "raw_function": "redeem"
+          },
+          {
+            "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+            "normalized_function": "mint",
+            "rank": 14,
+            "raw_function": "mint"
+          },
+          {
+            "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+            "normalized_function": "flashloan",
+            "rank": 15,
+            "raw_function": "flashLoan"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+        "count": 1,
+        "function": "flashLoan",
+        "rank": 15,
+        "supporting_call_depths": [
+          [
+            0,
+            2,
+            0,
+            1
+          ]
+        ]
+      },
+      "primary_rank": 15,
+      "target_functions": [
+        [
+          "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+          "flashloan"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+          "function": "childImplementation",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+          "function": "feeDistributor",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x73d2ff81fcea9832fc9ee90521abde1150f6b52a",
+          "function": "onERC721Received",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+          "function": "vault",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x612447e8d0bdb922059ce048bb5a7cef9e017812",
+          "function": "isLocked",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xeb8c3bebed11e2e4fcd30cbfc2fb3c55c4ca166003c7f7d319e78eaab9747098"
+    },
+    {
+      "address_candidate_rank": 8,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 8",
+      "function_only_rank": 8,
+      "incident": "Circle",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xae461ca67b15dc8dc81ce7615e0320da1a9ab8d5",
+            "normalized_function": "burn",
+            "rank": 8,
+            "raw_function": "burn"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xae461ca67b15dc8dc81ce7615e0320da1a9ab8d5",
+            "normalized_function": "burn",
+            "rank": 8,
+            "raw_function": "burn"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xae461ca67b15dc8dc81ce7615e0320da1a9ab8d5",
+        "count": 1,
+        "function": "burn",
+        "rank": 8,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            2,
+            9
+          ]
+        ]
+      },
+      "primary_rank": 8,
+      "target_functions": [
+        [
+          "0xae461ca67b15dc8dc81ce7615e0320da1a9ab8d5",
+          "burn"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+          "function": "frob",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+          "function": "flux",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+          "function": "urns",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+          "function": "join",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+          "function": "frob",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xf1818f62c635e5c80ef16b7857da812c74ce330ebed46682b4d173bffe84c666"
+    },
+    {
+      "address_candidate_rank": 12,
+      "cause": "produced but ranked low",
+      "chain": "eth",
+      "evidence": "function candidate first appears at rank 12",
+      "function_only_rank": 12,
+      "incident": "Zenterest",
+      "label_audit": {
+        "classification": "not-a-current-label-mismatch",
+        "equivalent_candidates": [
+          {
+            "address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+            "normalized_function": "accrueinterest",
+            "rank": 12,
+            "raw_function": "accrueInterest"
+          }
+        ],
+        "target_address_candidates": [
+          {
+            "address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+            "normalized_function": "accrueinterest",
+            "rank": 12,
+            "raw_function": "accrueInterest"
+          },
+          {
+            "address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+            "normalized_function": "borrow",
+            "rank": 13,
+            "raw_function": "borrow"
+          }
+        ]
+      },
+      "matched_prediction": {
+        "address": "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+        "count": 1,
+        "function": "accrueInterest",
+        "rank": 12,
+        "supporting_call_depths": [
+          [
+            0,
+            0,
+            3,
+            7
+          ]
+        ]
+      },
+      "primary_rank": 12,
+      "target_functions": [
+        [
+          "0xe3334e66634acf17b2b97ab560ec92d6861b25fa",
+          "accrueinterest"
+        ]
+      ],
+      "top5": [
+        {
+          "address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+          "function": "mintAllowed",
+          "rank": 1,
+          "selector": null
+        },
+        {
+          "address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+          "function": "mintVerify",
+          "rank": 2,
+          "selector": null
+        },
+        {
+          "address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+          "function": "borrowAllowed",
+          "rank": 3,
+          "selector": null
+        },
+        {
+          "address": "0x94e388d6410a40c36cde41a7ad8e60a820b5971a",
+          "function": "borrowVerify",
+          "rank": 4,
+          "selector": null
+        },
+        {
+          "address": "0x606246e9ef6c70dcb6cee42136cd06d127e2b7c7",
+          "function": "mintAllowed",
+          "rank": 5,
+          "selector": null
+        }
+      ],
+      "trace_name_evidence": [],
+      "txn_hash": "0xfe8bc757d87e97a5471378c90d390df47e1b29bb9fca918b94acd8ecfaadc598"
+    }
+  ],
+  "cause_counts": {
+    "candidate never produced": 1,
+    "label/selector mismatch": 12,
+    "produced but ranked low": 14,
+    "trace too shallow": 18
+  },
+  "classification_rule": "Round-1 canonical label grouping and depth tie-break applied before this analysis; no holdout rows included.",
+  "development_rows": 90,
+  "examples": {
+    "candidate never produced": [
+      {
+        "address_candidate_rank": null,
+        "cause": "candidate never produced",
+        "chain": "eth",
+        "evidence": "target function text retained in cast output tail but absent from predictions",
+        "function_only_rank": null,
+        "incident": "JokInTheBox",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xa6447f6156effd23ec3b57d5edd978349e4e192d",
+            "unstake"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x9d3425d45df30183fda059c586543dcdeb5993e6",
+            "function": "b61705a0",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [
+          "unstake"
+        ],
+        "txn_hash": "0xe8277ef6ba8611bd12dc5a6e7ca4b984423bc0b3828159f83b466fdcf4fe054f"
+      }
+    ],
+    "label/selector mismatch": [
+      {
+        "address_candidate_rank": 1,
+        "cause": "label/selector mismatch",
+        "chain": "bsc",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "ChannelsFinance",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+              "normalized_function": "transfer",
+              "rank": 1,
+              "raw_function": "transfer"
+            }
+          ],
+          "target_names": [
+            "_transfer"
+          ],
+          "target_raw_names": [
+            "_transfer"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "_transfer"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "function": "transfer",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565"
+      },
+      {
+        "address_candidate_rank": 46,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "ZunamiProtocol",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "balanceof",
+              "rank": 46,
+              "raw_function": "0x70a08231"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "transfer",
+              "rank": 114,
+              "raw_function": "0xa9059cbb"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "transferfrom",
+              "rank": 118,
+              "raw_function": "0x23b872dd"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "approve",
+              "rank": 122,
+              "raw_function": "0x095ea7b3"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "0xd341ea79",
+              "rank": 234,
+              "raw_function": "0xd341ea79"
+            }
+          ],
+          "target_names": [
+            "cacheassetprice"
+          ],
+          "target_raw_names": [
+            "cacheassetprice"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "cacheassetprice"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+            "function": "0x70a08231",
+            "rank": 1,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "function": "0x70a08231",
+            "rank": 2,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "function": "0x70a08231",
+            "rank": 3,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+            "function": "0x70a08231",
+            "rank": 4,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "function": "0x70a08231",
+            "rank": 5,
+            "selector": "0x70a08231"
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+      },
+      {
+        "address_candidate_rank": 16,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "EFLeverVault",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+              "normalized_function": "deposit",
+              "rank": 16,
+              "raw_function": "deposit{value: 100000000000000000}"
+            },
+            {
+              "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+              "normalized_function": "withdraw",
+              "rank": 18,
+              "raw_function": "withdraw"
+            }
+          ],
+          "target_names": [
+            "receiveflashloan"
+          ],
+          "target_raw_names": [
+            "receiveflashloan"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xe39fd820b58f83205db1d9225f28105971c3d309",
+            "receiveflashloan"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x071108ad85d7a766b41e0f5e5195537a8fc8e74d",
+            "function": "safeAdd",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
+            "function": "exchange",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xeae736e5d6560169f9285c62492f8a89fb4ab790",
+            "function": "e6170424",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+            "function": "fa0c2149",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+            "function": "d09db04a",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1"
+      },
+      {
+        "address_candidate_rank": 2,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "MIMSpell",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+              "normalized_function": "addcollateral",
+              "rank": 2,
+              "raw_function": "addCollateral"
+            }
+          ],
+          "target_names": [
+            "repay"
+          ],
+          "target_raw_names": [
+            "repay"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x692887e8877c6dd31593cda44c382db5b289b684",
+            "repay"
+          ],
+          [
+            "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+            "repay"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xbe9b99d4dc860ac6fb97e56102815a8f973967c6",
+            "function": "get",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+            "function": "addCollateral",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe59b54a9e37ab69f6e9312a9b3f72539ee184e5a",
+            "function": "de3d67b2",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0x193e045bee45c7573ff89b12601c745af739ce67",
+            "function": "5f4bd64b",
+            "rank": 4,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2"
+      },
+      {
+        "address_candidate_rank": 1,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "MaestroRouter2",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+              "normalized_function": "9239127f",
+              "rank": 1,
+              "raw_function": "9239127f"
+            },
+            {
+              "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+              "normalized_function": "9239127f",
+              "rank": 2,
+              "raw_function": "9239127f"
+            }
+          ],
+          "target_names": [
+            "withdraw"
+          ],
+          "target_raw_names": [
+            "withdraw"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+            "withdraw"
+          ],
+          [
+            "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+            "withdraw"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+            "function": "9239127f",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+            "function": "9239127f",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe6c6e86e04de96c4e3a29ad480c94e7a471969ab",
+            "function": "30f5d90e",
+            "rank": 3,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [
+          "withdraw"
+        ],
+        "txn_hash": "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389"
+      }
+    ],
+    "produced but ranked low": [
+      {
+        "address_candidate_rank": 4,
+        "cause": "produced but ranked low",
+        "chain": "eth",
+        "evidence": "function candidate first appears at rank 6",
+        "function_only_rank": 6,
+        "incident": "MorphoBlue",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [
+            {
+              "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+              "normalized_function": "borrow",
+              "rank": 6,
+              "raw_function": "borrow"
+            }
+          ],
+          "target_address_candidates": [
+            {
+              "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+              "normalized_function": "supplycollateral",
+              "rank": 4,
+              "raw_function": "supplyCollateral"
+            },
+            {
+              "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+              "normalized_function": "setauthorizationwithsig",
+              "rank": 5,
+              "raw_function": "setAuthorizationWithSig"
+            },
+            {
+              "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+              "normalized_function": "borrow",
+              "rank": 6,
+              "raw_function": "borrow"
+            }
+          ]
+        },
+        "matched_prediction": {
+          "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+          "count": 1,
+          "function": "borrow",
+          "rank": 6,
+          "supporting_call_depths": [
+            [
+              0,
+              4,
+              0
+            ]
+          ]
+        },
+        "primary_rank": 6,
+        "target_functions": [
+          [
+            "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "borrow"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xdd24f84d36bf92c65f92307595335bdfab5bbd21",
+            "function": "getPriceUnsafe",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x870ac11d48b15db9a138cf899d20f13f79ba00bc",
+            "function": "borrowRate",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0x000000000022d473030f116ddee9f6b43ac78ba3",
+            "function": "permit",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "function": "supplyCollateral",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+            "function": "setAuthorizationWithSig",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b"
+      },
+      {
+        "address_candidate_rank": 3,
+        "cause": "produced but ranked low",
+        "chain": "eth",
+        "evidence": "function candidate first appears at rank 8",
+        "function_only_rank": 8,
+        "incident": "MahaLend",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [
+            {
+              "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+              "normalized_function": "flashloan",
+              "rank": 8,
+              "raw_function": "flashLoan"
+            },
+            {
+              "address": "0x76f0c94ced5b48020bf0d7f3d0ceabc877744cb5",
+              "normalized_function": "flashloan",
+              "rank": 9,
+              "raw_function": "flashLoan"
+            },
+            {
+              "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+              "normalized_function": "flashloan",
+              "rank": 19,
+              "raw_function": "flashLoan"
+            }
+          ],
+          "target_address_candidates": [
+            {
+              "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+              "normalized_function": "supply",
+              "rank": 3,
+              "raw_function": "supply"
+            },
+            {
+              "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+              "normalized_function": "flashloan",
+              "rank": 8,
+              "raw_function": "flashLoan"
+            },
+            {
+              "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+              "normalized_function": "borrow",
+              "rank": 16,
+              "raw_function": "borrow"
+            }
+          ]
+        },
+        "matched_prediction": {
+          "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+          "count": 55,
+          "function": "flashLoan",
+          "rank": 8,
+          "supporting_call_depths": [
+            [
+              0,
+              2,
+              3,
+              3,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              4,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              5,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              6,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              7,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              8,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              9,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              10,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              11,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              12,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              13,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              14,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              15,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              16,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              17,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              18,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              19,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              20,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              21,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              22,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              23,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              24,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              25,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              26,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              27,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              28,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              29,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              30,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              31,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              32,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              33,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              34,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              35,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              36,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              37,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              38,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              39,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              40,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              41,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              42,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              43,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              44,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              45,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              46,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              47,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              48,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              49,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              50,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              51,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              52,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              53,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              54,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              55,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              56,
+              0
+            ],
+            [
+              0,
+              2,
+              3,
+              57,
+              0
+            ]
+          ]
+        },
+        "primary_rank": 8,
+        "target_functions": [
+          [
+            "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "flashloan"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x658b0f629b9e3753aa555c189d0cb19c1ed59632",
+            "function": "mint",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x4f7a43c603136c0970fe65df7c24ca17ef3ffe2e",
+            "function": "1913f161",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xfd11aba71c06061f446ade4eec057179f19c23c4",
+            "function": "supply",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0x76f0c94ced5b48020bf0d7f3d0ceabc877744cb5",
+            "function": "supply",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0xac3418ce48dbd35fe213dcfdfb70f044a47f9b0f",
+            "function": "handleRepayment",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [
+          "flashloan"
+        ],
+        "txn_hash": "0x2881e839d4d562fad5356183e4f6a9d427ba6f475614ce8ef64dbfe557a4a2cc"
+      },
+      {
+        "address_candidate_rank": 7,
+        "cause": "produced but ranked low",
+        "chain": "eth",
+        "evidence": "function candidate first appears at rank 7",
+        "function_only_rank": 7,
+        "incident": "Burner",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [
+            {
+              "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+              "normalized_function": "convertandburn",
+              "rank": 7,
+              "raw_function": "convertAndBurn"
+            }
+          ],
+          "target_address_candidates": [
+            {
+              "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+              "normalized_function": "convertandburn",
+              "rank": 7,
+              "raw_function": "convertAndBurn"
+            }
+          ]
+        },
+        "matched_prediction": {
+          "address": "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+          "count": 1,
+          "function": "convertAndBurn",
+          "rank": 7,
+          "supporting_call_depths": [
+            [
+              0,
+              0,
+              3,
+              3
+            ]
+          ]
+        },
+        "primary_rank": 7,
+        "target_functions": [
+          [
+            "0x4d4d05e1205e3a412ae1469c99e0d954113aa76f",
+            "convertandburn"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x198f52501db67283cec7e2cadb04b3a0bc823a3f",
+            "function": "b88b86a6",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x13a1f3f9a0b3b5335acb4c213da78c1548ec67d2",
+            "function": "cf8b69bf",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0x2b2b325ffb8d0876afad4538569ada16db59ff87",
+            "function": "3d873a24",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xcbcdf9626bc03e24f779434178a73a0b4bad62ed",
+            "function": "1a686502",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+            "function": "1a686502",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x3bba4fb6de00dd38df3ad68e51c19fe575a95a296e0632028f101c5199b6f714"
+      },
+      {
+        "address_candidate_rank": 4,
+        "cause": "produced but ranked low",
+        "chain": "eth",
+        "evidence": "function candidate first appears at rank 19",
+        "function_only_rank": 19,
+        "incident": "Kashi",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "withdraw",
+              "rank": 19,
+              "raw_function": "withdraw"
+            }
+          ],
+          "target_address_candidates": [
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "transfer",
+              "rank": 4,
+              "raw_function": "transfer"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "toshare",
+              "rank": 13,
+              "raw_function": "toshare"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "toamount",
+              "rank": 14,
+              "raw_function": "toamount"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "totals",
+              "rank": 16,
+              "raw_function": "totals"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "balanceof",
+              "rank": 18,
+              "raw_function": "balanceof"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "withdraw",
+              "rank": 19,
+              "raw_function": "withdraw"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "setmastercontractapproval",
+              "rank": 32,
+              "raw_function": "setmastercontractapproval"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "deposit",
+              "rank": 34,
+              "raw_function": "deposit"
+            },
+            {
+              "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+              "normalized_function": "batchflashloan",
+              "rank": 43,
+              "raw_function": "batchflashloan"
+            }
+          ]
+        },
+        "matched_prediction": {
+          "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+          "count": 2,
+          "function": "withdraw",
+          "rank": 19,
+          "supporting_call_depths": [
+            [
+              0,
+              0,
+              2,
+              15
+            ],
+            [
+              0,
+              0,
+              2,
+              16
+            ]
+          ]
+        },
+        "primary_rank": 19,
+        "target_functions": [
+          [
+            "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "withdraw"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
+            "function": "balanceof",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+            "function": "balanceof",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0x8798249c2e607446efb7ad49ec89dd1865ff4272",
+            "function": "transfer",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xf5bce5077908a1b7370b9ae04adc565ebd643966",
+            "function": "transfer",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3",
+            "function": "transfer",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x3d163bfbec5686d428a6d43e45e2626a220cc4fcfac7620c620b82c1f2537c78"
+      },
+      {
+        "address_candidate_rank": 1,
+        "cause": "produced but ranked low",
+        "chain": "eth",
+        "evidence": "function candidate first appears at rank 10",
+        "function_only_rank": 10,
+        "incident": "Indexed Finance",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [
+            {
+              "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+              "normalized_function": "reindexpool",
+              "rank": 10,
+              "raw_function": "reindexPool"
+            },
+            {
+              "address": "0xf00a38376c8668fc1f3cd3daeef42e0e44a7fcdb",
+              "normalized_function": "reindexpool",
+              "rank": 11,
+              "raw_function": "reindexPool"
+            }
+          ],
+          "target_address_candidates": [
+            {
+              "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+              "normalized_function": "updateminimumbalance",
+              "rank": 1,
+              "raw_function": "updateMinimumBalance"
+            },
+            {
+              "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+              "normalized_function": "reindexpool",
+              "rank": 10,
+              "raw_function": "reindexPool"
+            }
+          ]
+        },
+        "matched_prediction": {
+          "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+          "count": 1,
+          "function": "reindexPool",
+          "rank": 10,
+          "supporting_call_depths": [
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "primary_rank": 10,
+        "target_functions": [
+          [
+            "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+            "reindexpool"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x120c6956d292b800a835cb935c9dd326bdb4e011",
+            "function": "updateMinimumBalance",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xf00a38376c8668fc1f3cd3daeef42e0e44a7fcdb",
+            "function": "updateMinimumBalance",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0x277e851587eb5da22b52a10f4788576e68150277",
+            "function": "uniswapV2Call",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xa1d7b2d891e3a1f9ef4bbc5be20630c2feb1c470",
+            "function": "swap",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0xba13afecda9beb75de5c56bbaf696b880a5a50dd",
+            "function": "swap",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x44aad3b853866468161735496a5d9cc961ce5aa872924c5d78673076b1cd95aa"
+      }
+    ],
+    "trace too shallow": [
+      {
+        "address_candidate_rank": null,
+        "cause": "trace too shallow",
+        "chain": "bsc",
+        "evidence": "no target function text retained in cast output tail or predictions",
+        "function_only_rank": null,
+        "incident": "LPMine",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x6bbef6df8db12667ae88519090984e4f871e5feb",
+            "extractreward"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+            "function": "c45a0155",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x36696169c63e42cd08ce11f5deebbcebae652050",
+            "function": "flash",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0x0557f67b2d5dc575fe3e433e7caf71ea523979fd",
+            "function": "c72af105",
+            "rank": 3,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300"
+      },
+      {
+        "address_candidate_rank": null,
+        "cause": "trace too shallow",
+        "chain": "eth",
+        "evidence": "no target function text retained in cast output tail or predictions",
+        "function_only_rank": null,
+        "incident": "Zoomer",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x9700204d77a67a18ea8f1b47275897b21e5efa97",
+            "0x72c4cff6"
+          ],
+          [
+            "0xc2c701110de2b9503e98619d9c9e3017877b0f72",
+            "swap"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xa4854022f4c16f0abc3fdec300427f6179a3043b",
+            "function": "a28a15e8",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04"
+      },
+      {
+        "address_candidate_rank": null,
+        "cause": "trace too shallow",
+        "chain": "eth",
+        "evidence": "no target function text retained in cast output tail or predictions",
+        "function_only_rank": null,
+        "incident": "GFOX",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x11a4a5733237082a6c08772927ce0a2b5f8a86b6",
+            "setmerkleroot"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x92ee0df7f6b0674cabc9bfc64873786fa7be82d0",
+            "function": "swap",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x12fe79f1de8aed0ba947cec4dce5d33368d649903cb45a5d3e915cc459e751fc"
+      },
+      {
+        "address_candidate_rank": null,
+        "cause": "trace too shallow",
+        "chain": "eth",
+        "evidence": "no target function text retained in cast output tail or predictions",
+        "function_only_rank": null,
+        "incident": "EFVault",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x80cb73074a6965f60df59bf8fa3ce398ffa2702c",
+            "redeem"
+          ],
+          [
+            "0xbdb515028a6fa6cd1634b5a9651184494abfd336",
+            "redeem"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+            "function": "exchange",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x1fe5a53405d00ce2f3e15b214c7486c69cbc5bf165cf9596e86f797f62e81914"
+      },
+      {
+        "address_candidate_rank": null,
+        "cause": "trace too shallow",
+        "chain": "eth",
+        "evidence": "no target function text retained in cast output tail or predictions",
+        "function_only_rank": null,
+        "incident": "Balancer",
+        "label_audit": {
+          "classification": "not-a-current-label-mismatch",
+          "equivalent_candidates": [],
+          "target_address_candidates": []
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x9210f1204b5a24742eba12f710636d76240df3d0",
+            "onswap"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+            "function": "swap",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xe39b5e3b6d74016b2f6a9673d7d7493b6df549d5",
+            "function": "querySwap",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe39b5e3b6d74016b2f6a9673d7d7493b6df549d5",
+            "function": "queryBatchSwap",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+            "function": "batchSwap",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0x7effd7b47bfd17e52fb7559d3f924201b9dbff3d",
+            "function": "handleRepayment",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x2a027c8b915c3737942f512fc5d26fd15752d0332353b3059de771a35a606c2d"
+      }
+    ]
+  },
+  "holdout_excluded": true,
+  "label": "development, exploratory",
+  "label_audit_examples": {
+    "address-identity-mismatch-function-equivalent": [
+      {
+        "address_candidate_rank": null,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "function-only Top-5 hit but primary address+function did not hit",
+        "function_only_rank": 1,
+        "incident": "ParticleTrade",
+        "label_audit": {
+          "classification": "address-identity-mismatch-function-equivalent",
+          "equivalent_candidates": [
+            {
+              "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+              "normalized_function": "onerc721received",
+              "rank": 1,
+              "raw_function": "onERC721Received"
+            },
+            {
+              "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+              "normalized_function": "offerbid",
+              "rank": 2,
+              "raw_function": "offerBid"
+            }
+          ],
+          "target_address_candidates": [],
+          "target_names": [
+            "offerbid",
+            "onerc721received"
+          ],
+          "target_raw_names": [
+            "offerbid",
+            "onerc721received"
+          ]
+        },
+        "matched_prediction": {
+          "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+          "count": 2,
+          "function": "onERC721Received",
+          "rank": 1,
+          "supporting_call_depths": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              2
+            ]
+          ]
+        },
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xe4764f9cd8ecc9659d3abf35259638b20ac536e4",
+            "offerbid"
+          ],
+          [
+            "0xe4764f9cd8ecc9659d3abf35259638b20ac536e4",
+            "onerc721received"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+            "function": "onERC721Received",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+            "function": "offerBid",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe55607b2967ddbe5fa9a6a921991545b8277ef8f",
+            "function": "980d3675",
+            "rank": 3,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6"
+      }
+    ],
+    "true-miss-target-address-wrong-label": [
+      {
+        "address_candidate_rank": 1,
+        "cause": "label/selector mismatch",
+        "chain": "bsc",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "ChannelsFinance",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+              "normalized_function": "transfer",
+              "rank": 1,
+              "raw_function": "transfer"
+            }
+          ],
+          "target_names": [
+            "_transfer"
+          ],
+          "target_raw_names": [
+            "_transfer"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "_transfer"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+            "function": "transfer",
+            "rank": 1,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565"
+      },
+      {
+        "address_candidate_rank": 46,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "ZunamiProtocol",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "balanceof",
+              "rank": 46,
+              "raw_function": "0x70a08231"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "transfer",
+              "rank": 114,
+              "raw_function": "0xa9059cbb"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "transferfrom",
+              "rank": 118,
+              "raw_function": "0x23b872dd"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "approve",
+              "rank": 122,
+              "raw_function": "0x095ea7b3"
+            },
+            {
+              "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+              "normalized_function": "0xd341ea79",
+              "rank": 234,
+              "raw_function": "0xd341ea79"
+            }
+          ],
+          "target_names": [
+            "cacheassetprice"
+          ],
+          "target_raw_names": [
+            "cacheassetprice"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+            "cacheassetprice"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+            "function": "0x70a08231",
+            "rank": 1,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            "function": "0x70a08231",
+            "rank": 2,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "function": "0x70a08231",
+            "rank": 3,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0xd533a949740bb3306d119cc777fa900ba034cd52",
+            "function": "0x70a08231",
+            "rank": 4,
+            "selector": "0x70a08231"
+          },
+          {
+            "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "function": "0x70a08231",
+            "rank": 5,
+            "selector": "0x70a08231"
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+      },
+      {
+        "address_candidate_rank": 16,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "EFLeverVault",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+              "normalized_function": "deposit",
+              "rank": 16,
+              "raw_function": "deposit{value: 100000000000000000}"
+            },
+            {
+              "address": "0xe39fd820b58f83205db1d9225f28105971c3d309",
+              "normalized_function": "withdraw",
+              "rank": 18,
+              "raw_function": "withdraw"
+            }
+          ],
+          "target_names": [
+            "receiveflashloan"
+          ],
+          "target_raw_names": [
+            "receiveflashloan"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0xe39fd820b58f83205db1d9225f28105971c3d309",
+            "receiveflashloan"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x071108ad85d7a766b41e0f5e5195537a8fc8e74d",
+            "function": "safeAdd",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
+            "function": "exchange",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xeae736e5d6560169f9285c62492f8a89fb4ab790",
+            "function": "e6170424",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+            "function": "fa0c2149",
+            "rank": 4,
+            "selector": null
+          },
+          {
+            "address": "0xf5543cdd5f551635e13ebe07e47d01d0fc9cbbd5",
+            "function": "d09db04a",
+            "rank": 5,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x1f1aba5bef04b7026ae3cb1cb77987071a8aff9592e785dd99860566ccad83d1"
+      },
+      {
+        "address_candidate_rank": 2,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "MIMSpell",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+              "normalized_function": "addcollateral",
+              "rank": 2,
+              "raw_function": "addCollateral"
+            }
+          ],
+          "target_names": [
+            "repay"
+          ],
+          "target_raw_names": [
+            "repay"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x692887e8877c6dd31593cda44c382db5b289b684",
+            "repay"
+          ],
+          [
+            "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+            "repay"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0xbe9b99d4dc860ac6fb97e56102815a8f973967c6",
+            "function": "get",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0xc4113ae18e0d3213c6a06947a2ffc70ad3517c77",
+            "function": "addCollateral",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe59b54a9e37ab69f6e9312a9b3f72539ee184e5a",
+            "function": "de3d67b2",
+            "rank": 3,
+            "selector": null
+          },
+          {
+            "address": "0x193e045bee45c7573ff89b12601c745af739ce67",
+            "function": "5f4bd64b",
+            "rank": 4,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [],
+        "txn_hash": "0x26a83db7e28838dd9fee6fb7314ae58dcc6aee9a20bf224c386ff5e80f7e4cf2"
+      },
+      {
+        "address_candidate_rank": 1,
+        "cause": "label/selector mismatch",
+        "chain": "eth",
+        "evidence": "target address candidate exists but its function label did not match",
+        "function_only_rank": null,
+        "incident": "MaestroRouter2",
+        "label_audit": {
+          "classification": "true-miss-target-address-wrong-label",
+          "equivalent_candidates": [],
+          "target_address_candidates": [
+            {
+              "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+              "normalized_function": "9239127f",
+              "rank": 1,
+              "raw_function": "9239127f"
+            },
+            {
+              "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+              "normalized_function": "9239127f",
+              "rank": 2,
+              "raw_function": "9239127f"
+            }
+          ],
+          "target_names": [
+            "withdraw"
+          ],
+          "target_raw_names": [
+            "withdraw"
+          ]
+        },
+        "matched_prediction": null,
+        "primary_rank": null,
+        "target_functions": [
+          [
+            "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+            "withdraw"
+          ],
+          [
+            "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+            "withdraw"
+          ]
+        ],
+        "top5": [
+          {
+            "address": "0x8eae9827b45bcc6570c4e82b9e4fe76692b2ff7a",
+            "function": "9239127f",
+            "rank": 1,
+            "selector": null
+          },
+          {
+            "address": "0x80a64c6d7f12c47b7c66c5b4e20e72bc1fcd5d9e",
+            "function": "9239127f",
+            "rank": 2,
+            "selector": null
+          },
+          {
+            "address": "0xe6c6e86e04de96c4e3a29ad480c94e7a471969ab",
+            "function": "30f5d90e",
+            "rank": 3,
+            "selector": null
+          }
+        ],
+        "trace_name_evidence": [
+          "withdraw"
+        ],
+        "txn_hash": "0x4f4d6909a442b4d86f79a9044dcada6a128ddd9f62c26f410134a72d2fc31389"
+      }
+    ]
+  },
+  "label_mismatch_audit_counts": {
+    "address-identity-mismatch-function-equivalent": 1,
+    "true-miss-target-address-wrong-label": 11
+  },
+  "remaining_top5_misses": 45,
+  "scope": "offline current-ranker analysis of the 90-row development population"
+}
