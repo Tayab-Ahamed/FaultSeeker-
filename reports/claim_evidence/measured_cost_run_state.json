@@ -1,0 +1,53 @@
+{
+  "blocker_proof": [
+    "No tracked JSON file contains both transaction_ids and workload_tier fields.",
+    "benchmark/run_paper_experiments.py refuses to run without --selection-file.",
+    "The same runner refuses any routing selection whose tier counts are not exactly 50/30/20.",
+    "No transaction selection was created, reordered, or tuned by this run."
+  ],
+  "experiment": "measured_cost_routing",
+  "input_gate": {
+    "candidate_selection_files": [],
+    "cohort": "benchmark/benchmark_classification_fixed.csv",
+    "required": "selection manifest with exactly 100 unique transaction_ids and workload_tier counts 50/30/20",
+    "runner": "benchmark/run_paper_experiments.py",
+    "selection_found": false
+  },
+  "measurements": {
+    "actual_cost_usd": null,
+    "all_cloud_list_price_equivalent_usd": null,
+    "list_price_equivalent_usd": null,
+    "measured_saving_fraction": null,
+    "per_call_log": []
+  },
+  "provider_gate": {
+    "dotenv_loaded": false,
+    "free_tier_status": "NOT_EVALUATED_BECAUSE_INPUT_GATE_FAILED",
+    "paid_or_unverified_providers_used": [],
+    "provider_calls": 0,
+    "provider_keys_used": []
+  },
+  "requested_runs": {
+    "extension": {
+      "completed_n": 0,
+      "reason": "N=100 preflight did not pass",
+      "status": "NOT_STARTED"
+    },
+    "n100": {
+      "completed_n": 0,
+      "status": "BLOCKED_BY_MISSING_PREREGISTERED_CONFIG",
+      "target_n": 100,
+      "tier_mix": {
+        "1": 50,
+        "2": 30,
+        "3": 20
+      }
+    }
+  },
+  "resume": {
+    "next_transaction_index": 0,
+    "safe_to_resume": false,
+    "state": "WAITING_FOR_PREREGISTERED_SELECTION"
+  },
+  "schema_version": 1
+}

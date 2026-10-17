@@ -18,7 +18,7 @@ was made.
 | 8 | REWORD | UNVERIFIABLE | Paper Table IV/adversarial-retention result is not reproduced; saved proxy rows are not the claimed N=250 study. |
 | 9 | VERIFIED | REWORD | Hash/source fields exist; incident authenticity, annotation correctness, and source independence are not established. |
 | 10 | REWORD | REWORD | Provider/chain support is counted only after a required historical trace response; the free probe produced none. |
-| 11 | REWORD | REWORD | 35.0% is modeled from retained 50/30/20 assumptions; no measured 100-transaction workload exists. |
+| 11 | REWORD | REWORD | Measured run did not start: N=100 completed 0 because the tracked preregistered 100-ID/50-30-20 selection manifest is absent; extension not started. 35.0% remains modeled only. |
 | 12 | REWORD | REWORD | Future-work/limitation text is not an empirical result; paired usage, quality, provider, and confidence evidence remain missing. |
 | 13 | VERIFIED | REWORD | Retained summary records 7/115 top-1 hits (6.1%); raw prediction replay and clean denominator are unavailable. |
 | 14 | REWORD | REWORD | Eight-chain endpoint observations exist, but no usable historical trace response was obtained. |
@@ -71,6 +71,7 @@ ledger is `PAPER_FIXES.md`.
 | Local alternate-source resolutions | 0/70 committed rows | DeFiHackLabs/rekt absent; one DeFiLlama file scanned; zero network requests. A later dirty HTTP audit snapshot classified 73 rows as unresolved; it was preserved and not staged. |
 | Local model/API workload | Not run | No local model executable; free-tier availability intentionally unverified. |
 | Cost saving | 35.0% modeled | $0.039 hybrid vs $0.060 cloud-only under retained assumptions. |
+| Measured cost run | N=100: 0 completed; extension: not started | Blocked before dotenv/provider loading because no tracked preregistered selection manifest binds 100 unique IDs to 50/30/20 tiers. |
 
 ## Reproducibility checks
 
@@ -78,8 +79,8 @@ The current branch was checked with the offline environment and no provider
 credentials:
 
 ```text
-focused evidence tests: 35 passed
-full pytest:             987 passed, 7 skipped
+focused evidence tests: 11 measured-cost tests passed
+full pytest:             989 passed, 7 skipped
 offline judge:           exit 0; Stage 1 only; Stage 2 skipped; llm_cost=0.0
 five-line reproduction:  7/7 PASS
 evidence upgrade:        4 synthetic + 3 compiled; 2 valid real; 0 eligible
