@@ -1,0 +1,16 @@
+{
+  "status": "BLOCKED_BEFORE_PROVIDER_DISPATCH",
+  "variant": "api-backed-full-pipeline",
+  "benchmark_cases": 115,
+  "stage_one_trace_successes": 2,
+  "stage_one_failures": 113,
+  "provider_calls": 0,
+  "dotenv_loaded": false,
+  "free_tier_provider_verified": false,
+  "reason": "The API-backed function-analysis path requires a usable trace/source input. The deterministic run produced only two trace-success cases; no provider was dispatched because the configured model keys were not verified as free-tier eligible for this run.",
+  "model_names": [],
+  "token_totals": {"input": 0, "output": 0},
+  "actual_cost_usd": 0.0,
+  "list_price_equivalent_usd": null,
+  "claim_status": "NO_API_MEASUREMENT"
+}

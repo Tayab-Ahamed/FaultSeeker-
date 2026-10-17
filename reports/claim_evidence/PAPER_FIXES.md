@@ -110,6 +110,14 @@ disposition in the updated `CLAIMS_FINAL.md`. No paper source was edited.
   predictions are retained. Safe wording: “DAppFL is a cited related system;
   no repository artifact supports a quantitative comparison.”
 
+* A new measurement on the imported original FaultSeeker benchmark is now
+  available, but it must not be substituted for the upstream Table II values:
+  the LLM-free run covered 115 files with 2 trace-success cases, 113 failures,
+  and Recall@1/3/5 of 0/0/0. The API-backed full-pipeline run was not
+  dispatched because free-tier eligibility was not verified and the trace/source
+  prerequisite failed for 113 cases. Evidence:
+  `reports/original_benchmark/llm-free/original-v1-seed20261017/manifest.json`.
+
 ### Table VI, case study, and mechanism scope
 
 * Remove all Table VI category averages (`.82/.71/.76/.73/.76`, etc.). No raw

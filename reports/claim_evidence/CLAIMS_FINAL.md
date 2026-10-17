@@ -50,3 +50,30 @@ chain_count                 8     (frozen CSV distinct-value count)
 These outputs are descriptive and scope-limited. They do not promote the
 paper’s incident, annotation, case-study, all-chain, Table IV/V/VI, cost,
 retention, or guidance claims.
+
+## New original-benchmark measurement
+
+The imported upstream ASE 2025 benchmark was measured separately under
+`benchmark/protocols/original_benchmark_function_localization_v1.md`.
+The LLM-free FunctionRanker/orchestrator run covered all 115 input files:
+
+```text
+n_total=115
+n_ok=2
+n_failed=113
+Recall@1=0.000000
+Recall@3=0.000000
+Recall@5=0.000000
+actual_cost_usd=0.000000
+```
+
+Raw outputs are under
+`reports/original_benchmark/llm-free/original-v1-seed20261017/raw/` and the
+manifest is
+`reports/original_benchmark/llm-free/original-v1-seed20261017/manifest.json`.
+The two successful deterministic runs did not hit their function-level
+targets. The 113 failed cases were retained in the denominator; public RPC
+trace acquisition returned authentication/no-trace/missing-trie failures and
+bounded timeouts. This is a new measurement on the original benchmark, not a
+reproduction of the paper's Table II values. No API-backed model measurement
+was dispatched; see the separate `api_run_status.json` blocker record.

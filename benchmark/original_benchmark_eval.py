@@ -18,7 +18,13 @@ from typing import Any
 
 from faultseeker.forensics.orchestrator import ForensicsOrchestrator
 from faultseeker.function_analysis.function_ranker import FunctionRanker
-from benchmark.honest_eval.localization import load_ground_truth, rank_of_first_hit
+from benchmark.honest_eval.localization import (
+    LocalizationTarget,
+    _norm_addr,
+    _parse_location_entry,
+    _register_fn_names,
+    rank_of_first_hit,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,7 +57,8 @@ def _metadata(path: Path) -> dict[str, str]:
     raw = json.loads(path.read_text(encoding="utf-8-sig"))
     if not isinstance(raw, dict):
         raise ValueError("ground-truth file must be an object")
-    return {"txn_hash": _tx_hash(raw, path), "chain": _chain(raw), "filename": path.name}
+    return {"case_id": path.stem, "txn_hash": _tx_hash(raw, path),
+            "chain": _chain(raw), "filename": path.name}
 
 
 def _predictions(result: Any) -> list[dict[str, Any]]:
@@ -64,9 +71,19 @@ def _predictions(result: Any) -> list[dict[str, Any]]:
 
 
 def _score(gt_path: Path, predictions: list[dict[str, Any]]) -> dict[str, Any]:
-    target = load_ground_truth(str(gt_path.parent))
-    target = next(item for item in target if item.txn_hash == _tx_hash(
-        json.loads(gt_path.read_text(encoding="utf-8-sig")), gt_path))
+    raw = json.loads(gt_path.read_text(encoding="utf-8-sig"))
+    target = LocalizationTarget(txn_hash=_tx_hash(raw, gt_path), name=str(raw.get("name") or ""))
+    names = []
+    for key, values in (raw.get("location") or {}).items():
+        for entry in [key] + list(values or []):
+            parsed = _parse_location_entry(entry)
+            if not parsed:
+                continue
+            address, member, is_line = parsed
+            if not is_line:
+                target.functions.add((address, member))
+                names.append(member)
+    _register_fn_names(names)
     rank = rank_of_first_hit(target, predictions, match="function")
     return {
         "target_function_count": len(target.functions),
@@ -211,7 +228,7 @@ def run(gt_dir: Path = DEFAULT_GT, output_dir: Path = DEFAULT_OUT,
     rows = []
     for path in paths:
         metadata = _metadata(path)
-        raw_path = raw_dir / f"{metadata['txn_hash']}.json"
+        raw_path = raw_dir / f"{metadata['case_id']}.json"
         if raw_path.is_file():
             try:
                 row = json.loads(raw_path.read_text(encoding="utf-8"))
@@ -222,7 +239,7 @@ def run(gt_dir: Path = DEFAULT_GT, output_dir: Path = DEFAULT_OUT,
                 pass
         row = _run_one_bounded(path, variant, model, timeout_seconds)
         rows.append(row)
-        raw_path = raw_dir / f"{row['txn_hash']}.json"
+        raw_path = raw_dir / f"{row['case_id']}.json"
         raw_path.write_text(
             json.dumps(row, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         state = {
