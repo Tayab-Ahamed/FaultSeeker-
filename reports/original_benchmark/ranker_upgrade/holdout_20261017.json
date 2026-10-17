@@ -1,0 +1,41 @@
+{
+  "purpose": "Frozen one-shot ranker-upgrade holdout; excluded from development analysis and output",
+  "source_run": "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/manifest.json",
+  "source_population": "110 rows with status=ok",
+  "seed": 20261017,
+  "selection": {
+    "method": "random.Random(seed), sampled within chain x Top-5-hit-status cells, then sorted lexicographically",
+    "allocation": {
+      "bsc_hit": 2,
+      "bsc_miss": 1,
+      "eth_hit": 8,
+      "eth_miss": 9
+    },
+    "holdout_size": 20,
+    "development_size": 90
+  },
+  "id_list_sha256": "5d7c4fffaa99348a2fa63ba05d9236acba29563ede6c09b957beb9adf6c3f2a7",
+  "id_list_canonicalization": "sha256(UTF-8(json.dumps(sorted_ids, separators=(',', ':'))))",
+  "transaction_ids": [
+    "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b",
+    "0x160c5950a01b88953648ba90ec0a29b0c5383e055d35a7835d905c53a3dda01e",
+    "0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286",
+    "0x2b6d0af0dc513a15e325703405739057f9de6ef3f99934b957653b8a3fade4c6",
+    "0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa",
+    "0x3f1973fe56de5ecd59a815d3b14741cf48385903b0ccfe248f7f10c2765061f7",
+    "0x6e6e556a5685980317cb2afdb628ed4a845b3cbd1c98bdaffd0561cb2c4790fa",
+    "0x8a8145ab28b5d2a2e61d74c02c12350731f479b3175893de2014124f998bff32",
+    "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+    "0xa4e650772f6e6b7ecc0964fe4c3854850669d1467570a2fa2b6edfa0f112c4b7",
+    "0xa992b28ecf2eed778d20d5200946ea341b950be0c3d78b1f2237a4d8d795de95",
+    "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d",
+    "0xaf46a42fe1ed7193b25c523723dc047c7500e50a00ecb7bbb822d665adb3e1f3",
+    "0xb36486f032a450782d5d2fac118ea90a6d3b08cac3409d949c59b43bcd6dbb8f",
+    "0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574",
+    "0xc9b2cbc1437bbcd8c328b6d7cdbdae33d7d2a9ef07eca18b4922aac0430991e7",
+    "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+    "0xdf6252854362c3e96fd086d9c3a5397c303d265649aee0b023176bb49cf00d4b",
+    "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0",
+    "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f"
+  ]
+}
