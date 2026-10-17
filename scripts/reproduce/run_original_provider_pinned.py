@@ -78,9 +78,19 @@ def _metadata(path: Path) -> dict[str, str]:
 
 
 def _atomic_json(path: Path, value: Any) -> None:
-    temp = path.with_suffix(path.suffix + ".tmp")
-    temp.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    os.replace(temp, path)
+    payload = json.dumps(value, indent=2, sort_keys=True) + "\n"
+    # Windows can briefly deny a rename while an antivirus/indexer has the
+    # destination open.  Keep checkpointing durable: retry the replace, then
+    # fall back to a direct write of the target instead of losing progress.
+    temp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    for attempt in range(5):
+        try:
+            temp.write_text(payload, encoding="utf-8")
+            os.replace(temp, path)
+            return
+        except PermissionError:
+            time.sleep(0.5 * (attempt + 1))
+    path.write_text(payload, encoding="utf-8")
 
 
 def _score(gt_path: Path, predictions: list[dict[str, Any]]) -> dict[str, Any]:
@@ -245,6 +255,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     run_dir = args.output_dir / args.run_id
     raw_dir = run_dir / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
+    prior_state = run_dir / "state.json"
+    if prior_state.is_file():
+        try:
+            saved = json.loads(prior_state.read_text(encoding="utf-8"))
+            for chain in request_counts:
+                request_counts[chain] = int(saved.get("request_counts", {}).get(chain, 0))
+                cast_counts[chain] = int(saved.get("cast_process_counts", {}).get(chain, 0))
+        except (OSError, ValueError, TypeError):
+            pass
     mismatch_path = run_dir / "mismatches.jsonl"
     rows: list[dict[str, Any]] = []
     consecutive_limited = 0
