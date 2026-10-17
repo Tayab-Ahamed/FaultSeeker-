@@ -1,0 +1,16 @@
+=== stdout ===
+Traces:
+  [12456] 0x303554d4D8Bd01f18C6fA4A8df3FF57A96071a41::925d400c(0000000000000000000000000000000000000000000000000000000000000001)
+    ├─ [5139] 0x312DC37075646c7e0DBA21DF5BdFe69E76475fdc::925d400c(0000000000000000000000000000000000000000000000000000000000000001) [delegatecall]
+    │   └─ ← [OutOfGas] EvmError: OutOfGas
+    └─ ← [Revert] EvmError: Revert
+
+
+Gas used: 33660
+
+=== stderr ===
+Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.
+Warning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.
+Warning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.
+Error: Transaction failed.
+Warning: the replay does not match the transaction's receipt: it succeeded on-chain but reverted in the replay, and it used 30576 gas on-chain but 33660 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.
