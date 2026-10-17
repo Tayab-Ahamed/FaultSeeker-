@@ -339,6 +339,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                         "run_id": args.run_id, "state": "PAUSED_RATE_LIMIT",
                         "next_transaction_index": index, "completed_n": len(rows),
                         "target_n": len(paths), "consecutive_rate_limit_failures": consecutive_limited,
+                        "request_counts": request_counts,
+                        "cast_process_counts": cast_counts,
+                        "mismatch_count": sum(bool(item.get("replay_mismatch")) for item in rows),
                     }
                     _atomic_json(run_dir / "state.json", state)
                     raise RuntimeError("five consecutive 429/503 responses; run paused") from exc
