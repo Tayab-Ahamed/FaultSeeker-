@@ -1,0 +1,142 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b",
+  "cast": {
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "85336872 [5.509e23]\n    \u2502   \u251c\u2500 [534] 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 1363426920555815103015 [1.363e21]\n    \u2502   \u251c\u2500 [531] 0x55d398326f99059fF775485246999027B3197955::balanceOf(0xFeAFe253802b77456B4627F8c2306a9CeBb5d681) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 550947305608116485336872 [5.509e23]\n    \u2502   \u251c\u2500 emit DODOFlashLoan(: 0xE02970BD38b283C3079720C1E71001abE001bc83, : 0xE02970BD38b283C3079720C1E71001abE001bc83, : 1363426920555815103015 [1.363e21], : 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 403528\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 582128 gas on-chain but 403528 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI"
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b.json",
+  "latency_seconds": 27.123338,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x1954b6bd198c29c3ecf2d6f6bc70a4d41ea1cc07",
+      "count": 1,
+      "function": "deliver",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+      "count": 1,
+      "function": "5365f1be",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+      "count": 1,
+      "function": "e9bf54a2",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1,
+          9
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe02970bd38b283c3079720c1e71001abe001bc83",
+      "count": 1,
+      "function": "292e8e54",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x01b2c773b37483d280366ddf48097d79d68cdb37",
+      "count": 1,
+      "function": "aaa94bfa",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfeafe253802b77456b4627f8c2306a9cebb5d681",
+      "count": 1,
+      "function": "flashLoan",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6db8209c3583e7cecb01d3025c472d1eddbe49f3",
+      "count": 1,
+      "function": "swap",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x09925028ce5d6a54801d04ff8f39e79af6c24289e84b301ddcdb6adfa51e901b",
+  "variant": "llm-free"
+}

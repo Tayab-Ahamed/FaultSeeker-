@@ -1,0 +1,49 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+  "cast": {
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "Traces:\n  [29983] 0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82::transfer(0x07e536F23a197F6FB76F42aD01ac2Bcdc3BF738E, 2184248928510301871 [2.184e18])\n    \u251c\u2500 emit Transfer(from: 0x20395D8e8a11CFD2541b942aFdb810b7dcc64681, to: 0x07e536F23a197F6FB76F42aD01ac2Bcdc3BF738E, amount: 2184248928510301871 [2.184e18])\n    \u2514\u2500 \u2190 [Return] true\n\n\nTransaction successfully executed.\nGas used: 46839\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI"
+  },
+  "chain": "bsc",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565.json",
+  "latency_seconds": 8.183819,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82",
+      "count": 1,
+      "function": "transfer",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+  "variant": "llm-free"
+}

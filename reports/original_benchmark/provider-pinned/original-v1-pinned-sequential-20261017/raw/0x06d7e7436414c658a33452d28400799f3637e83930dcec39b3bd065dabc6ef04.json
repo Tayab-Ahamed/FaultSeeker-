@@ -1,0 +1,49 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04",
+  "cast": {
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "anceOf(0xBA12222222228d8Ba445958a75a0704d566BF2C8) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 56381328404216832701034 [5.638e22]\n    \u2502   \u251c\u2500 emit FlashLoan(param0: 0xa4854022F4C16F0aBc3FdeC300427F6179A3043B, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 200000000000000000000 [2e20], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xa4854022F4C16F0aBc3FdeC300427F6179A3043B)\n    \u2502   \u2514\u2500 \u2190 [Return] 0\n    \u251c\u2500 [2495] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::withdraw(0)\n    \u2502   \u251c\u2500 [55] 0xa4854022F4C16F0aBc3FdeC300427F6179A3043B::fallback()\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 emit Withdrawal(param0: 0xa4854022F4C16F0aBc3FdeC300427F6179A3043B, param1: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [0] 0xb0380B6D7a63E7CbF274C3b3C8838AbbD6BD4AbE::fallback()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 2158983\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "dRPC"
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04.json",
+  "latency_seconds": 41.267797,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xa4854022f4c16f0abc3fdec300427f6179a3043b",
+      "count": 1,
+      "function": "a28a15e8",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "dRPC",
+  "replay_mismatch": false,
+  "run_config_hash": "564ac341da5633ffca7618ffbe323231913b002684d72ae8b22a9a1626f6ae06",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 3
+  },
+  "status": "ok",
+  "txn_hash": "0x06d7e7436414c658a33452d28400799f3637e83930dcec39b3bd065dabc6ef04",
+  "variant": "llm-free"
+}
