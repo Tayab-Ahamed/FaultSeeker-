@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import sys
 import time
 from typing import Any
 from urllib.parse import urlparse
@@ -30,6 +31,7 @@ BETWEEN_TX_SECONDS = 4.0
 RATE_LIMIT_MAX_CONSECUTIVE = 5
 RATE_LIMIT_MAX_ATTEMPTS_PER_CASE = 5
 RETRY_PASS_CUPS = 2
+CASE_HARD_TIMEOUT_SECONDS = 180
 
 
 class RateLimitAbort(BaseException):
@@ -229,16 +231,23 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
             raise TimeoutError(f"cast timeout after 90s: {txn_hash}") from exc
         stdout = (result.stdout or b"").decode("utf-8", errors="replace")
         stderr = (result.stderr or b"").decode("utf-8", errors="replace")
+        # Only stderr is authoritative for provider throttling.  Trace stdout
+        # commonly contains arbitrary numbers such as gas values or selectors
+        # that can include 429/503 and must never be classified as HTTP errors.
+        stderr_safe = stderr.replace(rpc_url, "[RPC_REDACTED]")
         combined = (stdout + "\n" + stderr).replace(rpc_url, "[RPC_REDACTED]")
-        if re.search(r"(?:HTTP\s*)?429\b|rate limit|too many requests", combined, re.I):
-            raise RateLimitAbort(provider, "429", combined)
-        if re.search(r"(?:HTTP\s*)?503\b|service unavailable", combined, re.I):
-            raise RateLimitAbort(provider, "503", combined)
+        if result.returncode != 0 and re.search(
+                r"(?:HTTP\s*)?429\b|rate limit|too many requests", stderr_safe, re.I):
+            raise RateLimitAbort(provider, "429", stderr_safe)
+        if result.returncode != 0 and re.search(
+                r"(?:HTTP\s*)?503\b|service unavailable", stderr_safe, re.I):
+            raise RateLimitAbort(provider, "503", stderr_safe)
         cast_context["last"] = {
             "provider": provider,
             "exit_code": result.returncode,
             "compute_units_per_second": cups,
             "mismatch": "replay does not match" in combined.lower(),
+            "stderr_tail": stderr_safe[-1200:],
             "output_tail": combined[-1200:],
         }
         if result.returncode:
@@ -248,6 +257,82 @@ def _install_guards(rpc: Any, eth_url: str, bsc_url: str,
         return clean if clean.strip() else None
 
     txn_replayer.TransactionReplayer._run_cast = staticmethod(pinned_cast)
+
+
+def _timeout_failure_row(metadata: dict[str, str], model: str,
+                         run_config_hash: str, message: str) -> dict[str, Any]:
+    return {
+        **metadata,
+        "run_config_hash": run_config_hash,
+        "provider": "BlockPI",
+        "variant": "llm-free",
+        "model": model,
+        "status": "failed",
+        "predictions": [],
+        "score": _failure_score(),
+        "replay_mismatch": False,
+        "cast": {},
+        "request_count_delta": {"eth": 0, "bsc": 0},
+        "cast_process_delta": {"eth": 0, "bsc": 0},
+        "attempts": [{"attempt": 1, "status": "hard_timeout"}],
+        "failure_kind": "TimeoutError",
+        "failure_message": message[:500],
+        "latency_seconds": CASE_HARD_TIMEOUT_SECONDS,
+    }
+
+
+def _run_case_with_hard_timeout(args: argparse.Namespace, path: Path,
+                                index: int, run_dir: Path) -> dict[str, Any]:
+    """Run one case in a killable child process, preserving sequential RPC use."""
+    metadata = _metadata(path)
+    worker_root = run_dir / ".workers" / f"case-{index:03d}"
+    worker_id = f"{args.run_id}-case-{index:03d}-worker"
+    worker_dir = worker_root / worker_id
+    worker_dir.mkdir(parents=True, exist_ok=True)
+    command = [
+        sys.executable, str(Path(__file__).resolve()),
+        "--run-id", worker_id,
+        "--output-dir", str(worker_root),
+        "--model", args.model,
+        "--only-index", str(index),
+        "--worker-mode",
+        "--skip-retry-pass",
+    ]
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(ROOT) + os.pathsep + env.get("PYTHONPATH", "")
+    env["PYTHON_DOTENV_DISABLED"] = "true"
+    env["PYTHONIOENCODING"] = "utf-8"
+    process = subprocess.Popen(command, cwd=str(ROOT), env=env,
+                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        stdout, stderr = process.communicate(timeout=CASE_HARD_TIMEOUT_SECONDS)
+    except subprocess.TimeoutExpired:
+        if os.name == "nt":
+            subprocess.run(["taskkill.exe", "/PID", str(process.pid), "/T", "/F"],
+                           capture_output=True, timeout=10)
+        else:
+            process.kill()
+        process.wait(timeout=10)
+        return _timeout_failure_row(
+            metadata, args.model, args.run_config_hash,
+            f"per-transaction hard timeout after {CASE_HARD_TIMEOUT_SECONDS}s")
+
+    raw_path = worker_dir / "raw" / f"{metadata['case_id']}.json"
+    if raw_path.is_file():
+        try:
+            row = json.loads(raw_path.read_text(encoding="utf-8"))
+            if row.get("txn_hash") == metadata["txn_hash"]:
+                row["run_config_hash"] = args.run_config_hash
+                row["worker_exit_code"] = process.returncode
+                row["worker_stderr_tail"] = stderr.decode("utf-8", errors="replace")[-1200:]
+                return row
+        except (OSError, ValueError):
+            pass
+    stderr_text = stderr.decode("utf-8", errors="replace")
+    stdout_text = stdout.decode("utf-8", errors="replace")
+    return _timeout_failure_row(
+        metadata, args.model, args.run_config_hash,
+        f"worker exit={process.returncode}; stderr={stderr_text[-350:]} stdout={stdout_text[-150:]}")
 
 
 def run(args: argparse.Namespace) -> dict[str, Any]:
@@ -283,7 +368,9 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     consecutive_failures = 0
     last_network_tx = False
 
-    for index, path in enumerate(paths):
+    indices = [args.only_index] if args.only_index is not None else range(len(paths))
+    for index in indices:
+        path = paths[index]
         metadata = _metadata(path)
         raw_path = raw_dir / f"{metadata['case_id']}.json"
         if raw_path.is_file():
@@ -303,6 +390,41 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         if last_network_tx:
             time.sleep(BETWEEN_TX_SECONDS)
         provider = "BlockPI"
+        if not args.worker_mode:
+            if last_network_tx:
+                time.sleep(BETWEEN_TX_SECONDS)
+            row = _run_case_with_hard_timeout(args, path, index, run_dir)
+            for chain in request_counts:
+                request_counts[chain] += int(row.get("request_count_delta", {}).get(chain, 0))
+                cast_counts[chain] += int(row.get("cast_process_delta", {}).get(chain, 0))
+            rows.append(row)
+            if row.get("status") == "ok":
+                consecutive_failures = 0
+            else:
+                consecutive_failures += 1
+                retry_queue.append(index)
+            _atomic_json(raw_path, row)
+            if row.get("replay_mismatch"):
+                with mismatch_path.open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps({
+                        "index": index, "case_id": row["case_id"],
+                        "txn_hash": row["txn_hash"], "chain": row["chain"],
+                        "provider": row["provider"], "cast": row.get("cast", {}),
+                    }, sort_keys=True) + "\n")
+            _atomic_json(run_dir / "state.json", {
+                "run_id": args.run_id, "state": "RUNNING",
+                "next_transaction_index": index + 1,
+                "completed_n": len(rows), "target_n": len(paths),
+                "request_counts": request_counts, "cast_process_counts": cast_counts,
+                "mismatch_count": sum(bool(item.get("replay_mismatch")) for item in rows),
+            })
+            print(f"case={index + 1}/{len(paths)} chain={path.stem and _metadata(path)['chain']} "
+                  f"provider={provider} status={row['status']} "
+                  f"mismatch={row.get('replay_mismatch', False)}", flush=True)
+            last_network_tx = True
+            if consecutive_failures >= 10:
+                raise RuntimeError("ten consecutive failed cases; run paused")
+            continue
         attempts: list[dict[str, Any]] = []
         rate_limit_errors: list[str] = []
         started = time.perf_counter()
@@ -465,6 +587,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             })
             raise RuntimeError("ten consecutive failed cases; run paused")
 
+    # Worker subprocesses execute exactly one case; do not recurse into a retry
+    # pass inside the worker. The parent owns the eventual retry pass.
+    if args.skip_retry_pass:
+        retry_queue = []
+
     # One retry pass for every failed case, at the lower Foundry rate setting.
     retry_results: list[dict[str, Any]] = []
     retry_consecutive_failures = 0
@@ -621,6 +748,12 @@ def main() -> int:
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--resume-from", type=int, default=0,
                         help="Reuse verified raw rows before this zero-based case index")
+    parser.add_argument("--only-index", type=int, default=None,
+                        help=argparse.SUPPRESS)
+    parser.add_argument("--worker-mode", action="store_true",
+                        help=argparse.SUPPRESS)
+    parser.add_argument("--skip-retry-pass", action="store_true",
+                        help=argparse.SUPPRESS)
     args = parser.parse_args()
     args.run_config_hash = hashlib.sha256(json.dumps({
         "run_id": args.run_id, "model": args.model,
