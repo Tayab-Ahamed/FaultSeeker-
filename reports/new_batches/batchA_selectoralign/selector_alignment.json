@@ -1,0 +1,456 @@
+{
+  "alignment_key": "labeled vulnerable address + resolved full-signature keccak256 selector",
+  "alignment_key_selection": "Chosen after seeing the name-matching zeros; exploratory and post-hoc, not a benchmark scoring change.",
+  "caveats": [
+    "This selector alignment is not the benchmark's name-based scoring rule.",
+    "The address+selector key was chosen after seeing name-matching zeros.",
+    "Two rows have the resolved selector absent from the saved candidate evidence and therefore have None ranks: DaoMaker init and XCarnival pledgeAndBorrow for 0xabfcfaf3....",
+    "The sample is single-chain ETH only and small (N=23).",
+    "Labels and full signatures were taken from the fetched DeFiHackLabs PoC source declarations and call lines recorded in batchA_signatures.",
+    "The saved full-list artifact has 89 predictions for 0xabfcfaf3..., while the drpc_final summary records 88; this report uses the drpc_final candidate count, and that row's resolved selector is absent in both saved address-level evidence sets."
+  ],
+  "counts": {
+    "resolved_full_signatures": 23,
+    "rows": 23,
+    "selector_absent": 2,
+    "selector_present": 21,
+    "unresolved_full_signatures": 0
+  },
+  "evidence": [
+    "reports/new_batches/batchA_signatures/signature_check.json",
+    "reports/new_batches/batchA_ranker_measurement_20261017.json",
+    "reports/new_batches/batchA_adapterfix4/producer_batchA_measurement_drpc_final.json",
+    "reports/new_batches/batchA_functiondiag/function_diagnosis.json"
+  ],
+  "label": "post-hoc label alignment, exploratory, N=23, ETH only, DeFiHackLabs-sourced",
+  "metrics": {
+    "address_only_comparison": {
+      "R@1": {
+        "hits": 1,
+        "n": 23,
+        "recall": 0.043478260869565216
+      },
+      "R@3": {
+        "hits": 18,
+        "n": 23,
+        "recall": 0.782608695652174
+      },
+      "R@5": {
+        "hits": 20,
+        "n": 23,
+        "recall": 0.8695652173913043
+      }
+    },
+    "address_selector_primary": {
+      "R@1": {
+        "hits": 0,
+        "n": 23,
+        "recall": 0.0
+      },
+      "R@3": {
+        "hits": 0,
+        "n": 23,
+        "recall": 0.0
+      },
+      "R@5": {
+        "hits": 0,
+        "n": 23,
+        "recall": 0.0
+      }
+    }
+  },
+  "network_calls": false,
+  "producer_replay_provenance": {
+    "diagnostic_provenance": "reports/new_batches/batchA_functiondiag/function_diagnosis.json",
+    "producer_commit": "1b1c7395771663622dd14b9731b4b8b471221960",
+    "raw_run_directory": "reports/new_batches/batchA_adapterfix4/rpc_drpc_final/eth/",
+    "run_summary": "reports/new_batches/batchA_adapterfix4/producer_batchA_measurement_drpc_final.json"
+  },
+  "ranker_invocations": 0,
+  "rows": [
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41",
+      "transaction_hash_prefix": "0x07887fff"
+    },
+    {
+      "address_only_rank": 31,
+      "address_selector_rank": 31,
+      "candidate_count": 32,
+      "first_labeled_address_selector_match_rank": 31,
+      "full_signature": "swap(address,address,address,uint256,uint256,bytes)",
+      "labeled_address": "0xa5564a2d1190a141cac438c9fde686ac48a18a79",
+      "matching_candidate": {
+        "address": "0xa5564a2d1190a141cac438c9fde686ac48a18a79",
+        "rank": 31,
+        "selector": "0xa5d4096b"
+      },
+      "selector": "0xa5d4096b",
+      "selector_status": "present",
+      "transaction_hash": "0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3",
+      "transaction_hash_prefix": "0x2c9f87e2"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870",
+      "transaction_hash_prefix": "0x32259275"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038",
+      "transaction_hash_prefix": "0x366df0c2"
+    },
+    {
+      "address_only_rank": 5,
+      "address_selector_rank": 13,
+      "candidate_count": 18,
+      "first_labeled_address_selector_match_rank": 13,
+      "full_signature": "mint(address,uint256)",
+      "labeled_address": "0x641249db01d5c9a04d1a223765ffd15f95167924",
+      "matching_candidate": {
+        "address": "0x641249db01d5c9a04d1a223765ffd15f95167924",
+        "rank": 13,
+        "selector": "0x40c10f19"
+      },
+      "selector": "0x40c10f19",
+      "selector_status": "present",
+      "transaction_hash": "0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71",
+      "transaction_hash_prefix": "0x39328ea4"
+    },
+    {
+      "address_only_rank": 7,
+      "address_selector_rank": 12,
+      "candidate_count": 31,
+      "first_labeled_address_selector_match_rank": 12,
+      "full_signature": "pledgeAndBorrow(address,uint256,uint256,address,uint256)",
+      "labeled_address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+      "matching_candidate": {
+        "address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+        "rank": 12,
+        "selector": "0xe3333ae9"
+      },
+      "selector": "0xe3333ae9",
+      "selector_status": "present",
+      "transaction_hash": "0x422e7b0a449deba30bfe922b5c34282efbdbf860205ff04b14fd8129c5b91433",
+      "transaction_hash_prefix": "0x422e7b0a"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x53835af1b7df33435188d2380328b81c0e8a22b01353c76e3dac352275895b45",
+      "transaction_hash_prefix": "0x53835af1"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x5bbab18059f8c3fec56a0ddcd15feddf7cda8b8007b254436956db1d9ffe72ec",
+      "transaction_hash_prefix": "0x5bbab180"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 12,
+      "candidate_count": 13,
+      "first_labeled_address_selector_match_rank": 12,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 12,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x6899b8caee16dbd75359cabcd24e32b2362c474cdf39ea810cf4386018761beb",
+      "transaction_hash_prefix": "0x6899b8ca"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x708ffcf4a76bd159056afb17ce6c5f5adcb5899e465bbf038aae79c3cef666ae",
+      "transaction_hash_prefix": "0x708ffcf4"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x7cefbfd14497b1c577423d94ea521615991eee2590fab980230d9dd1d80ccf1c",
+      "transaction_hash_prefix": "0x7cefbfd1"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x84156ea5360b679dfa7cdda80c16aafbfdf1ba20b84bcf76f79666f0c405b86f",
+      "transaction_hash_prefix": "0x84156ea5"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x8bcac5e570aa695b5e0ce7dd58766eaa5830f44bbef5008aef63c6efb036e717",
+      "transaction_hash_prefix": "0x8bcac5e5"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 12,
+      "candidate_count": 13,
+      "first_labeled_address_selector_match_rank": 12,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 12,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x914c1ae4f03657064f0b1d5ddc6e06f39e82bce6fb2f726efdca52c092fbfc26",
+      "transaction_hash_prefix": "0x914c1ae4"
+    },
+    {
+      "address_only_rank": null,
+      "address_selector_rank": null,
+      "candidate_count": 4,
+      "first_labeled_address_selector_match_rank": null,
+      "full_signature": "init(uint256,uint256[],uint256[],address)",
+      "labeled_address": "0x6e70c88be1d5c2a4c0c8205764d01abe6a3d2e22",
+      "matching_candidate": null,
+      "selector": "0x84304ad7",
+      "selector_status": "absent",
+      "transaction_hash": "0x96bf6bd14a81cf19939c0b966389daed778c3a9528a6c5dd7a4d980dec966388",
+      "transaction_hash_prefix": "0x96bf6bd1"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0x9fac5412eb42aab07dcb2c5fbb03669aaa98d9c57849d44d8291d3156d9f4871",
+      "transaction_hash_prefix": "0x9fac5412"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xa02c180149ce03d1b6e3d412585000b968b7db59a277717ec51d0899c1a3c017",
+      "transaction_hash_prefix": "0xa02c1801"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": null,
+      "candidate_count": 88,
+      "first_labeled_address_selector_match_rank": null,
+      "full_signature": "pledgeAndBorrow(address,uint256,uint256,address,uint256)",
+      "labeled_address": "0x39360ac1239a0b98cb8076d4135d0f72b7fd9909",
+      "matching_candidate": null,
+      "selector": "0xe3333ae9",
+      "selector_status": "absent",
+      "transaction_hash": "0xabfcfaf3620bbb2d41a3ffea6e31e93b9b5f61c061b9cfc5a53c74ebe890294d",
+      "transaction_hash_prefix": "0xabfcfaf3"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xb3af75f703ddc5d15ff872585b7d970c5204b90399a5859ec39e736a2ffbf375",
+      "transaction_hash_prefix": "0xb3af75f7"
+    },
+    {
+      "address_only_rank": 4,
+      "address_selector_rank": 14,
+      "candidate_count": 15,
+      "first_labeled_address_selector_match_rank": 14,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 14,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xc10ec615e2d18c8a7dad2bb2418c422472565d9622ed851298fc848c3a451387",
+      "transaction_hash_prefix": "0xc10ec615"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xca53e107a9a21d8f431614570a98c4718cca7172415e3fbed8842d426ac3ab54",
+      "transaction_hash_prefix": "0xca53e107"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xce0935010baf445e300d4d600caac7fc1fecb5ccb092cdbef57904aa7e5408b2",
+      "transaction_hash_prefix": "0xce093501"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 9,
+      "candidate_count": 10,
+      "first_labeled_address_selector_match_rank": 9,
+      "full_signature": "swap(address,uint256,address,uint256,address,address,bytes,uint256)",
+      "labeled_address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+      "matching_candidate": {
+        "address": "0x6eb211caf6d304a76efe37d9abdfaddc2d4363d1",
+        "rank": 9,
+        "selector": "0x32854cc2"
+      },
+      "selector": "0x32854cc2",
+      "selector_status": "present",
+      "transaction_hash": "0xff1f352912666796d5cd51b5dfa3e6319544aeb5938e1e9f310fd5fcb02be6da",
+      "transaction_hash_prefix": "0xff1f3529"
+    }
+  ],
+  "source_candidate_lists": "reports/new_batches/batchA_ranker_measurement_20261017.json"
+}
