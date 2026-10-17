@@ -71,7 +71,7 @@ def main() -> int:
         source_text = " ".join(str(label.get(key, "")) for key in ("source_transaction_quote", "vulnerable_contract_quote", "vulnerable_function_quote")).lower()
         if "delegatecall" in source_text:
             source_target_statement = "delegatecall target stated"
-        elif any(token in source_text for token in ("vulnerable function", "root cause", "vulnerability", "lacks access control")):
+        elif any(token in source_text for token in ("vulnerable function", "vulnerable", "root cause", "vulnerability", "lacks access control")):
             source_target_statement = "internal vulnerable function stated"
         else:
             source_target_statement = "not stated"

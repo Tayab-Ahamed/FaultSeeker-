@@ -12,7 +12,7 @@
 | Transaction | Function | Selector | At address in candidates? | Anywhere in candidates? | In trace? | Called at labeled address? | Source target statement | Class |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `0x07887fffc4488354d813fdcca5da0586dd6f9a3da36d503af768302eacbeec41` | `swap()` | `0x8119c065` | False | False | False | False | internal vulnerable function stated | 3 |
-| `0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3` | `swap()` | `0x8119c065` | False | False | False | False | not stated | 3 |
+| `0x2c9f87e285026601a2c8903cf5f10e5b3655fbd0264490c41514ce073c42a9c3` | `swap()` | `0x8119c065` | False | False | False | False | internal vulnerable function stated | 3 |
 | `0x322592750691798488006a26aa042b55ab9d7637f9b0adc42089a4c480e51870` | `swap()` | `0x8119c065` | False | False | False | False | internal vulnerable function stated | 3 |
 | `0x366df0c20e00666749b16ae00475b3c41834dc659ebb29e059aa9bffa892c038` | `swap()` | `0x8119c065` | False | False | False | False | internal vulnerable function stated | 3 |
 | `0x39328ea4377a8887d3f6ce91b2f4c6b19a851e2fc5163e2f83bbc2fc136d0c71` | `mint()` | `0x1249c58b` | False | False | False | False | internal vulnerable function stated | 3 |
