@@ -1,0 +1,183 @@
+{
+  "backoff_seconds": 0.0,
+  "billing_prompt_detected": true,
+  "frozen": {
+    "batch_sha256": "3ab15ab445e00613b1fb7a48e32c94f22f7a03f451182ff2fac5912b3aaa2dc2",
+    "ranker_commit": "e6f8da0271f00223346a74ffcf32bb34b54383dd"
+  },
+  "provider": "dRPC",
+  "rate_limit_hits": 0,
+  "request_interval_seconds": 1.0,
+  "rows_attempted": 23,
+  "rows_total": 30,
+  "rpc_methods": [
+    "eth_chainId",
+    "eth_getTransactionByHash",
+    "eth_getTransactionReceipt",
+    "debug_traceTransaction"
+  ],
+  "status": "STOPPED_BILLING_PROMPT",
+  "verification_rows": [
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Parity multisig wallet first hack",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec.json",
+      "transaction_hash": "0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "BEC batch transfer overflow",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f.json",
+      "transaction_hash": "0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "SpankChain payment-channel reentrancy",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88.json",
+      "transaction_hash": "0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Pickle Finance evil jar",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0.json",
+      "transaction_hash": "0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Yearn yDAI vault manipulation",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b.json",
+      "transaction_hash": "0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "PAID token unauthorized mint",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0.json",
+      "transaction_hash": "0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Rari Capital fake-token lending",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be.json",
+      "transaction_hash": "0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Poly Network cross-chain manager",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581.json",
+      "transaction_hash": "0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Cream Finance crYUSD collateral inflation",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92.json",
+      "transaction_hash": "0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Yearn yUSDT share-price manipulation",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328.json",
+      "transaction_hash": "0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Pine Protocol NFT lending repayment",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d.json",
+      "transaction_hash": "0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Convergence reward distributor",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x636be30e58acce0629b2bf975b5c3133840cd7d41ffc3b903720c528f01c65d9.json",
+      "transaction_hash": "0x636be30e58acce0629b2bf975b5c3133840cd7d41ffc3b903720c528f01c65d9",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Socket vulnerable route arbitrary call",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6.json",
+      "transaction_hash": "0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Pike Finance proxy initialization",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xe2912b8bf34d561983f2ae95f34e33ecc7792a2905a3e317fcc98052bce66431.json",
+      "transaction_hash": "0xe2912b8bf34d561983f2ae95f34e33ecc7792a2905a3e317fcc98052bce66431",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Prisma delegate approval abuse",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x00c503b595946bccaea3d58025b5f9b3726177bbdc9674e634244135282116c7.json",
+      "transaction_hash": "0x00c503b595946bccaea3d58025b5f9b3726177bbdc9674e634244135282116c7",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Resupply reUSD oracle manipulation",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3.json",
+      "transaction_hash": "0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "LlamaLend Convex strategy share accounting",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x2ff7c23dca7e9a86c70004696802cbd37d6a77fc4f3e02522b16617045b764f6.json",
+      "transaction_hash": "0x2ff7c23dca7e9a86c70004696802cbd37d6a77fc4f3e02522b16617045b764f6",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "SmartMesh transferProxy signature bypass",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f.json",
+      "transaction_hash": "0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Rubic cross-chain router arbitrary call",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+      "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Balancer STA deflationary-token accounting",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106.json",
+      "transaction_hash": "0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "ParaSpace Ape collateral borrowing",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a.json",
+      "transaction_hash": "0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Leverage SIR vault initialization",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f.json",
+      "transaction_hash": "0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f",
+      "verified": true
+    },
+    {
+      "exclusion_reasons": [],
+      "incident_name": "Silo leverage helper arbitrary borrow",
+      "raw_path": "reports/new_batches/batchC/phase2/run_20261018T103347Z/trace_raw/0x1f15a193db3f44713d56c4be6679b194f78c2bcdd2ced5b0c7495b7406f5e87a.json",
+      "transaction_hash": "0x1f15a193db3f44713d56c4be6679b194f78c2bcdd2ced5b0c7495b7406f5e87a",
+      "verified": true
+    }
+  ]
+}

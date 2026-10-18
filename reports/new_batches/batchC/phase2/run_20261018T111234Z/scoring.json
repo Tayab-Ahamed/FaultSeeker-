@@ -1,0 +1,345 @@
+{
+  "frozen": {
+    "batch_sha256": "3ab15ab445e00613b1fb7a48e32c94f22f7a03f451182ff2fac5912b3aaa2dc2",
+    "ranker_commit": "e6f8da0271f00223346a74ffcf32bb34b54383dd"
+  },
+  "label": "Batch C, pre-registered, one-shot, Ethereum mainnet, DeFiHackLabs-sourced",
+  "metrics": {
+    "address_only_sensitivity": {
+      "R@1": {
+        "hits": 5,
+        "n": 30,
+        "recall": 0.16666666666666666,
+        "wilson_95": {
+          "lower": 0.0733654237184855,
+          "upper": 0.3356435050641603
+        }
+      },
+      "R@3": {
+        "hits": 12,
+        "n": 30,
+        "recall": 0.4,
+        "wilson_95": {
+          "lower": 0.24590628116801852,
+          "upper": 0.5767963974667752
+        }
+      },
+      "R@5": {
+        "hits": 15,
+        "n": 30,
+        "recall": 0.5,
+        "wilson_95": {
+          "lower": 0.33154125640533766,
+          "upper": 0.6684587435946623
+        }
+      }
+    },
+    "address_selector_primary": {
+      "R@1": {
+        "hits": 3,
+        "n": 30,
+        "recall": 0.1,
+        "wilson_95": {
+          "lower": 0.03459988874733419,
+          "upper": 0.25621082579184085
+        }
+      },
+      "R@3": {
+        "hits": 11,
+        "n": 30,
+        "recall": 0.36666666666666664,
+        "wilson_95": {
+          "lower": 0.21873920806100708,
+          "upper": 0.5448643634520511
+        }
+      },
+      "R@5": {
+        "hits": 12,
+        "n": 30,
+        "recall": 0.4,
+        "wilson_95": {
+          "lower": 0.24590628116801852,
+          "upper": 0.5767963974667752
+        }
+      }
+    },
+    "selector_only_sensitivity": {
+      "R@1": {
+        "hits": 5,
+        "n": 30,
+        "recall": 0.16666666666666666,
+        "wilson_95": {
+          "lower": 0.0733654237184855,
+          "upper": 0.3356435050641603
+        }
+      },
+      "R@3": {
+        "hits": 11,
+        "n": 30,
+        "recall": 0.36666666666666664,
+        "wilson_95": {
+          "lower": 0.21873920806100708,
+          "upper": 0.5448643634520511
+        }
+      },
+      "R@5": {
+        "hits": 13,
+        "n": 30,
+        "recall": 0.43333333333333335,
+        "wilson_95": {
+          "lower": 0.2737748557646652,
+          "upper": 0.6080269299918639
+        }
+      }
+    }
+  },
+  "partial_result_peeking": false,
+  "provider": "dRPC",
+  "ranker_invocations": 30,
+  "rows": [
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 2,
+      "candidate_count": 2,
+      "incident_name": "Parity multisig wallet first hack",
+      "selector_only_rank": 1,
+      "transaction_hash": "0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 1,
+      "incident_name": "BEC batch transfer overflow",
+      "selector_only_rank": 1,
+      "transaction_hash": "0xad89ff16fd1ebe3a0a7cf4ed282302c06626c1af33221ebe0d3a470aba4a660f"
+    },
+    {
+      "address_only_rank": 3,
+      "address_selector_rank": 3,
+      "candidate_count": 5,
+      "incident_name": "SpankChain payment-channel reentrancy",
+      "selector_only_rank": 3,
+      "transaction_hash": "0x21e9d20b57f6ae60dac23466c8395d47f42dc24628e5a31f224567a2b4effa88"
+    },
+    {
+      "address_only_rank": 9,
+      "address_selector_rank": 9,
+      "candidate_count": 111,
+      "incident_name": "Pickle Finance evil jar",
+      "selector_only_rank": 9,
+      "transaction_hash": "0xe72d4e7ba9b5af0cf2a8cfb1e30fd9f388df0ab3da79790be842bfbed11087b0"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 2,
+      "candidate_count": 145,
+      "incident_name": "Yearn yDAI vault manipulation",
+      "selector_only_rank": 2,
+      "transaction_hash": "0x59faab5a1911618064f1ffa1e4649d85c99cfd9f0d64dcebbc1af7d7630da98b"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 2,
+      "candidate_count": 2,
+      "incident_name": "PAID token unauthorized mint",
+      "selector_only_rank": 1,
+      "transaction_hash": "0x4bb10927ea7afc2336033574b74ebd6f73ef35ac0db1bb96229627c9d77555a0"
+    },
+    {
+      "address_only_rank": 9,
+      "address_selector_rank": 60,
+      "candidate_count": 66,
+      "incident_name": "Rari Capital fake-token lending",
+      "selector_only_rank": 60,
+      "transaction_hash": "0x171072422efb5cd461546bfe986017d9b5aa427ff1c07ebe8acc064b13a7b7be"
+    },
+    {
+      "address_only_rank": 14,
+      "address_selector_rank": 14,
+      "candidate_count": 14,
+      "incident_name": "Poly Network cross-chain manager",
+      "selector_only_rank": 14,
+      "transaction_hash": "0xb1f70464bd95b774c6ce60fc706eb5f9e35cb5f06e6cfe7c17dcda46ffd59581"
+    },
+    {
+      "address_only_rank": 3,
+      "address_selector_rank": 3,
+      "candidate_count": 336,
+      "incident_name": "Cream Finance crYUSD collateral inflation",
+      "selector_only_rank": 3,
+      "transaction_hash": "0x0fe2542079644e107cbf13690eb9c2c65963ccb79089ff96bfaf8dced2331c92"
+    },
+    {
+      "address_only_rank": 7,
+      "address_selector_rank": 52,
+      "candidate_count": 62,
+      "incident_name": "Yearn yUSDT share-price manipulation",
+      "selector_only_rank": 47,
+      "transaction_hash": "0x055cec4fa4614836e54ea2e5cd3d14247ff3d61b85aa2a41f8cc876d131e0328"
+    },
+    {
+      "address_only_rank": null,
+      "address_selector_rank": null,
+      "candidate_count": 12,
+      "incident_name": "Pine Protocol NFT lending repayment",
+      "selector_only_rank": null,
+      "transaction_hash": "0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d"
+    },
+    {
+      "address_only_rank": 19,
+      "address_selector_rank": 19,
+      "candidate_count": 25,
+      "incident_name": "Convergence reward distributor",
+      "selector_only_rank": 13,
+      "transaction_hash": "0x636be30e58acce0629b2bf975b5c3133840cd7d41ffc3b903720c528f01c65d9"
+    },
+    {
+      "address_only_rank": 9,
+      "address_selector_rank": 9,
+      "candidate_count": 12,
+      "incident_name": "Socket vulnerable route arbitrary call",
+      "selector_only_rank": 9,
+      "transaction_hash": "0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6"
+    },
+    {
+      "address_only_rank": 5,
+      "address_selector_rank": 6,
+      "candidate_count": 7,
+      "incident_name": "Pike Finance proxy initialization",
+      "selector_only_rank": 4,
+      "transaction_hash": "0xe2912b8bf34d561983f2ae95f34e33ecc7792a2905a3e317fcc98052bce66431"
+    },
+    {
+      "address_only_rank": 41,
+      "address_selector_rank": 41,
+      "candidate_count": 63,
+      "incident_name": "Prisma delegate approval abuse",
+      "selector_only_rank": 41,
+      "transaction_hash": "0x00c503b595946bccaea3d58025b5f9b3726177bbdc9674e634244135282116c7"
+    },
+    {
+      "address_only_rank": 40,
+      "address_selector_rank": 87,
+      "candidate_count": 110,
+      "incident_name": "Resupply reUSD oracle manipulation",
+      "selector_only_rank": 87,
+      "transaction_hash": "0xffbbd492e0605a8bb6d490c3cd879e87ff60862b0684160d08fd5711e7a872d3"
+    },
+    {
+      "address_only_rank": 62,
+      "address_selector_rank": 78,
+      "candidate_count": 91,
+      "incident_name": "LlamaLend Convex strategy share accounting",
+      "selector_only_rank": 49,
+      "transaction_hash": "0x2ff7c23dca7e9a86c70004696802cbd37d6a77fc4f3e02522b16617045b764f6"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 2,
+      "candidate_count": 2,
+      "incident_name": "SmartMesh transferProxy signature bypass",
+      "selector_only_rank": 2,
+      "transaction_hash": "0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f"
+    },
+    {
+      "address_only_rank": 4,
+      "address_selector_rank": 4,
+      "candidate_count": 17,
+      "incident_name": "Rubic cross-chain router arbitrary call",
+      "selector_only_rank": 4,
+      "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 2,
+      "candidate_count": 42,
+      "incident_name": "Balancer STA deflationary-token accounting",
+      "selector_only_rank": 2,
+      "transaction_hash": "0x013be97768b702fe8eccef1a40544d5ecb3c1961ad5f87fee4d16fdc08c78106"
+    },
+    {
+      "address_only_rank": 8,
+      "address_selector_rank": 11,
+      "candidate_count": 139,
+      "incident_name": "ParaSpace Ape collateral borrowing",
+      "selector_only_rank": 11,
+      "transaction_hash": "0xe3f0d14cfb6076cabdc9057001c3fafe28767a192e88005bc37bd7d385a1116a"
+    },
+    {
+      "address_only_rank": 11,
+      "address_selector_rank": 51,
+      "candidate_count": 60,
+      "incident_name": "Leverage SIR vault initialization",
+      "selector_only_rank": 51,
+      "transaction_hash": "0xa05f047ddfdad9126624c4496b5d4a59f961ee7c091e7b4e38cee86f1335736f"
+    },
+    {
+      "address_only_rank": 21,
+      "address_selector_rank": 44,
+      "candidate_count": 56,
+      "incident_name": "Silo leverage helper arbitrary borrow",
+      "selector_only_rank": 43,
+      "transaction_hash": "0x1f15a193db3f44713d56c4be6679b194f78c2bcdd2ced5b0c7495b7406f5e87a"
+    },
+    {
+      "address_only_rank": 2,
+      "address_selector_rank": 41,
+      "candidate_count": 59,
+      "incident_name": "UniLend health-factor accounting",
+      "selector_only_rank": 41,
+      "transaction_hash": "0x44037ffc0993327176975e08789b71c1058318f48ddeff25890a577d6555b6ba"
+    },
+    {
+      "address_only_rank": 5,
+      "address_selector_rank": 59,
+      "candidate_count": 77,
+      "incident_name": "Blueberry market entry accounting",
+      "selector_only_rank": 59,
+      "transaction_hash": "0xf0464b01d962f714eee9d4392b2494524d0e10ce3eb3723873afd1346b8b06e4"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 3,
+      "incident_name": "Hegic options repeated withdrawal",
+      "selector_only_rank": 1,
+      "transaction_hash": "0x260d5eb9151c565efda80466de2e7eee9c6bd4973d54ff68c8e045a26f62ea73"
+    },
+    {
+      "address_only_rank": 8,
+      "address_selector_rank": 12,
+      "candidate_count": 14,
+      "incident_name": "1inch Fusion settlement calldata corruption",
+      "selector_only_rank": 12,
+      "transaction_hash": "0x62734ce80311e64630a009dd101a967ea0a9c012fabbfce8eac90f0f4ca090d6"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 2,
+      "candidate_count": 49,
+      "incident_name": "tCDP allowance direction bug",
+      "selector_only_rank": 2,
+      "transaction_hash": "0x9879031462b16dbf063377c4a8e5b043662576a9a3fb282c5a656953ad00684e"
+    },
+    {
+      "address_only_rank": 8,
+      "address_selector_rank": 8,
+      "candidate_count": 16,
+      "incident_name": "ParaSwap stale DAI approval drain",
+      "selector_only_rank": 6,
+      "transaction_hash": "0xed5f932a136ef95b943951ce103b3edbe600bf2c2607edff7b6ea9ada35ca300"
+    },
+    {
+      "address_only_rank": 1,
+      "address_selector_rank": 1,
+      "candidate_count": 15,
+      "incident_name": "Aave Boost proxy deposit accounting",
+      "selector_only_rank": 1,
+      "transaction_hash": "0xc4ef3b5e39d862ffcb8ff591fbb587f89d9d4ab56aec70cfb15831782239c0ce"
+    }
+  ],
+  "scoring_passes": 1,
+  "status": "SCORED_ONCE",
+  "tuning": false,
+  "verified_n": 30
+}

@@ -1,0 +1,37 @@
+{
+  "candidate_count": 2,
+  "predictions": [
+    {
+      "code_address": "0x0000000000000000000000000000000000000001",
+      "count": 1,
+      "function": "0xd6d57172",
+      "path_concentration": 1.0,
+      "rank": 1,
+      "selector": "0xd6d57172",
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "code_address": "0x55f93985431fc9304077687a35a1ba103dc1e081",
+      "count": 1,
+      "function": "0xeb502d45",
+      "path_concentration": 1.0,
+      "rank": 2,
+      "selector": "0xeb502d45",
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "transaction_hash": "0x1abab4c8db9a30e703114528e31dee129a3a758f7f8abc3b6494aad3d304e43f"
+}
