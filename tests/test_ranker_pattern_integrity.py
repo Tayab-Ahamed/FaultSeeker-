@@ -56,27 +56,23 @@ def test_depth_is_deterministic_tiebreak_after_count():
    'supporting_call_depths':[[0,1]]},
   {'rank':2,'code_address':B,'function':'deep','count':2,
    'supporting_call_depths':[[0,1,2,3]]},
-  ])
+ ])
  assert [item['function_name'] for item in ranked]==['deep','shallow']
-
-def test_path_concentration_precedes_raw_count_for_broad_fanout():
-  ranked=rerank_saved_predictions([
-   {'rank':1,'code_address':A,'function':'broad','count':5,
-    'supporting_call_depths':[[0,1],[1,1],[2,1]]},
-   {'rank':2,'code_address':B,'function':'concentrated','count':4,
-    'supporting_call_depths':[[0,1,2],[0,1,3],[0,1,4],[0,1,5]]},
-  ])
-  assert [item['function_name'] for item in ranked]==['concentrated','broad']
-  assert ranked[0]['path_concentration']==4.0
-  assert ranked[1]['path_concentration']==5/3
-
-def test_terminal_fanout_breaks_equal_concentration():
-  ranked=rerank_saved_predictions([
-   {'rank':1,'code_address':A,'function':'wide','count':4,
-    'supporting_call_depths':[[0,1],[0,2],[0,3],[0,4]]},
-   {'rank':2,'code_address':B,'function':'focused','count':4,
-    'supporting_call_depths':[[0,1],[0,1],[0,1],[0,1]]},
-  ])
-  assert [item['function_name'] for item in ranked]==['focused','wide']
-  assert ranked[0]['terminal_fanout']==1
-  assert ranked[1]['terminal_fanout']==4
+ concentrated=rerank_saved_predictions([
+  {'rank':1,'code_address':A,'function':'broad','count':5,
+   'supporting_call_depths':[[0,1],[1,1],[2,1]]},
+  {'rank':2,'code_address':B,'function':'concentrated','count':4,
+   'supporting_call_depths':[[0,1,2],[0,1,3],[0,1,4],[0,1,5]]},
+ ])
+ assert [item['function_name'] for item in concentrated]==['concentrated','broad']
+ assert concentrated[0]['path_concentration']==4.0
+ assert concentrated[1]['path_concentration']==5/3
+ focused=rerank_saved_predictions([
+  {'rank':1,'code_address':A,'function':'wide','count':4,
+   'supporting_call_depths':[[0,1],[0,2],[0,3],[0,4]]},
+  {'rank':2,'code_address':B,'function':'focused','count':4,
+   'supporting_call_depths':[[0,1],[0,1],[0,1],[0,1]]},
+ ])
+ assert [item['function_name'] for item in focused]==['focused','wide']
+ assert focused[0]['terminal_fanout']==1
+ assert focused[1]['terminal_fanout']==4
