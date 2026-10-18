@@ -11,11 +11,13 @@ def test_actual_revest_ranker_exports_function_identity_and_stable_count_order(t
     assert [r['rank'] for r in ordered]==list(range(1,len(ordered)+1))
     assert len({(r['code_address'],r['function']) for r in ordered})==len(ordered)
     assert [
-        (r['path_concentration'], max(map(len, r['supporting_call_depths']), default=0), r['count'])
+        (-r['path_concentration'], r['terminal_fanout'],
+         -max(map(len, r['supporting_call_depths']), default=0), -r['count'])
         for r in ordered
     ] == sorted([
-        (r['path_concentration'], max(map(len, r['supporting_call_depths']), default=0), r['count'])
+        (-r['path_concentration'], r['terminal_fanout'],
+         -max(map(len, r['supporting_call_depths']), default=0), -r['count'])
         for r in ordered
-    ], reverse=True)
+    ])
     assert any(r['code_address']=='0x2320a28f52334d62622cc2eafa15de55f9987ed9' and r['function']=='0x5dcb7ab2' for r in ordered)
-    assert all(r['tie_policy']=='call-path concentration desc; max depth desc; count desc; stable candidate encounter order' for r in ordered)
+    assert all(r['tie_policy']=='call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order' for r in ordered)

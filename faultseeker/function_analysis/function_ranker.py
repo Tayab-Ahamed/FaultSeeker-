@@ -57,14 +57,33 @@ def _prediction_path_concentration(prediction: dict) -> float:
     return _path_concentration(int(prediction.get("count") or 0), depths)
 
 
+def _terminal_fanout(depths: list[object]) -> int:
+    """Count distinct terminal call positions in supporting depth paths."""
+    return len({
+        depth[-1]
+        for depth in depths
+        if isinstance(depth, (list, tuple)) and depth
+    })
+
+
+def _prediction_terminal_fanout(prediction: dict) -> int:
+    return _terminal_fanout(list(prediction.get("supporting_call_depths") or []))
+
+
 def _candidate_path_concentration(candidate: dict) -> float:
     calls = list(candidate.get("calls") or [])
     depths = [call.get("depth") for call in calls if isinstance(call, dict)]
     return _path_concentration(int(candidate.get("count") or 0), depths)
 
 
+def _candidate_terminal_fanout(candidate: dict) -> int:
+    calls = list(candidate.get("calls") or [])
+    depths = [call.get("depth") for call in calls if isinstance(call, dict)]
+    return _terminal_fanout(depths)
+
+
 _RANK_TIE_POLICY = (
-    "call-path concentration desc; max depth desc; count desc; "
+    "call-path concentration desc; terminal fanout asc; max depth desc; count desc; "
     "stable candidate encounter order"
 )
 
@@ -90,6 +109,7 @@ def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
             item["_encounter"] = encounter
             item["_max_depth"] = _prediction_depth_measure(item)
             item["_path_concentration"] = _prediction_path_concentration(item)
+            item["_terminal_fanout"] = _prediction_terminal_fanout(item)
             item["count"] = int(item.get("count") or 0)
             item["supporting_call_depths"] = list(item.get("supporting_call_depths") or [])
             grouped[key] = item
@@ -102,10 +122,12 @@ def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
                     current["supporting_call_depths"].append(depth)
             current["_max_depth"] = max(current["_max_depth"], _prediction_depth_measure(item))
             current["_path_concentration"] = _prediction_path_concentration(current)
+            current["_terminal_fanout"] = _prediction_terminal_fanout(current)
     ordered = sorted(
         grouped.values(),
         key=lambda item: (
             -item["_path_concentration"],
+            item["_terminal_fanout"],
             -item["_max_depth"],
             -item["count"],
             item["_encounter"],
@@ -118,6 +140,7 @@ def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
         item.pop("_encounter", None)
         item.pop("_max_depth", None)
         item["path_concentration"] = _prediction_path_concentration(item)
+        item["terminal_fanout"] = _prediction_terminal_fanout(item)
         output.append(item)
     return output
 
@@ -281,6 +304,7 @@ class FunctionRanker:
             functions_to_be_inspected.items(),
             key=lambda x: (
                 -_candidate_path_concentration(x[1]),
+                _candidate_terminal_fanout(x[1]),
                 -_depth_measure(x[1]['calls']),
                 -x[1]['count'],
             ),
@@ -303,6 +327,7 @@ class FunctionRanker:
                 'count': candidate['count'],
                 'supporting_call_depths': [call['depth'] for call in candidate['calls']],
                 'path_concentration': _candidate_path_concentration(candidate),
+                'terminal_fanout': _candidate_terminal_fanout(candidate),
                 'tie_policy': _RANK_TIE_POLICY,
             })
 
