@@ -292,9 +292,10 @@ class TransactionInfoCollector:
 
         # Decode status: 0x1 = success, 0x0 = reverted
         raw_status = receipt.get('status')
-        if raw_status not in ('0x0', '0x1'):
+        legacy_success = raw_status is None and bool(receipt.get('root'))
+        if raw_status not in ('0x0', '0x1') and not legacy_success:
             return {}
-        status = 'Success' if raw_status == '0x1' else 'Reverted'
+        status = 'Success' if legacy_success or raw_status == '0x1' else 'Reverted'
         if status == 'Reverted':
             return {}
 
