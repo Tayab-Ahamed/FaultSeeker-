@@ -56,5 +56,16 @@ def test_depth_is_deterministic_tiebreak_after_count():
    'supporting_call_depths':[[0,1]]},
   {'rank':2,'code_address':B,'function':'deep','count':2,
    'supporting_call_depths':[[0,1,2,3]]},
- ])
+  ])
  assert [item['function_name'] for item in ranked]==['deep','shallow']
+
+def test_path_concentration_precedes_raw_count_for_broad_fanout():
+  ranked=rerank_saved_predictions([
+   {'rank':1,'code_address':A,'function':'broad','count':5,
+    'supporting_call_depths':[[0,1],[1,1],[2,1]]},
+   {'rank':2,'code_address':B,'function':'concentrated','count':4,
+    'supporting_call_depths':[[0,1,2],[0,1,3],[0,1,4],[0,1,5]]},
+  ])
+  assert [item['function_name'] for item in ranked]==['concentrated','broad']
+  assert ranked[0]['path_concentration']==4.0
+  assert ranked[1]['path_concentration']==5/3

@@ -35,6 +35,40 @@ def _prediction_depth_measure(prediction: dict) -> int:
     )
 
 
+def _path_concentration(count: int, depths: list[object]) -> float:
+    """Measure repeated observations per distinct caller path.
+
+    A depth path's final element identifies the observed call; removing that
+    element leaves the caller path.  Repeated calls from one caller path are
+    stronger ordering evidence than the same number of calls spread across
+    many unrelated paths.  The count remains a later tie-breaker so this
+    feature cannot erase the underlying observation volume entirely.
+    """
+    parent_paths = {
+        tuple(depth[:-1])
+        for depth in depths
+        if isinstance(depth, (list, tuple)) and depth
+    }
+    return float(count) / max(1, len(parent_paths))
+
+
+def _prediction_path_concentration(prediction: dict) -> float:
+    depths = list(prediction.get("supporting_call_depths") or [])
+    return _path_concentration(int(prediction.get("count") or 0), depths)
+
+
+def _candidate_path_concentration(candidate: dict) -> float:
+    calls = list(candidate.get("calls") or [])
+    depths = [call.get("depth") for call in calls if isinstance(call, dict)]
+    return _path_concentration(int(candidate.get("count") or 0), depths)
+
+
+_RANK_TIE_POLICY = (
+    "call-path concentration desc; max depth desc; count desc; "
+    "stable candidate encounter order"
+)
+
+
 def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
     """Apply the production label/grouping and depth tie rules offline.
 
@@ -55,6 +89,7 @@ def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
             item["function_name"] = function
             item["_encounter"] = encounter
             item["_max_depth"] = _prediction_depth_measure(item)
+            item["_path_concentration"] = _prediction_path_concentration(item)
             item["count"] = int(item.get("count") or 0)
             item["supporting_call_depths"] = list(item.get("supporting_call_depths") or [])
             grouped[key] = item
@@ -66,16 +101,23 @@ def rerank_saved_predictions(predictions: List[Dict]) -> List[Dict]:
                 if depth not in current["supporting_call_depths"]:
                     current["supporting_call_depths"].append(depth)
             current["_max_depth"] = max(current["_max_depth"], _prediction_depth_measure(item))
+            current["_path_concentration"] = _prediction_path_concentration(current)
     ordered = sorted(
         grouped.values(),
-        key=lambda item: (-item["count"], -item["_max_depth"], item["_encounter"]),
+        key=lambda item: (
+            -item["_path_concentration"],
+            -item["_max_depth"],
+            -item["count"],
+            item["_encounter"],
+        ),
     )
     output = []
     for rank, item in enumerate(ordered, start=1):
         item["rank"] = rank
-        item["tie_policy"] = "count desc; max depth desc; stable candidate encounter order"
+        item["tie_policy"] = _RANK_TIE_POLICY
         item.pop("_encounter", None)
         item.pop("_max_depth", None)
+        item["path_concentration"] = _prediction_path_concentration(item)
         output.append(item)
     return output
 
@@ -232,10 +274,16 @@ class FunctionRanker:
                 }
                 functions_to_be_inspected[function_call_key] = function_call_value
 
-        # Sort functions by count (descending)
+        # Sort functions by repeated observations per distinct caller path,
+        # then depth and raw count. This avoids letting broad fan-out wrappers
+        # dominate candidates that recur along one exploit-relevant path.
         functions_to_be_inspected = sorted(
             functions_to_be_inspected.items(),
-            key=lambda x: (-x[1]['count'], -_depth_measure(x[1]['calls'])),
+            key=lambda x: (
+                -_candidate_path_concentration(x[1]),
+                -_depth_measure(x[1]['calls']),
+                -x[1]['count'],
+            ),
         )
         functions_to_be_inspected = {
             k: {'count': v['count'], 'calls': v['calls']}
@@ -254,7 +302,8 @@ class FunctionRanker:
                 'selector': function.lower() if (function.startswith('0x') and len(function) == 10) else None,
                 'count': candidate['count'],
                 'supporting_call_depths': [call['depth'] for call in candidate['calls']],
-                'tie_policy': 'count desc; max depth desc; stable candidate encounter order',
+                'path_concentration': _candidate_path_concentration(candidate),
+                'tie_policy': _RANK_TIE_POLICY,
             })
 
         return RankingResult(
