@@ -87,6 +87,10 @@ reports, or provenance evidence.
 - Final result: exit 0, 8 passed.
 - `setup.py`, README, CI, and both Docker paths now default to the lockfile and
   Python 3.11.9 where the runtime is declared.
+- Packaging smoke check: `python setup.py --name` exited 0 and printed
+  `FaultSeeker`.
+- Syntax check: `python -m py_compile` over all changed Python modules and tests
+  exited 0.
 
 ### AR-002 — command surface
 
