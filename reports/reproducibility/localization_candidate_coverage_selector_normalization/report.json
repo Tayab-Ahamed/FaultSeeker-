@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "status": "SAME_INPUT_SAVED_OUTPUT_REPLAY",
+  "experiment": "localization_candidate_coverage_selector_normalization",
+  "candidate_change": "Canonicalize exactly-eight-hex-digit function labels to 0x-prefixed selectors.",
+  "eligible_rows": 114,
+  "external_calls": 0,
+  "frozen_batch_e_used": false,
+  "selection": "No selection; deterministic identity normalization evaluated on every eligible row.",
+  "metrics": {
+    "baseline": {
+      "n": 114,
+      "address_candidate_recall": 0.7280701754385965,
+      "address_candidates": 83,
+      "exact_function_candidate_recall": 0.5789473684210527,
+      "exact_function_candidates": 66,
+      "top_1": 24,
+      "top_3": 48,
+      "top_5": 51,
+      "ranking_alone_failures": 15,
+      "unranked_function_misses": 48
+    },
+    "candidate": {
+      "n": 114,
+      "address_candidate_recall": 0.7280701754385965,
+      "address_candidates": 83,
+      "exact_function_candidate_recall": 0.5964912280701754,
+      "exact_function_candidates": 68,
+      "top_1": 24,
+      "top_3": 50,
+      "top_5": 53,
+      "ranking_alone_failures": 15,
+      "unranked_function_misses": 46
+    },
+    "trace_augmented_diagnostic": {
+      "n": 114,
+      "address_candidate_recall": 0.7456140350877193,
+      "address_candidates": 85,
+      "exact_function_candidate_recall": 0.6140350877192983,
+      "exact_function_candidates": 70,
+      "top_1": 26,
+      "top_3": 52,
+      "top_5": 55,
+      "ranking_alone_failures": 15,
+      "unranked_function_misses": 44
+    }
+  },
+  "deltas": {
+    "address_candidates": 0,
+    "exact_function_candidates": 2,
+    "top_1": 0,
+    "top_3": 2,
+    "top_5": 2,
+    "ranking_alone_failures": 0
+  },
+  "newly_recoverable_targets": [
+    "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+    "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba"
+  ],
+  "regressions": {
+    "top_1": [],
+    "top_3": [],
+    "top_5": []
+  },
+  "paired_comparison": {
+    "top_1": {
+      "baseline_only": 0,
+      "candidate_only": 0,
+      "both": 24,
+      "neither": 90
+    },
+    "top_3": {
+      "baseline_only": 0,
+      "candidate_only": 2,
+      "both": 48,
+      "neither": 64
+    },
+    "top_5": {
+      "baseline_only": 0,
+      "candidate_only": 2,
+      "both": 51,
+      "neither": 61
+    }
+  },
+  "failure_category_counts": {
+    "baseline": {
+      "target_address_absent_from_candidates": 31,
+      "target_address_present_target_function_absent": 15,
+      "no_failure": 51,
+      "correct_target_function_present_but_ranked_too_low": 15,
+      "evaluation_or_identity_mapping_defect": 2
+    },
+    "candidate": {
+      "target_address_absent_from_candidates": 31,
+      "target_address_present_target_function_absent": 15,
+      "no_failure": 53,
+      "correct_target_function_present_but_ranked_too_low": 15
+    }
+  },
+  "failure_category_transitions": {
+    "correct_target_function_present_but_ranked_too_low->correct_target_function_present_but_ranked_too_low": 15,
+    "evaluation_or_identity_mapping_defect->no_failure": 2,
+    "no_failure->no_failure": 51,
+    "target_address_absent_from_candidates->target_address_absent_from_candidates": 31,
+    "target_address_present_target_function_absent->target_address_present_target_function_absent": 15
+  },
+  "trace_supplementation_diagnostic": {
+    "baseline_address_absent_rows_with_target_address_in_available_trace": 3,
+    "baseline_address_absent_rows_recovered_by_trace_candidates": 2,
+    "baseline_address_absent_rows_with_target_address_not_in_available_trace": 28,
+    "event_or_parameter_only_rows_not_recovered_by_call_parser": 1
+  },
+  "input_sha256": {
+    "raw_directory": "bfa0b5be6f80e3b525a745c628e107e4ab18e2067d25a10321bf67991a9a0e14",
+    "ground_truth_directory": "e994ac240cda94150d83cd2fc5e87f9fc514a94e0430247a18b5a662be6bab31",
+    "classification": "a517658eaf20887db343e354056c7c41bb86e8af7d2924238fb7ab88bb7476bf",
+    "ranker_source": "c157fa7cb36d317a49cb91f80497a66baba1d947d20cbc0e4796c030ded1447d"
+  },
+  "commands": [
+    "python scripts/research/evaluate_localization_candidate_coverage.py",
+    "python -m pytest tests/test_function_identity_normalization.py tests/test_pipeline_prediction_serialization.py tests/test_explicit_function_rank_order.py -q"
+  ],
+  "evidence_scope": "Saved provider-pinned 115-row population with 114 non-empty function-ground-truth rows; exploratory, not an independent held-out claim.",
+  "output_sha256": {
+    "predictions_jsonl": "4da3d407077025edde1a010658c932d3dcaa8c1698fb0bd5e53da44fffab0d27"
+  }
+}

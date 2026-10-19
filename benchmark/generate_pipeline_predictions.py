@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -159,6 +160,14 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
     The legacy fallback is retained for older result objects, but uses
     ``rsplit`` because function labels may themselves contain underscores.
     """
+    bare_selector = re.compile(r"^[0-9a-fA-F]{8}$")
+
+    def canonical_output_function(value) -> str:
+        label = str(value or "")
+        if bare_selector.fullmatch(label.strip()):
+            return f"0x{label.strip().lower()}"
+        return label
+
     explicit = getattr(ranking_result, "ranked_functions", None) or []
     if explicit:
         candidates = []
@@ -167,7 +176,7 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
                 continue
             candidate = dict(item)
             address = candidate.get("code_address") or candidate.get("address") or ""
-            function = (
+            function = canonical_output_function(
                 candidate.get("function")
                 or candidate.get("function_name")
                 or candidate.get("name")
@@ -175,6 +184,12 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
             )
             candidate["address"] = address
             candidate["function"] = function
+            if (
+                not candidate.get("selector")
+                and len(function) == 10
+                and function.startswith("0x")
+            ):
+                candidate["selector"] = function
             candidate.setdefault("call_type", "call")
             depths = candidate.get("supporting_call_depths") or []
             candidate.setdefault("depth", _max_depth_value(depths))
@@ -188,6 +203,7 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
             fn_name, address = str(fn_key), ""
         calls = (fn_info or {}).get("calls") or []
         depths = [call.get("depth", 0) for call in calls if isinstance(call, dict)]
+        fn_name = canonical_output_function(fn_name)
         candidates.append({
             "address": address,
             "function": fn_name,

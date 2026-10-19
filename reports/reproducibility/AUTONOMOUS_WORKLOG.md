@@ -460,6 +460,54 @@ reports, or provenance evidence.
   not satisfy the original 246-row acceptance criterion or independent-label
   requirement.
 
+### AR-022 — localization selector identity candidate-coverage sprint
+
+- Reproduced the current saved-output localization baseline on the same 114
+  eligible rows from the provider-pinned 115-row population. Baseline address
+  candidate coverage is `83/114` (`0.7281`), exact function identity coverage
+  is `66/114` (`0.5789`), and function Top-1/Top-3/Top-5 are `24/114`,
+  `48/114`, `51/114`. Fifteen rows have the exact target function but rank it
+  below Top-5; 31 rows lack the target address; 15 have the address but not the
+  target function identity; and two are identity-mapping defects.
+- Validated the address-missing mechanism against each raw input and the
+  actual saved-trace candidate parser. Of the 31 address-absent rows, 28 do
+  not contain the target address in the available `cast.output_tail`; 2 are
+  recoverable by the existing trace parser; and 1 contains the address only
+  in an event/parameter line, not an `address::function(...)` call line. The
+  retained artifact is a tail, not a full call trace, so no address-only
+  heuristic was added without function evidence.
+- Identified a concrete identity defect: two saved candidates use bare
+  eight-hex-digit selectors (`ba381f8f` and `925d400c`) while ground truth
+  uses canonical `0x...` selectors. The production serializer now prefixes
+  exactly-eight-hex-digit selector labels and preserves address, selector,
+  rank, and call-depth metadata. The change is in
+  `benchmark/generate_pipeline_predictions.py`, leaving the frozen Batch E
+  runtime-hashed ranker source unchanged.
+- Added `tests/test_function_identity_normalization.py` covering selector
+  normalization, preservation of human names, and serialized rank/depth
+  metadata.
+- Added `scripts/research/evaluate_localization_candidate_coverage.py` and
+  retained same-input baseline/candidate predictions plus configuration,
+  input hashes, category classifications, paired transitions, trace-parser
+  diagnostics, and output hashes under
+  `reports/reproducibility/localization_candidate_coverage_selector_normalization/`.
+- Candidate result: address coverage unchanged at `83/114`; exact function
+  coverage improved `66/114 -> 68/114`; Top-1 unchanged `24/114`; Top-3
+  improved `48/114 -> 50/114`; Top-5 improved `51/114 -> 53/114`; ranking-only
+  failures unchanged at `15`; regressions were zero at Top-1/3/5. The two
+  newly recoverable transactions are
+  `0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f` and
+  `0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba`.
+- Trace augmentation remains a diagnostic only: current saved-trace merging
+  reaches address coverage `85/114` and Top-5 `55/114`, but it is not the
+  accepted change because it would require a separate candidate-source
+  policy and lacks full-trace evidence for most address-absent rows.
+- Verification: identity/ranker/serializer suite `12 passed`; existing
+  candidate-generation suite `9 passed`; frozen Batch E verifier `PASS`, with
+  unchanged R@1 `14/40`, R@3 `27/40`, R@5 `33/40`. The original claim tracker
+  remains unchanged because this is a saved 114-row exploratory result, not
+  an independent 246-row localization evaluation.
+
 ### AR-021 — legacy detector error diagnosis and leakage-safe candidate checks
 
 - Added `scripts/research/analyze_legacy_errors.py` and retained
