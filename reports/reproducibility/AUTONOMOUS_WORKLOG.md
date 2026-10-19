@@ -59,6 +59,10 @@ reports, or provenance evidence.
 - Reassessment result: exit 0, schema 3 internally valid, 22 accepted, 0
   pending, 0 excluded, 224 needed, status `BLOCKED-BY-DATA`; eight chains are
   represented and `not_independent_human_review` remains true.
+- Version comparison command: `python -m benchmark.validate_cohort_manifest benchmark/versions/cohort_v3_20261016/cohort_manifest.json --root .`.
+- Version comparison result: exit 0, schema 3 internally valid, 20 accepted,
+  0 pending, 0 excluded, 226 needed, status `BLOCKED-BY-DATA`; v4 adds two
+  accepted rows and two represented chains but still does not meet the target.
 - Strict gate command: `python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict`
 - Strict gate result: exit 2, correctly refuses the incomplete 246-row target.
 
