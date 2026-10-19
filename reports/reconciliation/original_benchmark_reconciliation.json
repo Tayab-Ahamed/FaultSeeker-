@@ -1,0 +1,78 @@
+{
+  "denominator_definitions": {
+    "current_114": "114 unique stable transaction identifiers used by the current localization report. The imported original ground truth has 115 files, but two filenames carry the same transaction hash; all 115 files contain function identities.",
+    "faultseekerpp_246": "A target size in the current FaultSeeker++ cohort specification. The current root manifest admits 14 rows and explicitly leaves 232 unresolved; it is not evidence of 246 accepted attacks.",
+    "faultseekerpp_current_ground_truth": "14 accepted root-cohort ground-truth files, represented by the accepted manifest; this set is not the 246 target and is not independent human review.",
+    "original_115": "115 original benchmark classification rows and 115 imported original function-ground-truth JSON files; transaction-level attack cases, not a benign-control detector cohort."
+  },
+  "inputs": {
+    "current_localization_report": "reports\\reproducibility\\localization_candidate_coverage_selector_normalization\\report.json",
+    "faultseekerpp_ground_truth": "benchmark\\ground_truth",
+    "faultseekerpp_manifest": "benchmark\\cohort_manifest.json",
+    "imported_original_classification": "benchmark\\original_faultseeker\\benchmark_classification.csv",
+    "imported_original_ground_truth": "benchmark\\original_faultseeker\\ground_truth",
+    "root_classification": "benchmark\\benchmark_classification.csv"
+  },
+  "original_evaluation_recomputed": {
+    "all_115_denominator": {
+      "n_failed": 5,
+      "n_ok": 110,
+      "n_total": 115,
+      "recall_at_1": 0.21739130434782608,
+      "recall_at_3": 0.4260869565217391,
+      "recall_at_5": 0.45217391304347826,
+      "replay_mismatch": 14
+    },
+    "manifest_rows": 115,
+    "raw_files_present": 115,
+    "scoring_boundary": "This independently re-aggregates retained row-level score booleans and replay flags. It does not claim that the upstream paper's scorer was reproduced; the retained provider run's score construction uses the current harness and registers ground-truth function names for selector lookup.",
+    "source_manifest": "reports\\original_benchmark\\provider-pinned\\original-v1-pinned-sequential-20261017\\manifest.json",
+    "source_raw_directory": "reports\\original_benchmark\\provider-pinned\\original-v1-pinned-sequential-20261017\\raw",
+    "status": "RECOMPUTED_FROM_RETAINED_PER_EXAMPLE_ROWS",
+    "valid_trace_subset": {
+      "n_failed": 0,
+      "n_ok": 110,
+      "n_total": 110,
+      "recall_at_1": 0.22727272727272727,
+      "recall_at_3": 0.44545454545454544,
+      "recall_at_5": 0.4727272727272727,
+      "replay_mismatch": 14
+    }
+  },
+  "original_evaluation_recomputed_path": "reports\\reconciliation\\original_evaluation_recomputed.json",
+  "rows_path": "reports\\reconciliation\\row_level_overlap.csv",
+  "schema_version": 1,
+  "source": {
+    "commit": "72753bd833554449efa8499f0d1775a97fb5c696",
+    "local_import_attribution": "benchmark/original_faultseeker/ATTRIBUTION.md",
+    "main_tree": "72753bd833554449efa8499f0d1775a97fb5c696",
+    "repository": "https://github.com/kairanskrr/FaultSeeker"
+  },
+  "summary": {
+    "classification_rows_equal": true,
+    "classification_sets_equal": true,
+    "current_114_localization_denominator": 114,
+    "current_114_localization_report_scope": "Saved provider-pinned 115-row population with 114 non-empty function-ground-truth rows; exploratory, not an independent held-out claim.",
+    "current_faultseekerpp_ground_truth_files": 14,
+    "current_faultseekerpp_ground_truth_unique_stable_ids": 14,
+    "faultseekerpp_accepted_manifest_rows": 14,
+    "faultseekerpp_remaining_to_target": 232,
+    "faultseekerpp_target_count": 246,
+    "original_classification_rows": 115,
+    "original_faultseekerpp_transaction_overlap": 4,
+    "original_ground_truth_duplicate_stable_ids": {
+      "eth:0x6439d63cc57fb68a32ea8ffd8f02496e8abad67292be94904c0b47a4d14ce90d": [
+        "0x6439d63cc57fb68a32ea8ffd8f02496e8abad67292be94904c0b47a4d14ce90d.json",
+        "0x72a252277e30ea6a37d2dc9905c280f3bc389b87f72b81a59aa8f50baebd8eaa.json"
+      ]
+    },
+    "original_ground_truth_files": 115,
+    "original_ground_truth_function_files": 115,
+    "original_ground_truth_unique_stable_ids": 114,
+    "provider_pinned_ok_rows": 109,
+    "provider_pinned_rows": 115,
+    "provider_pinned_unique_transaction_ids": 114,
+    "root_classification_rows": 115,
+    "row_union": 125
+  }
+}

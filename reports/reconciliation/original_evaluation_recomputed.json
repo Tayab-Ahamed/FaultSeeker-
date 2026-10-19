@@ -1,0 +1,26 @@
+{
+  "all_115_denominator": {
+    "n_failed": 5,
+    "n_ok": 110,
+    "n_total": 115,
+    "recall_at_1": 0.21739130434782608,
+    "recall_at_3": 0.4260869565217391,
+    "recall_at_5": 0.45217391304347826,
+    "replay_mismatch": 14
+  },
+  "manifest_rows": 115,
+  "raw_files_present": 115,
+  "scoring_boundary": "This independently re-aggregates retained row-level score booleans and replay flags. It does not claim that the upstream paper's scorer was reproduced; the retained provider run's score construction uses the current harness and registers ground-truth function names for selector lookup.",
+  "source_manifest": "reports\\original_benchmark\\provider-pinned\\original-v1-pinned-sequential-20261017\\manifest.json",
+  "source_raw_directory": "reports\\original_benchmark\\provider-pinned\\original-v1-pinned-sequential-20261017\\raw",
+  "status": "RECOMPUTED_FROM_RETAINED_PER_EXAMPLE_ROWS",
+  "valid_trace_subset": {
+    "n_failed": 0,
+    "n_ok": 110,
+    "n_total": 110,
+    "recall_at_1": 0.22727272727272727,
+    "recall_at_3": 0.44545454545454544,
+    "recall_at_5": 0.4727272727272727,
+    "replay_mismatch": 14
+  }
+}
