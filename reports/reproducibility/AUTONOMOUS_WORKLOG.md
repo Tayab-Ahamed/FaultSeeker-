@@ -30,7 +30,7 @@ reports, or provenance evidence.
 | AR-006 | 6 | coordinator | BLOCKED | Function-level localization evaluation | Exact function ground truth | New immutable holdout; Batch E unchanged |
 | AR-007 | 6 | coordinator | BLOCKED | Revalidate calibration, routing/cost, and HITL claims | Eligible data, provider authorization, human reviewers | Measured outputs or explicit external blocker |
 | AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | CI, setup, README, and Docker now use the lockfile; replay/tool documentation remains |
-| AR-009 | 8 | coordinator | READY | Produce final claim/evidence ledger and consistency report | All available evidence | Every material claim classified honestly |
+| AR-009 | 8 | coordinator | IN_PROGRESS | Produce final claim/evidence ledger and consistency report | All available evidence | Every material claim classified honestly |
 
 ## Execution rules
 
@@ -97,3 +97,12 @@ reports, or provenance evidence.
 - Equivalent result: exit 0, 14 accepted, target 246, `BLOCKED-BY-DATA`.
 - Focused regression command: `python -m pytest tests/test_runtime_layout.py tests/test_cohort_manifest_validator.py -q -p no:cacheprovider`.
 - Result: exit 0, 8 passed.
+
+### AR-009 — offline historical reproduction
+
+- Command: `python scripts/reproduce/run_all.py`.
+- Result: exit 0; all seven scoped historical metrics passed: F1 0.7586,
+  modeled cost saving 35.0%, saved localization top-1 6.1%, reentrancy labels
+  17, vulnerability strings 82, cohort rows 231, and chain count 8.
+- Interpretation: this independently recalculates saved historical artifacts;
+  it does not authenticate the paper cohort or reproduce live empirical quality.
