@@ -11,7 +11,7 @@
   "claims": [
     {
       "category": "reproducibility",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -24,11 +24,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 1,
+      "minimum_resolution_artifact": "Public fork/release URL; local Apache license alone does not prove publication.",
       "missing_prerequisites": [],
       "next_executable_action": "Review the retained evidence and acquire the explicitly missing external input before rerunning.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules."
+      ],
       "paper_wording": "Open source release",
       "registry_scope": "PENDING-PUBLICATION",
       "required_evidence": "Public fork/release URL; local Apache license alone does not prove publication.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -44,7 +51,7 @@
     },
     {
       "category": "reproducibility",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -57,11 +64,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 2,
+      "minimum_resolution_artifact": "Full suite with original baseline tests retained; runner unit test alone is insufficient.",
       "missing_prerequisites": [],
       "next_executable_action": "Review the retained evidence and acquire the explicitly missing external input before rerunning.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules."
+      ],
       "paper_wording": "201 original tests pass",
       "registry_scope": "LOCAL",
       "required_evidence": "Full suite with original baseline tests retained; runner unit test alone is insufficient.",
+      "resolution_mode": "LOCAL_REVIEW_OR_CURRENT_RUN",
       "status": "UNVERIFIED",
       "verification_result": {
         "acceptance_tests": [
@@ -78,7 +92,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -136,13 +150,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 3,
+      "minimum_resolution_artifact": "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition",
       "missing_prerequisites": [
         "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition"
       ],
       "next_executable_action": "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: COUNT-EXISTS-AUTHENTICITY-UNVERIFIED"
+      ],
       "paper_wording": "Authentic 246-row cohort",
       "registry_scope": "DATA",
       "required_evidence": "246 unique accepted acquisition manifests; no padded rows.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -159,7 +181,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -194,13 +216,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 4,
+      "minimum_resolution_artifact": "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains",
       "missing_prerequisites": [
         "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains"
       ],
       "next_executable_action": "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: PARTIAL-PROVENANCE-RECOVERED"
+      ],
       "paper_wording": "Real transactions, two independent sources, annotations",
       "registry_scope": "DATA",
       "required_evidence": "Canonical transaction/receipt/traces, two source artifacts, independent adjudication per row.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -216,7 +246,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -241,13 +271,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 5,
+      "minimum_resolution_artifact": "Accepted frozen study cohort and independently verified chain membership",
       "missing_prerequisites": [
         "Accepted frozen study cohort and independently verified chain membership"
       ],
       "next_executable_action": "Accepted frozen study cohort and independently verified chain membership",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Remove or reword the contradicted sentence unless a new preregistered evidence package overturns the contradiction.",
+        "Resolve the recorded paper verdict: CONTRADICTED-FROZEN-CSV"
+      ],
       "paper_wording": "Ten chains and Ethereum 47.6%",
       "registry_scope": "DATA",
       "required_evidence": "Authenticated frozen ten-chain cohort; compute true chain counts and proportions.",
+      "resolution_mode": "LOCAL_REWORD_OR_REMOVE",
       "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
       "verification_result": {
         "acceptance_tests": [
@@ -263,7 +301,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -288,13 +326,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 6,
+      "minimum_resolution_artifact": "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort",
       "missing_prerequisites": [
         "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort"
       ],
       "next_executable_action": "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: STRINGS-COUNTED-NOT-ADJUDICATED"
+      ],
       "paper_wording": "More than 80 vulnerability labels",
       "registry_scope": "DATA",
       "required_evidence": "Adjudicated taxonomy and true unique labels on the frozen cohort.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -310,7 +356,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -335,13 +381,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 7,
+      "minimum_resolution_artifact": "Trace-verified function-count bins for the authentic paper cohort",
       "missing_prerequisites": [
         "Trace-verified function-count bins for the authentic paper cohort"
       ],
       "next_executable_action": "Trace-verified function-count bins for the authentic paper cohort",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Remove or reword the contradicted sentence unless a new preregistered evidence package overturns the contradiction.",
+        "Resolve the recorded paper verdict: CONTRADICTED-FROZEN-CSV"
+      ],
       "paper_wording": "Class proportions 6.5/33.3/32.5/27.6%",
       "registry_scope": "DATA",
       "required_evidence": "Predeclared non-overlapping class mapping and authentic row labels.",
+      "resolution_mode": "LOCAL_REWORD_OR_REMOVE",
       "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
       "verification_result": {
         "acceptance_tests": [
@@ -357,7 +411,7 @@
     },
     {
       "category": "dataset",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -382,13 +436,21 @@
         "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
       ],
       "id": 8,
+      "minimum_resolution_artifact": "Independently adjudicated reentrancy positives in the frozen evaluation cohort",
       "missing_prerequisites": [
         "Independently adjudicated reentrancy positives in the frozen evaluation cohort"
       ],
       "next_executable_action": "Independently adjudicated reentrancy positives in the frozen evaluation cohort",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Remove or reword the contradicted sentence unless a new preregistered evidence package overturns the contradiction.",
+        "Resolve the recorded paper verdict: CONTRADICTED-LABEL-COUNT"
+      ],
       "paper_wording": "18 reentrant incidents among 246",
       "registry_scope": "DATA",
       "required_evidence": "Independently adjudicated reentrancy labels for all accepted rows.",
+      "resolution_mode": "LOCAL_REWORD_OR_REMOVE",
       "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
       "verification_result": {
         "acceptance_tests": [
@@ -404,7 +466,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -421,11 +483,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 9,
+      "minimum_resolution_artifact": "Compiled execution still separately required under claim 26.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Storage-aware detector, guards and delegatecall",
       "registry_scope": "LOCAL",
       "required_evidence": "Compiled execution still separately required under claim 26.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -445,7 +514,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -460,11 +529,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 10,
+      "minimum_resolution_artifact": "Weights must fire on observed opcode events.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Five storage signal weights",
       "registry_scope": "LOCAL",
       "required_evidence": "Weights must fire on observed opcode events.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -481,7 +557,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -496,11 +572,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 11,
+      "minimum_resolution_artifact": "Threshold boundaries and production paper profile.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Five confidence tiers",
       "registry_scope": "LOCAL",
       "required_evidence": "Threshold boundaries and production paper profile.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -517,7 +600,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -530,11 +613,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 12,
+      "minimum_resolution_artifact": "Fallback when storage capture unavailable, no extra terms.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Three structural signals, .75 penalty, .80 cap",
       "registry_scope": "LOCAL",
       "required_evidence": "Fallback when storage capture unavailable, no extra terms.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -550,7 +640,7 @@
     },
     {
       "category": "empirical_performance",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -612,13 +702,21 @@
         "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
       ],
       "id": 13,
+      "minimum_resolution_artifact": "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing",
       "missing_prerequisites": [
         "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
       ],
       "next_executable_action": "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED"
+      ],
       "paper_wording": "Detector precision/recall/F1 and baselines",
       "registry_scope": "DATA",
       "required_evidence": "Actual predictions on one frozen adjudicated cohort; integer confusion counts.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -643,7 +741,7 @@
     },
     {
       "category": "empirical_performance",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -672,13 +770,21 @@
         "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
       ],
       "id": 14,
+      "minimum_resolution_artifact": "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains",
       "missing_prerequisites": [
         "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains"
       ],
       "next_executable_action": "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: PUBLISHED-GAINS-UNSUPPORTED"
+      ],
       "paper_wording": "17/29 percentage-point gains",
       "registry_scope": "DATA",
       "required_evidence": "Paired executed baseline detector outcomes; report measured differences.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -696,7 +802,7 @@
     },
     {
       "category": "case_study",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -722,13 +828,21 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 15,
+      "minimum_resolution_artifact": "Exact legitimate cToken case-study transaction plus source linkage",
       "missing_prerequisites": [
         "Exact legitimate cToken case-study transaction plus source linkage"
       ],
       "next_executable_action": "Exact legitimate cToken case-study transaction plus source linkage",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: CASE-NARRATIVE-RECOVERED-HASH-MISSING"
+      ],
       "paper_wording": "Compound case study",
       "registry_scope": "DATA",
       "required_evidence": "Exact transaction, raw traces, independent source/GT and executed localization result.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -744,7 +858,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -757,11 +871,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 16,
+      "minimum_resolution_artifact": "Local quality/confidence gate must dispatch escalation.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Query routing with theta gate",
       "registry_scope": "LOCAL",
       "required_evidence": "Local quality/confidence gate must dispatch escalation.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -777,7 +898,7 @@
     },
     {
       "category": "provider_conformance",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -806,13 +927,21 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 17,
+      "minimum_resolution_artifact": "Eligible live family access including a reachable installed Ollama model",
       "missing_prerequisites": [
         "Eligible live family access including a reachable installed Ollama model"
       ],
       "next_executable_action": "Eligible live family access including a reachable installed Ollama model",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: LIVE-CONFORMANCE-STILL-INCOMPLETE"
+      ],
       "paper_wording": "Six provider families",
       "registry_scope": "EXTERNAL",
       "required_evidence": "Live provider conformance and installed Ollama model.",
+      "resolution_mode": "EXTERNAL_AUTHORIZATION_OR_PROVIDER",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -829,7 +958,7 @@
     },
     {
       "category": "cost",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -859,13 +988,21 @@
         "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
       ],
       "id": 18,
+      "minimum_resolution_artifact": "Frozen100-case paired workload with observed usage, pricing and quality outputs",
       "missing_prerequisites": [
         "Frozen100-case paired workload with observed usage, pricing and quality outputs"
       ],
       "next_executable_action": "Frozen100-case paired workload with observed usage, pricing and quality outputs",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Remove or reword the contradicted sentence unless a new preregistered evidence package overturns the contradiction.",
+        "Resolve the recorded paper verdict: 58-PERCENT-OVERALL-CONTRADICTED"
+      ],
       "paper_wording": "58% cost savings, 100 transactions, quality/rank bounds",
       "registry_scope": "DATA",
       "required_evidence": "100 paired production runs, observed provider usage, pricing snapshot and 5:3:2 workload.",
+      "resolution_mode": "LOCAL_REWORD_OR_REMOVE",
       "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
       "verification_result": {
         "acceptance_tests": [
@@ -882,7 +1019,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -897,11 +1034,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 19,
+      "minimum_resolution_artifact": "Constructor and executed Stage1 must remain keyless.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Stage 1 makes no model calls",
       "registry_scope": "LOCAL",
       "required_evidence": "Constructor and executed Stage1 must remain keyless.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -918,7 +1062,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -933,11 +1077,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 20,
+      "minimum_resolution_artifact": "Coverage required; positive verdict cannot be overwritten.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "BENIGN skip, EXPLOIT lock and UNCERTAIN escalation",
       "registry_scope": "LOCAL",
       "required_evidence": "Coverage required; positive verdict cannot be overwritten.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -954,7 +1105,7 @@
     },
     {
       "category": "cost",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -989,13 +1140,21 @@
         "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
       ],
       "id": 21,
+      "minimum_resolution_artifact": "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations",
       "missing_prerequisites": [
         "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations"
       ],
       "next_executable_action": "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: RATE-UNMEASURED"
+      ],
       "paper_wording": "40% benign prefilter and latency reduction",
       "registry_scope": "DATA",
       "required_evidence": "Paired production runs on independently verified benign transactions and measured latency.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1014,7 +1173,7 @@
     },
     {
       "category": "localization",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1081,13 +1240,21 @@
         "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
       ],
       "id": 22,
+      "minimum_resolution_artifact": "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases",
       "missing_prerequisites": [
         "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases"
       ],
       "next_executable_action": "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: HISTORICAL-AGGREGATE-RECOVERED"
+      ],
       "paper_wording": "Multi-agent function localization",
       "registry_scope": "EXTERNAL",
       "required_evidence": "Live model quality and verified contract source retrieval; local role dispatch is proven with model-boundary fixtures.",
+      "resolution_mode": "EXTERNAL_AUTHORIZATION_OR_PROVIDER",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1127,7 +1294,7 @@
     },
     {
       "category": "calibration",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1142,11 +1309,18 @@
         "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
       ],
       "id": 23,
+      "minimum_resolution_artifact": "Heuristic score identified separately from calibrated probability.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Equation 4 confidence scoring",
       "registry_scope": "LOCAL",
       "required_evidence": "Heuristic score identified separately from calibrated probability.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -1163,7 +1337,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1178,11 +1352,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 24,
+      "minimum_resolution_artifact": "All feedback must affect downstream state, with rejection audit trail.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Evidence cards and two HITL checkpoints, five guidance types",
       "registry_scope": "LOCAL",
       "required_evidence": "All feedback must affect downstream state, with rejection audit trail.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -1199,7 +1380,7 @@
     },
     {
       "category": "provider_conformance",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1251,13 +1432,21 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 25,
+      "minimum_resolution_artifact": "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence",
       "missing_prerequisites": [
         "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
       ],
       "next_executable_action": "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: ETHEREUM-TRAIN-CAPTURE-VERIFIED-BROADER-CAPABILITY-UNVERIFIABLE"
+      ],
       "paper_wording": "RPC EMA, LRU, TTL, breakers and batching",
       "registry_scope": "EXTERNAL",
       "required_evidence": "Live dRPC/archive debug tracer capability on requested chains.",
+      "resolution_mode": "EXTERNAL_AUTHORIZATION_OR_PROVIDER",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1282,7 +1471,7 @@
     },
     {
       "category": "implementation",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1308,11 +1497,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 26,
+      "minimum_resolution_artifact": "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Foundry replay extracts SLOAD and SSTORE",
       "registry_scope": "TOOLS",
       "required_evidence": "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -1335,7 +1531,7 @@
     },
     {
       "category": "empirical_performance",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1364,13 +1560,21 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 27,
+      "minimum_resolution_artifact": "Authorized challenged explorer-request corpus with recovery logs and denominator",
       "missing_prerequisites": [
         "Authorized challenged explorer-request corpus with recovery logs and denominator"
       ],
       "next_executable_action": "Authorized challenged explorer-request corpus with recovery logs and denominator",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: RATE-UNSUPPORTED"
+      ],
       "paper_wording": "23% WAF challenge bypass",
       "registry_scope": "DATA",
       "required_evidence": "Authorized recorded challenged requests, outcomes/attempts and versioned strategy; no percentage inferred from retry success.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1387,7 +1591,7 @@
     },
     {
       "category": "calibration",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1413,13 +1617,21 @@
         "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
       ],
       "id": 28,
+      "minimum_resolution_artifact": "Raw production per-function four-factor scores with adjudicated categories and declared averaging",
       "missing_prerequisites": [
         "Raw production per-function four-factor scores with adjudicated categories and declared averaging"
       ],
       "next_executable_action": "Raw production per-function four-factor scores with adjudicated categories and declared averaging",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: NO-PRODUCTION-SCORE-VECTORS"
+      ],
       "paper_wording": "Table VI category averages",
       "registry_scope": "DATA",
       "required_evidence": "Real receipt gas, call count, address count and depth per adjudicated category.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1435,7 +1647,7 @@
     },
     {
       "category": "human_study",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1463,13 +1675,21 @@
         "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
       ],
       "id": 29,
+      "minimum_resolution_artifact": "Original20-case selection/policy and paired rankings with explicit aggregation definition",
       "missing_prerequisites": [
         "Original20-case selection/policy and paired rankings with explicit aggregation definition"
       ],
       "next_executable_action": "Original20-case selection/policy and paired rankings with explicit aggregation definition",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: GUIDANCE-RESULT-UNSUPPORTED"
+      ],
       "paper_wording": "Simulated guidance on 20 transactions, 68\u219281%",
       "registry_scope": "DATA",
       "required_evidence": "20 paired runs with preregistered simulation policy, complete integer outcomes; not a human study.",
+      "resolution_mode": "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW",
       "status": "EXTERNALLY_BLOCKED",
       "verification_result": {
         "acceptance_tests": [
@@ -1485,7 +1705,7 @@
     },
     {
       "category": "reproducibility",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1519,13 +1739,21 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 30,
+      "minimum_resolution_artifact": "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes",
       "missing_prerequisites": [
         "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes"
       ],
       "next_executable_action": "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.",
+        "Resolve the recorded paper verdict: PRODUCTION-STAGE1-REPRODUCED-FULL-PAPER-EXPERIMENTS-UNVERIFIABLE"
+      ],
       "paper_wording": "Reproduction scripts",
       "registry_scope": "LOCAL",
       "required_evidence": "One offline entry point, genuine test results and blocked evidence report.",
+      "resolution_mode": "LOCAL_REVIEW_OR_CURRENT_RUN",
       "status": "UNVERIFIED",
       "verification_result": {
         "acceptance_tests": [
@@ -1545,7 +1773,7 @@
     },
     {
       "category": "reproducibility",
-      "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+      "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
       "command": "python scripts/reproduce_paper.py --require-claim-closure",
       "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
       "existing_artifacts": [
@@ -1559,11 +1787,18 @@
         "python scripts/reproduce_paper.py --require-claim-closure"
       ],
       "id": 31,
+      "minimum_resolution_artifact": "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check.",
       "missing_prerequisites": [],
       "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "objectively_checkable_acceptance_criteria": [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+        "Report only the implementation scope stated in verification_result; do not promote it to a population result."
+      ],
       "paper_wording": "Repository layout/runtime compatibility",
       "registry_scope": "LOCAL",
       "required_evidence": "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check.",
+      "resolution_mode": "CLOSED_LOCAL_SCOPE",
       "status": "VERIFIED_IMPLEMENTATION",
       "verification_result": {
         "acceptance_tests": [
@@ -1578,7 +1813,7 @@
       "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
     }
   ],
-  "code_revision": "62c9e00ba9dd25834775e0a61e3718c4fe13e36e",
+  "code_revision": "05b862fe6c1a03fefdc3cdcb9b4237aee04ca22f",
   "current_cohort": {
     "accepted_count": 14,
     "chains": {

@@ -11,6 +11,9 @@ def test_claim_ledger_covers_all_registry_claims_with_allowed_statuses():
     ledger = build_ledger(ROOT)
     assert [row['id'] for row in ledger['claims']] == [claim['id'] for claim in CLAIMS]
     assert all(row['status'] in STATUSES for row in ledger['claims'])
+    assert all(row['resolution_mode'] for row in ledger['claims'])
+    assert all(row['minimum_resolution_artifact'] for row in ledger['claims'])
+    assert all(row['objectively_checkable_acceptance_criteria'] for row in ledger['claims'])
     assert sum(ledger['claim_counts'].values()) == len(CLAIMS)
     assert ledger['external_effects'] is False
 

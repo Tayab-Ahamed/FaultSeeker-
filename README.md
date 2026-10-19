@@ -30,6 +30,8 @@ is expected while the retained empirical evidence is blocked.
 For the machine-readable 31-claim scoreboard, run
 `python scripts/reproduce/claim_closure_ledger.py`; the retained snapshot is
 `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`.
+The minimum inputs for reopening blocked empirical claims are listed in
+`reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md`.
 The legacy cohort labels, historical numbers below, aggregate/proxy experiment
 scripts and legacy calibrator do not establish current paper-claim verification.
 See [reproduction requirements](docs/PAPER_REPRODUCTION.md) for authentic-data

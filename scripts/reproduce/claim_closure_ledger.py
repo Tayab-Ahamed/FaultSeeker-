@@ -125,6 +125,34 @@ def _next_action(status: str, closure: dict[str, Any]) -> str:
     return "Review the retained evidence and acquire the explicitly missing external input before rerunning."
 
 
+def _resolution_mode(status: str, claim: dict[str, Any]) -> str:
+    if status == "VERIFIED_IMPLEMENTATION":
+        return "CLOSED_LOCAL_SCOPE"
+    if status == "CONTRADICTED_BY_CURRENT_EVIDENCE":
+        return "LOCAL_REWORD_OR_REMOVE"
+    if status == "UNVERIFIED":
+        return "LOCAL_REVIEW_OR_CURRENT_RUN"
+    if claim.get("scope") == "EXTERNAL":
+        return "EXTERNAL_AUTHORIZATION_OR_PROVIDER"
+    return "EXTERNAL_DATA_OR_INDEPENDENT_REVIEW"
+
+
+def _acceptance_criteria(claim: dict[str, Any], closure: dict[str, Any], status: str) -> list[str]:
+    criteria = [
+        "All listed acceptance tests pass on the target code revision.",
+        "Every required artifact exists, is hash-bound where applicable, and its identity matches the declared dataset/split.",
+    ]
+    if status == "VERIFIED_IMPLEMENTATION":
+        criteria.append("Report only the implementation scope stated in verification_result; do not promote it to a population result.")
+    elif status == "CONTRADICTED_BY_CURRENT_EVIDENCE":
+        criteria.append("Remove or reword the contradicted sentence unless a new preregistered evidence package overturns the contradiction.")
+    else:
+        criteria.append("The missing prerequisite is supplied without changing frozen inputs, target metrics, denominators, or acceptance rules.")
+    if closure.get("paper_verdict"):
+        criteria.append("Resolve the recorded paper verdict: " + str(closure["paper_verdict"]))
+    return criteria
+
+
 def _claim_row(root: Path, claim: dict[str, Any], closure: dict[str, Any], revision: str | None) -> dict[str, Any]:
     status = _status(claim, closure)
     evidence = [item.get("path") for item in closure.get("evidence", []) if isinstance(item, dict)]
@@ -135,8 +163,13 @@ def _claim_row(root: Path, claim: dict[str, Any], closure: dict[str, Any], revis
         "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here",
         "category": CATEGORY_BY_ID.get(claim["id"], "unclassified"),
         "status": status,
+        "resolution_mode": _resolution_mode(status, claim),
         "registry_scope": claim["scope"],
         "required_evidence": claim["required_evidence"],
+        "minimum_resolution_artifact": (
+            (closure.get("requirements_unmet") or [claim["required_evidence"]])[0]
+        ),
+        "objectively_checkable_acceptance_criteria": _acceptance_criteria(claim, closure, status),
         "existing_artifacts": artifacts,
         "generating_code": _unique([
             "benchmark/claim_registry.py",

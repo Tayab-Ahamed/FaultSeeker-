@@ -33,6 +33,7 @@ reports, or provenance evidence.
 | AR-009 | 8 | coordinator | DONE | Produce final claim/evidence ledger and consistency report | All available evidence | `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`; 31 claims classified with fixed status vocabulary |
 | AR-010 | 6 | coordinator | DONE | Add offline calibration/cost evidence audit and reject empty legacy tracker reports as empirical evidence | Existing calibration and cost artifacts; Batch E runtime hash | Audit exits 2 with explicit blocked status; legacy empty flag is overridden by audit semantics; no frozen artifact changes |
 | AR-011 | 6 | coordinator | DONE | Reconcile valid cohort versions and identify locally runnable detector/localization work without touching frozen batches | Current manifests, frozen Batch E, comparable trace coverage | Root 14/246; v3 20/246; v4 22/246; detector gate data-blocked; Batch E verifier passes unchanged |
+| AR-012 | 5 | coordinator | DONE | Diagnose current full-suite source-audit mismatch and publish minimum external evidence acquisition requirements | Dirty source-resolution artifacts; claim ledger | Mismatch is stale/inconsistent evidence: current CSV has 69 unresolved rows while dirty summary claims 72; no rows or adjudications fabricated; acquisition plan committed |
 
 ## Execution rules
 
@@ -213,3 +214,18 @@ reports, or provenance evidence.
 - Focused current-revision suite for this mission remains passing: 36 tests,
   including calibration/cost audit, ledger, schema, measured-cost, and frozen
   Batch E runtime checks.
+
+### AR-012 — source-audit diagnosis and acquisition plan
+
+- Reproduction command: `python -m pytest tests/test_t3_evidence_audits.py::test_local_source_audit_is_network_free_and_keeps_adjudication_separate -q -p no:cacheprovider`.
+- Current result: exit 1 because `local_source_resolution_audit.audit()` counts
+  69 `UNRESOLVED` rows in the dirty `source_resolution_audit.csv`, below the
+  test's committed 70-row floor. The dirty summary claims 72 attempted rows,
+  so the summary is stale/inconsistent with its input; the implementation is
+  correctly counting the input rather than trusting the summary.
+- No safe local fix exists without restoring a hash-bound evidence snapshot or
+  changing the historical assertion. No dirty evidence file was modified and
+  no source resolution/adjudication was fabricated.
+- Added: `reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md` and
+  ledger fields for resolution mode, minimum artifact, and objective acceptance
+  criteria for every claim.
