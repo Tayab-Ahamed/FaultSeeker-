@@ -1,0 +1,5 @@
+# Selected-method integration parity protocol
+
+Selected exploratory method is C12 linearSVC C10 with corrected word unigram+bigram TFIDF scale3, original six numeric features, inverse connected-group/candidate weights, and appended A observed addresses. This selection follows recorded original110 outcomes; it is not a new unbiased model-selection result. No target66 claim is made. Original five grouped folds and original hashes remain fixed.
+
+Only reusable selected-method dependencies are copied unchanged. The margin module computes unused rich features; deployment preparation may omit those calculations only after output-parity validation. No rejected feature enters the basic mode. Baseline676 excludes zero as recorded in C12; comparator is55/68/76. All heldout predictions must equal saved C12 basic_svc_10.0 rankings, not merely aggregate hits. The parity run is an integration check on spent development data, never a fresh result. No batches or network may be accessed. Target reference is read only after all predictions are constructed. Stop on any mismatch; do not modify saved C12 outputs. No full-population fit yet.
