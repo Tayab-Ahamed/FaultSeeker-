@@ -240,3 +240,31 @@ with a 300-second timeout. It did not complete within that bound; the prior
 completed run remains `1065 passed, 7 skipped, 1 failed`, with the preserved
 69-versus-70 source-audit assertion as the only observed failure. The focused
 continuation suite completed `18 passed` and the Batch E verifier passed.
+
+## 8. Fusion regularization continuation
+
+The existing legacy feature-fusion validation was rerun from its checked-in
+script and produced the same five-fold out-of-fold result: full fusion scored
+TP/FP/TN/FN `74/9/991/41`, F1 `0.7475`, versus the no-added-component
+baseline F1 `0.7310`. Only three binary predictions changed in favour of full
+fusion, with McNemar continuity-corrected chi-square `1.3333`; this remains a
+small legacy diagnostic, not evidence for the original 246-row claim.
+
+The predeclared follow-up hypothesis that stronger fixed L2 regularization
+(`0.01` instead of `0.001`) would stabilize the 11-feature fusion calibrator
+was also rerun on the identical 1,115-row population and fixed hash folds. It
+failed its directional criterion: F1 fell from `0.7475` to `0.7273`, recall
+from `0.6435` to `0.6261`, and FPR rose from `0.009` to `0.011`. The paired
+comparison had four baseline-only correct rows and zero candidate-only correct
+rows (chi-square `2.25`). The stronger-regularization variant is therefore
+rejected and was not promoted or applied to production code.
+
+Evidence and raw per-row predictions are retained in:
+
+```text
+reports/reproducibility/legacy_115_diagnostic/feature_fusion_validation/
+reports/reproducibility/legacy_115_diagnostic/fusion_regularization/
+```
+
+Both reruns preserve the `LEGACY_115_*_DIAGNOSTIC_ONLY` scope and do not change
+the claim ledger's zero `REPRODUCED_EMPIRICAL` count.
