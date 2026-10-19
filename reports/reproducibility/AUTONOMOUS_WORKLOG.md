@@ -585,3 +585,35 @@ reports, or provenance evidence.
 - Docker verification remains unavailable because the Docker Desktop Linux
   engine pipe is not present. This leaves T13 in progress pending clean Linux
   Docker/full-suite/PDF verification.
+
+### AR-025 — feature-level architecture fusion experiment
+
+- Causal review found that the current legacy full-system OOF calibrator uses
+  only the eight trace-derived calibration features. The repository's static,
+  dynamic, and LLM-style components are computed separately but are not
+  explicitly exposed to that calibrator; routing and no-routing were identical
+  in the paired legacy results. The component scores are deterministic
+  row-local transforms of the same trace evidence, so this is a fusion test,
+  not an independent-label or provider experiment.
+- Added and ran `scripts/research/evaluate_feature_fusion_calibration.py`.
+  The fixed candidate adds `static_score`, `dynamic_score`, and `llm_score` to
+  the existing calibration payload. It uses the same five-fold hash OOF split,
+  fixed threshold `0.5`, source rows, and ground truth as the baseline; no
+  feature or threshold selection was performed on held-out rows.
+- Baseline reproduced exactly: TP `72`, FP `10`, TN `990`, FN `43`, precision
+  `0.8780`, recall `0.6261`, F1 `0.7310`, FPR `0.0100`, Brier `0.035851`, ECE
+  `0.037711`, bootstrap F1 CI `[0.6548, 0.7980]`.
+- Fusion candidate: TP `74`, FP `9`, TN `991`, FN `41`, precision `0.8916`,
+  recall `0.6435`, F1 `0.7475`, FPR `0.0090`, Brier `0.033944`, ECE `0.036376`,
+  bootstrap F1 CI `[0.6768, 0.8103]`.
+- Every aggregate trade-off moved in the desired direction: two false
+  negatives recovered, one false positive removed, precision/F1/recall and
+  calibration improved. Paired comparison had 0 baseline-only correct and 3
+  candidate-only correct discordant rows; continuity-corrected McNemar
+  chi-square `1.3333`. The paired result is promising but not statistically
+  conclusive on this historically exposed diagnostic.
+- The candidate is retained as the strongest current experimental architecture
+  variant, but is not made the default production scorer or used to claim the
+  original 246-row target. Per-row component scores, baseline/candidate
+  predictions, subgroup breakdowns, input hashes, and output checksums are in
+  `reports/reproducibility/legacy_115_diagnostic/feature_fusion_calibration/`.
