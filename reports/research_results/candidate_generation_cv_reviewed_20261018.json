@@ -1,0 +1,223 @@
+{
+  "baseline": {
+    "candidate_recall_at_20": 0.6181818181818182,
+    "hits_at_1": 40,
+    "hits_at_20": 68,
+    "hits_at_3": 55,
+    "hits_at_5": 58,
+    "n": 110,
+    "recall_at_1": 0.36363636363636365,
+    "recall_at_3": 0.5,
+    "recall_at_5": 0.5272727272727272
+  },
+  "baseline_ordering": "current production rerank_saved_predictions",
+  "batch_b_and_c_read": false,
+  "fold_results": [
+    {
+      "config": {
+        "count": 0.0,
+        "depth": 0.0,
+        "proxy": 0.0,
+        "saved_rank": 0.0,
+        "trace_evidence": 0.0
+      },
+      "fold": 0,
+      "test_metrics": {
+        "candidate_recall_at_20": 0.6363636363636364,
+        "hits_at_1": 7,
+        "hits_at_20": 14,
+        "hits_at_3": 11,
+        "hits_at_5": 11,
+        "n": 22,
+        "recall_at_1": 0.3181818181818182,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5
+      },
+      "test_n": 22,
+      "train_metrics": {
+        "candidate_recall_at_20": 0.625,
+        "hits_at_1": 33,
+        "hits_at_20": 55,
+        "hits_at_3": 45,
+        "hits_at_5": 48,
+        "n": 88,
+        "recall_at_1": 0.375,
+        "recall_at_3": 0.5113636363636364,
+        "recall_at_5": 0.5454545454545454
+      },
+      "train_n": 88
+    },
+    {
+      "config": {
+        "count": 0.0,
+        "depth": 1.0,
+        "proxy": 0.0,
+        "saved_rank": 1.0,
+        "trace_evidence": 0.0
+      },
+      "fold": 1,
+      "test_metrics": {
+        "candidate_recall_at_20": 0.6818181818181818,
+        "hits_at_1": 7,
+        "hits_at_20": 15,
+        "hits_at_3": 12,
+        "hits_at_5": 12,
+        "n": 22,
+        "recall_at_1": 0.3181818181818182,
+        "recall_at_3": 0.5454545454545454,
+        "recall_at_5": 0.5454545454545454
+      },
+      "test_n": 22,
+      "train_metrics": {
+        "candidate_recall_at_20": 0.6136363636363636,
+        "hits_at_1": 34,
+        "hits_at_20": 54,
+        "hits_at_3": 44,
+        "hits_at_5": 46,
+        "n": 88,
+        "recall_at_1": 0.38636363636363635,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5227272727272727
+      },
+      "train_n": 88
+    },
+    {
+      "config": {
+        "count": 0.0,
+        "depth": 1.0,
+        "proxy": 0.0,
+        "saved_rank": 1.0,
+        "trace_evidence": 0.0
+      },
+      "fold": 2,
+      "test_metrics": {
+        "candidate_recall_at_20": 0.6363636363636364,
+        "hits_at_1": 9,
+        "hits_at_20": 14,
+        "hits_at_3": 11,
+        "hits_at_5": 12,
+        "n": 22,
+        "recall_at_1": 0.4090909090909091,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5454545454545454
+      },
+      "test_n": 22,
+      "train_metrics": {
+        "candidate_recall_at_20": 0.625,
+        "hits_at_1": 32,
+        "hits_at_20": 55,
+        "hits_at_3": 45,
+        "hits_at_5": 46,
+        "n": 88,
+        "recall_at_1": 0.36363636363636365,
+        "recall_at_3": 0.5113636363636364,
+        "recall_at_5": 0.5227272727272727
+      },
+      "train_n": 88
+    },
+    {
+      "config": {
+        "count": 0.0,
+        "depth": 1.0,
+        "proxy": 0.0,
+        "saved_rank": 1.0,
+        "trace_evidence": 0.0
+      },
+      "fold": 3,
+      "test_metrics": {
+        "candidate_recall_at_20": 0.5454545454545454,
+        "hits_at_1": 6,
+        "hits_at_20": 12,
+        "hits_at_3": 10,
+        "hits_at_5": 11,
+        "n": 22,
+        "recall_at_1": 0.2727272727272727,
+        "recall_at_3": 0.45454545454545453,
+        "recall_at_5": 0.5
+      },
+      "test_n": 22,
+      "train_metrics": {
+        "candidate_recall_at_20": 0.6477272727272727,
+        "hits_at_1": 35,
+        "hits_at_20": 57,
+        "hits_at_3": 46,
+        "hits_at_5": 47,
+        "n": 88,
+        "recall_at_1": 0.3977272727272727,
+        "recall_at_3": 0.5227272727272727,
+        "recall_at_5": 0.5340909090909091
+      },
+      "train_n": 88
+    },
+    {
+      "config": {
+        "count": 0.0,
+        "depth": 1.0,
+        "proxy": 0.0,
+        "saved_rank": 1.0,
+        "trace_evidence": 0.0
+      },
+      "fold": 4,
+      "test_metrics": {
+        "candidate_recall_at_20": 0.6363636363636364,
+        "hits_at_1": 11,
+        "hits_at_20": 14,
+        "hits_at_3": 12,
+        "hits_at_5": 12,
+        "n": 22,
+        "recall_at_1": 0.5,
+        "recall_at_3": 0.5454545454545454,
+        "recall_at_5": 0.5454545454545454
+      },
+      "test_n": 22,
+      "train_metrics": {
+        "candidate_recall_at_20": 0.625,
+        "hits_at_1": 30,
+        "hits_at_20": 55,
+        "hits_at_3": 44,
+        "hits_at_5": 46,
+        "n": 88,
+        "recall_at_1": 0.3409090909090909,
+        "recall_at_3": 0.5,
+        "recall_at_5": 0.5227272727272727
+      },
+      "train_n": 88
+    }
+  ],
+  "fold_sizes": [
+    22,
+    22,
+    22,
+    22,
+    22
+  ],
+  "folds": 5,
+  "grid_size": 324,
+  "grouping": "connected individual source-URL, incident-name, function/line-target address groups",
+  "groups": 98,
+  "input_sha256": {
+    "candidate_generator": "7faeb06d629fb760bb85b69af20352ef97e8659aeab25c2a14b793f32a408a44",
+    "classification": "a517658eaf20887db343e354056c7c41bb86e8af7d2924238fb7ab88bb7476bf",
+    "evaluator": "aafc2c3e7a8925189c2ef6d423876e42410a7f1ebb80d4897947da971474e436",
+    "ground_truth": "e994ac240cda94150d83cd2fc5e87f9fc514a94e0430247a18b5a662be6bab31",
+    "manifest": "0d8fa473b4abb83024c11300572c1fc3a2eaf4f63b90fc152abe743c01c75ee5",
+    "production_ranker": "c157fa7cb36d317a49cb91f80497a66baba1d947d20cbc0e4796c030ded1447d",
+    "public_selector_cache": "0def26f0ac38e11f3ef884c0251862e8bd5d2d5bbb18860c343b04efad46b2af"
+  },
+  "oof_upgrade": {
+    "candidate_recall_at_20": 0.6272727272727273,
+    "hits_at_1": 40,
+    "hits_at_20": 69,
+    "hits_at_3": 56,
+    "hits_at_5": 58,
+    "n": 110,
+    "recall_at_1": 0.36363636363636365,
+    "recall_at_3": 0.509090909090909,
+    "recall_at_5": 0.5272727272727272
+  },
+  "population": 110,
+  "review_status": "exploratory corrected evaluator; no new held-out population scored",
+  "saved_evidence_only": true,
+  "seed": 20261018,
+  "selector_matching": "public API cache only; GT name registration disabled"
+}
