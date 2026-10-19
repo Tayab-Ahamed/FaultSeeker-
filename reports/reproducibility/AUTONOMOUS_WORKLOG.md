@@ -273,3 +273,45 @@ reports, or provenance evidence.
 - Regenerated `CLAIM_CLOSURE_LEDGER.json` at commit `c0b039d` and refreshed its
   evidence-manifest hash.
 - Final paper disposition: `PAPER CLAIMS PARTIALLY CLOSED — EXTERNAL EVIDENCE REQUIRED`.
+
+### AR-014 — final submission validation
+
+- Continued from commit `b2d86cb`; all unrelated dirty/untracked files and frozen
+  research artifacts remained untouched.
+- Submission source: `paper/blockchain_exploit_forensics_survey_ieee.tex`, an
+  IEEEtran `conference` manuscript. It contains one embedded TikZ figure, four
+  embedded tables, an 11-entry inline `thebibliography`, and no external
+  `\\includegraphics`, `\\input`, or `\\include` files. No supplementary file
+  is referenced by the manuscript. `paper/WORD_COUNT.txt` is the associated
+  source accounting file.
+- Static package/claim check: exit 0. All 12 citation keys resolve to the 11
+  inline bibliography entries; all three `\\ref` targets resolve; five labels
+  are unique; retained values and withdrawn headline values were checked; no
+  external figures or TeX inputs are required.
+- Quantitative claims were checked against the claim map, ledger, and manifest:
+  F1=0.7586 is a historical proxy aggregate over 1,231 represented rows;
+  localization is historical 7/115 top-1; Batch E is frozen address-only
+  14/40, 27/40, 33/40; routing cost is modeled 35% ($0.039/$0.060), not
+  measured. No independent validation or completed paper-scale experiment is
+  implied.
+- Manifest hash check: exit 0, `PASS`.
+- Batch E verifier: exit 0, `PASS`; R@1=14/40, R@3=27/40, R@5=33/40.
+- Focused validation suite: exit 0, `19 passed`.
+- Full suite remains intentionally visible and non-passing: exit 1 after 965
+  passed and 7 skipped at the known source-audit failure
+  `unresolved_rows_attempted=69` versus the historical floor of 70. No row was
+  fabricated, disputed evidence changed, or assertion weakened.
+- PDF build outcome: **BLOCKED**. No project TeX compiler was available:
+  `pdflatex`, `latexmk`, `xelatex`, `lualatex`, `tectonic`, `bibtex`, and
+  `biber` were all unavailable. Therefore no PDF was produced and no technical
+  PDF compilation claim is made. The source-level checks above do not replace
+  compilation.
+- Submission package files: the revised `.tex` source, `paper/WORD_COUNT.txt`,
+  `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`,
+  `MANUSCRIPT_CLAIM_MAP.md`, `EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md`,
+  `SUBMISSION_REPRODUCTION_GUIDE.md`, `SUBMISSION_FINAL_VERIFICATION.md`, and
+  `SUBMISSION_EVIDENCE_MANIFEST.json`. Scientific status remains
+  `PARTIALLY_CLOSED_EXTERNAL_EVIDENCE_REQUIRED`.
+- Final status: `SUBMISSION PACKAGE BLOCKED` because the essential PDF artifact
+  could not be compiled in the available environment; technical source checks
+  pass, but external empirical requirements remain unsatisfied.
