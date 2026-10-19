@@ -617,3 +617,30 @@ reports, or provenance evidence.
   original 246-row target. Per-row component scores, baseline/candidate
   predictions, subgroup breakdowns, input hashes, and output checksums are in
   `reports/reproducibility/legacy_115_diagnostic/feature_fusion_calibration/`.
+
+### AR-026 — fusion validation and component ablations
+
+- Added and ran `scripts/research/validate_feature_fusion_ablation.py` on the
+  same 1,115 rows and five SHA-256 folds. Predeclared variants were baseline,
+  static-only, dynamic-only, LLM-only, and full fusion; no variant selection or
+  arbitrary weight search was performed.
+- Leakage checks passed: feature payloads contained only row-local transaction
+  metadata and four trace statistics; labels, vulnerability classes, and
+  ground-truth fields were absent; fold overlap was zero; scalers fit only on
+  training folds; threshold remained fixed at `0.5`.
+- Overall ablations: static-only F1 `0.7437`, dynamic-only `0.7374`, LLM-only
+  `0.7437`, full fusion `0.7475`, versus baseline `0.7310`. Full fusion had
+  TP `74`, FP `9`, TN `991`, FN `41`, precision `0.8916`, recall `0.6435`,
+  FPR `0.0090`, Brier `0.033944`, ECE `0.036376`.
+- Per-fold full-fusion F1 versus baseline: fold 0 `0.7727` vs `0.7442`, fold 1
+  `0.7368` vs `0.7368`, fold 2 `0.6667` vs `0.6486`, fold 3 `0.7778` vs
+  `0.7429`, fold 4 `0.7727` vs `0.7727`. Brier improved in every fold; the
+  three correctness changes occur in folds 0, 2, and 3, not a single fold.
+- Exact changed examples are retained with trace features and all component
+  scores. Two exploit false negatives became positive and one benign false
+  positive became negative. Only three correctness decisions changed, so no
+  statistical significance claim is made.
+- Validation evidence, per-fold metrics, ablations, leakage findings, changed
+  examples, and checksums are under
+  `reports/reproducibility/legacy_115_diagnostic/feature_fusion_validation/`;
+  the concise handoff is `reports/reproducibility/FEATURE_FUSION_VALIDATION_20261019.md`.

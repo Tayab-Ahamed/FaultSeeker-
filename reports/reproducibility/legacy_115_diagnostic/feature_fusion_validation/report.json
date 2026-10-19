@@ -1,0 +1,7263 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_FEATURE_FUSION_ABLATION_VALIDATION_ONLY",
+  "population": {
+    "rows": 1115,
+    "exploit_rows": 115,
+    "benign_rows": 1000
+  },
+  "variants": {
+    "baseline": [],
+    "static_only": [
+      "static_score"
+    ],
+    "dynamic_only": [
+      "dynamic_score"
+    ],
+    "llm_only": [
+      "llm_score"
+    ],
+    "full_fusion": [
+      "static_score",
+      "dynamic_score",
+      "llm_score"
+    ]
+  },
+  "fold_protocol": {
+    "folds": 5,
+    "assignment": "sha256(txn_hash) integer modulo 5",
+    "fold_counts": {
+      "0": 224,
+      "1": 219,
+      "2": 211,
+      "3": 232,
+      "4": 229
+    },
+    "threshold": 0.5,
+    "fit_epochs": 1000,
+    "learning_rate": 0.05,
+    "l2": 0.001
+  },
+  "leakage_checks": {
+    "source_fields_whitelist": [
+      "address_count",
+      "chain",
+      "functioncall_count",
+      "gas_cost",
+      "max_depth",
+      "txn_hash"
+    ],
+    "labels_in_feature_payload": false,
+    "ground_truth_in_feature_payload": false,
+    "vulnerability_class_in_feature_payload": false,
+    "threshold_selected_on_test_rows": false,
+    "scaler_fit_on_training_rows_only": true,
+    "fold_overlap_by_transaction_hash": 0,
+    "variant_selection": "none; all five predeclared variants evaluated"
+  },
+  "overall_metrics": {
+    "baseline": {
+      "tp": 72,
+      "fp": 10,
+      "tn": 990,
+      "fn": 43,
+      "precision": 0.878,
+      "recall": 0.6261,
+      "f1": 0.731,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9525,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6548,
+        0.798
+      ],
+      "brier": 0.035851,
+      "ece": 0.037711
+    },
+    "static_only": {
+      "tp": 74,
+      "fp": 10,
+      "tn": 990,
+      "fn": 41,
+      "precision": 0.881,
+      "recall": 0.6435,
+      "f1": 0.7437,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9543,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6708,
+        0.8061
+      ],
+      "brier": 0.035091,
+      "ece": 0.037912
+    },
+    "dynamic_only": {
+      "tp": 73,
+      "fp": 10,
+      "tn": 990,
+      "fn": 42,
+      "precision": 0.8795,
+      "recall": 0.6348,
+      "f1": 0.7374,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9534,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6635,
+        0.8
+      ],
+      "brier": 0.035812,
+      "ece": 0.038435
+    },
+    "llm_only": {
+      "tp": 74,
+      "fp": 10,
+      "tn": 990,
+      "fn": 41,
+      "precision": 0.881,
+      "recall": 0.6435,
+      "f1": 0.7437,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9543,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6708,
+        0.806
+      ],
+      "brier": 0.034556,
+      "ece": 0.034636
+    },
+    "full_fusion": {
+      "tp": 74,
+      "fp": 9,
+      "tn": 991,
+      "fn": 41,
+      "precision": 0.8916,
+      "recall": 0.6435,
+      "f1": 0.7475,
+      "false_positive_rate": 0.009,
+      "accuracy": 0.9552,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6768,
+        0.8103
+      ],
+      "brier": 0.033944,
+      "ece": 0.036376
+    }
+  },
+  "per_fold_metrics": {
+    "baseline": {
+      "0": {
+        "tp": 16,
+        "fp": 4,
+        "tn": 197,
+        "fn": 7,
+        "precision": 0.8,
+        "recall": 0.6957,
+        "f1": 0.7442,
+        "false_positive_rate": 0.0199,
+        "accuracy": 0.9509,
+        "threshold": 0.5,
+        "n": 224,
+        "f1_ci": [
+          0.5854,
+          0.8718
+        ],
+        "brier": 0.036205,
+        "ece": 0.035452,
+        "fold_n": 224,
+        "exploit_n": 23,
+        "benign_n": 201
+      },
+      "1": {
+        "tp": 14,
+        "fp": 0,
+        "tn": 195,
+        "fn": 10,
+        "precision": 1.0,
+        "recall": 0.5833,
+        "f1": 0.7368,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9543,
+        "threshold": 0.5,
+        "n": 219,
+        "f1_ci": [
+          0.5714,
+          0.878
+        ],
+        "brier": 0.037388,
+        "ece": 0.058985,
+        "fold_n": 219,
+        "exploit_n": 24,
+        "benign_n": 195
+      },
+      "2": {
+        "tp": 12,
+        "fp": 2,
+        "tn": 186,
+        "fn": 11,
+        "precision": 0.8571,
+        "recall": 0.5217,
+        "f1": 0.6486,
+        "false_positive_rate": 0.0106,
+        "accuracy": 0.9384,
+        "threshold": 0.5,
+        "n": 211,
+        "f1_ci": [
+          0.4516,
+          0.8
+        ],
+        "brier": 0.039026,
+        "ece": 0.060505,
+        "fold_n": 211,
+        "exploit_n": 23,
+        "benign_n": 188
+      },
+      "3": {
+        "tp": 13,
+        "fp": 2,
+        "tn": 210,
+        "fn": 7,
+        "precision": 0.8667,
+        "recall": 0.65,
+        "f1": 0.7429,
+        "false_positive_rate": 0.0094,
+        "accuracy": 0.9612,
+        "threshold": 0.5,
+        "n": 232,
+        "f1_ci": [
+          0.56,
+          0.8824
+        ],
+        "brier": 0.030597,
+        "ece": 0.047038,
+        "fold_n": 232,
+        "exploit_n": 20,
+        "benign_n": 212
+      },
+      "4": {
+        "tp": 17,
+        "fp": 2,
+        "tn": 202,
+        "fn": 8,
+        "precision": 0.8947,
+        "recall": 0.68,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0098,
+        "accuracy": 0.9563,
+        "threshold": 0.5,
+        "n": 229,
+        "f1_ci": [
+          0.6222,
+          0.898
+        ],
+        "brier": 0.036432,
+        "ece": 0.051337,
+        "fold_n": 229,
+        "exploit_n": 25,
+        "benign_n": 204
+      }
+    },
+    "static_only": {
+      "0": {
+        "tp": 17,
+        "fp": 4,
+        "tn": 197,
+        "fn": 6,
+        "precision": 0.8095,
+        "recall": 0.7391,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0199,
+        "accuracy": 0.9554,
+        "threshold": 0.5,
+        "n": 224,
+        "f1_ci": [
+          0.619,
+          0.8936
+        ],
+        "brier": 0.0355,
+        "ece": 0.02828,
+        "fold_n": 224,
+        "exploit_n": 23,
+        "benign_n": 201
+      },
+      "1": {
+        "tp": 14,
+        "fp": 0,
+        "tn": 195,
+        "fn": 10,
+        "precision": 1.0,
+        "recall": 0.5833,
+        "f1": 0.7368,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9543,
+        "threshold": 0.5,
+        "n": 219,
+        "f1_ci": [
+          0.5714,
+          0.878
+        ],
+        "brier": 0.036875,
+        "ece": 0.060037,
+        "fold_n": 219,
+        "exploit_n": 24,
+        "benign_n": 195
+      },
+      "2": {
+        "tp": 12,
+        "fp": 2,
+        "tn": 186,
+        "fn": 11,
+        "precision": 0.8571,
+        "recall": 0.5217,
+        "f1": 0.6486,
+        "false_positive_rate": 0.0106,
+        "accuracy": 0.9384,
+        "threshold": 0.5,
+        "n": 211,
+        "f1_ci": [
+          0.4516,
+          0.8
+        ],
+        "brier": 0.038541,
+        "ece": 0.063844,
+        "fold_n": 211,
+        "exploit_n": 23,
+        "benign_n": 188
+      },
+      "3": {
+        "tp": 14,
+        "fp": 2,
+        "tn": 210,
+        "fn": 6,
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1": 0.7778,
+        "false_positive_rate": 0.0094,
+        "accuracy": 0.9655,
+        "threshold": 0.5,
+        "n": 232,
+        "f1_ci": [
+          0.6,
+          0.9123
+        ],
+        "brier": 0.029563,
+        "ece": 0.048165,
+        "fold_n": 232,
+        "exploit_n": 20,
+        "benign_n": 212
+      },
+      "4": {
+        "tp": 17,
+        "fp": 2,
+        "tn": 202,
+        "fn": 8,
+        "precision": 0.8947,
+        "recall": 0.68,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0098,
+        "accuracy": 0.9563,
+        "threshold": 0.5,
+        "n": 229,
+        "f1_ci": [
+          0.6222,
+          0.898
+        ],
+        "brier": 0.035406,
+        "ece": 0.043931,
+        "fold_n": 229,
+        "exploit_n": 25,
+        "benign_n": 204
+      }
+    },
+    "dynamic_only": {
+      "0": {
+        "tp": 17,
+        "fp": 4,
+        "tn": 197,
+        "fn": 6,
+        "precision": 0.8095,
+        "recall": 0.7391,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0199,
+        "accuracy": 0.9554,
+        "threshold": 0.5,
+        "n": 224,
+        "f1_ci": [
+          0.619,
+          0.8936
+        ],
+        "brier": 0.036133,
+        "ece": 0.03537,
+        "fold_n": 224,
+        "exploit_n": 23,
+        "benign_n": 201
+      },
+      "1": {
+        "tp": 14,
+        "fp": 0,
+        "tn": 195,
+        "fn": 10,
+        "precision": 1.0,
+        "recall": 0.5833,
+        "f1": 0.7368,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9543,
+        "threshold": 0.5,
+        "n": 219,
+        "f1_ci": [
+          0.5714,
+          0.878
+        ],
+        "brier": 0.037333,
+        "ece": 0.058905,
+        "fold_n": 219,
+        "exploit_n": 24,
+        "benign_n": 195
+      },
+      "2": {
+        "tp": 12,
+        "fp": 2,
+        "tn": 186,
+        "fn": 11,
+        "precision": 0.8571,
+        "recall": 0.5217,
+        "f1": 0.6486,
+        "false_positive_rate": 0.0106,
+        "accuracy": 0.9384,
+        "threshold": 0.5,
+        "n": 211,
+        "f1_ci": [
+          0.4516,
+          0.8
+        ],
+        "brier": 0.039215,
+        "ece": 0.060565,
+        "fold_n": 211,
+        "exploit_n": 23,
+        "benign_n": 188
+      },
+      "3": {
+        "tp": 13,
+        "fp": 2,
+        "tn": 210,
+        "fn": 7,
+        "precision": 0.8667,
+        "recall": 0.65,
+        "f1": 0.7429,
+        "false_positive_rate": 0.0094,
+        "accuracy": 0.9612,
+        "threshold": 0.5,
+        "n": 232,
+        "f1_ci": [
+          0.56,
+          0.8824
+        ],
+        "brier": 0.030431,
+        "ece": 0.047008,
+        "fold_n": 232,
+        "exploit_n": 20,
+        "benign_n": 212
+      },
+      "4": {
+        "tp": 17,
+        "fp": 2,
+        "tn": 202,
+        "fn": 8,
+        "precision": 0.8947,
+        "recall": 0.68,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0098,
+        "accuracy": 0.9563,
+        "threshold": 0.5,
+        "n": 229,
+        "f1_ci": [
+          0.6222,
+          0.898
+        ],
+        "brier": 0.03636,
+        "ece": 0.052185,
+        "fold_n": 229,
+        "exploit_n": 25,
+        "benign_n": 204
+      }
+    },
+    "llm_only": {
+      "0": {
+        "tp": 17,
+        "fp": 4,
+        "tn": 197,
+        "fn": 6,
+        "precision": 0.8095,
+        "recall": 0.7391,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0199,
+        "accuracy": 0.9554,
+        "threshold": 0.5,
+        "n": 224,
+        "f1_ci": [
+          0.619,
+          0.8936
+        ],
+        "brier": 0.034733,
+        "ece": 0.038094,
+        "fold_n": 224,
+        "exploit_n": 23,
+        "benign_n": 201
+      },
+      "1": {
+        "tp": 14,
+        "fp": 1,
+        "tn": 194,
+        "fn": 10,
+        "precision": 0.9333,
+        "recall": 0.5833,
+        "f1": 0.7179,
+        "false_positive_rate": 0.0051,
+        "accuracy": 0.9498,
+        "threshold": 0.5,
+        "n": 219,
+        "f1_ci": [
+          0.55,
+          0.8571
+        ],
+        "brier": 0.036108,
+        "ece": 0.052916,
+        "fold_n": 219,
+        "exploit_n": 24,
+        "benign_n": 195
+      },
+      "2": {
+        "tp": 12,
+        "fp": 1,
+        "tn": 187,
+        "fn": 11,
+        "precision": 0.9231,
+        "recall": 0.5217,
+        "f1": 0.6667,
+        "false_positive_rate": 0.0053,
+        "accuracy": 0.9431,
+        "threshold": 0.5,
+        "n": 211,
+        "f1_ci": [
+          0.4706,
+          0.8205
+        ],
+        "brier": 0.036897,
+        "ece": 0.051051,
+        "fold_n": 211,
+        "exploit_n": 23,
+        "benign_n": 188
+      },
+      "3": {
+        "tp": 14,
+        "fp": 2,
+        "tn": 210,
+        "fn": 6,
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1": 0.7778,
+        "false_positive_rate": 0.0094,
+        "accuracy": 0.9655,
+        "threshold": 0.5,
+        "n": 232,
+        "f1_ci": [
+          0.6,
+          0.9123
+        ],
+        "brier": 0.030337,
+        "ece": 0.050238,
+        "fold_n": 232,
+        "exploit_n": 20,
+        "benign_n": 212
+      },
+      "4": {
+        "tp": 17,
+        "fp": 2,
+        "tn": 202,
+        "fn": 8,
+        "precision": 0.8947,
+        "recall": 0.68,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0098,
+        "accuracy": 0.9563,
+        "threshold": 0.5,
+        "n": 229,
+        "f1_ci": [
+          0.6222,
+          0.898
+        ],
+        "brier": 0.035015,
+        "ece": 0.038107,
+        "fold_n": 229,
+        "exploit_n": 25,
+        "benign_n": 204
+      }
+    },
+    "full_fusion": {
+      "0": {
+        "tp": 17,
+        "fp": 4,
+        "tn": 197,
+        "fn": 6,
+        "precision": 0.8095,
+        "recall": 0.7391,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0199,
+        "accuracy": 0.9554,
+        "threshold": 0.5,
+        "n": 224,
+        "f1_ci": [
+          0.619,
+          0.8936
+        ],
+        "brier": 0.034108,
+        "ece": 0.036624,
+        "fold_n": 224,
+        "exploit_n": 23,
+        "benign_n": 201
+      },
+      "1": {
+        "tp": 14,
+        "fp": 0,
+        "tn": 195,
+        "fn": 10,
+        "precision": 1.0,
+        "recall": 0.5833,
+        "f1": 0.7368,
+        "false_positive_rate": 0.0,
+        "accuracy": 0.9543,
+        "threshold": 0.5,
+        "n": 219,
+        "f1_ci": [
+          0.5714,
+          0.878
+        ],
+        "brier": 0.035655,
+        "ece": 0.054401,
+        "fold_n": 219,
+        "exploit_n": 24,
+        "benign_n": 195
+      },
+      "2": {
+        "tp": 12,
+        "fp": 1,
+        "tn": 187,
+        "fn": 11,
+        "precision": 0.9231,
+        "recall": 0.5217,
+        "f1": 0.6667,
+        "false_positive_rate": 0.0053,
+        "accuracy": 0.9431,
+        "threshold": 0.5,
+        "n": 211,
+        "f1_ci": [
+          0.4706,
+          0.8205
+        ],
+        "brier": 0.036698,
+        "ece": 0.055235,
+        "fold_n": 211,
+        "exploit_n": 23,
+        "benign_n": 188
+      },
+      "3": {
+        "tp": 14,
+        "fp": 2,
+        "tn": 210,
+        "fn": 6,
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1": 0.7778,
+        "false_positive_rate": 0.0094,
+        "accuracy": 0.9655,
+        "threshold": 0.5,
+        "n": 232,
+        "f1_ci": [
+          0.6,
+          0.9123
+        ],
+        "brier": 0.029374,
+        "ece": 0.048223,
+        "fold_n": 232,
+        "exploit_n": 20,
+        "benign_n": 212
+      },
+      "4": {
+        "tp": 17,
+        "fp": 2,
+        "tn": 202,
+        "fn": 8,
+        "precision": 0.8947,
+        "recall": 0.68,
+        "f1": 0.7727,
+        "false_positive_rate": 0.0098,
+        "accuracy": 0.9563,
+        "threshold": 0.5,
+        "n": 229,
+        "f1_ci": [
+          0.6222,
+          0.898
+        ],
+        "brier": 0.034242,
+        "ece": 0.034673,
+        "fold_n": 229,
+        "exploit_n": 25,
+        "benign_n": 204
+      }
+    }
+  },
+  "paired_vs_baseline": {
+    "static_only": {
+      "counts": {
+        "a_only_correct": 0,
+        "b_only_correct": 2
+      },
+      "statistic": {
+        "chi_square": 0.5,
+        "discordant_pairs": 2
+      }
+    },
+    "dynamic_only": {
+      "counts": {
+        "a_only_correct": 0,
+        "b_only_correct": 1
+      },
+      "statistic": {
+        "chi_square": 0.0,
+        "discordant_pairs": 1
+      }
+    },
+    "llm_only": {
+      "counts": {
+        "a_only_correct": 1,
+        "b_only_correct": 3
+      },
+      "statistic": {
+        "chi_square": 0.25,
+        "discordant_pairs": 4
+      }
+    },
+    "full_fusion": {
+      "counts": {
+        "a_only_correct": 0,
+        "b_only_correct": 3
+      },
+      "statistic": {
+        "chi_square": 1.3333,
+        "discordant_pairs": 3
+      }
+    }
+  },
+  "changed_examples": [
+    {
+      "txn_hash": "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+      "chain": "eth",
+      "fold": 0,
+      "label": 1,
+      "features": {
+        "functioncall_count": 43.0,
+        "address_count": 5.0,
+        "max_depth": 7.0,
+        "gas_cost": 191309.0
+      },
+      "component_scores": {
+        "static_score": 0.180016,
+        "dynamic_score": 0.267833,
+        "llm_score": 0.526424
+      },
+      "scores": {
+        "baseline": 0.4983449448981935,
+        "static_only": 0.5059533751365209,
+        "dynamic_only": 0.5012158530688586,
+        "llm_only": 0.5109253444126096,
+        "full_fusion": 0.5195685019619608
+      },
+      "predictions": {
+        "baseline": false,
+        "static_only": true,
+        "dynamic_only": true,
+        "llm_only": true,
+        "full_fusion": true
+      }
+    },
+    {
+      "txn_hash": "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0",
+      "chain": "eth",
+      "fold": 3,
+      "label": 1,
+      "features": {
+        "functioncall_count": 126.0,
+        "address_count": 7.0,
+        "max_depth": 5.0,
+        "gas_cost": 392041.0
+      },
+      "component_scores": {
+        "static_score": 0.482544,
+        "dynamic_score": 0.361667,
+        "llm_score": 0.661978
+      },
+      "scores": {
+        "baseline": 0.4593095565259013,
+        "static_only": 0.5443000859767764,
+        "dynamic_only": 0.46988716799090724,
+        "llm_only": 0.5372897548811523,
+        "full_fusion": 0.6134736951750933
+      },
+      "predictions": {
+        "baseline": false,
+        "static_only": true,
+        "dynamic_only": false,
+        "llm_only": true,
+        "full_fusion": true
+      }
+    },
+    {
+      "txn_hash": "0x7c33203421181fbe3bb5ced6add5fc8dbd770a48af37bac510bb8cdd7ad9ec30",
+      "chain": "eth",
+      "fold": 2,
+      "label": 0,
+      "features": {
+        "functioncall_count": 107.0,
+        "address_count": 28.0,
+        "max_depth": 13.0,
+        "gas_cost": 658385.0
+      },
+      "component_scores": {
+        "static_score": 0.496569,
+        "dynamic_score": 0.663833,
+        "llm_score": 0.890206
+      },
+      "scores": {
+        "baseline": 0.5624413383678313,
+        "static_only": 0.548080574799691,
+        "dynamic_only": 0.5650100788258802,
+        "llm_only": 0.4886776038297443,
+        "full_fusion": 0.48334794345299076
+      },
+      "predictions": {
+        "baseline": true,
+        "static_only": true,
+        "dynamic_only": true,
+        "llm_only": false,
+        "full_fusion": false
+      }
+    }
+  ],
+  "changed_example_count": 3,
+  "subgroups": {
+    "baseline": {
+      "by_chain": {
+        "bsc": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.5385,
+          "f1": 0.7,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5385,
+          "threshold": 0.5,
+          "n": 13,
+          "f1_ci": [
+            0.4706,
+            0.9167
+          ],
+          "brier": 0.419635,
+          "ece": 0.524347
+        },
+        "eth": {
+          "tp": 65,
+          "fp": 10,
+          "tn": 990,
+          "fn": 37,
+          "precision": 0.8667,
+          "recall": 0.6373,
+          "f1": 0.7345,
+          "false_positive_rate": 0.01,
+          "accuracy": 0.9574,
+          "threshold": 0.5,
+          "n": 1102,
+          "f1_ci": [
+            0.6624,
+            0.8
+          ],
+          "brier": 0.031324,
+          "ece": 0.039844
+        }
+      },
+      "by_vulnerability_exploit_rows": {
+        "AMM Price Manipulation Attack via Bridge Configuration": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.645111,
+          "ece": 0.803188
+        },
+        "Access Control": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.066671,
+          "ece": 0.205416
+        },
+        "Arbitrary External Call": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.07698,
+          "ece": 0.203434
+        },
+        "Arbitrary External Call ": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.726358,
+          "ece": 0.852266
+        },
+        "Arbitrary External Call Vulnerability": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.505204,
+          "ece": 0.69631
+        },
+        "Bad HealthFactor Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.1e-05,
+          "ece": 0.003264
+        },
+        "Bridge address(0).safeTransferFrom() does not revert": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.768816,
+          "ece": 0.876821
+        },
+        "Business Logic Flaw": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.625,
+          "threshold": 0.5,
+          "n": 8,
+          "f1_ci": [
+            0.4,
+            1.0
+          ],
+          "brier": 0.27917,
+          "ece": 0.36678
+        },
+        "CompoundV2 Inflation Attack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.433338,
+          "ece": 0.475877
+        },
+        "Div Precision Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.5e-05,
+          "ece": 0.003904
+        },
+        "Donate Inflation ExchangeRate & Rounding Error": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.1e-05,
+          "ece": 0.005387
+        },
+        "FlashLoan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.044943,
+          "ece": 0.211997
+        },
+        "Flashloan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.9e-05,
+          "ece": 0.004339
+        },
+        "Flashloan Attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.611877,
+          "ece": 0.782225
+        },
+        "Improper Access Control of Close-source contract": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.887687,
+          "ece": 0.942168
+        },
+        "Incorrect Access Control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.256312,
+          "ece": 0.384602
+        },
+        "Incorrect Liquidation Calculation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.599977,
+          "ece": 0.774582
+        },
+        "Incorrect Logic Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4.2e-05,
+          "ece": 0.006458
+        },
+        "Incorrect access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.61882,
+          "ece": 0.786543
+        },
+        "Incorrect input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.555406,
+          "ece": 0.745256
+        },
+        "Incorrect reward calculation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.302943,
+          "ece": 0.391785
+        },
+        "Incorrect reward calculation ": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 9.9e-05,
+          "ece": 0.009969
+        },
+        "Incorrect signature verification": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.750947,
+          "ece": 0.866572
+        },
+        "Inflation Attack": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.6e-05,
+          "ece": 0.004953
+        },
+        "Insufficient Validation Reentrancy": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.298288,
+          "ece": 0.546157
+        },
+        "Insufficient access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.752341,
+          "ece": 0.867376
+        },
+        "Lack Slippage Protection": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.00011,
+          "ece": 0.010502
+        },
+        "Lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.374933,
+          "ece": 0.440955
+        },
+        "Lack of permission control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.07381,
+          "ece": 0.271679
+        },
+        "Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.25,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            0.8571
+          ],
+          "brier": 0.511531,
+          "ece": 0.620296
+        },
+        "MEVBOT a47b": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.11204,
+          "ece": 0.334723
+        },
+        "Malicious Proposal Mint & Transfer Ownership": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.434013,
+          "ece": 0.658797
+        },
+        "No input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.766922,
+          "ece": 0.875741
+        },
+        "Oracle bad price": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001791,
+          "ece": 0.042321
+        },
+        "Overpriced Asset in Oracle": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.516853,
+          "ece": 0.718925
+        },
+        "Phishing attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.834835,
+          "ece": 0.913688
+        },
+        "Precission Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4e-05,
+          "ece": 0.006316
+        },
+        "Price Manipulation": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9091,
+          "f1": 0.9524,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.9091,
+          "threshold": 0.5,
+          "n": 11,
+          "f1_ci": [
+            0.8421,
+            1.0
+          ],
+          "brier": 0.077226,
+          "ece": 0.168777
+        },
+        "Price Out Of Date": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.02996,
+          "ece": 0.173088
+        },
+        "Price-caching Design Defect": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.054284,
+          "ece": 0.23299
+        },
+        "Protocol Token incompatible": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.238087,
+          "ece": 0.487941
+        },
+        "Rebasing logic issue": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5.5e-05,
+          "ece": 0.007421
+        },
+        "Reentrancy": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.014731,
+          "ece": 0.062843
+        },
+        "Reentrancy && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2e-06,
+          "ece": 0.001477
+        },
+        "Reflection token": {
+          "tp": 4,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.093043,
+          "ece": 0.243177
+        },
+        "Reflection tokens": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.068504,
+          "ece": 0.261733
+        },
+        "Rounding Error && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000377,
+          "ece": 0.01941
+        },
+        "Storage Collision": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.5e-05,
+          "ece": 0.003865
+        },
+        "Storage Collision & Malicious Proposal": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.655316,
+          "ece": 0.809516
+        },
+        "Swap ETH/BTC 1/1 in mint function": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.043369,
+          "ece": 0.208251
+        },
+        "Underflow": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.65975,
+          "ece": 0.81225
+        },
+        "Verify flashLoan Callback": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1e-05,
+          "ece": 0.003089
+        },
+        "Yield Protocol Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000527,
+          "ece": 0.022966
+        },
+        "business logic flaw": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.266614,
+          "ece": 0.408464
+        },
+        "incorrect-access-control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.01125,
+          "ece": 0.106067
+        },
+        "insufficient validation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.072803,
+          "ece": 0.269821
+        },
+        "interger underflow": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.033946,
+          "ece": 0.184244
+        },
+        "lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.031169,
+          "ece": 0.176548
+        },
+        "lack of validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.799641,
+          "ece": 0.894227
+        },
+        "lack of validation data": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.572544,
+          "ece": 0.756667
+        },
+        "lack-of-access-control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.74745,
+          "ece": 0.864552
+        },
+        "logic flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5.2e-05,
+          "ece": 0.007231
+        },
+        "precision loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000636,
+          "ece": 0.02522
+        },
+        "sandwich ack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.00011,
+          "ece": 0.010502
+        },
+        "unverified external call": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.428228,
+          "ece": 0.639671
+        }
+      }
+    },
+    "static_only": {
+      "by_chain": {
+        "bsc": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.5385,
+          "f1": 0.7,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5385,
+          "threshold": 0.5,
+          "n": 13,
+          "f1_ci": [
+            0.4706,
+            0.9167
+          ],
+          "brier": 0.419861,
+          "ece": 0.524547
+        },
+        "eth": {
+          "tp": 67,
+          "fp": 10,
+          "tn": 990,
+          "fn": 35,
+          "precision": 0.8701,
+          "recall": 0.6569,
+          "f1": 0.7486,
+          "false_positive_rate": 0.01,
+          "accuracy": 0.9592,
+          "threshold": 0.5,
+          "n": 1102,
+          "f1_ci": [
+            0.6743,
+            0.8112
+          ],
+          "brier": 0.030552,
+          "ece": 0.04007
+        }
+      },
+      "by_vulnerability_exploit_rows": {
+        "AMM Price Manipulation Attack via Bridge Configuration": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.613053,
+          "ece": 0.782977
+        },
+        "Access Control": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.068814,
+          "ece": 0.208396
+        },
+        "Arbitrary External Call": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.0621,
+          "ece": 0.181126
+        },
+        "Arbitrary External Call ": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.722955,
+          "ece": 0.850267
+        },
+        "Arbitrary External Call Vulnerability": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.2,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            0.0,
+            0.75
+          ],
+          "brier": 0.470763,
+          "ece": 0.664648
+        },
+        "Bad HealthFactor Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.1e-05,
+          "ece": 0.003304
+        },
+        "Bridge address(0).safeTransferFrom() does not revert": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.788638,
+          "ece": 0.888053
+        },
+        "Business Logic Flaw": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.625,
+          "threshold": 0.5,
+          "n": 8,
+          "f1_ci": [
+            0.4,
+            1.0
+          ],
+          "brier": 0.258615,
+          "ece": 0.34484
+        },
+        "CompoundV2 Inflation Attack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.433442,
+          "ece": 0.474209
+        },
+        "Div Precision Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.5e-05,
+          "ece": 0.003885
+        },
+        "Donate Inflation ExchangeRate & Rounding Error": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.2e-05,
+          "ece": 0.005463
+        },
+        "FlashLoan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.020536,
+          "ece": 0.143304
+        },
+        "Flashloan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2e-05,
+          "ece": 0.004509
+        },
+        "Flashloan Attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.649242,
+          "ece": 0.805756
+        },
+        "Improper Access Control of Close-source contract": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.888824,
+          "ece": 0.942771
+        },
+        "Incorrect Access Control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.264935,
+          "ece": 0.387538
+        },
+        "Incorrect Liquidation Calculation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.587677,
+          "ece": 0.766601
+        },
+        "Incorrect Logic Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.4e-05,
+          "ece": 0.004872
+        },
+        "Incorrect access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.633544,
+          "ece": 0.795871
+        },
+        "Incorrect input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.57243,
+          "ece": 0.756591
+        },
+        "Incorrect reward calculation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.309702,
+          "ece": 0.395446
+        },
+        "Incorrect reward calculation ": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5.4e-05,
+          "ece": 0.007361
+        },
+        "Incorrect signature verification": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.754272,
+          "ece": 0.868488
+        },
+        "Inflation Attack": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.5e-05,
+          "ece": 0.004854
+        },
+        "Insufficient Validation Reentrancy": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.29565,
+          "ece": 0.543737
+        },
+        "Insufficient access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.763623,
+          "ece": 0.873855
+        },
+        "Lack Slippage Protection": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000102,
+          "ece": 0.010088
+        },
+        "Lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.377406,
+          "ece": 0.439611
+        },
+        "Lack of permission control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.084985,
+          "ece": 0.291521
+        },
+        "Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.25,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            0.8571
+          ],
+          "brier": 0.508002,
+          "ece": 0.6177
+        },
+        "MEVBOT a47b": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.106901,
+          "ece": 0.326957
+        },
+        "Malicious Proposal Mint & Transfer Ownership": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.425384,
+          "ece": 0.652214
+        },
+        "No input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.77078,
+          "ece": 0.877941
+        },
+        "Oracle bad price": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001035,
+          "ece": 0.032176
+        },
+        "Overpriced Asset in Oracle": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.532333,
+          "ece": 0.729612
+        },
+        "Phishing attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.838811,
+          "ece": 0.915859
+        },
+        "Precission Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.8e-05,
+          "ece": 0.006157
+        },
+        "Price Manipulation": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9091,
+          "f1": 0.9524,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.9091,
+          "threshold": 0.5,
+          "n": 11,
+          "f1_ci": [
+            0.8421,
+            1.0
+          ],
+          "brier": 0.072122,
+          "ece": 0.159764
+        },
+        "Price Out Of Date": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.022665,
+          "ece": 0.150549
+        },
+        "Price-caching Design Defect": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.037698,
+          "ece": 0.194159
+        },
+        "Protocol Token incompatible": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.205998,
+          "ece": 0.45387
+        },
+        "Rebasing logic issue": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.2e-05,
+          "ece": 0.005654
+        },
+        "Reentrancy": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.007463,
+          "ece": 0.045557
+        },
+        "Reentrancy && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1e-06,
+          "ece": 0.001011
+        },
+        "Reflection token": {
+          "tp": 4,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.083757,
+          "ece": 0.223714
+        },
+        "Reflection tokens": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.067442,
+          "ece": 0.259697
+        },
+        "Rounding Error && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000303,
+          "ece": 0.017398
+        },
+        "Storage Collision": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.5e-05,
+          "ece": 0.003911
+        },
+        "Storage Collision & Malicious Proposal": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.677957,
+          "ece": 0.823382
+        },
+        "Swap ETH/BTC 1/1 in mint function": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.04819,
+          "ece": 0.219522
+        },
+        "Underflow": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.672898,
+          "ece": 0.820304
+        },
+        "Verify flashLoan Callback": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1e-05,
+          "ece": 0.003085
+        },
+        "Yield Protocol Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000465,
+          "ece": 0.021558
+        },
+        "business logic flaw": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.252849,
+          "ece": 0.391071
+        },
+        "incorrect-access-control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.012295,
+          "ece": 0.110881
+        },
+        "insufficient validation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.083418,
+          "ece": 0.288822
+        },
+        "interger underflow": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.035523,
+          "ece": 0.188475
+        },
+        "lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.032173,
+          "ece": 0.17937
+        },
+        "lack of validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.807634,
+          "ece": 0.898685
+        },
+        "lack of validation data": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.563477,
+          "ece": 0.750651
+        },
+        "lack-of-access-control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.758409,
+          "ece": 0.870867
+        },
+        "logic flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.9e-05,
+          "ece": 0.005354
+        },
+        "precision loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000592,
+          "ece": 0.024335
+        },
+        "sandwich ack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000102,
+          "ece": 0.010088
+        },
+        "unverified external call": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.427273,
+          "ece": 0.637684
+        }
+      }
+    },
+    "dynamic_only": {
+      "by_chain": {
+        "bsc": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.5385,
+          "f1": 0.7,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5385,
+          "threshold": 0.5,
+          "n": 13,
+          "f1_ci": [
+            0.4706,
+            0.9167
+          ],
+          "brier": 0.421929,
+          "ece": 0.528075
+        },
+        "eth": {
+          "tp": 66,
+          "fp": 10,
+          "tn": 990,
+          "fn": 36,
+          "precision": 0.8684,
+          "recall": 0.6471,
+          "f1": 0.7416,
+          "false_positive_rate": 0.01,
+          "accuracy": 0.9583,
+          "threshold": 0.5,
+          "n": 1102,
+          "f1_ci": [
+            0.6705,
+            0.807
+          ],
+          "brier": 0.031257,
+          "ece": 0.040596
+        }
+      },
+      "by_vulnerability_exploit_rows": {
+        "AMM Price Manipulation Attack via Bridge Configuration": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.641216,
+          "ece": 0.80076
+        },
+        "Access Control": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.072088,
+          "ece": 0.214465
+        },
+        "Arbitrary External Call": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.074032,
+          "ece": 0.198972
+        },
+        "Arbitrary External Call ": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.724997,
+          "ece": 0.851467
+        },
+        "Arbitrary External Call Vulnerability": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.498463,
+          "ece": 0.690685
+        },
+        "Bad HealthFactor Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1e-05,
+          "ece": 0.003091
+        },
+        "Bridge address(0).safeTransferFrom() does not revert": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.769952,
+          "ece": 0.877469
+        },
+        "Business Logic Flaw": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.625,
+          "threshold": 0.5,
+          "n": 8,
+          "f1_ci": [
+            0.4,
+            1.0
+          ],
+          "brier": 0.278212,
+          "ece": 0.365356
+        },
+        "CompoundV2 Inflation Attack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.433236,
+          "ece": 0.475305
+        },
+        "Div Precision Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.3e-05,
+          "ece": 0.003579
+        },
+        "Donate Inflation ExchangeRate & Rounding Error": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.7e-05,
+          "ece": 0.005029
+        },
+        "FlashLoan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.040568,
+          "ece": 0.201415
+        },
+        "Flashloan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.7e-05,
+          "ece": 0.004095
+        },
+        "Flashloan Attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.610199,
+          "ece": 0.781153
+        },
+        "Improper Access Control of Close-source contract": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.887532,
+          "ece": 0.942086
+        },
+        "Incorrect Access Control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.256762,
+          "ece": 0.3827
+        },
+        "Incorrect Liquidation Calculation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.598014,
+          "ece": 0.773314
+        },
+        "Incorrect Logic Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.5e-05,
+          "ece": 0.005875
+        },
+        "Incorrect access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.618814,
+          "ece": 0.786534
+        },
+        "Incorrect input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.555294,
+          "ece": 0.745181
+        },
+        "Incorrect reward calculation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.304249,
+          "ece": 0.392381
+        },
+        "Incorrect reward calculation ": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 8.2e-05,
+          "ece": 0.009031
+        },
+        "Incorrect signature verification": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.750934,
+          "ece": 0.866564
+        },
+        "Inflation Attack": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.2e-05,
+          "ece": 0.004559
+        },
+        "Insufficient Validation Reentrancy": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.298276,
+          "ece": 0.546147
+        },
+        "Insufficient access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.754212,
+          "ece": 0.868454
+        },
+        "Lack Slippage Protection": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 9.5e-05,
+          "ece": 0.009735
+        },
+        "Lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.37489,
+          "ece": 0.440622
+        },
+        "Lack of permission control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.089412,
+          "ece": 0.299019
+        },
+        "Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.25,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            0.8571
+          ],
+          "brier": 0.510655,
+          "ece": 0.619651
+        },
+        "MEVBOT a47b": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.109313,
+          "ece": 0.330625
+        },
+        "Malicious Proposal Mint & Transfer Ownership": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.437329,
+          "ece": 0.661309
+        },
+        "No input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.766357,
+          "ece": 0.875418
+        },
+        "Oracle bad price": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001681,
+          "ece": 0.041006
+        },
+        "Overpriced Asset in Oracle": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.517148,
+          "ece": 0.71913
+        },
+        "Phishing attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.83489,
+          "ece": 0.913718
+        },
+        "Precission Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.4e-05,
+          "ece": 0.005858
+        },
+        "Price Manipulation": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9091,
+          "f1": 0.9524,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.9091,
+          "threshold": 0.5,
+          "n": 11,
+          "f1_ci": [
+            0.8421,
+            1.0
+          ],
+          "brier": 0.077166,
+          "ece": 0.168332
+        },
+        "Price Out Of Date": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.029017,
+          "ece": 0.170344
+        },
+        "Price-caching Design Defect": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.050817,
+          "ece": 0.225426
+        },
+        "Protocol Token incompatible": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.227886,
+          "ece": 0.477375
+        },
+        "Rebasing logic issue": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4.8e-05,
+          "ece": 0.006916
+        },
+        "Reentrancy": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.012802,
+          "ece": 0.058796
+        },
+        "Reentrancy && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2e-06,
+          "ece": 0.00142
+        },
+        "Reflection token": {
+          "tp": 4,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.092546,
+          "ece": 0.241821
+        },
+        "Reflection tokens": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.074063,
+          "ece": 0.272145
+        },
+        "Rounding Error && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000349,
+          "ece": 0.018672
+        },
+        "Storage Collision": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 1.3e-05,
+          "ece": 0.003616
+        },
+        "Storage Collision & Malicious Proposal": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.657022,
+          "ece": 0.810569
+        },
+        "Swap ETH/BTC 1/1 in mint function": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.048384,
+          "ece": 0.219964
+        },
+        "Underflow": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.660824,
+          "ece": 0.812911
+        },
+        "Verify flashLoan Callback": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 9e-06,
+          "ece": 0.002846
+        },
+        "Yield Protocol Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000466,
+          "ece": 0.021598
+        },
+        "business logic flaw": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.265374,
+          "ece": 0.406463
+        },
+        "incorrect-access-control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.012523,
+          "ece": 0.111905
+        },
+        "insufficient validation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.088152,
+          "ece": 0.296904
+        },
+        "interger underflow": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.04061,
+          "ece": 0.201519
+        },
+        "lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.035622,
+          "ece": 0.188739
+        },
+        "lack of validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.799845,
+          "ece": 0.89434
+        },
+        "lack of validation data": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.570117,
+          "ece": 0.755061
+        },
+        "lack-of-access-control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.748621,
+          "ece": 0.865229
+        },
+        "logic flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4.5e-05,
+          "ece": 0.006727
+        },
+        "precision loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000558,
+          "ece": 0.023616
+        },
+        "sandwich ack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 9.5e-05,
+          "ece": 0.009735
+        },
+        "unverified external call": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.426488,
+          "ece": 0.638041
+        }
+      }
+    },
+    "llm_only": {
+      "by_chain": {
+        "bsc": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.5385,
+          "f1": 0.7,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5385,
+          "threshold": 0.5,
+          "n": 13,
+          "f1_ci": [
+            0.4706,
+            0.9167
+          ],
+          "brier": 0.424634,
+          "ece": 0.530322
+        },
+        "eth": {
+          "tp": 67,
+          "fp": 10,
+          "tn": 990,
+          "fn": 35,
+          "precision": 0.8701,
+          "recall": 0.6569,
+          "f1": 0.7486,
+          "false_positive_rate": 0.01,
+          "accuracy": 0.9592,
+          "threshold": 0.5,
+          "n": 1102,
+          "f1_ci": [
+            0.6743,
+            0.8141
+          ],
+          "brier": 0.029954,
+          "ece": 0.036993
+        }
+      },
+      "by_vulnerability_exploit_rows": {
+        "AMM Price Manipulation Attack via Bridge Configuration": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.571168,
+          "ece": 0.755757
+        },
+        "Access Control": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.056229,
+          "ece": 0.190481
+        },
+        "Arbitrary External Call": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.064152,
+          "ece": 0.185939
+        },
+        "Arbitrary External Call ": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.688379,
+          "ece": 0.829686
+        },
+        "Arbitrary External Call Vulnerability": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.2,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            0.0,
+            0.75
+          ],
+          "brier": 0.45549,
+          "ece": 0.655954
+        },
+        "Bad HealthFactor Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5.5e-05,
+          "ece": 0.007384
+        },
+        "Bridge address(0).safeTransferFrom() does not revert": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.746018,
+          "ece": 0.863723
+        },
+        "Business Logic Flaw": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.625,
+          "threshold": 0.5,
+          "n": 8,
+          "f1_ci": [
+            0.4,
+            1.0
+          ],
+          "brier": 0.274233,
+          "ece": 0.363934
+        },
+        "CompoundV2 Inflation Attack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.447624,
+          "ece": 0.491677
+        },
+        "Div Precision Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 6.3e-05,
+          "ece": 0.007921
+        },
+        "Donate Inflation ExchangeRate & Rounding Error": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000119,
+          "ece": 0.010587
+        },
+        "FlashLoan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.030091,
+          "ece": 0.173467
+        },
+        "Flashloan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 8.3e-05,
+          "ece": 0.009117
+        },
+        "Flashloan Attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.600454,
+          "ece": 0.77489
+        },
+        "Improper Access Control of Close-source contract": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.911871,
+          "ece": 0.954916
+        },
+        "Incorrect Access Control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.242622,
+          "ece": 0.383109
+        },
+        "Incorrect Liquidation Calculation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.545171,
+          "ece": 0.738357
+        },
+        "Incorrect Logic Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4.9e-05,
+          "ece": 0.007024
+        },
+        "Incorrect access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.593482,
+          "ece": 0.770247
+        },
+        "Incorrect input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.538472,
+          "ece": 0.733807
+        },
+        "Incorrect reward calculation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.287394,
+          "ece": 0.381999
+        },
+        "Incorrect reward calculation ": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000117,
+          "ece": 0.010803
+        },
+        "Incorrect signature verification": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.715298,
+          "ece": 0.845753
+        },
+        "Inflation Attack": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 9.3e-05,
+          "ece": 0.009444
+        },
+        "Insufficient Validation Reentrancy": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.271978,
+          "ece": 0.521515
+        },
+        "Insufficient access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.720541,
+          "ece": 0.848847
+        },
+        "Lack Slippage Protection": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000301,
+          "ece": 0.017349
+        },
+        "Lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.358637,
+          "ece": 0.431366
+        },
+        "Lack of permission control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.17806,
+          "ece": 0.421972
+        },
+        "Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.25,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            0.8571
+          ],
+          "brier": 0.480435,
+          "ece": 0.601211
+        },
+        "MEVBOT a47b": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.118326,
+          "ece": 0.343985
+        },
+        "Malicious Proposal Mint & Transfer Ownership": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.377325,
+          "ece": 0.614267
+        },
+        "No input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.735576,
+          "ece": 0.857657
+        },
+        "Oracle bad price": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.002399,
+          "ece": 0.048976
+        },
+        "Overpriced Asset in Oracle": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.48427,
+          "ece": 0.695895
+        },
+        "Phishing attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.80957,
+          "ece": 0.899753
+        },
+        "Precission Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000128,
+          "ece": 0.011334
+        },
+        "Price Manipulation": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9091,
+          "f1": 0.9524,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.9091,
+          "threshold": 0.5,
+          "n": 11,
+          "f1_ci": [
+            0.8421,
+            1.0
+          ],
+          "brier": 0.067814,
+          "ece": 0.159448
+        },
+        "Price Out Of Date": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.026442,
+          "ece": 0.162609
+        },
+        "Price-caching Design Defect": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.048734,
+          "ece": 0.220759
+        },
+        "Protocol Token incompatible": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.20749,
+          "ece": 0.455511
+        },
+        "Rebasing logic issue": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 6.4e-05,
+          "ece": 0.008021
+        },
+        "Reentrancy": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.011854,
+          "ece": 0.059177
+        },
+        "Reentrancy && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5e-06,
+          "ece": 0.002124
+        },
+        "Reflection token": {
+          "tp": 4,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.078463,
+          "ece": 0.221102
+        },
+        "Reflection tokens": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.05595,
+          "ece": 0.236537
+        },
+        "Rounding Error && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.00098,
+          "ece": 0.031301
+        },
+        "Storage Collision": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 7.5e-05,
+          "ece": 0.008687
+        },
+        "Storage Collision & Malicious Proposal": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.628873,
+          "ece": 0.793015
+        },
+        "Swap ETH/BTC 1/1 in mint function": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.062865,
+          "ece": 0.250729
+        },
+        "Underflow": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.630604,
+          "ece": 0.794106
+        },
+        "Verify flashLoan Callback": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 4.3e-05,
+          "ece": 0.006365
+        },
+        "Yield Protocol Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000915,
+          "ece": 0.030242
+        },
+        "business logic flaw": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.242268,
+          "ece": 0.387653
+        },
+        "incorrect-access-control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.010896,
+          "ece": 0.104385
+        },
+        "insufficient validation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.068266,
+          "ece": 0.261278
+        },
+        "interger underflow": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.030146,
+          "ece": 0.173626
+        },
+        "lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.027647,
+          "ece": 0.166272
+        },
+        "lack of validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.771319,
+          "ece": 0.878248
+        },
+        "lack of validation data": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.530473,
+          "ece": 0.728336
+        },
+        "lack-of-access-control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.71662,
+          "ece": 0.846534
+        },
+        "logic flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 6.3e-05,
+          "ece": 0.007936
+        },
+        "precision loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001571,
+          "ece": 0.039632
+        },
+        "sandwich ack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000301,
+          "ece": 0.017349
+        },
+        "unverified external call": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.40366,
+          "ece": 0.621408
+        }
+      }
+    },
+    "full_fusion": {
+      "by_chain": {
+        "bsc": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.5385,
+          "f1": 0.7,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5385,
+          "threshold": 0.5,
+          "n": 13,
+          "f1_ci": [
+            0.4706,
+            0.9167
+          ],
+          "brier": 0.426598,
+          "ece": 0.532447
+        },
+        "eth": {
+          "tp": 67,
+          "fp": 9,
+          "tn": 991,
+          "fn": 35,
+          "precision": 0.8816,
+          "recall": 0.6569,
+          "f1": 0.7528,
+          "false_positive_rate": 0.009,
+          "accuracy": 0.9601,
+          "threshold": 0.5,
+          "n": 1102,
+          "f1_ci": [
+            0.6797,
+            0.8159
+          ],
+          "brier": 0.029312,
+          "ece": 0.037879
+        }
+      },
+      "by_vulnerability_exploit_rows": {
+        "AMM Price Manipulation Attack via Bridge Configuration": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.541176,
+          "ece": 0.735647
+        },
+        "Access Control": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.061403,
+          "ece": 0.198993
+        },
+        "Arbitrary External Call": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.051546,
+          "ece": 0.165198
+        },
+        "Arbitrary External Call ": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.685727,
+          "ece": 0.828086
+        },
+        "Arbitrary External Call Vulnerability": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 4,
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.3333,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.2,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            0.0,
+            0.75
+          ],
+          "brier": 0.426664,
+          "ece": 0.625829
+        },
+        "Bad HealthFactor Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5e-05,
+          "ece": 0.007087
+        },
+        "Bridge address(0).safeTransferFrom() does not revert": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.766728,
+          "ece": 0.87563
+        },
+        "Business Logic Flaw": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.625,
+          "f1": 0.7692,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.625,
+          "threshold": 0.5,
+          "n": 8,
+          "f1_ci": [
+            0.4,
+            1.0
+          ],
+          "brier": 0.256032,
+          "ece": 0.343909
+        },
+        "CompoundV2 Inflation Attack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.446381,
+          "ece": 0.487466
+        },
+        "Div Precision Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 5.1e-05,
+          "ece": 0.007129
+        },
+        "Donate Inflation ExchangeRate & Rounding Error": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000107,
+          "ece": 0.009941
+        },
+        "FlashLoan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.013917,
+          "ece": 0.117972
+        },
+        "Flashloan": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 7.8e-05,
+          "ece": 0.008827
+        },
+        "Flashloan Attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.633542,
+          "ece": 0.795954
+        },
+        "Improper Access Control of Close-source contract": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.91098,
+          "ece": 0.95445
+        },
+        "Incorrect Access Control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.250126,
+          "ece": 0.383165
+        },
+        "Incorrect Liquidation Calculation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.534068,
+          "ece": 0.7308
+        },
+        "Incorrect Logic Check": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2.7e-05,
+          "ece": 0.005237
+        },
+        "Incorrect access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.607763,
+          "ece": 0.779484
+        },
+        "Incorrect input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.554035,
+          "ece": 0.744335
+        },
+        "Incorrect reward calculation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.294584,
+          "ece": 0.385908
+        },
+        "Incorrect reward calculation ": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 6.1e-05,
+          "ece": 0.007788
+        },
+        "Incorrect signature verification": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.719914,
+          "ece": 0.848478
+        },
+        "Inflation Attack": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 7.5e-05,
+          "ece": 0.008495
+        },
+        "Insufficient Validation Reentrancy": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.270624,
+          "ece": 0.520215
+        },
+        "Insufficient access control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.734477,
+          "ece": 0.857016
+        },
+        "Lack Slippage Protection": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000245,
+          "ece": 0.01565
+        },
+        "Lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.361552,
+          "ece": 0.430448
+        },
+        "Lack of permission control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.204698,
+          "ece": 0.452435
+        },
+        "Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 3,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.25,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            0.8571
+          ],
+          "brier": 0.478189,
+          "ece": 0.599267
+        },
+        "MEVBOT a47b": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.11154,
+          "ece": 0.333975
+        },
+        "Malicious Proposal Mint & Transfer Ownership": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.373773,
+          "ece": 0.61137
+        },
+        "No input validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.740106,
+          "ece": 0.860294
+        },
+        "Oracle bad price": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001388,
+          "ece": 0.037255
+        },
+        "Overpriced Asset in Oracle": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.499883,
+          "ece": 0.707024
+        },
+        "Phishing attack": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.81482,
+          "ece": 0.902663
+        },
+        "Precission Loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000106,
+          "ece": 0.010301
+        },
+        "Price Manipulation": {
+          "tp": 10,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.9091,
+          "f1": 0.9524,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.9091,
+          "threshold": 0.5,
+          "n": 11,
+          "f1_ci": [
+            0.8421,
+            1.0
+          ],
+          "brier": 0.064159,
+          "ece": 0.151706
+        },
+        "Price Out Of Date": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.020219,
+          "ece": 0.142192
+        },
+        "Price-caching Design Defect": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.033845,
+          "ece": 0.183971
+        },
+        "Protocol Token incompatible": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.177111,
+          "ece": 0.420846
+        },
+        "Rebasing logic issue": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.7e-05,
+          "ece": 0.0061
+        },
+        "Reentrancy": {
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 5,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.005897,
+          "ece": 0.042866
+        },
+        "Reentrancy && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 2e-06,
+          "ece": 0.001436
+        },
+        "Reflection token": {
+          "tp": 4,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.071524,
+          "ece": 0.205459
+        },
+        "Reflection tokens": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.058155,
+          "ece": 0.241153
+        },
+        "Rounding Error && Business Logic Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000758,
+          "ece": 0.027529
+        },
+        "Storage Collision": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 6.7e-05,
+          "ece": 0.008194
+        },
+        "Storage Collision & Malicious Proposal": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.652162,
+          "ece": 0.807566
+        },
+        "Swap ETH/BTC 1/1 in mint function": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.071759,
+          "ece": 0.267878
+        },
+        "Underflow": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.6439,
+          "ece": 0.802434
+        },
+        "Verify flashLoan Callback": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.5e-05,
+          "ece": 0.005785
+        },
+        "Yield Protocol Flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.00076,
+          "ece": 0.027568
+        },
+        "business logic flaw": {
+          "tp": 2,
+          "fp": 0,
+          "tn": 0,
+          "fn": 2,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 4,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.231681,
+          "ece": 0.372763
+        },
+        "incorrect-access-control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.012488,
+          "ece": 0.111749
+        },
+        "insufficient validation": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.08571,
+          "ece": 0.292762
+        },
+        "interger underflow": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.035289,
+          "ece": 0.187853
+        },
+        "lack of access control": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.03106,
+          "ece": 0.176239
+        },
+        "lack of validation": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.78038,
+          "ece": 0.883391
+        },
+        "lack of validation data": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.521639,
+          "ece": 0.722246
+        },
+        "lack-of-access-control": {
+          "tp": 0,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            0.0,
+            0.0
+          ],
+          "brier": 0.729509,
+          "ece": 0.854113
+        },
+        "logic flaw": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 3.4e-05,
+          "ece": 0.005834
+        },
+        "precision loss": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.001339,
+          "ece": 0.036591
+        },
+        "sandwich ack": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_positive_rate": 0.0,
+          "accuracy": 1.0,
+          "threshold": 0.5,
+          "n": 1,
+          "f1_ci": [
+            1.0,
+            1.0
+          ],
+          "brier": 0.000245,
+          "ece": 0.01565
+        },
+        "unverified external call": {
+          "tp": 1,
+          "fp": 0,
+          "tn": 0,
+          "fn": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6667,
+          "false_positive_rate": 0.0,
+          "accuracy": 0.5,
+          "threshold": 0.5,
+          "n": 2,
+          "f1_ci": [
+            0.0,
+            1.0
+          ],
+          "brier": 0.402009,
+          "ece": 0.618767
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "exploit": "c0abf4d3ae1fe6d2eb2e5f6d98830d24f8a3733aa276155345fbd8d1cb7292c5",
+    "benign_traces": "acd378c36393cf3fcb04e5e498bbeb90d6ce2147c1a3a8647fd5853e35af5977",
+    "honest_harness": "40c8bbdea44e31a0c0a2f17aee7a6bc933cd3246a9141a34f99f002d0b11532b",
+    "calibration": "d79b3bf99b0d75e484fa69ccda854db8c0f90df1936a6182475f5bc97a99162c"
+  },
+  "raw_predictions": "reports/reproducibility/legacy_115_diagnostic/feature_fusion_validation/predictions.jsonl",
+  "original_246_row_claim": "not evaluated; legacy 115-row diagnostic only",
+  "output_sha256": {
+    "predictions_jsonl": "002ddb6235124049be1c8039be3549080185e90a5b4fd8d69e0777b6edc305df"
+  }
+}
