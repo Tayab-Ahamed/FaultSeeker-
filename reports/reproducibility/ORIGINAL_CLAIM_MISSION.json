@@ -23,8 +23,8 @@
       "experiment": "Run leakage-safe detector and baseline harness on the frozen cohort; compute F1, FPR, CI, McNemar and failure taxonomy.",
       "validation": "benchmark/run_honest_experiments.py plus retained raw predictions and independent metric recomputation.",
       "status": "blocked_by_external_resources",
-      "evidence_paths": ["reports/reproducibility/CLAIM_CLOSURE_LEDGER.json", "reports/claim_evidence/measured_cost_run.json"],
-      "next_action": "Acquire and independently adjudicate the missing cohort and matched benign traces without changing denominators."
+      "evidence_paths": ["reports/reproducibility/CLAIM_CLOSURE_LEDGER.json", "reports/reproducibility/MISSING_EXPLOIT_FEATURE_AUDIT.json", "reports/reproducibility/partial_strict_diagnostic", "reports/claim_evidence/measured_cost_run.json"],
+      "next_action": "Acquire and independently adjudicate the missing cohort and matched benign traces without changing denominators; the current 13/14 partial diagnostic is not the original target."
     },
     {
       "id": "T02",

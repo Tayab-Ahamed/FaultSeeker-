@@ -399,3 +399,31 @@ reports, or provenance evidence.
 - T09 is now `implemented_not_validated`: the local adapter defect is fixed and
   measured, but the original live/held-out model-assisted localization and
   guidance requirements remain unvalidated.
+
+### AR-018 — recoverable exploit trace features and partial diagnostic
+
+- Audited the four strict rows missing `functioncall_count`, `address_count`,
+  and `max_depth`. Retained call-trace captures recover exact schema features
+  for three rows, with gas values matching the strict CSV:
+  - Beanstalk: `349` calls, `58` addresses, depth `16`, gas `6,950,377`.
+  - Grim/Fantom: `248` calls, `16` addresses, depth `21`, gas `1,553,379`.
+  - Hundred/Gnosis: `519` calls, `33` addresses, depth `26`, gas `2,833,968`.
+- Fortress/BSC remains unresolved because retained evidence contains the
+  transaction/receipt but no callTracer tree. No placeholder was inserted into
+  the strict CSV.
+- Added `scripts/research/audit_missing_exploit_features.py` and retained
+  `reports/reproducibility/MISSING_EXPLOIT_FEATURE_AUDIT.json`; it records input
+  hashes, capture hashes, derived features, gas checks, and the one unresolved
+  reason. The strict CSV and denominator remain unchanged.
+- Ran the leakage-safe honest harness in a separate partial diagnostic after
+  overlaying only those three recovered feature vectors. Exit 0; 1,013 rows
+  were evaluated (13 trace-complete strict rows + 1,000 benign traces), with
+  coverage 13/14 versus 1000/1000 and gap 0.0714. The output is explicitly
+  marked `PARTIAL_DIAGNOSTIC_ONLY` and `publishable_for_original_246_row_claim:
+  false`.
+- Partial diagnostic outputs: full-system F1 `0.6957`, FPR `0.0020`, bootstrap
+  CI `[0.4242, 0.8800]`; static F1 `0.7333`, dynamic F1 `0.5143`, LLM-only F1
+  `0.3133`. These are not the original paper result and do not close T01.
+- Added `scripts/research/run_partial_strict_diagnostic.py` to reproduce the
+  explicitly scoped diagnostic without modifying source CSVs or making external
+  calls. The original 246-row detector target remains externally blocked.

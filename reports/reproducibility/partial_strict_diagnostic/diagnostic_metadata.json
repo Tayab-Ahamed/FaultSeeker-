@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "status": "PARTIAL_DIAGNOSTIC_NOT_PAPER_RESULT",
+  "original_target": "246-row detector F1/FPR",
+  "strict_rows_loaded": 14,
+  "strict_rows_with_recovered_trace_features": 3,
+  "excluded_strict_rows": [
+    "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+  ],
+  "benign_source": "benchmark/imported/benign_traces.csv via honest harness",
+  "denominator_policy": "13 trace-complete strict rows + 1000 benign traces; no padding and no promotion to original claim",
+  "harness_exit_code": 0,
+  "external_calls": 0
+}
