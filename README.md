@@ -387,7 +387,7 @@ faultseeker/
 benchmark/              # Benchmark CSV, validation, staged public imports, and evaluation harness
 docs/research/          # Baseline, ablation, error taxonomy, benign acquisition, reproducibility docs
 paper/                  # Self-contained IEEE survey paper
-tests/                  # 121 regression and integration tests
+tests/                  # Offline regression and integration test suite
 ```
 
 ---
