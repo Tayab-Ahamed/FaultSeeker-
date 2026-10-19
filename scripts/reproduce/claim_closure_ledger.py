@@ -158,6 +158,8 @@ def _claim_row(root: Path, claim: dict[str, Any], closure: dict[str, Any], revis
     evidence = [item.get("path") for item in closure.get("evidence", []) if isinstance(item, dict)]
     if claim["id"] == 15:
         evidence.append("reports/reconciliation/recovered_trace_audit.json")
+        evidence.append("reports/reconciliation/recovered_trace_inventory_20261019.json")
+        evidence.append("reports/research_results/recovered_trace_localization_20261019.json")
     artifacts = _unique(evidence + list(claim.get("tests", [])))
     return {
         "id": claim["id"],

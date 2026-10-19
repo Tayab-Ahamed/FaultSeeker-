@@ -53,4 +53,6 @@ def test_claim_ledger_records_recovered_trace_evidence_without_closing_case_stud
 
     row = next(item for item in build_ledger(ROOT)['claims'] if item['id'] == 15)
     assert 'reports/reconciliation/recovered_trace_audit.json' in row['existing_artifacts']
+    assert 'reports/reconciliation/recovered_trace_inventory_20261019.json' in row['existing_artifacts']
+    assert 'reports/research_results/recovered_trace_localization_20261019.json' in row['existing_artifacts']
     assert row['status'] == 'EXTERNALLY_BLOCKED'
