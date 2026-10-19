@@ -234,6 +234,17 @@ reports, or provenance evidence.
   derived files contain 74 rows and claim 72/74. Clean HEAD produces the
   original 70 rows / 72 URLs. The derived artifacts cannot be regenerated
   reproducibly from the current dirty input.
+- Forensic backup created outside the project at
+  `C:/Users/91701/AppData/Local/Temp/omnirush/faultseeker-source-audit-forensic-20261019-7cc7e873`.
+  Backup hashes: local CSV
+  `0e6bdfc6c450646e5a4d6c55445bbc32abe713eb32baa6b92404662146168283`, summary
+  `027ed444298c4e2c80b81a6f37c901b1e22f5f1544c1eaddb8f8d3f8c1342c83`.
+- Safe regeneration was performed only in temporary output directory
+  `C:/Users/91701/AppData/Local/Temp/omnirush/faultseeker-source-audit-regenerated-20261019-7cc7e873`.
+  It produced 69 unresolved rows and 71 URLs, with no stale rows 94/171;
+  regenerated hashes are CSV `8747e09c44e75cf5d2b47731666eb68bccd18ed747ea876d89c7c838fe11c2f5`
+  and summary `5f16d96fc9e00379889b5dde08ecd149a3b0dcbc43d5a5cbcb5e3609332347d4`.
+  No tracked evidence file changed.
 - No safe local fix exists without restoring a hash-bound evidence snapshot or
   changing the historical assertion. No dirty evidence file was modified and
   no source resolution/adjudication was fabricated.
