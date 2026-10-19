@@ -104,19 +104,7 @@ def run_pipeline_on_transaction(
             }
             ranking_result = FunctionRanker().rank(forensics_result, tx_analysis)
             
-            # Extract ranked candidates from ranking_result
-            ranked_candidates = []
-            for fn_key, fn_info in ranking_result.functions_to_be_inspected.items():
-                parts = fn_key.split("_")
-                fn_name = parts[0] if parts else ""
-                addr = parts[1] if len(parts) > 1 else ""
-                ranked_candidates.append({
-                    "address": addr,
-                    "function": fn_name,
-                    "call_type": "call",
-                    "depth": 1,
-                    "_score": 0.95 if fn_name != "others" else 0.5,
-                })
+            ranked_candidates = serialize_ranked_candidates(ranking_result)
         except Exception as exc:
             print(f"    [!] Candidate ranking fallback: {exc}", flush=True)
             ranked_candidates = []
@@ -157,6 +145,57 @@ def run_pipeline_on_transaction(
     }
 
     return prediction_payload, wall_time, tx_cost
+
+
+def serialize_ranked_candidates(ranking_result) -> list[dict]:
+    """Convert the ranker's explicit ordering into localization predictions.
+
+    ``FunctionRanker`` exports stable candidates in ``ranked_functions``.  The
+    previous adapter reconstructed them from dictionary keys with
+    ``split("_")``, which truncated function names containing underscores and
+    could put the wrong text in the address field.  Keep the ranker's explicit
+    address/function identity and preserve its rank metadata.
+
+    The legacy fallback is retained for older result objects, but uses
+    ``rsplit`` because function labels may themselves contain underscores.
+    """
+    explicit = getattr(ranking_result, "ranked_functions", None) or []
+    if explicit:
+        candidates = []
+        for item in explicit:
+            if not isinstance(item, dict):
+                continue
+            candidate = dict(item)
+            address = candidate.get("code_address") or candidate.get("address") or ""
+            function = (
+                candidate.get("function")
+                or candidate.get("function_name")
+                or candidate.get("name")
+                or ""
+            )
+            candidate["address"] = address
+            candidate["function"] = function
+            candidate.setdefault("call_type", "call")
+            depths = candidate.get("supporting_call_depths") or []
+            candidate.setdefault("depth", max(depths) if depths else 0)
+            candidates.append(candidate)
+        return candidates
+
+    candidates = []
+    for fn_key, fn_info in (getattr(ranking_result, "functions_to_be_inspected", {}) or {}).items():
+        fn_name, separator, address = str(fn_key).rpartition("_")
+        if not separator:
+            fn_name, address = str(fn_key), ""
+        calls = (fn_info or {}).get("calls") or []
+        depths = [call.get("depth", 0) for call in calls if isinstance(call, dict)]
+        candidates.append({
+            "address": address,
+            "function": fn_name,
+            "call_type": "call",
+            "depth": max(depths) if depths else 0,
+            "_score": 0.95 if fn_name != "others" else 0.5,
+        })
+    return candidates
 
 
 def main() -> int:

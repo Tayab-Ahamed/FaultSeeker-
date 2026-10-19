@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "mission": "Make the original FaultSeeker++ technical and empirical claims genuinely achievable where resources permit.",
+  "baseline_commit": "2f65458",
+  "source_recovery": {
+    "original_claim_audit": "PAPER_CLAIM_AUDIT.md at commit 50853e461b635bc1e2cc088b91957cdac2a610d2",
+    "original_paper_snapshot": "paper/blockchain_exploit_forensics_survey_ieee.tex at commit 6282729ce34bd4a17cc99e750d23ad383ff4b0c1",
+    "implementation_spec": [
+      "docs/research/BASELINE_MATRIX.md",
+      "docs/research/ABLATION_PROTOCOL.md",
+      "docs/research/HUMAN_EXPLAINABILITY_STUDY.md",
+      "benchmark/claim_registry.py"
+    ]
+  },
+  "targets": [
+    {
+      "id": "T01",
+      "original_claim": "Headline detector F1=0.969 and FPR=0.003",
+      "source_location": "PAPER_CLAIM_AUDIT.md numeric claims; original Table 4",
+      "acceptance_criterion": "One frozen adjudicated exploit/benign cohort, integer confusion counts, paired baselines, bootstrap 95% F1 CI, and reproducible raw predictions.",
+      "current_baseline": "No current valid paper-scale result; current accepted manifest is 14/246 and the honest harness blocks the 14-row split at 10/14 exploit trace coverage.",
+      "required_data": "246 authenticated exploit incidents, independently adjudicated labels, matched benign traces, and trace-complete split.",
+      "experiment": "Run leakage-safe detector and baseline harness on the frozen cohort; compute F1, FPR, CI, McNemar and failure taxonomy.",
+      "validation": "benchmark/run_honest_experiments.py plus retained raw predictions and independent metric recomputation.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["reports/reproducibility/CLAIM_CLOSURE_LEDGER.json", "reports/claim_evidence/measured_cost_run.json"],
+      "next_action": "Acquire and independently adjudicate the missing cohort and matched benign traces without changing denominators."
+    },
+    {
+      "id": "T02",
+      "original_claim": "Reentrancy F1=0.86/0.69/0.57 on 18 incidents",
+      "source_location": "PAPER_CLAIM_AUDIT.md S6.6/Table V",
+      "acceptance_criterion": "All 18 independently adjudicated reentrancy incidents and the declared non-reentrancy comparison set have canonical traces; run the actual detector and report integer confusion counts per tier.",
+      "current_baseline": "No reproducible current result; the audit records the historical number as unsupported and current accepted labels are incomplete.",
+      "required_data": "18 independently adjudicated reentrancy labels, canonical trace bundles, and declared negative rows.",
+      "experiment": "Run benchmark/compute_metrics.py against hash-bound trace bundles using code-defined tiers and publish unevaluable rows.",
+      "validation": "Independent rerun from the benchmark CSV, trace hashes, and detector revision.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["benchmark/compute_metrics.py", "reports/reproducibility/CLAIM_CLOSURE_LEDGER.json"],
+      "next_action": "Obtain authorized archive/debug traces and independent adjudication for the declared 18-row set."
+    },
+    {
+      "id": "T03",
+      "original_claim": "246 unique exploit incidents with two-source annotations",
+      "source_location": "Original dataset section/Table 3; claim registry claims 3 and 4",
+      "acceptance_criterion": "Exactly 246 unique accepted transaction manifests, no padding, canonical receipt/trace, two source artifacts, and independent adjudication per row.",
+      "current_baseline": "benchmark/cohort_manifest.json accepts 14/246; cohort_v3 accepts 20/246; cohort_v4 accepts 22/246; independent human review is false.",
+      "required_data": "232 additional accepted rows plus independent annotation and trace/source evidence.",
+      "experiment": "Build the frozen cohort through the existing admission validator; reject unresolved or duplicate rows.",
+      "validation": "python -m benchmark.validate_cohort_manifest ... and hash-bound manifest review.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["benchmark/cohort_manifest.json", "reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md"],
+      "next_action": "Request authenticated source/trace records and independent reviewers for the remaining rows."
+    },
+    {
+      "id": "T04",
+      "original_claim": "Ten-chain coverage, Ethereum 47.6%, and more than 80 vulnerability labels",
+      "source_location": "Original dataset section; claim registry claims 5 and 6",
+      "acceptance_criterion": "The accepted 246-row cohort contains all ten declared chains, the stated Ethereum proportion, and an adjudicated taxonomy with more than 80 unique labels.",
+      "current_baseline": "Current accepted root cohort represents six chains; label-string counts are not adjudicated semantic labels.",
+      "required_data": "Ten-chain authenticated cohort and reviewed taxonomy.",
+      "experiment": "Compute chain proportions and taxonomy counts only after cohort admission and independent review.",
+      "validation": "Frozen manifest hash plus deterministic count script and reviewer agreement record.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["benchmark/claim_registry.py", "benchmark/cohort_manifest.json"],
+      "next_action": "Complete missing-chain acquisitions and semantic label adjudication."
+    },
+    {
+      "id": "T05",
+      "original_claim": "17/29 percentage-point detector gains over baselines",
+      "source_location": "PAPER_CLAIM_AUDIT.md and claim registry claim 14",
+      "acceptance_criterion": "Paired baseline and full-system predictions on identical frozen rows with integer outcomes and a prespecified paired test.",
+      "current_baseline": "No valid paired paper-scale experiment; historical proxy tables are not accepted as evidence.",
+      "required_data": "Trace-complete adjudicated cohort and actual baseline implementations or authorized external tool runs.",
+      "experiment": "Run static, dynamic, LLM-only, and full-system variants on identical inputs; compute paired differences and confidence intervals.",
+      "validation": "Raw per-row predictions, benchmark manifest, scorer version, and McNemar/bootstrap outputs.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["docs/research/BASELINE_MATRIX.md", "reports/reproducibility/CLAIM_CLOSURE_LEDGER.json"],
+      "next_action": "Finish trace-complete cohort and execute the preregistered paired comparison."
+    },
+    {
+      "id": "T06",
+      "original_claim": "58% cost reduction over 100 transactions with quality/rank bounds",
+      "source_location": "PAPER_CLAIM_AUDIT.md S6.7 and claim registry claim 18",
+      "acceptance_criterion": "100 paired production runs with observed provider usage, frozen 5:3:2 workload, latency, routing decisions, quality/rank bounds, and pricing snapshot.",
+      "current_baseline": "Measured run is 0/100 with no provider calls; only 35% modeled arithmetic is retained.",
+      "required_data": "Authorized provider credentials or local equivalent, preregistered 100-row selection, and completed paired runs.",
+      "experiment": "Run the cost/routing harness only after explicit authorization; record actual usage and completed quality outcomes.",
+      "validation": "Per-call ledger, provider usage receipts, selection hash, quality comparison, and independent arithmetic.",
+      "status": "blocked_by_user_input",
+      "evidence_paths": ["reports/claim_evidence/measured_cost_run.json", "reports/claim_evidence/cost_zero_spend_proof.json"],
+      "next_action": "Request explicit authorization and provider scope for the 100-run paid or free-tier experiment."
+    },
+    {
+      "id": "T07",
+      "original_claim": "40% benign prefilter and latency reduction",
+      "source_location": "PAPER_CLAIM_AUDIT.md S6.7 and claim registry claim 21",
+      "acceptance_criterion": "Paired production runs on independently verified benign transactions with measured prefilter decisions, latency, and no false benign skips.",
+      "current_baseline": "No independent paired production workload; 10,000 rows are address-label benign candidates, not verified benign traces for this claim.",
+      "required_data": "Independently verified benign transaction categories and paired execution traces.",
+      "experiment": "Run the same transactions with and without the prefilter under a declared workload and measure outcomes.",
+      "validation": "Per-transaction decisions, trace provenance, latency samples, and false-skip audit.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["docs/research/BENIGN_DATA_ACQUISITION.md", "benchmark/claim_registry.py"],
+      "next_action": "Acquire independently verified benign DeFi traces with category coverage."
+    },
+    {
+      "id": "T08",
+      "original_claim": "23% WAF challenge bypass",
+      "source_location": "PAPER_CLAIM_AUDIT.md S6.7 and claim registry claim 27",
+      "acceptance_criterion": "Authorized challenged-request corpus with denominator, every attempt, outcome, versioned strategy, and independently reproducible rate.",
+      "current_baseline": "No authorized corpus or denominator; no percentage may be inferred from generic RPC success.",
+      "required_data": "WAF-case request logs and authorization for the recovery strategy.",
+      "experiment": "Execute the declared recovery protocol only on authorized cases and record all attempts.",
+      "validation": "Hash-bound request/outcome logs and independent rate calculation.",
+      "status": "blocked_by_user_input",
+      "evidence_paths": ["reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md", "benchmark/claim_registry.py"],
+      "next_action": "Request an authorized WAF corpus or explicitly remove this target from the intended submission."
+    },
+    {
+      "id": "T09",
+      "original_claim": "Multi-agent function localization and 20-case guidance improvement",
+      "source_location": "Original localization/guidance sections; claim registry claims 22, 24, and 29",
+      "acceptance_criterion": "Function-level ground truth, held-out ranking inputs, live model/source evidence for localization, and for guidance 20 paired cases with a preregistered policy and integer outcomes.",
+      "current_baseline": "Historical 7/115 top-1 and frozen address-only Batch E are not function-level held-out evidence; no 68-to-81 paired study exists.",
+      "required_data": "Verified function/address/selector targets, source retrieval, authorized model execution, and paired guidance cases.",
+      "experiment": "Run a new immutable held-out localization set and separately run the paired guidance protocol.",
+      "validation": "Raw ranked candidates, exact target manifest, top-k/MRR, and paired guidance statistics.",
+      "status": "blocked_by_user_input",
+      "evidence_paths": ["benchmark/ground_truth", "reports/new_batches/batchE", "docs/research/HUMAN_EXPLAINABILITY_STUDY.md"],
+      "next_action": "Request authorization for model/source retrieval and independent function-level adjudication."
+    },
+    {
+      "id": "T10",
+      "original_claim": "Production-eligible calibration with Brier/ECE",
+      "source_location": "Original calibration section/Table VI and claim registry claim 23",
+      "acceptance_criterion": "Complete declared feature schema, leakage-safe out-of-fold predictions, reliability bins, Brier/ECE, input digests, and disjoint production evaluation provenance.",
+      "current_baseline": "Historical 5-fold proxy reports F1=0.7586, Brier=0.0494; current retained calibrator is legacy-schema and explicitly non-production-eligible; ECE is not retained in the OOF artifact.",
+      "required_data": "Trace-complete adjudicated rows with all production features and disjoint evaluation split.",
+      "experiment": "Implement/verify full feature extraction, train only on the declared training split, score held-out rows, and produce reliability artifacts.",
+      "validation": "Schema tests, out-of-fold row mapping, input hashes, and independent metric recomputation.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["data/models/calibrator_cv_metrics.json", "reports/reproducibility/CLAIM_CLOSURE_LEDGER.json"],
+      "next_action": "Complete a trace-complete disjoint evaluation split before enabling production calibration."
+    },
+    {
+      "id": "T11",
+      "original_claim": "Adversarial robustness retention rho>=0.94",
+      "source_location": "Original Table 6 and PAPER_CLAIM_AUDIT.md",
+      "acceptance_criterion": "Predeclared perturbations applied to real retained traces, with unchanged labels, per-case scores, degradation and uncertainty; no synthetic trace-only result.",
+      "current_baseline": "Historical saved robustness table exists but is not accepted as a current independently verified experiment.",
+      "required_data": "Trace-complete adjudicated inputs and reproducible perturbation fixtures.",
+      "experiment": "Run each perturbation against the same frozen real inputs and compare to the unperturbed baseline.",
+      "validation": "Raw before/after artifacts, perturbation hashes, and independent aggregation.",
+      "status": "blocked_by_external_resources",
+      "evidence_paths": ["reports/research_results/adversarial_robustness.csv", "benchmark/run_adversarial_eval.py"],
+      "next_action": "Re-run only after the valid trace-complete cohort is available."
+    },
+    {
+      "id": "T12",
+      "original_claim": "Human explainability improvement",
+      "source_location": "docs/research/HUMAN_EXPLAINABILITY_STUDY.md",
+      "acceptance_criterion": "At least 20 participants and 8 tasks per participant, counterbalanced metadata-only versus evidence-card conditions, with correctness, time, usefulness, trust, SUS, and paired statistics.",
+      "current_baseline": "Protocol and response template exist; no participant responses are available.",
+      "required_data": "Qualified participants and completed response CSV.",
+      "experiment": "Run the preregistered study without substituting example responses.",
+      "validation": "Analyze immutable response CSV and preserve consent/protocol metadata.",
+      "status": "blocked_by_user_input",
+      "evidence_paths": ["docs/research/HUMAN_EXPLAINABILITY_STUDY.md", "docs/research/human_study_response_template.csv"],
+      "next_action": "Request human participation or an independently collected response dataset."
+    },
+    {
+      "id": "T13",
+      "original_claim": "Reproducibility and original test coverage",
+      "source_location": "Claim registry claims 2 and 30; project Docker/lockfile instructions",
+      "acceptance_criterion": "Pinned runtime, lockfile, Docker build/run, one offline test command, reproducible artifact hashes, and no hidden external state.",
+      "current_baseline": "Pinned Python/lockfile/Docker layout exists; focused tests pass, but full suite exits 1 at the preserved source-audit mismatch and PDF/TeX toolchain is unavailable.",
+      "required_data": "Clean Linux build environment with TeX if PDF submission is required.",
+      "experiment": "Run Docker build/test and the full offline suite on clean Linux; compile the manuscript with IEEEtran/TikZ dependencies.",
+      "validation": "Exit codes, image digest, test log, PDF hash, and source-audit failure retained if still present.",
+      "status": "in_progress",
+      "evidence_paths": ["Dockerfile", "requirements.lock", "Makefile", "reports/reproducibility/AUTONOMOUS_WORKLOG.md"],
+      "next_action": "Use a clean Linux/TeX environment for Docker, full-suite, and PDF build verification; retain the source-audit mismatch if it persists."
+    }
+  ],
+  "highest_value_next_task": "T13: run clean Linux Docker/full-suite/PDF verification after the localization serializer fix; do not treat local Windows checks as a substitute.",
+  "integrity_rules": [
+    "Never modify or rescore frozen Batch E or unrelated dirty/untracked research artifacts.",
+    "Never fabricate labels, annotations, provider usage, human responses, WAF cases, or metrics.",
+    "Implementation tests are not empirical target achievement.",
+    "Keep the known source-audit mismatch visible while executing independent work."
+  ]
+}

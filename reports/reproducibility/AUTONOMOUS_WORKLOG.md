@@ -315,3 +315,37 @@ reports, or provenance evidence.
 - Final status: `SUBMISSION PACKAGE BLOCKED` because the essential PDF artifact
   could not be compiled in the available environment; technical source checks
   pass, but external empirical requirements remain unsatisfied.
+
+### AR-015 — recover original targets and fix localization serialization
+
+- Recovered the original target specification from the historical claim audit at
+  `50853e461b635bc1e2cc088b91957cdac2a610d2`, the original paper snapshot at
+  `6282729ce34bd4a17cc99e750d23ad383ff4b0c1`, the baseline/ablation/human-study
+  protocols, and `benchmark/claim_registry.py`.
+- Added the authoritative target tracker:
+  `reports/reproducibility/ORIGINAL_CLAIM_MISSION.json`. It records the original
+  detector, reentrancy, 246-row cohort, ten-chain/label, paired-baseline, cost,
+  benign-prefilter, WAF, localization/guidance, calibration, adversarial,
+  human-study, and reproducibility targets with acceptance criteria, current
+  baselines, dependencies, evidence, status, and next actions.
+- Found a real localization adapter defect in
+  `benchmark/generate_pipeline_predictions.py`: it reconstructed ranked
+  candidates with `split("_")`, truncating function names containing underscores
+  and discarding the ranker's explicit identity/rank metadata. The adapter now
+  consumes `FunctionRanker.ranked_functions` and retains `code_address`,
+  function, rank, selector, and supporting depth information; the legacy path
+  uses `rsplit`.
+- Added regression coverage in
+  `tests/test_pipeline_prediction_serialization.py` for explicit rank metadata
+  and underscore-containing function labels.
+- Targeted verification: exit 0, `10 passed`:
+  `python -m pytest tests/test_pipeline_prediction_serialization.py tests/test_explicit_function_rank_order.py tests/test_ranker_pattern_integrity.py -q -p no:cacheprovider`.
+- An initial broader command named nonexistent `tests/test_function_ranker.py`
+  and exited 4; it was corrected without changing source or evidence.
+- The current honest detector run remains data-blocked at 10/14 accepted exploit
+  rows with trace features versus 1000/1000 benign rows; no incomparable output
+  was promoted. Frozen Batch E and unrelated dirty/untracked files remain
+  untouched.
+- Implementation status: serializer fix completed. Empirical targets remain
+  blocked by missing authenticated data, independent review, provider/WAF
+  authorization, human responses, and clean Linux/TeX build resources.
