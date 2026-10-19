@@ -203,3 +203,7 @@ Continuation checks: recovered-trace tests `2 passed`, Batch D safety tests
 `8 passed`, claim-ledger tests `8 passed`, and the Batch E verifier passed with
 `14/40`, `27/40`, and `33/40` unchanged. The remaining full-suite mismatch,
 Docker Linux engine limitation, and PDF/TeX limitation remain unchanged.
+
+The latest full offline suite was rerun after the continuation artifacts were
+added: `1065 passed, 7 skipped, 1 failed` in 125.11 seconds. The only failure
+remains `tests/test_t3_evidence_audits.py::test_local_source_audit_is_network_free_and_keeps_adjudication_separate` because the preserved source-resolution artifact contains 69 unresolved rows, while that pre-existing assertion requires at least 70. The input has 231 rows with 69 `UNRESOLVED` statuses and no omitted zero-URL row, so no evidence-preserving source correction is available; the assertion and source evidence were left unchanged.

@@ -21,7 +21,7 @@ map says so explicitly; a ledger entry alone is not treated as manuscript text.
 | 12 | Failure handling and fallback caps, Sec. XI | `tests/test_paper_fallback.py` | Verified implementation scope only |
 | 13 | Original detector table removed; no paper F1 claim remains | Saved proxy aggregate only: `reports/honest_results/baseline_comparison.csv` | Historical proxy, not paper reproduction |
 | 14 | Original percentage-point gain sentence removed | Paired experiment remains data-blocked | Removed; external paired data required |
-| 15 | No Compound case-study sentence remains | Exact transaction/source/trace package absent | Removed |
+| 15 | No Compound case-study sentence remains | `reports/reconciliation/recovered_trace_audit.json` recovers 4 original rows with target-address traces and typed selector matches; no complete case-study package or executed paper scorer | Removed; partial per-case evidence retained |
 | 16 | No Table VI category-average result remains | Production component vectors absent | Removed |
 | 17 | No 20-case guidance result remains | No preregistered paired study | Removed |
 | 18 | Sec. IX table reports only 35% modeled cost (`$0.039` vs `$0.060`) | `python scripts/reproduce/audit_calibration_cost_evidence.py --root .` | Modeled-not-measured; 100-run claim removed |
