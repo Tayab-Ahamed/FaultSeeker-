@@ -1,0 +1,302 @@
+{
+  "exploit_rows": 115,
+  "benign_rows": 1000,
+  "trace_features": [
+    "functioncall_count",
+    "address_count",
+    "max_depth",
+    "gas_cost"
+  ],
+  "feature_coverage": {
+    "exploit": {
+      "rows": 115,
+      "rows_with_trace_features": 115,
+      "coverage": 1.0,
+      "distinct_feature_vectors": 115,
+      "functioncall_count_variance": 7753623.241588,
+      "address_count_variance": 502.543667,
+      "max_depth_variance": 69.14586,
+      "gas_cost_variance": 34902869166092.574
+    },
+    "benign": {
+      "rows": 1000,
+      "rows_with_trace_features": 1000,
+      "coverage": 1.0,
+      "distinct_feature_vectors": 307,
+      "functioncall_count_variance": 442.804351,
+      "address_count_variance": 55.377679,
+      "max_depth_variance": 4.479671,
+      "gas_cost_variance": 40690444341.042725
+    },
+    "coverage_gap": 0.0,
+    "comparable": true,
+    "is_degenerate": false
+  },
+  "threshold": 0.5,
+  "bootstrap_resamples": 1000,
+  "status": "OK",
+  "publishable": true,
+  "evaluated_rows": 1115,
+  "leakage_audit": {
+    "Static proxy": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.014154,
+        1.0
+      ],
+      "negative_score_range": [
+        0.008933,
+        1.0
+      ]
+    },
+    "Dynamic trace-rule": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.032833,
+        1.0
+      ],
+      "negative_score_range": [
+        0.0175,
+        0.758667
+      ]
+    },
+    "LLM-only": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.0,
+        1.0
+      ],
+      "negative_score_range": [
+        0.0,
+        0.961838
+      ]
+    },
+    "FaultSeeker++ (Ours)": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.048907,
+        0.998523
+      ],
+      "negative_score_range": [
+        0.003407,
+        0.924948
+      ]
+    },
+    "-FAEGL": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.0,
+        0.998523
+      ],
+      "negative_score_range": [
+        0.0,
+        0.924948
+      ]
+    },
+    "-TIG graph": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.028193,
+        0.998226
+      ],
+      "negative_score_range": [
+        0.018135,
+        0.97516
+      ]
+    },
+    "-Learned calib": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.256,
+        1.0
+      ],
+      "negative_score_range": [
+        0.236,
+        1.0
+      ]
+    },
+    "-LLM routing": {
+      "leaked": false,
+      "leak_message": "",
+      "scored_rows": 1115,
+      "perfectly_separable": false,
+      "positive_score_range": [
+        0.048907,
+        0.998523
+      ],
+      "negative_score_range": [
+        0.003407,
+        0.924948
+      ]
+    }
+  },
+  "systems": [
+    {
+      "tp": 56,
+      "fp": 6,
+      "tn": 994,
+      "fn": 59,
+      "precision": 0.9032,
+      "recall": 0.487,
+      "f1": 0.6328,
+      "false_positive_rate": 0.006,
+      "accuracy": 0.9417,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "Static proxy",
+      "f1_ci_low": 0.5479,
+      "f1_ci_high": 0.717,
+      "brier": 0.042476,
+      "ece": 0.01754
+    },
+    {
+      "tp": 53,
+      "fp": 13,
+      "tn": 987,
+      "fn": 62,
+      "precision": 0.803,
+      "recall": 0.4609,
+      "f1": 0.5856,
+      "false_positive_rate": 0.013,
+      "accuracy": 0.9327,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "Dynamic trace-rule",
+      "f1_ci_low": 0.4966,
+      "f1_ci_high": 0.6703,
+      "brier": 0.047295,
+      "ece": 0.024549
+    },
+    {
+      "tp": 84,
+      "fp": 57,
+      "tn": 943,
+      "fn": 31,
+      "precision": 0.5957,
+      "recall": 0.7304,
+      "f1": 0.6562,
+      "false_positive_rate": 0.057,
+      "accuracy": 0.9211,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "LLM-only",
+      "f1_ci_low": 0.5817,
+      "f1_ci_high": 0.7165,
+      "brier": 0.061248,
+      "ece": 0.064096
+    },
+    {
+      "tp": 72,
+      "fp": 10,
+      "tn": 990,
+      "fn": 43,
+      "precision": 0.878,
+      "recall": 0.6261,
+      "f1": 0.731,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9525,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "FaultSeeker++ (Ours)",
+      "f1_ci_low": 0.6548,
+      "f1_ci_high": 0.798,
+      "brier": 0.035851,
+      "ece": 0.037711
+    },
+    {
+      "tp": 71,
+      "fp": 10,
+      "tn": 990,
+      "fn": 44,
+      "precision": 0.8765,
+      "recall": 0.6174,
+      "f1": 0.7245,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9516,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "-FAEGL",
+      "f1_ci_low": 0.6456,
+      "f1_ci_high": 0.7888,
+      "brier": 0.036654,
+      "ece": 0.019503
+    },
+    {
+      "tp": 67,
+      "fp": 18,
+      "tn": 982,
+      "fn": 48,
+      "precision": 0.7882,
+      "recall": 0.5826,
+      "f1": 0.67,
+      "false_positive_rate": 0.018,
+      "accuracy": 0.9408,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "-TIG graph",
+      "f1_ci_low": 0.5868,
+      "f1_ci_high": 0.74,
+      "brier": 0.045781,
+      "ece": 0.022936
+    },
+    {
+      "tp": 107,
+      "fp": 163,
+      "tn": 837,
+      "fn": 8,
+      "precision": 0.3963,
+      "recall": 0.9304,
+      "f1": 0.5558,
+      "false_positive_rate": 0.163,
+      "accuracy": 0.8466,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "-Learned calib",
+      "f1_ci_low": 0.4973,
+      "f1_ci_high": 0.6134,
+      "brier": 0.152525,
+      "ece": 0.295116
+    },
+    {
+      "tp": 72,
+      "fp": 10,
+      "tn": 990,
+      "fn": 43,
+      "precision": 0.878,
+      "recall": 0.6261,
+      "f1": 0.731,
+      "false_positive_rate": 0.01,
+      "accuracy": 0.9525,
+      "threshold": 0.5,
+      "n": 1115,
+      "system": "-LLM routing",
+      "f1_ci_low": 0.6548,
+      "f1_ci_high": 0.798,
+      "brier": 0.035851,
+      "ece": 0.037711
+    }
+  ],
+  "publication_scope": "LEGACY_115_DIAGNOSTIC_ONLY",
+  "publishable_for_original_246_row_claim": false
+}

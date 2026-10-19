@@ -427,3 +427,20 @@ reports, or provenance evidence.
 - Added `scripts/research/run_partial_strict_diagnostic.py` to reproduce the
   explicitly scoped diagnostic without modifying source CSVs or making external
   calls. The original 246-row detector target remains externally blocked.
+
+### AR-019 — legacy 115-row comparable detector diagnostic
+
+- Ran `scripts/research/run_legacy_115_diagnostic.py` against the retained
+  `benchmark/benchmark_classification.csv` legacy population, which has 115
+  rows with all four trace features, plus the 1,000-row collected benign trace
+  set. No external calls or source/frozen-artifact changes occurred.
+- Exit 0; 1,115 rows evaluated with zero feature-coverage gap. Full-system F1
+  `0.7310`, FPR `0.0100`, bootstrap 95% CI `[0.6548, 0.7980]`; static F1
+  `0.6328`, dynamic F1 `0.5856`, LLM-only F1 `0.6562`. Ablations: no FAEGL
+  F1 `0.7245`, no TIG F1 `0.6700`, no learned calibration F1 `0.5558`, no
+  routing F1 `0.7310`.
+- These results are a valid legacy-scope diagnostic with explicit integer
+  denominators and leakage checks, but are not the original 246-row target;
+  the output is marked `LEGACY_115_DIAGNOSTIC_ONLY` and
+  `publishable_for_original_246_row_claim: false`.
+- Retained outputs are under `reports/reproducibility/legacy_115_diagnostic/`.

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_DIAGNOSTIC_NOT_246_ROW_RESULT",
+  "input": "benchmark/benchmark_classification.csv",
+  "exploit_rows": 115,
+  "benign_source": "benchmark/imported/benign_traces.csv via honest harness",
+  "denominator_policy": "115 legacy exploit rows + 1000 benign traces; no padding and no promotion to original claim",
+  "harness_exit_code": 0,
+  "external_calls": 0
+}
