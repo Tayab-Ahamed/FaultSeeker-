@@ -56,8 +56,8 @@ Most exploit analysis tools stop at detection. FaultSeeker++ goes further — fr
 | 🧠 **Hybrid model routing** | Simple tasks stay on local models; heavier reasoning can escalate to cloud providers. |
 | 🧑‍💻 **Human-in-the-loop checkpoints** | The analyst stays in the loop at critical decision points instead of blindly trusting model output. |
 | 📊 **Structured evidence** | Findings include signal breakdowns, confidence scores, graph context, and priority rankings. |
-| 🌐 **10-chain coverage** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync. |
-| 🧪 **Reproducible benchmarks** | 1,059 annotated exploit transactions (231 manually verified + 828 source-validated), 10,000 benign traces, pre-trained logistic calibrator, and full LaTeX tables in `reports/research_results/`. |
+| 🌐 **10-chain implementation target** | Ethereum, BSC, Polygon, Arbitrum, Optimism, Avalanche, Base, Fantom, Gnosis, and zkSync; endpoint and archive-trace availability remain environment-dependent. |
+| 🧪 **Evidence-bounded benchmarks** | Versioned cohort manifests, retained traces, frozen Batch D/E artifacts, and offline audit tooling. Candidate pools and historical aggregates remain separate from independently authenticated paper ground truth. |
 | 🔬 **Research tooling** | FAEGL adaptive fallback, TIG graph reasoning, logistic confidence calibrator (`data/models/calibrator.json`), adversarial perturbation suite, and statistical evaluation utilities. |
 
 ---
@@ -230,9 +230,11 @@ python -m faultseeker.core.cross_chain_runner --limit 5 --chains eth bsc arbitru
 
 ### Dataset
 
-**231 strict verified exploit transactions** across 8 currently represented EVM chains, with **80+ vulnerability labels** sourced from postmortems, incident writeups, and exploit repositories.
+The repository retains a **231-row historical exploit CSV** across 8 represented EVM chains and 80+ distinct vulnerability strings. These are descriptive legacy inputs, not independently adjudicated proof of the paper's 246-row cohort or semantic taxonomy.
 
-For TDSC-scale experimentation, FaultSeeker++ now also ships a deduplicated **1,059-row exploit research pool** built from the strict verified benchmark plus source-backed DeFiHackLabs candidates. Candidate rows remain separate from strict ground truth until RPC/manual validation is complete.
+The independently admitted cohorts are versioned separately: the root manifest contains **14/246** accepted records, while v4 contains **22/246**. Both explicitly remain blocked for paper-scale evaluation and do not claim independent human review.
+
+For exploratory experimentation, FaultSeeker++ also ships a deduplicated **1,059-row exploit research pool** assembled from the historical CSV and source-backed DeFiHackLabs candidates. Candidate rows remain separate from independently authenticated ground truth until RPC and adjudication are complete.
 
 Additional staged data:
 
@@ -324,7 +326,7 @@ The reentrancy detector goes beyond simple repeated-address checks:
 
 ## 🤖 Model Providers
 
-Hybrid routing keeps costs low: simple classification stays local, deeper reasoning can escalate to cloud.
+Hybrid routing supports local-first execution: simple classification can stay local, while deeper reasoning can escalate to cloud.
 
 | Provider | Tier | Use Case |
 |---|---|---|
@@ -357,13 +359,13 @@ Research paper asset:
 
 - `paper/blockchain_exploit_forensics_survey_ieee.tex` — self-contained IEEE double-column survey paper with embedded TikZ figure and embedded references.
 
-Current empirical status:
+Current evidence status:
 
-- Strict verified exploit rows: **231**.
-- Exploit research pool: **1,059 / 1,000**, target met.
-- Source-backed candidate rows still requiring RPC/manual promotion: **828**.
+- Historical CSV rows: **231**, retained for descriptive/offline compatibility checks only.
+- Exploit research pool and staged candidates: available locally, but not accepted as paper ground truth until RPC and independent adjudication requirements are met.
+- Root accepted cohort: **14 / 246**; v4 accepted cohort: **22 / 246**.
 - Benign minimum target: **10,000 / 10,000** staged and schema-validated.
-- Reproducible local research tables: `reports/research_results/`.
+- Reproducible local research tables and evidence-bounded reports: `reports/research_results/` and `reports/reproducibility/`.
 - External baseline ingestion workflow: `benchmark/ingest_external_baselines.py`.
 - Human explainability study protocol and analyzer: `docs/research/HUMAN_EXPLAINABILITY_STUDY.md` and `benchmark/analyze_explainability_study.py`.
 - Still required for final journal claims: fill the external baseline sheet with actual tool outputs and replace the example human-study responses with collected participant data.
