@@ -268,3 +268,23 @@ reports/reproducibility/legacy_115_diagnostic/fusion_regularization/
 
 Both reruns preserve the `LEGACY_115_*_DIAGNOSTIC_ONLY` scope and do not change
 the claim ledger's zero `REPRODUCED_EMPIRICAL` count.
+
+## 9. Calibration and cost evidence audit
+
+The read-only calibration/cost audit was run against the retained local
+artifacts. It returned `BLOCKED_EMPIRICAL_EVIDENCE` without network or provider
+effects. The calibration model is internally finite and feature-name
+consistent, but remains `legacy-unspecified` and non-deployable; no disjoint
+training/evaluation provenance, fold metadata, ECE, or row-level OOF
+predictions are retained. The cost evidence likewise has zero completed
+provider runs and no observed workload mix or paired quality/rank outcomes.
+
+The retained cost arithmetic is internally consistent at modeled hybrid
+`$0.039/query`, modeled all-cloud `$0.06/query`, and `35%` reduction. The
+previous `58%` statement is explicitly marked removed as a Tier-2-only saving,
+not an overall measured result. The audit therefore confirms the blocker
+rather than promoting runtime/cost claims:
+
+```text
+python scripts/reproduce/audit_calibration_cost_evidence.py --root .
+```
