@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_PAIRED_DIAGNOSTIC_ONLY",
+  "n": 1115,
+  "exploit_rows": 115,
+  "benign_rows": 1000,
+  "feature_coverage": {
+    "exploit": {
+      "rows": 115,
+      "rows_with_trace_features": 115,
+      "coverage": 1.0,
+      "distinct_feature_vectors": 115,
+      "functioncall_count_variance": 7753623.241588,
+      "address_count_variance": 502.543667,
+      "max_depth_variance": 69.14586,
+      "gas_cost_variance": 34902869166092.574
+    },
+    "benign": {
+      "rows": 1000,
+      "rows_with_trace_features": 1000,
+      "coverage": 1.0,
+      "distinct_feature_vectors": 307,
+      "functioncall_count_variance": 442.804351,
+      "address_count_variance": 55.377679,
+      "max_depth_variance": 4.479671,
+      "gas_cost_variance": 40690444341.042725
+    },
+    "coverage_gap": 0.0,
+    "comparable": true,
+    "is_degenerate": false
+  },
+  "threshold": 0.5,
+  "test": "exact two-sided McNemar binomial test on paired correctness",
+  "paired_against_full_system": {
+    "Static proxy": {
+      "b": 21,
+      "c": 9,
+      "discordant": 30,
+      "p_two_sided": 0.04277394525706768
+    },
+    "Dynamic trace-rule": {
+      "b": 26,
+      "c": 4,
+      "discordant": 30,
+      "p_two_sided": 5.947612226009369e-05
+    },
+    "LLM-only": {
+      "b": 49,
+      "c": 14,
+      "discordant": 63,
+      "p_two_sided": 1.112302300044902e-05
+    },
+    "-FAEGL": {
+      "b": 1,
+      "c": 0,
+      "discordant": 1,
+      "p_two_sided": 1.0
+    },
+    "-TIG graph": {
+      "b": 15,
+      "c": 2,
+      "discordant": 17,
+      "p_two_sided": 0.002349853515625
+    },
+    "-Learned calib": {
+      "b": 155,
+      "c": 37,
+      "discordant": 192,
+      "p_two_sided": 2.2424679560604087e-18
+    },
+    "-LLM routing": {
+      "b": 0,
+      "c": 0,
+      "discordant": 0,
+      "p_two_sided": 1.0
+    }
+  },
+  "raw_predictions": "reports/reproducibility/legacy_115_diagnostic/predictions.jsonl",
+  "input_sha256": {
+    "exploit": "c0abf4d3ae1fe6d2eb2e5f6d98830d24f8a3733aa276155345fbd8d1cb7292c5",
+    "benign_traces": "acd378c36393cf3fcb04e5e498bbeb90d6ce2147c1a3a8647fd5853e35af5977"
+  },
+  "original_246_row_claim": "not evaluated; this is a legacy 115-row diagnostic"
+}

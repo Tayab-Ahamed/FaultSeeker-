@@ -444,3 +444,18 @@ reports, or provenance evidence.
   the output is marked `LEGACY_115_DIAGNOSTIC_ONLY` and
   `publishable_for_original_246_row_claim: false`.
 - Retained outputs are under `reports/reproducibility/legacy_115_diagnostic/`.
+
+### AR-020 — retain legacy paired predictions and significance tests
+
+- Added `scripts/research/legacy_115_paired_stats.py` and executed it on the
+  same 115 exploit + 1,000 benign rows. It retained one JSONL prediction record
+  per evaluated row and exact two-sided McNemar binomial tests.
+- Full-system versus baselines: static `b=21,c=9,p=0.04277`; dynamic
+  `b=26,c=4,p=5.95e-05`; LLM-only `b=49,c=14,p=1.11e-05`; no TIG
+  `b=15,c=2,p=0.00235`; no calibration `b=155,c=37,p=2.24e-18`; no FAEGL
+  `b=1,c=0,p=1.0`; no routing `b=0,c=0,p=1.0`.
+- Raw paired predictions: `reports/reproducibility/legacy_115_diagnostic/predictions.jsonl`.
+  Statistics and input hashes: `paired_statistics.json`.
+- These tests establish paired behavior on the legacy diagnostic only; they do
+  not satisfy the original 246-row acceptance criterion or independent-label
+  requirement.
