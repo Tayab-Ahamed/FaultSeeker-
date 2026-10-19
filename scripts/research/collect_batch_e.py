@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError
 from urllib.parse import urlsplit
-import hashlib,json,os
+import hashlib,json,os,sys
 from dotenv import dotenv_values
 from fresh_evaluation_safety import RequestLedger,RequestGate,SafetyStop
 ROOT=Path(__file__).resolve().parents[2]
@@ -16,7 +16,13 @@ def main():
     cohort=json.loads(cohort_path.read_text())
     for row in cohort['rows']:
         if sha(ROOT/row['source_path'])!=row['source_content_sha256']:raise RuntimeError('Frozen source changed')
-    run=OUT/'capture';run.mkdir(exist_ok=False);(run/'raw').mkdir()
+    run=OUT/'capture'
+    if len(sys.argv)>1:
+        if sys.argv[1:]!=['network-retry']:raise RuntimeError('Unsupported retry mode')
+        previous=json.loads((run/'verification.json').read_text())
+        if previous.get('reason')!='Transport failed; details omitted' or previous.get('verified_count')!=0 or previous.get('request_count')!=1:raise RuntimeError('Retry permitted only after initial transport-only failure')
+        run=OUT/'capture_network_retry1'
+    run.mkdir(exist_ok=False);(run/'raw').mkdir()
     values=dotenv_values(ROOT/'.env');endpoint=os.environ.get('DRPC_RPC_URL') or values.get('DRPC_RPC_URL') or ''
     key=os.environ.get('DRPC_API_KEY') or values.get('DRPC_API_KEY') or ''
     parsed=urlsplit(endpoint)
