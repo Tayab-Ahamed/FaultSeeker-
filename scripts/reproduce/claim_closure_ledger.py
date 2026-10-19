@@ -227,7 +227,8 @@ def main(argv=None) -> int:
     if args.write:
         destination = args.write if args.write.is_absolute() else args.root / args.write
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_text(encoded, encoding="utf-8")
+        # Keep the generated artifact LF-stable on Windows and Linux.
+        destination.write_bytes(encoded.encode("utf-8"))
     else:
         print(encoded, end="")
     return 0
