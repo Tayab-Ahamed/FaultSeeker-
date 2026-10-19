@@ -25,8 +25,8 @@ reports, or provenance evidence.
 | AR-001 | 0 | coordinator | DONE | Preserve live Git state and frozen evidence references | None | Baseline above; no destructive Git command used |
 | AR-002 | 2 | coordinator | DONE | Add a schema-aware offline validator for the bound cohort manifest and explicit admission states | Existing `research_protocol.admit()` and current manifest schemas | `20 passed`; current root manifest audited as 14 accepted, 232 needed, `BLOCKED-BY-DATA`; no frozen artifact changes |
 | AR-003 | 7 | coordinator | DONE | Align benchmark Docker image with pinned Python and lockfile | Existing `requirements.lock` | `6 passed`; benchmark image now uses Python 3.11.9 and `requirements.lock` |
-| AR-004 | 4 | coordinator | BLOCKED | Complete authenticated 246-row cohort | Independent sources, reviewers, RPC traces, function labels | `accepted_count == 246` only if evidence genuinely supports it |
-| AR-005 | 5 | coordinator | BLOCKED | Run paired detector/baseline evaluation | AR-004 | Frozen inputs, completed command, confusion matrices |
+| AR-004 | 4 | coordinator | EXTERNALLY_BLOCKED | Complete authenticated 246-row cohort | Independent sources, reviewers, RPC traces, function labels | `accepted_count == 246` only if evidence genuinely supports it |
+| AR-005 | 5 | coordinator | EXTERNALLY_BLOCKED | Run paired detector/baseline evaluation | AR-004; balanced trace coverage | Frozen inputs, completed command, confusion matrices |
 | AR-006 | 6 | coordinator | BLOCKED | Function-level localization evaluation | Exact function ground truth | New immutable holdout; Batch E unchanged |
 | AR-007 | 6 | coordinator | BLOCKED | Revalidate calibration, routing/cost, and HITL claims | Eligible data, provider authorization, human reviewers | Measured outputs or explicit external blocker |
 | AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | CI, setup, README, and Docker now use the lockfile; replay/tool documentation remains |
@@ -106,3 +106,13 @@ reports, or provenance evidence.
   17, vulnerability strings 82, cohort rows 231, and chain count 8.
 - Interpretation: this independently recalculates saved historical artifacts;
   it does not authenticate the paper cohort or reproduce live empirical quality.
+
+### AR-005 — leakage-free detector gate
+
+- Command: `python benchmark/run_honest_experiments.py --results-dir C:/Users/91701/AppData/Local/Temp/omnirush/faultseeker-honest-audit`.
+- Result: exit 2, correctly blocked before emitting comparison tables.
+- Recorded coverage: exploit trace features 10/14 (0.71), benign trace features
+  1000/1000 (1.00).
+- Reason: cross-class comparison would be confounded by feature availability.
+- Required next dependency: collect missing trace evidence with an authorized
+  trace-capable RPC, then repeat only on a frozen eligible cohort.
