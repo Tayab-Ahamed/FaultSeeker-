@@ -2,8 +2,10 @@
 from contextlib import redirect_stdout
 from copy import deepcopy
 from pathlib import Path
-import hashlib,io,json,pickle,subprocess
-import selected_address_localizer as localizer
+import hashlib,io,json,pickle,subprocess,sys
+ROOT=Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
+from scripts.research import selected_address_localizer as localizer
 import batchC_phase2 as adapters
 from faultseeker.utils.rpc_provider import normalize_trace_node
 from faultseeker.function_analysis.function_ranker import FunctionRanker
@@ -38,7 +40,7 @@ def runtime_inputs(raw,names):
     def render(node,depth=0):
         literal=str(node.get('input') or '')[:10].lower();name=names.get(literal,{}).get('decoded_name') or literal or 'fallback'
         address=str(node.get('to') or '').lower();kind=str(node.get('type') or 'CALL').lower()
-        lines=['    '*depth+('└─ ' if depth else '')+f'[0] {address}::{name}() [{kind}]'] if address else []
+        lines=['    '*depth+('â””â”€ ' if depth else '')+f'[0] {address}::{name}() [{kind}]'] if address else []
         for child in node.get('calls') or []:lines.extend(render(child,depth+1))
         return lines
     return predictions,'\n'.join(render(raw['trace']))
