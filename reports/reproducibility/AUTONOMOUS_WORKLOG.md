@@ -54,6 +54,12 @@ reports, or provenance evidence.
 - Result: exit 0, manifest internally valid, 14 accepted, 0 pending, 0 excluded,
   target 246, status `BLOCKED-BY-DATA`.
 - Commit: `6861508`.
+- Reassessment command: `python -m benchmark.validate_cohort_manifest benchmark/versions/cohort_v4_20261016/cohort_manifest.json --root .`
+- Reassessment result: exit 0, schema 3 internally valid, 22 accepted, 0
+  pending, 0 excluded, 224 needed, status `BLOCKED-BY-DATA`; eight chains are
+  represented and `not_independent_human_review` remains true.
+- Strict gate command: `python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict`
+- Strict gate result: exit 2, correctly refuses the incomplete 246-row target.
 
 ### AR-003 — benchmark container pinning
 
