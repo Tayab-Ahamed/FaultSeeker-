@@ -111,6 +111,7 @@ def test_prefilter_rate_is_tracked():
 
 def test_empty_tracker_reports_zeros_not_estimates():
     report = CostTracker().report()
+    assert report["measured"] is False
     assert report["llm_calls"] == 0
     assert report["actual_cost_usd"] == 0.0
     assert report["cost_reduction_vs_all_cloud"] == 0.0

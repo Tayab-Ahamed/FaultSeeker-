@@ -24,6 +24,9 @@
 Current paper-claim verification: run `python scripts/reproduce_paper.py` and read
 the [claim-by-claim evidence report](reports/local_verification/claim_report.md).
 Local mechanism tests are separate from live-provider and empirical proof.
+For a no-network calibration and cost-evidence audit, run
+`python scripts/reproduce/audit_calibration_cost_evidence.py`; exit code `2`
+is expected while the retained empirical evidence is blocked.
 The legacy cohort labels, historical numbers below, aggregate/proxy experiment
 scripts and legacy calibrator do not establish current paper-claim verification.
 See [reproduction requirements](docs/PAPER_REPRODUCTION.md) for authentic-data

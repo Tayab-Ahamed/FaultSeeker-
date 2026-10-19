@@ -187,7 +187,7 @@ class CostTracker:
             round(1 - (actual / counterfactual), 4) if counterfactual > 0 else 0.0
         )
         return {
-            "measured": True,
+            "measured": bool(self.calls),
             "transactions": self.transactions,
             "prefiltered_benign": self.prefiltered_benign,
             "prefilter_rate": round(self.prefiltered_benign / self.transactions, 4)

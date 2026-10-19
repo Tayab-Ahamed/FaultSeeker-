@@ -31,6 +31,7 @@ reports, or provenance evidence.
 | AR-007 | 6 | coordinator | BLOCKED | Revalidate calibration, routing/cost, and HITL claims | Eligible data, provider authorization, human reviewers | Measured outputs or explicit external blocker |
 | AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | CI, setup, README, and Docker now use the lockfile; replay/tool documentation remains |
 | AR-009 | 8 | coordinator | IN_PROGRESS | Produce final claim/evidence ledger and consistency report | All available evidence | Every material claim classified honestly |
+| AR-010 | 6 | coordinator | DONE | Add offline calibration/cost evidence audit and correct empty cost-tracker measurement flag | Existing calibration and cost artifacts | Audit exits 2 with explicit blocked status; 19 focused tests passed; no external effects |
 
 ## Execution rules
 
@@ -139,3 +140,20 @@ reports, or provenance evidence.
   `test_claim_registry.py`, `test_cohort_rebuild.py`, `test_cohort_versions.py`,
   `test_authentic_publication.py`.
 - These are focused current-revision results, not a completed full-suite result.
+
+### AR-010 — calibration and cost evidence gate
+
+- Changed: `scripts/reproduce/audit_calibration_cost_evidence.py`,
+  `tests/test_calibration_cost_evidence_audit.py`,
+  `faultseeker/research/cost_tracker.py`,
+  `tests/test_cost_tracker_ablation.py`.
+- Command: `python scripts/reproduce/audit_calibration_cost_evidence.py --root .`.
+- Result: exit 2 by design, status `BLOCKED_EMPIRICAL_EVIDENCE`; the retained
+  calibrator is `legacy-unspecified` and non-deployable, the CV artifact has no
+  ECE or row-level provenance, and the measured cost run is 0/100 with no calls.
+- Modeled cost arithmetic remains 35.0%; the old 58% overall interpretation is
+  recorded as removed Tier-2-only arithmetic.
+- Regression command: `python -m pytest tests/test_calibration_cost_evidence_audit.py tests/test_cost_tracker_ablation.py -q -p no:cacheprovider`.
+- Result: exit 0, 19 passed.
+- The empty `CostTracker` now reports `measured: false`; populated call-based
+  reports retain `measured: true`.
