@@ -1,0 +1,27 @@
+{
+  "transaction_hash": "0x674f74b30a3d7bdf15fa60a7c29d96a402ea894a055f624164a8009df98386a0",
+  "address_ranking": [
+    "0x0ad8229d4bc84135786ae752b9a9d53392a8afd4",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x0ad8229d4bc84135786ae752b9a9d53392a8afd4",
+      "function": "0x090f88ca",
+      "selector": "0x090f88ca",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

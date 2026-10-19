@@ -1,0 +1,296 @@
+{
+  "transaction_hash": "0x758efef41e60c0f218682e2fa027c54d8b67029d193dd7277d6a881a24b9a561",
+  "address_ranking": [
+    "0x000000000000000000636f6e736f6c652e6c6f67",
+    "0x60ca4ec4412a3b319f4bd6366bb836395336b397",
+    "0x184497031808f2b6a2126886c712cc41f146e5dc",
+    "0x0fc6c0465c9739d4a42daca22eb3b2cb0eb9937a",
+    "0x1bbf25e71ec48b84d773809b4ba55b6f4be946fb",
+    "0x97be09f2523b39b835da9ea3857cfa1d3c660cbb",
+    "0xb7f221e373e3f44409f91c233477ec2859261758",
+    "0x7fdeb46b3a0916630f36e886d675602b1007fcbb",
+    "0x1820a4b7618bde71dce8cdc73aab6c95905fad24",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x48de6bf9e301946b0a32b053804c61dc5f00c0c3",
+    "0x1e49768714e438e789047f48fd386686a5707db2",
+    "0xdac17f958d2ee523a2206206994597c13d831ec7"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x000000000000000000636f6e736f6c652e6c6f67",
+      "function": "0x9710a9d0",
+      "selector": "0x9710a9d0",
+      "count": 5,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          5
+        ],
+        [
+          0,
+          1,
+          1,
+          12
+        ],
+        [
+          0,
+          1,
+          1,
+          15
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "path_concentration": 2.5,
+      "terminal_fanout": 5,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x0fc6c0465c9739d4a42daca22eb3b2cb0eb9937a",
+      "function": "0x6f54ed75",
+      "selector": "0x6f54ed75",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          3
+        ]
+      ],
+      "path_concentration": 2.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x1bbf25e71ec48b84d773809b4ba55b6f4be946fb",
+      "function": "0x6f54ed75",
+      "selector": "0x6f54ed75",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          2
+        ],
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          4
+        ]
+      ],
+      "path_concentration": 2.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0x60ca4ec4412a3b319f4bd6366bb836395336b397",
+      "function": "0x24394467",
+      "selector": "0x24394467",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          8,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 5,
+      "code_address": "0x60ca4ec4412a3b319f4bd6366bb836395336b397",
+      "function": "0x6eeb9e0f",
+      "selector": "0x6eeb9e0f",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2,
+          5,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 6,
+      "code_address": "0x184497031808f2b6a2126886c712cc41f146e5dc",
+      "function": "tokensReceived",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0,
+          2
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 7,
+      "code_address": "0x60ca4ec4412a3b319f4bd6366bb836395336b397",
+      "function": "0x2e6a5609",
+      "selector": "0x2e6a5609",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          4,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 8,
+      "code_address": "0x97be09f2523b39b835da9ea3857cfa1d3c660cbb",
+      "function": "swap",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          1,
+          10
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 9,
+      "code_address": "0x60ca4ec4412a3b319f4bd6366bb836395336b397",
+      "function": "0xb750dc46",
+      "selector": "0xb750dc46",
+      "count": 8,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          8,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          13,
+          0
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          15,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

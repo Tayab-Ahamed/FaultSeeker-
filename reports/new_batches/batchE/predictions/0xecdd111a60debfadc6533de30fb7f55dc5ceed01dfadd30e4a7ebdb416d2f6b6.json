@@ -1,0 +1,69 @@
+{
+  "transaction_hash": "0xecdd111a60debfadc6533de30fb7f55dc5ceed01dfadd30e4a7ebdb416d2f6b6",
+  "address_ranking": [
+    "0x303a41300baeb37a1028af017b17b8a6edc3066a",
+    "0x0000000000000000000000000000000000000001",
+    "0x4b0e9a7da8bab813efae92a6651019b8bd6c0a29",
+    "0x6980a47bee930a4584b09ee79ebe46484fbdbdd0",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+    "0x760dc1e043d99394a10605b2fa08f123d60faf84",
+    "0xc82bbe41f2cf04e3a8efa18f7032bdd7f6d98a81",
+    "0xdafea492d9c6733ae3d56b7ed1adb60692c98bc5"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x303a41300baeb37a1028af017b17b8a6edc3066a",
+      "function": "multicall",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x4b0e9a7da8bab813efae92a6651019b8bd6c0a29",
+      "function": "multicall",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x0000000000000000000000000000000000000001",
+      "function": "0x2038560f",
+      "selector": "0x2038560f",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

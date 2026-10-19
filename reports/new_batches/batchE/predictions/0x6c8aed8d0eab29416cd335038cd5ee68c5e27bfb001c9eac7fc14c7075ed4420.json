@@ -1,0 +1,244 @@
+{
+  "transaction_hash": "0x6c8aed8d0eab29416cd335038cd5ee68c5e27bfb001c9eac7fc14c7075ed4420",
+  "address_ranking": [
+    "0xddf309b8161aca09ea6bbf30dd7cbd6c474ff700",
+    "0x7911425808e57b110d2451ab67b6980f9ca9d370",
+    "0xaca4263ffdda9e60c7260aaba08c2b8f80d63cb1",
+    "0x8eb4d96a326638bbeb5b11caf659b8529e65a2c8",
+    "0x76ea342bc038d665e8a116392c82552d2605eda1",
+    "0x2901c8b8e6d9f2c9f848987ded74b776ab1f973e",
+    "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x97d8170e04771826a31c4c9b81e9f9191a1c8613"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xddf309b8161aca09ea6bbf30dd7cbd6c474ff700",
+      "function": "0xa705eee2",
+      "selector": "0xa705eee2",
+      "count": 8,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          5,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          2,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          3,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          7,
+          0,
+          0,
+          2
+        ]
+      ],
+      "path_concentration": 2.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xddf309b8161aca09ea6bbf30dd7cbd6c474ff700",
+      "function": "0x01a37fc2",
+      "selector": "0x01a37fc2",
+      "count": 4,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1,
+          5,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          3,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          7,
+          0,
+          0,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x7911425808e57b110d2451ab67b6980f9ca9d370",
+      "function": "0x569937dd",
+      "selector": "0x569937dd",
+      "count": 4,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          7,
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0xaca4263ffdda9e60c7260aaba08c2b8f80d63cb1",
+      "function": "0x4f49cd31",
+      "selector": "0x4f49cd31",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 5,
+      "code_address": "0x76ea342bc038d665e8a116392c82552d2605eda1",
+      "function": "skim",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 6,
+      "code_address": "0x76ea342bc038d665e8a116392c82552d2605eda1",
+      "function": "sync",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          4
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 7,
+      "code_address": "0x8eb4d96a326638bbeb5b11caf659b8529e65a2c8",
+      "function": "0x60008054",
+      "selector": "0x60008054",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

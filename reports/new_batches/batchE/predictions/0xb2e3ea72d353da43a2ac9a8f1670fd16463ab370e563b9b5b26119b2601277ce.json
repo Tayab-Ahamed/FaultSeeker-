@@ -1,0 +1,123 @@
+{
+  "transaction_hash": "0xb2e3ea72d353da43a2ac9a8f1670fd16463ab370e563b9b5b26119b2601277ce",
+  "address_ranking": [
+    "0xeb2423fbeb5d94cd83136a74341a39a2487fb3cb",
+    "0xcff07c4e6aa9e2fec04daaf5f41d1b10f3adadf4",
+    "0x18e05c519a1f6f1b5844d60c282c544cebf651b1",
+    "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+    "0x854373387e41371ac6e307a1f29603c6fa10d872",
+    "0xe2fe530c047f2d85298b07d9333c05737f1435fb",
+    "0x48d118c9185e4dbafe7f3813f8f29ec8a6248359",
+    "0xc36442b4a4522e871399cd717abdd847ab11fe88",
+    "0x2d4abfdcd1385951df4317f9f3463fb11b9a31df",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xa5644e29708357803b5a882d272c41cc0df92b34",
+    "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+    "0x389999216860ab8e0175387a0c90e5c52522c945",
+    "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+    "0x7a809081f991ecfe0ab2727c7e90d2ad7c2e411e",
+    "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "0xa2327a938febf5fec13bacfb16ae10ecbc4cbdcf",
+    "0xf3b9569f82b18aef890de263b84189bd33ebe452",
+    "0x0000000000000000000000000000000000000004",
+    "0x6b175474e89094c44da98b954eedeac495271d0f",
+    "0x67cea36eeb36ace126a3ca6e21405258130cf33c",
+    "0xc5fb36dd2fb59d3b98deff88425a3f425ee469ed",
+    "0x4ae1386effb9806a1c3f9303d066dbdbb2e44f17",
+    "0x9267c29e4f517ce9f6d603a15b50aa47ce32278d",
+    "0x7ff7a55a7c637e3953ab25569c335e04b96c475b"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xcff07c4e6aa9e2fec04daaf5f41d1b10f3adadf4",
+      "function": "0xf9b65204",
+      "selector": "0xf9b65204",
+      "count": 4,
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          19
+        ],
+        [
+          0,
+          28
+        ]
+      ],
+      "path_concentration": 4.0,
+      "terminal_fanout": 4,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xeb2423fbeb5d94cd83136a74341a39a2487fb3cb",
+      "function": "0x61016060",
+      "selector": "0x61016060",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x18e05c519a1f6f1b5844d60c282c544cebf651b1",
+      "function": "0x61016060",
+      "selector": "0x61016060",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          7,
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "function": "exchange",
+      "selector": null,
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          3
+        ],
+        [
+          0,
+          19,
+          3
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

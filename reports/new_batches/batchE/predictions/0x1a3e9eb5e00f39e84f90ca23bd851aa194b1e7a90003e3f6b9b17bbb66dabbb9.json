@@ -1,0 +1,60 @@
+{
+  "transaction_hash": "0x1a3e9eb5e00f39e84f90ca23bd851aa194b1e7a90003e3f6b9b17bbb66dabbb9",
+  "address_ranking": [
+    "0x03f911aedc25c770e701b8f563e8102cfacd62c0",
+    "0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97",
+    "0xd683b81c2608980db90a6fd730153e04629ff1a3",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xf073a21f0d68adacfff34d5b8df04550c944e348"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x03f911aedc25c770e701b8f563e8102cfacd62c0",
+      "function": "uniswapV3SwapCallback",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97",
+      "function": "0x",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0xd683b81c2608980db90a6fd730153e04629ff1a3",
+      "function": "0x000000c5",
+      "selector": "0x000000c5",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

@@ -1,0 +1,130 @@
+{
+  "transaction_hash": "0x9b9a6dd05526a8a4b40e5e1a74a25df6ecccae6ee7bf045911ad89a1dd3f0814",
+  "address_ranking": [
+    "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+    "0x9188738a7ca1e4b2af840a77e8726cc6dcbe7bdb",
+    "0x80bf7db69556d9521c03461978b8fc731dbbd4e4",
+    "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
+    "0x4585fe77225b41b697c938b018e2ac67ac5a20c0",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x229b8325bb9ac04602898b7e8989998710235d5f"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+      "function": "safeTransferFrom",
+      "selector": null,
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1,
+          3
+        ]
+      ],
+      "path_concentration": 2.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+      "function": "0x71e109d4",
+      "selector": "0x71e109d4",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x9188738a7ca1e4b2af840a77e8726cc6dcbe7bdb",
+      "function": "change",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          4
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+      "function": "startPool",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          5
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 5,
+      "code_address": "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+      "function": "endPool",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          6
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 6,
+      "code_address": "0xf3f84ce038442ae4c4dcb6a8ca8bacd7f28c9bde",
+      "function": "redeemShort",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2,
+          1,
+          7
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

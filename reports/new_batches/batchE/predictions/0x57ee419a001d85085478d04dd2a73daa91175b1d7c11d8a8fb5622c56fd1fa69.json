@@ -1,0 +1,235 @@
+{
+  "transaction_hash": "0x57ee419a001d85085478d04dd2a73daa91175b1d7c11d8a8fb5622c56fd1fa69",
+  "address_ranking": [
+    "0x3747484567119592ff6841df399cf679955a111a",
+    "0x48afbbd342f64ef8a9ab1c143719b63c2ad81710",
+    "0xdf261f967e87b2aa44e18a22f4ace5d7f74f03cc",
+    "0xcadd976ae3a04352b4ab28865af07ad2c366d675",
+    "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+    "0xff13d5899aa7d84c10e4cd6fb030b80554424136",
+    "0xc3d10bd8e051a2be6408d18be8464654f699a25a",
+    "0xba12222222228d8ba445958a75a0704d566bf2c8",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xce88686553686da562ce7cea497ce749da109f9f",
+    "0xcf0e3ab3bc3b4a64f2d169decea24bc17b038278",
+    "0x48f1d0f5831eb6e544f8cbde777b527b87a1be98"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xdf261f967e87b2aa44e18a22f4ace5d7f74f03cc",
+      "function": "0x20168730",
+      "selector": "0x20168730",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          5
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          6
+        ]
+      ],
+      "path_concentration": 2.0,
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xcadd976ae3a04352b4ab28865af07ad2c366d675",
+      "function": "0xc3e8c4fa",
+      "selector": "0xc3e8c4fa",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+      "function": "uniswapV3SwapCallback",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          8,
+          0,
+          2
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0xdf261f967e87b2aa44e18a22f4ace5d7f74f03cc",
+      "function": "0xc3e8c4fa",
+      "selector": "0xc3e8c4fa",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 5,
+      "code_address": "0xcadd976ae3a04352b4ab28865af07ad2c366d675",
+      "function": "0x20168730",
+      "selector": "0x20168730",
+      "count": 2,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          5,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          3,
+          6,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 6,
+      "code_address": "0x3747484567119592ff6841df399cf679955a111a",
+      "function": "depositETH",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          1,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 7,
+      "code_address": "0x3747484567119592ff6841df399cf679955a111a",
+      "function": "mint",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          3,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 8,
+      "code_address": "0x48afbbd342f64ef8a9ab1c143719b63c2ad81710",
+      "function": "depositETH",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 9,
+      "code_address": "0x48afbbd342f64ef8a9ab1c143719b63c2ad81710",
+      "function": "mint",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          3
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 10,
+      "code_address": "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+      "function": "exactInputSingle",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0,
+          3,
+          8
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

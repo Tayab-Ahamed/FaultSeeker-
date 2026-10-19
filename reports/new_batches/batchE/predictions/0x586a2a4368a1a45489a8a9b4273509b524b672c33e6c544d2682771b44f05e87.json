@@ -1,0 +1,50 @@
+{
+  "transaction_hash": "0x586a2a4368a1a45489a8a9b4273509b524b672c33e6c544d2682771b44f05e87",
+  "address_ranking": [
+    "0x050163597d9905ba66400f7b3ca8f2ef23df702d",
+    "0x83f015cf92626fba4368a2c8489eb01fa3e6044b",
+    "0xba12222222228d8ba445958a75a0704d566bf2c8",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0xce88686553686da562ce7cea497ce749da109f9f",
+    "0x931b8905c310ab133373f50ba66feba2793f80ea",
+    "0x71e1f8e809dc8911fcac95043bc94929a36505a5",
+    "0xee4073183e07aa0fc1b96d6308793840f02b6e88"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x83f015cf92626fba4368a2c8489eb01fa3e6044b",
+      "function": "test",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          4
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x050163597d9905ba66400f7b3ca8f2ef23df702d",
+      "function": "buy",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          5
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

@@ -1,0 +1,43 @@
+{
+  "transaction_hash": "0xbeef352f716973043236f73dd5104b9d905fd04b7fc58d9958ac5462e7e3dbc1",
+  "address_ranking": [
+    "0xdb27d4ff4be1cd04c34a7cb6f47402c37cb73459",
+    "0xd129d8c12f0e7aa51157d9e6cc3f7ece2dc84ecd",
+    "0xd215ffaf0f85fb6f93f11e49bd6175ad58af0dfd"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xdb27d4ff4be1cd04c34a7cb6f47402c37cb73459",
+      "function": "setMarketingWallet",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xdb27d4ff4be1cd04c34a7cb6f47402c37cb73459",
+      "function": "rescueEth",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

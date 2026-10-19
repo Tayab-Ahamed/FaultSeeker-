@@ -1,0 +1,42 @@
+{
+  "transaction_hash": "0xf5f251fd4ed77e24d803d8241e2e852f0781a145891411dd4eb45306eacf12a8",
+  "address_ranking": [
+    "0x16d0dc96c1bdf283ce1ff10e01924ac76b06c95c",
+    "0x0bf3ceaef75e4904ca08ff42f0d83e89b16c30b2",
+    "0xdac17f958d2ee523a2206206994597c13d831ec7"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x16d0dc96c1bdf283ce1ff10e01924ac76b06c95c",
+      "function": "multiCallWithRevert",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x0bf3ceaef75e4904ca08ff42f0d83e89b16c30b2",
+      "function": "0x8fad8aad",
+      "selector": "0x8fad8aad",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

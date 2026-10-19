@@ -1,0 +1,50 @@
+{
+  "transaction_hash": "0x85dc2a433fd9eaadaf56fd8156c956da23fc17e5ef83955c7e2c4c37efa20bb5",
+  "address_ranking": [
+    "0x103936aec861d7cfb2d5c7f9dd1a671085f5fdd3",
+    "0x4cb1292d6a860ca1b0991fc7dfa30a656ef7e7c7",
+    "0xb983e01458529665007ff7e0cddecdb74b967eb6",
+    "0xde744d544a9d768e96c21b5f087fc54b776e9b25",
+    "0xd8ee69652e4e4838f2531732a46d1f7f584f0b7f",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0x103936aec861d7cfb2d5c7f9dd1a671085f5fdd3",
+      "function": "getLenderInterestData",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x4cb1292d6a860ca1b0991fc7dfa30a656ef7e7c7",
+      "function": "getTotalPrincipal",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

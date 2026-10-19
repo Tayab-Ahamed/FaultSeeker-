@@ -1,0 +1,64 @@
+{
+  "transaction_hash": "0xe8cee3450545a865b4a8fffd93938ae93429574dc8e01b02bc6a02f2f4490e4e",
+  "address_ranking": [
+    "0xf3cb07a3e57bf69301c3a51d8ac87427c53aa357",
+    "0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5",
+    "0xbdb0bc0941ba81672593cd8b3f9281789f2754d1",
+    "0xb3912b20b3abc78c15e85e13ec0bf334fbb924f7",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+    "0xe7b4e528308c84fd6698906b6224615e9e30d236",
+    "0x147c7a8c5d68019495ccb17093cf8c901603efac",
+    "0x7248939f65bdd23aab9eaab1bc4a4f909567486e"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xf3cb07a3e57bf69301c3a51d8ac87427c53aa357",
+      "function": "flash",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5",
+      "function": "0x",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0xbdb0bc0941ba81672593cd8b3f9281789f2754d1",
+      "function": "0x3d35e910",
+      "selector": "0x3d35e910",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}

@@ -1,0 +1,573 @@
+{
+  "transaction_hash": "0x90b4fcf583444d44efb8625e6f253cfcb786d2f4eda7198bdab67a54108cd5f4",
+  "address_ranking": [
+    "0xf2c8e860ca12cde3f3195423ecf54427a4f30916",
+    "0x5aec8469414332d62bf5058fb91f2f8457e5c5cb",
+    "0x34bccf4af03870265fe99cec262524f343cca7ff",
+    "0xd11ee5a6a9ebd9327360d7a82e40d2f8c314e985",
+    "0x5da151b95657e788076d04d56234bd93e409cb09",
+    "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+    "0x75eabb7cb05a5057e092fdbbd86fb801b4d02b1f",
+    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    "0x0adedc7487c59ece60178cf69b8df7e3c4730d90",
+    "0xd9db270c1b5e3bd161e8c8503c55ceabee709552"
+  ],
+  "observed_function_candidates": [
+    {
+      "rank": 1,
+      "code_address": "0xf2c8e860ca12cde3f3195423ecf54427a4f30916",
+      "function": "claim",
+      "selector": null,
+      "count": 46,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          2
+        ],
+        [
+          0,
+          4,
+          4
+        ],
+        [
+          0,
+          4,
+          6
+        ],
+        [
+          0,
+          4,
+          8
+        ],
+        [
+          0,
+          4,
+          10
+        ],
+        [
+          0,
+          4,
+          12
+        ],
+        [
+          0,
+          4,
+          14
+        ],
+        [
+          0,
+          4,
+          16
+        ],
+        [
+          0,
+          4,
+          18
+        ],
+        [
+          0,
+          4,
+          20
+        ],
+        [
+          0,
+          4,
+          22
+        ],
+        [
+          0,
+          4,
+          24
+        ],
+        [
+          0,
+          4,
+          26
+        ],
+        [
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          10,
+          2
+        ],
+        [
+          0,
+          10,
+          4
+        ],
+        [
+          0,
+          10,
+          6
+        ],
+        [
+          0,
+          10,
+          8
+        ],
+        [
+          0,
+          10,
+          10
+        ],
+        [
+          0,
+          10,
+          12
+        ],
+        [
+          0,
+          10,
+          14
+        ],
+        [
+          0,
+          10,
+          16
+        ],
+        [
+          0,
+          10,
+          18
+        ],
+        [
+          0,
+          14,
+          0
+        ],
+        [
+          0,
+          14,
+          2
+        ],
+        [
+          0,
+          14,
+          4
+        ],
+        [
+          0,
+          14,
+          6
+        ],
+        [
+          0,
+          14,
+          8
+        ],
+        [
+          0,
+          14,
+          10
+        ],
+        [
+          0,
+          14,
+          12
+        ],
+        [
+          0,
+          14,
+          14
+        ],
+        [
+          0,
+          14,
+          16
+        ],
+        [
+          0,
+          14,
+          18
+        ],
+        [
+          0,
+          14,
+          20
+        ],
+        [
+          0,
+          14,
+          22
+        ],
+        [
+          0,
+          14,
+          24
+        ],
+        [
+          0,
+          14,
+          26
+        ],
+        [
+          0,
+          14,
+          28
+        ],
+        [
+          0,
+          14,
+          30
+        ],
+        [
+          0,
+          14,
+          32
+        ],
+        [
+          0,
+          14,
+          34
+        ],
+        [
+          0,
+          14,
+          36
+        ],
+        [
+          0,
+          14,
+          38
+        ],
+        [
+          0,
+          14,
+          40
+        ],
+        [
+          0,
+          14,
+          42
+        ]
+      ],
+      "path_concentration": 15.333333333333334,
+      "terminal_fanout": 22,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 2,
+      "code_address": "0xf2c8e860ca12cde3f3195423ecf54427a4f30916",
+      "function": "withdraw",
+      "selector": null,
+      "count": 46,
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          1
+        ],
+        [
+          0,
+          4,
+          3
+        ],
+        [
+          0,
+          4,
+          5
+        ],
+        [
+          0,
+          4,
+          7
+        ],
+        [
+          0,
+          4,
+          9
+        ],
+        [
+          0,
+          4,
+          11
+        ],
+        [
+          0,
+          4,
+          13
+        ],
+        [
+          0,
+          4,
+          15
+        ],
+        [
+          0,
+          4,
+          17
+        ],
+        [
+          0,
+          4,
+          19
+        ],
+        [
+          0,
+          4,
+          21
+        ],
+        [
+          0,
+          4,
+          23
+        ],
+        [
+          0,
+          4,
+          25
+        ],
+        [
+          0,
+          4,
+          27
+        ],
+        [
+          0,
+          10,
+          1
+        ],
+        [
+          0,
+          10,
+          3
+        ],
+        [
+          0,
+          10,
+          5
+        ],
+        [
+          0,
+          10,
+          7
+        ],
+        [
+          0,
+          10,
+          9
+        ],
+        [
+          0,
+          10,
+          11
+        ],
+        [
+          0,
+          10,
+          13
+        ],
+        [
+          0,
+          10,
+          15
+        ],
+        [
+          0,
+          10,
+          17
+        ],
+        [
+          0,
+          10,
+          19
+        ],
+        [
+          0,
+          14,
+          1
+        ],
+        [
+          0,
+          14,
+          3
+        ],
+        [
+          0,
+          14,
+          5
+        ],
+        [
+          0,
+          14,
+          7
+        ],
+        [
+          0,
+          14,
+          9
+        ],
+        [
+          0,
+          14,
+          11
+        ],
+        [
+          0,
+          14,
+          13
+        ],
+        [
+          0,
+          14,
+          15
+        ],
+        [
+          0,
+          14,
+          17
+        ],
+        [
+          0,
+          14,
+          19
+        ],
+        [
+          0,
+          14,
+          21
+        ],
+        [
+          0,
+          14,
+          23
+        ],
+        [
+          0,
+          14,
+          25
+        ],
+        [
+          0,
+          14,
+          27
+        ],
+        [
+          0,
+          14,
+          29
+        ],
+        [
+          0,
+          14,
+          31
+        ],
+        [
+          0,
+          14,
+          33
+        ],
+        [
+          0,
+          14,
+          35
+        ],
+        [
+          0,
+          14,
+          37
+        ],
+        [
+          0,
+          14,
+          39
+        ],
+        [
+          0,
+          14,
+          41
+        ],
+        [
+          0,
+          14,
+          43
+        ]
+      ],
+      "path_concentration": 15.333333333333334,
+      "terminal_fanout": 22,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 3,
+      "code_address": "0x5aec8469414332d62bf5058fb91f2f8457e5c5cb",
+      "function": "0x22a10c2d",
+      "selector": "0x22a10c2d",
+      "count": 3,
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          14
+        ]
+      ],
+      "path_concentration": 3.0,
+      "terminal_fanout": 3,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 4,
+      "code_address": "0x34bccf4af03870265fe99cec262524f343cca7ff",
+      "function": "distribute",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 5,
+      "code_address": "0x5aec8469414332d62bf5058fb91f2f8457e5c5cb",
+      "function": "S",
+      "selector": null,
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0,
+          16
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    },
+    {
+      "rank": 6,
+      "code_address": "0xd11ee5a6a9ebd9327360d7a82e40d2f8c314e985",
+      "function": "0x944351ec",
+      "selector": "0x944351ec",
+      "count": 1,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "path_concentration": 1.0,
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order"
+    }
+  ],
+  "generic_decoding_not_verified_abi": true
+}
