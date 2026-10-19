@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_FUSION_REGULARIZATION_DIAGNOSTIC_ONLY",
+  "hypothesis": "Stronger fixed L2 regularization may stabilize the 11-feature full-fusion calibrator on a small positive class.",
+  "population": {
+    "rows": 1115,
+    "exploit_rows": 115,
+    "benign_rows": 1000
+  },
+  "folds": 5,
+  "threshold": 0.5,
+  "baseline_l2": 0.001,
+  "candidate_l2": 0.01,
+  "metrics": {
+    "baseline": {
+      "tp": 74,
+      "fp": 9,
+      "tn": 991,
+      "fn": 41,
+      "precision": 0.8916,
+      "recall": 0.6435,
+      "f1": 0.7475,
+      "false_positive_rate": 0.009,
+      "accuracy": 0.9552,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6768,
+        0.8103
+      ],
+      "brier": 0.033944,
+      "ece": 0.036376
+    },
+    "candidate": {
+      "tp": 72,
+      "fp": 11,
+      "tn": 989,
+      "fn": 43,
+      "precision": 0.8675,
+      "recall": 0.6261,
+      "f1": 0.7273,
+      "false_positive_rate": 0.011,
+      "accuracy": 0.9516,
+      "threshold": 0.5,
+      "n": 1115,
+      "f1_ci": [
+        0.6524,
+        0.7921
+      ],
+      "brier": 0.035604,
+      "ece": 0.038242
+    }
+  },
+  "paired_mcnemar": {
+    "counts": {
+      "a_only_correct": 4,
+      "b_only_correct": 0
+    },
+    "statistic": {
+      "chi_square": 2.25,
+      "discordant_pairs": 4
+    }
+  },
+  "changed_examples": [
+    {
+      "txn_hash": "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+      "chain": "eth",
+      "label": 1,
+      "features": {
+        "functioncall_count": 43.0,
+        "address_count": 5.0,
+        "max_depth": 7.0,
+        "gas_cost": 191309.0
+      },
+      "baseline_score": 0.5195685019619608,
+      "candidate_score": 0.4488947446540888,
+      "baseline_prediction": true,
+      "candidate_prediction": false
+    },
+    {
+      "txn_hash": "0xe4db1550e3aa78a05e93bfd8fbe21b6eba5cce50dc06688949ab479ebed18048",
+      "chain": "bsc",
+      "label": 1,
+      "features": {
+        "functioncall_count": 2.0,
+        "address_count": 2.0,
+        "max_depth": 2.0,
+        "gas_cost": 5394364.0
+      },
+      "baseline_score": 0.5475648222115661,
+      "candidate_score": 0.4614705221083125,
+      "baseline_prediction": true,
+      "candidate_prediction": false
+    },
+    {
+      "txn_hash": "0x7c33203421181fbe3bb5ced6add5fc8dbd770a48af37bac510bb8cdd7ad9ec30",
+      "chain": "eth",
+      "label": 0,
+      "features": {
+        "functioncall_count": 107.0,
+        "address_count": 28.0,
+        "max_depth": 13.0,
+        "gas_cost": 658385.0
+      },
+      "baseline_score": 0.48334794345299076,
+      "candidate_score": 0.5454970123580593,
+      "baseline_prediction": false,
+      "candidate_prediction": true
+    },
+    {
+      "txn_hash": "0xce8daf2b5d70e50aa60f1b6a91388183eb94e58a5503c24b0a19309a2f3fe3f5",
+      "chain": "eth",
+      "label": 0,
+      "features": {
+        "functioncall_count": 120.0,
+        "address_count": 27.0,
+        "max_depth": 9.0,
+        "gas_cost": 1043116.0
+      },
+      "baseline_score": 0.4483411427548857,
+      "candidate_score": 0.5142516015124132,
+      "baseline_prediction": false,
+      "candidate_prediction": true
+    }
+  ],
+  "input_sha256": {
+    "exploit": "c0abf4d3ae1fe6d2eb2e5f6d98830d24f8a3733aa276155345fbd8d1cb7292c5",
+    "benign_traces": "acd378c36393cf3fcb04e5e498bbeb90d6ce2147c1a3a8647fd5853e35af5977"
+  },
+  "raw_predictions": "reports/reproducibility/legacy_115_diagnostic/fusion_regularization/predictions.jsonl",
+  "original_246_row_claim": "not evaluated; legacy 115-row diagnostic only",
+  "output_sha256": {
+    "predictions_jsonl": "9cd3875872334e6bed818056f44c215d47402c589cb9ba4994758719bffc92ad"
+  }
+}

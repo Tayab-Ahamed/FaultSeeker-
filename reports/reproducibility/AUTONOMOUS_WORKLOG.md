@@ -644,3 +644,19 @@ reports, or provenance evidence.
   examples, and checksums are under
   `reports/reproducibility/legacy_115_diagnostic/feature_fusion_validation/`;
   the concise handoff is `reports/reproducibility/FEATURE_FUSION_VALIDATION_20261019.md`.
+
+### AR-027 — stronger regularization negative result
+
+- After the ablation result, tested one predeclared stability hypothesis rather
+  than searching hyperparameters: increase full-fusion L2 from `0.001` to
+  `0.01`, holding rows, folds, features, epochs, learning rate, and threshold
+  fixed.
+- Candidate worsened the validated full-fusion result: TP/FP/TN/FN
+  `72/11/989/43` versus `74/9/991/41`; F1 `0.7273` versus `0.7475`; FPR
+  `0.011` versus `0.009`; Brier `0.035604` versus `0.033944`; ECE `0.038242`
+  versus `0.036376`.
+- Paired comparison: 4 baseline-only correct, 0 candidate-only correct,
+  continuity-corrected McNemar chi-square `2.25`. The stronger-regularization
+  candidate is rejected. No further arbitrary fusion search will be run on
+  this exposed legacy cohort.
+- Evidence and checksums: `reports/reproducibility/legacy_115_diagnostic/fusion_regularization/`.
