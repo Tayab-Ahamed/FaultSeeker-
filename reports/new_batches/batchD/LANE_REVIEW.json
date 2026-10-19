@@ -1,0 +1,127 @@
+{
+  "B": {
+    "adopted": false,
+    "baseline": [
+      40,
+      55,
+      58
+    ],
+    "crossfold_identity_incident_contract_overlaps": 0,
+    "delta": [
+      0,
+      0,
+      0
+    ],
+    "nonzero_evidence_scores": 0,
+    "oof": [
+      40,
+      55,
+      58
+    ],
+    "overlapping_evidence_cases": 1,
+    "reason": "No incremental benefit; ABI evidence collection conditioned on ground-truth function names; tuned baseline inherited"
+  },
+  "C": {
+    "adopted": false,
+    "baseline": [
+      25,
+      49,
+      52
+    ],
+    "cache_only_changed_labels": 0,
+    "cache_only_oof": [
+      24,
+      49,
+      54
+    ],
+    "crossfold_incident_contract_overlaps": 0,
+    "delta": [
+      -1,
+      0,
+      2
+    ],
+    "oof": [
+      24,
+      49,
+      54
+    ],
+    "reason": "Primary top-1 regression on advertised population; duplicate weighting and global GT selector dependency"
+  },
+  "D": {
+    "adopted": true,
+    "connected_groups": 98,
+    "corrected_oof": [
+      40,
+      56,
+      58,
+      69
+    ],
+    "corrections": [
+      "Nested last-child indentation correctly attributes proxy parent",
+      "Union each individual URL, incident name and function/line address",
+      "Only public selector cache; no ground-truth-derived reverse lookup",
+      "Evaluate against current production ordering rather than original ordering"
+    ],
+    "delta": [
+      0,
+      1,
+      0,
+      1
+    ],
+    "fold_sizes": [
+      22,
+      22,
+      22,
+      22,
+      22
+    ],
+    "interpretation": "Exploratory OOF; upstream ranker previously tuned; fresh Batch D sole new test",
+    "original_reviewed_oof": [
+      40,
+      56,
+      58,
+      69
+    ],
+    "production_baseline": [
+      40,
+      55,
+      58,
+      68
+    ],
+    "report": "reports/research_results/candidate_generation_cv_reviewed_20261018.json",
+    "unique109_baseline": [
+      39,
+      54,
+      57,
+      67
+    ],
+    "unique109_oof": [
+      39,
+      55,
+      57,
+      68
+    ]
+  },
+  "commits": 0,
+  "development_records": 110,
+  "freshness": {
+    "draft_rows": 10,
+    "prior_hash_address_incident_stem_intersections": 0,
+    "prior_transaction_named_json_artifacts": 0,
+    "source_hash_and_signature_checks": 10,
+    "unique_hashes": 10,
+    "unique_victim_addresses": 10
+  },
+  "llm_calls": 0,
+  "pushes": 0,
+  "scope": "Offline evaluator/leakage review before fresh Batch D; no paper changes",
+  "software_checks": {
+    "full_suite_passed": 1019,
+    "full_suite_seconds": 148.7,
+    "full_suite_skipped": 1,
+    "junit": "build/lane_review_final.xml",
+    "ledger_unchanged": true,
+    "targeted_passed": 17
+  },
+  "unique_transactions": 109
+}

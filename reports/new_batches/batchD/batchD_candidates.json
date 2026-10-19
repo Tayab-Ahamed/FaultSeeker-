@@ -1,0 +1,1014 @@
+{
+  "artifact_sha256": "e349997c875542ffb85a2205dbc4357e31d547c7dffb3cf1f12aebf3634becf7",
+  "batch_id": "batchD",
+  "chain": "eth",
+  "draft_sha256": "49246487faa8fa9a7c43f2f9826f0868d774ffef4cbc3eb6d1451d8e8a5be8a3",
+  "limitations": [
+    "Convenience sample of cached DeFiHackLabs PoC targets, not independently adjudicated root causes.",
+    "Cached source bytes are SHA-256 pinned; upstream commit was not recorded.",
+    "110 development records contain 109 unique transactions; OOF was exploratory."
+  ],
+  "row_count": 10,
+  "rows": [
+    {
+      "chain": "eth",
+      "full_signature": "enter(uint256)",
+      "incident_date": "2022-10",
+      "incident_name": "N00d",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/N00d_exp.sol",
+      "selector": "0xa59f3e0c",
+      "source_cache": "reports/cohort_rebuild_v2/http/517d08214bbace5f5700785107cfa356f3c95435f87e1346cedb726e3e3e0994.gz",
+      "source_cache_sha256": "7a5574f219aa41a836e4c0bae0ff0fc78988210aa5f697921c38cdb29d520bc9",
+      "source_commit": null,
+      "source_content_sha256": "1cc00da76422804e8ac6c865f196fea1cf1cc60ed9d1bd02e34ccbec8c6d90d1",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 27,
+            "text": "    sushiBar Bar = sushiBar(0x3561081260186E69369E6C32F280836554292E08);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 36,
+            "text": "        cheats.createSelectFork(\"mainnet\", 15_826_379);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 66,
+            "text": "        Bar.enter(enterAmount);"
+          },
+          {
+            "line": 79,
+            "text": "        if (to == address(Bar) && i < 2) {"
+          },
+          {
+            "line": 80,
+            "text": "            i++;"
+          },
+          {
+            "line": 81,
+            "text": "            Bar.enter(enterAmount);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 14,
+            "text": "    function enter("
+          },
+          {
+            "line": 15,
+            "text": "        uint256"
+          },
+          {
+            "line": 16,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// https://etherscan.io/tx/0x8037b3dc0bf9d5d396c10506824096afb8125ea96ada011d35faa89fa3893aea"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2022-10/N00d_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2022-10/N00d_exp.sol",
+      "transaction_hash": "0x8037b3dc0bf9d5d396c10506824096afb8125ea96ada011d35faa89fa3893aea",
+      "vulnerable_contract_address": "0x3561081260186e69369e6c32f280836554292e08"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "borrow(address,uint256,uint256,uint16,address)",
+      "incident_date": "2023-01",
+      "incident_name": "Roe Finance",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/RoeFinance_exp.sol",
+      "selector": "0xa415bcad",
+      "source_cache": "reports/cohort_rebuild_v2/http/8d84c351d0eb5283aacbcf558284131f1d18a6f9e66594dbb7f6477891b89a6a.gz",
+      "source_cache_sha256": "f53a3c2e2fddd186e7b504d233514792860ed691be5c86e955b39592435f0c3b",
+      "source_commit": null,
+      "source_content_sha256": "3977b2918bfbc45e6e61e7b32cf5fde531f5858228c08e6a3e138c22e3d10fcd",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 29,
+            "text": "    ROE roe = ROE(0x5F360c6b7B25DfBfA4F10039ea0F7ecfB9B02E60);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 43,
+            "text": "        cheats.createSelectFork(\"mainnet\", 16_384_469);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 75,
+            "text": "        roe.deposit(address(USDC), USDC.balanceOf(address(this)), tx.origin, 0);"
+          },
+          {
+            "line": 76,
+            "text": "        roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);"
+          },
+          {
+            "line": 77,
+            "text": "        for (uint256 i; i < 49; ++i) {"
+          },
+          {
+            "line": 78,
+            "text": "            roe.deposit(address(Pair), borrowAmount, address(this), 0);"
+          },
+          {
+            "line": 79,
+            "text": "            roe.borrow(address(Pair), borrowAmount, 2, 0, tx.origin);"
+          },
+          {
+            "line": 85,
+            "text": "        roe.borrow(address(USDC), flashLoanAmount, 2, 0, address(this));"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 14,
+            "text": "    function borrow("
+          },
+          {
+            "line": 15,
+            "text": "        address asset,"
+          },
+          {
+            "line": 16,
+            "text": "        uint256 amount,"
+          },
+          {
+            "line": 17,
+            "text": "        uint256 interestRateMode,"
+          },
+          {
+            "line": 18,
+            "text": "        uint16 referralCode,"
+          },
+          {
+            "line": 19,
+            "text": "        address onBehalfOf"
+          },
+          {
+            "line": 20,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 10,
+            "text": "// https://etherscan.io/tx/0x927b784148b60d5233e57287671cdf67d38e3e69e5b6d0ecacc7c1aeaa98985b"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-01/RoeFinance_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-01/RoeFinance_exp.sol",
+      "transaction_hash": "0x927b784148b60d5233e57287671cdf67d38e3e69e5b6d0ecacc7c1aeaa98985b",
+      "vulnerable_contract_address": "0x5f360c6b7b25dfbfa4f10039ea0f7ecfb9b02e60"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "doExchange(uint256)",
+      "incident_date": "2023-05",
+      "incident_name": "ERC20 Token Bank",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/ERC20TokenBank_exp.sol",
+      "selector": "0xfcb5d44d",
+      "source_cache": "reports/cohort_rebuild_v2/http/ddf01a11ef140d72a52f1135252419ee56262cf751fef386b346802b8f64e5ed.gz",
+      "source_cache_sha256": "61df3af601a8cdab5f701fdf22ddb0c2d70a0466716c5e33d4c1a88370659ef3",
+      "source_commit": null,
+      "source_content_sha256": "abbe2134cca4f66d22e37a816ddaeb666715de79432261b2a8856cf5ea0c7b48",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x765b8d7cd8ff304f796f4b6fb1bcf78698333f6d"
+          },
+          {
+            "line": 28,
+            "text": "    IExchangeBetweenPools ExchangeBetweenPools = IExchangeBetweenPools(0x765b8d7Cd8FF304f796f4B6fb1BCf78698333f6D);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 36,
+            "text": "        cheats.createSelectFork(\"mainnet\", 17_376_906);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 54,
+            "text": "        curveYSwap.exchange_underlying(1, 2, 120_000 * 1e6, 0);"
+          },
+          {
+            "line": 55,
+            "text": "        ExchangeBetweenPools.doExchange(victimAmount);"
+          },
+          {
+            "line": 56,
+            "text": "        curveYSwap.exchange_underlying(2, 1, USDT.balanceOf(address(this)), 0);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 20,
+            "text": "    function doExchange("
+          },
+          {
+            "line": 21,
+            "text": "        uint256 amounts"
+          },
+          {
+            "line": 22,
+            "text": "    ) external returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x578a195e05f04b19fd8af6358dc6407aa1add87c3167f053beb990d6b4735f26"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-05/ERC20TokenBank_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-05/ERC20TokenBank_exp.sol",
+      "transaction_hash": "0x578a195e05f04b19fd8af6358dc6407aa1add87c3167f053beb990d6b4735f26",
+      "vulnerable_contract_address": "0x765b8d7cd8ff304f796f4b6fb1bcf78698333f6d"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "claim(address[],uint256[],uint256[],uint256,uint256,bytes)",
+      "incident_date": "2023-07",
+      "incident_name": "Azuki DAO",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/AzukiDAO_exp.sol",
+      "selector": "0x3319f3e3",
+      "source_cache": "reports/cohort_rebuild_v2/http/cac65fe9778e027b9ac06c4a85a51c0c7c069f5ad103cba7050d53a1132f1828.gz",
+      "source_cache_sha256": "8697ad1c97bd2e857bd8d7409cc694f0436c37af74013f28845ada69448e9140",
+      "source_commit": null,
+      "source_content_sha256": "127e1af9046f6f9479cfd6d7113b267d4905c4977bbb7422382dc983ef89152a",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 9,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0x8189afbe7b0e81dae735ef027cd31371b3974feb"
+          },
+          {
+            "line": 28,
+            "text": "    IBean Bean = IBean(0x8189AFBE7b0e81daE735EF027cd31371b3974FeB);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 36,
+            "text": "        cheats.createSelectFork(\"mainnet\", 17_593_308);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 68,
+            "text": "        // Call claim() 200 times with the same signature. Invalid signature check in Bean token contract."
+          },
+          {
+            "line": 69,
+            "text": "        // More iterations possible."
+          },
+          {
+            "line": 70,
+            "text": "        for (uint256 i; i < 200; ++i) {"
+          },
+          {
+            "line": 71,
+            "text": "            Bean.claim("
+          },
+          {
+            "line": 72,
+            "text": "                contracts,"
+          },
+          {
+            "line": 73,
+            "text": "                amounts,"
+          },
+          {
+            "line": 74,
+            "text": "                tokenIds,"
+          },
+          {
+            "line": 75,
+            "text": "                31_250 * 1e18,"
+          },
+          {
+            "line": 76,
+            "text": "                1_688_142_867, // endTime. This value must be specific to the 'endTime' provided in the attack tx. Block.timestamp won't work here."
+          },
+          {
+            "line": 77,
+            "text": "                signature"
+          },
+          {
+            "line": 78,
+            "text": "            );"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 16,
+            "text": "    function claim("
+          },
+          {
+            "line": 17,
+            "text": "        address[] memory _contracts,"
+          },
+          {
+            "line": 18,
+            "text": "        uint256[] memory _amounts,"
+          },
+          {
+            "line": 19,
+            "text": "        uint256[] memory _tokenIds,"
+          },
+          {
+            "line": 20,
+            "text": "        uint256 _claimAmount,"
+          },
+          {
+            "line": 21,
+            "text": "        uint256 _endTime,"
+          },
+          {
+            "line": 22,
+            "text": "        bytes memory _signature"
+          },
+          {
+            "line": 23,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 10,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x6233c9315dd3b6a6fcc7d653f4dca6c263e684a76b4ad3d93595e3b8e8714d34"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-07/AzukiDAO_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-07/AzukiDAO_exp.sol",
+      "transaction_hash": "0x6233c9315dd3b6a6fcc7d653f4dca6c263e684a76b4ad3d93595e3b8e8714d34",
+      "vulnerable_contract_address": "0x8189afbe7b0e81dae735ef027cd31371b3974feb"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "redeemUnderlying(uint256)",
+      "incident_date": "2023-07",
+      "incident_name": "Bao",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/Bao_exp.sol",
+      "selector": "0x852a12e3",
+      "source_cache": "reports/cohort_rebuild_v2/http/3fca8036284632f55cd4c5b3a55fd6bab27b7e7e075e9a86a039c82d5d1dd073.gz",
+      "source_cache_sha256": "e19b04e2e1c7ad6610cda5b88290e7793e67003e943522f46ce09462c57fc1a4",
+      "source_commit": null,
+      "source_content_sha256": "f7ae6f8a8d8e8afe6dd95b7d24c73e021078a1302f40f252044efb4411f47965",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xb0f8fe96b4880adbdede0ddf446bd1e7ef122c4e"
+          },
+          {
+            "line": 53,
+            "text": "    IbdbSTBL bdbSTBL = IbdbSTBL(0xb0f8Fe96b4880adBdEDE0dDF446bd1e7EF122C4e);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 60,
+            "text": "        vm.createSelectFork(\"mainnet\", 17_620_870);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 117,
+            "text": "        bdbSTBL.mint(1, true); // mint 5 bdbSTBL"
+          },
+          {
+            "line": 118,
+            "text": "        bdbSTBL.redeem(3); // redeem 3 bdbSTBL, remain 2 bdbSTBL"
+          },
+          {
+            "line": 120,
+            "text": "        bSTBL.transfer(address(bdbSTBL), 34_819_000 * 1e18); // donate underlyingtoken to inflate bdbSTBL exchangeRate"
+          },
+          {
+            "line": 121,
+            "text": "        bdbaoETH.borrow(41.3 ether);"
+          },
+          {
+            "line": 122,
+            "text": "        bdbSTBL.redeemUnderlying(34_819_000 * 1e18); //redeem almost all underlyingtoken"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 36,
+            "text": "    function redeemUnderlying("
+          },
+          {
+            "line": 37,
+            "text": "        uint256 redeemAmount"
+          },
+          {
+            "line": 38,
+            "text": "    ) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xdd7dd68cd879d07cfc2cb74606baa2a5bf18df0e3bda9f6b43f904f4f7bbdfc1"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-07/Bao_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-07/Bao_exp.sol",
+      "transaction_hash": "0xdd7dd68cd879d07cfc2cb74606baa2a5bf18df0e3bda9f6b43f904f4f7bbdfc1",
+      "vulnerable_contract_address": "0xb0f8fe96b4880adbdede0ddf446bd1e7ef122c4e"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "unstake(address,uint256,bool,bool)",
+      "incident_date": "2023-09",
+      "incident_name": "Floor DAO",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/FloorDAO_exp.sol",
+      "selector": "0x990966d5",
+      "source_cache": "reports/cohort_rebuild_v2/http/877a48bcfc051e23efd548a84ca58db32c8ca17397937099cd86a1e0350b14ae.gz",
+      "source_cache_sha256": "087a1e495702418d047a60ede3f8ceed7cab0f4274143dbf59f97a502caf5d71",
+      "source_commit": null,
+      "source_content_sha256": "2114ffc6c03449fb128346183acd80651fc063a61dfd45db933ef73eee1304b0",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 31,
+            "text": "    IFloorStaking staking = IFloorStaking(0x759c6De5bcA9ADE8A1a2719a31553c4B7DE02539);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 35,
+            "text": "        vm.createSelectFork(\"mainnet\", 18_068_772);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 60,
+            "text": "            uint256 balanceAttacker = floor.balanceOf(address(this));"
+          },
+          {
+            "line": 61,
+            "text": "            uint256 balanceStaking = floor.balanceOf(address(staking));"
+          },
+          {
+            "line": 62,
+            "text": "            uint256 circulatingSupply = sFloor.circulatingSupply();"
+          },
+          {
+            "line": 63,
+            "text": "            if (balanceAttacker + balanceStaking > circulatingSupply) {"
+          },
+          {
+            "line": 64,
+            "text": "                floor.approve(address(staking), balanceAttacker);"
+          },
+          {
+            "line": 65,
+            "text": "                staking.stake(address(this), balanceAttacker, false, true);"
+          },
+          {
+            "line": 66,
+            "text": "                uint256 gFloorBalance = gFloor.balanceOf(address(this));"
+          },
+          {
+            "line": 67,
+            "text": "                staking.unstake(address(this), gFloorBalance, true, false);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 17,
+            "text": "    function unstake(address _to, uint256 _amount, bool _trigger, bool _rebasing) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 10,
+            "text": "// Attacker Transaction : https://explorer.phalcon.xyz/tx/eth/0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-09/FloorDAO_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-09/FloorDAO_exp.sol",
+      "transaction_hash": "0x1274b32d4dfacd2703ad032e8bd669a83f012dde9d27ed92e4e7da0387adafe4",
+      "vulnerable_contract_address": "0x759c6de5bca9ade8a1a2719a31553c4b7de02539"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "unstake(address,uint256,bool)",
+      "incident_date": "2023-09",
+      "incident_name": "Jump Farm",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/JumpFarm_exp.sol",
+      "selector": "0x21d0af34",
+      "source_cache": "reports/cohort_rebuild_v2/http/28e6425b49157ae5d258558b4e09b52eea7a34ba16a5128361d66f369c3c081a.gz",
+      "source_cache_sha256": "e149055cb0afb5a899a7104c821f6517f67ba719f7314aeb6c05acc82f23d45b",
+      "source_commit": null,
+      "source_content_sha256": "ae87223516292c0876caabe47098e92c393260ab2b5ed1aa49c7413d10d03cba",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 25,
+            "text": "    IStaking staking = IStaking(0x05999eB831ae28Ca920cE645A5164fbdB1D74Fe9);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 29,
+            "text": "        vm.createSelectFork(\"mainnet\", 18_070_346);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 63,
+            "text": "        while (i < uint8(userData[0])) {"
+          },
+          {
+            "line": 64,
+            "text": "            i += 1;"
+          },
+          {
+            "line": 65,
+            "text": "            uint256 amountJump = jump.balanceOf(address(this));"
+          },
+          {
+            "line": 66,
+            "text": "            staking.stake(address(this), amountJump);"
+          },
+          {
+            "line": 67,
+            "text": "            uint256 amountSJump = sJump.balanceOf(address(this));"
+          },
+          {
+            "line": 68,
+            "text": "            staking.unstake(address(this), amountSJump, true);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 16,
+            "text": "    function unstake(address _to, uint256 _amount, bool _rebase) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 10,
+            "text": "// Attacker Transaction : https://explorer.phalcon.xyz/tx/eth/0x6189ad07894507d15c5dff83f547294e72f18561dc5662a8113f7eb932a5b079"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-09/JumpFarm_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-09/JumpFarm_exp.sol",
+      "transaction_hash": "0x6189ad07894507d15c5dff83f547294e72f18561dc5662a8113f7eb932a5b079",
+      "vulnerable_contract_address": "0x05999eb831ae28ca920ce645a5164fbdb1d74fe9"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "deposit(uint256,uint256)",
+      "incident_date": "2023-09",
+      "incident_name": "Unicly NFT",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/uniclyNFT_exp.sol",
+      "selector": "0xe2bbb158",
+      "source_cache": "reports/cohort_rebuild_v2/http/310be2af1c3de2cca2fd0cf7c7e43080702c19b6c2969cc6653b61f4e5c4dfdd.gz",
+      "source_cache_sha256": "3b5672a3370c812a83be35b7feff36dddd82bacaac92400b7cbc0e48fea6e1f6",
+      "source_commit": null,
+      "source_content_sha256": "88490b04eac27cae38764d4c7bdd227635ff7629f3f7103ef4ffe6fc056eb9ce",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xd3c41c85be295607e8ea5c58487ec5894300ee67"
+          },
+          {
+            "line": 34,
+            "text": "    IPointFarm private constant PointFarm = IPointFarm(0xd3C41c85bE295607E8EA5c58487eC5894300ee67);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 39,
+            "text": "        vm.createSelectFork(\"mainnet\", 18_133_171);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 58,
+            "text": "        // Attack"
+          },
+          {
+            "line": 59,
+            "text": "        emit log_named_uint(\"Attacker Realm NFT balance before attack\", Realm.balanceOf(address(this)));"
+          },
+          {
+            "line": 60,
+            "text": "        // Reentrancy here. Inflate the attacker balance of PointFarm to redeem Realm NFT later from PointShop"
+          },
+          {
+            "line": 61,
+            "text": "        PointFarm.deposit(0, 0);"
+          },
+          {
+            "line": 62,
+            "text": "        // Getting initial deposit (preparation phase) back"
+          },
+          {
+            "line": 63,
+            "text": "        PointFarm.withdraw(0, amtuJENNY);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 21,
+            "text": "    function deposit(uint256 _pid, uint256 _amount) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0xc42fe1ce2516e125a386d198703b2422aa0190b25ef6a7b0a1d3c6f5d199ffad"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-09/uniclyNFT_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-09/uniclyNFT_exp.sol",
+      "transaction_hash": "0xc42fe1ce2516e125a386d198703b2422aa0190b25ef6a7b0a1d3c6f5d199ffad",
+      "vulnerable_contract_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "withdraw(address,uint256)",
+      "incident_date": "2023-10",
+      "incident_name": "Astrid",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/Astrid_exp.sol",
+      "selector": "0xf3fef3a3",
+      "source_cache": "reports/cohort_rebuild_v2/http/d293a4c602fede0d3143aed68c84288e1e9956e880e6b7a8ce1b5156c2a6690c.gz",
+      "source_cache_sha256": "1a3cb4e91079d10b22396dc5d706c1dda0f662c11fda56eb1290a62cb8ca17b4",
+      "source_commit": null,
+      "source_content_sha256": "23b69fdbd6e6eb66151aa9c960f669f2af3ba1f18b14829bbcca527b065c0e54",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xbAa87546cF87b5De1b0b52353A86792D40b8BA70"
+          },
+          {
+            "line": 98,
+            "text": "    Vulnerable vulnerable = Vulnerable(0xbAa87546cF87b5De1b0b52353A86792D40b8BA70);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 108,
+            "text": "        cheats.createSelectFork(\"mainnet\", 18_448_167);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 120,
+            "text": "            uint256 staked_bal = IERC20(stakedTokens[i]).balanceOf(address(vulnerable));"
+          },
+          {
+            "line": 121,
+            "text": "            balances[i] = staked_bal;"
+          },
+          {
+            "line": 122,
+            "text": "            MyERC20 fake_token = new MyERC20(stakedTokens[i], staked_bal);"
+          },
+          {
+            "line": 123,
+            "text": "            fake_token.mint(10_000 * 1e18);"
+          },
+          {
+            "line": 124,
+            "text": "            fake_token.approve(address(vulnerable), type(uint256).max);"
+          },
+          {
+            "line": 125,
+            "text": ""
+          },
+          {
+            "line": 126,
+            "text": "            vulnerable.withdraw(address(fake_token), staked_bal);"
+          },
+          {
+            "line": 127,
+            "text": "            vulnerable.claim(i);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 78,
+            "text": "    function withdraw(address _restakedTokenAddress, uint256 amount) external;"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x8af9b5fb3e2e3df8659ffb2e0f0c1f4c90d5a80f4f6fccef143b823ce673fb60"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-10/Astrid_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-10/Astrid_exp.sol",
+      "transaction_hash": "0x8af9b5fb3e2e3df8659ffb2e0f0c1f4c90d5a80f4f6fccef143b823ce673fb60",
+      "vulnerable_contract_address": "0xbaa87546cf87b5de1b0b52353a86792d40b8ba70"
+    },
+    {
+      "chain": "eth",
+      "full_signature": "route(address[],uint256[],address[],address[],string[])",
+      "incident_date": "2023-10",
+      "incident_name": "DePay Router",
+      "limitations": [
+        "Source-backed PoC target; not independently adjudicated root-cause ground truth.",
+        "Cached upstream main URL is SHA-256 pinned locally; original acquisition did not pin a Git commit.",
+        "RPC transaction/receipt/trace availability not checked; no ranking or score read."
+      ],
+      "local_source_file": "reports/new_batches/batchD/poc_sources/DePayRouter_exp.sol",
+      "selector": "0xb7d29a35",
+      "source_cache": "reports/cohort_rebuild_v2/http/1526ce34c9535436c2f3b9a3fbb22a89edb2eb186a58a338202d7d776c98d444.gz",
+      "source_cache_sha256": "64b3fe8ea21319fedd70be75551143d383503bdb3c51817057ef88163850eb6c",
+      "source_commit": null,
+      "source_content_sha256": "f9844bf5a60e8740c967ad7f31d69159d011d45f29a92cfc696ac4e94def9a6c",
+      "source_evidence": {
+        "contract_address_lines": [
+          {
+            "line": 10,
+            "text": "// Vulnerable Contract : https://etherscan.io/address/0xae60ac8e69414c2dc362d0e6a03af643d1d85b92"
+          },
+          {
+            "line": 39,
+            "text": "    IDepayRouterV1 DepayRouter = IDepayRouterV1(0xae60aC8e69414C2Dc362D0e6a03af643d1D85b92);"
+          }
+        ],
+        "mainnet_fork_lines": [
+          {
+            "line": 54,
+            "text": "        vm.createSelectFork(\"mainnet\", 18_281_130 - 1);"
+          }
+        ],
+        "poc_call_lines": [
+          {
+            "line": 83,
+            "text": "        address[] memory path = new address[](2);"
+          },
+          {
+            "line": 84,
+            "text": "        (path[0], path[1]) = (address(USDC), address(this));"
+          },
+          {
+            "line": 85,
+            "text": "        uint256[] memory amounts = new uint256[](3);"
+          },
+          {
+            "line": 86,
+            "text": "        (amounts[0], amounts[1], amounts[2]) = (amountAMin, 0, type(uint256).max);"
+          },
+          {
+            "line": 87,
+            "text": "        address[] memory addresses = new address[](2);"
+          },
+          {
+            "line": 88,
+            "text": "        (addresses[0], addresses[1]) = (address(this), address(this));"
+          },
+          {
+            "line": 89,
+            "text": "        address[] memory plugins = new address[](2);"
+          },
+          {
+            "line": 90,
+            "text": "        (plugins[0], plugins[1]) = (DePayUniV1, DePayUniV1);"
+          },
+          {
+            "line": 91,
+            "text": "        string[] memory data = new string[](1);"
+          },
+          {
+            "line": 92,
+            "text": "        DepayRouter.route(path, amounts, addresses, plugins, data);"
+          }
+        ],
+        "signature_lines": [
+          {
+            "line": 17,
+            "text": "    function route("
+          },
+          {
+            "line": 18,
+            "text": "        // The path of the token conversion."
+          },
+          {
+            "line": 19,
+            "text": "        address[] calldata path,"
+          },
+          {
+            "line": 20,
+            "text": "        // Amounts passed to processors:"
+          },
+          {
+            "line": 21,
+            "text": "        // e.g. [amountIn, amountOut, deadline]"
+          },
+          {
+            "line": 22,
+            "text": "        uint256[] calldata amounts,"
+          },
+          {
+            "line": 23,
+            "text": "        // Addresses passed to plugins:"
+          },
+          {
+            "line": 24,
+            "text": "        // e.g. [receiver]"
+          },
+          {
+            "line": 25,
+            "text": "        address[] calldata addresses,"
+          },
+          {
+            "line": 26,
+            "text": "        // List and order of plugins to be executed for this payment:"
+          },
+          {
+            "line": 27,
+            "text": "        // e.g. [Uniswap,paymentPlugin] to swap and pay"
+          },
+          {
+            "line": 28,
+            "text": "        address[] calldata plugins,"
+          },
+          {
+            "line": 29,
+            "text": "        // Data passed to plugins:"
+          },
+          {
+            "line": 30,
+            "text": "        // e.g. [\"signatureOfSmartContractFunction(address,uint)\"] receiving the payment"
+          },
+          {
+            "line": 31,
+            "text": "        string[] calldata data"
+          },
+          {
+            "line": 32,
+            "text": "    ) external payable returns (bool);"
+          }
+        ],
+        "transaction_lines": [
+          {
+            "line": 11,
+            "text": "// Attack Tx : https://etherscan.io/tx/0x9a036058afb58169bfa91a826f5fcf4c0a376e650960669361d61bef99205f35"
+          }
+        ]
+      },
+      "source_match_checks": {
+        "batch_c_screened_source_overlap": false,
+        "prior_incident_stem_overlap": false,
+        "prior_target_contract_overlap": false,
+        "prior_transaction_overlap": false,
+        "signature_in_source": true,
+        "typed_external_declaration_validated": true
+      },
+      "source_path": "src/test/2023-10/DePayRouter_exp.sol",
+      "source_url": "https://raw.githubusercontent.com/SunWeb3Sec/DeFiHackLabs/main/src/test/2023-10/DePayRouter_exp.sol",
+      "transaction_hash": "0x9a036058afb58169bfa91a826f5fcf4c0a376e650960669361d61bef99205f35",
+      "vulnerable_contract_address": "0xae60ac8e69414c2dc362d0e6a03af643d1d85b92"
+    }
+  ],
+  "selection_policy": "Ten manually source-validated cached Ethereum PoCs sorted by source_path; exclude every source screened by Batch C, prior ground-truth/A/B/C transaction or normalized incident stem, and prior target addresses. This is a convenience source-backed sample, not exhaustive incident ascertainment.",
+  "status": "FROZEN_BEFORE_RPC_AND_SCORING"
+}

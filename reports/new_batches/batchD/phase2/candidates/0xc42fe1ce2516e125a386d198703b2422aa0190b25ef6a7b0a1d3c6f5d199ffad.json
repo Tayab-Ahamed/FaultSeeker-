@@ -1,0 +1,667 @@
+{
+  "predictions": [
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 1.5,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 6,
+      "function": "0x00fdd58e",
+      "function_name": "0x00fdd58e",
+      "path_concentration": 1.0,
+      "rank": 1,
+      "selector": "0x00fdd58e",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 1.375,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d",
+      "count": 6,
+      "function": "0x01ffc9a7",
+      "function_name": "0x01ffc9a7",
+      "path_concentration": 3.0,
+      "rank": 2,
+      "selector": "0x01ffc9a7",
+      "supporting_call_depths": [
+        [
+          0,
+          8,
+          2
+        ],
+        [
+          0,
+          8,
+          3
+        ],
+        [
+          0,
+          8,
+          4
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 3,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.9375,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x9d9820f10772ffcef842770b6581c07a97fed9e4",
+      "count": 6,
+      "function": "0xf23a6e61",
+      "function_name": "0xf23a6e61",
+      "path_concentration": 1.0,
+      "rank": 3,
+      "selector": "0xf23a6e61",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.8088235294117647,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 6,
+      "function": "0xe2bbb158",
+      "function_name": "0xe2bbb158",
+      "path_concentration": 1.0,
+      "rank": 4,
+      "selector": "0xe2bbb158",
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.7083333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 5,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.625,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 6,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          4,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.575,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 2,
+      "function": "0xbcc1123c",
+      "function_name": "0xbcc1123c",
+      "path_concentration": 1.0,
+      "rank": 7,
+      "selector": "0xbcc1123c",
+      "supporting_call_depths": [
+        [
+          0,
+          8,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5416666666666666,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 2,
+      "function": "0xf5298aca",
+      "function_name": "0xf5298aca",
+      "path_concentration": 1.0,
+      "rank": 8,
+      "selector": "0xf5298aca",
+      "supporting_call_depths": [
+        [
+          0,
+          8,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5178571428571428,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 9,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          8,
+          5
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.4305555555555556,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xa499648fd0e80fd911972bbeb069e4c20e68bf22",
+      "count": 4,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 10,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.4276315789473684,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xa499648fd0e80fd911972bbeb069e4c20e68bf22",
+      "count": 4,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 11,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.375,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 2,
+      "function": "0x441a3e70",
+      "function_name": "0x441a3e70",
+      "path_concentration": 1.0,
+      "rank": 12,
+      "selector": "0x441a3e70",
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.3611111111111111,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xec5100ad159f660986e47afa0cda1081101b471d",
+      "count": 2,
+      "function": "0x0902f1ac",
+      "function_name": "0x0902f1ac",
+      "path_concentration": 1.0,
+      "rank": 13,
+      "selector": "0x0902f1ac",
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.35,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xec5100ad159f660986e47afa0cda1081101b471d",
+      "count": 2,
+      "function": "0x022c0d9f",
+      "function_name": "0x022c0d9f",
+      "path_concentration": 1.0,
+      "rank": 14,
+      "selector": "0x022c0d9f",
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.34090909090909094,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "0x2e1a7d4d",
+      "function_name": "0x2e1a7d4d",
+      "path_concentration": 1.0,
+      "rank": 15,
+      "selector": "0x2e1a7d4d",
+      "supporting_call_depths": [
+        [
+          0,
+          5
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3333333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xd3c41c85be295607e8ea5c58487ec5894300ee67",
+      "count": 2,
+      "function": "0xa22cb465",
+      "function_name": "0xa22cb465",
+      "path_concentration": 1.0,
+      "rank": 16,
+      "selector": "0xa22cb465",
+      "supporting_call_depths": [
+        [
+          0,
+          7
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3269230769230769,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xcdcc535503cba9286489b338b36156b4b75008f6",
+      "count": 2,
+      "function": "0x1e9a6950",
+      "function_name": "0x1e9a6950",
+      "path_concentration": 1.0,
+      "rank": 17,
+      "selector": "0x1e9a6950",
+      "supporting_call_depths": [
+        [
+          0,
+          8
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3214285714285714,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d",
+      "count": 2,
+      "function": "0x42842e0e",
+      "function_name": "0x42842e0e",
+      "path_concentration": 1.0,
+      "rank": 18,
+      "selector": "0x42842e0e",
+      "supporting_call_depths": [
+        [
+          0,
+          9
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3,
+      "candidate_source": "saved_trace",
+      "code_address": "0x9d9820f10772ffcef842770b6581c07a97fed9e4",
+      "count": 1,
+      "function": "fallback",
+      "function_name": "fallback",
+      "rank": 19,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.19166666666666665,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x9d9820f10772ffcef842770b6581c07a97fed9e4",
+      "count": 2,
+      "function": "0x73139de6",
+      "function_name": "0x73139de6",
+      "path_concentration": 1.0,
+      "rank": 20,
+      "selector": "0x73139de6",
+      "supporting_call_depths": [
+        [
+          0
+        ],
+        []
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.175,
+      "candidate_source": "saved_trace",
+      "code_address": "0x92cfcb70b2591ceb1e3c6d90e21e8154e7d29832",
+      "count": 1,
+      "function": "fallback",
+      "function_name": "fallback",
+      "rank": 21,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "trace_evidence_count": 1
+    }
+  ],
+  "transaction_hash": "0xc42fe1ce2516e125a386d198703b2422aa0190b25ef6a7b0a1d3c6f5d199ffad"
+}

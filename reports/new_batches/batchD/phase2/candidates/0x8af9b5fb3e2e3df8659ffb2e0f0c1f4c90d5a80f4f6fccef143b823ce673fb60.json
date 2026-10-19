@@ -1,0 +1,2472 @@
+{
+  "predictions": [
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 1.25,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbaa87546cf87b5de1b0b52353a86792d40b8ba70",
+      "count": 9,
+      "function": "0xf3fef3a3",
+      "function_name": "0xf3fef3a3",
+      "path_concentration": 3.0,
+      "proxy_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "proxy_resolved": true,
+      "rank": 1,
+      "selector": "0xf3fef3a3",
+      "supporting_call_depths": [
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          14
+        ],
+        [
+          0,
+          18
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 3,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 6
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.8409090909090909,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x2b33cf282f867a7ff693a66e11b0fcc5552e4425",
+      "count": 14,
+      "function": "0xbe00bbd8",
+      "function_name": "0xbe00bbd8",
+      "path_concentration": 1.0,
+      "rank": 2,
+      "selector": "0xbe00bbd8",
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          10,
+          0,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          21,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 7
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.8333333333333334,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x1d8f8f00cfa6758d7be78336684788fb0ee0fa46",
+      "count": 4,
+      "function": "0xbd02d0f5",
+      "function_name": "0xbd02d0f5",
+      "path_concentration": 1.0,
+      "rank": 3,
+      "selector": "0xbd02d0f5",
+      "supporting_call_depths": [
+        [
+          0,
+          16,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          27,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.8269230769230769,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 4,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          29,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.75,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbaa87546cf87b5de1b0b52353a86792d40b8ba70",
+      "count": 9,
+      "function": "0xe743f33b",
+      "function_name": "0xe743f33b",
+      "path_concentration": 3.0,
+      "proxy_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "proxy_resolved": true,
+      "rank": 5,
+      "selector": "0xe743f33b",
+      "supporting_call_depths": [
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          19
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 3,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 6
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.75,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 4,
+      "function": "0x1da24f3e",
+      "function_name": "0x1da24f3e",
+      "path_concentration": 2.0,
+      "rank": 6,
+      "selector": "0x1da24f3e",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          2
+        ],
+        [
+          0,
+          10,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.7,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 4,
+      "function": "0x1da24f3e",
+      "function_name": "0x1da24f3e",
+      "path_concentration": 2.0,
+      "rank": 7,
+      "selector": "0x1da24f3e",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          2
+        ],
+        [
+          0,
+          14,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6964285714285714,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xb8ffc3cd6e7cf5a098a1c92f48009765b24088dc",
+      "count": 21,
+      "function": "0xbe00bbd8",
+      "function_name": "0xbe00bbd8",
+      "path_concentration": 1.0,
+      "proxy_address": "0x2b33cf282f867a7ff693a66e11b0fcc5552e4425",
+      "proxy_resolved": true,
+      "rank": 8,
+      "selector": "0xbe00bbd8",
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          10,
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          21,
+          0
+        ],
+        [
+          0,
+          24,
+          0
+        ],
+        [
+          0,
+          25,
+          0,
+          0
+        ],
+        [
+          0,
+          25,
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 14
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6916666666666667,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "count": 10,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 9,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          17,
+          0
+        ],
+        [
+          0,
+          18,
+          0,
+          7,
+          0
+        ],
+        [
+          0,
+          23,
+          0
+        ],
+        [
+          0,
+          29,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          29,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 5
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6875,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "count": 8,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 10,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1
+        ],
+        [
+          0,
+          10,
+          0,
+          7,
+          1
+        ],
+        [
+          0,
+          21,
+          1
+        ],
+        [
+          0,
+          25,
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 4
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6838235294117647,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 11,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          12,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6805555555555556,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 12,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          20,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.6776315789473684,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae78736cd615f374d3085123a210448e74fc6393",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 13,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          27,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.675,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+      "count": 3,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "proxy_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "proxy_resolved": true,
+      "rank": 14,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          29,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.6666666666666666,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 4,
+      "function": "0x1da24f3e",
+      "function_name": "0x1da24f3e",
+      "path_concentration": 2.0,
+      "rank": 15,
+      "selector": "0x1da24f3e",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          2
+        ],
+        [
+          0,
+          18,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.625,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae78736cd615f374d3085123a210448e74fc6393",
+      "count": 10,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.6666666666666667,
+      "rank": 16,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          13
+        ],
+        [
+          0,
+          14,
+          0,
+          7
+        ],
+        [
+          0,
+          22
+        ],
+        [
+          0,
+          27,
+          0,
+          1
+        ],
+        [
+          0,
+          27,
+          0,
+          3
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 5,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 5
+    },
+    {
+      "call_types": [
+        "staticcall",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6111111111111112,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+      "count": 15,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.6666666666666667,
+      "proxy_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "proxy_resolved": true,
+      "rank": 17,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          17
+        ],
+        [
+          0,
+          18,
+          0,
+          7
+        ],
+        [
+          0,
+          23
+        ],
+        [
+          0,
+          29,
+          0,
+          1
+        ],
+        [
+          0,
+          29,
+          0,
+          3
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 5,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 10
+    },
+    {
+      "call_types": [
+        "staticcall",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.6,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "count": 12,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.3333333333333333,
+      "proxy_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "proxy_resolved": true,
+      "rank": 18,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10,
+          0,
+          7
+        ],
+        [
+          0,
+          21
+        ],
+        [
+          0,
+          25,
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 4,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 8
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.5833333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbaa87546cf87b5de1b0b52353a86792d40b8ba70",
+      "count": 9,
+      "function": "0x379607f5",
+      "function_name": "0x379607f5",
+      "path_concentration": 3.0,
+      "proxy_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "proxy_resolved": true,
+      "rank": 19,
+      "selector": "0x379607f5",
+      "supporting_call_depths": [
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          20
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 3,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 6
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5476190476190477,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 4,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 20,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          27,
+          0,
+          0
+        ],
+        [
+          0,
+          29,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5454545454545454,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 4,
+      "function": "0xfa461e33",
+      "function_name": "0xfa461e33",
+      "path_concentration": 1.0,
+      "rank": 21,
+      "selector": "0xfa461e33",
+      "supporting_call_depths": [
+        [
+          0,
+          27,
+          0,
+          2
+        ],
+        [
+          0,
+          29,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5434782608695652,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 22,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5416666666666666,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0xdd62ed3e",
+      "function_name": "0xdd62ed3e",
+      "path_concentration": 1.0,
+      "rank": 23,
+      "selector": "0xdd62ed3e",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.54,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 24,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5384615384615384,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x417cf3df",
+      "function_name": "0x417cf3df",
+      "path_concentration": 1.0,
+      "rank": 25,
+      "selector": "0x417cf3df",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.537037037037037,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x9dc29fac",
+      "function_name": "0x9dc29fac",
+      "path_concentration": 1.0,
+      "rank": 26,
+      "selector": "0x9dc29fac",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.5357142857142857,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "count": 3,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "proxy_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "proxy_resolved": true,
+      "rank": 27,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          12,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5344827586206896,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 28,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5333333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0xdd62ed3e",
+      "function_name": "0xdd62ed3e",
+      "path_concentration": 1.0,
+      "rank": 29,
+      "selector": "0xdd62ed3e",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.532258064516129,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 30,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.53125,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x417cf3df",
+      "function_name": "0x417cf3df",
+      "path_concentration": 1.0,
+      "rank": 31,
+      "selector": "0x417cf3df",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5303030303030303,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x9dc29fac",
+      "function_name": "0x9dc29fac",
+      "path_concentration": 1.0,
+      "rank": 32,
+      "selector": "0x9dc29fac",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5294117647058824,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae78736cd615f374d3085123a210448e74fc6393",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "rank": 33,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          16,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5285714285714286,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 34,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5277777777777778,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0xdd62ed3e",
+      "function_name": "0xdd62ed3e",
+      "path_concentration": 1.0,
+      "rank": 35,
+      "selector": "0xdd62ed3e",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.527027027027027,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 36,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5263157894736842,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x417cf3df",
+      "function_name": "0x417cf3df",
+      "path_concentration": 1.0,
+      "rank": 37,
+      "selector": "0x417cf3df",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.5256410256410257,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x9dc29fac",
+      "function_name": "0x9dc29fac",
+      "path_concentration": 1.0,
+      "rank": 38,
+      "selector": "0x9dc29fac",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.525,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+      "count": 3,
+      "function": "0xa9059cbb",
+      "function_name": "0xa9059cbb",
+      "path_concentration": 1.0,
+      "proxy_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "proxy_resolved": true,
+      "rank": 39,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          20,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.524390243902439,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "count": 2,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "rank": 40,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          25,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5149253731343284,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 4,
+      "function": "0xff333a76",
+      "function_name": "0xff333a76",
+      "path_concentration": 1.0,
+      "rank": 41,
+      "selector": "0xff333a76",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0,
+          5
+        ],
+        [
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5147058823529411,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 4,
+      "function": "0xff333a76",
+      "function_name": "0xff333a76",
+      "path_concentration": 1.0,
+      "rank": 42,
+      "selector": "0xff333a76",
+      "supporting_call_depths": [
+        [
+          0,
+          14,
+          0,
+          5
+        ],
+        [
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.5144927536231884,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 4,
+      "function": "0xff333a76",
+      "function_name": "0xff333a76",
+      "path_concentration": 1.0,
+      "rank": 43,
+      "selector": "0xff333a76",
+      "supporting_call_depths": [
+        [
+          0,
+          18,
+          0,
+          5
+        ],
+        [
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.39880952380952384,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "count": 6,
+      "function": "0xf3fef3a3",
+      "function_name": "0xf3fef3a3",
+      "path_concentration": 1.0,
+      "rank": 44,
+      "selector": "0xf3fef3a3",
+      "supporting_call_depths": [
+        [
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          14,
+          0
+        ],
+        [
+          0,
+          18,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.39825581395348836,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "count": 6,
+      "function": "0xe743f33b",
+      "function_name": "0xe743f33b",
+      "path_concentration": 1.0,
+      "rank": 45,
+      "selector": "0xe743f33b",
+      "supporting_call_depths": [
+        [
+          0,
+          11,
+          0
+        ],
+        [
+          0,
+          15,
+          0
+        ],
+        [
+          0,
+          19,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.3977272727272727,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x4d5b4b9ccf52bbcfe7b71b3038d8577293779e0c",
+      "count": 6,
+      "function": "0x379607f5",
+      "function_name": "0x379607f5",
+      "path_concentration": 1.0,
+      "rank": 46,
+      "selector": "0x379607f5",
+      "supporting_call_depths": [
+        [
+          0,
+          12,
+          0
+        ],
+        [
+          0,
+          16,
+          0
+        ],
+        [
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 3
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.3972222222222222,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 47,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          24,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.3967391304347826,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "count": 3,
+      "function": "0x23b872dd",
+      "function_name": "0x23b872dd",
+      "path_concentration": 1.0,
+      "proxy_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "proxy_resolved": true,
+      "rank": 48,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          25,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3962765957446808,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x0000000000000000000000000000000000000004",
+      "count": 2,
+      "function": "0x00000000",
+      "function_name": "0x00000000",
+      "path_concentration": 1.0,
+      "rank": 49,
+      "selector": "0x00000000",
+      "supporting_call_depths": [
+        [
+          0,
+          25,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.3958333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xa4e0faa58465a2d369aa21b3e42d43374c6f9613",
+      "count": 2,
+      "function": "0x128acb08",
+      "function_name": "0x128acb08",
+      "path_concentration": 1.0,
+      "rank": 50,
+      "selector": "0x128acb08",
+      "supporting_call_depths": [
+        [
+          0,
+          27,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.39540816326530615,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 51,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          28,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.395,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x840deeef2f115cf50da625f7368c24af6fe74410",
+      "count": 2,
+      "function": "0x128acb08",
+      "function_name": "0x128acb08",
+      "path_concentration": 1.0,
+      "rank": 52,
+      "selector": "0x128acb08",
+      "supporting_call_depths": [
+        [
+          0,
+          29,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.39285714285714285,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 4,
+      "function": "0x414bf389",
+      "function_name": "0x414bf389",
+      "path_concentration": 2.0,
+      "rank": 53,
+      "selector": "0x414bf389",
+      "supporting_call_depths": [
+        [
+          0,
+          27
+        ],
+        [
+          0,
+          29
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 2,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2696078431372549,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x60806040",
+      "function_name": "0x60806040",
+      "path_concentration": 1.0,
+      "rank": 54,
+      "selector": "0x60806040",
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2692307692307692,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x60806040",
+      "function_name": "0x60806040",
+      "path_concentration": 1.0,
+      "rank": 55,
+      "selector": "0x60806040",
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2688679245283019,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x60806040",
+      "function_name": "0x60806040",
+      "path_concentration": 1.0,
+      "rank": 56,
+      "selector": "0x60806040",
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2685185185185185,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x40c10f19",
+      "function_name": "0x40c10f19",
+      "path_concentration": 1.0,
+      "rank": 57,
+      "selector": "0x40c10f19",
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2681818181818182,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x40c10f19",
+      "function_name": "0x40c10f19",
+      "path_concentration": 1.0,
+      "rank": 58,
+      "selector": "0x40c10f19",
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.26785714285714285,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x40c10f19",
+      "function_name": "0x40c10f19",
+      "path_concentration": 1.0,
+      "rank": 59,
+      "selector": "0x40c10f19",
+      "supporting_call_depths": [
+        [
+          0,
+          5
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2675438596491228,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x09f2544778001407ba1dff71fa22c37f77abb186",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 60,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          6
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2672413793103448,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x18d06dbf8e0926110c9202136a78c3ae151461db",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 61,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          7
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2669491525423729,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xe26d01d3c0167d668a74276b18d9af89e84cd910",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 62,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          8
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.26666666666666666,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+      "count": 3,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "proxy_address": "0x17144556fd3424edc8fc8a4c940b2d04936d17eb",
+      "proxy_resolved": true,
+      "rank": 63,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          24
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.26639344262295084,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
+      "count": 2,
+      "function": "0x3df02124",
+      "function_name": "0x3df02124",
+      "path_concentration": 1.0,
+      "rank": 64,
+      "selector": "0x3df02124",
+      "supporting_call_depths": [
+        [
+          0,
+          25
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2661290322580645,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xae78736cd615f374d3085123a210448e74fc6393",
+      "count": 2,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "rank": 65,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          26
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call",
+        "delegatecall"
+      ],
+      "candidate_generation_score": 0.26587301587301587,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+      "count": 3,
+      "function": "0x095ea7b3",
+      "function_name": "0x095ea7b3",
+      "path_concentration": 1.0,
+      "proxy_address": "0x31724ca0c982a31fbb5c57f4217ab585271fc9a5",
+      "proxy_resolved": true,
+      "rank": 66,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          28
+        ],
+        [
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.265625,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "0x70a08231",
+      "function_name": "0x70a08231",
+      "path_concentration": 1.0,
+      "rank": 67,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          30
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2653846153846154,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "0x2e1a7d4d",
+      "function_name": "0x2e1a7d4d",
+      "path_concentration": 1.0,
+      "rank": 68,
+      "selector": "0x2e1a7d4d",
+      "supporting_call_depths": [
+        [
+          0,
+          31
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.2642857142857143,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xb2e855411f67378c08f47401eacff37461e16188",
+      "count": 2,
+      "function": "fallback",
+      "function_name": "fallback",
+      "rank": 69,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "trace_evidence_count": 2
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.14015151515151514,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xb2e855411f67378c08f47401eacff37461e16188",
+      "count": 2,
+      "function": "0x60806040",
+      "function_name": "0x60806040",
+      "path_concentration": 1.0,
+      "rank": 70,
+      "selector": "0x60806040",
+      "supporting_call_depths": [
+        [
+          0
+        ],
+        []
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.1392857142857143,
+      "candidate_source": "saved_trace",
+      "code_address": "0x792ec27874e1f614e757a1ae49d00ef5b2c73959",
+      "count": 1,
+      "function": "fallback",
+      "function_name": "fallback",
+      "rank": 71,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "trace_evidence_count": 1
+    }
+  ],
+  "transaction_hash": "0x8af9b5fb3e2e3df8659ffb2e0f0c1f4c90d5a80f4f6fccef143b823ce673fb60"
+}

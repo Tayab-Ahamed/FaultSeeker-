@@ -1,0 +1,81 @@
+{
+  "attempt": 2,
+  "chain": "gnosis",
+  "created_at": "2026-10-17T09:45:27.771375+00:00",
+  "failure_causes": [
+    {
+      "method": "eth_getTransactionByHash",
+      "rpc_code": null,
+      "status": 200
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "rpc_code": null,
+      "status": 200
+    },
+    {
+      "method": "debug_traceTransaction",
+      "rpc_code": -32000,
+      "status": 200
+    }
+  ],
+  "label": {
+    "name": "Hundred Finance Gnosis",
+    "vuln_type": "Reentrancy"
+  },
+  "observed_chain_id": 100,
+  "provider": "dRPC",
+  "raw_artifact": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.attempt2.json",
+  "requests": [
+    {
+      "method": "eth_chainId",
+      "response": {
+        "body": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": "0x64"
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "response": {
+        "body": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": null
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "response": {
+        "body": {
+          "id": 1,
+          "jsonrpc": "2.0",
+          "result": null
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "method": "debug_traceTransaction",
+      "response": {
+        "body": {
+          "error": {
+            "code": -32000,
+            "message": "transaction not found"
+          },
+          "id": 1,
+          "jsonrpc": "2.0"
+        },
+        "http_status": 200
+      }
+    }
+  ],
+  "status": "FAILED",
+  "stderr_artifact": "reports/external_runs/phase2/20261017T011500Z/drpc/stderr/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.attempt2.txt",
+  "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+}

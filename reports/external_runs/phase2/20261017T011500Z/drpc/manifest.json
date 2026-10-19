@@ -1,0 +1,304 @@
+{
+  "chains": {
+    "base": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec"
+        }
+      ],
+      "failures": 0,
+      "selected": 2,
+      "successes": 2
+    },
+    "bsc": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [
+            {
+              "method": "eth_chainId",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_chainId",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "eth_getTransactionByHash",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_getTransactionByHash",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "debug_traceTransaction",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "cause": "wrong_or_missing_chain",
+              "method": "eth_chainId",
+              "observed": null
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+        },
+        {
+          "attempt": 2,
+          "failure_causes": [
+            {
+              "method": "eth_chainId",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_chainId",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "eth_getTransactionByHash",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_getTransactionByHash",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "method": "debug_traceTransaction",
+              "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+            },
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": null,
+              "status": 429
+            },
+            {
+              "cause": "wrong_or_missing_chain",
+              "method": "eth_chainId",
+              "observed": null
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+        }
+      ],
+      "failures": 2,
+      "selected": 1,
+      "successes": 0
+    },
+    "eth": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+        }
+      ],
+      "failures": 0,
+      "selected": 5,
+      "successes": 5
+    },
+    "fantom": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": -32000,
+              "status": 200
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+        },
+        {
+          "attempt": 2,
+          "failure_causes": [
+            {
+              "method": "eth_getTransactionByHash",
+              "rpc_code": null,
+              "status": 200
+            },
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": -32000,
+              "status": 200
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+        }
+      ],
+      "failures": 2,
+      "selected": 1,
+      "successes": 0
+    },
+    "gnosis": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [
+            {
+              "method": "eth_getTransactionByHash",
+              "rpc_code": null,
+              "status": 200
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "rpc_code": null,
+              "status": 200
+            },
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": -32000,
+              "status": 200
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+        },
+        {
+          "attempt": 2,
+          "failure_causes": [
+            {
+              "method": "eth_getTransactionByHash",
+              "rpc_code": null,
+              "status": 200
+            },
+            {
+              "method": "eth_getTransactionReceipt",
+              "rpc_code": null,
+              "status": 200
+            },
+            {
+              "method": "debug_traceTransaction",
+              "rpc_code": -32000,
+              "status": 200
+            }
+          ],
+          "status": "FAILED",
+          "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+        }
+      ],
+      "failures": 2,
+      "selected": 1,
+      "successes": 0
+    },
+    "polygon": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+        },
+        {
+          "attempt": 1,
+          "failure_causes": [],
+          "status": "CAPTURED",
+          "transaction_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008"
+        }
+      ],
+      "failures": 0,
+      "selected": 2,
+      "successes": 2
+    }
+  },
+  "consecutive_failures_at_stop": 0,
+  "created_at": "2026-10-17T09:44:41.629732+00:00",
+  "provider": "dRPC",
+  "rate_limit": {
+    "max_consecutive_failures": 10,
+    "request_interval_seconds": 0.5
+  },
+  "run": "phase2-multichain-labeled-traces",
+  "selection": {
+    "base": [
+      "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec"
+    ],
+    "bsc": [
+      "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    ],
+    "eth": [
+      "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+      "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+    ],
+    "fantom": [
+      "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+    ],
+    "gnosis": [
+      "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+    ],
+    "polygon": [
+      "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+      "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008"
+    ]
+  },
+  "status": "COMPLETED"
+}

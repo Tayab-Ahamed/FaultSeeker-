@@ -1,0 +1,88 @@
+{
+  "attempt": 2,
+  "chain": "bsc",
+  "created_at": "2026-10-17T09:44:53.617055+00:00",
+  "failure_causes": [
+    {
+      "method": "eth_chainId",
+      "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+    },
+    {
+      "method": "eth_chainId",
+      "rpc_code": null,
+      "status": 429
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "rpc_code": null,
+      "status": 429
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "rpc_code": null,
+      "status": 429
+    },
+    {
+      "method": "debug_traceTransaction",
+      "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+    },
+    {
+      "method": "debug_traceTransaction",
+      "rpc_code": null,
+      "status": 429
+    },
+    {
+      "cause": "wrong_or_missing_chain",
+      "method": "eth_chainId",
+      "observed": null
+    }
+  ],
+  "label": {
+    "name": "Fortress Loans",
+    "vuln_type": "Unrestricted oracle update"
+  },
+  "observed_chain_id": null,
+  "provider": "dRPC",
+  "raw_artifact": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/bsc/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.attempt2.json",
+  "requests": [
+    {
+      "method": "eth_chainId",
+      "response": {
+        "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}",
+        "http_status": 429
+      }
+    },
+    {
+      "method": "eth_getTransactionByHash",
+      "response": {
+        "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}",
+        "http_status": 429
+      }
+    },
+    {
+      "method": "eth_getTransactionReceipt",
+      "response": {
+        "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}",
+        "http_status": 429
+      }
+    },
+    {
+      "method": "debug_traceTransaction",
+      "response": {
+        "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}",
+        "http_status": 429
+      }
+    }
+  ],
+  "status": "FAILED",
+  "stderr_artifact": "reports/external_runs/phase2/20261017T011500Z/drpc/stderr/bsc/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.attempt2.txt",
+  "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+}

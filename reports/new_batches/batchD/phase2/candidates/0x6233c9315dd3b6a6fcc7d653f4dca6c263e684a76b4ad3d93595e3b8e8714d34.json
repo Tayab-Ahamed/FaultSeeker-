@@ -1,0 +1,80 @@
+{
+  "predictions": [
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 1.25,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x0000000000000000000000000000000000000001",
+      "count": 2,
+      "function": "0xa3cec2b2",
+      "function_name": "0xa3cec2b2",
+      "path_concentration": 1.0,
+      "rank": 1,
+      "selector": "0xa3cec2b2",
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "staticcall"
+      ],
+      "candidate_generation_score": 0.75,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0xed5af388653567af2f388e6224dc7c4b3241c544",
+      "count": 2,
+      "function": "0x6352211e",
+      "function_name": "0x6352211e",
+      "path_concentration": 1.0,
+      "rank": 2,
+      "selector": "0x6352211e",
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ],
+        [
+          0
+        ]
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    },
+    {
+      "call_types": [
+        "call"
+      ],
+      "candidate_generation_score": 0.4583333333333333,
+      "candidate_source": "saved_predictions+saved_trace",
+      "code_address": "0x8189afbe7b0e81dae735ef027cd31371b3974feb",
+      "count": 2,
+      "function": "0x3319f3e3",
+      "function_name": "0x3319f3e3",
+      "path_concentration": 1.0,
+      "rank": 3,
+      "selector": "0x3319f3e3",
+      "supporting_call_depths": [
+        [
+          0
+        ],
+        []
+      ],
+      "terminal_fanout": 1,
+      "tie_policy": "call-path concentration desc; terminal fanout asc; max depth desc; count desc; stable candidate encounter order",
+      "trace_evidence_count": 1
+    }
+  ],
+  "transaction_hash": "0x6233c9315dd3b6a6fcc7d653f4dca6c263e684a76b4ad3d93595e3b8e8714d34"
+}

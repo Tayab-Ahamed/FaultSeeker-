@@ -1,0 +1,111 @@
+{
+  "actual_billing_verified": false,
+  "batch_sha256": "e349997c875542ffb85a2205dbc4357e31d547c7dffb3cf1f12aebf3634becf7",
+  "billing_prompts": 0,
+  "commits": 0,
+  "excluded": 0,
+  "frozen_files_valid_after_scoring": true,
+  "llm_calls": 0,
+  "metrics": {
+    "address_only_sensitivity": {
+      "R@1": {
+        "hits": 4,
+        "n": 10,
+        "recall": 0.4,
+        "wilson_95": {
+          "lower": 0.16818032970623614,
+          "upper": 0.6873262302663417
+        }
+      },
+      "R@3": {
+        "hits": 6,
+        "n": 10,
+        "recall": 0.6,
+        "wilson_95": {
+          "lower": 0.31267376973365824,
+          "upper": 0.8318196702937638
+        }
+      },
+      "R@5": {
+        "hits": 6,
+        "n": 10,
+        "recall": 0.6,
+        "wilson_95": {
+          "lower": 0.31267376973365824,
+          "upper": 0.8318196702937638
+        }
+      }
+    },
+    "address_selector_primary": {
+      "R@1": {
+        "hits": 2,
+        "n": 10,
+        "recall": 0.2,
+        "wilson_95": {
+          "lower": 0.05668215145437519,
+          "upper": 0.5098375284633583
+        }
+      },
+      "R@3": {
+        "hits": 3,
+        "n": 10,
+        "recall": 0.3,
+        "wilson_95": {
+          "lower": 0.10779126740630099,
+          "upper": 0.6032218525388546
+        }
+      },
+      "R@5": {
+        "hits": 4,
+        "n": 10,
+        "recall": 0.4,
+        "wilson_95": {
+          "lower": 0.16818032970623614,
+          "upper": 0.6873262302663417
+        }
+      }
+    },
+    "selector_only_sensitivity": {
+      "R@1": {
+        "hits": 2,
+        "n": 10,
+        "recall": 0.2,
+        "wilson_95": {
+          "lower": 0.05668215145437519,
+          "upper": 0.5098375284633583
+        }
+      },
+      "R@3": {
+        "hits": 3,
+        "n": 10,
+        "recall": 0.3,
+        "wilson_95": {
+          "lower": 0.10779126740630099,
+          "upper": 0.6032218525388546
+        }
+      },
+      "R@5": {
+        "hits": 4,
+        "n": 10,
+        "recall": 0.4,
+        "wilson_95": {
+          "lower": 0.16818032970623614,
+          "upper": 0.6873262302663417
+        }
+      }
+    }
+  },
+  "paid_spend_estimate_usd": 0,
+  "pushes": 0,
+  "rate_limits": 0,
+  "rpc_requests": 40,
+  "scope": "10 source-backed PoC targets, convenience sample, not independent root-cause adjudication; no retuning or second score",
+  "scoring_file_sha256": "fcb1ffaa1ab99e4123713b378bb3cdf3c6e82c871c7a79f7efec8d8111f5066a",
+  "scoring_passes": 1,
+  "software_checks": {
+    "junit": "build/lane_review_final.xml",
+    "passed": 1019,
+    "skipped": 1
+  },
+  "verified_n": 10
+}
