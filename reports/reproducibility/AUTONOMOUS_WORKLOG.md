@@ -41,3 +41,32 @@ reports, or provenance evidence.
   each checkpoint.
 - Treat accepted, pending, and excluded as distinct states; missing evidence is
   never silently promoted.
+
+## Checkpoints
+
+### AR-002 — bound cohort manifest validator
+
+- Changed: `benchmark/validate_cohort_manifest.py`,
+  `tests/test_cohort_manifest_validator.py`.
+- Command: `python -m pytest tests/test_cohort_manifest_validator.py tests/test_research_protocol.py tests/test_authentic_publication.py tests/test_runtime_layout.py -q -p no:cacheprovider`
+- Result: exit 0, 20 passed.
+- Command: `python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root .`
+- Result: exit 0, manifest internally valid, 14 accepted, 0 pending, 0 excluded,
+  target 246, status `BLOCKED-BY-DATA`.
+- Commit: `6861508`.
+
+### AR-003 — benchmark container pinning
+
+- Changed: `Dockerfile.benchmark`, `tests/test_runtime_layout.py`.
+- Command: `python -m pytest tests/test_runtime_layout.py tests/test_cohort_manifest_validator.py -q -p no:cacheprovider`
+- Result: exit 0, 6 passed.
+- Commit: `acf4988`.
+
+### AR-008 — CI alignment partial
+
+- Changed: `.github/workflows/ci.yml`, `tests/test_runtime_layout.py`.
+- Command: `python -m pytest tests/test_runtime_layout.py tests/test_cohort_manifest_validator.py -q -p no:cacheprovider`
+- Result: exit 0, 7 passed.
+- CI now uses Python 3.11.9, `requirements.lock`, and `make test`.
+- Remaining AR-008 work: align `setup.py`, README defaults, and replay/tool
+  dependency documentation without changing frozen evidence.
