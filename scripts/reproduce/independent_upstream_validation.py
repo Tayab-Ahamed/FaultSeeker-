@@ -107,7 +107,7 @@ CLAIM_PUBLISHED = {
     14: {"gain_percentage_points": [17, 29], "denominator": "paired paper evaluation cohort"},
     18: {"cost_saving_pct": 58, "study_transactions": 100, "tier_mix": "50/30/20"},
     21: {"benign_prefilter_pct": 40, "latency_reduction": "reported with prefilter study", "denominator": "paper production workload"},
-    22: {"metric": "Recall@1/3/5 function localization", "denominator": 115},
+    22: {"metric": "Recall@1/3/5 function localization", "published_values": PUBLISHED_LOCALIZATION, "denominator": 115},
     27: {"waf_recovery_pct": 23, "denominator": "authorized challenge sample not retained"},
     28: {"metric": "Table VI category averages", "denominator": "paper study categories"},
     29: {"before_pct": 68, "after_pct": 81, "study_transactions": 20},
@@ -116,6 +116,12 @@ CLAIM_PUBLISHED = {
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def write_lf(path: Path, text: str) -> None:
+    """Write deterministic LF bytes on Windows and Linux."""
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text)
 
 
 def load_classification() -> list[dict[str, str]]:
@@ -294,6 +300,10 @@ def write_markdown(result: dict[str, Any]) -> None:
         )
     lines += [
         "",
+        "## Evaluation reconstruction",
+        "",
+        "The upstream README defines a 115-transaction ranked-function task. The pinned upstream ranker filters common safe functions, keys candidates by function plus address, deduplicates repeated calls by depth, and sorts by count. No standalone upstream scorer, original per-example prediction file, original model transcript, complete trace/source bundle, or baseline/ablation output was available. Therefore the calculation below is bounded to the retained 110 successful LLM-free outputs plus five explicit failures.",
+        "",
         "Published upstream Table II values are 50.43%, 73.91%, and 76.52% on 115 transactions. Their implied integer hits are 58/115, 85/115, and 88/115. The retained independent function-only calculation produces 27/115, 49/115, and 53/115 because five rows failed and the 110 successful rows are LLM-free ranker outputs. This is an independent calculation, not an exact reproduction.",
         "",
         "## Claim comparison",
@@ -315,7 +325,7 @@ def write_markdown(result: dict[str, Any]) -> None:
         "- No RPC, provider, LLM, or upstream rerun was performed by this calculation.",
         "- Missing original scorer configuration, original predictions, and multi-agent transcripts prevent exact paper reproduction.",
     ]
-    RESULT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    write_lf(RESULT_MD, "\n".join(lines) + "\n")
 
 
 def main() -> int:
@@ -345,11 +355,11 @@ def main() -> int:
         "replay_mismatch_count": sum(row["replay_mismatch"] for row in rows),
     }
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    with PER_EXAMPLE.open("w", encoding="utf-8") as handle:
+    with PER_EXAMPLE.open("w", encoding="utf-8", newline="\n") as handle:
         for row in rows:
             handle.write(json.dumps(row, sort_keys=True) + "\n")
     manifest = input_manifest()
-    INPUT_MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_lf(INPUT_MANIFEST, json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     result = {
         "schema_version": 1,
         "status": "INDEPENDENT_CALCULATION_NOT_EXACT_REPRODUCTION",
@@ -360,13 +370,35 @@ def main() -> int:
             "raw_results": RAW_DIR.relative_to(ROOT).as_posix(),
             "run_manifest": RUN_MANIFEST.relative_to(ROOT).as_posix(),
         },
+        "evaluation_reconstruction": {
+            "task": "ranked function localization",
+            "upstream_benchmark_transactions": 115,
+            "ground_truth_files": 115,
+            "published_metric": "Recall@1, Recall@3, Recall@5",
+            "published_denominator": 115,
+            "published_values": PUBLISHED_LOCALIZATION,
+            "upstream_ranker_observations": [
+                "filters common read-only and standard token functions",
+                "keys function candidates by function plus address",
+                "deduplicates repeated calls by depth",
+                "sorts retained candidates by count descending",
+            ],
+            "missing_for_exact_reproduction": [
+                "standalone upstream scorer/evaluator implementation",
+                "original per-example predictions and ranking files",
+                "original model/provider configuration and transcripts",
+                "complete trace/source acquisition inputs for all 115 rows",
+                "original baseline and ablation outputs",
+            ],
+            "available_calculation": "retained provider-pinned LLM-free ranker outputs; 110 status=ok and 5 failed rows",
+        },
         "input_manifest": INPUT_MANIFEST.relative_to(ROOT).as_posix(),
         "localization": localization,
         "claims": _claim_rows(localization),
         "per_example": PER_EXAMPLE.relative_to(ROOT).as_posix(),
         "script_sha256": sha256(Path(__file__)),
     }
-    RESULT_JSON.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    write_lf(RESULT_JSON, json.dumps(result, indent=2, sort_keys=True) + "\n")
     write_markdown(result)
     print(json.dumps(localization, indent=2, sort_keys=True))
     print(f"wrote {RESULT_JSON}")

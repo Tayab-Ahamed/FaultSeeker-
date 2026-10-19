@@ -66,3 +66,16 @@ def test_upstream_run_has_expected_complete_denominator():
         "recall_at_3": 49,
         "recall_at_5": 53,
     }
+
+
+def test_committed_claim_comparison_covers_exactly_31_ledger_claims():
+    import json
+
+    report = json.loads(
+        (ROOT / "reports/reproducibility/upstream_validation/claim_comparison.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert report["status"] == "INDEPENDENT_CALCULATION_NOT_EXACT_REPRODUCTION"
+    assert [claim["id"] for claim in report["claims"]] == list(range(1, 32))
+    assert report["localization"]["independent_localization"]["original_function_only_all_115"]["n"] == 115

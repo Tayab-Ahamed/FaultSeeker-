@@ -11,6 +11,10 @@ This is an independent calculation from retained upstream benchmark labels and p
 | original_function_only_valid_110 | 110 | 27/110 (0.2455) | 49/110 (0.4455) | 53/110 (0.4818) | retained outputs |
 | current_address_aware_valid_110 | 110 | 25/110 (0.2273) | 49/110 (0.4455) | 52/110 (0.4727) | retained outputs |
 
+## Evaluation reconstruction
+
+The upstream README defines a 115-transaction ranked-function task. The pinned upstream ranker filters common safe functions, keys candidates by function plus address, deduplicates repeated calls by depth, and sorts by count. No standalone upstream scorer, original per-example prediction file, original model transcript, complete trace/source bundle, or baseline/ablation output was available. Therefore the calculation below is bounded to the retained 110 successful LLM-free outputs plus five explicit failures.
+
 Published upstream Table II values are 50.43%, 73.91%, and 76.52% on 115 transactions. Their implied integer hits are 58/115, 85/115, and 88/115. The retained independent function-only calculation produces 27/115, 49/115, and 53/115 because five rows failed and the 110 successful rows are LLM-free ranker outputs. This is an independent calculation, not an exact reproduction.
 
 ## Claim comparison
