@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_CLASS_WEIGHTED_CALIBRATION_DIAGNOSTIC_ONLY",
+  "hypothesis": "positive-class oversampling during training may recover low-score exploit false negatives",
+  "weights": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "results": {
+    "1": {
+      "n": 1115,
+      "tp": 72,
+      "fp": 10,
+      "tn": 990,
+      "fn": 43,
+      "precision": 0.878049,
+      "recall": 0.626087,
+      "f1": 0.730964,
+      "fpr": 0.01,
+      "f1_ci": [
+        0.6548,
+        0.798
+      ]
+    },
+    "2": {
+      "n": 1115,
+      "tp": 77,
+      "fp": 25,
+      "tn": 975,
+      "fn": 38,
+      "precision": 0.754902,
+      "recall": 0.669565,
+      "f1": 0.709677,
+      "fpr": 0.025,
+      "f1_ci": [
+        0.64,
+        0.7721
+      ]
+    },
+    "3": {
+      "n": 1115,
+      "tp": 85,
+      "fp": 30,
+      "tn": 970,
+      "fn": 30,
+      "precision": 0.73913,
+      "recall": 0.73913,
+      "f1": 0.73913,
+      "fpr": 0.03,
+      "f1_ci": [
+        0.6698,
+        0.7969
+      ]
+    },
+    "4": {
+      "n": 1115,
+      "tp": 91,
+      "fp": 42,
+      "tn": 958,
+      "fn": 24,
+      "precision": 0.684211,
+      "recall": 0.791304,
+      "f1": 0.733871,
+      "fpr": 0.042,
+      "f1_ci": [
+        0.6636,
+        0.791
+      ]
+    }
+  },
+  "leakage_control": "positive weighting is applied only to outer-fold training rows; test rows are scored once with fixed threshold 0.5",
+  "input_sha256": {
+    "exploit": "c0abf4d3ae1fe6d2eb2e5f6d98830d24f8a3733aa276155345fbd8d1cb7292c5",
+    "benign_traces": "acd378c36393cf3fcb04e5e498bbeb90d6ce2147c1a3a8647fd5853e35af5977"
+  },
+  "raw_predictions": "reports/reproducibility/legacy_115_diagnostic/class_weighted_calibration/predictions.json",
+  "original_246_row_claim": "not evaluated; legacy 115-row diagnostic only"
+}

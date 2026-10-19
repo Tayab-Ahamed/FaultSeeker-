@@ -1,0 +1,1393 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_ERROR_DIAGNOSTIC_ONLY",
+  "n_predictions": 1115,
+  "false_negative_count": 43,
+  "false_positive_count": 10,
+  "error_groups": {
+    "false_negatives_by_chain": [
+      {
+        "value": "eth",
+        "count": 37
+      },
+      {
+        "value": "bsc",
+        "count": 6
+      }
+    ],
+    "false_negatives_by_vulnerability": [
+      {
+        "value": "Arbitrary External Call Vulnerability",
+        "count": 5
+      },
+      {
+        "value": "Business Logic Flaw",
+        "count": 3
+      },
+      {
+        "value": "Logic Flaw",
+        "count": 3
+      },
+      {
+        "value": "Improper Access Control of Close-source contract",
+        "count": 2
+      },
+      {
+        "value": "Phishing attack",
+        "count": 2
+      },
+      {
+        "value": "Incorrect access control",
+        "count": 2
+      },
+      {
+        "value": "unverified external call",
+        "count": 2
+      },
+      {
+        "value": "business logic flaw",
+        "count": 2
+      },
+      {
+        "value": "CompoundV2 Inflation Attack",
+        "count": 1
+      },
+      {
+        "value": "No input validation",
+        "count": 1
+      },
+      {
+        "value": "Bridge address(0).safeTransferFrom() does not revert",
+        "count": 1
+      },
+      {
+        "value": "lack of validation",
+        "count": 1
+      },
+      {
+        "value": "Incorrect input validation",
+        "count": 1
+      },
+      {
+        "value": "Lack of access control",
+        "count": 1
+      },
+      {
+        "value": "Arbitrary External Call ",
+        "count": 1
+      },
+      {
+        "value": "lack-of-access-control",
+        "count": 1
+      },
+      {
+        "value": "Flashloan Attack",
+        "count": 1
+      },
+      {
+        "value": "Underflow",
+        "count": 1
+      },
+      {
+        "value": "Incorrect signature verification",
+        "count": 1
+      },
+      {
+        "value": "Insufficient access control",
+        "count": 1
+      },
+      {
+        "value": "lack of validation data",
+        "count": 1
+      },
+      {
+        "value": "Storage Collision & Malicious Proposal",
+        "count": 1
+      },
+      {
+        "value": "Incorrect Access Control",
+        "count": 1
+      },
+      {
+        "value": "Incorrect reward calculation",
+        "count": 1
+      },
+      {
+        "value": "Price Manipulation",
+        "count": 1
+      },
+      {
+        "value": "Incorrect Liquidation Calculation",
+        "count": 1
+      },
+      {
+        "value": "Overpriced Asset in Oracle",
+        "count": 1
+      },
+      {
+        "value": "Insufficient Validation Reentrancy",
+        "count": 1
+      },
+      {
+        "value": "AMM Price Manipulation Attack via Bridge Configuration",
+        "count": 1
+      },
+      {
+        "value": "Malicious Proposal Mint & Transfer Ownership",
+        "count": 1
+      }
+    ],
+    "false_positives_by_chain": [
+      {
+        "value": "eth",
+        "count": 10
+      }
+    ]
+  },
+  "score_summary": {
+    "false_negatives": {
+      "n": 43,
+      "min": 0.048907,
+      "mean": 0.21046074418604652,
+      "median": 0.196812,
+      "max": 0.498345
+    },
+    "false_positives": {
+      "n": 10,
+      "min": 0.562441,
+      "mean": 0.7565609,
+      "median": 0.775975,
+      "max": 0.924948
+    }
+  },
+  "observations": [
+    "All legacy 115 exploit rows and 1000 benign trace rows have the four trace features; missing-feature coverage is not an error source in this diagnostic.",
+    "Routing decisions and provider confidence are not present in the retained JSONL; no routing cause is inferred.",
+    "False negatives are concentrated among low-call/low-depth exploit traces and include access-control, validation, business-logic, and arbitrary-call categories; this is an observed grouping, not a causal attribution.",
+    "False positives are all Ethereum benign traces in this diagnostic and have high full-system scores; the benign source is a trace collection, not category-adjudicated human benign ground truth."
+  ],
+  "false_negatives": [
+    {
+      "txn_hash": "0xbea605b238c85aabe5edc636219155d8c4879d6b05c48091cf1f7286bd4702ba",
+      "chain": "bsc",
+      "score": 0.05527,
+      "scores": {
+        "-FAEGL": 0.0,
+        "-LLM routing": 0.05527,
+        "-Learned calib": 0.362,
+        "-TIG graph": 0.033772,
+        "Dynamic trace-rule": 0.065667,
+        "FaultSeeker++ (Ours)": 0.05527,
+        "LLM-only": 0.0,
+        "Static proxy": 0.014154
+      },
+      "features": {
+        "functioncall_count": "2",
+        "address_count": "2",
+        "max_depth": "2",
+        "gas_cost": "30576"
+      },
+      "vulnerability_type": "Improper Access Control of Close-source contract",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x0237855c63eb85c5f437fba5267cc869a08c58a49501e3e5ebec9990bdd97565",
+      "chain": "bsc",
+      "score": 0.069283,
+      "scores": {
+        "-FAEGL": 0.0,
+        "-LLM routing": 0.069283,
+        "-Learned calib": 0.322,
+        "-TIG graph": 0.033075,
+        "Dynamic trace-rule": 0.057667,
+        "FaultSeeker++ (Ours)": 0.069283,
+        "LLM-only": 0.0,
+        "Static proxy": 0.01849
+      },
+      "features": {
+        "functioncall_count": "2",
+        "address_count": "1",
+        "max_depth": "2",
+        "gas_cost": "46839"
+      },
+      "vulnerability_type": "CompoundV2 Inflation Attack",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x57b589f631f8ff20e2a89a649c4ec2e35be72eaecf155fdfde981c0fec2be5ba",
+      "chain": "bsc",
+      "score": 0.060394,
+      "scores": {
+        "-FAEGL": 0.0,
+        "-LLM routing": 0.060394,
+        "-Learned calib": 0.362,
+        "-TIG graph": 0.034836,
+        "Dynamic trace-rule": 0.065667,
+        "FaultSeeker++ (Ours)": 0.060394,
+        "LLM-only": 0.0,
+        "Static proxy": 0.018641
+      },
+      "features": {
+        "functioncall_count": "2",
+        "address_count": "2",
+        "max_depth": "2",
+        "gas_cost": "47405"
+      },
+      "vulnerability_type": "Improper Access Control of Close-source contract",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x20ecd8310a2cc7f7774aa5a045c8a99ad84a8451d6650f24e0911e9f4355b13a",
+      "chain": "bsc",
+      "score": 0.048907,
+      "scores": {
+        "-FAEGL": 0.0,
+        "-LLM routing": 0.048907,
+        "-Learned calib": 0.256,
+        "-TIG graph": 0.028193,
+        "Dynamic trace-rule": 0.032833,
+        "FaultSeeker++ (Ours)": 0.048907,
+        "LLM-only": 0.0,
+        "Static proxy": 0.015736
+      },
+      "features": {
+        "functioncall_count": "1",
+        "address_count": "1",
+        "max_depth": "1",
+        "gas_cost": "47761"
+      },
+      "vulnerability_type": "Business Logic Flaw",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x90b468608fbcc7faef46502b198471311baca3baab49242a4a85b73d4924379b",
+      "chain": "eth",
+      "score": 0.128404,
+      "scores": {
+        "-FAEGL": 0.128404,
+        "-LLM routing": 0.128404,
+        "-Learned calib": 0.582,
+        "-TIG graph": 0.069466,
+        "Dynamic trace-rule": 0.135333,
+        "FaultSeeker++ (Ours)": 0.128404,
+        "LLM-only": 0.362202,
+        "Static proxy": 0.05156
+      },
+      "features": {
+        "functioncall_count": "12",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "58349"
+      },
+      "vulnerability_type": "Arbitrary External Call Vulnerability",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0xb61413c495fdad6114a7aa863a00b2e3c28945979a10885b12b30316ea9f072c",
+      "chain": "eth",
+      "score": 0.083299,
+      "scores": {
+        "-FAEGL": 0.083299,
+        "-LLM routing": 0.083299,
+        "-Learned calib": 0.468,
+        "-TIG graph": 0.048061,
+        "Dynamic trace-rule": 0.0985,
+        "FaultSeeker++ (Ours)": 0.083299,
+        "LLM-only": 0.324118,
+        "Static proxy": 0.025262
+      },
+      "features": {
+        "functioncall_count": "3",
+        "address_count": "3",
+        "max_depth": "3",
+        "gas_cost": "60981"
+      },
+      "vulnerability_type": "Phishing attack",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x3ed75df83d907412af874b7998d911fdf990704da87c2b1a8cf95ca5d21504cf",
+      "chain": "eth",
+      "score": 0.124259,
+      "scores": {
+        "-FAEGL": 0.124259,
+        "-LLM routing": 0.124259,
+        "-Learned calib": 0.576,
+        "-TIG graph": 0.059903,
+        "Dynamic trace-rule": 0.133833,
+        "FaultSeeker++ (Ours)": 0.124259,
+        "LLM-only": 0.361382,
+        "Static proxy": 0.050294
+      },
+      "features": {
+        "functioncall_count": "11",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "64853"
+      },
+      "vulnerability_type": "No input validation",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x23fcf9d4517f7cc39815b09b0a80c023ab2c8196c826c93b4100f2e26b701286",
+      "chain": "eth",
+      "score": 0.144577,
+      "scores": {
+        "-FAEGL": 0.144577,
+        "-LLM routing": 0.144577,
+        "-Learned calib": 0.546,
+        "-TIG graph": 0.072331,
+        "Dynamic trace-rule": 0.126333,
+        "FaultSeeker++ (Ours)": 0.144577,
+        "LLM-only": 0.353871,
+        "Static proxy": 0.036379
+      },
+      "features": {
+        "functioncall_count": "6",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "68921"
+      },
+      "vulnerability_type": "Arbitrary External Call Vulnerability",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x46deef0f52e3a983b67abf4714448a41dd7ffd6d32d32da69d62081c68ad7882",
+      "chain": "eth",
+      "score": 0.089324,
+      "scores": {
+        "-FAEGL": 0.089324,
+        "-LLM routing": 0.089324,
+        "-Learned calib": 0.498,
+        "-TIG graph": 0.0512,
+        "Dynamic trace-rule": 0.106,
+        "FaultSeeker++ (Ours)": 0.089324,
+        "LLM-only": 0.333227,
+        "Static proxy": 0.042726
+      },
+      "features": {
+        "functioncall_count": "8",
+        "address_count": "3",
+        "max_depth": "3",
+        "gas_cost": "70224"
+      },
+      "vulnerability_type": "Phishing attack",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133",
+      "chain": "eth",
+      "score": 0.123179,
+      "scores": {
+        "-FAEGL": 0.123179,
+        "-LLM routing": 0.123179,
+        "-Learned calib": 0.68,
+        "-TIG graph": 0.070424,
+        "Dynamic trace-rule": 0.164167,
+        "FaultSeeker++ (Ours)": 0.123179,
+        "LLM-only": 0.403248,
+        "Static proxy": 0.03407
+      },
+      "features": {
+        "functioncall_count": "5",
+        "address_count": "5",
+        "max_depth": "5",
+        "gas_cost": "71514"
+      },
+      "vulnerability_type": "Bridge address(0).safeTransferFrom() does not revert",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x2606d459a50ca4920722a111745c2eeced1d8a01ff25ee762e22d5d4b1595739",
+      "chain": "eth",
+      "score": 0.125734,
+      "scores": {
+        "-FAEGL": 0.125734,
+        "-LLM routing": 0.125734,
+        "-Learned calib": 0.564,
+        "-TIG graph": 0.060113,
+        "Dynamic trace-rule": 0.130833,
+        "FaultSeeker++ (Ours)": 0.125734,
+        "LLM-only": 0.359534,
+        "Static proxy": 0.047297
+      },
+      "features": {
+        "functioncall_count": "9",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "76113"
+      },
+      "vulnerability_type": "Logic Flaw",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0xc0be8c3792a5b1ba7d653dc681ff611a5b79a75fe51c359cf1aac633e9441574",
+      "chain": "eth",
+      "score": 0.105773,
+      "scores": {
+        "-FAEGL": 0.105773,
+        "-LLM routing": 0.105773,
+        "-Learned calib": 0.592,
+        "-TIG graph": 0.060291,
+        "Dynamic trace-rule": 0.135833,
+        "FaultSeeker++ (Ours)": 0.105773,
+        "LLM-only": 0.370982,
+        "Static proxy": 0.04422
+      },
+      "features": {
+        "functioncall_count": "7",
+        "address_count": "4",
+        "max_depth": "4",
+        "gas_cost": "87076"
+      },
+      "vulnerability_type": "lack of validation",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x491cf8b2a5753fdbf3096b42e0a16bc109b957dc112d6537b1ed306e483d0744",
+      "chain": "eth",
+      "score": 0.254744,
+      "scores": {
+        "-FAEGL": 0.254744,
+        "-LLM routing": 0.254744,
+        "-Learned calib": 0.74,
+        "-TIG graph": 0.130023,
+        "Dynamic trace-rule": 0.2025,
+        "FaultSeeker++ (Ours)": 0.254744,
+        "LLM-only": 0.446058,
+        "Static proxy": 0.070313
+      },
+      "features": {
+        "functioncall_count": "15",
+        "address_count": "5",
+        "max_depth": "6",
+        "gas_cost": "94925"
+      },
+      "vulnerability_type": "Incorrect input validation",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0xfc872bf5ca8f04b18b82041ec563e4abf2e31e1fc27d1ea5dee39bc8a79d2d06",
+      "chain": "eth",
+      "score": 0.134202,
+      "scores": {
+        "-FAEGL": 0.134202,
+        "-LLM routing": 0.134202,
+        "-Learned calib": 0.57,
+        "-TIG graph": 0.063248,
+        "Dynamic trace-rule": 0.132333,
+        "FaultSeeker++ (Ours)": 0.134202,
+        "LLM-only": 0.363854,
+        "Static proxy": 0.056343
+      },
+      "features": {
+        "functioncall_count": "10",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "98786"
+      },
+      "vulnerability_type": "Lack of access control",
+      "class": "Moderate"
+    },
+    {
+      "txn_hash": "0x21d8b164f0cb8beb1ed27d164ed986c3fc26b33655ce18226b05b9cfcf6cd93c",
+      "chain": "bsc",
+      "score": 0.147734,
+      "scores": {
+        "-FAEGL": 0.147734,
+        "-LLM routing": 0.147734,
+        "-Learned calib": 0.636,
+        "-TIG graph": 0.069898,
+        "Dynamic trace-rule": 0.148833,
+        "FaultSeeker++ (Ours)": 0.147734,
+        "LLM-only": 0.381759,
+        "Static proxy": 0.090021
+      },
+      "features": {
+        "functioncall_count": "21",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "101327"
+      },
+      "vulnerability_type": "Arbitrary External Call ",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xc9b2cbc1437bbcd8c328b6d7cdbdae33d7d2a9ef07eca18b4922aac0430991e7",
+      "chain": "eth",
+      "score": 0.132972,
+      "scores": {
+        "-FAEGL": 0.132972,
+        "-LLM routing": 0.132972,
+        "-Learned calib": 0.534,
+        "-TIG graph": 0.06894,
+        "Dynamic trace-rule": 0.123333,
+        "FaultSeeker++ (Ours)": 0.132972,
+        "LLM-only": 0.354727,
+        "Static proxy": 0.039393
+      },
+      "features": {
+        "functioncall_count": "4",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "102725"
+      },
+      "vulnerability_type": "Business Logic Flaw",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xf0a13b445674094c455de9e947a25bade75cac9f5176695fca418898ea25742f",
+      "chain": "eth",
+      "score": 0.200442,
+      "scores": {
+        "-FAEGL": 0.200442,
+        "-LLM routing": 0.200442,
+        "-Learned calib": 0.676,
+        "-TIG graph": 0.097521,
+        "Dynamic trace-rule": 0.165167,
+        "FaultSeeker++ (Ours)": 0.200442,
+        "LLM-only": 0.403509,
+        "Static proxy": 0.060947
+      },
+      "features": {
+        "functioncall_count": "11",
+        "address_count": "4",
+        "max_depth": "5",
+        "gas_cost": "104801"
+      },
+      "vulnerability_type": "Incorrect access control",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x800a5b3178f680feebb81af69bd3dff791b886d4ce31615e601f2bb1f543bb2e",
+      "chain": "eth",
+      "score": 0.226471,
+      "scores": {
+        "-FAEGL": 0.226471,
+        "-LLM routing": 0.226471,
+        "-Learned calib": 0.776,
+        "-TIG graph": 0.113518,
+        "Dynamic trace-rule": 0.2115,
+        "FaultSeeker++ (Ours)": 0.226471,
+        "LLM-only": 0.457656,
+        "Static proxy": 0.092753
+      },
+      "features": {
+        "functioncall_count": "21",
+        "address_count": "5",
+        "max_depth": "6",
+        "gas_cost": "111575"
+      },
+      "vulnerability_type": "Incorrect access control",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xdd0636e2598f4d7b74f364fedb38f334365fd956747a04a6dd597444af0bc1c0",
+      "chain": "eth",
+      "score": 0.222312,
+      "scores": {
+        "-FAEGL": 0.222312,
+        "-LLM routing": 0.222312,
+        "-Learned calib": 0.718,
+        "-TIG graph": 0.112549,
+        "Dynamic trace-rule": 0.175667,
+        "FaultSeeker++ (Ours)": 0.222312,
+        "LLM-only": 0.415879,
+        "Static proxy": 0.084546
+      },
+      "features": {
+        "functioncall_count": "18",
+        "address_count": "4",
+        "max_depth": "5",
+        "gas_cost": "114546"
+      },
+      "vulnerability_type": "unverified external call",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x1194e1d6085885ce054a7ff8cd3cd0c3fa308ec87e4ccde8dd0549842fef4f1b",
+      "chain": "eth",
+      "score": 0.135448,
+      "scores": {
+        "-FAEGL": 0.135448,
+        "-LLM routing": 0.135448,
+        "-Learned calib": 0.558,
+        "-TIG graph": 0.062808,
+        "Dynamic trace-rule": 0.129333,
+        "FaultSeeker++ (Ours)": 0.135448,
+        "LLM-only": 0.362586,
+        "Static proxy": 0.054635
+      },
+      "features": {
+        "functioncall_count": "8",
+        "address_count": "3",
+        "max_depth": "4",
+        "gas_cost": "114880"
+      },
+      "vulnerability_type": "lack-of-access-control",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x0b062361e16a2ea0942cc1b4462b6584208c8c864609ff73aaa640aaa2d92428",
+      "chain": "eth",
+      "score": 0.217775,
+      "scores": {
+        "-FAEGL": 0.217775,
+        "-LLM routing": 0.217775,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.252679,
+        "Dynamic trace-rule": 0.368,
+        "FaultSeeker++ (Ours)": 0.217775,
+        "LLM-only": 0.663509,
+        "Static proxy": 0.144834
+      },
+      "features": {
+        "functioncall_count": "36",
+        "address_count": "13",
+        "max_depth": "9",
+        "gas_cost": "138129"
+      },
+      "vulnerability_type": "Flashloan Attack",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x33479bcfbc792aa0f8103ab0d7a3784788b5b0e1467c81ffbed1b7682660b4fa",
+      "chain": "eth",
+      "score": 0.18775,
+      "scores": {
+        "-FAEGL": 0.18775,
+        "-LLM routing": 0.18775,
+        "-Learned calib": 0.652,
+        "-TIG graph": 0.099342,
+        "Dynamic trace-rule": 0.159167,
+        "FaultSeeker++ (Ours)": 0.18775,
+        "LLM-only": 0.401434,
+        "Static proxy": 0.058558
+      },
+      "features": {
+        "functioncall_count": "7",
+        "address_count": "4",
+        "max_depth": "5",
+        "gas_cost": "140841"
+      },
+      "vulnerability_type": "Underflow",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x9f4ef3cc55b016ea6b867807a09f80d1b2e36f6cd6fccfaf0182f46060332c57",
+      "chain": "bsc",
+      "score": 0.133428,
+      "scores": {
+        "-FAEGL": 0.133428,
+        "-LLM routing": 0.133428,
+        "-Learned calib": 0.646,
+        "-TIG graph": 0.073062,
+        "Dynamic trace-rule": 0.149333,
+        "FaultSeeker++ (Ours)": 0.133428,
+        "LLM-only": 0.392794,
+        "Static proxy": 0.087691
+      },
+      "features": {
+        "functioncall_count": "16",
+        "address_count": "4",
+        "max_depth": "4",
+        "gas_cost": "148842"
+      },
+      "vulnerability_type": "Incorrect signature verification",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x8c3f442fc6d640a6ff3ea0b12be64f1d4609ea94edd2966f42c01cd9bdcf04b5",
+      "chain": "eth",
+      "score": 0.132624,
+      "scores": {
+        "-FAEGL": 0.132624,
+        "-LLM routing": 0.132624,
+        "-Learned calib": 0.61,
+        "-TIG graph": 0.071217,
+        "Dynamic trace-rule": 0.140333,
+        "FaultSeeker++ (Ours)": 0.132624,
+        "LLM-only": 0.386154,
+        "Static proxy": 0.076269
+      },
+      "features": {
+        "functioncall_count": "10",
+        "address_count": "4",
+        "max_depth": "4",
+        "gas_cost": "173509"
+      },
+      "vulnerability_type": "Insufficient access control",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6",
+      "chain": "eth",
+      "score": 0.243333,
+      "scores": {
+        "-FAEGL": 0.243333,
+        "-LLM routing": 0.243333,
+        "-Learned calib": 0.796,
+        "-TIG graph": 0.12999,
+        "Dynamic trace-rule": 0.195167,
+        "FaultSeeker++ (Ours)": 0.243333,
+        "LLM-only": 0.444644,
+        "Static proxy": 0.141245
+      },
+      "features": {
+        "functioncall_count": "31",
+        "address_count": "4",
+        "max_depth": "5",
+        "gas_cost": "180919"
+      },
+      "vulnerability_type": "lack of validation data",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x3c09c6306b67737227edc24c663462d870e7c2bf39e9ab66877a980c900dd5d5",
+      "chain": "eth",
+      "score": 0.190484,
+      "scores": {
+        "-FAEGL": 0.190484,
+        "-LLM routing": 0.190484,
+        "-Learned calib": 0.844,
+        "-TIG graph": 0.126136,
+        "Dynamic trace-rule": 0.2245,
+        "FaultSeeker++ (Ours)": 0.190484,
+        "LLM-only": 0.490571,
+        "Static proxy": 0.107751
+      },
+      "features": {
+        "functioncall_count": "19",
+        "address_count": "7",
+        "max_depth": "6",
+        "gas_cost": "190317"
+      },
+      "vulnerability_type": "Storage Collision & Malicious Proposal",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x998f1da472d927e74405b0aa1bbf5c1dbc50d74b39977bed3307ea2ada1f1d3f",
+      "chain": "eth",
+      "score": 0.498345,
+      "scores": {
+        "-FAEGL": 0.498345,
+        "-LLM routing": 0.498345,
+        "-Learned calib": 0.908,
+        "-TIG graph": 0.240934,
+        "Dynamic trace-rule": 0.267833,
+        "FaultSeeker++ (Ours)": 0.498345,
+        "LLM-only": 0.526424,
+        "Static proxy": 0.180016
+      },
+      "features": {
+        "functioncall_count": "43",
+        "address_count": "5",
+        "max_depth": "7",
+        "gas_cost": "191309"
+      },
+      "vulnerability_type": "unverified external call",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x35a73969f582872c25c96c48d8bb31c23eab8a49c19282c67509b96186734e60",
+      "chain": "eth",
+      "score": 0.286166,
+      "scores": {
+        "-FAEGL": 0.286166,
+        "-LLM routing": 0.286166,
+        "-Learned calib": 0.798,
+        "-TIG graph": 0.169808,
+        "Dynamic trace-rule": 0.215,
+        "FaultSeeker++ (Ours)": 0.286166,
+        "LLM-only": 0.477457,
+        "Static proxy": 0.108793
+      },
+      "features": {
+        "functioncall_count": "18",
+        "address_count": "6",
+        "max_depth": "6",
+        "gas_cost": "205473"
+      },
+      "vulnerability_type": "Incorrect Access Control",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x72a252277e30ea6a37d2dc9905c280f3bc389b87f72b81a59aa8f50baebd8eaa",
+      "chain": "eth",
+      "score": 0.22163,
+      "scores": {
+        "-FAEGL": 0.22163,
+        "-LLM routing": 0.22163,
+        "-Learned calib": 0.664,
+        "-TIG graph": 0.11232,
+        "Dynamic trace-rule": 0.162167,
+        "FaultSeeker++ (Ours)": 0.22163,
+        "LLM-only": 0.413379,
+        "Static proxy": 0.08399
+      },
+      "features": {
+        "functioncall_count": "9",
+        "address_count": "4",
+        "max_depth": "5",
+        "gas_cost": "213714"
+      },
+      "vulnerability_type": "Incorrect reward calculation",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xa992b28ecf2eed778d20d5200946ea341b950be0c3d78b1f2237a4d8d795de95",
+      "chain": "eth",
+      "score": 0.331553,
+      "scores": {
+        "-FAEGL": 0.331553,
+        "-LLM routing": 0.331553,
+        "-Learned calib": 0.836,
+        "-TIG graph": 0.182333,
+        "Dynamic trace-rule": 0.2265,
+        "FaultSeeker++ (Ours)": 0.331553,
+        "LLM-only": 0.488917,
+        "Static proxy": 0.156667
+      },
+      "features": {
+        "functioncall_count": "31",
+        "address_count": "5",
+        "max_depth": "6",
+        "gas_cost": "238750"
+      },
+      "vulnerability_type": "Price Manipulation",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x07e5568b71f1f4d9234d5925473c598865c5ee1800348c1c4b044c6f0223f308",
+      "chain": "eth",
+      "score": 0.18676,
+      "scores": {
+        "-FAEGL": 0.18676,
+        "-LLM routing": 0.18676,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.139373,
+        "Dynamic trace-rule": 0.241667,
+        "FaultSeeker++ (Ours)": 0.18676,
+        "LLM-only": 0.516324,
+        "Static proxy": 0.203312
+      },
+      "features": {
+        "functioncall_count": "46",
+        "address_count": "7",
+        "max_depth": "5",
+        "gas_cost": "244921"
+      },
+      "vulnerability_type": "Logic Flaw",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x48d22ea24c1ae707b8b17ca2a3ea81a1aee64a075d93e5bff81a7370e2cacea7",
+      "chain": "eth",
+      "score": 0.225418,
+      "scores": {
+        "-FAEGL": 0.225418,
+        "-LLM routing": 0.225418,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.173503,
+        "Dynamic trace-rule": 0.241667,
+        "FaultSeeker++ (Ours)": 0.225418,
+        "LLM-only": 0.518124,
+        "Static proxy": 0.207312
+      },
+      "features": {
+        "functioncall_count": "46",
+        "address_count": "7",
+        "max_depth": "5",
+        "gas_cost": "259921"
+      },
+      "vulnerability_type": "Incorrect Liquidation Calculation",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xdaccbc437cb07427394704fbcc8366589ffccf974ec6524f3483844b043f31d5",
+      "chain": "eth",
+      "score": 0.340464,
+      "scores": {
+        "-FAEGL": 0.340464,
+        "-LLM routing": 0.340464,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.285381,
+        "Dynamic trace-rule": 0.340667,
+        "FaultSeeker++ (Ours)": 0.340464,
+        "LLM-only": 0.627405,
+        "Static proxy": 0.413492
+      },
+      "features": {
+        "functioncall_count": "112",
+        "address_count": "7",
+        "max_depth": "5",
+        "gas_cost": "290596"
+      },
+      "vulnerability_type": "Arbitrary External Call Vulnerability",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x138daa4cbeaa3db42eefcec26e234fc2c89a4aa17d6b1870fc460b2856fd11a6",
+      "chain": "eth",
+      "score": 0.445692,
+      "scores": {
+        "-FAEGL": 0.445692,
+        "-LLM routing": 0.445692,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.40248,
+        "Dynamic trace-rule": 0.378167,
+        "FaultSeeker++ (Ours)": 0.445692,
+        "LLM-only": 0.684903,
+        "Static proxy": 0.286635
+      },
+      "features": {
+        "functioncall_count": "69",
+        "address_count": "11",
+        "max_depth": "8",
+        "gas_cost": "298633"
+      },
+      "vulnerability_type": "Arbitrary External Call Vulnerability",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x19c04bc04ee8117abfdf0c9301787b12b27f3c5c13308b4f66711a8f0ecacc62",
+      "chain": "eth",
+      "score": 0.212354,
+      "scores": {
+        "-FAEGL": 0.212354,
+        "-LLM routing": 0.212354,
+        "-Learned calib": 0.994,
+        "-TIG graph": 0.162858,
+        "Dynamic trace-rule": 0.238667,
+        "FaultSeeker++ (Ours)": 0.212354,
+        "LLM-only": 0.520469,
+        "Static proxy": 0.213636
+      },
+      "features": {
+        "functioncall_count": "44",
+        "address_count": "7",
+        "max_depth": "5",
+        "gas_cost": "306134"
+      },
+      "vulnerability_type": "Logic Flaw",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284",
+      "chain": "eth",
+      "score": 0.231717,
+      "scores": {
+        "-FAEGL": 0.231717,
+        "-LLM routing": 0.231717,
+        "-Learned calib": 0.888,
+        "-TIG graph": 0.146585,
+        "Dynamic trace-rule": 0.214167,
+        "FaultSeeker++ (Ours)": 0.231717,
+        "LLM-only": 0.490762,
+        "Static proxy": 0.183359
+      },
+      "features": {
+        "functioncall_count": "33",
+        "address_count": "6",
+        "max_depth": "5",
+        "gas_cost": "316348"
+      },
+      "vulnerability_type": "business logic flaw",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x256979ae169abb7fbbbbc14188742f4b9debf48b48ad5b5207cadcc99ccb493b",
+      "chain": "eth",
+      "score": 0.281075,
+      "scores": {
+        "-FAEGL": 0.281075,
+        "-LLM routing": 0.281075,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.314035,
+        "Dynamic trace-rule": 0.367167,
+        "FaultSeeker++ (Ours)": 0.281075,
+        "LLM-only": 0.690775,
+        "Static proxy": 0.250426
+      },
+      "features": {
+        "functioncall_count": "51",
+        "address_count": "13",
+        "max_depth": "8",
+        "gas_cost": "365349"
+      },
+      "vulnerability_type": "Overpriced Asset in Oracle",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xd4fafa1261f6e4f9c8543228a67caf9d02811e4ad3058a2714323964a8db61f6",
+      "chain": "eth",
+      "score": 0.453843,
+      "scores": {
+        "-FAEGL": 0.453843,
+        "-LLM routing": 0.453843,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.274481,
+        "Dynamic trace-rule": 0.292833,
+        "FaultSeeker++ (Ours)": 0.453843,
+        "LLM-only": 0.583973,
+        "Static proxy": 0.245311
+      },
+      "features": {
+        "functioncall_count": "49",
+        "address_count": "7",
+        "max_depth": "7",
+        "gas_cost": "368666"
+      },
+      "vulnerability_type": "Insufficient Validation Reentrancy",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xeaef2831d4d6bca04e4e9035613be637ae3b0034977673c1c2f10903926f29c0",
+      "chain": "eth",
+      "score": 0.45931,
+      "scores": {
+        "-FAEGL": 0.45931,
+        "-LLM routing": 0.45931,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.339106,
+        "Dynamic trace-rule": 0.361667,
+        "FaultSeeker++ (Ours)": 0.45931,
+        "LLM-only": 0.661978,
+        "Static proxy": 0.482544
+      },
+      "features": {
+        "functioncall_count": "126",
+        "address_count": "7",
+        "max_depth": "5",
+        "gas_cost": "392041"
+      },
+      "vulnerability_type": "Arbitrary External Call Vulnerability",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9",
+      "chain": "eth",
+      "score": 0.196812,
+      "scores": {
+        "-FAEGL": 0.196812,
+        "-LLM routing": 0.196812,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.263559,
+        "Dynamic trace-rule": 0.324667,
+        "FaultSeeker++ (Ours)": 0.196812,
+        "LLM-only": 0.642155,
+        "Static proxy": 0.345529
+      },
+      "features": {
+        "functioncall_count": "80",
+        "address_count": "11",
+        "max_depth": "5",
+        "gas_cost": "395733"
+      },
+      "vulnerability_type": "AMM Price Manipulation Attack via Bridge Configuration",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xc18ec2eb7d41638d9982281e766945d0428aaeda6211b4ccb6626ea7cff31f4a",
+      "chain": "eth",
+      "score": 0.341203,
+      "scores": {
+        "-FAEGL": 0.341203,
+        "-LLM routing": 0.341203,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.247624,
+        "Dynamic trace-rule": 0.254167,
+        "FaultSeeker++ (Ours)": 0.341203,
+        "LLM-only": 0.575755,
+        "Static proxy": 0.304084
+      },
+      "features": {
+        "functioncall_count": "49",
+        "address_count": "8",
+        "max_depth": "5",
+        "gas_cost": "589066"
+      },
+      "vulnerability_type": "Malicious Proposal Mint & Transfer Ownership",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0x4019890fe5a5bd527cd3b9f7ee6d94e55b331709b703317860d028745e33a8ca",
+      "chain": "eth",
+      "score": 0.338576,
+      "scores": {
+        "-FAEGL": 0.338576,
+        "-LLM routing": 0.338576,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.603598,
+        "Dynamic trace-rule": 0.459833,
+        "FaultSeeker++ (Ours)": 0.338576,
+        "LLM-only": 0.82466,
+        "Static proxy": 0.510911
+      },
+      "features": {
+        "functioncall_count": "107",
+        "address_count": "17",
+        "max_depth": "7",
+        "gas_cost": "712167"
+      },
+      "vulnerability_type": "business logic flaw",
+      "class": "Complex"
+    },
+    {
+      "txn_hash": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+      "chain": "eth",
+      "score": 0.280772,
+      "scores": {
+        "-FAEGL": 0.280772,
+        "-LLM routing": 0.280772,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.895682,
+        "Dynamic trace-rule": 0.573,
+        "FaultSeeker++ (Ours)": 0.280772,
+        "LLM-only": 0.832,
+        "Static proxy": 1.0
+      },
+      "features": {
+        "functioncall_count": "202",
+        "address_count": "52",
+        "max_depth": "3",
+        "gas_cost": "24472550"
+      },
+      "vulnerability_type": "Business Logic Flaw",
+      "class": "Exceptionally Complex"
+    }
+  ],
+  "false_positives": [
+    {
+      "txn_hash": "0xe83a215e166a1e3f040d0d59bfee20afb1c813cd38b8b469a1583919540bbe86",
+      "chain": "eth",
+      "score": 0.709175,
+      "scores": {
+        "-FAEGL": 0.709175,
+        "-LLM routing": 0.709175,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.915291,
+        "Dynamic trace-rule": 0.687,
+        "FaultSeeker++ (Ours)": 0.709175,
+        "LLM-only": 0.961838,
+        "Static proxy": 0.638529
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0xcb4fb8585458a753cf4442ca892b8b645f44e6ed45f3414057bac46d977d3aec",
+      "chain": "eth",
+      "score": 0.924948,
+      "scores": {
+        "-FAEGL": 0.924948,
+        "-LLM routing": 0.924948,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.876351,
+        "Dynamic trace-rule": 0.579,
+        "FaultSeeker++ (Ours)": 0.924948,
+        "LLM-only": 0.796281,
+        "Static proxy": 0.312846
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x656ad0b54a7e3a912a9140dc60adc29d72c0890e02f00b9b68d62514c90f8d97",
+      "chain": "eth",
+      "score": 0.567616,
+      "scores": {
+        "-FAEGL": 0.567616,
+        "-LLM routing": 0.567616,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.669899,
+        "Dynamic trace-rule": 0.434667,
+        "FaultSeeker++ (Ours)": 0.567616,
+        "LLM-only": 0.818974,
+        "Static proxy": 0.459942
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0xb46d65b57c52f88dc13d432320c329a4bc4f0831eac17155013ca7cb08fb2b13",
+      "chain": "eth",
+      "score": 0.7682,
+      "scores": {
+        "-FAEGL": 0.7682,
+        "-LLM routing": 0.7682,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.695185,
+        "Dynamic trace-rule": 0.461,
+        "FaultSeeker++ (Ours)": 0.7682,
+        "LLM-only": 0.748073,
+        "Static proxy": 0.244237
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x7c33203421181fbe3bb5ced6add5fc8dbd770a48af37bac510bb8cdd7ad9ec30",
+      "chain": "eth",
+      "score": 0.562441,
+      "scores": {
+        "-FAEGL": 0.562441,
+        "-LLM routing": 0.562441,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.854851,
+        "Dynamic trace-rule": 0.663833,
+        "FaultSeeker++ (Ours)": 0.562441,
+        "LLM-only": 0.890206,
+        "Static proxy": 0.496569
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0xa448f58f343a35469593143868098ef2c824d447c99c16dcbd676901acf804bd",
+      "chain": "eth",
+      "score": 0.871895,
+      "scores": {
+        "-FAEGL": 0.871895,
+        "-LLM routing": 0.871895,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.852318,
+        "Dynamic trace-rule": 0.564,
+        "FaultSeeker++ (Ours)": 0.871895,
+        "LLM-only": 0.772634,
+        "Static proxy": 0.265854
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x314b0bb28d4458c7eb2dea913a35efa4cf87912be29df539ed1dabba98be2d8f",
+      "chain": "eth",
+      "score": 0.877841,
+      "scores": {
+        "-FAEGL": 0.877841,
+        "-LLM routing": 0.877841,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.971412,
+        "Dynamic trace-rule": 0.758667,
+        "FaultSeeker++ (Ours)": 0.877841,
+        "LLM-only": 0.952,
+        "Static proxy": 1.0
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x868a62bd3d56117e6ed466e871bd3806f27c23192d8bbcc860a3bf0efda9a859",
+      "chain": "eth",
+      "score": 0.78375,
+      "scores": {
+        "-FAEGL": 0.78375,
+        "-LLM routing": 0.78375,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.687155,
+        "Dynamic trace-rule": 0.461,
+        "FaultSeeker++ (Ours)": 0.78375,
+        "LLM-only": 0.750149,
+        "Static proxy": 0.24885
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x14bce68fa00bda2c3a9f3c106f2d980af76c80600b8e23a43b23d35e23acbe68",
+      "chain": "eth",
+      "score": 0.858109,
+      "scores": {
+        "-FAEGL": 0.858109,
+        "-LLM routing": 0.858109,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.791513,
+        "Dynamic trace-rule": 0.522167,
+        "FaultSeeker++ (Ours)": 0.858109,
+        "LLM-only": 0.758766,
+        "Static proxy": 0.238924
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    },
+    {
+      "txn_hash": "0x2bc4d3b6363de5f144ff51c2b3cb8bdac6dcd2bbae8c93c2eff3e7a260fa6b44",
+      "chain": "eth",
+      "score": 0.641634,
+      "scores": {
+        "-FAEGL": 0.641634,
+        "-LLM routing": 0.641634,
+        "-Learned calib": 1.0,
+        "-TIG graph": 0.97516,
+        "Dynamic trace-rule": 0.743333,
+        "FaultSeeker++ (Ours)": 0.641634,
+        "LLM-only": 0.856,
+        "Static proxy": 1.0
+      },
+      "features": {
+        "functioncall_count": null,
+        "address_count": null,
+        "max_depth": null,
+        "gas_cost": null
+      },
+      "vulnerability_type": "benign_trace",
+      "class": "benign"
+    }
+  ],
+  "original_246_row_claim": "not evaluated; legacy 115-row diagnostic only"
+}

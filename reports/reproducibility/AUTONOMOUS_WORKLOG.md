@@ -459,3 +459,38 @@ reports, or provenance evidence.
 - These tests establish paired behavior on the legacy diagnostic only; they do
   not satisfy the original 246-row acceptance criterion or independent-label
   requirement.
+
+### AR-021 — legacy detector error diagnosis and leakage-safe candidate checks
+
+- Added `scripts/research/analyze_legacy_errors.py` and retained
+  `reports/reproducibility/legacy_115_diagnostic/error_analysis.json` from the
+  saved JSONL predictions. It records 43 false negatives and 10 false
+  positives, with per-row scores, trace features, chain, and vulnerability
+  metadata. The diagnostic is explicitly legacy-only; no cause is inferred
+  from routing because routing/provider-confidence fields are not retained.
+- Observed error concentration: false negatives are 37 Ethereum and 6 BSC;
+  the largest normalized source categories are arbitrary external call (6
+  including the whitespace variant), business/logic flaw (8 across source
+  variants), and access-control/validation variants. All false positives are
+  Ethereum. All 115 exploit and 1,000 benign rows have complete trace-feature
+  coverage, so missing features are not the explanation for this diagnostic.
+- Added and ran `scripts/research/evaluate_nested_threshold_policy.py`. The
+  corrected hash-fold baseline is F1 `0.730964`, FPR `0.010`; the candidate
+  selected only inside training folds is F1 `0.710744`, FPR `0.041`. The
+  candidate is rejected and no production threshold changed.
+- Added and ran `scripts/research/evaluate_class_weighted_calibration.py`.
+  Positive-class weight 3 is the numerical F1 winner at `0.739130` versus
+  baseline `0.730964`, but it raises FPR from `0.010` to `0.030`, lowers
+  precision from `0.8780` to `0.7391`, and worsens calibration (Brier
+  `0.035851` to `0.039644`; ECE `0.037711` to `0.053054`). We reject it as a
+  production change because the stated detector objective prioritizes low FPR
+  and calibrated probabilities; the current baseline remains the best
+  supported implementation under those constraints.
+- Added and ran `scripts/research/analyze_localization_ranker_errors.py` as a
+  read-only analysis of saved provider-pinned raw predictions. Of 114 valid
+  function-ground-truth rows, Top-1/Top-3/Top-5 are `24/114`, `48/114`,
+  `51/114`. Among 48 misses, 31 lack the target address in the candidate set
+  and 17 contain the target address but not the target function identity;
+  there is no observed case where a present target pair merely fell below
+  Top-5. This points to candidate generation/function identity coverage as
+  the next localization investigation, not a serializer or rank-order bug.

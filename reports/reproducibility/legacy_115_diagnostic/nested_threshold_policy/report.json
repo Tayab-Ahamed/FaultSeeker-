@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "status": "LEGACY_115_NESTED_THRESHOLD_DIAGNOSTIC_ONLY",
+  "hypothesis": "nested training-fold threshold selection may improve F1 over the fixed 0.5 decision threshold",
+  "n": 1115,
+  "exploit_rows": 115,
+  "benign_rows": 1000,
+  "baseline": {
+    "n": 1115,
+    "tp": 72,
+    "fp": 10,
+    "tn": 990,
+    "fn": 43,
+    "precision": 0.878049,
+    "recall": 0.626087,
+    "f1": 0.730964,
+    "fpr": 0.01,
+    "f1_ci": [
+      0.6548,
+      0.798
+    ]
+  },
+  "candidate": {
+    "n": 1115,
+    "tp": 86,
+    "fp": 41,
+    "tn": 959,
+    "fn": 29,
+    "precision": 0.677165,
+    "recall": 0.747826,
+    "f1": 0.710744,
+    "fpr": 0.041,
+    "f1_ci": [
+      0.6419,
+      0.7721
+    ]
+  },
+  "chosen_thresholds": [
+    {
+      "outer_fold": 0,
+      "threshold": 0.15,
+      "train_n": 891,
+      "test_n": 224
+    },
+    {
+      "outer_fold": 1,
+      "threshold": 0.35,
+      "train_n": 896,
+      "test_n": 219
+    },
+    {
+      "outer_fold": 2,
+      "threshold": 0.35,
+      "train_n": 904,
+      "test_n": 211
+    },
+    {
+      "outer_fold": 3,
+      "threshold": 0.15,
+      "train_n": 883,
+      "test_n": 232
+    },
+    {
+      "outer_fold": 4,
+      "threshold": 0.2,
+      "train_n": 886,
+      "test_n": 229
+    }
+  ],
+  "threshold_grid": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.9,
+    0.95
+  ],
+  "leakage_control": "outer test rows never used for threshold selection; threshold selected from inner OOF predictions within each outer training fold",
+  "raw_predictions": "reports/reproducibility/legacy_115_diagnostic/nested_threshold_policy/predictions.jsonl",
+  "input_sha256": {
+    "exploit": "c0abf4d3ae1fe6d2eb2e5f6d98830d24f8a3733aa276155345fbd8d1cb7292c5",
+    "benign_traces": "acd378c36393cf3fcb04e5e498bbeb90d6ce2147c1a3a8647fd5853e35af5977"
+  },
+  "original_246_row_claim": "not evaluated; legacy 115-row diagnostic only"
+}
