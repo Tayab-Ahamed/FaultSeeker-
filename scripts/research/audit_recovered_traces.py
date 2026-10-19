@@ -9,7 +9,6 @@ raw call selectors without inferring a function name from an untyped label.
 from __future__ import annotations
 
 from collections import Counter
-from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
@@ -245,14 +244,13 @@ def run() -> dict[str, Any]:
     ]
     result = {
         "schema_version": 1,
-        "created_at": datetime.now(timezone.utc).isoformat(),
         "scope": "Bounded, previously captured dRPC callTracer artifacts; no new RPC requests; no ranking run.",
         "source_manifest": MANIFEST.relative_to(ROOT).as_posix(),
         "summary": summary,
         "rows": rows,
         "typed_signature_evidence": typed_evidence_catalog,
         "failed_attempts": failed,
-        "blocker": "Raw callTracer proves observed target-address calls and raw selectors where present, but imported labels lack typed signatures; exact function identity and paper scorer reproduction remain blocked.",
+        "blocker": "Raw callTracer proves observed target-address calls and raw selectors where present. Typed public signatures establish four captured function identities, but exact identities for the remaining rows and paper scorer reproduction remain blocked.",
     }
     OUTPUT_JSON.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     lines = [
