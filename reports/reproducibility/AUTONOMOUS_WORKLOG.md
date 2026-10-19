@@ -223,6 +223,17 @@ reports, or provenance evidence.
   test's committed 70-row floor. The dirty summary claims 72 attempted rows,
   so the summary is stale/inconsistent with its input; the implementation is
   correctly counting the input rather than trusting the summary.
+- Exact source-audit diff: row 111 only, transaction
+  `0x1a7ee0a7efc70ed7429edef069a1dd001fbff378748d91f17ab1876dc6d10392`, changed
+  from `[403]/UNRESOLVED` to `[200]/RESOLVED`. The retained provenance metadata
+  `reports/provenance_hunt/http/f3c6feba6f2bbc363a1db8cd2b63d84f10cd7eda7a0041ecec912b625a45d823.json`
+  records only the earlier 403 response; no retained artifact substantiates the
+  dirty 200 result. It remains unverified.
+- The dirty local audit also contains stale extra rows 94 and 171. Re-running
+  from the current dirty CSV produces 69 rows / 71 URLs, while the dirty
+  derived files contain 74 rows and claim 72/74. Clean HEAD produces the
+  original 70 rows / 72 URLs. The derived artifacts cannot be regenerated
+  reproducibly from the current dirty input.
 - No safe local fix exists without restoring a hash-bound evidence snapshot or
   changing the historical assertion. No dirty evidence file was modified and
   no source resolution/adjudication was fabricated.
