@@ -48,6 +48,27 @@ in the 115-row denominator, and the output is explicitly marked an independent
 calculation rather than an exact paper reproduction. It performs no RPC,
 provider, LLM, or upstream rerun.
 
+The source manuscript is `paper/blockchain_exploit_forensics_survey_ieee.tex`.
+The repository has no LaTeX compiler in the current environment, so source
+structure and citation-key checks can be run locally, but PDF compilation is
+unverified:
+
+```bash
+python -c "from pathlib import Path; p=Path('paper/blockchain_exploit_forensics_survey_ieee.tex').read_text(encoding='utf-8'); assert p.count(r'\\begin{document}') == p.count(r'\\end{document}') == 1; assert p.count(r'\\begin{table}') == p.count(r'\\end{table}'); assert r'\\bibitem{faultseeker_upstream}' in p"
+```
+
+Frozen-evidence checks are read-only:
+
+```bash
+python scripts/research/verify_batch_e_result.py
+python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root .
+python -m benchmark.validate_cohort_manifest benchmark/versions/cohort_v4_20261016/cohort_manifest.json --root .
+```
+
+Do not rerun scoring against frozen Batch D or Batch E. Their freeze hashes and
+one-pass outputs are recorded in
+`reports/reproducibility/UPSTREAM_VALIDATION_CLOSEOUT_20261019.md`.
+
 The runner executes every direct metric reproduction script except `common.py`,
 `claim_evidence.py`, and itself. It compares the reproduced values with the expected values in
 `reports/reproducibility/FINAL_REPORT.md`.
