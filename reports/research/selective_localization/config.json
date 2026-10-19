@@ -1,0 +1,22 @@
+{
+  "bootstrap_replicates": 10000,
+  "experiment_version": "selective-localization-v1",
+  "minimum_validation_coverage": 0.5,
+  "prohibited_inputs": [
+    "Batch B",
+    "Batch C",
+    "Batch D",
+    "Batch E"
+  ],
+  "random_seed": 20261019,
+  "score_weights": {
+    "candidate_available": 0.15,
+    "selector_available": 0.05,
+    "top1_observed_in_trace": 0.15,
+    "top1_support_strength": 0.15,
+    "top5_observed_fraction": 0.1,
+    "trace_available": 0.2,
+    "trace_call_strength": 0.2
+  },
+  "split_salt": "faultseeker++ selective localization grouped split v1"
+}

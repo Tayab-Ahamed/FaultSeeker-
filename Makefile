@@ -1,4 +1,4 @@
-.PHONY: test validate-cohort evidence-demo judge upstream-validate
+.PHONY: test validate-cohort evidence-demo judge upstream-validate selective-localization
 
 test:
 	python -m pytest tests -q -p no:cacheprovider
@@ -14,3 +14,6 @@ judge:
 
 upstream-validate:
 	python scripts/reproduce/independent_upstream_validation.py
+
+selective-localization:
+	python scripts/research/evaluate_selective_localization.py
