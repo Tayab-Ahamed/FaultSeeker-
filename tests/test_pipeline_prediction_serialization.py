@@ -11,7 +11,7 @@ def test_serialization_preserves_explicit_ranker_identity_and_rank_metadata():
                 "code_address": "0x" + "ab" * 20,
                 "function": "withdraw_all_funds",
                 "selector": None,
-                "supporting_call_depths": [2, 5],
+                "supporting_call_depths": [[0, 2], [0, 5]],
             }
         ],
         functions_to_be_inspected={},
@@ -25,7 +25,7 @@ def test_serialization_preserves_explicit_ranker_identity_and_rank_metadata():
             "code_address": "0x" + "ab" * 20,
             "function": "withdraw_all_funds",
             "selector": None,
-            "supporting_call_depths": [2, 5],
+            "supporting_call_depths": [[0, 2], [0, 5]],
             "address": "0x" + "ab" * 20,
             "call_type": "call",
             "depth": 5,

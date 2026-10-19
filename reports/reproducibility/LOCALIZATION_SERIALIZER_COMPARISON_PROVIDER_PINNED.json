@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "experiment": "localization_serializer_before_after",
+  "code_revision": "e47c4c3",
+  "input_scope": "read-only saved Batch D candidate JSON; no ranker or scorer execution",
+  "ground_truth_used": false,
+  "external_calls": 0,
+  "frozen_batch_modified": false,
+  "performance_metrics": {
+    "status": "NOT_IDENTIFIABLE_FROM_ADAPTER_FIX_ALONE",
+    "reason": "Saved candidate files contain ranked outputs but this comparison does not rerun the ranker or bind current predictions to independently adjudicated function-level targets.",
+    "top_k_denominator": null
+  },
+  "summary": {
+    "files": 1,
+    "candidates": 39,
+    "old_exact_identity_count": 36,
+    "new_exact_identity_count": 39,
+    "changed_positions": 3,
+    "rows_with_changed_positions": 1
+  },
+  "rows": [
+    {
+      "path": "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/raw/0xd493c73397952049644c531309df3dd4134bf3db1e64eb6f0b68b016ee0bffde.json",
+      "sha256": "77029fcd356bbb28c8cdbbdd8296f310114dff38d7d12d9caefddda78182ecaf",
+      "candidate_count": 39,
+      "old_exact_identity_count": 36,
+      "new_exact_identity_count": 39,
+      "changed_positions": 3,
+      "old_first_candidate": {
+        "address": "liquidity",
+        "function": "add",
+        "call_type": "call",
+        "depth": 1,
+        "_score": 0.95
+      },
+      "new_first_candidate": {
+        "code_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+        "count": 3,
+        "function": "add_liquidity",
+        "rank": 1,
+        "selector": null,
+        "supporting_call_depths": [
+          [
+            0,
+            3,
+            9,
+            16
+          ],
+          [
+            0,
+            3,
+            9,
+            22
+          ],
+          [
+            0,
+            3,
+            9,
+            19,
+            3
+          ]
+        ],
+        "tie_policy": "stable candidate encounter order",
+        "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+        "call_type": "call",
+        "depth": 22
+      }
+    }
+  ]
+}

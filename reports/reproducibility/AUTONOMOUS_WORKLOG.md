@@ -368,3 +368,34 @@ reports, or provenance evidence.
   and function-selection safety tests.
 - This checkpoint advances data readiness once and does not alter the known
   source-audit mismatch or any frozen/unrelated artifact.
+
+### AR-017 — localization serializer before/after validation
+
+- Added `scripts/research/compare_localization_serializer.py`, a read-only
+  comparison harness that reproduces the pre-fix `split("_")` adapter and runs
+  the corrected serializer on saved candidate outputs. It performs no ranker,
+  RPC, provider, scoring, Batch E, or Batch D rerun.
+- Batch D saved candidates: 10 files / 560 candidates. The saved selectors had
+  no underscore-containing human function names, so old and new identity counts
+  were both 560/560 and no top-k result can be inferred from this adapter-only
+  comparison.
+- Provider-pinned saved outputs: 115 files / 1,091 candidates, 114 rows with
+  valid original function-level ground truth. Old serializer exact identities:
+  1,088/1,091; corrected serializer: 1,091/1,091; three candidate positions
+  changed in one transaction because `add_liquidity` was previously split into
+  address=`liquidity`, function=`add`. The corrected output preserves the full
+  function/address identity and rank metadata.
+- Function-level top-k on the same saved outputs was unchanged: old and new
+  Top-1/Top-3/Top-5 were respectively 24/114, 48/114, and 51/114. This is a
+  valid before/after adapter result, not a new generalization estimate and not
+  evidence that the original localization target was achieved.
+- Retained artifacts:
+  `reports/reproducibility/LOCALIZATION_SERIALIZER_COMPARISON.json` and
+  `LOCALIZATION_SERIALIZER_COMPARISON_PROVIDER_PINNED_ALL.json`, including
+  input hashes, row-level old/new identity counts, ground-truth availability,
+  and explicit no-rerun scope.
+- Regression verification after the nested-depth metadata fix: exit 0,
+  `36 passed` with the targeted localization/function-selection suite.
+- T09 is now `implemented_not_validated`: the local adapter defect is fixed and
+  measured, but the original live/held-out model-assisted localization and
+  guidance requirements remain unvalidated.

@@ -126,9 +126,9 @@
       "required_data": "Verified function/address/selector targets, source retrieval, authorized model execution, and paired guidance cases.",
       "experiment": "Run a new immutable held-out localization set and separately run the paired guidance protocol.",
       "validation": "Raw ranked candidates, exact target manifest, top-k/MRR, and paired guidance statistics.",
-      "status": "blocked_by_user_input",
-      "evidence_paths": ["benchmark/ground_truth", "reports/new_batches/batchE", "docs/research/HUMAN_EXPLAINABILITY_STUDY.md"],
-      "next_action": "Request authorization for model/source retrieval and independent function-level adjudication."
+      "status": "implemented_not_validated",
+      "evidence_paths": ["benchmark/original_faultseeker/ground_truth", "reports/reproducibility/LOCALIZATION_SERIALIZER_COMPARISON_PROVIDER_PINNED_ALL.json", "reports/new_batches/batchE", "docs/research/HUMAN_EXPLAINABILITY_STUDY.md"],
+      "next_action": "Obtain authorization for a new immutable held-out model/source localization run and independent function-level adjudication; the serializer comparison is not a new generalization experiment."
     },
     {
       "id": "T10",

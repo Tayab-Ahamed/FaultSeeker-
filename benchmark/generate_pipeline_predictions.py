@@ -177,7 +177,7 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
             candidate["function"] = function
             candidate.setdefault("call_type", "call")
             depths = candidate.get("supporting_call_depths") or []
-            candidate.setdefault("depth", max(depths) if depths else 0)
+            candidate.setdefault("depth", _max_depth_value(depths))
             candidates.append(candidate)
         return candidates
 
@@ -196,6 +196,17 @@ def serialize_ranked_candidates(ranking_result) -> list[dict]:
             "_score": 0.95 if fn_name != "others" else 0.5,
         })
     return candidates
+
+
+def _max_depth_value(value) -> int:
+    """Return the largest integer from flat or path-shaped depth metadata."""
+    if isinstance(value, (list, tuple)):
+        values = [_max_depth_value(item) for item in value]
+        return max(values, default=0)
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return 0
 
 
 def main() -> int:
