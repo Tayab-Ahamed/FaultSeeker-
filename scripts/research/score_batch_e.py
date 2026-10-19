@@ -46,6 +46,10 @@ def runtime_inputs(raw,names):
     return predictions,'\n'.join(render(raw['trace']))
 
 
+def inference_guard(event,args):
+    if event in {'socket.connect','socket.getaddrinfo','http.client.connect','subprocess.Popen'}:
+        raise RuntimeError('Network or subprocess forbidden during frozen inference')
+
 def main():
     if (OUT/'score_started.lock').exists() or (OUT/'scoring.json').exists():raise RuntimeError('Batch E scoring already claimed')
     manifest=json.loads((ROOT/'reports/localization_continuous/merge/deployment_manifest.json').read_text())
@@ -64,6 +68,7 @@ def main():
     code_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     runtime_freeze={'git_commit':code_commit,'input_sha256':{str(p):digest for p,digest in expected.items()},'prediction_runs':0,'scoring_runs':0}
     with (OUT/'runtime_freeze.json').open('x',encoding='utf-8') as handle:json.dump(runtime_freeze,handle,indent=2)
+    sys.addaudithook(inference_guard)
     # Our own locally produced pickle only, verified above before deserialization.
     bundle=pickle.loads(model.read_bytes())
     predictions=[];pred_dir=OUT/'predictions';pred_dir.mkdir(exist_ok=False)

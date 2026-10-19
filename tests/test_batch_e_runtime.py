@@ -20,3 +20,11 @@ def test_unknown_registry_name_remains_literal():
     structured={'transaction_hash':'0x'+'3'*64,'chain':'eth','trace':normalize_trace_node(raw)}
     observed=DecodedSequencer(structured,{}).run(structured['transaction_hash'],'eth')
     assert observed['trace']['function']=='0x12345678'
+
+
+def test_inference_guard_blocks_provider_dispatch():
+    import pytest
+    from scripts.research.score_batch_e import inference_guard
+    for event in ('socket.connect','socket.getaddrinfo','http.client.connect','subprocess.Popen'):
+        with pytest.raises(RuntimeError):inference_guard(event,())
+    inference_guard('open',())
