@@ -134,15 +134,14 @@ FaultSeeker++ emits **structured forensic data** at the transaction level, ready
 ### Install
 
 ```bash
-pip install -r requirements.txt
-```
-
-For a reproducible pinned install, use `requirements.lock` instead:
-
-```bash
 python -m venv .venv
-.venv/bin/python -m pip install -r requirements.lock
+# Linux/macOS
+.venv/bin/python -m pip install --requirement requirements.lock
+# Windows PowerShell
+.venv\Scripts\python.exe -m pip install --requirement requirements.lock
 ```
+
+`setup.py` also installs the exact versions from `requirements.lock`.
 
 Run the offline test and evidence commands from the repository root:
 

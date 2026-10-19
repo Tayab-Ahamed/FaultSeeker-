@@ -1,8 +1,8 @@
 import os
 from setuptools import find_packages, setup
 
-with open(os.path.join(os.path.dirname(__file__), "requirements.txt"), 'r', encoding='utf-8') as f:
-    dependencies = f.read().strip().split("\n")
+with open(os.path.join(os.path.dirname(__file__), "requirements.lock"), 'r', encoding='utf-8') as f:
+    dependencies = [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
 setup(
     name="FaultSeeker",

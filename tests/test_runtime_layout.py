@@ -24,3 +24,11 @@ def test_ci_uses_pinned_runtime_lockfile_and_project_test_command():
     assert 'python -m pip install --requirement requirements.lock' in workflow
     assert 'run: make test' in workflow
     assert 'pip install -r requirements.txt' not in workflow
+
+
+def test_setup_and_readme_default_to_locked_dependencies():
+    setup = (ROOT/'setup.py').read_text()
+    readme = (ROOT/'README.md').read_text(encoding='utf-8')
+    assert 'requirements.lock' in setup
+    assert 'requirements.txt' not in setup
+    assert 'pip install --requirement requirements.lock' in readme

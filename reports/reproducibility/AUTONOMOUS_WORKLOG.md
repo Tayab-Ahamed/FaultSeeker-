@@ -29,7 +29,7 @@ reports, or provenance evidence.
 | AR-005 | 5 | coordinator | BLOCKED | Run paired detector/baseline evaluation | AR-004 | Frozen inputs, completed command, confusion matrices |
 | AR-006 | 6 | coordinator | BLOCKED | Function-level localization evaluation | Exact function ground truth | New immutable holdout; Batch E unchanged |
 | AR-007 | 6 | coordinator | BLOCKED | Revalidate calibration, routing/cost, and HITL claims | Eligible data, provider authorization, human reviewers | Measured outputs or explicit external blocker |
-| AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | Benchmark Docker path aligned; CI/setup/replay alignment remains |
+| AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | CI, setup, README, and Docker now use the lockfile; replay/tool documentation remains |
 | AR-009 | 8 | coordinator | READY | Produce final claim/evidence ledger and consistency report | All available evidence | Every material claim classified honestly |
 
 ## Execution rules
@@ -70,3 +70,13 @@ reports, or provenance evidence.
 - CI now uses Python 3.11.9, `requirements.lock`, and `make test`.
 - Remaining AR-008 work: align `setup.py`, README defaults, and replay/tool
   dependency documentation without changing frozen evidence.
+
+### AR-008 — packaging defaults
+
+- Changed: `setup.py`, `README.md`, `tests/test_runtime_layout.py`.
+- Initial focused test result: exit 1 because the Windows default text encoding
+  could not decode the UTF-8 README; the test was corrected to read UTF-8.
+- Final command: `python -m pytest tests/test_runtime_layout.py tests/test_cohort_manifest_validator.py -q -p no:cacheprovider`
+- Final result: exit 0, 8 passed.
+- `setup.py`, README, CI, and both Docker paths now default to the lockfile and
+  Python 3.11.9 where the runtime is declared.
