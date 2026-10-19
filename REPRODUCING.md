@@ -34,6 +34,20 @@ Run the complete check and summary table with:
 .venv/bin/python scripts/reproduce/run_all.py
 ```
 
+Run the independent upstream comparison (offline, using the retained
+115-row upstream labels and provider-pinned LLM-free outputs) with:
+
+```bash
+.venv/bin/python scripts/reproduce/independent_upstream_validation.py
+```
+
+This writes `reports/reproducibility/upstream_validation/` containing the
+machine-readable 31-claim comparison, a readable report, an input SHA-256
+manifest, and one retained per-example localization record. Failed rows remain
+in the 115-row denominator, and the output is explicitly marked an independent
+calculation rather than an exact paper reproduction. It performs no RPC,
+provider, LLM, or upstream rerun.
+
 The runner executes every direct metric reproduction script except `common.py`,
 `claim_evidence.py`, and itself. It compares the reproduced values with the expected values in
 `reports/reproducibility/FINAL_REPORT.md`.

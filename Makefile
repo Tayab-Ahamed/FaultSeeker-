@@ -1,4 +1,4 @@
-.PHONY: test validate-cohort evidence-demo judge
+.PHONY: test validate-cohort evidence-demo judge upstream-validate
 
 test:
 	python -m pytest tests -q -p no:cacheprovider
@@ -11,3 +11,6 @@ evidence-demo:
 
 judge:
 	python scripts/reproduce/run_all.py
+
+upstream-validate:
+	python scripts/reproduce/independent_upstream_validation.py

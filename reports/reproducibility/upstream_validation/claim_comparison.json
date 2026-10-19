@@ -1,0 +1,1197 @@
+{
+  "claims": [
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/sources/public_repository.json",
+        "reports/claim_closure/sources/public_repository_LICENSE.txt"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Public fork/release URL; local Apache license alone does not prove publication."
+      ],
+      "id": 1,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Open source release",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream repository README/license; publication claim",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Full suite with original baseline tests retained; runner unit test alone is insufficient."
+      ],
+      "id": 2,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "201 original tests pass",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream repository benchmark/tests and current reproduction entrypoint",
+      "status": "UNVERIFIED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "benchmark/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/ARBITRUM_SINGLE_OBJECT_FINDING.json",
+        "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/summary.json",
+        "reports/cohort_rebuild_v2/LEVEL_XCARNIVAL_ADJUDICATION.json",
+        "reports/cohort_rebuild_v2/NOMAD_TEAMFINANCE_ADMISSIONS.json",
+        "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T061638.json",
+        "reports/cohort_rebuild_v2/import_diagnostics/20261016T062611.json",
+        "reports/cohort_rebuild_v2/BSC_FALLBACK_ADMISSIONS.json",
+        "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T063056.json",
+        "reports/cohort_rebuild_v3/publication.json",
+        "reports/cohort_rebuild_v3/membership_proof.json",
+        "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+        "benchmark/versions/cohort_v3_20261016/eval_split.json",
+        "reports/cohort_rebuild_v3/PLATYPUS_AVALANCHE_ADMISSION.json",
+        "reports/cohort_rebuild_v2/source_adjudication_inbox/platypus_feb_2023/accepted_record.json",
+        "reports/cohort_rebuild_v3/RADIANT_PROVENANCE_DECISION.json",
+        "reports/cohort_rebuild_v4/FROZEN_231_REAUDIT.json",
+        "reports/cohort_rebuild_v4/protocol.json",
+        "reports/cohort_rebuild_v4/additions_manifest.json",
+        "reports/cohort_rebuild_v4/HUNDRED_OPTIMISM_ADMISSION.json",
+        "reports/cohort_rebuild_v4/protocol_revision2.json",
+        "reports/cohort_rebuild_v4/additions_manifest_revision2.json",
+        "reports/cohort_rebuild_v4/FROZEN_231_REAUDIT_REPRODUCTION.json",
+        "reports/cohort_rebuild_v4/publication_guard_failure.json",
+        "reports/cohort_rebuild_v4/protocol_revision3.json",
+        "reports/cohort_rebuild_v4/publication.json",
+        "benchmark/versions/cohort_v4_20261016/cohort_manifest.json",
+        "benchmark/versions/cohort_v4_20261016/eval_split.json",
+        "reports/cohort_rebuild_v4/ERALEND_ZKSYNC_ADMISSION.json",
+        "reports/cohort_rebuild_v4/GMX_ARBITRUM_PROVENANCE_DECISION.json",
+        "reports/cohort_rebuild_v4/SENTIMENT_ARBITRUM_SOURCE_REVIEW.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition"
+      ],
+      "id": 3,
+      "independent_calculation": {
+        "root_accepted": 14,
+        "root_target": 246,
+        "v4_accepted": 22,
+        "v4_target": 246
+      },
+      "ledger_verdict": "COUNT-EXISTS-AUTHENTICITY-UNVERIFIED",
+      "original_claim": "Authentic 246-row cohort",
+      "published_denominator": null,
+      "published_metric": {
+        "accepted_rows_reported": 246,
+        "target_rows": 246
+      },
+      "source_location": "upstream paper dataset description; 246-row cohort claim",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/source_manifest.json",
+        "reports/provenance_hunt/reviewed_source_pairs.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/ADJUDICATION_STANDARD_RECONCILIATION.json",
+        "reports/cohort_rebuild_v2/admission_rechecks/20261016T060152/summary.json",
+        "benchmark/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/SWAPX_SOURCE_ADJUDICATION.json",
+        "reports/cohort_rebuild_v3/PROVENANCE_REVALIDATION.json",
+        "reports/cohort_rebuild_v3/publication.json",
+        "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/BSC_FALLBACK_ADMISSIONS.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains"
+      ],
+      "id": 4,
+      "independent_calculation": null,
+      "ledger_verdict": "PARTIAL-PROVENANCE-RECOVERED",
+      "original_claim": "Real transactions, two independent sources, annotations",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream paper dataset methodology; transaction/source/annotation claim",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Accepted frozen study cohort and independently verified chain membership"
+      ],
+      "id": 5,
+      "independent_calculation": {
+        "historical_csv_chains": 8,
+        "historical_csv_rows": 231,
+        "historical_eth_rows": 132
+      },
+      "ledger_verdict": "CONTRADICTED-FROZEN-CSV",
+      "original_claim": "Ten chains and Ethereum 47.6%",
+      "published_denominator": 246,
+      "published_metric": {
+        "denominator": 246,
+        "ethereum_share_pct": 47.6,
+        "target_chains": 10
+      },
+      "source_location": "upstream paper dataset distribution; ten chains and Ethereum share",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort"
+      ],
+      "id": 6,
+      "independent_calculation": {
+        "historical_distinct_nonempty_vulnerability_strings": 82,
+        "semantic_adjudication": false
+      },
+      "ledger_verdict": "STRINGS-COUNTED-NOT-ADJUDICATED",
+      "original_claim": "More than 80 vulnerability labels",
+      "published_denominator": 246,
+      "published_metric": {
+        "denominator": 246,
+        "label_count": ">80"
+      },
+      "source_location": "upstream paper vulnerability taxonomy/dataset description",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Trace-verified function-count bins for the authentic paper cohort"
+      ],
+      "id": 7,
+      "independent_calculation": null,
+      "ledger_verdict": "CONTRADICTED-FROZEN-CSV",
+      "original_claim": "Class proportions 6.5/33.3/32.5/27.6%",
+      "published_denominator": 246,
+      "published_metric": {
+        "class_percentages": [
+          6.5,
+          33.3,
+          32.5,
+          27.6
+        ],
+        "denominator": 246
+      },
+      "source_location": "upstream paper dataset class-distribution paragraph",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Independently adjudicated reentrancy positives in the frozen evaluation cohort"
+      ],
+      "id": 8,
+      "independent_calculation": {
+        "historical_reentrancy_substring_rows": 17,
+        "target_cohort": 246
+      },
+      "ledger_verdict": "CONTRADICTED-LABEL-COUNT",
+      "original_claim": "18 reentrant incidents among 246",
+      "published_denominator": 246,
+      "published_metric": {
+        "denominator": 246,
+        "reentrant_rows": 18
+      },
+      "source_location": "upstream paper dataset reentrancy-count paragraph",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Compiled execution still separately required under claim 26."
+      ],
+      "id": 9,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Storage-aware detector, guards and delegatecall",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper Sections IV/VI; storage-aware detector implementation claim",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Weights must fire on observed opcode events."
+      ],
+      "id": 10,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Five storage signal weights",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper detector design; storage signal weights",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Threshold boundaries and production paper profile."
+      ],
+      "id": 11,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Five confidence tiers",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper confidence-tier design",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Fallback when storage capture unavailable, no extra terms."
+      ],
+      "id": 12,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Three structural signals, .75 penalty, .80 cap",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper fallback/structural detector design",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/detectors.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/structural.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/repeated.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/REENTRANCY_POSITIVE_TRAIN.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "reports/cohort_rebuild_v2/opcode_runs/revest_first_capture.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+        "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+        "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/BEANSTALK_REAL_FAILURE_ANALYSIS.json",
+        "reports/cohort_rebuild_v2/REAL_TRAIN_STRUCTURAL_COLLISION.json",
+        "reports/cohort_rebuild_v2/REAL_TRAIN_FAILURE_ANALYSIS_REVIEW.json",
+        "reports/cohort_rebuild_v3/BASELINE_REAL_TRAIN.json",
+        "reports/cohort_rebuild_v2/experiments/20261016T065140-2078a15b/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261016T065217-37a769fe/summary.json",
+        "reports/cohort_rebuild_v3/ETH_TRAIN_CAPTURE_AND_MEASUREMENT.json",
+        "reports/cohort_rebuild_v4/AUTHORIZATION_GATE_REAL_TRAIN.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+        "reports/reproducibility/upstream_validation/localization_per_example.jsonl",
+        "reports/reproducibility/upstream_validation/claim_comparison.json"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
+      ],
+      "id": 13,
+      "independent_calculation": {
+        "historical_proxy_f1": 0.7586,
+        "scope": "saved aggregate; not authenticated cohort"
+      },
+      "ledger_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
+      "original_claim": "Detector precision/recall/F1 and baselines",
+      "published_denominator": "paper evaluation cohort; exact integer confusion counts unavailable",
+      "published_metric": {
+        "denominator": "paper evaluation cohort; exact integer confusion counts unavailable",
+        "metric": "precision/recall/F1 and baselines"
+      },
+      "source_location": "upstream paper empirical detector-results table; precision/recall/F1",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/detectors.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/paired_gains/20261015T161923-4650ee37/summary.json",
+        "reports/cohort_rebuild_v2/paired_gains/20261015T180152-ca8176ca/summary.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains"
+      ],
+      "id": 14,
+      "independent_calculation": null,
+      "ledger_verdict": "PUBLISHED-GAINS-UNSUPPORTED",
+      "original_claim": "17/29 percentage-point gains",
+      "published_denominator": "paired paper evaluation cohort",
+      "published_metric": {
+        "denominator": "paired paper evaluation cohort",
+        "gain_percentage_points": [
+          17,
+          29
+        ]
+      },
+      "source_location": "upstream paper paired baseline-gain result",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/compound_search.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/reconciliation/recovered_trace_audit.json",
+        "reports/reconciliation/recovered_trace_inventory_20261019.json",
+        "reports/research_results/recovered_trace_localization_20261019.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Exact legitimate cToken case-study transaction plus source linkage"
+      ],
+      "id": 15,
+      "independent_calculation": null,
+      "ledger_verdict": "CASE-NARRATIVE-RECOVERED-HASH-MISSING",
+      "original_claim": "Compound case study",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream paper Compound case-study section",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Local quality/confidence gate must dispatch escalation."
+      ],
+      "id": 16,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Query routing with theta gate",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper query-routing design and theta gate",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/providers/inventory.json",
+        "reports/provenance_hunt/providers/observations_manifest.json",
+        "reports/provenance_hunt/providers/bynara_conformance_diagnostic.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+        "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Eligible live family access including a reachable installed Ollama model"
+      ],
+      "id": 17,
+      "independent_calculation": null,
+      "ledger_verdict": "LIVE-CONFORMANCE-STILL-INCOMPLETE",
+      "original_claim": "Six provider families",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream paper provider/model configuration claim",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/routing.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Frozen100-case paired workload with observed usage, pricing and quality outputs"
+      ],
+      "id": 18,
+      "independent_calculation": {
+        "measured_100_case_runs": 0,
+        "modeled_cost_reduction_pct": 35.0
+      },
+      "ledger_verdict": "58-PERCENT-OVERALL-CONTRADICTED",
+      "original_claim": "58% cost savings, 100 transactions, quality/rank bounds",
+      "published_denominator": null,
+      "published_metric": {
+        "cost_saving_pct": 58,
+        "study_transactions": 100,
+        "tier_mix": "50/30/20"
+      },
+      "source_location": "upstream paper runtime/cost and 100-transaction study claim",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+        "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Constructor and executed Stage1 must remain keyless."
+      ],
+      "id": 19,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Stage 1 makes no model calls",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper Stage 1 architecture",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Coverage required; positive verdict cannot be overwritten."
+      ],
+      "id": 20,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "BENIGN skip, EXPLOIT lock and UNCERTAIN escalation",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper control-flow/routing design",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/prefilter.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/benign_control_preregistration.json",
+        "reports/cohort_rebuild_v2/benign_controls/summary.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/summary.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/benign_control_runs/experiments_log.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations"
+      ],
+      "id": 21,
+      "independent_calculation": null,
+      "ledger_verdict": "RATE-UNMEASURED",
+      "original_claim": "40% benign prefilter and latency reduction",
+      "published_denominator": "paper production workload",
+      "published_metric": {
+        "benign_prefilter_pct": 40,
+        "denominator": "paper production workload",
+        "latency_reduction": "reported with prefilter study"
+      },
+      "source_location": "upstream paper benign prefilter and latency result",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/measurement_frontier.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+        "reports/cohort_rebuild_v2/localization_train_protocol.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/source_localization.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/VERIFIED_SOURCE_INPUT_ACCEPTANCE.json",
+        "reports/cohort_rebuild_v2/SOURCE_FACTORY_INTEGRATION.json",
+        "reports/cohort_rebuild_v2/provider_pilot/PREFLIGHT.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/approval.json",
+        "reports/cohort_rebuild_v2/provider_pilot/dispatch_permit.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STOPPED_BATCH_DIAGNOSIS.json",
+        "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.json",
+        "reports/cohort_rebuild_v2/provider_pilot/COMBINED_PILOT_REPORT.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.dispatch_permit.json",
+        "reports/cohort_rebuild_v2/SOURCE_SELECTION_BOUNDARY_REVIEW.json",
+        "reports/cohort_rebuild_v2/ADDITIONAL_INFO_BOUNDARY_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T191403-a1313c9b/summary.json",
+        "reports/cohort_rebuild_v2/RANKER_PATTERN_REVIEW.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/source_localization.json",
+        "reports/cohort_rebuild_v2/EXECUTION_SOURCE_MAPPING_REVIEW.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001043-c1a48cb1/summary.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/summary.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001414-e8718971/summary.json",
+        "reports/cohort_rebuild_v2/PILOT_ABORT_AND_BUDGET_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T013725-27741c28/summary.json",
+        "reports/cohort_rebuild_v2/OBSERVED_FINDING_AND_RANK_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T034806_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T050541_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T050541-198e808b/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T053800_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/summary.json",
+        "reports/cohort_rebuild_v4/REVEST_FULL_PIPELINE_BATCH_STATUS.json",
+        "reports/cohort_rebuild_v4/REVEST_STRICT_PROMPT_BATCH_STATUS.json",
+        "reports/cohort_rebuild_v4/REVEST_OPTIONAL_FIELD_INTERVENTION_BATCH_STATUS.json",
+        "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+        "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
+        "reports/reproducibility/upstream_validation/localization_per_example.jsonl",
+        "reports/reproducibility/upstream_validation/claim_comparison.json"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases"
+      ],
+      "id": 22,
+      "independent_calculation": {
+        "exact_reproduction": false,
+        "failure_count": 5,
+        "independent_calculation": true,
+        "independent_localization": {
+          "current_address_aware_all_115": {
+            "hits": {
+              "recall_at_1": 25,
+              "recall_at_3": 49,
+              "recall_at_5": 52
+            },
+            "n": 115,
+            "recall": {
+              "recall_at_1": 0.2173913,
+              "recall_at_3": 0.42608696,
+              "recall_at_5": 0.45217391
+            }
+          },
+          "current_address_aware_valid_110": {
+            "hits": {
+              "recall_at_1": 25,
+              "recall_at_3": 49,
+              "recall_at_5": 52
+            },
+            "n": 110,
+            "recall": {
+              "recall_at_1": 0.22727273,
+              "recall_at_3": 0.44545455,
+              "recall_at_5": 0.47272727
+            }
+          },
+          "original_function_only_all_115": {
+            "hits": {
+              "recall_at_1": 27,
+              "recall_at_3": 49,
+              "recall_at_5": 53
+            },
+            "n": 115,
+            "recall": {
+              "recall_at_1": 0.23478261,
+              "recall_at_3": 0.42608696,
+              "recall_at_5": 0.46086957
+            }
+          },
+          "original_function_only_valid_110": {
+            "hits": {
+              "recall_at_1": 27,
+              "recall_at_3": 49,
+              "recall_at_5": 53
+            },
+            "n": 110,
+            "recall": {
+              "recall_at_1": 0.24545455,
+              "recall_at_3": 0.44545455,
+              "recall_at_5": 0.48181818
+            }
+          }
+        },
+        "published_upstream_table_ii": {
+          "recall_at_1": {
+            "denominator": 115,
+            "hits_inferred_from_reported_percentage": 58,
+            "percentage": 50.43
+          },
+          "recall_at_3": {
+            "denominator": 115,
+            "hits_inferred_from_reported_percentage": 85,
+            "percentage": 73.91
+          },
+          "recall_at_5": {
+            "denominator": 115,
+            "hits_inferred_from_reported_percentage": 88,
+            "percentage": 76.52
+          }
+        },
+        "replay_mismatch_count": 14
+      },
+      "ledger_verdict": "HISTORICAL-AGGREGATE-RECOVERED",
+      "original_claim": "Multi-agent function localization",
+      "published_denominator": 115,
+      "published_metric": {
+        "denominator": 115,
+        "metric": "Recall@1/3/5 function localization"
+      },
+      "source_location": "upstream paper function-localization result and multi-agent architecture",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+        "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Heuristic score identified separately from calibrated probability."
+      ],
+      "id": 23,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Equation 4 confidence scoring",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper Equation 4 confidence scoring",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+        "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "All feedback must affect downstream state, with rejection audit trail."
+      ],
+      "id": 24,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Evidence cards and two HITL checkpoints, five guidance types",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper evidence-card/HITL design",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/claim_closure/rpc_capabilities.json",
+        "reports/claim_closure/rpc_capability_conclusion.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/ethereum_requests.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/RPC_TRAIN_CONCLUSION.json",
+        "reports/cohort_rebuild_v2/opcodes/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "reports/cohort_rebuild_v2/opcode_history/5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc.json",
+        "reports/cohort_rebuild_v2/opcode_runs/euler_first_capture.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/probe.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+        "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode/probe.json",
+        "reports/cohort_rebuild_v2/BSC_HTTP_DIAGNOSTICS_REVIEW.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/decision.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/probe.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/raw/1-eth_chainId.json",
+        "reports/cohort_rebuild_v3/bsc_trace_capability/20261016T092502292158/summary.json",
+        "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+        "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+        "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+        "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
+      ],
+      "id": 25,
+      "independent_calculation": null,
+      "ledger_verdict": "ETHEREUM-TRAIN-CAPTURE-VERIFIED-BROADER-CAPABILITY-UNVERIFIABLE",
+      "original_claim": "RPC EMA, LRU, TTL, breakers and batching",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper RPC resilience design",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/comparison_result.json",
+        "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json",
+        "reports/historical_replay/final_accounting.json",
+        "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes."
+      ],
+      "id": 26,
+      "independent_calculation": {
+        "cohort_scale": false,
+        "historical_replay_samples": 2
+      },
+      "ledger_verdict": null,
+      "original_claim": "Foundry replay extracts SLOAD and SSTORE",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current paper replay/storage extraction implementation",
+      "status": "VERIFIED_IMPLEMENTATION"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/waf.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+        "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Authorized challenged explorer-request corpus with recovery logs and denominator"
+      ],
+      "id": 27,
+      "independent_calculation": null,
+      "ledger_verdict": "RATE-UNSUPPORTED",
+      "original_claim": "23% WAF challenge bypass",
+      "published_denominator": "authorized challenge sample not retained",
+      "published_metric": {
+        "denominator": "authorized challenge sample not retained",
+        "waf_recovery_pct": 23
+      },
+      "source_location": "upstream paper WAF recovery result",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/measurement_frontier.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Raw production per-function four-factor scores with adjudicated categories and declared averaging"
+      ],
+      "id": 28,
+      "independent_calculation": null,
+      "ledger_verdict": "NO-PRODUCTION-SCORE-VECTORS",
+      "original_claim": "Table VI category averages",
+      "published_denominator": "paper study categories",
+      "published_metric": {
+        "denominator": "paper study categories",
+        "metric": "Table VI category averages"
+      },
+      "source_location": "upstream paper Table VI category averages",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/guidance.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Original20-case selection/policy and paired rankings with explicit aggregation definition"
+      ],
+      "id": 29,
+      "independent_calculation": null,
+      "ledger_verdict": "GUIDANCE-RESULT-UNSUPPORTED",
+      "original_claim": "Simulated guidance on 20 transactions, 68\u219281%",
+      "published_denominator": null,
+      "published_metric": {
+        "after_pct": 81,
+        "before_pct": 68,
+        "study_transactions": 20
+      },
+      "source_location": "upstream paper simulated-guidance result",
+      "status": "EXTERNALLY_BLOCKED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/dispatch_log.json",
+        "reports/provenance_hunt/compressed_trace_regression.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/PRODUCTION_STAGE1.md",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/outputs_manifest.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T185549-292880f7/summary.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T190349-a5249514/summary.json",
+        "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes"
+      ],
+      "id": 30,
+      "independent_calculation": null,
+      "ledger_verdict": "PRODUCTION-STAGE1-REPRODUCED-FULL-PAPER-EXPERIMENTS-UNVERIFIABLE",
+      "original_claim": "Reproduction scripts",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "upstream paper reproducibility claim and artifact availability",
+      "status": "UNVERIFIED"
+    },
+    {
+      "evidence_references": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+      ],
+      "exact_evidence_required_to_change_status": [
+        "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check."
+      ],
+      "id": 31,
+      "independent_calculation": null,
+      "ledger_verdict": null,
+      "original_claim": "Repository layout/runtime compatibility",
+      "published_denominator": null,
+      "published_metric": null,
+      "source_location": "current repository runtime/reproducibility package",
+      "status": "VERIFIED_IMPLEMENTATION"
+    }
+  ],
+  "input_manifest": "reports/reproducibility/upstream_validation/input_manifest.json",
+  "inputs": {
+    "classification": "benchmark/original_faultseeker/benchmark_classification.csv",
+    "ground_truth": "benchmark/original_faultseeker/ground_truth",
+    "raw_results": "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/raw",
+    "run_manifest": "reports/original_benchmark/provider-pinned/original-v1-pinned-sequential-20261017/manifest.json"
+  },
+  "localization": {
+    "exact_reproduction": false,
+    "failure_count": 5,
+    "independent_calculation": true,
+    "independent_localization": {
+      "current_address_aware_all_115": {
+        "hits": {
+          "recall_at_1": 25,
+          "recall_at_3": 49,
+          "recall_at_5": 52
+        },
+        "n": 115,
+        "recall": {
+          "recall_at_1": 0.2173913,
+          "recall_at_3": 0.42608696,
+          "recall_at_5": 0.45217391
+        }
+      },
+      "current_address_aware_valid_110": {
+        "hits": {
+          "recall_at_1": 25,
+          "recall_at_3": 49,
+          "recall_at_5": 52
+        },
+        "n": 110,
+        "recall": {
+          "recall_at_1": 0.22727273,
+          "recall_at_3": 0.44545455,
+          "recall_at_5": 0.47272727
+        }
+      },
+      "original_function_only_all_115": {
+        "hits": {
+          "recall_at_1": 27,
+          "recall_at_3": 49,
+          "recall_at_5": 53
+        },
+        "n": 115,
+        "recall": {
+          "recall_at_1": 0.23478261,
+          "recall_at_3": 0.42608696,
+          "recall_at_5": 0.46086957
+        }
+      },
+      "original_function_only_valid_110": {
+        "hits": {
+          "recall_at_1": 27,
+          "recall_at_3": 49,
+          "recall_at_5": 53
+        },
+        "n": 110,
+        "recall": {
+          "recall_at_1": 0.24545455,
+          "recall_at_3": 0.44545455,
+          "recall_at_5": 0.48181818
+        }
+      }
+    },
+    "published_upstream_table_ii": {
+      "recall_at_1": {
+        "denominator": 115,
+        "hits_inferred_from_reported_percentage": 58,
+        "percentage": 50.43
+      },
+      "recall_at_3": {
+        "denominator": 115,
+        "hits_inferred_from_reported_percentage": 85,
+        "percentage": 73.91
+      },
+      "recall_at_5": {
+        "denominator": 115,
+        "hits_inferred_from_reported_percentage": 88,
+        "percentage": 76.52
+      }
+    },
+    "replay_mismatch_count": 14
+  },
+  "per_example": "reports/reproducibility/upstream_validation/localization_per_example.jsonl",
+  "schema_version": 1,
+  "script_sha256": "ece18f9fe610f0e67fb1111bc5b3c2dad9953902a9827603c782a1fd8d4d24a1",
+  "status": "INDEPENDENT_CALCULATION_NOT_EXACT_REPRODUCTION",
+  "upstream": {
+    "commit": "72753bd833554449efa8499f0d1775a97fb5c696",
+    "paper_pdf": "full_paper/FaultSeeker LLM-Empowered Framework for Blockchain Transaction.pdf",
+    "repository": "https://github.com/kairanskrr/FaultSeeker"
+  }
+}
