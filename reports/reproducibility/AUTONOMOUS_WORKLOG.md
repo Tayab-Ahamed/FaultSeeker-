@@ -199,3 +199,17 @@ reports, or provenance evidence.
   verifier failure exposed a cost-tracker runtime-hash drift; the tracker was
   restored to its frozen digest `0da7c83f...` without changing Batch E files,
   and verification now passes.
+
+### Current full-suite checkpoint
+
+- Command: `python -m pytest tests -x -q -p no:cacheprovider`.
+- Result: 965 passed, 7 skipped before the first failure at
+  `tests/test_t3_evidence_audits.py::test_local_source_audit_is_network_free_and_keeps_adjudication_separate`.
+- Failure: the pre-existing dirty local-source evidence snapshot reports
+  `unresolved_rows_attempted=69`, while the test requires at least 70. The
+  modified artifacts are outside this workstream and were not changed.
+- The initial non-`-x` full-suite attempt exceeded 120 seconds after reaching
+  the same failure region; it is not treated as a pass.
+- Focused current-revision suite for this mission remains passing: 36 tests,
+  including calibration/cost audit, ledger, schema, measured-cost, and frozen
+  Batch E runtime checks.
