@@ -270,4 +270,6 @@ reports, or provenance evidence.
   cohort rows 231, chains 8).
 - `pdflatex` was unavailable, so PDF compilation remains an environment gap;
   label/reference text checks found no removed-table references.
+- Regenerated `CLAIM_CLOSURE_LEDGER.json` at commit `c0b039d` and refreshed its
+  evidence-manifest hash.
 - Final paper disposition: `PAPER CLAIMS PARTIALLY CLOSED — EXTERNAL EVIDENCE REQUIRED`.
