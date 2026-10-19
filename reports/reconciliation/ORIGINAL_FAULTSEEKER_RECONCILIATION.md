@@ -140,6 +140,23 @@ current code, and a scorer whose selector lookup registers ground-truth
 function names. That scorer boundary is recorded in the recomputation artifact
 instead of being presented as an unbiased upstream reproduction.
 
+## Recovered trace evidence
+
+The bounded dRPC run at
+`reports/external_runs/phase2/20261017T011500Z/drpc/` was audited without making
+new requests or rerunning ranking. It contains 9 captured rows and 6 failed
+attempts. Four captured rows are also in the imported original ground-truth
+corpus; all four show the labeled target address in the raw callTracer tree.
+Public typed-signature evidence maps the imported labels to observed selectors
+for all four rows: `cacheAssetPrice()`, `latestAnswer()`,
+`doSwapThroughOrionPool(...)`, and `donateToReserves(uint256,uint256)`.
+
+This recovers execution and function-identity evidence for four individual
+cases; it is not a replacement for the missing original predictions,
+transcripts, scorer, or 115-row paper run. The machine-readable audit is
+`reports/reconciliation/recovered_trace_audit.json` and the human-readable
+report is `reports/reconciliation/RECOVERED_TRACE_AUDIT.md`.
+
 The frozen protocol remains explicit in
 `benchmark/protocols/original_benchmark_function_localization_v1.md`: failures
 stay in the 115 denominator, synthetic/replay fixtures are not mixed into that

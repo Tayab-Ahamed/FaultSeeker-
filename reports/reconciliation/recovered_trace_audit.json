@@ -1,0 +1,495 @@
+{
+  "blocker": "Raw callTracer proves observed target-address calls and raw selectors where present, but imported labels lack typed signatures; exact function identity and paper scorer reproduction remain blocked.",
+  "created_at": "2026-10-19T08:35:45.918233+00:00",
+  "failed_attempts": [
+    {
+      "attempt": 1,
+      "chain": "bsc",
+      "failure_causes": [
+        {
+          "method": "eth_chainId",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_chainId",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "eth_getTransactionByHash",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_getTransactionByHash",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "debug_traceTransaction",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "cause": "wrong_or_missing_chain",
+          "method": "eth_chainId",
+          "observed": null
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    },
+    {
+      "attempt": 2,
+      "chain": "bsc",
+      "failure_causes": [
+        {
+          "method": "eth_chainId",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_chainId",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "eth_getTransactionByHash",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_getTransactionByHash",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "method": "debug_traceTransaction",
+          "stderr": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"You reached free plan rate limit, please upgrade to paid plan\",\"code\":15}}"
+        },
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": null,
+          "status": 429
+        },
+        {
+          "cause": "wrong_or_missing_chain",
+          "method": "eth_chainId",
+          "observed": null
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    },
+    {
+      "attempt": 1,
+      "chain": "fantom",
+      "failure_causes": [
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": -32000,
+          "status": 200
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+    },
+    {
+      "attempt": 2,
+      "chain": "fantom",
+      "failure_causes": [
+        {
+          "method": "eth_getTransactionByHash",
+          "rpc_code": null,
+          "status": 200
+        },
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": -32000,
+          "status": 200
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+    },
+    {
+      "attempt": 1,
+      "chain": "gnosis",
+      "failure_causes": [
+        {
+          "method": "eth_getTransactionByHash",
+          "rpc_code": null,
+          "status": 200
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "rpc_code": null,
+          "status": 200
+        },
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": -32000,
+          "status": 200
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+    },
+    {
+      "attempt": 2,
+      "chain": "gnosis",
+      "failure_causes": [
+        {
+          "method": "eth_getTransactionByHash",
+          "rpc_code": null,
+          "status": 200
+        },
+        {
+          "method": "eth_getTransactionReceipt",
+          "rpc_code": null,
+          "status": 200
+        },
+        {
+          "method": "debug_traceTransaction",
+          "rpc_code": -32000,
+          "status": 200
+        }
+      ],
+      "status": "FAILED",
+      "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+    }
+  ],
+  "rows": [
+    {
+      "chain": "base",
+      "exact_function_identity_status": "NO_IMPORTED_GROUND_TRUTH",
+      "ground_truth_available": false,
+      "ground_truth_function_labels": [],
+      "ground_truth_target_addresses": [],
+      "observed_address_count": 7,
+      "observed_call_count": 30,
+      "observed_chain_id": 8453,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.attempt1.json",
+      "raw_sha256": "144283415aa03eeef08a522342fd8d07f4f462688c028e00f609b23a040212f0",
+      "stable_id": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "target_address_call_count": 0,
+      "target_address_observed": false,
+      "target_address_observed_selectors": [],
+      "transaction_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": []
+    },
+    {
+      "chain": "base",
+      "exact_function_identity_status": "NO_IMPORTED_GROUND_TRUTH",
+      "ground_truth_available": false,
+      "ground_truth_function_labels": [],
+      "ground_truth_target_addresses": [],
+      "observed_address_count": 6,
+      "observed_call_count": 25,
+      "observed_chain_id": 8453,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.attempt1.json",
+      "raw_sha256": "b28ad522f92bb1f26cf2a294162523e7e431e9dcd38a6bbd4c79b84b060ceac0",
+      "stable_id": "base:0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+      "target_address_call_count": 0,
+      "target_address_observed": false,
+      "target_address_observed_selectors": [],
+      "transaction_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": []
+    },
+    {
+      "chain": "eth",
+      "exact_function_identity_status": "ESTABLISHED_BY_TYPED_SIGNATURE_AND_TRACE",
+      "ground_truth_available": true,
+      "ground_truth_function_labels": [
+        {
+          "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+          "label": "cacheAssetPrice"
+        }
+      ],
+      "ground_truth_target_addresses": [
+        "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c"
+      ],
+      "observed_address_count": 143,
+      "observed_call_count": 242,
+      "observed_chain_id": 1,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.attempt1.json",
+      "raw_sha256": "38f98588393178c204fd9b77a7b28c4808b9d7fc0fabf96bc945354fee2763a7",
+      "stable_id": "eth:0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+      "target_address_call_count": 5,
+      "target_address_observed": true,
+      "target_address_observed_selectors": [
+        "0x095ea7b3",
+        "0x23b872dd",
+        "0x70a08231",
+        "0xa9059cbb",
+        "0xd341ea79"
+      ],
+      "transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": [
+        {
+          "ground_truth_label": "cacheAssetPrice",
+          "provenance": "etherscan_verified_exact_match",
+          "selector": "0xd341ea79",
+          "selector_observed": true,
+          "signature": "cacheAssetPrice()",
+          "source_url": "https://etherscan.io/address/0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c#code"
+        }
+      ]
+    },
+    {
+      "chain": "eth",
+      "exact_function_identity_status": "ESTABLISHED_BY_TYPED_SIGNATURE_AND_TRACE",
+      "ground_truth_available": true,
+      "ground_truth_function_labels": [
+        {
+          "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+          "label": "latestAnswer"
+        }
+      ],
+      "ground_truth_target_addresses": [
+        "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c"
+      ],
+      "observed_address_count": 45,
+      "observed_call_count": 100,
+      "observed_chain_id": 1,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.attempt1.json",
+      "raw_sha256": "b6732c4a3297b07991ab6849f4f688488077813856e695e09edc02237b41e2a2",
+      "stable_id": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "target_address_call_count": 2,
+      "target_address_observed": true,
+      "target_address_observed_selectors": [
+        "0x313ce567",
+        "0x50d25bcd"
+      ],
+      "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": [
+        {
+          "ground_truth_label": "latestAnswer",
+          "provenance": "etherscan_verified_exact_match",
+          "selector": "0x50d25bcd",
+          "selector_observed": true,
+          "signature": "latestAnswer()",
+          "source_url": "https://etherscan.io/address/0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c#code"
+        }
+      ]
+    },
+    {
+      "chain": "eth",
+      "exact_function_identity_status": "NO_IMPORTED_GROUND_TRUTH",
+      "ground_truth_available": false,
+      "ground_truth_function_labels": [],
+      "ground_truth_target_addresses": [],
+      "observed_address_count": 8,
+      "observed_call_count": 17,
+      "observed_chain_id": 1,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.attempt1.json",
+      "raw_sha256": "7e61a7d8aa70a8c6369094abae05842d5eebdae3e063e494d9280f5270f5bbb8",
+      "stable_id": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "target_address_call_count": 0,
+      "target_address_observed": false,
+      "target_address_observed_selectors": [],
+      "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": []
+    },
+    {
+      "chain": "eth",
+      "exact_function_identity_status": "ESTABLISHED_BY_TYPED_SIGNATURE_AND_TRACE",
+      "ground_truth_available": true,
+      "ground_truth_function_labels": [
+        {
+          "address": "0x420a50a62b17c18b36c64478784536ba980feac8",
+          "label": "doSwapThroughOrionPool"
+        }
+      ],
+      "ground_truth_target_addresses": [
+        "0x420a50a62b17c18b36c64478784536ba980feac8"
+      ],
+      "observed_address_count": 17,
+      "observed_call_count": 50,
+      "observed_chain_id": 1,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.attempt1.json",
+      "raw_sha256": "755a9ec43e3a6fc5c432196fd7f6695d0d03ff0957f716ee749eb764f1070542",
+      "stable_id": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "target_address_call_count": 2,
+      "target_address_observed": true,
+      "target_address_observed_selectors": [
+        "0x0f04ba67",
+        "0xd5f724f3"
+      ],
+      "transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": [
+        {
+          "ground_truth_label": "doSwapThroughOrionPool",
+          "provenance": "etherscan_verified_exact_match",
+          "selector": "0xd5f724f3",
+          "selector_observed": true,
+          "signature": "doSwapThroughOrionPool(address,address,(uint112,uint112,address,bool,bool,bool,bool,bool,address,address[]))",
+          "source_url": "https://etherscan.io/address/0x420a50a62b17c18b36c64478784536ba980feac8#code"
+        }
+      ]
+    },
+    {
+      "chain": "eth",
+      "exact_function_identity_status": "ESTABLISHED_BY_TYPED_SIGNATURE_AND_TRACE",
+      "ground_truth_available": true,
+      "ground_truth_function_labels": [
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "label": "donateToReserves"
+        },
+        {
+          "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+          "label": ":"
+        }
+      ],
+      "ground_truth_target_addresses": [
+        "0xe025e3ca2be02316033184551d4d3aa22024d9dc"
+      ],
+      "observed_address_count": 28,
+      "observed_call_count": 55,
+      "observed_chain_id": 1,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.attempt1.json",
+      "raw_sha256": "6d94500dfc282635fb3cdc0c5e293a52abb304da6ae76b33c99d3ff582506ffd",
+      "stable_id": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "target_address_call_count": 5,
+      "target_address_observed": true,
+      "target_address_observed_selectors": [
+        "0x03ddf252",
+        "0x1b2ef1ca",
+        "0x36f022aa",
+        "0x441a3e70",
+        "0xe2bbb158"
+      ],
+      "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": [
+        {
+          "ground_truth_label": "donateToReserves",
+          "provenance": "openchain_signature_database_has_verified_contract",
+          "selector": "0x36f022aa",
+          "selector_observed": true,
+          "signature": "donateToReserves(uint256,uint256)",
+          "source_url": "https://api.openchain.xyz/signature-database/v1/lookup?function=0x36f022aa"
+        }
+      ]
+    },
+    {
+      "chain": "polygon",
+      "exact_function_identity_status": "NO_IMPORTED_GROUND_TRUTH",
+      "ground_truth_available": false,
+      "ground_truth_function_labels": [],
+      "ground_truth_target_addresses": [],
+      "observed_address_count": 103,
+      "observed_call_count": 352,
+      "observed_chain_id": 137,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.attempt1.json",
+      "raw_sha256": "6a952f8d2209c0876f26970f4198b4c74616a4e4a50bc859563973e04e4a3e73",
+      "stable_id": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+      "target_address_call_count": 0,
+      "target_address_observed": false,
+      "target_address_observed_selectors": [],
+      "transaction_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": []
+    },
+    {
+      "chain": "polygon",
+      "exact_function_identity_status": "NO_IMPORTED_GROUND_TRUTH",
+      "ground_truth_available": false,
+      "ground_truth_function_labels": [],
+      "ground_truth_target_addresses": [],
+      "observed_address_count": 138,
+      "observed_call_count": 377,
+      "observed_chain_id": 137,
+      "raw_path": "reports/external_runs/phase2/20261017T011500Z/drpc/raw/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.attempt1.json",
+      "raw_sha256": "cb8c59d1b917e16c3a7283c13b62a6f37b4d7a721b5e733c9ac34108f52bb32b",
+      "stable_id": "polygon:0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+      "target_address_call_count": 0,
+      "target_address_observed": false,
+      "target_address_observed_selectors": [],
+      "transaction_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+      "transaction_result_hash_matches": true,
+      "typed_function_signature_evidence": []
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Bounded, previously captured dRPC callTracer artifacts; no new RPC requests; no ranking run.",
+  "source_manifest": "reports/external_runs/phase2/20261017T011500Z/drpc/manifest.json",
+  "summary": {
+    "captured_rows": 9,
+    "captured_rows_with_exact_function_identity": 4,
+    "captured_rows_with_observed_target_address": 4,
+    "captured_rows_with_original_ground_truth": 4,
+    "captured_rows_with_transaction_hash_match": 9,
+    "failed_attempts": 6,
+    "provider": "dRPC",
+    "run_manifest_sha256": "10a1ef2665e9e5cac16204ca397b22ca96574d24ab651133f21a132161d967e7",
+    "status_counts": {
+      "captured": 9
+    },
+    "target_address_observation_is_not_function_reproduction": true
+  },
+  "typed_signature_evidence": [
+    {
+      "address": "0x420a50a62b17c18b36c64478784536ba980feac8",
+      "chain": "eth",
+      "label": "doswapthroughorionpool",
+      "provenance": "etherscan_verified_exact_match",
+      "selector": "0xd5f724f3",
+      "signature": "doSwapThroughOrionPool(address,address,(uint112,uint112,address,bool,bool,bool,bool,bool,address,address[]))",
+      "source_url": "https://etherscan.io/address/0x420a50a62b17c18b36c64478784536ba980feac8#code"
+    },
+    {
+      "address": "0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c",
+      "chain": "eth",
+      "label": "cacheassetprice",
+      "provenance": "etherscan_verified_exact_match",
+      "selector": "0xd341ea79",
+      "signature": "cacheAssetPrice()",
+      "source_url": "https://etherscan.io/address/0xb40b6608b2743e691c9b54ddbdee7bf03cd79f1c#code"
+    },
+    {
+      "address": "0xe025e3ca2be02316033184551d4d3aa22024d9dc",
+      "chain": "eth",
+      "label": "donatetoreserves",
+      "provenance": "openchain_signature_database_has_verified_contract",
+      "selector": "0x36f022aa",
+      "signature": "donateToReserves(uint256,uint256)",
+      "source_url": "https://api.openchain.xyz/signature-database/v1/lookup?function=0x36f022aa"
+    },
+    {
+      "address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+      "chain": "eth",
+      "label": "latestanswer",
+      "provenance": "etherscan_verified_exact_match",
+      "selector": "0x50d25bcd",
+      "signature": "latestAnswer()",
+      "source_url": "https://etherscan.io/address/0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c#code"
+    }
+  ]
+}
