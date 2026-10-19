@@ -234,3 +234,9 @@ rate-limit responses and have no local call-tree artifact. Current-cohort
 ground truth for these rows has zero source-bound location keys, so no valid
 aggregate localization score can be added. See
 `reports/reconciliation/recovered_trace_inventory_20261019.json`.
+
+After this continuation commit, the full offline suite was attempted again
+with a 300-second timeout. It did not complete within that bound; the prior
+completed run remains `1065 passed, 7 skipped, 1 failed`, with the preserved
+69-versus-70 source-audit assertion as the only observed failure. The focused
+continuation suite completed `18 passed` and the Batch E verifier passed.
