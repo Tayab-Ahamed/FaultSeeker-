@@ -238,6 +238,9 @@ Additional staged data:
 # Validate the verified exploit benchmark
 python benchmark/validate_dataset.py
 
+# Audit the bound cohort manifest without changing evidence
+make validate-cohort
+
 # Validate the staged benign false-positive dataset
 python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv
 ```

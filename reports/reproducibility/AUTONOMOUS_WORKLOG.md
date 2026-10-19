@@ -86,3 +86,14 @@ reports, or provenance evidence.
 - Final result: exit 0, 8 passed.
 - `setup.py`, README, CI, and both Docker paths now default to the lockfile and
   Python 3.11.9 where the runtime is declared.
+
+### AR-002 — command surface
+
+- Changed: `Makefile`, `README.md`.
+- Intended command: `make validate-cohort`.
+- Environment result: exit 127 because `make` is not installed in this Windows
+  environment; no installation was attempted.
+- Equivalent command: `python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root .`.
+- Equivalent result: exit 0, 14 accepted, target 246, `BLOCKED-BY-DATA`.
+- Focused regression command: `python -m pytest tests/test_runtime_layout.py tests/test_cohort_manifest_validator.py -q -p no:cacheprovider`.
+- Result: exit 0, 8 passed.

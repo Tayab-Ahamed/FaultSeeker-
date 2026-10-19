@@ -1,7 +1,10 @@
-.PHONY: test evidence-demo judge
+.PHONY: test validate-cohort evidence-demo judge
 
 test:
 	python -m pytest tests -q -p no:cacheprovider
+
+validate-cohort:
+	python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root .
 
 evidence-demo:
 	python scripts/run_evidence_upgrade.py
