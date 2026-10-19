@@ -349,3 +349,22 @@ reports, or provenance evidence.
 - Implementation status: serializer fix completed. Empirical targets remain
   blocked by missing authenticated data, independent review, provider/WAF
   authorization, human responses, and clean Linux/TeX build resources.
+
+### AR-016 — current data readiness checkpoint
+
+- `python benchmark/validate_dataset.py`: exit 1. The current strict input has
+  14 unique valid hashes across six chains, below the validator's 160+ local
+  target. This confirms the original 246-row target cannot be evaluated from
+  the current strict CSV without new legitimate admissions.
+- `python benchmark/validate_benign_dataset.py --input benchmark/imported/hf_ethereum_benign_transactions.csv`:
+  exit 0; 10,000 rows, zero duplicate hashes, required fields present. These
+  are Ethereum non-scam-address candidates, not independently verified benign
+  DeFi ground truth for the original prefilter claim.
+- `python benchmark/run_honest_experiments.py --results-dir <temporary>`:
+  exit 2; comparison blocked at 10/14 exploit trace-feature coverage versus
+  1000/1000 benign trace rows. No incomparable metrics were promoted.
+- Expanded implementation regression after the serializer fix: exit 0,
+  `36 passed` across the prediction adapter, rank ordering, pattern integrity,
+  and function-selection safety tests.
+- This checkpoint advances data readiness once and does not alter the known
+  source-audit mismatch or any frozen/unrelated artifact.
