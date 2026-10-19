@@ -682,3 +682,5 @@ reports, or provenance evidence.
 - The upstream repository does not publish its evaluator; the report's metric
   is explicitly an evidence-bounded function-name-only reconstruction using
   saved predictions, not a claim of exact authors-side reranking.
+- Post-commit focused suite: `python -m pytest tests/test_upstream_compat_ranker.py tests/test_original_upstream_cached_eval.py tests/test_original_benchmark_eval.py tests/test_original_benchmark_ablations.py tests/test_original_reconciliation.py -q -p no:cacheprovider` — exit 0, 10 passed.
+- Implementation commit: `6414cfc`.
