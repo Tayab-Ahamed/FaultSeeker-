@@ -542,3 +542,46 @@ reports, or provenance evidence.
   there is no observed case where a present target pair merely fell below
   Top-5. This points to candidate generation/function identity coverage as
   the next localization investigation, not a serializer or rank-order bug.
+
+### AR-023 — legacy detector trace-density calibration experiment
+
+- Used the retained detector error analysis to formulate one falsifiable
+  hypothesis: false positives have unusually high address fan-out relative to
+  function-call volume, so adding the row-local feature
+  `address_count / max(functioncall_count, 1)` may improve calibration.
+- Added and ran `scripts/research/evaluate_trace_density_calibration.py` with
+  the same deterministic five-fold hash OOF protocol and fixed threshold `0.5`
+  as the accepted legacy baseline. No evaluation labels were used to build
+  the feature or fit the held-out fold.
+- Baseline reproduced exactly: TP `72`, FP `10`, TN `990`, FN `43`, precision
+  `0.8780`, recall `0.6261`, F1 `0.7310`, FPR `0.0100`, Brier `0.035851`, ECE
+  `0.037711`, bootstrap F1 CI `[0.6548, 0.7980]`.
+- Candidate: TP `78`, FP `11`, TN `989`, FN `37`, precision `0.8764`, recall
+  `0.6783`, F1 `0.7647`, FPR `0.0110`, Brier `0.029222`, ECE `0.028766`,
+  bootstrap F1 CI `[0.6977, 0.8235]`.
+- Paired comparison had 2 baseline-only correct and 7 candidate-only correct
+  discordant rows; continuity-corrected McNemar chi-square `1.7778` over 9
+  discordant pairs. The candidate recovers 6 exploit false negatives but adds
+  1 net false positive. It is a promising legacy diagnostic candidate with
+  improved calibration, but it is not promoted to production because FPR
+  increases and paired superiority is not established on this small,
+  historically exposed cohort.
+- Retained per-row baseline/candidate scores and features, input hashes,
+  breakdowns, configuration, and output checksums under
+  `reports/reproducibility/legacy_115_diagnostic/trace_density_calibration/`.
+  Independent confusion-count recomputation passed.
+- Original T01 remains externally blocked; this result is not evidence for the
+  original 246-row claim.
+
+### AR-024 — reproducibility gate execution
+
+- Executed the full offline test command directly because GNU `make` is not
+  installed on this Windows host. Result: `1061 passed, 7 skipped, 1 failed`.
+  The single preserved failure is the known source-audit assertion:
+  `summary["unresolved_rows_attempted"] == 69`, while the test requires at
+  least `70`. No threshold or source evidence was changed.
+- `python scripts/research/verify_batch_e_result.py` still passes with frozen
+  Batch E R@1 `14/40`, R@3 `27/40`, R@5 `33/40`.
+- Docker verification remains unavailable because the Docker Desktop Linux
+  engine pipe is not present. This leaves T13 in progress pending clean Linux
+  Docker/full-suite/PDF verification.
