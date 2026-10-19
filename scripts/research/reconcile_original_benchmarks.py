@@ -25,6 +25,7 @@ ROOT_CSV = ROOT / "benchmark/benchmark_classification.csv"
 ORIGINAL_GT = ROOT / "benchmark/original_faultseeker/ground_truth"
 CURRENT_GT = ROOT / "benchmark/ground_truth"
 CURRENT_MANIFEST = ROOT / "benchmark/cohort_manifest.json"
+V4_MANIFEST = ROOT / "benchmark/versions/cohort_v4_20261016/cohort_manifest.json"
 CURRENT_LOCALIZATION_REPORT = ROOT / (
     "reports/reproducibility/localization_candidate_coverage_selector_normalization/report.json"
 )
@@ -129,8 +130,8 @@ def _ground_truth_dir(path: Path) -> dict[str, dict[str, Any]]:
     return result
 
 
-def _manifest_records() -> dict[str, dict[str, Any]]:
-    raw = json.loads(CURRENT_MANIFEST.read_text(encoding="utf-8"))
+def _manifest_records_from(path: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
+    raw = json.loads(path.read_text(encoding="utf-8"))
     records = {}
     for item in raw.get("records", []):
         key = _stable_id(item.get("chain"), item.get("txn_hash"))
@@ -146,6 +147,10 @@ def _manifest_records() -> dict[str, dict[str, Any]]:
             "reentrancy_label": item.get("reentrancy_label"),
         }
     return raw, records
+
+
+def _manifest_records() -> tuple[dict[str, Any], dict[str, dict[str, Any]]]:
+    return _manifest_records_from(CURRENT_MANIFEST)
 
 
 def _provider_status() -> tuple[dict[str, str], int]:
@@ -203,6 +208,7 @@ def _row_overlap() -> tuple[list[dict[str, Any]], dict[str, Any]]:
     original_gt = _ground_truth_dir(ORIGINAL_GT)
     current_gt = _ground_truth_dir(CURRENT_GT)
     manifest, accepted = _manifest_records()
+    v4_manifest, v4_accepted = _manifest_records_from(V4_MANIFEST)
     provider_status, provider_row_count = _provider_status()
     localization_report = json.loads(CURRENT_LOCALIZATION_REPORT.read_text(encoding="utf-8"))
 
@@ -263,6 +269,14 @@ def _row_overlap() -> tuple[list[dict[str, Any]], dict[str, Any]]:
         "faultseekerpp_target_count": manifest.get("target_count"),
         "faultseekerpp_remaining_to_target": manifest.get("remaining_to_target"),
         "original_faultseekerpp_transaction_overlap": len(set(original_gt) & set(accepted)),
+        "faultseekerpp_v4_manifest": {
+            "accepted_count": v4_manifest.get("accepted_count", len(v4_accepted)),
+            "target_count": v4_manifest.get("target_count"),
+            "remaining_to_target": v4_manifest.get("remaining_to_target"),
+            "not_independent_human_review": v4_manifest.get("not_independent_human_review"),
+            "accepted_unique_stable_ids": len(v4_accepted),
+            "original_transaction_overlap": len(set(original_gt) & set(v4_accepted)),
+        },
         "current_114_localization_denominator": localization_report.get("eligible_rows"),
         "current_114_localization_report_scope": localization_report.get("evidence_scope"),
         "provider_pinned_rows": provider_row_count,
@@ -298,6 +312,7 @@ def run() -> dict[str, Any]:
             "imported_original_ground_truth": str(ORIGINAL_GT.relative_to(ROOT)),
             "faultseekerpp_ground_truth": str(CURRENT_GT.relative_to(ROOT)),
             "faultseekerpp_manifest": str(CURRENT_MANIFEST.relative_to(ROOT)),
+            "faultseekerpp_v4_manifest": str(V4_MANIFEST.relative_to(ROOT)),
             "current_localization_report": str(CURRENT_LOCALIZATION_REPORT.relative_to(ROOT)),
         },
         "summary": summary,
@@ -306,6 +321,7 @@ def run() -> dict[str, Any]:
             "original_115": "115 original benchmark classification rows and 115 imported original function-ground-truth JSON files; transaction-level attack cases, not a benign-control detector cohort.",
             "current_114": "114 unique stable transaction identifiers used by the current localization report. The imported original ground truth has 115 files, but two filenames carry the same transaction hash; all 115 files contain function identities.",
             "faultseekerpp_246": "A target size in the current FaultSeeker++ cohort specification. The current root manifest admits 14 rows and explicitly leaves 232 unresolved; it is not evidence of 246 accepted attacks.",
+            "faultseekerpp_v4_246": "The versioned v4 manifest also targets 246 records, accepts 22 unique stable IDs, leaves 224 unresolved, and is explicitly not independent human review.",
             "faultseekerpp_current_ground_truth": "14 accepted root-cohort ground-truth files, represented by the accepted manifest; this set is not the 246 target and is not independent human review.",
         },
         "rows_path": str(OUTPUT_CSV.relative_to(ROOT)),

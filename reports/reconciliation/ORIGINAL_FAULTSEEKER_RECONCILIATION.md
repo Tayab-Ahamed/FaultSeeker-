@@ -53,8 +53,11 @@ The artifact preserves ground-truth function identities as
 | Upstream ground-truth files with function identities | Every imported file has at least one function identity | 115 files |
 | Current localization denominator | Unique stable IDs used by the current selector-normalization report | 114 |
 | Current FaultSeeker++ accepted root cohort | Accepted records in `benchmark/cohort_manifest.json` | 14 |
-| FaultSeeker++ target specification | Manifest target, not an accepted dataset | 246 |
-| FaultSeeker++ unresolved target remainder | `246 - 14` | 232 |
+| Current FaultSeeker++ target specification | Root manifest target, not an accepted dataset | 246 |
+| Current FaultSeeker++ unresolved target remainder | `246 - 14` | 232 |
+| Versioned v4 accepted cohort | Accepted records in `benchmark/versions/cohort_v4_20261016/cohort_manifest.json` | 22 |
+| Versioned v4 target specification | v4 manifest target, not an accepted dataset | 246 |
+| Versioned v4 unresolved target remainder | `246 - 22` | 224 |
 
 The two classification CSVs contain the same 115 parsed rows and the same
 stable-ID set. They are not byte-identical: the imported copy uses CRLF line
@@ -75,9 +78,11 @@ location mappings. This explains why a 115-file source population becomes a
 filenames under that stable ID.
 
 The 246 value therefore cannot be read as “246 attacks evaluated.” It is the
-target size of the current cohort specification. The root manifest currently
-accepts 14 records, says independent human review is false, and leaves 232
-records unresolved.
+target size of the cohort specifications. The root manifest currently accepts
+14 records and leaves 232 unresolved; the versioned v4 manifest accepts 22
+unique stable IDs and leaves 224 unresolved. Both manifests explicitly state
+that independent human review has not occurred. The v4 manifest is included as
+a separate versioned comparison and is not merged into the root overlap CSV.
 
 ## Original paper evaluation claims
 

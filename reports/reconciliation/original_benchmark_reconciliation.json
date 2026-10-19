@@ -3,12 +3,14 @@
     "current_114": "114 unique stable transaction identifiers used by the current localization report. The imported original ground truth has 115 files, but two filenames carry the same transaction hash; all 115 files contain function identities.",
     "faultseekerpp_246": "A target size in the current FaultSeeker++ cohort specification. The current root manifest admits 14 rows and explicitly leaves 232 unresolved; it is not evidence of 246 accepted attacks.",
     "faultseekerpp_current_ground_truth": "14 accepted root-cohort ground-truth files, represented by the accepted manifest; this set is not the 246 target and is not independent human review.",
+    "faultseekerpp_v4_246": "The versioned v4 manifest also targets 246 records, accepts 22 unique stable IDs, leaves 224 unresolved, and is explicitly not independent human review.",
     "original_115": "115 original benchmark classification rows and 115 imported original function-ground-truth JSON files; transaction-level attack cases, not a benign-control detector cohort."
   },
   "inputs": {
     "current_localization_report": "reports\\reproducibility\\localization_candidate_coverage_selector_normalization\\report.json",
     "faultseekerpp_ground_truth": "benchmark\\ground_truth",
     "faultseekerpp_manifest": "benchmark\\cohort_manifest.json",
+    "faultseekerpp_v4_manifest": "benchmark\\versions\\cohort_v4_20261016\\cohort_manifest.json",
     "imported_original_classification": "benchmark\\original_faultseeker\\benchmark_classification.csv",
     "imported_original_ground_truth": "benchmark\\original_faultseeker\\ground_truth",
     "root_classification": "benchmark\\benchmark_classification.csv"
@@ -58,6 +60,14 @@
     "faultseekerpp_accepted_manifest_rows": 14,
     "faultseekerpp_remaining_to_target": 232,
     "faultseekerpp_target_count": 246,
+    "faultseekerpp_v4_manifest": {
+      "accepted_count": 22,
+      "accepted_unique_stable_ids": 22,
+      "not_independent_human_review": true,
+      "original_transaction_overlap": 4,
+      "remaining_to_target": 224,
+      "target_count": 246
+    },
     "original_classification_rows": 115,
     "original_faultseekerpp_transaction_overlap": 4,
     "original_ground_truth_duplicate_stable_ids": {

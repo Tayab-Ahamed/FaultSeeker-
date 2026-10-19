@@ -14,6 +14,10 @@ def test_reconciliation_preserves_denominators_and_duplicate_identity():
     assert summary["faultseekerpp_accepted_manifest_rows"] == 14
     assert summary["faultseekerpp_remaining_to_target"] == 232
     assert summary["original_faultseekerpp_transaction_overlap"] == 4
+    assert summary["faultseekerpp_v4_manifest"]["accepted_count"] == 22
+    assert summary["faultseekerpp_v4_manifest"]["target_count"] == 246
+    assert summary["faultseekerpp_v4_manifest"]["remaining_to_target"] == 224
+    assert summary["faultseekerpp_v4_manifest"]["not_independent_human_review"] is True
 
     duplicate = next(row for row in rows if row["original_gt_duplicate_file_count"] == 2)
     assert duplicate["stable_id"].startswith("eth:0x6439d63c")
