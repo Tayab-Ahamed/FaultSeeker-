@@ -34,6 +34,7 @@ reports, or provenance evidence.
 | AR-010 | 6 | coordinator | DONE | Add offline calibration/cost evidence audit and reject empty legacy tracker reports as empirical evidence | Existing calibration and cost artifacts; Batch E runtime hash | Audit exits 2 with explicit blocked status; legacy empty flag is overridden by audit semantics; no frozen artifact changes |
 | AR-011 | 6 | coordinator | DONE | Reconcile valid cohort versions and identify locally runnable detector/localization work without touching frozen batches | Current manifests, frozen Batch E, comparable trace coverage | Root 14/246; v3 20/246; v4 22/246; detector gate data-blocked; Batch E verifier passes unchanged |
 | AR-012 | 5 | coordinator | DONE | Diagnose current full-suite source-audit mismatch and publish minimum external evidence acquisition requirements | Dirty source-resolution artifacts; claim ledger | Mismatch is stale/inconsistent evidence: current CSV has 69 unresolved rows while dirty summary claims 72; no rows or adjudications fabricated; acquisition plan committed |
+| AR-013 | 5 | coordinator | DONE | Make the current manuscript evidence-bounded and assemble a submission artifact package | Claim ledger, retained reports, paper source | Unsupported result tables removed/replaced; manuscript map, reproduction guide, evidence manifest, and final verification report added |
 
 ## Execution rules
 
@@ -251,3 +252,22 @@ reports, or provenance evidence.
 - Added: `reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md` and
   ledger fields for resolution mode, minimum artifact, and objective acceptance
   criteria for every claim.
+
+### AR-013 — evidence-bounded submission package
+
+- Revised: `paper/blockchain_exploit_forensics_survey_ieee.tex`.
+- Removed the unsupported 0.969 headline detector and ablation tables, the
+  unsupported population-level dataset wording, and the unsupported calibrated
+  probability implication. Replaced them with an evidence-bounded artifact
+  table containing only the retained F1=0.7586 proxy aggregate, historical
+  7/115 localization summary, frozen Batch E address-only metrics, and 35%
+  modeled cost arithmetic.
+- Added: `reports/reproducibility/MANUSCRIPT_CLAIM_MAP.md`,
+  `SUBMISSION_REPRODUCTION_GUIDE.md`, `SUBMISSION_EVIDENCE_MANIFEST.json`, and
+  `SUBMISSION_FINAL_VERIFICATION.md`.
+- `python scripts/reproduce/run_all.py`: all seven retained historical metrics
+  PASS (F1 0.7586, modeled cost 35.0%, localization 6.1%, labels 17/82,
+  cohort rows 231, chains 8).
+- `pdflatex` was unavailable, so PDF compilation remains an environment gap;
+  label/reference text checks found no removed-table references.
+- Final paper disposition: `PAPER CLAIMS PARTIALLY CLOSED — EXTERNAL EVIDENCE REQUIRED`.

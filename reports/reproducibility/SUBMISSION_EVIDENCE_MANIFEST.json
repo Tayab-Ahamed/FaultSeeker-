@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scope": "Evidence-bounded paper submission package; no claim here implies external validation",
+  "manuscript": {
+    "path": "paper/blockchain_exploit_forensics_survey_ieee.tex",
+    "sha256": "bf6065a0377fa8bc92ab37a81dea839c008810c0f35645b58f2efd938050eee3"
+  },
+  "claim_and_reproduction_docs": [
+    {
+      "path": "reports/reproducibility/CLAIM_CLOSURE_LEDGER.json",
+      "sha256": "bbd35977de1e83ab78d2c1c16f8b538dc3a84bade9c906ed5a4f34b9ebce639c"
+    },
+    {
+      "path": "reports/reproducibility/MANUSCRIPT_CLAIM_MAP.md",
+      "sha256": "87125f88bd2ee863550cbe895f5eb8d54215f4765e001fa2baa6355abb764c9b"
+    },
+    {
+      "path": "reports/reproducibility/EXTERNAL_EVIDENCE_ACQUISITION_PLAN.md",
+      "sha256": "111eeabf153902f61be13ff2933fed057bc598f715de7778a427f95d1ba97583"
+    },
+    {
+      "path": "reports/reproducibility/SUBMISSION_REPRODUCTION_GUIDE.md",
+      "sha256": "75b506c583635949371f2470d8071d655e9b784753078c452a77028d493702bf"
+    },
+    {
+      "path": "reports/reproducibility/SUBMISSION_FINAL_VERIFICATION.md",
+      "sha256": "75cf702d19d3430c15106c1b04e1766f32ca1387bf55d78aa49bdc3b69fe7f7d"
+    }
+  ],
+  "dataset_and_split_artifacts": [
+    {
+      "path": "benchmark/cohort_manifest.json",
+      "sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a",
+      "scope": "14 accepted of 246 target; blocked by data"
+    },
+    {
+      "path": "benchmark/versions/cohort_v4_20261016/cohort_manifest.json",
+      "sha256": "33ff25ba84163c842ac5c9311a2ccf870056ae0e166884b45cf599c5612cd63c",
+      "scope": "22 accepted of 246 target; no independent human review"
+    },
+    {
+      "path": "reports/new_batches/batchE/scoring.json",
+      "sha256": "a361fd1856987ae053e968e8dfceac0b1ff586439e1973a75a3c12bdb201e45a",
+      "scope": "Frozen address-only Batch E; R@1=14/40, R@3=27/40, R@5=33/40"
+    }
+  ],
+  "retained_result_artifacts": [
+    {
+      "path": "reports/honest_results/baseline_comparison.csv",
+      "sha256": "a1ef2a51751b8f82c6b893e1bb9ec60c444bde47303f571e741d1c2aaa17e97c",
+      "scope": "Historical feature-harness aggregate; not authenticated paper evidence"
+    },
+    {
+      "path": "reports/claim_evidence/measured_cost_run.json",
+      "sha256": "ade40f52b71beef84f6edd78f59898a4cdcfae149e5cc955b4ec9a6dbb142b52",
+      "scope": "0/100 measured workload; blocked before provider use"
+    },
+    {
+      "path": "reports/claim_evidence/cost_zero_spend_proof.json",
+      "sha256": "847a5a2642f6b8ebc7d11d569b99265a6de07db2a0e64040a303895145029e29",
+      "scope": "Zero spend and 35% modeled arithmetic only"
+    }
+  ],
+  "external_effects": false,
+  "scientific_status": "PARTIALLY_CLOSED_EXTERNAL_EVIDENCE_REQUIRED"
+}
