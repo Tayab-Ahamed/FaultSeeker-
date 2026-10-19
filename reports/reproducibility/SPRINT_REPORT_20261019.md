@@ -175,3 +175,31 @@ Obtain the missing full structured call traces and independent function-level
 adjudication for a new immutable held-out localization cohort. Locally, the
 remaining address-absent failures cannot be safely repaired from the retained
 trace tails, and further ranker heuristics would be unsupported.
+
+## 6. Continuation execution log
+
+The continuation directive executed three additional work units without
+touching Batch E or the pre-existing dirty/untracked evidence files:
+
+1. `2dacfcb feat: audit recovered original transaction traces` added a
+   read-only audit of the previously captured dRPC callTracer run. It verified
+   9 transaction-hash matches, recovered 4 original-benchmark rows with the
+   target address observed in trace, and matched all 4 imported labels to typed
+   public signatures and observed selectors. This is per-case evidence, not a
+   paper-scale scorer reproduction.
+2. `ebeeaae feat: preserve batch d and multichain trace evidence` committed the
+   frozen Batch D artifacts and the bounded multichain RPC evidence. Batch D
+   remains a 10-row convenience sample with one score pass, 40 RPC requests,
+   zero billing prompts, and address+selector R@1/3/5 of `2/10`, `3/10`, and
+   `4/10`. The Batch D freeze hash remains
+   `e349997c875542ffb85a2205dbc4357e31d547c7dffb3cf1f12aebf3634becf7`.
+3. The machine-readable claim ledger was regenerated at
+   `reports/claim_closure/local_snapshot/claim_ledger.json`: 31 claims, 11
+   verified implementation claims, 4 contradicted-by-current-evidence claims,
+   14 externally blocked claims, 2 unverified claims, and zero reproduced
+   empirical claims.
+
+Continuation checks: recovered-trace tests `2 passed`, Batch D safety tests
+`8 passed`, claim-ledger tests `8 passed`, and the Batch E verifier passed with
+`14/40`, `27/40`, and `33/40` unchanged. The remaining full-suite mismatch,
+Docker Linux engine limitation, and PDF/TeX limitation remain unchanged.

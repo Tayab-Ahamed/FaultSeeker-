@@ -46,3 +46,11 @@ def test_claim_ledger_does_not_promote_known_cost_or_calibration_gaps():
     assert rows[23]['status'] == 'VERIFIED_IMPLEMENTATION'
     assert rows[18]['missing_prerequisites']
     assert rows[23]['verification_result']['verification_scope']
+
+
+def test_claim_ledger_records_recovered_trace_evidence_without_closing_case_study():
+    from scripts.reproduce.claim_closure_ledger import build_ledger
+
+    row = next(item for item in build_ledger(ROOT)['claims'] if item['id'] == 15)
+    assert 'reports/reconciliation/recovered_trace_audit.json' in row['existing_artifacts']
+    assert row['status'] == 'EXTERNALLY_BLOCKED'
