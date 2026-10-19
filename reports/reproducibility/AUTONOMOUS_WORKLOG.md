@@ -116,3 +116,26 @@ reports, or provenance evidence.
 - Reason: cross-class comparison would be confounded by feature availability.
 - Required next dependency: collect missing trace evidence with an authorized
   trace-capable RPC, then repeat only on a frozen eligible cohort.
+
+### Focused regression sweep
+
+- Detector and honest-evaluation tests: `67 passed` —
+  `tests/test_honest_eval.py`, `test_paper_experiments.py`,
+  `test_paper_detector.py`, `test_paper_fallback.py`, `test_paper_tiers.py`.
+- Calibration/confidence tests: `31 passed` — `test_calibration_schema.py`,
+  `test_confidence_scorer.py`.
+- Routing/cost tests: `66 passed` — `test_llm_router.py`,
+  `test_llm_router_ablation.py`, `test_query_routing.py`,
+  `test_cost_tracker_ablation.py`.
+- HITL/function-flow tests: `15 passed` — `test_local_control_flow.py`,
+  `test_analyst_guidance.py`, `test_function_agent_flow.py`,
+  `test_source_analysis_safety.py`.
+- RPC/acquisition tests: `14 passed` — `test_rpc_mechanisms.py`,
+  `test_paper_rpc_probe.py`, `test_acquisition_paths.py`.
+- Storage/replay tests: `17 passed, 7 skipped` —
+  `test_storage_normalization.py`, `test_compiled_evm_integration.py`,
+  `test_historical_fork_replay.py`; skips are live/optional replay cases.
+- Evidence/publication tests: `46 passed` — `test_evidence_manifest.py`,
+  `test_claim_registry.py`, `test_cohort_rebuild.py`, `test_cohort_versions.py`,
+  `test_authentic_publication.py`.
+- These are focused current-revision results, not a completed full-suite result.
