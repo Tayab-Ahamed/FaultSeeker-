@@ -1,0 +1,1656 @@
+{
+  "claim_counts": {
+    "CONTRADICTED_BY_CURRENT_EVIDENCE": 4,
+    "EXTERNALLY_BLOCKED": 14,
+    "MODELED_NOT_MEASURED": 0,
+    "REPRODUCED_EMPIRICAL": 0,
+    "SIMULATED": 0,
+    "UNVERIFIED": 2,
+    "VERIFIED_IMPLEMENTATION": 11
+  },
+  "claims": [
+    {
+      "category": "reproducibility",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/sources/public_repository.json",
+        "reports/claim_closure/sources/public_repository_LICENSE.txt"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 1,
+      "missing_prerequisites": [],
+      "next_executable_action": "Review the retained evidence and acquire the explicitly missing external input before rerunning.",
+      "paper_wording": "Open source release",
+      "registry_scope": "PENDING-PUBLICATION",
+      "required_evidence": "Public fork/release URL; local Apache license alone does not prove publication.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_claim_closure.py::test_publication_snapshot_is_public_and_open_licensed"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "A public upstream repository and its Apache-2.0 license were fetched and cached. This is availability proof, not publication of this local branch.",
+        "verification_scope": "Public upstream source availability; local branch publication not asserted"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "reproducibility",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 2,
+      "missing_prerequisites": [],
+      "next_executable_action": "Review the retained evidence and acquire the explicitly missing external input before rerunning.",
+      "paper_wording": "201 original tests pass",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Full suite with original baseline tests retained; runner unit test alone is insufficient.",
+      "status": "UNVERIFIED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_reproduction_entrypoints.py::test_legacy_runner_delegates_arguments_and_propagates_pytest_failure",
+          "tests/test_reproduction_entrypoints.py::test_original_test_sources_match_the_frozen_baseline_manifest"
+        ],
+        "current_checkpoint_status": "NOT_RUN_FULL_SUITE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "All 201 baseline cases passed and every original test source matches its frozen digest.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "benchmark/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/ARBITRUM_SINGLE_OBJECT_FINDING.json",
+        "reports/cohort_rebuild_v2/rpc_single_object_probe/20261016T055630/summary.json",
+        "reports/cohort_rebuild_v2/LEVEL_XCARNIVAL_ADJUDICATION.json",
+        "reports/cohort_rebuild_v2/NOMAD_TEAMFINANCE_ADMISSIONS.json",
+        "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T061638.json",
+        "reports/cohort_rebuild_v2/import_diagnostics/20261016T062611.json",
+        "reports/cohort_rebuild_v2/BSC_FALLBACK_ADMISSIONS.json",
+        "reports/cohort_rebuild_v2/additional_admitted_manifests/20261016T063056.json",
+        "reports/cohort_rebuild_v3/publication.json",
+        "reports/cohort_rebuild_v3/membership_proof.json",
+        "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+        "benchmark/versions/cohort_v3_20261016/eval_split.json",
+        "reports/cohort_rebuild_v3/PLATYPUS_AVALANCHE_ADMISSION.json",
+        "reports/cohort_rebuild_v2/source_adjudication_inbox/platypus_feb_2023/accepted_record.json",
+        "reports/cohort_rebuild_v3/RADIANT_PROVENANCE_DECISION.json",
+        "reports/cohort_rebuild_v4/FROZEN_231_REAUDIT.json",
+        "reports/cohort_rebuild_v4/protocol.json",
+        "reports/cohort_rebuild_v4/additions_manifest.json",
+        "reports/cohort_rebuild_v4/HUNDRED_OPTIMISM_ADMISSION.json",
+        "reports/cohort_rebuild_v4/protocol_revision2.json",
+        "reports/cohort_rebuild_v4/additions_manifest_revision2.json",
+        "reports/cohort_rebuild_v4/FROZEN_231_REAUDIT_REPRODUCTION.json",
+        "reports/cohort_rebuild_v4/publication_guard_failure.json",
+        "reports/cohort_rebuild_v4/protocol_revision3.json",
+        "reports/cohort_rebuild_v4/publication.json",
+        "benchmark/versions/cohort_v4_20261016/cohort_manifest.json",
+        "benchmark/versions/cohort_v4_20261016/eval_split.json",
+        "reports/cohort_rebuild_v4/ERALEND_ZKSYNC_ADMISSION.json",
+        "reports/cohort_rebuild_v4/GMX_ARBITRUM_PROVENANCE_DECISION.json",
+        "reports/cohort_rebuild_v4/SENTIMENT_ARBITRUM_SOURCE_REVIEW.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 3,
+      "missing_prerequisites": [
+        "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition"
+      ],
+      "next_executable_action": "223 further fully admitted unique exploit transactions and1additional chain to reach246/10; preregister any new study version before assigning/predicting the accepted zkSync addition",
+      "paper_wording": "Authentic 246-row cohort",
+      "registry_scope": "DATA",
+      "required_evidence": "246 unique accepted acquisition manifests; no padded rows.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+          "tests/test_claim_registry.py::test_cohort_builder_refuses_to_pad_or_emit_partial_dataset"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "COUNT-EXISTS-AUTHENTICITY-UNVERIFIED",
+        "reason": "Early 246 unique records existed (15 malformed hashes), then231/213/183. Original115 files cover114 unique tx; reconstructions48 are separate. No fully authenticated 246-row adjudicated cohort. The provenance-complete rebuilt manifest currently admits14 unique transactions across6 chains, not246. A new seven-request single-object Arbitrum probe tested three otherwise source-reviewed candidates: all exact hashes still returned null transaction and receipt after confirming chain ID42161. Batch representation is not supported as the explanation for those prior null observations. These candidates remain quarantined; source consensus alone cannot replace on-chain identity/receipt verification. No frozen split, label, paper or model result was changed. A further XCarnival Ethereum exploit execution now passes the full source/RPC admission gate: two independent security-publisher mechanism accounts with exact attack-stage identity corroboration, Codex annotation, and a matching successful live transaction/receipt. It is registered as one additional accepted candidate outside the original14-row frozen study, yielding15 provenance-complete unique identities available. Its ground-truth localization stays explicitly unavailable where deployed-source targets are unproven. Existing cohort CSV, manifest, split and TRAIN/held-out assignments are unchanged; expanding the study requires a separately preregistered version that preserves the held-out seal. Level has a new source annotation but lacks RPC evidence and is not admitted. No paper metric is inferred. NomadBridge and TeamFinance now also pass the actual full source/RPC admission gate, increasing provenance-complete available identities to17:14 frozen-study records plus3 accepted unassigned additions (XCarnival, NomadBridge, TeamFinance). The expanded candidate manifest binds each immutable evidence record; no new row enters prediction or the original frozen split. Cached evidence also proves an Orion BSC hash was imported as Ethereum and two purported Sushi hashes are calldata prefixes; none is padded into acceptance. Setup/deployment/admin transactions stay excluded. Direct production reference processing of SHA-bound actual Sushi/Orion source artifacts now excludes the known overlong calldata prefixes and resolves the Orion BSC hash to BSC in each original publisher URL. These extraction corrections add no admitted row, do not establish new historical truth and leave the frozen cohort/split unchanged. A bounded official-public-BSC fallback subsequently verified successful matching transactions/receipts for source-adjudicated SwapX, Level and corrected Orion BSC. Each now passes the full real-evidence admission gate. The resulting available unique population is20:14 in the unchanged frozen study plus6 accepted unassigned additions. Earlier dRPC failures and quarantined snapshots are preserved; no failed response is repaired, no wrong-chain duplicate is counted, and no addition enters prediction before versioned preregistration. The authenticated20-row population is now published as immutable benchmark/versions/cohort_v3_20261016 with its own CSV, exact bound GT copies, manifest and preregistered14TRAIN/6heldout split. All10 original TRAIN and4 original heldout assignments are preserved. Source-supported Orion cross-chain alias forces BSC Orion to inherit the original Ethereum Orion heldout partition. Remaining new incident groups use only seeded identity/chain/complexity balance, never vulnerability labels, predictions or paper targets. The parent heldout partition payload was not opened and original artifacts remain byte-identical. Local TRAIN runners now accept an explicit bound split; no prediction or final exam has run on the new version. A further real February2023 Platypus exploit is now fully admitted on Avalanche: both BlockApex and Numen Cyber explicitly identify the same attack execution and independently describe its collateral/debt flaw. Official-public-Avalanche chain43114 plus matching successful historical transaction and receipt passed after a stopped dRPC lookup failure. Available authentic population is now21unique transactions across7chains:20 in immutable frozen v3 plus1unassigned addition. No original or v3 split was changed, no prediction was dispatched for the addition, no legacy guessed complexity/gas/taxonomy was retained, and no fixture evidence supports admission. Publisher-supported function name/address is retained with exact signature/line targets honestly unavailable. The target246/10 remains short225unique transactions and3chains. A new independent Verichains analysis now corroborates MetaTrust on RadiantJanuary2024Arbitrum scaled-balance rounding exploitation, with both linking exactexecution0x1ce7e9a9e3b6dd3293c9067221ac3260858ce119ecb7ca860eac28b2474c7c9b. The newly cached publisher body is SHA-bound and source-consensus annotation passes, but matching RPC evidence still fails: dRPC returns null transaction/receipt after chain42161; official-public-Arbitrum returns HTTP403 at first chain lookup. This row remains quarantined and adds no accepted count or eighth chain. Missing input is an actual matching historical transaction and successful receipt; no fixture, source inference, deployment hash or padding substitutes. A fresh exact-row full admission re-audit of the SHA-bound fca6b99CSV now explicitly finds6accepted and225quarantined outof231unique original identities. Every row has its assembled current evidence record and fresh rejection reasons, reproducible through the real admission gate. The available21authentic records consist of6fromtheoriginal231 plus15additionalrealtransactions;21mustnot be mislabeled as the originalcohort passcount. No legacy CSV label substitutes for source-consensus annotation. The next immutable publication method is preregistered to include the accepted Avalanche addition while preserving all20v3memberships; no new prediction or exam is dispatched. The April2023HundredFinanceOptimism exploit now passesfull genuineadmission: separateBlockSec/SolidityScan technicalaccounts linkexacthash0x6e9ebcdebbabda04fa9f2e3bc21ea8b2e4fb4bf4f4670cb8483e2f0b2604f451, anddRPCchain10 returnsmatchingtransaction/successfulreceipt. The consensusclass is empty-marketexchange-rate/redemptionaccounting, distinctfrom2022Gnosisreentrancy;no forcedSWC/DASP or deployedsourcelines areclaimed. A complete fresh revalidation confirms22availableauthenticidentities across8chains:20frozenv3 plus2unassignedadditions. Exactoriginal231passcount remains6;therearenow16additionalrealtransactions outsideit. Target246/10remains short224rows and2chains. Earlier21-rowv4preregistration is preserved unchanged; a superseding2-additionprotocol is required beforeanypublication/prediction. Before anyv4publication oradditionprediction, a timestamped secondpreregistration nowbindsbothacceptedadditions (PlatypusAvalanche andHundredOptimism) andexplicitlysupersedes the untouched one-additionprotocol. The same seed1729, whole-incident chain/complexity balance rule andall20v3 membershippins remain unchanged; no labels oroutputs determine assignment. Publication waitsforvalidatedancestorcaptureinheritance so existingv3ETHinputs are notlost. This is preregistration, not a publishedsplit orperformance result. The exact231-row admission audit is additionally reproduced with the hash-pinned trusted original Git evaluator in an isolated archived package: all231 decisions match,6accepted/225quarantined,0network/model requests. This preserves the original historical21-record snapshot rather than rewriting it to describe the current22-record population. The first22-row publication stopped before eval_split creation because a strict local guard blocked re-reading newly written heldout.json for hashing. Partial outputs are preserved separately, no old heldout read or prediction occurred. The writer now hashes exact bytes written without rereading and a fresh protocol revision preserves all original assignment rules and inputs. The registered22-row v4 is now actually published with15TRAIN/7heldout across8chains. Every20v3 membership is pinned; Avalanche Platypus is the only new TRAIN identity and Optimism Hundred is newly sealed heldout. A strict Path.open guard observed zero heldout partition reads; parent protected artifacts remain identical, and actual ancestor index loading preserves6opcode and12trace metadata records. No prediction or final exam occurred. This advances authentic cohort infrastructure but cannot verify246/10. EraLend July2023 zkSync exactexecution0x99efebacb3edaa3ac34f7ef462fd8eed85b46be281bd1329abfb215a494ab0ef now passes actual fulladmission with independently reviewed Beosin/Olympix technicalaccounts, explicit Codex sourceconsensus and official chain324matching successful transaction/receipt after a stopped dRPClookupfailure. The Olympix captcha heuristic is documented as a google reCAPTCHA script falsepositive alongside fulltechnicalbody; CMS/date caveats retained. Fresh realgate revalidation finds23unique accepted identities across9chains:22in unchanged frozenv4 plus1UNASSIGNEDzkSyncaddition. Original231passcount remains6; no new prediction/split change or inferred localized target. Target246/10stillshort223rows and1chain. Two further Arbitrum leads were reviewed without lowering admission. GMXJuly2025exactexecution03182d...626ef has separate CertiK/Verichains sourceconsensus with dated primarybodies and supplementaryQuillaccount, but dRPCchain42161returnednulltransaction and separatePublicNodefailedatfirstHTTPrequest. No successfulmatchingtx/receipt meansNOadmission; no universalproviderfailure or nonexistenthash claim. SentimentApril2023a9ff2b...f74d remainsheld because Beosin/SolidityScan mechanismsequenceoverlap leaves independentcorroboration uncertain; Halbornaccountlacks exactexecutionlink. Thisisnotproof ofcopying. NoSentimentRPCspent. Availablecountstays23/9, v4frozen22/8. GMX2025couldonlybe datednewrebuildevidence,neverbackdatedtoMay2025paper.",
+        "verification_scope": "Canonical history plus23 provenance-complete available identities across9chains; frozenv4 remains22records/8chains/15TRAIN/7heldout plus1unassigned addition; not full paper cohort or performance replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/source_manifest.json",
+        "reports/provenance_hunt/reviewed_source_pairs.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/ADJUDICATION_STANDARD_RECONCILIATION.json",
+        "reports/cohort_rebuild_v2/admission_rechecks/20261016T060152/summary.json",
+        "benchmark/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/SWAPX_SOURCE_ADJUDICATION.json",
+        "reports/cohort_rebuild_v3/PROVENANCE_REVALIDATION.json",
+        "reports/cohort_rebuild_v3/publication.json",
+        "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+        "reports/cohort_rebuild_v2/BSC_FALLBACK_ADMISSIONS.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 4,
+      "missing_prerequisites": [
+        "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains"
+      ],
+      "next_executable_action": "226 additional unique exploit transactions with the same complete provenance and annotation standard, including4 additional chains",
+      "paper_wording": "Real transactions, two independent sources, annotations",
+      "registry_scope": "DATA",
+      "required_evidence": "Canonical transaction/receipt/traces, two source artifacts, independent adjudication per row.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "PARTIAL-PROVENANCE-RECOVERED",
+        "reason": "All20 unique transactions in the published v3 cohort now pass a fresh full admission revalidation against hash-bound real source, annotation and matching successful live-RPC transaction/receipt evidence across6chains. This supersedes the earlier14-row count and source-only SwapX/Level/Orion-BSC quarantines: their successful official-public-BSC fallback evidence is retained alongside earlier failures. The user-authorized annotation standard is explicit Codex-authored source consensus from two independent security publishers agreeing on mechanism, with attributed excerpts and reasoning; independent human reviewers are not claimed. The intended246-row,10-chain cohort is still short by226 fully admitted rows and4chains. Therefore the full paper claim remains UNVERIFIABLE; the20-row accepted subset is genuinely supported, with no fixture or model-result substitutions. This audit opens public provenance records only, not the sealed heldout partition payload, and makes no performance inference.",
+        "verification_scope": "All20 admitted v3 records, full source/RPC integrity gate and explicit public-source-consensus annotations; not the intended246-row cohort or independent human review"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 5,
+      "missing_prerequisites": [
+        "Accepted frozen study cohort and independently verified chain membership"
+      ],
+      "next_executable_action": "Accepted frozen study cohort and independently verified chain membership",
+      "paper_wording": "Ten chains and Ethereum 47.6%",
+      "registry_scope": "DATA",
+      "required_evidence": "Authenticated frozen ten-chain cohort; compute true chain counts and proportions.",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_all_ten_paper_chains_have_transaction_entrypoints"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "CONTRADICTED-FROZEN-CSV",
+        "reason": "Every fixedCSV version has8chains, not10; fca6b99 Ethereum132/231=57.1429%, not47.6%. Unvalidated candidate-pool coverage is a different denominator.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 6,
+      "missing_prerequisites": [
+        "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort"
+      ],
+      "next_executable_action": "Adjudicated SWC/DASP label mapping and semantic deduplication for the frozen cohort",
+      "paper_wording": "More than 80 vulnerability labels",
+      "registry_scope": "DATA",
+      "required_evidence": "Adjudicated taxonomy and true unique labels on the frozen cohort.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "STRINGS-COUNTED-NOT-ADJUDICATED",
+        "reason": "fca6b99 has82 distinct vulnerability strings with SWC/DASP columns; original GT supports partial named targets but semantic taxonomy uniqueness/correctness is not adjudicated.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 7,
+      "missing_prerequisites": [
+        "Trace-verified function-count bins for the authentic paper cohort"
+      ],
+      "next_executable_action": "Trace-verified function-count bins for the authentic paper cohort",
+      "paper_wording": "Class proportions 6.5/33.3/32.5/27.6%",
+      "registry_scope": "DATA",
+      "required_evidence": "Predeclared non-overlapping class mapping and authentic row labels.",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "CONTRADICTED-FROZEN-CSV",
+        "reason": "231-row class counts Simple19/Moderate62/Complex91/Exceptional59 differ from paper proportions. The early246 also differs (20/71/93/62).",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "dataset",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+        "python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root . --strict"
+      ],
+      "id": 8,
+      "missing_prerequisites": [
+        "Independently adjudicated reentrancy positives in the frozen evaluation cohort"
+      ],
+      "next_executable_action": "Independently adjudicated reentrancy positives in the frozen evaluation cohort",
+      "paper_wording": "18 reentrant incidents among 246",
+      "registry_scope": "DATA",
+      "required_evidence": "Independently adjudicated reentrancy labels for all accepted rows.",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "CONTRADICTED-LABEL-COUNT",
+        "reason": "17 reentrancy strings among231 and213,16amongcurrent183,19amongearly246. No18-row authenticated study. Label counts are now checkable, label truth is separate.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 9,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Storage-aware detector, guards and delegatecall",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Compiled execution still separately required under claim 26.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+          "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+          "tests/test_storage_normalization.py::test_delegatecall_uses_proxy_storage_and_marks_reverted_child_writes",
+          "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+          "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Production paper-mode storage signals, mutex filtering, reverted-frame handling and delegatecall storage ownership pass behavioral and compiled execution tests.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+        "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 10,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Five storage signal weights",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Weights must fire on observed opcode events.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_detector.py::test_paper_score_uses_activated_signals_from_opcode_adapter",
+          "tests/test_paper_weights.py::test_each_paper_weight_contributes_to_the_executed_score"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Each specified storage weight contributes through executed detector evidence; weights were not tuned during this review.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+        "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 11,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Five confidence tiers",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Threshold boundaries and production paper profile.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_tiers.py::test_every_tier_boundary_and_its_lower_neighbor",
+          "tests/test_paper_detector.py::test_production_stage_one_activates_paper_profile"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "All five tier boundaries and lower neighbors pass, including production paper-profile activation.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 12,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Three structural signals, .75 penalty, .80 cap",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Fallback when storage capture unavailable, no extra terms.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_fallback.py::test_three_structural_signals_fire_without_storage_and_are_penalized_and_capped"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "The three structural terms, 0.75 penalty and 0.80 cap fire in the real fallback path under tests.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "empirical_performance",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/detectors.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/structural.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/repeated.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T143221-eb779fdb/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/REENTRANCY_ANCESTRY_FIX.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T144524-c6d2fefd/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/REENTRANCY_POSITIVE_TRAIN.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T145100-560abff3/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0xe0b0c2672b760bef4e2851e91c69c8c0ad135c6987bbf1f43f5846d89e691428.json.gz",
+        "reports/cohort_rebuild_v2/opcode_runs/revest_first_capture.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/full.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T150659-1141df8b/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json.gz",
+        "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+        "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/summary.json",
+        "reports/cohort_rebuild_v2/experiments/20261015T180152-ca8176ca/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/BEANSTALK_REAL_FAILURE_ANALYSIS.json",
+        "reports/cohort_rebuild_v2/REAL_TRAIN_STRUCTURAL_COLLISION.json",
+        "reports/cohort_rebuild_v2/REAL_TRAIN_FAILURE_ANALYSIS_REVIEW.json",
+        "reports/cohort_rebuild_v3/BASELINE_REAL_TRAIN.json",
+        "reports/cohort_rebuild_v2/experiments/20261016T065140-2078a15b/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261016T065217-37a769fe/summary.json",
+        "reports/cohort_rebuild_v3/ETH_TRAIN_CAPTURE_AND_MEASUREMENT.json",
+        "reports/cohort_rebuild_v4/AUTHORIZATION_GATE_REAL_TRAIN.json",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+        "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
+      ],
+      "id": 13,
+      "missing_prerequisites": [
+        "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing"
+      ],
+      "next_executable_action": "Complete full-system predictions on accepted population and one-use held-out final exam; missing trace observations must remain missing",
+      "paper_wording": "Detector precision/recall/F1 and baselines",
+      "registry_scope": "DATA",
+      "required_evidence": "Actual predictions on one frozen adjudicated cohort; integer confusion counts.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_metrics_use_integer_outcomes_and_explicit_zero_denominators",
+          "tests/test_authentic_research_runner.py::test_runner_executes_real_train_detectors_without_heldout_or_label_input",
+          "tests/test_authentic_research_runner.py::test_runner_records_tampered_trace_as_unscored_not_negative",
+          "tests/test_authentic_research_runner.py::test_system_snapshot_preserves_exact_source_bytes_and_detects_changed_input",
+          "tests/test_nested_storage_ancestry.py::test_sequential_writes_in_different_branches_are_not_nested",
+          "tests/test_nested_storage_ancestry.py::test_actual_ancestor_callback_keeps_nested_slot_signal",
+          "tests/test_nested_storage_ancestry.py::test_actual_euler_sequential_token_transfers_do_not_fire_nested_rewrite",
+          "tests/test_nested_storage_ancestry.py::test_actual_revest_callback_keeps_positive_after_ancestry_fix",
+          "tests/test_train_native_opcodes.py::test_real_native_capture_validates_and_refuses_changed_storage",
+          "tests/test_train_native_opcodes.py::test_real_native_gnosis_capture_enters_production_without_network"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "REAL-TRAIN-COMPONENT-RESULTS-PAPER-METRICS-UNVERIFIED",
+        "reason": "Eight real TRAIN component experiment runs are preserved. Latest structural and repeated variants cover nine of ten frozen TRAIN transactions (F1 0.9090909091 and 0.7142857143). Full opcode detector now covers five transactions, including two reentrant positives and three negatives, with TP2/FP0/FN0/TN3 and F1 1.0. New native Gnosis capture contains 236237 steps, 1354 reads and 186 writes over 519 frames, independently normalized with canonical receipt/call-tree checks. This availability-selected five-case component result does not establish overall system F1 0.969 or its confidence interval. A genuine accepted TRAIN Beanstalk failure review reproduces the structural score 0.80 from successful attacker-contract callback nesting. CertiK/Halborn independently support governance capture as the vulnerability root cause; the reentrancy label remains false. Current relevant detector source files match the recorded experiment snapshot. No storage-complete observation exists for this case in that experiment. This documents a causal-attribution false positive without changing weights, labels or interpreting missing evidence as a negative. All nine stored structural observations were then reproduced on their accepted real TRAIN captures. The three-bit all-true vector occurs in five root-cause reentrancy positives and the Beanstalk negative, so a decision depending only on those bits cannot distinguish them by changing weights or cutoffs. This does not bound the richer full detector/system; negative here means a different exploit root cause, not a benign transaction. All annotation authorship is Codex public-source consensus under the approved two-independent-publisher policy; no independent human review is asserted. The first actual baselines on frozen cohort_v3_20261016 run only its14TRAIN identities. Structural/component and production Stage1 each score9 available cases:TP5,FP1,FN0,TN3,precision0.8333333333333334,recall1,F1=0.9090909090909091. Repeated-address F1=0.7142857142857143 on the same9. Full-storage F1=1.0 on only5 availability-selected cases (TP2,TN3). Five missing TRAIN captures are listed and never counted as negative. These are real component results, not the paper overall-system F1/CI or a held-out exam. No weight/threshold changes, model requests, RPC dispatch or held-out observations occurred. Two additional actual dRPC callTracer/historical-code captures for frozen TRAIN XCarnival and TeamFinance completed in74meteredRPC reads. Fresh real TRAIN component/production runs now observe11of14cases: structural reentrancy TP5FP1FN0TN5, precision5/6,recall1,F1=0.9090909090909091; repeated-call TP5FP6FN0TN0,F1=0.625. Full-storage coverage remains5/14,F1=1.0 on that availability-selected subset. Three BSC TRAIN captures remain missing, not negative predictions. No weights/thresholds changed, no model inference or heldout exam dispatched, no overall-system F1 or billed savings inferred. Claim remains UNVERIFIABLE for the paper scope. A genuine TRAIN failure exposed opacity/proxy/privilegedcall heuristics asserting authorizationbypass without caller/policyproof. Those weak observations now require UNCERTAINreview and cannot override known storage-reentrancymechanisms ortriggercleanBENIGN. Actual productionStage1v4 rerun observes11/15TRAINcases: componentTP5FP1FN0TN5,precision0.8333333333,recall1,F1unchanged0.9090909091. Revestactualcategorychangesfromunsupportedclosed-sourceaccesscontrol.85toreentrancy_pattern.75usingexistingthresholds. Thisisamechanisticcategorycorrection,notpaperF1replication;4genuinecapturesmissingandnoStage2/3orheldoutmeasurement.",
+        "verification_scope": "Frozen TRAIN-only real traces; native historical node and canonical Anvil proof paths verified separately; no held-out or overall F1 inference; selected Beanstalk semantic failure reproduced from authenticated real capture and source-consensus annotation, not a new population metric"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "empirical_performance",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/detectors.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/paired_gains/20261015T161923-4650ee37/summary.json",
+        "reports/cohort_rebuild_v2/paired_gains/20261015T180152-ca8176ca/summary.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
+      ],
+      "id": 14,
+      "missing_prerequisites": [
+        "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains"
+      ],
+      "next_executable_action": "Paired final frozen-system evaluation on adequately sourced full population; current five-case availability-selected sample does not verify published gains",
+      "paper_wording": "17/29 percentage-point gains",
+      "registry_scope": "DATA",
+      "required_evidence": "Paired executed baseline detector outcomes; report measured differences.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+          "tests/test_paired_train_detector_gains.py::test_actual_gain_comparison_uses_exact_shared_identities",
+          "tests/test_paired_train_detector_gains.py::test_duplicate_or_conflicting_actual_observations_are_rejected"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "PUBLISHED-GAINS-UNSUPPORTED",
+        "reason": "Two real paired TRAIN comparisons now join executed detector variants on exactly identical transaction identities and labels, excluding missing captures. Latest five-case shared population has full/structural F1 1.0 and repeated-call F1 0.5714285714. Observed full-minus-structural gain is 0 percentage points and full-minus-repeated gain is 42.8571428571 points, versus paper 17 and 29 points (deltas -17 and +13.8571428571). Earlier four-case comparison is preserved. These availability-selected TRAIN measurements do not establish the published broader evaluation gains.",
+        "verification_scope": "Real executed predictions paired by identity on five TRAIN cases; no cross-population subtraction or held-out inference"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "case_study",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/compound_search.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 15,
+      "missing_prerequisites": [
+        "Exact legitimate cToken case-study transaction plus source linkage"
+      ],
+      "next_executable_action": "Exact legitimate cToken case-study transaction plus source linkage",
+      "paper_wording": "Compound case study",
+      "registry_scope": "DATA",
+      "required_evidence": "Exact transaction, raw traces, independent source/GT and executed localization result.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_evidence_manifest.py::test_complete_artifact_manifest_accepts_then_detects_tampering"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "CASE-NARRATIVE-RECOVERED-HASH-MISSING",
+        "reason": "Historical reentrancy_metrics.json contains the cToken narrative with no hash. Compound-related exploit annotations cannot identify the legitimate recursive transaction.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 16,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Query routing with theta gate",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Local quality/confidence gate must dispatch escalation.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_query_routing.py::test_tier_two_low_confidence_falls_back_and_records_both_attempts"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Tier-2 confidence/evidence gating demonstrably dispatches escalation and records both attempts at the provider boundary.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "provider_conformance",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/providers/inventory.json",
+        "reports/provenance_hunt/providers/observations_manifest.json",
+        "reports/provenance_hunt/providers/bynara_conformance_diagnostic.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+        "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+        "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 17,
+      "missing_prerequisites": [
+        "Eligible live family access including a reachable installed Ollama model"
+      ],
+      "next_executable_action": "Eligible live family access including a reachable installed Ollama model",
+      "paper_wording": "Six provider families",
+      "registry_scope": "EXTERNAL",
+      "required_evidence": "Live provider conformance and installed Ollama model.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_query_routing.py::test_anthropic_adapter_uses_native_messages_schema_and_usage",
+          "tests/test_query_routing.py::test_all_six_provider_families_construct_the_correct_adapter"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "LIVE-CONFORMANCE-STILL-INCOMPLETE",
+        "reason": "Canonical adapter/pricing declarations add no authenticated Claude/Qwen/Ollama response. Prior gateway failures remain recorded; native adapters untested, not inferred failed.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "cost",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/routing.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend",
+        "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
+      ],
+      "id": 18,
+      "missing_prerequisites": [
+        "Frozen100-case paired workload with observed usage, pricing and quality outputs"
+      ],
+      "next_executable_action": "Frozen100-case paired workload with observed usage, pricing and quality outputs",
+      "paper_wording": "58% cost savings, 100 transactions, quality/rank bounds",
+      "registry_scope": "DATA",
+      "required_evidence": "100 paired production runs, observed provider usage, pricing snapshot and 5:3:2 workload.",
+      "status": "CONTRADICTED_BY_CURRENT_EVIDENCE",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+          "tests/test_spend_guard.py::test_reservation_survives_restart_and_blocks_cumulative_overspend"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "58-PERCENT-OVERALL-CONTRADICTED",
+        "reason": "Canonical Oct6 removes58%; the published mixture computes35% modeled, with no observed100-case paired workload. No ranking-quality comparison or token billing log.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+        "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+        "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 19,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Stage 1 makes no model calls",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Constructor and executed Stage1 must remain keyless.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_stage_one_local.py::test_stage_one_constructor_does_not_build_model_agents",
+          "tests/test_stage_one_local.py::test_fund_flow_analysis_is_deterministic_and_keyless"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Executed deterministic Stage 1 constructors and fund-flow analysis make no model calls and remain keyless.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 20,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "BENIGN skip, EXPLOIT lock and UNCERTAIN escalation",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Coverage required; positive verdict cannot be overwritten.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+          "tests/test_local_control_flow.py::test_clean_signals_need_explicit_complete_coverage_to_be_benign"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Complete-coverage BENIGN bypass occurs before Stage 2 model setup; EXPLOIT locking and UNCERTAIN escalation pass production-flow tests.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "cost",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/prefilter.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/benign_control_preregistration.json",
+        "reports/cohort_rebuild_v2/benign_controls/summary.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/summary.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system.json",
+        "reports/cohort_rebuild_v2/benign_control_runs/20261015T163542-28c7cef6/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/benign_control_runs/experiments_log.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+        "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
+      ],
+      "id": 21,
+      "missing_prerequisites": [
+        "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations"
+      ],
+      "next_executable_action": "A preregistered representative legitimate-contract population with complete contextual execution evidence and paired production inference latency/usage observations",
+      "paper_wording": "40% benign prefilter and latency reduction",
+      "registry_scope": "DATA",
+      "required_evidence": "Paired production runs on independently verified benign transactions and measured latency.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+          "tests/test_local_control_flow.py::test_pipeline_bypasses_stage_two_before_model_setup_for_proven_benign",
+          "tests/test_benign_production_bridge.py::test_control_admissions_revalidate_and_execute_actual_stage_one",
+          "tests/test_distinct_benign_controls.py::test_complete_control_requires_canonical_receipt_and_all_explicit_code_observations"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "RATE-UNMEASURED",
+        "reason": "A preregistered distinct historical EOA-transfer control study accepted 32 unique transactions with distinct senders and recipients after canonical receipts, no logs, positive value, empty input and hash-tagged EOA code checks. Actual production Stage1 executed on 30 authenticated call traces; two tracing failures remain unscored. All 30 verdicts are UNCERTAIN, so observed BENIGN-skip eligibility is 0/30. Missing opcode/token/multi-transaction coverage was not fabricated. This narrow population does not verify a general 40 percent prefilter gain or paired inference latency saving.",
+        "verification_scope": "32 independently checked execution controls; actual Stage1 verdicts for 30 with explicit missing coverage, not general benign contract accuracy or paired cost saving"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "localization",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/measurement_frontier.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/localization_sources/evidence.json",
+        "reports/cohort_rebuild_v2/localization_train_protocol.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/source_localization.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T162935-701ee97b/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/VERIFIED_SOURCE_INPUT_ACCEPTANCE.json",
+        "reports/cohort_rebuild_v2/SOURCE_FACTORY_INTEGRATION.json",
+        "reports/cohort_rebuild_v2/provider_pilot/PREFLIGHT.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261015T172438-be45711f/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/approval.json",
+        "reports/cohort_rebuild_v2/provider_pilot/dispatch_permit.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STOPPED_BATCH_DIAGNOSIS.json",
+        "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.json",
+        "reports/cohort_rebuild_v2/provider_pilot/COMBINED_PILOT_REPORT.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261015T180644-7cc259e6/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/reapproval_14.dispatch_permit.json",
+        "reports/cohort_rebuild_v2/SOURCE_SELECTION_BOUNDARY_REVIEW.json",
+        "reports/cohort_rebuild_v2/ADDITIONAL_INFO_BOUNDARY_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T191403-a1313c9b/summary.json",
+        "reports/cohort_rebuild_v2/RANKER_PATTERN_REVIEW.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T192119-77fe3b52/source_localization.json",
+        "reports/cohort_rebuild_v2/EXECUTION_SOURCE_MAPPING_REVIEW.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001043-c1a48cb1/summary.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001216-44a1d0c0/summary.json",
+        "reports/cohort_rebuild_v2/execution_source_spans/20261016T001414-e8718971/summary.json",
+        "reports/cohort_rebuild_v2/PILOT_ABORT_AND_BUDGET_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T013725-27741c28/summary.json",
+        "reports/cohort_rebuild_v2/OBSERVED_FINDING_AND_RANK_REVIEW.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261016T020106-df5e4ce8/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T034806_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T034806-c4ff4f0a/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T050541_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T050541-198e808b/summary.json",
+        "reports/cohort_rebuild_v2/provider_pilot/STANDING_BATCH_20261016T053800_STATUS.json",
+        "reports/cohort_rebuild_v2/gateway_runs/20261016T053800-c8aba919/summary.json",
+        "reports/cohort_rebuild_v4/REVEST_FULL_PIPELINE_BATCH_STATUS.json",
+        "reports/cohort_rebuild_v4/REVEST_STRICT_PROMPT_BATCH_STATUS.json",
+        "reports/cohort_rebuild_v4/REVEST_OPTIONAL_FIELD_INTERVENTION_BATCH_STATUS.json",
+        "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+        "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+        "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
+        "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
+      ],
+      "id": 22,
+      "missing_prerequisites": [
+        "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases"
+      ],
+      "next_executable_action": "Complete genuine model-assisted production outputs with validated final function identities; bounded pilot supplied no complete cases",
+      "paper_wording": "Multi-agent function localization",
+      "registry_scope": "EXTERNAL",
+      "required_evidence": "Live model quality and verified contract source retrieval; local role dispatch is proven with model-boundary fixtures.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_function_agent_flow.py::test_real_function_analysis_executes_every_role_including_child_filter",
+          "tests/test_source_analysis_safety.py::test_production_function_analyzer_cannot_leak_findings_between_transactions",
+          "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_identity_requires_historical_exact_match",
+          "tests/test_train_localization_sources.py::LocalizationEvidenceTests::test_delegate_keeps_storage_owner",
+          "tests/test_explicit_function_rank_order.py::test_actual_revest_ranker_exports_function_identity_and_stable_count_order",
+          "tests/test_train_localization_metrics.py::test_proxy_storage_owner_cannot_replace_implementation_target",
+          "tests/test_train_localization_metrics.py::test_unordered_or_duplicate_predictions_are_rejected",
+          "tests/test_function_input_factories.py::test_input_factories_cover_all_roles_and_verified_source",
+          "tests/test_explicit_remote_identity.py::test_remote_alias_reserves_before_dispatch_and_denies_over_cap",
+          "tests/test_explicit_remote_identity.py::test_cloud_only_alias_uses_cloud_prompts_not_local_simplification",
+          "tests/test_nara_pilot_provider.py::NaraPilotTests::test_actual_pilot_fenced_generation_response_parses_without_redispatch",
+          "tests/test_source_fallback_factories.py::test_real_verified_source_factory_handles_uncached_historical_contract",
+          "tests/test_source_fallback_factories.py::test_missing_source_is_cached_without_falling_back_to_live_transport",
+          "tests/test_source_fallback_factories.py::test_configured_source_error_is_propagated_not_replaced_with_live_fetch",
+          "tests/test_function_selection_safety.py::test_invalid_narrowing_never_silently_completes_or_discards_candidates",
+          "tests/test_additional_info_schema.py",
+          "tests/test_additional_info_integration.py",
+          "tests/test_ranker_pattern_integrity.py",
+          "tests/test_execution_source_map.py",
+          "tests/test_execution_source_inputs.py",
+          "tests/test_execution_source_adapter.py",
+          "tests/test_function_timeout_state.py",
+          "tests/test_pilot_incremental_budget.py",
+          "tests/test_finding_schema.py",
+          "tests/test_finding_flow.py"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "HISTORICAL-AGGREGATE-RECOVERED",
+        "reason": "Source-linked TRAIN identities for Euler and Revest are verified against historical runtime bytecode, verified ABI and actual trace selectors. Real production FunctionRanker now exports explicit stable count ranks. Its first two-case train study ranks the source-supported root causes 33rd and 24th: top1=0, top5=0, MRR=0.03598484848484848. This is deterministic count ranking, not multi-agent Stage3 or held-out localization. No source lines or broader performance are inferred. The approved Agnes 2.5 Flash cloud-only TRAIN pilot made six HTTP-200 requests with genuine usage and per-call ledger receipts, but completed zero cases: the adapter lacked the existing safe fenced-JSON parser. Saved response 6 reproduces the failure offline; the parser inheritance fix passes the regression without redispatch. No model-assisted quality metric is available. Follow-up approval was fully consumed by fourteen further HTTP-200 responses. Across both batches all twenty ledger reservation/settlement pairs have provider usage and exact agnes-2.5-flash identity. The follow-up safely stopped at its cap, still in the first case: zero complete cases and no final model ranks or quality metric. Five real roles fired; children filtering and complete localization were not reached. Subsequent offline review fixed a live-source fallback that bypassed the injected provenance boundary and rejects malformed/unknown/duplicate model selections before candidates can be silently dropped. Source-only routing and selection behavior are unit-tested, including real cached historical source input. The legacy pilot snapshots retain the old bypass; no evidence proves whether it was exercised. Neither pilot is retroactively scored and complete model-assisted localization remains unverified. Additional-info normalization now rejects malformed whole requests before any evidence lookup, preserves full contract/function identity and removes the source-owner substitution heuristic. A real-loop regression proves pilot domain errors stop before any subsequent model dispatch. Saved response five exposes the original malformed alias; no historical results are repaired or scored. The changed schema prompt ends current exact-prefix replay at request five after four matches. These are offline correctness fixes, not proof of localization performance. Repeated-pattern deduplication now preserves distinct evidence records and avoids caller mutation. A new real nine-case TRAIN production run confirms unchanged count ranks and unchanged two-case deterministic localization (0 top1/top5, MRR 0.03598484848484848); this is correctness evidence, not a measured localization gain. Production source retrieval now optionally maps actual recorded SLOAD/SSTORE PCs through verified compiler instruction/source maps and sends resulting spans plus capture binding into the processing role. Real TRAIN exports map Euler 232/543 and Revest 227/439 storage operations; all remaining operations explicitly lack executing-contract runtime source. Code address, delegate storage owner, entry selector and source byte/line locations remain separate. These observed execution spans are not AST function slices, fault attribution, completed model-assisted localization or measured gains; claim status remains UNVERIFIABLE. Detected time-budget/repeated-empty-task aborts in both analysis loops now record incomplete state and invoke the pilot stop policy; a real-run-path regression covers false completion, with prior loop/adequacy limits preserved. Optional per-batch conservative estimated-spend caps constrain the shared ledger in addition to the unchanged $10 ceiling and 20-call pilot limit. A further 20-call proposal remains unapproved; no additional model outputs or localization scores exist. Finding ingestion now validates whole model replies against actual observed function/address identities, finite confidence and observed depth; invalid entries cannot silently become finalized findings and zero confidence is retained. Finalization consumes a validated complete model ranking and passes all candidates to Stage3 instead of discarding shallower candidates solely by call depth. Offline tests prove these paths, including an actual loop stop and real Stage3 handoff, but do not establish localization accuracy or complete any genuine model-assisted case. The first explicitly authorized standing-allowance real TRAIN batch (20261016T034806-c4ff4f0a) stopped after one attempted request and zero complete cases. Transport raised ValueError after 106.313 seconds before an HTTP status/response was captured. The worker-specific cause was not retained and cannot be reconstructed; no rate-limit, refusal or model-quality conclusion is inferred. No automatic retry was dispatched. Dollar/token accounting conservatively charges the full missing-usage reservation; standing request caps were removed, while daily token and cumulative dollar guards remained. The next standing-allowance TRAIN batch (20261016T050541-198e808b) received seven genuine HTTP-200 responses and stopped immediately on AdditionalInfoSchemaError with zero complete cases. The actual seventh response uses unsupported function_calls and four-byte selectors in children_calls.address. Offline normalization reproduces the saved failure; no missing address is guessed or invalid response scored. No retry occurred within the terminal batch. The saved request ambiguously labels incoming function selectors as address_calls. Production now supplies full-owner incoming entries and exact requested-parent direct children separately, with strict response requirements repeated after large context. Offline checks retain rejection of the actual malformed response; no historical reply is repaired. This is an input/schema correctness fix, not evidence of completed localization or increased accuracy. The corrected-system standing TRAIN batch 20261016T053800-c8aba919 received three genuine HTTP-200 responses before request4 (reasoning_agent) exceeded its 300-second total transport deadline, observed301.5 seconds including cleanup. It stopped with zero complete cases and no automatic retry. No failed-request HTTP response or usage was captured; the full reservation was conservatively charged. The changed additional-info prompt was not reached, so effectiveness remains unmeasured. Cumulative conservative estimate at this terminal batch is $1.973901; actual billing unconfirmed. A fresh Revest-only actual full-production-pipeline attempt now runs Stage1 andFunctionRanker under bound historicalinputs and existingmeteredAgnesroute. It stopped after1HTTP200 ranking_agentresponse: finish_reason=stop butthevisiblecontent is aninvalidJSONset-like expression with mostlyunqualifiedselectorstrings. Theactualparserrejected it;0cases completed andStage3confidencewasnot reached. Usage11742prompt+1325completiontokens is recorded, conservativeincrement$0.0014392;no automaticretry, outputrepair, guessedcontractowners or fixtureclaimwasused. Localizationclaim remainsUNVERIFIABLE; thisfailure doesnotestablishqualityortruncation anddoesnotconsumeheldout. A deliberate new Revest TRAIN full-pipeline run with strict full-key JSON prompts progressed through narrowing and into first-function analysis, then stopped after7HTTP200 responses at AdditionalInfoSchemaError: call7 source_code was empty string rather than list. The actual response is reproducibly rejected offline.0completecases/0Stage3confidenceobservations; no overallmetric or true fullrun claim. Seven bound settlement events costconservative$0.0125502; sharedwindowdelta$0.0125622alsoincludes$0.000012separateRPCreads. No retry or schema repair. A further deliberate new TRAIN batch after the optional-field prompt clarification stopped after1HTTP200response at exact-key narrowing. Parsed31unique selections from34offered include one invented selector/ownerpair0x70a08231_0xd721a90dd7e010c8c5e022cc0100c55ac78e0fc4. The actualproductionvalidator reproducibly rejects it. Optional-fieldstage wasnotreached and remainsnotliveverified;0completecases/noStage3metric. Modelsettlementconservative$0.0018833; sharedwindowalsoincludes$0.000006PublicNodeRPC. No repairedowner,retry or inferredsuccess.",
+        "verification_scope": "Two-case source-availability-selected TRAIN deterministic function ranking; exact code-address/selector identity with delegate storage owners separate"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "calibration",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+        "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+        "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors",
+        "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
+      ],
+      "id": 23,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Equation 4 confidence scoring",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Heuristic score identified separately from calibrated probability.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_calibration_schema.py::test_paper_formula_remains_a_relative_score",
+          "tests/test_calibration_schema.py::test_legacy_proxy_model_cannot_calibrate_production_factors"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "The executed four-component weighted formula is a relative heuristic score; incompatible calibration schemas are rejected rather than presented as validated probabilities.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+        "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+        "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 24,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Evidence cards and two HITL checkpoints, five guidance types",
+      "registry_scope": "LOCAL",
+      "required_evidence": "All feedback must affect downstream state, with rejection audit trail.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_analyst_guidance.py::test_first_checkpoint_applies_all_guidance_to_downstream_state",
+          "tests/test_local_control_flow.py::test_pipeline_stage_two_rejection_updates_final_findings"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "All five first-checkpoint guidance actions affect downstream state and second-checkpoint rejection removes findings with an audit record and contract/function identity checks.",
+        "verification_scope": "Code mechanism and its passing behavioral acceptance; not a population-performance claim"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "provider_conformance",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "reports/claim_closure/rpc_capabilities.json",
+        "reports/claim_closure/rpc_capability_conclusion.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/ethereum_requests.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/RPC_TRAIN_CONCLUSION.json",
+        "reports/cohort_rebuild_v2/opcodes/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json.gz",
+        "reports/cohort_rebuild_v2/opcodes/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json.gz",
+        "reports/cohort_rebuild_v2/opcode_history/5d384aab8cb3557b067cffe6e52d8a0da18e663a84a319033601f4fabe3f16dc.json",
+        "reports/cohort_rebuild_v2/opcode_runs/euler_first_capture.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/probe.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/integrated/fantom-0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json.gz",
+        "reports/cohort_rebuild_v2/chain_trace_probe/integrated/gnosis-0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json.gz",
+        "reports/cohort_rebuild_v2/native_opcode_probe/network_continuation/probe.json",
+        "reports/cohort_rebuild_v2/native_opcode_probe/probe.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode/probe.json",
+        "reports/cohort_rebuild_v2/BSC_HTTP_DIAGNOSTICS_REVIEW.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/decision.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/probe.json",
+        "reports/cohort_rebuild_v2/bsc_trace_publicnode_http_diagnostic/20261016T013315/raw/1-eth_chainId.json",
+        "reports/cohort_rebuild_v3/bsc_trace_capability/20261016T092502292158/summary.json",
+        "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+        "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+        "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+        "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+        "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+        "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+        "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 25,
+      "missing_prerequisites": [
+        "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence"
+      ],
+      "next_executable_action": "Authenticated missing-chain opcode/archive observations and live sustained multi-provider outage/recovery evidence",
+      "paper_wording": "RPC EMA, LRU, TTL, breakers and batching",
+      "registry_scope": "EXTERNAL",
+      "required_evidence": "Live dRPC/archive debug tracer capability on requested chains.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_rpc_mechanisms.py::test_rpc_latency_ema_really_uses_point_two",
+          "tests/test_rpc_mechanisms.py::test_cache_enforces_lru_and_ttl",
+          "tests/test_rpc_mechanisms.py::test_circuit_breaker_opens_and_requires_three_clean_recovery_probes",
+          "tests/test_rpc_mechanisms.py::test_batch_preserves_request_order_and_falls_back_after_batch_failure",
+          "tests/test_authentic_opcode_partition.py::test_real_train_captures_pass_canonical_revalidation_and_have_storage_events",
+          "tests/test_pinned_prestate_rpc.py::test_wrong_block_unknown_account_or_missing_slot_always_use_metered_upstream",
+          "tests/test_train_probe_integration.py::test_actual_recovered_train_traces_preserve_canonical_identity",
+          "tests/test_train_chain_trace_probe.py::TrainChainTraceProbeTests::test_parity_rejects_missing_child_and_wrong_block",
+          "tests/test_rpc_http_diagnostics.py",
+          "tests/test_bsc_train_trace.py"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "ETHEREUM-TRAIN-CAPTURE-VERIFIED-BROADER-CAPABILITY-UNVERIFIABLE",
+        "reason": "Four Ethereum train opcode captures are accepted or revalidated (Rubic, Euler, Revest, Inverse). Independent public endpoints additionally returned canonical-identity-bound TRAIN call traces for Grim Finance on Fantom (248 frames, trace_transaction) and Hundred Finance on Gnosis (519 frames, callTracer). The configured dRPC endpoint alone did not provide these traces. BSC remained unavailable in the bounded probe; complete other-chain storage/archive capability and sustained outage recovery are not established. A direct public Gnosis historical-node opcode probe additionally succeeded: eth_chainId=100, debug_traceTransaction with full stack/storage and fresh canonical receipt. Its 236237-step trace normalizes 1354 reads and 186 writes across 519 verified frames. This is endpoint-specific evidence, not evidence that configured dRPC or every chain supports native opcode tracing. An alternate PublicNode BSC attempt stopped after one metered eth_chainId request with a legacy RuntimeError; chain identity, tracing and archive capability were not established. The old artifact lacks an HTTP status, which is not reconstructed. Offline diagnostics now retain a validated numeric HTTP status when available without leaking credential-bearing URLs, headers or bodies. This adds no successful BSC capture and does not broaden the claim. A separately preserved 2026-10-16 bounded retry with structured HTTP diagnostics received HTTP 403 for eth_chainId, then stopped after one metered request. No trace/receipt method was dispatched and no chain identity was established. This proves access denial for that request, not unsupported BSC tracing; the missing TRAIN trace and broader capability claim remain unverified. A further official-public-BSC capability probe confirmed chainID56 and then received JSON-RPC error code -32000 for debug_traceTransaction(callTracer) on the frozen TRAIN Fortress transaction. It stopped immediately after2meteredrequests; no trace body was accepted and no subsequent method dispatched. The raw provider message was not retained, so this establishes rejection of that specific historical trace request, not that the method is universally unsupported, nor an archive-capability explanation. Receipt/basic-read success from prior evidence does not imply historical debug support.",
+        "verification_scope": "Observed named endpoint/method/chain capabilities only; failed connection and native Gnosis success retained separately from dRPC and Anvil evidence"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "implementation",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/comparison_result.json",
+        "reports/claim_closure/comparison_attempt_2/historical_replay_summary.json",
+        "reports/historical_replay/final_accounting.json",
+        "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+        "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+        "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+        "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+        "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+        "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 26,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Foundry replay extracts SLOAD and SSTORE",
+      "registry_scope": "TOOLS",
+      "required_evidence": "Compile and execute all Solidity fixtures and preserve raw trace captures; local EVM proof does not verify historical replay or cohort outcomes.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_storage_normalization.py::test_raw_sload_then_sstore_preserves_slot_value_and_program_counters",
+          "tests/test_storage_normalization.py::test_local_fixture_runner_orchestrates_deploy_transact_and_both_tracers",
+          "tests/test_compiled_evm_integration.py::test_compiled_contracts_emit_real_storage_opcodes",
+          "tests/test_compiled_evm_integration.py::test_compiled_mutex_preserves_actual_lock_transitions",
+          "tests/test_compiled_evm_integration.py::test_compiled_delegatecall_writes_proxy_storage",
+          "tests/test_compiled_evm_integration.py::test_paper_tiers_on_compiled_contracts",
+          "tests/test_historical_fork_replay.py::test_recorded_historical_capture_validates_storage_and_receipt",
+          "tests/test_historical_fork_replay.py::test_recorded_comparison_capture_validates_storage_and_receipt"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "Two historical Ethereum transactions have hash-checked signed block-prefix replay, matching receipts, full opcode captures and verified storage ownership; all compiled fixtures also pass. This does not certify other chains or incident labels.",
+        "verification_scope": "Compiled EVM fixtures and two matching-receipt Ethereum historical opcode captures"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "empirical_performance",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/waf.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+        "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+        "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 27,
+      "missing_prerequisites": [
+        "Authorized challenged explorer-request corpus with recovery logs and denominator"
+      ],
+      "next_executable_action": "Authorized challenged explorer-request corpus with recovery logs and denominator",
+      "paper_wording": "23% WAF challenge bypass",
+      "registry_scope": "DATA",
+      "required_evidence": "Authorized recorded challenged requests, outcomes/attempts and versioned strategy; no percentage inferred from retry success.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_acquisition_paths.py::test_challenge_recovery_records_every_attempt_and_real_denominator",
+          "tests/test_acquisition_paths.py::test_production_collector_runs_recovery_and_retains_attempt_evidence"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "RATE-UNSUPPORTED",
+        "reason": "Recovered protocol and audit do not supply challenged-request denominator or successes for23%. Ethereum RPC success is not an explorer WAF bypass experiment.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "calibration",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce/audit_calibration_cost_evidence.py --root .",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/measurement_frontier.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations",
+        "python scripts/reproduce/audit_calibration_cost_evidence.py --root ."
+      ],
+      "id": 28,
+      "missing_prerequisites": [
+        "Raw production per-function four-factor scores with adjudicated categories and declared averaging"
+      ],
+      "next_executable_action": "Raw production per-function four-factor scores with adjudicated categories and declared averaging",
+      "paper_wording": "Table VI category averages",
+      "registry_scope": "DATA",
+      "required_evidence": "Real receipt gas, call count, address count and depth per adjudicated category.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_category_means_do_not_hide_missing_observations"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "NO-PRODUCTION-SCORE-VECTORS",
+        "reason": "No TableVI component observations; CV classifier derives proxy factors from four numeric trace features, not PMS/CES/TCS/LCS for actual candidate functions.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "human_study",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/numeric_constraints.json",
+        "reports/claim_closure/environment.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/guidance.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance",
+        "python benchmark/run_honest_experiments.py --results-dir <offline-results-dir>"
+      ],
+      "id": 29,
+      "missing_prerequisites": [
+        "Original20-case selection/policy and paired rankings with explicit aggregation definition"
+      ],
+      "next_executable_action": "Original20-case selection/policy and paired rankings with explicit aggregation definition",
+      "paper_wording": "Simulated guidance on 20 transactions, 68\u219281%",
+      "registry_scope": "DATA",
+      "required_evidence": "20 paired runs with preregistered simulation policy, complete integer outcomes; not a human study.",
+      "status": "EXTERNALLY_BLOCKED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_paper_experiments.py::test_paired_runner_calls_actual_analysis_with_identical_identity_and_guidance"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "GUIDANCE-RESULT-UNSUPPORTED",
+        "reason": "All53 reachable canonical text versions searched: no68%-to81% paired study; binary n20 increments5pp. 6.09% localization belongs to another study, not guidance.",
+        "verification_scope": "Recovered canonical Git provenance and offline historical feature arithmetic; not full empirical paper replication"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "reproducibility",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/paper_requirements.json",
+        "reports/claim_closure/cohort/row_decisions.json",
+        "reports/provenance_hunt/hunt.json",
+        "reports/provenance_hunt/cohort/row_decisions.json",
+        "reports/provenance_hunt/accounting.json",
+        "reports/provenance_hunt/frontiers.json",
+        "reports/provenance_hunt/experiments/dispatch_log.json",
+        "reports/provenance_hunt/compressed_trace_regression.json",
+        "reports/canonical_history/manifest.json",
+        "reports/canonical_history/cohort_history.json",
+        "reports/canonical_history/findings.json",
+        "reports/canonical_history/paper_vs_repo.json",
+        "reports/canonical_history/history_search.json",
+        "reports/canonical_history/accounting.json",
+        "reports/cohort_rebuild_v2/PRODUCTION_STAGE1.md",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/outputs_manifest.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/summary.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system.json",
+        "reports/cohort_rebuild_v2/production_runs/20261015T150951-4a3803b0/system_sources.json.gz",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T185549-292880f7/summary.json",
+        "reports/cohort_rebuild_v2/gateway_prefix_replay/20261015T190349-a5249514/summary.json",
+        "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 30,
+      "missing_prerequisites": [
+        "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes"
+      ],
+      "next_executable_action": "Complete Stage2/3 provider/source-target prerequisites and actual final frozen-system experiments with observed billing and ranking outcomes",
+      "paper_wording": "Reproduction scripts",
+      "registry_scope": "LOCAL",
+      "required_evidence": "One offline entry point, genuine test results and blocked evidence report.",
+      "status": "UNVERIFIED",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_claim_registry.py::test_registry_accounts_for_all_31_claims_without_promoting_fixture_proof",
+          "tests/test_captured_production_inputs.py::test_real_train_capture_runs_production_stage_one_without_network_or_llm",
+          "tests/test_captured_production_inputs.py::test_real_stage_one_runner_executes_production_ranker_without_claiming_stage_two",
+          "tests/test_captured_production_inputs.py::test_structured_sequence_retains_actual_creation_and_call_metadata",
+          "tests/test_gateway_prefix_replay.py"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "UNVERIFIABLE",
+        "paper_verdict": "PRODUCTION-STAGE1-REPRODUCED-FULL-PAPER-EXPERIMENTS-UNVERIFIABLE",
+        "reason": "Production Stage1 and ranker have real recorded-input reproduction. A strict offline replay of the Agnes pilot matches five exact request bodies and responses, then stops at request six because current request bytes diverge. Network and real-ledger mutation are prohibited. Timing is not reproduced and no complete model-assisted case or quality metric results; final full-system paper reproduction remains unverified.",
+        "verification_scope": "Hash-bound real-input Stage1/ranker and exact five-request historical prefix; debug replay is not a new empirical quality experiment or wall-time reproduction"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    },
+    {
+      "category": "reproducibility",
+      "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+      "command": "python scripts/reproduce_paper.py --require-claim-closure",
+      "dataset_revision": "benchmark/cohort_manifest.json and retained frozen/evidence snapshots",
+      "existing_artifacts": [
+        "reports/claim_closure/local_acceptance.json",
+        "reports/claim_closure/environment.json",
+        "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+      ],
+      "generating_code": [
+        "benchmark/claim_registry.py",
+        "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist",
+        "python scripts/reproduce_paper.py --require-claim-closure"
+      ],
+      "id": 31,
+      "missing_prerequisites": [],
+      "next_executable_action": "Preserve the implementation evidence; do not promote it to a population claim.",
+      "paper_wording": "Repository layout/runtime compatibility",
+      "registry_scope": "LOCAL",
+      "required_evidence": "Local Python runtime and Docker input layout checked; actual Docker execution remains an external-tool check.",
+      "status": "VERIFIED_IMPLEMENTATION",
+      "verification_result": {
+        "acceptance_tests": [
+          "tests/test_runtime_layout.py::test_docker_copy_sources_all_exist"
+        ],
+        "current_checkpoint_status": "SCOPE_REVIEWED_FROM_RETAINED_EVIDENCE",
+        "historical_status": "VERIFIED",
+        "paper_verdict": null,
+        "reason": "The current Python 3.11.9 suite executes and Docker COPY inputs/layout exist. This scope does not assert an image build or untested interpreter versions; the Docker daemon was unavailable.",
+        "verification_scope": "Observed Python 3.11.9 execution and Docker COPY/layout checks; no Docker build assertion"
+      },
+      "wording_source": "benchmark/claim_registry.py canonical title; full paper sentence is not retained here"
+    }
+  ],
+  "code_revision": "40df882e0935d80ee65ffbb4c34b52a660339489",
+  "current_cohort": {
+    "accepted_count": 14,
+    "chains": {
+      "base": 2,
+      "bsc": 1,
+      "eth": 7,
+      "fantom": 1,
+      "gnosis": 1,
+      "polygon": 2
+    },
+    "manifest": "benchmark/cohort_manifest.json",
+    "not_independent_human_review": true,
+    "remaining_to_target": 232,
+    "target_count": 246
+  },
+  "external_effects": false,
+  "frozen_batch_e": {
+    "artifact": "reports/new_batches/batchE/scoring.json",
+    "n": 40,
+    "preservation": "frozen; not rerun, retuned, rescored, renamed, or overwritten",
+    "recall_at_1": 0.35,
+    "recall_at_3": 0.675,
+    "recall_at_5": 0.825,
+    "status": "SCORED_ONCE"
+  },
+  "objective": "Close paper claims with reproducible evidence or precise blockers; never promote unsupported empirical results.",
+  "schema_version": 1,
+  "status_vocabulary": [
+    "CONTRADICTED_BY_CURRENT_EVIDENCE",
+    "EXTERNALLY_BLOCKED",
+    "MODELED_NOT_MEASURED",
+    "REPRODUCED_EMPIRICAL",
+    "SIMULATED",
+    "UNVERIFIED",
+    "VERIFIED_IMPLEMENTATION"
+  ],
+  "versioned_cohorts": [
+    {
+      "accepted_rows": 20,
+      "chains": {
+        "base": 2,
+        "bsc": 4,
+        "eth": 10,
+        "fantom": 1,
+        "gnosis": 1,
+        "polygon": 2
+      },
+      "input_rows": 20,
+      "manifest": "benchmark/versions/cohort_v3_20261016/cohort_manifest.json",
+      "not_independent_human_review": true,
+      "remaining_to_target": 226,
+      "schema": 3,
+      "status": "BLOCKED-BY-DATA"
+    },
+    {
+      "accepted_rows": 22,
+      "chains": {
+        "avalanche": 1,
+        "base": 2,
+        "bsc": 4,
+        "eth": 10,
+        "fantom": 1,
+        "gnosis": 1,
+        "optimism": 1,
+        "polygon": 2
+      },
+      "input_rows": 22,
+      "manifest": "benchmark/versions/cohort_v4_20261016/cohort_manifest.json",
+      "not_independent_human_review": true,
+      "remaining_to_target": 224,
+      "schema": 3,
+      "status": "BLOCKED-BY-DATA"
+    }
+  ]
+}

@@ -27,6 +27,9 @@ Local mechanism tests are separate from live-provider and empirical proof.
 For a no-network calibration and cost-evidence audit, run
 `python scripts/reproduce/audit_calibration_cost_evidence.py`; exit code `2`
 is expected while the retained empirical evidence is blocked.
+For the machine-readable 31-claim scoreboard, run
+`python scripts/reproduce/claim_closure_ledger.py`; the retained snapshot is
+`reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`.
 The legacy cohort labels, historical numbers below, aggregate/proxy experiment
 scripts and legacy calibrator do not establish current paper-claim verification.
 See [reproduction requirements](docs/PAPER_REPRODUCTION.md) for authentic-data

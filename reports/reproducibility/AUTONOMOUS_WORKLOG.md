@@ -30,8 +30,9 @@ reports, or provenance evidence.
 | AR-006 | 6 | coordinator | BLOCKED | Function-level localization evaluation | Exact function ground truth | New immutable holdout; Batch E unchanged |
 | AR-007 | 6 | coordinator | BLOCKED | Revalidate calibration, routing/cost, and HITL claims | Eligible data, provider authorization, human reviewers | Measured outputs or explicit external blocker |
 | AR-008 | 7 | coordinator | IN_PROGRESS | Align CI, setup, Docker, and replay documentation | AR-003 | CI, setup, README, and Docker now use the lockfile; replay/tool documentation remains |
-| AR-009 | 8 | coordinator | IN_PROGRESS | Produce final claim/evidence ledger and consistency report | All available evidence | Every material claim classified honestly |
-| AR-010 | 6 | coordinator | DONE | Add offline calibration/cost evidence audit and correct empty cost-tracker measurement flag | Existing calibration and cost artifacts | Audit exits 2 with explicit blocked status; 19 focused tests passed; no external effects |
+| AR-009 | 8 | coordinator | DONE | Produce final claim/evidence ledger and consistency report | All available evidence | `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`; 31 claims classified with fixed status vocabulary |
+| AR-010 | 6 | coordinator | DONE | Add offline calibration/cost evidence audit and reject empty legacy tracker reports as empirical evidence | Existing calibration and cost artifacts; Batch E runtime hash | Audit exits 2 with explicit blocked status; legacy empty flag is overridden by audit semantics; no frozen artifact changes |
+| AR-011 | 6 | coordinator | DONE | Reconcile valid cohort versions and identify locally runnable detector/localization work without touching frozen batches | Current manifests, frozen Batch E, comparable trace coverage | Root 14/246; v3 20/246; v4 22/246; detector gate data-blocked; Batch E verifier passes unchanged |
 
 ## Execution rules
 
@@ -163,5 +164,38 @@ reports, or provenance evidence.
   recorded as removed Tier-2-only arithmetic.
 - Regression command: `python -m pytest tests/test_calibration_cost_evidence_audit.py tests/test_cost_tracker_ablation.py -q -p no:cacheprovider`.
 - Result: exit 0, 19 passed.
-- The empty `CostTracker` now reports `measured: false`; populated call-based
-  reports retain `measured: true`.
+- The legacy `CostTracker` report remains byte-compatible with frozen Batch E;
+  the evidence audit classifies an empty report as having no observed runtime
+  usage and not qualifying as empirical evidence.
+
+### AR-009 — claim closure scoreboard
+
+- Changed: `scripts/reproduce/claim_closure_ledger.py`,
+  `tests/test_claim_closure_ledger.py`,
+  `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`, `README.md`.
+- Command: `python scripts/reproduce/claim_closure_ledger.py --root . --write reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`.
+- Result: 31 claims classified as 13 `VERIFIED_IMPLEMENTATION`, 4
+  `CONTRADICTED_BY_CURRENT_EVIDENCE`, 13 `EXTERNALLY_BLOCKED`, and 1
+  `UNVERIFIED`; no empirical claim was marked reproduced.
+- Current root cohort: 14 accepted of 246, 232 remaining, six represented
+  chains, and `not_independent_human_review=true`.
+- Frozen Batch E remains unchanged: n=40, R@1=14/40, R@3=27/40,
+  R@5=33/40.
+
+### AR-011 — cohort/version and frozen-batch reconciliation
+
+- Commands: `python -m benchmark.validate_cohort_manifest benchmark/cohort_manifest.json --root .`,
+  the equivalent v3 and v4 commands, and
+  `python scripts/research/verify_batch_e_result.py`.
+- Results: root manifest 14 accepted / 246 target / 232 remaining; v3 has 20
+  accepted / 226 remaining; v4 has 22 accepted / 224 remaining. All three
+  manifests are internally valid but `BLOCKED-BY-DATA` and retain
+  `not_independent_human_review=true`.
+- Detector command: `python benchmark/run_honest_experiments.py --results-dir C:/Users/91701/AppData/Local/Temp/omnirush/faultseeker-honest-audit-current`.
+  Exit 2 is correct: exploit trace coverage is 10/14 (0.71) versus benign
+  1000/1000 (1.00), so comparison metrics are blocked.
+- Frozen Batch E verification: exit 0, `PASS`, R@1=14/40, R@3=27/40,
+  R@5=33/40, 122 RPC dispatch records and 323 registry records. An earlier
+  verifier failure exposed a cost-tracker runtime-hash drift; the tracker was
+  restored to its frozen digest `0da7c83f...` without changing Batch E files,
+  and verification now passes.
