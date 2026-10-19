@@ -92,7 +92,7 @@ was corrected to distinguish historical inputs, staged candidates, and the
   report `BLOCKED-BY-DATA` with 14/246, 20/246, and 22/246 respectively.
 - `python scripts/research/verify_batch_e_result.py`: PASS; Batch E remains
   R@1 `14/40`, R@3 `27/40`, R@5 `33/40`.
-- Batch D retained freeze hash: `e349997c875542ffb85a2205dbc4357e31d547c7dffb3cf1f12aebf3634becf7`.
+- Batch D retained freeze hash: `e349997c875542ffb85a2205dbc4357e31d547c7dffb3cf1f12aebf3634becf7`; its frozen one-pass address+selector scoring remains R@1 `2/10`, R@3 `3/10`, R@5 `4/10`.
 - Focused runtime/claim-ledger tests: `8 passed`.
 - Direct source-audit regression: `1 failed`, with exact assertion
   `summary["unresolved_rows_attempted"] == 68`, required `>= 70`.
