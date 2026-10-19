@@ -207,3 +207,30 @@ Docker Linux engine limitation, and PDF/TeX limitation remain unchanged.
 The latest full offline suite was rerun after the continuation artifacts were
 added: `1065 passed, 7 skipped, 1 failed` in 125.11 seconds. The only failure
 remains `tests/test_t3_evidence_audits.py::test_local_source_audit_is_network_free_and_keeps_adjudication_separate` because the preserved source-resolution artifact contains 69 unresolved rows, while that pre-existing assertion requires at least 70. The input has 231 rows with 69 `UNRESOLVED` statuses and no omitted zero-URL row, so no evidence-preserving source correction is available; the assertion and source evidence were left unchanged.
+
+## 7. Recovered-trace localization continuation
+
+The paired trace-aware experiment was executed from the reusable candidate
+generation adapter on the four rows with both captured callTracer evidence and
+imported original function ground truth:
+
+- Baseline saved predictions: address coverage `4/4`, exact-function coverage
+  `2/4`, exact R@1/3/5 `0/4`, `0/4`, `0/4`.
+- Fixed generic trace-evidence treatment: address coverage `4/4`,
+  exact-function coverage `3/4`, exact R@1/3/5 still `0/4`, `0/4`, `0/4`.
+- The treatment moved Euler from absent to rank 46, but moved Orion from rank 7
+  to rank 59; no top-five improvement occurred.
+
+The result is a negative/insufficient exploratory result and was not promoted.
+No target labels were used to construct candidates or select weights, and no
+newly recovered row had usable function-level ground truth. The machine result
+and per-row predictions are in
+`reports/research_results/recovered_trace_localization_20261019.json`.
+
+The bounded recovery inventory additionally found pre-existing local call-tree
+artifacts for all nine captured rows and for the Fantom/Gnosis failed attempts.
+The two BSC failed attempts remain blocked by the recorded dRPC free-plan 429
+rate-limit responses and have no local call-tree artifact. Current-cohort
+ground truth for these rows has zero source-bound location keys, so no valid
+aggregate localization score can be added. See
+`reports/reconciliation/recovered_trace_inventory_20261019.json`.

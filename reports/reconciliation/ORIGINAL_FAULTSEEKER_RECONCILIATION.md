@@ -157,6 +157,16 @@ transcripts, scorer, or 115-row paper run. The machine-readable audit is
 `reports/reconciliation/recovered_trace_audit.json` and the human-readable
 report is `reports/reconciliation/RECOVERED_TRACE_AUDIT.md`.
 
+The paired localization experiment using only those four rows is recorded in
+`reports/research_results/recovered_trace_localization_20261019.json`. Generic
+trace candidates increased exact-function coverage from `2/4` to `3/4`, but
+exact Recall@1/3/5 remained `0/4`, `0/4`, and `0/4`; one row regressed from
+function rank 7 to 59. It is therefore exploratory and was not adopted as a
+production default. The five other captured rows have local call trees, but
+their current-cohort ground truth has no source-bound function locations. The
+full inventory, including the six failed attempts and their local artifact
+status, is `reports/reconciliation/recovered_trace_inventory_20261019.json`.
+
 The frozen protocol remains explicit in
 `benchmark/protocols/original_benchmark_function_localization_v1.md`: failures
 stay in the 115 denominator, synthetic/replay fixtures are not mixed into that

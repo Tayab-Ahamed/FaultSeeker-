@@ -1,0 +1,588 @@
+{
+  "conclusion": "Local call trees exist for all nine rows, but current-cohort ground truth provides no independently source-bound function locations for the five non-original rows and three failed external rows. The BSC failed attempt has no local call-tree artifact; its dRPC retries are blocked by provider rate limits.",
+  "current_cohort_manifest_sha256": "42b8df30e13f867acc5b2823934afa9729c33922092320ae7d1f9d8a74544a7a",
+  "recovery_class_counts": {
+    "captured_trace_recovered_but_function_gt_unavailable": 9,
+    "external_capture_failed_local_trace_recovered_but_function_gt_unavailable": 4,
+    "externally_blocked_no_local_call_tree": 2
+  },
+  "rows": [
+    {
+      "chain": "base",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "275be8a1f3120c30434e09b68ac71f4b5b72dbe1cd14dfd0edca0a2c26f1b19f",
+        "source_supported_functions": 1
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "144283415aa03eeef08a522342fd8d07f4f462688c028e00f609b23a040212f0",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/base/0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04.json",
+        "present": true,
+        "sha256": "a94622dab6eaeb2f849eaf8b91966414c971fbb7c75cd59c828668fb2bd57a50"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "6b81421b82009ac16edc728448076cf7bd76013afdf76e3c2ebd93e43800b160",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "base:0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04",
+      "transaction_hash": "0x8fcdfcded45100437ff94801090355f2f689941dca75de9a702e01670f361c04"
+    },
+    {
+      "chain": "base",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "5169a150f3a5ef248c79c46470172c2d01e2b96d6f06c9570c821b9f3f28ef6b",
+        "source_supported_functions": 2
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "b28ad522f92bb1f26cf2a294162523e7e431e9dcd38a6bbd4c79b84b060ceac0",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/base/0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec.json",
+        "present": true,
+        "sha256": "d6ff15a30675b990e4af80a3ffe5175c99a96a9b5348dd7c4755487af1accce9"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "086f8de144b00196ab06eedcda506af08028e8c0fad5044025eea6f5c09e75d7",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "base:0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec",
+      "transaction_hash": "0xbb837d417b76dd237b4418e1695a50941a69259a1c4dee561ea57d982b9f10ec"
+    },
+    {
+      "chain": "bsc",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "886f45bdfd178192a9cf6a375eb972a9d8f7153d111aac2a08a9d1bf1f222f27",
+        "source_supported_functions": 2
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "chain_identity_not_observed",
+        "provider_rate_limit_429"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/bsc/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json",
+        "present": true,
+        "sha256": "63cf08475a12991207f103cd4a97c54877b6716dc3aefdabb3a5eb16f854eee2"
+      },
+      "local_trace": {
+        "present": false
+      },
+      "local_trace_kind": "none",
+      "recovery_class": "externally_blocked_no_local_call_tree",
+      "safe_next_action": "No safe local localization action; provider trace capability or independently bound targets are missing.",
+      "stable_id": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    },
+    {
+      "chain": "bsc",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "886f45bdfd178192a9cf6a375eb972a9d8f7153d111aac2a08a9d1bf1f222f27",
+        "source_supported_functions": 2
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "chain_identity_not_observed",
+        "provider_rate_limit_429"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/bsc/0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf.json",
+        "present": true,
+        "sha256": "63cf08475a12991207f103cd4a97c54877b6716dc3aefdabb3a5eb16f854eee2"
+      },
+      "local_trace": {
+        "present": false
+      },
+      "local_trace_kind": "none",
+      "recovery_class": "externally_blocked_no_local_call_tree",
+      "safe_next_action": "No safe local localization action; provider trace capability or independently bound targets are missing.",
+      "stable_id": "bsc:0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf",
+      "transaction_hash": "0x13d19809b19ac512da6d110764caee75e2157ea62cb70937c8d9471afcb061bf"
+    },
+    {
+      "chain": "eth",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "63e9633b89c72165accb96431d24ec876be29a798fdbd65c8c7d06eb56b60d2f",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "FROZEN-231",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "38f98588393178c204fd9b77a7b28c4808b9d7fc0fabf96bc945354fee2763a7",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/eth/0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb.json",
+        "present": true,
+        "sha256": "e285e25bd2fa5e443210c42f781a9f00a72a7fbec5d4ab4719af72f8a6858c1f"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "5161d8fb178a28e9719308bd2c771c06d4301b081d8d4338bc81db26077ed10d",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "eth:0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb",
+      "transaction_hash": "0x0788ba222970c7c68a738b0e08fb197e669e61f9b226ceec4cab9b85abe8cceb"
+    },
+    {
+      "chain": "eth",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "b8245a1bab791bd9565e2bf09d6f405667b07925fa57befbfce3db5b21582564",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "FROZEN-231",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "b6732c4a3297b07991ab6849f4f688488077813856e695e09edc02237b41e2a2",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/eth/0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+        "present": true,
+        "sha256": "d467523bdbe1ad15d178c844f725e0a7ee9d578d5abe48e349cf38020155caf5"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "10b82a7f90d86983d4af821b3206d5d17c7b009a3d7f434ed9eff330f518d196",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "eth:0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+      "transaction_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c"
+    },
+    {
+      "chain": "eth",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "2ef9a809376ab9c04627e2e17946bc513ef1e01f16995ab83cbac48125a3190a",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "7e61a7d8aa70a8c6369094abae05842d5eebdae3e063e494d9280f5270f5bbb8",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/eth/0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46.json",
+        "present": true,
+        "sha256": "361abb970a9545761b593ddd69de3deb6ce5d1217c7b4f674a2cf20647d947e3"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "43e1f8db0c7f2445f72f4d79f4db4d5dcfc02999f4f8e2d44f6a0a55872cb53f",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "eth:0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46",
+      "transaction_hash": "0x9a97d85642f956ad7a6b852cf7bed6f9669e2c2815f3279855acf7f1328e7d46"
+    },
+    {
+      "chain": "eth",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "b469feb8154a604eaf6e79e5e2193399d350a24ccfb22f0ba571a330131531f2",
+        "source_supported_functions": 1
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "FROZEN-231",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "755a9ec43e3a6fc5c432196fd7f6695d0d03ff0957f716ee749eb764f1070542",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/eth/0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+        "present": true,
+        "sha256": "23fba2e59b12bc530fbd5519edb47acd5759323f192f08d20861fc73480f11bd"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "51be30930260b17c391485eb0aea2581278c775cef9ad157436a8d9bf41338ea",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "eth:0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+      "transaction_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa"
+    },
+    {
+      "chain": "eth",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "259d957891adf7d07ae4af73b6b8dad54e5b1d2030fa759690841a727172d7f6",
+        "source_supported_functions": 2
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "FROZEN-231",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "6d94500dfc282635fb3cdc0c5e293a52abb304da6ae76b33c99d3ff582506ffd",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/eth/0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d.json",
+        "present": true,
+        "sha256": "4caea532b5d230d597e6f0e7816a2352dda68f3038609204cb7a099975281ae1"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "108dbfd89dabf3f3f46114cc4c23c8a0a2254dd6a9fbf502ffae3d4c4c89846a",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "eth:0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d",
+      "transaction_hash": "0xc310a0affe2169d1f6feec1c63dbc7f7c62a887fa48795d327d4d2da2d6b111d"
+    },
+    {
+      "chain": "fantom",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "d5c381de989467d58b67035370fadb7e62fa3fdf55d627cc821b68f2d2f76ec3",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "provider_trace_method_error_-32000",
+        "transaction_lookup_missing_or_null"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/fantom/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+        "present": true,
+        "sha256": "9783b992deec2918e560e69b5ac801c86281b4b9d65381865657cfeadc38b2e2"
+      },
+      "local_trace": {
+        "capture_version": "verified-provider-call-tree-v1",
+        "has_call_tree": true,
+        "historical_code_present": false,
+        "present": true,
+        "provider_capture": {
+          "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+          "sha256": "86988f95d37f17557f72a98eb498db5198c994317185e9176d1af5b25e208b34"
+        },
+        "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "integrated_chain_trace_probe",
+      "recovery_class": "external_capture_failed_local_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+    },
+    {
+      "chain": "fantom",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "d5c381de989467d58b67035370fadb7e62fa3fdf55d627cc821b68f2d2f76ec3",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "provider_trace_method_error_-32000",
+        "transaction_lookup_missing_or_null"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/fantom/0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6.json",
+        "present": true,
+        "sha256": "9783b992deec2918e560e69b5ac801c86281b4b9d65381865657cfeadc38b2e2"
+      },
+      "local_trace": {
+        "capture_version": "verified-provider-call-tree-v1",
+        "has_call_tree": true,
+        "historical_code_present": false,
+        "present": true,
+        "provider_capture": {
+          "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/fantom-trace_transaction.json.gz",
+          "sha256": "86988f95d37f17557f72a98eb498db5198c994317185e9176d1af5b25e208b34"
+        },
+        "sha256": "1b187d48cf2458ea67752534fe3437ccaf427312323e5fb873258b9ea259637e",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "integrated_chain_trace_probe",
+      "recovery_class": "external_capture_failed_local_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "fantom:0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6",
+      "transaction_hash": "0x19315e5b150d0a83e797203bb9c957ec1fa8a6f404f4f761d970cb29a74a5dd6"
+    },
+    {
+      "chain": "gnosis",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "857fc94df2c5c0bf51c7bd2bedcafe1f015f9f42915f22e6d564f68ac262cd7b",
+        "source_supported_functions": 1
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "provider_trace_method_error_-32000",
+        "transaction_lookup_missing_or_null"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+        "present": true,
+        "sha256": "1c6922091d56308a8df8169197edd64f69360c7f2c887b20a55d6ecd073b1c65"
+      },
+      "local_trace": {
+        "capture_version": "verified-provider-call-tree-v1",
+        "has_call_tree": true,
+        "historical_code_present": false,
+        "present": true,
+        "provider_capture": {
+          "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+          "sha256": "facd0b6683db551db31b6bee13c6e26754ceb54ba948147e717f5f8b5dc583e1"
+        },
+        "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "integrated_chain_trace_probe",
+      "recovery_class": "external_capture_failed_local_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+    },
+    {
+      "chain": "gnosis",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "857fc94df2c5c0bf51c7bd2bedcafe1f015f9f42915f22e6d564f68ac262cd7b",
+        "source_supported_functions": 1
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [
+        "provider_trace_method_error_-32000",
+        "transaction_lookup_missing_or_null"
+      ],
+      "external_raw_present": false,
+      "external_raw_sha256": null,
+      "external_status": "FAILED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/gnosis/0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098.json",
+        "present": true,
+        "sha256": "1c6922091d56308a8df8169197edd64f69360c7f2c887b20a55d6ecd073b1c65"
+      },
+      "local_trace": {
+        "capture_version": "verified-provider-call-tree-v1",
+        "has_call_tree": true,
+        "historical_code_present": false,
+        "present": true,
+        "provider_capture": {
+          "path": "reports/cohort_rebuild_v2/chain_trace_probe/network_continuation/captures/gnosis-debug_traceTransaction.json.gz",
+          "sha256": "facd0b6683db551db31b6bee13c6e26754ceb54ba948147e717f5f8b5dc583e1"
+        },
+        "sha256": "780109dea8f8d4884f24deeb5191829758d66a7d8d23576989379f5db41fc72f",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "integrated_chain_trace_probe",
+      "recovery_class": "external_capture_failed_local_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "gnosis:0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098",
+      "transaction_hash": "0x534b84f657883ddc1b66a314e8b392feb35024afdec61dfe8e7c510cfac1a098"
+    },
+    {
+      "chain": "polygon",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "6d8d5427bccce17087a22df5d6f9ea40a23c534dcb224bc533fc4de3e18052ef",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "ADDITIONAL-UNADJUDICATED-TRANSACTION-REFERENCE",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "6a952f8d2209c0876f26970f4198b4c74616a4e4a50bc859563973e04e4a3e73",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f.json",
+        "present": true,
+        "sha256": "ca8f4a973a3dbde79e16fb1fcca9eecce39aebacd9c6429f579aafb217507a81"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "14d1edf016938c6fa7b7e5ec2a174b106dbb533aa55a2faedc25330df11f7d14",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "polygon:0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f",
+      "transaction_hash": "0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+    },
+    {
+      "chain": "polygon",
+      "current_ground_truth": {
+        "independent_human_review": false,
+        "localization_status": "UNAVAILABLE: no independently source-bound address/signature/line targets established; historical GT is archived separately",
+        "location_keys": 0,
+        "present": true,
+        "schema": 2,
+        "sha256": "5ee3b6435fa0aee70ab39a95facb5b6f603ecb269c0b422df1d9221e58db46db",
+        "source_supported_functions": 0
+      },
+      "current_manifest_membership": true,
+      "current_manifest_membership_value": "FROZEN-231",
+      "external_failure_causes": [],
+      "external_raw_present": true,
+      "external_raw_sha256": "cb8c59d1b917e16c3a7283c13b62a6f37b4d7a721b5e733c9ac34108f52bb32b",
+      "external_status": "CAPTURED",
+      "local_rpc": {
+        "path": "reports/cohort_rebuild_v2/rpc/polygon/0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008.json",
+        "present": true,
+        "sha256": "54a76601a46e7b5ade2da6f6280673a4c6c8d6f8cdac2c7cd31b46066456cefe"
+      },
+      "local_trace": {
+        "capture_version": "live-callTracer-with-historical-code-v1",
+        "has_call_tree": true,
+        "historical_code_present": true,
+        "present": true,
+        "provider_capture": null,
+        "sha256": "5913e8ff49b36eebf9152a37abe6c9d0d74d4e486adf7fd25a0115c7f2666352",
+        "storage_trace_complete": false
+      },
+      "local_trace_kind": "cohort_rebuild_v2_trace",
+      "recovery_class": "captured_trace_recovered_but_function_gt_unavailable",
+      "safe_next_action": "Use existing local call tree only for exploratory evidence; acquire independently source-bound function targets before localization scoring.",
+      "stable_id": "polygon:0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008",
+      "transaction_hash": "0x10f2c28f5d6cd8d7b56210b4d5e0cece27e45a30808cd3d3443c05d4275bb008"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Previously captured dRPC rows cross-checked against already-present cohort RPC, trace, and ground-truth artifacts; no new retrievals.",
+  "source_manifest": "reports/external_runs/phase2/20261017T011500Z/drpc/manifest.json",
+  "source_manifest_sha256": "10a1ef2665e9e5cac16204ca397b22ca96574d24ab651133f21a132161d967e7"
+}
