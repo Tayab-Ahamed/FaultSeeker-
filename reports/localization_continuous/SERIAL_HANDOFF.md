@@ -1,0 +1,9 @@
+# Serial run terminal handoff
+
+All parallel agents stopped at user request. Work proceeded serially. Selected original110 grouped OOF62/75/82 integrated with exact per-row parity. First55percent milestone reached;60percent target NOT reached. Fresh Batch E completed exactly once:14/27/33 of40 addresses (35/67.5/82.5percent). It did not meet the desired top1 performance; do not claim paper numbers or fresh improvement over an unrun baseline.
+
+Batch E is SPENT. Preserve model/cohort/runtime hashes,40predictions and permanent score lock. Never tune on or rescore it. No further batch is authorized by this completed run. All source labels were frozen before RPC;40of50eligible verified in fixed order, no substitutions. Generic registry names are not independently verifiedABI; no function-localization labels or metrics were invented.
+
+Evidence: reports/new_batches/batchE/scoring.json, runtime_freeze.json, freeze.json, cohort.json, capture_network_retry1/, registry/, predictions/. Report: FINAL_SERIAL_REPORT.md. Safe verification: python scripts/research/verify_batch_e_result.py (no ranker/scorer rerun). Runtime commit b7565ef9addf9a67bd3d3bd47fb73c17f6749982. Model80967ef99b633123975d10bab0a6a37f473caf42cd772c9b92fad732985f3037. Cohort06482a69d165265709167803765664b00947db44d978c8421d824b8c43e1dc94.
+
+Requests:121successful dRPC+1initialsandboxDNSdispatch,323publicregistry,0ratelimits/billingprompts/LLMcalls; estimatednewpaid$0. Existingpaidledger1.9905897 plusunchangedpending0.00009 below$10, not invoiceverified.31focusedtests pass,2serialstacktests pass; no fullsuitegreenclaim.469evidencefiles scanned0configuredsecretmatches. All task artifacts committed on researchbranches; four existing dirty claim-evidence files and olderuntracked files remain unchanged. No push,maincommit,paper/READMEedit or reinstall.
