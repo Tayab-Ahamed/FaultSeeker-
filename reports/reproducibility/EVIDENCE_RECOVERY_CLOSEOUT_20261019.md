@@ -1,6 +1,6 @@
 # Evidence recovery and reproducibility closeout
 
-Date: 2026-10-19  
+Date: 2026-10-19
 Repository revision at inspection: `427ccc83039e8fad09593c97bed5c8964c5f6c2f`
 
 This closeout records the final local evidence pass after commits `f882455` and
