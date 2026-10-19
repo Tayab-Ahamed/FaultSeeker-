@@ -660,3 +660,25 @@ reports, or provenance evidence.
   candidate is rejected. No further arbitrary fusion search will be run on
   this exposed legacy cohort.
 - Evidence and checksums: `reports/reproducibility/legacy_115_diagnostic/fusion_regularization/`.
+
+### AR-028 — pinned upstream-compatible original benchmark evaluation
+
+- Source commit inspected: `72753bd833554449efa8499f0d1775a97fb5c696`.
+- Added pure ranker reconstruction: `benchmark/upstream_compat_ranker.py`.
+- Added cached evaluator: `scripts/reproduce/evaluate_original_upstream_cached.py`.
+- Added tests: `tests/test_upstream_compat_ranker.py` and
+  `tests/test_original_upstream_cached_eval.py`.
+- Added authoritative output: `reports/original_benchmark/upstream-compatible-cached-20261019-final/`.
+- Command: `python scripts/reproduce/evaluate_original_upstream_cached.py --output-dir reports/original_benchmark/upstream-compatible-cached-20261019-final`.
+- Result: exit 0, 115 total cases, 110 cached successes, 5 cached failures;
+  reconstructed R@1 `27/115 = 23.48%`, R@3 `49/115 = 42.61%`, R@5
+  `53/115 = 46.09%`.
+- Current address-aware comparison: `25/115 = 21.74%`, `49/115 = 42.61%`,
+  `52/115 = 45.22%`.
+- Failure-stage counts: 5 data-collection/trace-replay failures, 43 successful
+  rows with no matching target in the ranked candidates, and 67 successful rows
+  with no recorded failure stage.
+- No RPC, cast, model, paid provider, Batch D, or Batch E action occurred.
+- The upstream repository does not publish its evaluator; the report's metric
+  is explicitly an evidence-bounded function-name-only reconstruction using
+  saved predictions, not a claim of exact authors-side reranking.
