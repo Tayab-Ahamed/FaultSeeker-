@@ -1,0 +1,121 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": " 0xb7FbF984A50cd7c66e6dA3448D68D9f3B7F24f33, param1: 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2, param2: 300000000000000000000 [3e20], param3: 0)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0xb7FbF984A50cd7c66e6dA3448D68D9f3B7F24f33) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 18348059243787394323 [1.834e19]\n    \u251c\u2500 [9195] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::withdraw(18348059243787394323 [1.834e19])\n    \u2502   \u251c\u2500 [55] 0xb7FbF984A50cd7c66e6dA3448D68D9f3B7F24f33::receive{value: 18348059243787394323}()\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 emit Withdrawal(param0: 0xb7FbF984A50cd7c66e6dA3448D68D9f3B7F24f33, param1: 18348059243787394323 [1.834e19])\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [0] 0x6CE9fa08F139F5e48bc607845E57efE9AA34C9F6::receive{value: 18348059243787394323}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 773760\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe.json",
+  "latency_seconds": 24.576056,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 2,
+      "function": "exactInputSingle",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          7
+        ],
+        [
+          0,
+          0,
+          3,
+          10
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 2,
+      "function": "uniswapV3SwapCallback",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          7,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          3,
+          10,
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb7fbf984a50cd7c66e6da3448d68d9f3b7f24f33",
+      "count": 1,
+      "function": "2b774292",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+      "count": 1,
+      "function": "flashLoan",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "b03e316c31cbd2d6bb6c8fa707bb14a2cf0e07a1216eefcd4ef3e64cb1982781",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0xcdd93e37ba2991ce02d8ca07bf6563bf5cd5ae801cbbce3dd0babb22e30b2dbe",
+  "variant": "llm-free"
+}

@@ -1,0 +1,498 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "   \u251c\u2500 [1234] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x795065dCc9f64b5614C407a6EFDC400DA6221FB0) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 105933312483442956033513 [1.059e23]\n    \u2502   \u251c\u2500 emit Sync(: 18764235550756779758001985 [1.876e25], : 105933312483442956033513 [1.059e23])\n    \u2502   \u251c\u2500 emit Swap(param0: 0xE11fc0B43ab98Eb91e9836129d1ee7c3Bc95df50, param1: 0, param2: 82959161476883201166 [8.295e19], param3: 14662164108074804165472 [1.466e22], param4: 0, param5: 0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 emit LogConvert(param0: 0x51841D9AFe10fE55571bDB8f4Af1060415003528, param1: 0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599, param2: 0x798D1bE841a82a273720CE31c822C61a67a601C3, param3: 344578316 [3.445e8], param4: 1531539155 [1.531e9], param5: 14662164108074804165472 [1.466e22])\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 395733\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9.json",
+  "latency_seconds": 22.739479,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac",
+      "count": 4,
+      "function": "getpair",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          15
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 3,
+      "function": "balanceof",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          3,
+          5
+        ],
+        [
+          0,
+          9,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x798d1be841a82a273720ce31c822c61a67a601c3",
+      "count": 3,
+      "function": "balanceof",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          3,
+          6
+        ],
+        [
+          0,
+          14,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfabec03b04279c6e73f27aaf25866acc844448ae",
+      "count": 3,
+      "function": "balanceof",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          0,
+          3,
+          6,
+          0
+        ],
+        [
+          0,
+          14,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 3,
+      "function": "transfer",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          0
+        ],
+        [
+          0,
+          14,
+          0
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 3,
+      "function": "balanceof",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          2
+        ],
+        [
+          0,
+          14,
+          2
+        ],
+        [
+          0,
+          19,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 2,
+      "function": "transfer",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          3
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x798d1be841a82a273720ce31c822c61a67a601c3",
+      "count": 2,
+      "function": "transfer",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          4
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xfabec03b04279c6e73f27aaf25866acc844448ae",
+      "count": 2,
+      "function": "transfer",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          4,
+          0
+        ],
+        [
+          0,
+          13,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe11fc0b43ab98eb91e9836129d1ee7c3bc95df50",
+      "count": 1,
+      "function": "convert",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9a13867048e01c663ce8ce2fe0cdae69ff9f35e3",
+      "count": 1,
+      "function": "balanceof",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9a13867048e01c663ce8ce2fe0cdae69ff9f35e3",
+      "count": 1,
+      "function": "transfer",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9a13867048e01c663ce8ce2fe0cdae69ff9f35e3",
+      "count": 1,
+      "function": "burn",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac",
+      "count": 1,
+      "function": "feeto",
+      "rank": 14,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9a13867048e01c663ce8ce2fe0cdae69ff9f35e3",
+      "count": 1,
+      "function": "token0",
+      "rank": 15,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xceff51756c56ceffca006cd410b03ffc46dd3a58",
+      "count": 1,
+      "function": "getreserves",
+      "rank": 16,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xceff51756c56ceffca006cd410b03ffc46dd3a58",
+      "count": 1,
+      "function": "token0",
+      "rank": 17,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xceff51756c56ceffca006cd410b03ffc46dd3a58",
+      "count": 1,
+      "function": "swap",
+      "rank": 18,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf41e354eb138b328d56957b36b7f814826708724",
+      "count": 1,
+      "function": "getreserves",
+      "rank": 19,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          11
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf41e354eb138b328d56957b36b7f814826708724",
+      "count": 1,
+      "function": "token0",
+      "rank": 20,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          12
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf41e354eb138b328d56957b36b7f814826708724",
+      "count": 1,
+      "function": "swap",
+      "rank": 21,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          14
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x795065dcc9f64b5614c407a6efdc400da6221fb0",
+      "count": 1,
+      "function": "getreserves",
+      "rank": 22,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          16
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x795065dcc9f64b5614c407a6efdc400da6221fb0",
+      "count": 1,
+      "function": "token0",
+      "rank": 23,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          17
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x795065dcc9f64b5614c407a6efdc400da6221fb0",
+      "count": 1,
+      "function": "swap",
+      "rank": 24,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          19
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+      "count": 1,
+      "function": "transfer",
+      "rank": 25,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          19,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+      "count": 1,
+      "function": "balanceof",
+      "rank": 26,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          19,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "5ad28e564bd6f344ae16895398ff8c676db8fb023b58ff4213a2812a023a583d",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x90fb0c9976361f537330a5617a404045ffb3fef5972cf67b531386014eeae7a9",
+  "variant": "llm-free"
+}

@@ -1,0 +1,39 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "error_text": "cast timeout after 90s: 0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+      "status": "failed"
+    }
+  ],
+  "case_id": "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+  "cast": {},
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": "TimeoutError",
+  "failure_message": "cast timeout after 90s: 0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+  "filename": "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5.json",
+  "latency_seconds": 90.414772,
+  "model": "llm-free-function-ranker",
+  "predictions": [],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "f18411c0f96b172159794174e14b96286165eba4cd01a61289dc41d8bd13a236",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": null
+  },
+  "status": "failed",
+  "txn_hash": "0xf4a3d0e01bbca6c114954d4a49503fc94dfdbc864bded5530b51a207640d86b5",
+  "variant": "llm-free"
+}

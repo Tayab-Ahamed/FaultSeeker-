@@ -1,0 +1,165 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": " [2.836e12])\n    \u2502   \u2502   \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x5061F7e6dfc1a867D945d0ec39Ea2A33f772380A, to: 0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36, amount: 2836206447207 [2.836e12])\n    \u2502   \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u251c\u2500 [1031] 0xdAC17F958D2ee523a2206206994597C13D831ec7::balanceOf(0x4e68Ccd3E89f51C3074ca5072bbAC773960dFa36) [staticcall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 37752933305932 [3.775e13]\n    \u2502   \u2502   \u2514\u2500 \u2190 [OutOfGas] EvmError: OutOfGas\n    \u2502   \u2514\u2500 \u2190 [Revert] EvmError: Revert\n    \u2514\u2500 \u2190 [Revert] EvmError: Revert\n\n\nGas used: 962745\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nError: Transaction failed.\nWarning: the replay does not match the transaction's receipt: it succeeded on-chain but reverted in the replay, and it used 897331 gas on-chain but 962745 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nError: Transaction failed.\nWarning: the replay does not match the transaction's receipt: it succeeded on-chain but reverted in the replay, and it used 897331 gas on-chain but 962745 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa.json",
+  "latency_seconds": 39.335716,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+      "count": 1,
+      "function": "swapThroughOrionPool",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+      "count": 1,
+      "function": "swapThroughOrionPool",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb5599f568d3f3e6113b286d010d2bca40a7745aa",
+      "count": 1,
+      "function": "withdraw",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x98a877bb507f19eb43130b688f522a13885cf604",
+      "count": 1,
+      "function": "withdraw",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          6,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 1,
+      "function": "uniswapV3SwapCallback",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          12,
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x79f774095a33071f6172ab0832ed20adb44df992",
+      "count": 1,
+      "function": "4729ed3c",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x420a50a62b17c18b36c64478784536ba980feac8",
+      "count": 1,
+      "function": "doSwapThroughOrionPool",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          9,
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "97c5d6ef505d8c47ae1d8581aca3c024ba6819b2e1fe0fc0bac7fb34212026fb",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xa6f63fcb6bec8818864d96a5b1bb19e8bd85ee37b2cc916412e720988440b2aa",
+  "variant": "llm-free"
+}

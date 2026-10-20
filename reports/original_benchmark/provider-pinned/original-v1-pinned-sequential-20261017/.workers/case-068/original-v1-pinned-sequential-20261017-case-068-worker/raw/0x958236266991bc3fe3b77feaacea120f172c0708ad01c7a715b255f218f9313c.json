@@ -1,0 +1,2963 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+  "cast": {},
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 0
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c.json",
+  "latency_seconds": 1.166754,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x0000000000000000000000000000000000000004",
+      "count": 17,
+      "function": "0x00000000",
+      "rank": 1,
+      "selector": "0x00000000",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 8,
+      "function": "0xc7fab708",
+      "rank": 2,
+      "selector": "0xc7fab708",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          8
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+      "count": 8,
+      "function": "0x18160ddd",
+      "rank": 3,
+      "selector": "0x18160ddd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 8,
+      "function": "0xbad1dc26",
+      "rank": 4,
+      "selector": "0xbad1dc26",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          9
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 8,
+      "function": "0x70a08231",
+      "rank": 5,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          10
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          22
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          8
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+      "count": 6,
+      "function": "0x70a08231",
+      "rank": 6,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          7,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          7,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 5,
+      "function": "0xa9059cbb",
+      "rank": 7,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+      "count": 5,
+      "function": "0x70a08231",
+      "rank": 8,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+      "count": 5,
+      "function": "0x70a08231",
+      "rank": 9,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          1,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "count": 5,
+      "function": "0x70a08231",
+      "rank": 10,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          16
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+      "count": 5,
+      "function": "0x70a08231",
+      "rank": 11,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          14
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          18
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 4,
+      "function": "0x23b872dd",
+      "rank": 12,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 4,
+      "function": "0xfa18042d",
+      "rank": 13,
+      "selector": "0xfa18042d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 4,
+      "function": "0x4e60b141",
+      "rank": 14,
+      "selector": "0x4e60b141",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8e764be4288b842791989db5b8ec067279829809",
+      "count": 4,
+      "function": "0x1a4c1ca3",
+      "rank": 15,
+      "selector": "0x1a4c1ca3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f942c20d02befc377d41445793068908e2250d0",
+      "count": 4,
+      "function": "0x37951049",
+      "rank": 16,
+      "selector": "0x37951049",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "count": 4,
+      "function": "0x23b872dd",
+      "rank": 17,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+      "count": 3,
+      "function": "0x095ea7b3",
+      "rank": 18,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          24
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 19,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf4030086522a5beea4988f8ca5b36dbc97bee88c",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 20,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xae74faa92cb67a95ebcab07358bc222e33a34da7",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 21,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 22,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x37bc7498f4ff12c19678ee8fe19d713b87f6a9e6",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 23,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 3,
+      "function": "0x70a08231",
+      "rank": 24,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 25,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xa964273552c1dba201f5f000215f5bd5576e8f93",
+      "count": 3,
+      "function": "0x50d25bcd",
+      "rank": 26,
+      "selector": "0x50d25bcd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          4,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+      "count": 3,
+      "function": "0x99530b06",
+      "rank": 27,
+      "selector": "0x99530b06",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+      "count": 3,
+      "function": "0x99530b06",
+      "rank": 28,
+      "selector": "0x99530b06",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          11,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          13,
+          7,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          1,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f942c20d02befc377d41445793068908e2250d0",
+      "count": 3,
+      "function": "0xeb85226d",
+      "rank": 29,
+      "selector": "0xeb85226d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "count": 3,
+      "function": "0x5b41b908",
+      "rank": 30,
+      "selector": "0x5b41b908",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 3,
+      "function": "0x36bc8855",
+      "rank": 31,
+      "selector": "0x36bc8855",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          17,
+          4,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          23,
+          4,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "count": 3,
+      "function": "0xa9059cbb",
+      "rank": 32,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          6,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          12,
+          8
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe8929afd47064efd36a7fb51da3f8c5eb40c4cb4",
+      "count": 3,
+      "function": "0xfc57d4df",
+      "rank": 33,
+      "selector": "0xfc57d4df",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0000000000000000000000000000000000000004",
+      "count": 2,
+      "function": "0x23b872dd",
+      "rank": 34,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f0439382359c05ed287acd5170757b76402d93f",
+      "count": 2,
+      "function": "0x15f24053",
+      "rank": 35,
+      "selector": "0x15f24053",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+      "count": 2,
+      "function": "0x23b872dd",
+      "rank": 36,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+      "count": 2,
+      "function": "0x18160ddd",
+      "rank": 37,
+      "selector": "0x18160ddd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0000000000000000000000000000000000000004",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "rank": 38,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+      "count": 2,
+      "function": "0xa9059cbb",
+      "rank": 39,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          7
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+      "count": 2,
+      "function": "0x70a08231",
+      "rank": 40,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          20
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c39809dec7f95f5e0713634a4d0701329b3b4d2",
+      "count": 2,
+      "function": "0xb1bf962d",
+      "rank": 41,
+      "selector": "0xb1bf962d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x52fdfb1157878f540dcb961561ce5f3b0bbe6f80",
+      "count": 2,
+      "function": "0xb1bf962d",
+      "rank": 42,
+      "selector": "0xb1bf962d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf508c58ce37ce40a40997c715075172691f92e2d",
+      "count": 1,
+      "function": "0xbe9a6555",
+      "rank": 43,
+      "selector": "0xbe9a6555",
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+      "count": 1,
+      "function": "0xab9c4b5d",
+      "rank": 44,
+      "selector": "0xab9c4b5d",
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+      "count": 1,
+      "function": "0xab9c4b5d",
+      "rank": 45,
+      "selector": "0xab9c4b5d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+      "count": 1,
+      "function": "0x4efecaa5",
+      "rank": 46,
+      "selector": "0x4efecaa5",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+      "count": 1,
+      "function": "0x4efecaa5",
+      "rank": 47,
+      "selector": "0x4efecaa5",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf508c58ce37ce40a40997c715075172691f92e2d",
+      "count": 1,
+      "function": "0x920f5c84",
+      "rank": 48,
+      "selector": "0x920f5c84",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "count": 1,
+      "function": "0x4515cef3",
+      "rank": 49,
+      "selector": "0x4515cef3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+      "count": 1,
+      "function": "0x40c10f19",
+      "rank": 50,
+      "selector": "0x40c10f19",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8f68f4810cce3194b6cb6f3d50fa58c2c9bdd1d5",
+      "count": 1,
+      "function": "0x571bae3f",
+      "rank": 51,
+      "selector": "0x571bae3f",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd51a44d3fae010294c616388b506acda1bfaae46",
+      "count": 1,
+      "function": "0xf446c1d0",
+      "rank": 52,
+      "selector": "0xf446c1d0",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+      "count": 1,
+      "function": "0x095ea7b3",
+      "rank": 53,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+      "count": 1,
+      "function": "0x6e553f65",
+      "rank": 54,
+      "selector": "0x6e553f65",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+      "count": 1,
+      "function": "0x6e553f65",
+      "rank": 55,
+      "selector": "0x6e553f65",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc4ad29ba4b3c580e6d59105fff484999997675ff",
+      "count": 1,
+      "function": "0x23b872dd",
+      "rank": 56,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+      "count": 1,
+      "function": "0x095ea7b3",
+      "rank": 57,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          7
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+      "count": 1,
+      "function": "0x095ea7b3",
+      "rank": 58,
+      "selector": "0x095ea7b3",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+      "count": 1,
+      "function": "0xa0712d68",
+      "rank": 59,
+      "selector": "0xa0712d68",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+      "count": 1,
+      "function": "0x4ef4c3e1",
+      "rank": 60,
+      "selector": "0x4ef4c3e1",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+      "count": 1,
+      "function": "0x4ef4c3e1",
+      "rank": 61,
+      "selector": "0x4ef4c3e1",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+      "count": 1,
+      "function": "0x70a08231",
+      "rank": 62,
+      "selector": "0x70a08231",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          2,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe537b5cc158eb71037d4125bdd7538421981e6aa",
+      "count": 1,
+      "function": "0x23b872dd",
+      "rank": 63,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9c13e225ae007731caa49fd17a41379ab1a489f4",
+      "count": 1,
+      "function": "0x23b872dd",
+      "rank": 64,
+      "selector": "0x23b872dd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          4,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+      "count": 1,
+      "function": "0x41c728b9",
+      "rank": 65,
+      "selector": "0x41c728b9",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+      "count": 1,
+      "function": "0x41c728b9",
+      "rank": 66,
+      "selector": "0x41c728b9",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          8,
+          6,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+      "count": 1,
+      "function": "0xc2998238",
+      "rank": 67,
+      "selector": "0xc2998238",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          9
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+      "count": 1,
+      "function": "0xc2998238",
+      "rank": 68,
+      "selector": "0xc2998238",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          9,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+      "count": 1,
+      "function": "0xc5ebeaec",
+      "rank": 69,
+      "selector": "0xc5ebeaec",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+      "count": 1,
+      "function": "0xda3d454c",
+      "rank": 70,
+      "selector": "0xda3d454c",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+      "count": 1,
+      "function": "0xda3d454c",
+      "rank": 71,
+      "selector": "0xda3d454c",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1429a930ec3bcf5aa32ef298ccc5ab09836ef587",
+      "count": 1,
+      "function": "0xc37f68e2",
+      "rank": 72,
+      "selector": "0xc37f68e2",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe8b3bc58774857732c6c1147bfc9b9e5fb6f427c",
+      "count": 1,
+      "function": "0x313ce567",
+      "rank": 73,
+      "selector": "0x313ce567",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          2,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+      "count": 1,
+      "function": "0xc37f68e2",
+      "rank": 74,
+      "selector": "0xc37f68e2",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7fcb7dac61ee35b3d4a51117a7c58d53f0a8a670",
+      "count": 1,
+      "function": "0xaa5af0fd",
+      "rank": 75,
+      "selector": "0xaa5af0fd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          2,
+          0,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x865377367054516e17014ccded1e7d814edc9ce4",
+      "count": 1,
+      "function": "0xa9059cbb",
+      "rank": 76,
+      "selector": "0xa9059cbb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x4dcf7407ae5c07f8681e1659f626e114a7667339",
+      "count": 1,
+      "function": "0x5c778605",
+      "rank": 77,
+      "selector": "0x5c778605",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x48c5e896d241afd1aee73ae19259a2e234256a85",
+      "count": 1,
+      "function": "0x5c778605",
+      "rank": 78,
+      "selector": "0x5c778605",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          15,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x90e00ace148ca3b23ac1bc8c240c2a7dd9c2d7f5",
+      "count": 1,
+      "function": "0x37951049",
+      "rank": 79,
+      "selector": "0x37951049",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb9fc157394af804a3578134a6585c0dc9cc990d4",
+      "count": 1,
+      "function": "0xeb85226d",
+      "rank": 80,
+      "selector": "0xeb85226d",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xaa5a67c256e27a5d80712c51971408db3370927d",
+      "count": 1,
+      "function": "0x3df02124",
+      "rank": 81,
+      "selector": "0x3df02124",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x213be373fdff327658139c7df330817dad2d5bbe",
+      "count": 1,
+      "function": "0x3df02124",
+      "rank": 82,
+      "selector": "0x3df02124",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "count": 1,
+      "function": "0xbb7b8b80",
+      "rank": 83,
+      "selector": "0xbb7b8b80",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          19,
+          5,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "count": 1,
+      "function": "0x1a4d01d2",
+      "rank": 84,
+      "selector": "0x1a4d01d2",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          21
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
+      "count": 1,
+      "function": "0x79cc6790",
+      "rank": 85,
+      "selector": "0x79cc6790",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          1,
+          21,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+      "count": 1,
+      "function": "0x79774338",
+      "rank": 86,
+      "selector": "0x79774338",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6ac108c4c3fe7f4d367513f599da1b9df7c43433",
+      "count": 1,
+      "function": "0x79774338",
+      "rank": 87,
+      "selector": "0x79774338",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          3,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+      "count": 1,
+      "function": "0x7df5bd3b",
+      "rank": 88,
+      "selector": "0x7df5bd3b",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+      "count": 1,
+      "function": "0x7df5bd3b",
+      "rank": 89,
+      "selector": "0x7df5bd3b",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          4,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
+      "count": 1,
+      "function": "0x31873e2e",
+      "rank": 90,
+      "selector": "0x31873e2e",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          4,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd9ed413bcf58c266f95fe6ba63b13cf79299ce31",
+      "count": 1,
+      "function": "0x31873e2e",
+      "rank": 91,
+      "selector": "0x31873e2e",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656",
+      "count": 1,
+      "function": "0x18160ddd",
+      "rank": 92,
+      "selector": "0x18160ddd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc2fcab14ec1f2dfa82a23c639c4770345085a50f",
+      "count": 1,
+      "function": "0x18160ddd",
+      "rank": 93,
+      "selector": "0x18160ddd",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9",
+      "count": 1,
+      "function": "0xd15e0053",
+      "rank": 94,
+      "selector": "0xd15e0053",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          5,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc6845a5c768bf8d7681249f8927877efda425baf",
+      "count": 1,
+      "function": "0xd15e0053",
+      "rank": 95,
+      "selector": "0xd15e0053",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x51b039b9afe64b78758f8ef091211b5387ea717c",
+      "count": 1,
+      "function": "0xf731e9be",
+      "rank": 96,
+      "selector": "0xf731e9be",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6ac108c4c3fe7f4d367513f599da1b9df7c43433",
+      "count": 1,
+      "function": "0xf731e9be",
+      "rank": 97,
+      "selector": "0xf731e9be",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          6,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xf41e8f817e6c399d1ade102059c454093b24f35b",
+      "count": 1,
+      "function": "0x9584df28",
+      "rank": 98,
+      "selector": "0x9584df28",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          9
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+      "count": 1,
+      "function": "0x3618abba",
+      "rank": 99,
+      "selector": "0x3618abba",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          9,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8a32f49ffba88aba6eff96f45d8bd1d4b3f35c7d",
+      "count": 1,
+      "function": "0xbb85c0bb",
+      "rank": 100,
+      "selector": "0xbb85c0bb",
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          9,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 0
+  },
+  "run_config_hash": "5b7510bef2c692c7ff5609a0e1b114ef76fba516942b714abd3e52a9f4580923",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x958236266991bc3fe3b77feaacea120f172c0708ad01c7a715b255f218f9313c",
+  "variant": "llm-free"
+}

@@ -1,0 +1,289 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": " 0xE96D53Be815e66e637E50E68d3a507c9Ec649cd3, to: 0x0000000000000000000000000000000000000000, amount: 0)\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [57760] 0x457D80b9880e4bEa28DA3f301BaFA7f6E4C60432::stake(0)\n    \u2502   \u251c\u2500 [56517] 0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd::stake(0, 0)\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x457D80b9880e4bEa28DA3f301BaFA7f6E4C60432, to: 0x0000000000000000000000000000000000000000, amount: 0)\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [57760] 0x1E7F4AA401F3990e571f46fF29FFBd8768BC0F0F::stake(0)\n    \u2502   \u251c\u2500 [56517] 0x4Ae2Cd1F5B8806a973953B76f9Ce6d5FAB9cdcfd::stake(0, 0)\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x1E7F4AA401F3990e571f46fF29FFBd8768BC0F0F, to: 0x0000000000000000000000000000000000000000, amount: 0)\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return] 7168 bytes of code\n\n\nTransaction successfully executed.\nGas used: 24472550\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114.json",
+  "latency_seconds": 97.548262,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x4ae2cd1f5b8806a973953b76f9ce6d5fab9cdcfd",
+      "count": 13,
+      "function": "stake",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          99,
+          0
+        ],
+        [
+          0,
+          98,
+          0
+        ],
+        [
+          0,
+          97,
+          0
+        ],
+        [
+          0,
+          96,
+          0
+        ],
+        [
+          0,
+          95,
+          0
+        ],
+        [
+          0,
+          94,
+          0
+        ],
+        [
+          0,
+          93,
+          0
+        ],
+        [
+          0,
+          92,
+          0
+        ],
+        [
+          0,
+          91,
+          0
+        ],
+        [
+          0,
+          90,
+          0
+        ],
+        [
+          0,
+          89,
+          0
+        ],
+        [
+          0,
+          88,
+          0
+        ],
+        [
+          0,
+          87,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1e7f4aa401f3990e571f46ff29ffbd8768bc0f0f",
+      "count": 1,
+      "function": "stake",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          99
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x457d80b9880e4bea28da3f301bafa7f6e4c60432",
+      "count": 1,
+      "function": "stake",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          98
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe96d53be815e66e637e50e68d3a507c9ec649cd3",
+      "count": 1,
+      "function": "stake",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          97
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3918c23a8b0c4017297fb812715397d6006c7c9a",
+      "count": 1,
+      "function": "stake",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          96
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xcd762548acf2855e56b7b69b9a7aaae336ec1613",
+      "count": 1,
+      "function": "stake",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          95
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x0cfacf8aa205c0b2634532430e2c437929a331d7",
+      "count": 1,
+      "function": "stake",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          94
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x1433f46e1664f5e43b353d1fe7f6c3c586084088",
+      "count": 1,
+      "function": "stake",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          93
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x2b68cac039fb2794c3ab8a5ce78e24847100c499",
+      "count": 1,
+      "function": "stake",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          92
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x67a64e0da8ec9859513b1cb87877449328536dc3",
+      "count": 1,
+      "function": "stake",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          91
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd7867aa21157172152f58435a64f1d10df4cfade",
+      "count": 1,
+      "function": "stake",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          90
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x5e2af52dffcc7077d0bbf3f5cbb1aa594a640ab4",
+      "count": 1,
+      "function": "stake",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          89
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xd774a8f5f3a5962fdba3e991129b200437e8adfc",
+      "count": 1,
+      "function": "stake",
+      "rank": 13,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          88
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "db0dc54104228fc878fd80ab73104e1f6bcb6064cdd26ee0edf0af37c14c3cc6",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xd9156f507c701a09d3312e1987383c7c882df50b3127e1adfd74d74052642114",
+  "variant": "llm-free"
+}

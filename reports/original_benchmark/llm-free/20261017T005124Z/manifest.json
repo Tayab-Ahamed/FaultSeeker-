@@ -1,0 +1,58 @@
+{
+  "aggregate": {
+    "actual_cost_usd": 0.0,
+    "failure_kinds": {
+      "AttributeError": 1
+    },
+    "list_price_equivalent_usd": null,
+    "n_failed": 1,
+    "n_ok": 0,
+    "n_total": 1,
+    "recall_at_1": 0.0,
+    "recall_at_3": 0.0,
+    "recall_at_5": 0.0,
+    "token_totals": {
+      "input": 0,
+      "output": 0
+    }
+  },
+  "ground_truth_dir": "benchmark/original_faultseeker/ground_truth",
+  "ground_truth_file_count": 1,
+  "ground_truth_sha256": {
+    "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300.json": "c8670fb900a92a30c2c0e463da87ac4fb627bbed1291a8600f03394fb516354e"
+  },
+  "model": "llm-free-function-ranker",
+  "protocol": "benchmark/protocols/original_benchmark_function_localization_v1.md",
+  "provider": "none",
+  "rows": [
+    {
+      "actual_cost_usd": 0.0,
+      "chain": "bsc",
+      "failure_kind": "AttributeError",
+      "failure_message": "'tuple' object has no attribute 'repeated_patterns'",
+      "filename": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300.json",
+      "latency_seconds": 10.666233,
+      "list_price_equivalent_usd": null,
+      "model": "llm-free-function-ranker",
+      "predictions": [],
+      "provider": "none",
+      "score": {
+        "first_hit_rank": null,
+        "recall_at_1": false,
+        "recall_at_3": false,
+        "recall_at_5": false,
+        "target_function_count": null
+      },
+      "status": "failed",
+      "token_usage": {
+        "input": 0,
+        "output": 0,
+        "source": "not-dispatched"
+      },
+      "txn_hash": "0x00c5a772a58b117f142b2cbc8721b80d145ef7a910043ad08439863d0e78e300",
+      "variant": "llm-free"
+    }
+  ],
+  "seed": 20261017,
+  "variant": "llm-free"
+}

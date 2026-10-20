@@ -1,0 +1,91 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "0000000000000000000000000000000000000a4cc799563c380000000000000000000000000000d01ae1a708614948b2b5e0b7ab5be6afa01325c7) [delegatecall]\n    \u2502   \u2502   \u2502   \u251c\u2500 [0] 0x0000000000000000000000000000000000000000::transferFrom(0xD01Ae1A708614948B2B5e0B7AB5be6AFA01325c7, 0x17B7163cf1Dbd286E262ddc68b553D899B93f526, 190000000000000000000 [1.9e20])\n    \u2502   \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return]\n    \u2502   \u251c\u2500 emit Deposit(param0: 1, param1: 0x00000000000000000000002f422fe9ea622049d6f73f81a906b9b8cff03b7f01, param2: 86, param3: 0xD01Ae1A708614948B2B5e0B7AB5be6AFA01325c7, param4: 0x000000000000000000000000000000000000000000000000000000000000006900000000000000000000000000000000000000000000000a4cc799563c380000000000000000000000000000d01ae1a708614948b2b5e0b7ab5be6afa01325c7)\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return]\n\n\nTransaction successfully executed.\nGas used: 71514\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133.json",
+  "latency_seconds": 9.783803,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x99309d2e7265528dc7c3067004cc4a90d37b7cc3",
+      "count": 1,
+      "function": "deposit",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x17b7163cf1dbd286e262ddc68b553d899b93f526",
+      "count": 1,
+      "function": "deposit",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x80d1486ef600cc56d4df9ed33baf53c60d5a629b",
+      "count": 1,
+      "function": "deposit",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "35ba36f327ce9c4d58837aea446dc50a6a7632c00adc1e5e6735d94a2715bd45",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xac7292e7d0ec8ebe1c94203d190874b2aab30592327b6cc875d00f18de6f3133",
+  "variant": "llm-free"
+}

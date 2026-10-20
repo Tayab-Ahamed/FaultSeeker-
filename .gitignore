@@ -227,3 +227,12 @@ test_target.py
 tmp_parse.py
 tmphashes.txt
 wait.py
+
+# Local credentials and installed dependencies (publication exclusions)
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+node_modules/
+site-packages/
+tools/foundry/

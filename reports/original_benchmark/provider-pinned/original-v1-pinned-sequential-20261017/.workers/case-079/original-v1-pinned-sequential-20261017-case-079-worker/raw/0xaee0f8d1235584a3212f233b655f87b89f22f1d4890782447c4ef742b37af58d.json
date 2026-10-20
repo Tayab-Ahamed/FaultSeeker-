@@ -1,0 +1,94 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": true,
+    "output_tail": "\u2514\u2500 \u2190 [Return] 301306214456142908 [3.013e17]\n    \u251c\u2500 [9195] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::withdraw(301306214456142908 [3.013e17])\n    \u2502   \u251c\u2500 [55] 0x2F99fb66Ea797E7fA2d07262402Ab38bd5e53B12::receive{value: 301306214456142908}()\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 emit Withdrawal(param0: 0x2F99fb66Ea797E7fA2d07262402Ab38bd5e53B12, param1: 301306214456142908 [3.013e17])\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [0] 0xE000008459b74a91e306a47C808061DFA372000E::receive{value: 301306214475433829}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return] 0x000000000000000000000000000000000000000000000000042e7467d946ac3c\n\n\nTransaction successfully executed.\nGas used: 978940\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 980821 gas on-chain but 978940 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\nWarning: the replay does not match the transaction's receipt: it used 980821 gas on-chain but 978940 in the replay. `--quick` skips the transactions before it in the block, which can change the result; run without it to replay them first.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d.json",
+  "latency_seconds": 41.823911,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x39aa39c021dfbae8fac545936693ac917d5e7563",
+      "count": 1,
+      "function": "mint",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b",
+      "count": 1,
+      "function": "enterMarkets",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          4
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x35a18000230da775cac24873d00ff85bccded550",
+      "count": 1,
+      "function": "borrow",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": true,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "831693beb9f9dd8efa77ae560fe84ffab6bcd2692912876ab52327ed1dc40622",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xaee0f8d1235584a3212f233b655f87b89f22f1d4890782447c4ef742b37af58d",
+  "variant": "llm-free"
+}

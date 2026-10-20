@@ -1,0 +1,258 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "72F36F4E99) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 1089216957000000000 [1.089e18]\n    \u2502   \u251c\u2500 [14184] 0xBFae33128ecF041856378b57adf0449181FFFDE7::transferFrom(0x93D4F6f84d242C7959f8d1F1917DdbC9Fb925ADA, 0xA1cE40702E15d0417a6c74D0bAB96772F36F4E99, 48265619511955219 [4.826e16])\n    \u2502   \u2502   \u251c\u2500 emit Transfer(from: 0x93D4F6f84d242C7959f8d1F1917DdbC9Fb925ADA, to: 0xA1cE40702E15d0417a6c74D0bAB96772F36F4E99, amount: 48265619511955219 [4.826e16])\n    \u2502   \u2502   \u251c\u2500 emit Approval(owner: 0x93D4F6f84d242C7959f8d1F1917DdbC9Fb925ADA, spender: 0xA1cE40702E15d0417a6c74D0bAB96772F36F4E99, amount: 0)\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] true\n    \u2502   \u251c\u2500 [639] 0xBFae33128ecF041856378b57adf0449181FFFDE7::balanceOf(0xA1cE40702E15d0417a6c74D0bAB96772F36F4E99) [staticcall]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 1137482576511955219 [1.137e18]\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 316348\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284.json",
+  "latency_seconds": 18.208152,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+      "count": 7,
+      "function": "balanceof",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          0,
+          0,
+          5,
+          1
+        ],
+        [
+          0,
+          0,
+          6
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          3,
+          0
+        ],
+        [
+          0,
+          3,
+          1
+        ],
+        [
+          0,
+          3,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 2,
+      "function": "balanceof",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          5,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x93d4f6f84d242c7959f8d1f1917ddbc9fb925ada",
+      "count": 1,
+      "function": "stake{value: 300000000000000000}",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+      "count": 1,
+      "function": "swapexactethfortokenssupportingfeeontransfertokens{value: 300000000000000000}",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 1,
+      "function": "deposit{value: 300000000000000000}",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "count": 1,
+      "function": "transfer",
+      "rank": 6,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x64571ea88c809abeea5ddbeb7427ef37f87946d0",
+      "count": 1,
+      "function": "getreserves",
+      "rank": 7,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x64571ea88c809abeea5ddbeb7427ef37f87946d0",
+      "count": 1,
+      "function": "swap",
+      "rank": 8,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          5
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+      "count": 1,
+      "function": "transfer",
+      "rank": 9,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          5,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+      "count": 1,
+      "function": "approve",
+      "rank": 10,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xa1ce40702e15d0417a6c74d0bab96772f36f4e99",
+      "count": 1,
+      "function": "stake",
+      "rank": 11,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xbfae33128ecf041856378b57adf0449181fffde7",
+      "count": 1,
+      "function": "transferfrom",
+      "rank": 12,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "86996d5cd9715f1ebdc0528c31e427157aa7cb862f155c32f1b6d48f6c7ad5e5",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0xda8f6a4bed7e5689a343d111632d37480c0316f1d20b732803c4bd482823e284",
+  "variant": "llm-free"
+}

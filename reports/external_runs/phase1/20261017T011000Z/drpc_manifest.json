@@ -1,0 +1,24 @@
+{
+  "phase": 1,
+  "provider": "dRPC",
+  "status": "PARTIAL-CONFORMANCE",
+  "raw_output": "reports/external_runs/phase1/20261017T011000Z/drpc_rpc_conformance.json",
+  "credential_source": ".env variable names only; values not persisted",
+  "requests": 17,
+  "returned": 15,
+  "request_failed": 1,
+  "rpc_rejected": 0,
+  "billing_prompt_detected": false,
+  "observed": [
+    "eth_chainId",
+    "eth_blockNumber",
+    "historical transaction, receipt, and block reads",
+    "archive balance, nonce, code, storage, call, and logs",
+    "debug_traceTransaction callTracer",
+    "trace_replayTransaction",
+    "JSON-RPC batch correlation"
+  ],
+  "failed_observation": "debug_traceTransaction opcode logger returned sanitized UpstreamHTTPError",
+  "pass_criterion": "All declared read/archive/trace methods return valid responses under the configured free-tier endpoint",
+  "criterion_result": "FAIL: opcode logger was not returned"
+}

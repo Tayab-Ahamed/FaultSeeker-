@@ -1,0 +1,108 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "589132462920707561674 [7.344e47], param4: 100000000000000000000 [1e20], param5: 0, param6: 0)\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2514\u2500 \u2190 [Return]\n    \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x80a6419Cb8E7d1Ef1AF074368F7eAce1AE2358Ca) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 1984144101921156164 [1.984e18]\n    \u251c\u2500 [9202] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::withdraw(1984144101921156164 [1.984e18])\n    \u2502   \u251c\u2500 [62] 0x80a6419Cb8E7d1Ef1AF074368F7eAce1AE2358Ca::receive{value: 1984144101921156164}()\n    \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u251c\u2500 emit Withdrawal(param0: 0x80a6419Cb8E7d1Ef1AF074368F7eAce1AE2358Ca, param1: 1984144101921156164 [1.984e18])\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u251c\u2500 [0] 0x0c06340f5024C114Fe196Fcb38e42D20ab00F6eb::receive{value: 1984144101921156164}()\n    \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2514\u2500 \u2190 [Return]\n\n\nTransaction successfully executed.\nGas used: 1106358\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7.json",
+  "latency_seconds": 47.854609,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x80a6419cb8e7d1ef1af074368f7eace1ae2358ca",
+      "count": 1,
+      "function": "de76fef5",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xcb0e499954ae4277d0db0e13a938b73745ebe9ba",
+      "count": 1,
+      "function": "a1fe0e8d",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x8115366ca7cf280a760f0bc0f6db3026e2437115",
+      "count": 1,
+      "function": "flashLoanSimple",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x6175ddec3b9b38c88157c10a01ed4a3fa8639cc6",
+      "count": 1,
+      "function": "handleRepayment",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0,
+          0,
+          0,
+          7,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "51bbbb64fdd54603b13e2986b824816db7512293057100ded4bc46a092bfff5f",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0x4c684fb2618c29743531dec9253ede1b757bda0b323dc2f305e3b50ab1773da7",
+  "variant": "llm-free"
+}

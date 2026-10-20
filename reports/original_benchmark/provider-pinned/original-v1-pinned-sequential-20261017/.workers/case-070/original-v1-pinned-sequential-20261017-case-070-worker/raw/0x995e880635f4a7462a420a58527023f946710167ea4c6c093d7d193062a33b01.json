@@ -1,0 +1,199 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "5A270) [staticcall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 2769549753523177452961101 [2.769e24]\n    \u2502   \u2502   \u251c\u2500 emit Swap(param0: 0xE592427A0AEce92De3Edee1F18E0157C05861564, param1: 0x7B3a6EFF1C9925e509C2b01A389238c1FCC462B6, param2: 119220660871058657167624 [1.192e23], param3: -52133956080457251524 [-5.213e19], param4: 1651201122755509913309584167 [1.651e27], param5: 344120678154170287313123 [3.441e23], param6: -77421 [-7.742e4])\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x00000000000000000000000000000000000000000000193ef708ac184be8c908fffffffffffffffffffffffffffffffffffffffffffffffd2c7efb299087853c\n    \u2502   \u2514\u2500 \u2190 [Return] 0x000000000000000000000000000000000000000000000002d38104d66f787ac4\n    \u251c\u2500 [2534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x356E7481B957bE0165D6751a49b4b7194AEf18D5) [staticcall]\n    \u2502   \u2514\u2500 \u2190 [Return] 0\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 2205636\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01.json",
+  "latency_seconds": 20.368165,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+      "count": 20,
+      "function": "flash",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          0,
+          19
+        ],
+        [
+          0,
+          23
+        ],
+        [
+          0,
+          27
+        ],
+        [
+          0,
+          31
+        ],
+        [
+          0,
+          35
+        ],
+        [
+          0,
+          39
+        ],
+        [
+          0,
+          43
+        ],
+        [
+          0,
+          47
+        ],
+        [
+          0,
+          51
+        ],
+        [
+          0,
+          55
+        ],
+        [
+          0,
+          59
+        ],
+        [
+          0,
+          63
+        ],
+        [
+          0,
+          67
+        ],
+        [
+          0,
+          71
+        ],
+        [
+          0,
+          75
+        ],
+        [
+          0,
+          79
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 2,
+      "function": "uniswapV3SwapCallback",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          85,
+          0,
+          2
+        ],
+        [
+          0,
+          85,
+          1,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x356e7481b957be0165d6751a49b4b7194aef18d5",
+      "count": 1,
+      "function": "7f3ad32c",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x04c80bb477890f3021f03b068238836ee20aa0b8",
+      "count": 1,
+      "function": "debond",
+      "rank": 4,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          81
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "count": 1,
+      "function": "exactInput",
+      "rank": 5,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          85
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "c0f50e53ac820db68e805bb955cd2894201a4b792ff42b23a5afbe9b7c5e8239",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 1
+  },
+  "status": "ok",
+  "txn_hash": "0x995e880635f4a7462a420a58527023f946710167ea4c6c093d7d193062a33b01",
+  "variant": "llm-free"
+}

@@ -1,0 +1,91 @@
+{
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "ok"
+    }
+  ],
+  "case_id": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6",
+  "cast": {
+    "compute_units_per_second": 5,
+    "exit_code": 0,
+    "mismatch": false,
+    "output_tail": "D) [staticcall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0\n    \u2502   \u2502   \u251c\u2500 [21385] 0xE55607B2967DDbE5FA9A6A921991545b8277Ef8F::safeTransferFrom(0x7c5C9AfEcf4013c43217Fb6A626A4687381f080D, 0xC2c862322E9c97D6244a3506655DA95F05246Fd8, 19231446 [1.923e7], 0x)\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Stop]\n    \u2502   \u2502   \u251c\u2500 [534] 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2::balanceOf(0x7c5C9AfEcf4013c43217Fb6A626A4687381f080D) [staticcall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0\n    \u2502   \u2502   \u251c\u2500 [920] 0xE55607B2967DDbE5FA9A6A921991545b8277Ef8F::ownerOf(19231446 [1.923e7]) [staticcall]\n    \u2502   \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x0000000000000000000000000000000000000000000000000000000000000000\n    \u2502   \u2502   \u2514\u2500 \u2190 [Return] 0x150b7a0200000000000000000000000000000000000000000000000000000000\n    \u2502   \u2514\u2500 \u2190 [Return] 0x150b7a0200000000000000000000000000000000000000000000000000000000\n    \u2514\u2500 \u2190 [Stop]\n\n\nTransaction successfully executed.\nGas used: 180919\n\nWarning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n",
+    "provider": "BlockPI",
+    "stderr_tail": "Warning: Found unknown `rpc_endpoints` config for profile `default` defined in foundry.toml.\nWarning: Found unknown `func_attrs_with_params_multiline` config key in section `fmt` defined in foundry.toml.\nWarning: Found unknown `variable_override_spacing` config key in section `fmt` defined in foundry.toml.\n"
+  },
+  "cast_process_delta": {
+    "bsc": 0,
+    "eth": 1
+  },
+  "chain": "eth",
+  "failure_kind": null,
+  "failure_message": null,
+  "filename": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6.json",
+  "latency_seconds": 9.857678,
+  "model": "llm-free-function-ranker",
+  "predictions": [
+    {
+      "code_address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+      "count": 2,
+      "function": "onERC721Received",
+      "rank": 1,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0xe55607b2967ddbe5fa9a6a921991545b8277ef8f",
+      "count": 1,
+      "function": "980d3675",
+      "rank": 2,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    },
+    {
+      "code_address": "0x7c5c9afecf4013c43217fb6a626a4687381f080d",
+      "count": 1,
+      "function": "offerBid",
+      "rank": 3,
+      "selector": null,
+      "supporting_call_depths": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tie_policy": "stable candidate encounter order"
+    }
+  ],
+  "provider": "BlockPI",
+  "replay_mismatch": false,
+  "request_count_delta": {
+    "bsc": 0,
+    "eth": 2
+  },
+  "run_config_hash": "ff680ac4f90cdd774c7ee2aea7bfcf98bc3fa9abc927a6991e7fe212f5812d49",
+  "score": {
+    "first_hit_rank": null,
+    "recall_at_1": false,
+    "recall_at_3": false,
+    "recall_at_5": false,
+    "target_function_count": 2
+  },
+  "status": "ok",
+  "txn_hash": "0xd9b3e229acc755881890394cc76fde0d7b83b1abd4d046b0f69c1fd9fd495ff6",
+  "variant": "llm-free"
+}
