@@ -684,3 +684,34 @@ reports, or provenance evidence.
   saved predictions, not a claim of exact authors-side reranking.
 - Post-commit focused suite: `python -m pytest tests/test_upstream_compat_ranker.py tests/test_original_upstream_cached_eval.py tests/test_original_benchmark_eval.py tests/test_original_benchmark_ablations.py tests/test_original_reconciliation.py -q -p no:cacheprovider` — exit 0, 10 passed.
 - Implementation commit: `6414cfc`.
+
+### AR-029 — transaction-level error attribution
+
+- Added offline attribution implementation: `scripts/reproduce/analyze_original_error_attribution.py`.
+- Added focused tests: `tests/test_original_error_attribution.py`.
+- Inputs were limited to the 115 original ground-truth files, 115 cached
+  provider-pinned raw rows, and the authoritative upstream-compatible cached
+  evaluation. No RPC, cast, model, source-retrieval, fresh ranking, Batch B/C,
+  Batch D, or Batch E action occurred.
+- Final output: `reports/original_benchmark/error-attribution-20261020-final-v2/`.
+- Final aggregate: 115 total; 110 `ok`; 5 cached execution/trace failures.
+  Upstream reconstruction R@1/R@3/R@5 is `27/115`, `49/115`, `53/115`; current
+  address-aware scoring is `25/115`, `49/115`, `52/115`. The independent
+  recomputation matches the authoritative aggregate exactly.
+- Primary classifications: A cached execution/trace failure `5`; B no target
+  candidate in saved set `41`; C target candidate ranked outside Top-5 `14`; D
+  Top-5 reconstruction equality miss `2`; E demonstrated identity-normalization
+  mismatch `3`; F insufficient evidence `0`; localized `50`. Localized rows are
+  not failures: the reconstructed target is within Top-5.
+- Demonstrated issue counts: selector/name resolution `2`; address identity
+  mismatch `3`. The report records an investigation queue with available
+  evidence, unresolved questions, and the result that would change each
+  classification.
+- Verification: `python -m pytest tests/test_original_error_attribution.py -q
+  -p no:cacheprovider` — exit 0, 3 passed; combined upstream/evaluation/
+  reconciliation regression command — exit 0, 9 passed; Python compilation
+  check — exit 0.
+- This remains an evidence-bounded cached diagnostic-prediction analysis, not an
+  exact ASE 2025 reproduction. Going further requires the original per-
+  transaction traces/candidate evidence and the unreleased authors-side
+  evaluator/model outputs, or a new authorized pinned end-to-end run.
