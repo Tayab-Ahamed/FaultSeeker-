@@ -176,9 +176,10 @@ reports, or provenance evidence.
   `tests/test_claim_closure_ledger.py`,
   `reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`, `README.md`.
 - Command: `python scripts/reproduce/claim_closure_ledger.py --root . --write reports/reproducibility/CLAIM_CLOSURE_LEDGER.json`.
-- Result: 31 claims classified as 13 `VERIFIED_IMPLEMENTATION`, 4
-  `CONTRADICTED_BY_CURRENT_EVIDENCE`, 13 `EXTERNALLY_BLOCKED`, and 1
-  `UNVERIFIED`; no empirical claim was marked reproduced.
+- Result at the current ledger checkpoint: 31 claims classified as 11
+  `VERIFIED_IMPLEMENTATION`, 4 `CONTRADICTED_BY_CURRENT_EVIDENCE`, 14
+  `EXTERNALLY_BLOCKED`, and 2 `UNVERIFIED`; no empirical claim was marked
+  reproduced.
 - Current root cohort: 14 accepted of 246, 232 remaining, six represented
   chains, and `not_independent_human_review=true`.
 - Frozen Batch E remains unchanged: n=40, R@1=14/40, R@3=27/40,
